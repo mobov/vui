@@ -1,0 +1,12 @@
+{
+  "name": "megmore-ui",
+  "version": "1.0.0",
+  "description": "ui components",
+  "main": "index.js",
+  "repository": "git@github.com:megmore/megmore-ui.git",
+  "author": "nocoolyoyo <574857444@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.6.0"
+  }
+}
