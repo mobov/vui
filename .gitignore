@@ -3,9 +3,9 @@ node_modules/
 .env
 
 # IDE user config
-.vscode/
-.idea/
-.vs/
+.vscode
+.idea
+.vs
 
 # Logs
 yarn-error.log
