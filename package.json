@@ -7,6 +7,7 @@
   "author": "nocoolyoyo <574857444@qq.com>",
   "license": "MIT",
   "scripts": {
+    "guide-serve": "lerna run serve --scope megmore-guide --stream",
     "bootstrap": "lerna bootstrap --npm-client=yarn"
   },
   "devDependencies": {
