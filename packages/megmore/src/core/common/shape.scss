@@ -1,0 +1,25 @@
+/**
+ * variables register.
+ */
+:root {
+    --m-shape-circle: 50%;
+    --m-shape-round: 1rem;
+    --m-shape-corner: .2rem;
+    --m-shape-square: 0;
+}
+
+/**
+ * common modifier class output.
+ */
+.m--shape-circle {
+    border-radius: var(--m-shape-circle);
+}
+.m--shape-round {
+    border-radius: var(--m-shape-round);
+}
+.m--shape-corner {
+    border-radius: var(--m-shape-corner);
+}
+.m--shape-square {
+    border-radius: var(--m-shape-square);
+}

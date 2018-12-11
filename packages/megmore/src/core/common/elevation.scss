@@ -1,0 +1,19 @@
+@import "~@megmore/scss-helper";
+/**
+ * variables register.
+ */
+:root {
+    // elevation
+    @each $index, $elevation in $--Elevations {
+        --m-elevation-#{$index}: #{$elevation};
+    }
+}
+
+///**
+// * common modifier class output.
+// */
+//@each $index, $elevation in $--Elevations {
+//    .m--elevation-#{$index} {
+//        box-shadow: #{$elevation};
+//    }
+//}
