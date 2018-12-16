@@ -9,7 +9,6 @@
       <m-icon name="menu" />
     </m-app-bar>
     <router-view />
-    <!--<m-drawer :show.sync="drawer" />-->
   </m-app>
 </template>
 <script lang="ts">

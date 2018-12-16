@@ -1,7 +1,11 @@
 <template>
-  <m-container>
-    <m-row>
-      结合二
+  <m-container style="width: 1000px">
+    <m-row :cols="24">
+      <m-col :xs="2">
+        <m-radio v-model="checkVal"></m-radio>
+        结合二
+      </m-col>
+
     </m-row>
   </m-container>
 </template>
@@ -15,5 +19,7 @@ import HelloWorld from '../components/HelloWorld.vue' // @ is an alias to /src
     HelloWorld
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  checkVal: boolean = false
+}
 </script>

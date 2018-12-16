@@ -8,7 +8,7 @@ const _name = 'm-avatar'
 @Component
 export default class MAvatar extends Vue {
   @Prop({ type: String })
-  private size!: Size | number | string
+  private size!: Size
 
   @Prop({ type: Number })
   private elevation!: number
@@ -25,8 +25,8 @@ export default class MAvatar extends Vue {
   @Prop({ type: String, default: VARIETY.normal })
   private variety!: Variety
 
-  @Prop({ type: String, default: '' })
-  private src!: string
+  @Prop({ type: String })
+  private src!: URL | WindowBase64
 
   @Watch('src', { immediate: true })
   private srcUpdate (val: any): void {
@@ -40,7 +40,7 @@ export default class MAvatar extends Vue {
 
   private curSrc: string | any = ''
 
-  private get styles (): any {
+  private get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
@@ -52,7 +52,7 @@ export default class MAvatar extends Vue {
     return styles
   }
 
-  private get classes (): any {
+  private get classes () {
     const { variety, shape, status } = this
 
     return {

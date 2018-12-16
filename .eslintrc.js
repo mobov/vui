@@ -11,9 +11,14 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'indent': 'off'
   },
   parserOptions: {
-    parser: 'typescript-eslint-parser'
+    parser: 'typescript-eslint-parser',
+    ecmaFeatures: {
+      'jsx': true,
+      'experimentalObjectRestSpread': true
+    }
   }
 }

@@ -1,0 +1,73 @@
+// checkbox
+$--size-checkbox: 26;
+// checkbox
+$--size-checkbox__wrapper: 45;
+
+/**
+ * variables register.
+ */
+.m-radio {
+    // selection
+    --m-radio-size-xs: 1rem;
+    --m-radio-size-sm: 1.5rem;
+    --m-radio-size-md: 2rem;
+    --m-radio-size-lg: 2.5rem;
+    --m-radio-size-xl: 3rem;
+    --m-radio-wrapper-size-xs: 2rem;
+    --m-radio-wrapper-size-sm: 3rem;
+    --m-radio-wrapper-size-md: 4rem;
+    --m-radio-wrapper-size-lg: 5rem;
+    --m-radio-wrapper-size-xl: 6rem;
+
+    // default
+    --m-radio-color: var(--m-color-main);
+    --m-radio-active-color: var(--m-color-main);
+
+    --m-radio-size: var(--m-radio-size-md);
+    --m-radio-wrapper-size: var(--m-radio-wrapper-size-md);
+}
+
+/**
+ * components styles.
+ */
+.m-radio {
+    color: var(--m-radio-color);
+    height: var(--m-radio-color);
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    &.m--disabled {
+        opacity: .5;
+    }
+    .m-icon {
+        height: var(--m-radio-size);
+        width: var(--m-radio-size);
+    }
+    &__check-icon {
+        height: var(--m-radio-size);
+        width: var(--m-radio-size);
+        position: absolute;
+        left: 0;
+        top:0;
+    }
+    &__checkbox {
+        position: relative;
+        height: var(--m-radio-size);
+        width: var(--m-radio-size);
+    }
+    &__checkbox-wrapper {
+        position: absolute;
+        left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);
+        top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);
+        height: var(--m-radio-wrapper-size);
+        width: var(--m-radio-wrapper-size);
+        border-radius: 50%;
+    }
+
+    &__label {
+        color: transparent;
+    }
+}

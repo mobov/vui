@@ -22,6 +22,9 @@
   --m-button-border-size: .2rem;
 }
 
+/**
+ * components styles.
+ */
 .m-button {
   @include clear-button;
   background-color: var(--m-button-color);

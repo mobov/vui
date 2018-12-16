@@ -62,6 +62,12 @@ declare module 'vue/types/vnode' {
   }
 }
 
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    class?: string
+  }
+}
+
 declare module 'vue/types/vue' {
   export type OptionsVue<Instance extends Vue, Data, Methods, Computed, Props, Options = {}> = VueConstructor<
     CombinedVueInstance<Instance, Data, Methods, Computed, Props> & Vue,

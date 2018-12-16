@@ -73,7 +73,7 @@ export default class MIcon extends Vue {
         height={height}
         width={width}
         viewBox={icon.viewBox}
-        onClick={click}>
+        onClick={() => click}>
         {icon.paths ? icon.paths.map((path: string) => <path d={path} />) : <span /> }
         {icon.polygons ? icon.polygons.map((path: string) => <polygon points={path} />) : <span /> }
       </svg>

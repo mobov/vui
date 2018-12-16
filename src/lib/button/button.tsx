@@ -40,7 +40,7 @@ export default class MButton extends Vue {
   @Emit('click')
   private handleClick (e: MouseEvent): void { }
 
-  private get styles (): any {
+  private get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
@@ -53,7 +53,7 @@ export default class MButton extends Vue {
     return styles
   }
 
-  private get classes (): any {
+  private get classes () {
     const { variety, shape, block } = this
 
     return {
@@ -72,7 +72,7 @@ export default class MButton extends Vue {
         style={styles}
         class={classes}
         onClick={handleClick}>
-        {icon ? <MIcon name={icon} /> : undefined}
+        {icon ? <MIcon name={icon} /> : null}
         {this.$slots.default
           ? <div class={`${_name}__main`}>{this.$slots.default}</div>
           : <template />}
