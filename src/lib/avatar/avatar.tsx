@@ -3,7 +3,7 @@ import { Size, Color, Variety, Shape } from '@/typings/model'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 import { STATUS, VARIETY, SHAPE } from '@/lib/core/constant'
 
-const prefix = 'm-avatar'
+const _name = 'm-avatar'
 
 @Component
 export default class MAvatar extends Vue {
@@ -44,10 +44,10 @@ export default class MAvatar extends Vue {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
 
     return styles
   }
@@ -74,13 +74,13 @@ export default class MAvatar extends Vue {
     const { curSrc, styles, classes, loadSuccess, loadFailure } = this
 
     return (
-      <div staticClass={prefix}
+      <div staticClass={_name}
         style={styles}
         class={classes}>
         {this.$slots.default}
         <img onLoad={loadSuccess}
           onError={loadFailure}
-          staticClass={`${prefix}__cover`}
+          staticClass={`${_name}__cover`}
           alt=''
           src={curSrc} />
       </div>

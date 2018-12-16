@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 
-const prefix = 'm-app-bar'
+const _name = 'm-app-bar'
 
 @Component
 export default class MAppBar extends Vue {
@@ -21,10 +21,10 @@ export default class MAppBar extends Vue {
     const { color, fontColor, size, elevation } = this
     const styles = {}
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
 
     return styles
   }
@@ -33,7 +33,7 @@ export default class MAppBar extends Vue {
     const { styles } = this
 
     return (
-      <div staticClass={prefix}
+      <div staticClass={_name}
         style={styles}>
         {this.$slots.default}
       </div>

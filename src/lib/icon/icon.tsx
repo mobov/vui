@@ -1,5 +1,6 @@
-import { CreateElement, VNode, RenderContext } from 'vue'
-import { Vue } from 'vue-property-decorator'
+import { CreateElement, VNode, RenderContext, ComponentOptions } from 'vue'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+
 const prefix = 'm-icon'
 
 const SIZE: any = {
@@ -12,21 +13,43 @@ const SIZE: any = {
 
 const Icons: any = {}
 
-const MIcon = Vue.extend({
-  name: prefix,
-  functional: true,
-  props: {
-    name: String,
-    color: {
-      type: String,
-      default: '#000000'
-    },
-    size: {
-      type: [String, Number],
-      default: 'sm'
+@Component({
+  functional: true
+} as ComponentOptions<Vue>)
+export default class MIcon extends Vue {
+  @Prop({ type: String })
+  private name!: string
+
+  @Prop({ type: [String, Number], default: 'sm' })
+  private size!: string | number
+
+  @Prop({ type: String, default: '#000000' })
+  private color!: string
+
+  static register (data: any = {}): void {
+    for (const item in data) {
+      if (data.hasOwnProperty(item)) {
+        const icon = data[item]
+        if (icon.d) {
+          if (!icon.paths) {
+            icon.paths = []
+          }
+          icon.paths.push({ d: icon.d })
+        }
+
+        if (icon.points) {
+          if (!icon.polygons) {
+            icon.polygons = []
+          }
+          icon.polygons.push({ points: icon.points })
+        }
+
+        Icons[item] = icon
+      }
     }
-  },
-  render (h, { props, data, children, listeners }) {
+  }
+
+  render (h: CreateElement, { props, data, children, listeners }: RenderContext): VNode {
     const { name } = props
     const icon = Icons[props.name]
 
@@ -56,29 +79,4 @@ const MIcon = Vue.extend({
       </svg>
     )
   }
-})
-
-MIcon.register = (data: any = {}): void => {
-  for (const item in data) {
-    if (data.hasOwnProperty(item)) {
-      const icon = data[item]
-      if (icon.d) {
-        if (!icon.paths) {
-          icon.paths = []
-        }
-        icon.paths.push({ d: icon.d })
-      }
-
-      if (icon.points) {
-        if (!icon.polygons) {
-          icon.polygons = []
-        }
-        icon.polygons.push({ points: icon.points })
-      }
-
-      Icons[item] = icon
-    }
-  }
 }
-
-export default MIcon

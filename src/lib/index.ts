@@ -4,6 +4,7 @@ import './core/common/space.scss'
 import './core/common/shape.scss'
 import './core/common/theme.scss'
 import * as components from './components'
+import './icon/presets'
 import { VueConstructor } from 'vue'
 import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/typings'
 
@@ -14,7 +15,9 @@ const Megmore: MegmorePlugin = {
 
     // 注册组件
     const componentsList = opts.components || components
-    Object.values(componentsList).forEach((component: any) => {
+    console.log(componentsList)
+    Object.values(componentsList).forEach(component => {
+      console.log(component)
       Vue.use(component)
     })
   },

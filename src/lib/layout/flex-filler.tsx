@@ -1,13 +1,15 @@
-import { Vue } from 'vue-property-decorator'
+import { ComponentOptions } from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
 
-const prefix = 'm-flex-filler'
+const _name = 'm-flex-filler'
 
-export default Vue.extend({
-  name: prefix,
-  functional: true,
-  render () {
+@Component({
+  functional: true
+} as ComponentOptions<Vue>)
+export default class MFlexFiller extends Vue {
+  private render () {
     return (
-      <div class={prefix} />
+      <div class={_name} />
     )
   }
-})
+}

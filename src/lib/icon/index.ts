@@ -1,5 +1,4 @@
 import MIcon from './icon'
-import './presets'
 
 /* istanbul ignore next */
 MIcon.install = (Vue) => {

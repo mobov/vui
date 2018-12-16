@@ -6,7 +6,7 @@ import { Size, Color, Variety, Shape } from '@/typings/model'
 import { VARIETY, SHAPE } from '@/lib/core/constant'
 import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
 
-const prefix = 'm-button'
+const _name = 'm-button'
 
 @Component({ components: { MIcon } })
 export default class MButton extends Vue {
@@ -44,11 +44,11 @@ export default class MButton extends Vue {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
-    genHover(styles, prefix, 'hover-color', color)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
+    genHover(styles, _name, 'hover-color', color)
 
     return styles
   }
@@ -68,13 +68,13 @@ export default class MButton extends Vue {
 
     return (
       <button v-m-ripple
-        staticClass={prefix}
+        staticClass={_name}
         style={styles}
         class={classes}
         onClick={handleClick}>
         {icon ? <MIcon name={icon} /> : undefined}
         {this.$slots.default
-          ? <div class={`${prefix}__main`}>{this.$slots.default}</div>
+          ? <div class={`${_name}__main`}>{this.$slots.default}</div>
           : <template />}
       </button>
     )

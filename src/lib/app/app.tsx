@@ -1,13 +1,13 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import { VNode } from 'vue'
 
-const prefix = 'm-app'
+const _name = 'm-app'
 
 @Component
 export default class MApp extends Vue {
   private render () {
     return (
-      <div staticClass={prefix}>
+      <div staticClass={_name}>
         {this.$slots.default}
       </div>
     )
