@@ -3,9 +3,8 @@ import './core/common/elevation.scss'
 import './core/common/space.scss'
 import './core/common/shape.scss'
 import './core/common/theme.scss'
-import * as components from './components'
+import * as components from './entries'
 import './icon/presets'
-import { VueConstructor } from 'vue'
 import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/typings'
 
 const Megmore: MegmorePlugin = {

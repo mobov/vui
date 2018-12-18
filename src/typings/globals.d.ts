@@ -4,7 +4,7 @@ import {
   VueConstructor,
   ComponentOptions,
   FunctionalComponentOptions,
-  VNodeData, PluginFunction
+  VNodeData, PluginFunction, DirectiveFunction, DirectiveOptions
 } from 'vue'
 import { CombinedVueInstance, Vue } from 'vue/types/vue'
 import {
@@ -66,6 +66,10 @@ declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     class?: string
   }
+  interface DirectiveOptions {
+    name: string,
+    install?: (Vue: VueConstructor) => void
+  }
 }
 
 declare module 'vue/types/vue' {
@@ -74,28 +78,14 @@ declare module 'vue/types/vue' {
     Options
   >
 
+
+
   export interface Vue {
     _uid: number
     _isDestroyed: boolean
 
     /** bindObjectListeners */
      _g (data: VNodeData, value: {}): VNodeData
-  }
-
-  export interface RawComponentOptions<
-    V extends Vue = Vue,
-    Data = {} | undefined,
-    Methods = {} | undefined,
-    Computed = {} | undefined,
-    Props = {} | undefined
-  > {
-    name?: string
-    data: Data
-    methods: Methods
-    computed: {
-      [C in keyof Computed]: (this: V) => Computed[C]
-    }
-    props: Props
   }
 
   interface VueConstructor<

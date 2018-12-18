@@ -1,10 +1,10 @@
-import Ripple from './ripple'
-import { VueConstructor } from 'vue'
+import MRipple from './ripple'
 
-export {
-  Ripple,
+/* istanbul ignore next */
+MRipple.install = (Vue) => {
+  Vue.directive(MRipple.name, MRipple)
 }
 
-export default function install(Vue: VueConstructor) {
-  Vue.directive(Ripple.name, Ripple)
+export {
+  MRipple
 }

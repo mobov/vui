@@ -1,6 +1,6 @@
 /* eslint-disable */
-
-import { VNodeDirective } from 'vue'
+import './ripple.scss'
+import { DirectiveOptions, PluginFunction, VNodeDirective, VueConstructor } from 'vue'
 
 const name = 'MRipple'
 
@@ -169,9 +169,11 @@ function update(el: HTMLElement, binding: VNodeDirective) {
   updateRipple(el, binding, wasEnabled)
 }
 
-export default {
+const MRipple: DirectiveOptions = {
   name,
   bind: directive,
   unbind,
   update,
 }
+
+export default MRipple
