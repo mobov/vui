@@ -62,6 +62,7 @@ declare module 'vue/types/vnode' {
   }
 }
 
+// vue插件参数接口拓展
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     class?: string
@@ -77,8 +78,6 @@ declare module 'vue/types/vue' {
     CombinedVueInstance<Instance, Data, Methods, Computed, Props> & Vue,
     Options
   >
-
-
 
   export interface Vue {
     _uid: number
