@@ -1,15 +1,19 @@
 @import "~@megmore/scss-helper";
-
+$--m-button-size-xs: 2rem;
+$--m-button-size-sm: 3rem;
+$--m-button-size-md: 3rem;
+$--m-button-size-lg: 5rem;
+$--m-button-size-xl: 6rem;
 /**
  * variables register.
  */
 .m-button {
   // selection
-  --m-button-size-xs: 2rem;
-  --m-button-size-sm: 3rem;
-  --m-button-size-md: 3rem;
-  --m-button-size-lg: 5rem;
-  --m-button-size-xl: 6rem;
+  --m-button-size-xs: #{$--m-button-size-xs};
+  --m-button-size-sm: #{$--m-button-size-sm};
+  --m-button-size-md: #{$--m-button-size-md};
+  --m-button-size-lg: #{$--m-button-size-lg};
+  --m-button-size-xl: #{$--m-button-size-xl};
 
   // default
   --m-button-color: var(--m-color-main);

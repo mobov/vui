@@ -1,15 +1,20 @@
 @import "~@megmore/scss-helper";
 $--m-avatar-border-size: .2rem;
+$--m-avatar-size-xs: 1.5rem;
+$--m-avatar-size-sm: 2.5rem;
+$--m-avatar-size-md: 3.5rem;
+$--m-avatar-size-lg: 4.5rem;
+$--m-avatar-size-xl: 5.5rem;
 /**
  * variables register.
  */
 .m-avatar {
     // selection
-    --m-avatar-size-xs: 1.5rem;
-    --m-avatar-size-sm: 2.5rem;
-    --m-avatar-size-md: 3.5rem;
-    --m-avatar-size-lg: 4.5rem;
-    --m-avatar-size-xl: 5.5rem;
+    --m-avatar-size-xs: #{$--m-avatar-size-xs};
+    --m-avatar-size-sm: #{$--m-avatar-size-sm};
+    --m-avatar-size-md: #{$--m-avatar-size-md};
+    --m-avatar-size-lg: #{$--m-avatar-size-lg};
+    --m-avatar-size-xl: #{$--m-avatar-size-xl};
 
     // default
     --m-avatar-color: var(--m-color-main);

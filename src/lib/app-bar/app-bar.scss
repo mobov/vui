@@ -1,14 +1,19 @@
 @import "~@megmore/scss-helper";
+$--m-app-bar-size-xs: 2.5rem;
+$--m-app-bar-size-sm: 3.5rem;
+$--m-app-bar-size-md: 4.5rem;
+$--m-app-bar-size-lg: 5.5rem;
+$--m-app-bar-size-xl: 6.5rem;
 /**
  * variables register.
  */
 .m-app-bar {
     // selection
-    --m-app-bar-size-xs: 2.5rem;
-    --m-app-bar-size-sm: 3.5rem;
-    --m-app-bar-size-md: 4.5rem;
-    --m-app-bar-size-lg: 5.5rem;
-    --m-app-bar-size-xl: 6.5rem;
+    --m-app-bar-size-xs: #{$--m-app-bar-size-xs};
+    --m-app-bar-size-sm: #{$--m-app-bar-size-sm};
+    --m-app-bar-size-md: #{$--m-app-bar-size-md};
+    --m-app-bar-size-lg: #{$--m-app-bar-size-lg};
+    --m-app-bar-size-xl: #{$--m-app-bar-size-xl};
 
     // default
     --m-app-bar-color: var(--m-color-main);

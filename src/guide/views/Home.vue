@@ -6,7 +6,7 @@
         结合二
       </m-col>
     </m-row>
-    <api-section api="app-bar"></api-section>
+    <api-section api-path="app-bar/app-bar.md"></api-section>
   </m-container>
 </template>
 
