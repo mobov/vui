@@ -1,6 +1,6 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '@/lib/icon'
-import { Size, Color } from '@/typings/model'
+import { Size, Color } from '@/types/model'
 
 const _name = 'm-radio'
 

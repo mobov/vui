@@ -12,9 +12,7 @@
   </m-app>
 </template>
 <script lang="ts">
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-
-@Component
-export default class App extends Vue {
+export default {
+  name: 'App'
 }
 </script>

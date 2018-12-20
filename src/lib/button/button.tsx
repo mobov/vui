@@ -1,8 +1,7 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-import { VNode } from 'vue'
 // import MSpin from '@/components/spin'
 import MIcon from '@/lib/icon'
-import { Size, Color, Variety, Shape } from '@/typings/model'
+import { Size, Color, Variety, Shape } from '@/types/model'
 import { VARIETY, SHAPE } from '@/lib/core/constant'
 import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
 
@@ -11,7 +10,7 @@ const _name = 'm-button'
 @Component({ components: { MIcon } })
 export default class MButton extends Vue {
   @Prop({ type: String })
-  public size!: Size | number | string
+  private size!: Size
 
   @Prop({ type: Number })
   private elevation!: number
@@ -68,14 +67,16 @@ export default class MButton extends Vue {
 
     return (
       <button v-m-ripple
-        staticClass={_name}
-        style={styles}
-        class={classes}
-        onClick={handleClick}>
-        {icon ? <MIcon name={icon} /> : null}
+              staticClass={_name}
+              style={styles}
+              class={classes}
+              onClick={handleClick}>
+        {icon
+          ? <MIcon name={icon} />
+          : null}
         {this.$slots.default
           ? <div class={`${_name}__main`}>{this.$slots.default}</div>
-          : <template />}
+          : null}
       </button>
     )
   }

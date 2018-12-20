@@ -9,9 +9,8 @@
 ### Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| **title** | title **REQUIRED** | string | — | — |
-| type | component type | string | success/warning/info/error | info |
-| description | descriptive text. Can also be passed with the default slot | string | — | — |
+| color | 主题色 | string | primary/success/colorString | primary |
+| font-color | 字色| string | — | — |
 | closable | if closable or not | boolean | — | true |
 | center | whether to center the text | boolean | — | false |
 | close-text | customized close button text | string | — | — |

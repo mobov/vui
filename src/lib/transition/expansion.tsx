@@ -1,7 +1,7 @@
 import {ComponentOptions, CreateElement, FunctionalComponentOptions, RenderContext, VNode} from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-const prefix = 'm-transition-expansion'
+const _name = 'm-transition-expansion'
 
 function getSize(size: string): number {
     if (!size) { return 0 }
@@ -9,7 +9,6 @@ function getSize(size: string): number {
     if (index === -1) { return 0 }
     return Number(size.substring(0, index))
 }
-
 
 @Component({
   functional: true
@@ -86,7 +85,7 @@ export default class MTransitionExpansion extends Vue {
     }
 
     return (
-      <transition name={prefix}
+      <transition name={_name}
                   onBeforeEnter={beforeEnter}
                   onEnter={enter}
                   onAfterEnter={afterEnter}

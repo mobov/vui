@@ -67,13 +67,13 @@ export default class MIcon extends Vue {
 
     return (
       <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
-        staticClass={`${prefix} ${prefix}__${name} ${staticClasses}`}
-        class={classes}
-        style={styles}
-        height={height}
-        width={width}
-        viewBox={icon.viewBox}
-        onClick={() => click}>
+           staticClass={`${prefix} ${prefix}__${name} ${staticClasses}`}
+           class={classes}
+           style={styles}
+           height={height}
+           width={width}
+           viewBox={icon.viewBox}
+           onClick={() => click}>
         {icon.paths ? icon.paths.map((path: string) => <path d={path} />) : <span /> }
         {icon.polygons ? icon.polygons.map((path: string) => <polygon points={path} />) : <span /> }
       </svg>

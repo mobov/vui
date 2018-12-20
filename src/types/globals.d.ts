@@ -66,6 +66,7 @@ declare module 'vue/types/vnode' {
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     class?: string
+    onClick?: (e: MouseEvent) => void
   }
   interface DirectiveOptions {
     name: string,

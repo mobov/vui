@@ -5,21 +5,21 @@
         <m-radio v-model="checkVal"></m-radio>
         结合二
       </m-col>
-
     </m-row>
+    <api-section api="app-bar"></api-section>
   </m-container>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from '../components/HelloWorld.vue' // @ is an alias to /src
+import Vue from 'vue'
+import ApiSection from '@/guide/components/api-section.vue'
 
-@Component({
-  components: {
-    HelloWorld
+export default Vue.extend({
+  components: { ApiSection },
+  data () {
+    return {
+      checkVal: false
+    }
   }
 })
-export default class Home extends Vue {
-  checkVal: boolean = false
-}
 </script>

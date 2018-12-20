@@ -5,7 +5,7 @@ const _name = 'm-app'
 
 @Component
 export default class MApp extends Vue {
-  private render () {
+  render () {
     return (
       <div staticClass={_name}>
         {this.$slots.default}

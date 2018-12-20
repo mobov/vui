@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Size, Color, Variety, Shape } from '@/typings/model'
+import { Size, Color, Variety, Shape } from '@/types/model'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 import { STATUS, VARIETY, SHAPE } from '@/lib/core/constant'
 
@@ -29,7 +29,7 @@ export default class MAvatar extends Vue {
   private src!: URL | WindowBase64
 
   @Watch('src', { immediate: true })
-  private srcUpdate (val: any): void {
+  srcUpdate (val: any): void {
     if (val !== undefined) {
       this.status = STATUS.pending
       this.curSrc = val
@@ -40,7 +40,7 @@ export default class MAvatar extends Vue {
 
   private curSrc: string | any = ''
 
-  private get styles () {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
@@ -52,7 +52,7 @@ export default class MAvatar extends Vue {
     return styles
   }
 
-  private get classes () {
+  get classes () {
     const { variety, shape, status } = this
 
     return {
@@ -62,15 +62,15 @@ export default class MAvatar extends Vue {
     }
   }
 
-  private loadSuccess (): void {
+  loadSuccess (): void {
     this.status = STATUS.success
   }
 
-  private loadFailure (): void {
+  loadFailure (): void {
     this.status = STATUS.failure
   }
 
-  private render () {
+  render () {
     const { curSrc, styles, classes, loadSuccess, loadFailure } = this
 
     return (

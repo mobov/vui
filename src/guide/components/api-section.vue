@@ -1,18 +1,21 @@
 <template>
   <div class="api-section">
-    <vue-markdown>
-      {{docData}}
-    </vue-markdown>
+    <!--<vue-markdown>-->
+      <!--{{docData}}-->
+    <!--</vue-markdown>-->
+    <markdown></markdown>
   </div>
 </template>
 
 <script lang="ts">
-import VueMarkdown from 'vue-markdown'
 import Vue from 'vue'
+import ComponentDoc from '@/lib/app-bar/app-bar.md'
 
 export default Vue.extend({
   name: 'ApiSection',
-  components: { VueMarkdown },
+  components: {
+    () => import('@/lib/app-bar/app-bar.md')
+  },
   props: {
     api: {
       type: String,
@@ -20,8 +23,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    docData () {
-      return `@/lib/${this.api}/${this.api}.md`
+    docData (): any {
+      return Markdown
     }
   }
 })

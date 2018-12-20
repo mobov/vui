@@ -2,21 +2,24 @@
 
 ```vue
 <template>
-  <m-button :color=""></m-button>
+  <m-app>
+    <m-app-bar :color="red"></m-app-bar>
+  </m-app>
 </template>
 ```
 
 ### Attributes
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
+| Name      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | color | 主题色 | string | primary/success/colorString | primary |
 | font-color | 字色| string | — | — |
-| closable | if closable or not | boolean | — | true |
-| center | whether to center the text | boolean | — | false |
-| close-text | customized close button text | string | — | — |
-| show-icon | if a type icon is displayed | boolean | — | false |
+| size | 尺寸 | string | Size | Size.md
+| shape | 轮廓 | string | Shape | Shape.corner |
+| variety | 形态| string | 'normal'/'flat'/'outline'/'pure'  | 'normal' |
+| block | 块级按钮, width:100% | boolean | - | false |
+| icon | 内嵌icon | string | Icon.name | - |
 
 ### Events
-| Event Name | Description | Parameters |
+| Name | Description | Parameters |
 |---------- |-------- |---------- |
-| close | fires when alert is closed | — |
+| click | 点击事件 | event |

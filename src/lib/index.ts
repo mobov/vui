@@ -5,7 +5,7 @@ import './core/common/shape.scss'
 import './core/common/theme.scss'
 import * as components from './entries'
 import './icon/presets'
-import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/typings'
+import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/types'
 
 const Megmore: MegmorePlugin = {
   install (Vue, opts = {}): void {

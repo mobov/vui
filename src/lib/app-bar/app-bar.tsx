@@ -1,6 +1,6 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
-import { Size } from '@/typings/model'
+import { Size } from '@/types/model'
 
 const _name = 'm-app-bar'
 
@@ -18,7 +18,7 @@ export default class MAppBar extends Vue {
   @Prop({ type: [String, Number] })
   private color!: string
 
-  private get styles () {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = {}
 
@@ -30,7 +30,7 @@ export default class MAppBar extends Vue {
     return styles
   }
 
-  private render () {
+  render () {
     const { styles } = this
 
     return (
