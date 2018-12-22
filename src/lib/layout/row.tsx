@@ -29,7 +29,7 @@ export default class MRow extends Vue {
   @Prop({ type: Number })
   private cols!: number
 
-  private render (h: CreateElement, { props, data, children }: RenderContext) {
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     data.staticClass = data.staticClass !== undefined ? data.staticClass : ''
     data.staticClass += `${_name} ${_name}--wrap-${props.wrap} ${_name}--justify-${props.justify} ${_name}--align-${props.align} `
     if (props.space) { data.staticClass += `${_name}--space-${props.space}` }

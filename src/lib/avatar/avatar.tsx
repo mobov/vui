@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Size, Color, Variety, Shape } from '@/types/model'
+import { Size, Color, Variety, Shape, Image } from '@/types/model'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 import { STATUS, VARIETY, SHAPE } from '@/lib/core/constant'
 
@@ -26,10 +26,10 @@ export default class MAvatar extends Vue {
   private variety!: Variety
 
   @Prop({ type: String })
-  private src!: URL | WindowBase64
+  private src!: Image
 
   @Watch('src', { immediate: true })
-  srcUpdate (val: any): void {
+  srcUpdate (val: Image) {
     if (val !== undefined) {
       this.status = STATUS.pending
       this.curSrc = val
@@ -38,7 +38,7 @@ export default class MAvatar extends Vue {
 
   private status: number = STATUS.pending
 
-  private curSrc: string | any = ''
+  private curSrc!: Image
 
   get styles () {
     const { color, fontColor, size, elevation } = this
@@ -62,11 +62,11 @@ export default class MAvatar extends Vue {
     }
   }
 
-  loadSuccess (): void {
+  loadSuccess () {
     this.status = STATUS.success
   }
 
-  loadFailure (): void {
+  loadFailure () {
     this.status = STATUS.failure
   }
 
@@ -75,14 +75,14 @@ export default class MAvatar extends Vue {
 
     return (
       <div staticClass={_name}
-        style={styles}
-        class={classes}>
+           style={styles}
+           class={classes}>
         {this.$slots.default}
         <img onLoad={loadSuccess}
-          onError={loadFailure}
-          staticClass={`${_name}__cover`}
-          alt=''
-          src={curSrc} />
+             onError={loadFailure}
+             staticClass={`${_name}__cover`}
+             alt=''
+             src={curSrc} />
       </div>
     )
   }

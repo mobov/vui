@@ -30,24 +30,24 @@ export default class MRadio extends Vue {
   @Emit('input')
   private onInput (val: any) {}
 
-  private get classes () {
+  get classes () {
     return {
       [`m--disabled`]: this.disabled
     }
   }
 
-  private get isCheck () {
+  get isCheck () {
     return this.label === this.value
   }
 
-  private handleClick (val: any) {
+  handleClick (val: any) {
     if (this.disabled) { return }
     if (this.isCheck) { return }
 
     this.onInput(val)
   }
 
-  private RRadio () {
+  RRadio () {
     const { size, checkedIcon, uncheckIcon, color, isCheck } = this
 
     return (
@@ -67,7 +67,7 @@ export default class MRadio extends Vue {
     )
   }
 
-  private render () {
+  render () {
     const { $slots, classes, label, handleClick, RRadio } = this
 
     return (

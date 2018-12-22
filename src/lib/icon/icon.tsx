@@ -49,7 +49,7 @@ export default class MIcon extends Vue {
     }
   }
 
-  render (h: CreateElement, { props, data, children, listeners }: RenderContext): VNode {
+  render (h: CreateElement, { props, data, children, listeners }: RenderContext) {
     const { name } = props
     const icon = Icons[props.name]
 

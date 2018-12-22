@@ -30,7 +30,7 @@ export default class MCol extends Vue {
   @Prop({ type: Number })
   private xl!: number
 
-  private render (h: CreateElement, { props, data, children }: RenderContext) {
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
     data.staticClass = `${_name} ${staticClass} `
     data.staticClass = data.staticClass.trim()

@@ -7,5 +7,6 @@ export { default as MAppBar } from './app-bar'
 export { default as MButton } from './button'
 export { default as MAvatar } from './avatar'
 export { default as MRadio } from './radio'
+export { default as MSideMenu } from './side-menu'
 // 指令和动画
 export { MRipple } from './animation'

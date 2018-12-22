@@ -1,11 +1,5 @@
 <template>
   <m-container style="width: 1000px">
-    <m-row :cols="24">
-      <m-col :xs="2">
-        <m-radio v-model="checkVal"></m-radio>
-        结合二
-      </m-col>
-    </m-row>
     <api-section api-path="app-bar/app-bar.md"></api-section>
   </m-container>
 </template>

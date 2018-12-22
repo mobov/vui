@@ -39,7 +39,7 @@ export default class MButton extends Vue {
   @Emit('click')
   private handleClick (e: MouseEvent): void { }
 
-  private get styles () {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
@@ -52,7 +52,7 @@ export default class MButton extends Vue {
     return styles
   }
 
-  private get classes () {
+  get classes () {
     const { variety, shape, block } = this
 
     return {

@@ -8,18 +8,11 @@
 /**
  * components styles.
  */
-* {
-    box-sizing: border-box;
-}
-html,
-body,
-.m-app {
+.m-view {
     height: 100%;
     width: 100%;
     overflow: hidden;
     padding: 0;
     margin: 0;
-    font-size: var(--m-font-base);
-    color: var(--m-font-color);
     position: relative;
 }

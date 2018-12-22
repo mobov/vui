@@ -33,7 +33,7 @@ export default class MChip extends Vue {
   @Emit('click')
   handleClick(e: MouseEvent) {}
 
-  private get classes(): any {
+  get classes() {
     const isNormal  = this.variety === 'normal'
     const isOutline = this.variety === 'outline'
 
@@ -50,7 +50,7 @@ export default class MChip extends Vue {
     }
   }
 
-  public render() {
+  render() {
     const { classes, $slots, $listeners, closetoggle, handleClose, handleClick } = this
 
     const RMedia = () => {

@@ -13,7 +13,7 @@ export default class MContainer extends Vue {
   @Prop({ type: String, default: 'div' })
   private tag!: string
 
-  private render (h: CreateElement, { props, data, children }: RenderContext) {
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
     data.staticClass = `${_name} ${staticClass}`.trim()
 
