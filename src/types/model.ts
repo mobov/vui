@@ -6,6 +6,7 @@ export type Align = 'left' | 'center' | 'right' //  水平轴
 
 export type Image = URL | Uint8ClampedArray
 
+export type Fill = 'left' | 'both' | 'right' | 'none'
 // date
 export type DateValueFormat = 'timestamp' | 'Date'
 export type DatePickerType = 'datetime' | 'date' | 'year' | 'month' | 'time'
