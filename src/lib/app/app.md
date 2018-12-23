@@ -2,14 +2,15 @@
 
 ```vue  
 <template>
-  <m-app layout="holy"></m-app>
+  <m-app></m-app>
 </template>
 ```
 
 ### Attributes
 | Name      | Description          | Type      | Accepted Values       | Default  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| layout | 布局 | string | base/holy | base |
+| fillHeader | 布局 | string | left/right/both/none | both |
+| fillFooter | 布局 | string | left/right/both/none | both |
 
 ### Events
 | Name | Description | Parameters |

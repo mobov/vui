@@ -1,4 +1,4 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 import { Size } from '@/types/model'
 
@@ -31,12 +31,12 @@ export default class MAppBar extends Vue {
   }
 
   render () {
-    const { styles } = this
-
+    const { styles, $slots } = this
+    console.log($slots)
     return (
       <div staticClass={_name}
-        style={styles}>
-        {this.$slots.default}
+           style={styles}>
+        {$slots.default}
       </div>
     )
   }

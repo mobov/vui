@@ -1,5 +1,6 @@
 // 基础
 export { default as MApp } from './app'
+export { default as MView } from './view'
 export { default as MIcon } from './icon'
 export { MContainer, MRow, MCol, MFlexFiller } from './layout'
 // 拓展
