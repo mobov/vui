@@ -1,6 +1,7 @@
 <template>
   <m-view :fill-header="fillHeader"
-          :fill-footer="fillFooter">
+          :fill-footer="fillFooter"
+          left-size="300px">
     <m-app-bar v-if="isHeader" slot="header"
                font-color="white"
                :elevation="2">

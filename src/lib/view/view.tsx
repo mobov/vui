@@ -1,6 +1,8 @@
 import { Component, Prop,Vue } from 'vue-property-decorator'
 import { Fill, Size } from '@/types/model'
-import { FILL } from '@/lib/core/constant'
+import { FILL, BREAKPOINT } from '@/lib/core/constant'
+import {genColor, genElevation, genHover, genSize} from '@/lib/core/style-gen'
+
 const _name = 'm-view'
 
 @Component
@@ -11,8 +13,17 @@ export default class MView extends Vue {
   @Prop({ type: String, default: FILL.both })
   private fillFooter?: Fill
 
-  @Prop({ type: String, default: FILL.both })
+  @Prop({ type: String })
   private headerSize?: Size
+
+  @Prop({ type: String })
+  private footerSize?: Size
+
+  @Prop({ type: String })
+  private leftSize?: Size
+
+  @Prop({ type: String })
+  private rightSize?: Size
 
   private isHeader = false
   private isFooter = false
@@ -32,8 +43,29 @@ export default class MView extends Vue {
     }
   }
 
+  get partSize () {
+    const { isHeader, isFooter, isLeft, isRight,
+            headerSize, footerSize,  leftSize, rightSize } = this
+    const styles = { }
+
+    if (isHeader) {
+      genSize(styles, _name, 'header-size', headerSize)
+    }
+    if (isFooter) {
+      genSize(styles, _name, 'footer-size', footerSize)
+    }
+    if (isLeft) {
+      genSize(styles, _name, 'left-size', leftSize)
+    }
+    if (isRight) {
+      genSize(styles, _name, 'right-size', rightSize)
+    }
+
+    return styles
+  }
+
   render () {
-    const { classes, $slots } = this
+    const { classes, $slots, partSize } = this
 
     this.isHeader = $slots.header !== undefined
     this.isFooter = $slots.footer !== undefined
@@ -42,7 +74,8 @@ export default class MView extends Vue {
 
     return (
       <div staticClass={_name}
-           class={classes}>
+           class={classes}
+           style={partSize}>
         <div staticClass={`${_name}-main`}>
           {this.$slots.default}
         </div>
