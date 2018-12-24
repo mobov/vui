@@ -1,4 +1,4 @@
-import {ComponentOptions, CreateElement, FunctionalComponentOptions, RenderContext, VNode} from 'vue'
+import { ComponentOptions, CreateElement, RenderContext, VNode } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 const _name = 'm-transition-expansion'
@@ -14,9 +14,8 @@ function getSize(size: string): number {
   functional: true
 } as ComponentOptions<Vue>)
 export default class MTransitionExpansion extends Vue {
-  private render(h: CreateElement, { props, data, children }: RenderContext): VNode {
+  private render (h: CreateElement, { props, data, children }: RenderContext): VNode {
     function beforeEnter(el: HTMLElement): void {
-      console.log(el.style.height)
       // @ts-ignore
       el.dataset.originPaddingTop = el.style.paddingTop
       // @ts-ignore
@@ -27,7 +26,7 @@ export default class MTransitionExpansion extends Vue {
       el.style.paddingBottom = '0'
       el.style.height = '0'
     }
-    function enter(el: HTMLElement): void {
+    function enter (el: HTMLElement): void {
       el.style.display = 'block'
       el.style.overflow = 'hidden'
       // @ts-ignore
@@ -37,7 +36,7 @@ export default class MTransitionExpansion extends Vue {
       // @ts-ignore
       el.style.paddingBottom = el.dataset.originPaddingBottom
     }
-    function afterEnter(el: HTMLElement): void {
+    function afterEnter (el: HTMLElement): void {
       // el.style.display = '';
       // el.style.height = '';
       // @ts-ignore
@@ -47,7 +46,7 @@ export default class MTransitionExpansion extends Vue {
       // @ts-ignore
       el.style.paddingBottom = el.dataset.originPaddingBottom
     }
-    function beforeLeave(el: HTMLElement): void {
+    function beforeLeave (el: HTMLElement): void {
       // @ts-ignore
       el.dataset.originPaddingTop = el.style.paddingTop
       // @ts-ignore
@@ -61,7 +60,7 @@ export default class MTransitionExpansion extends Vue {
       }
       el.style.overflow = 'hidden'
     }
-    function leave(el: HTMLElement): void {
+    function leave (el: HTMLElement): void {
       if (el.scrollHeight !== 0) {
         setTimeout(() => {
           // @ts-ignore
@@ -73,7 +72,7 @@ export default class MTransitionExpansion extends Vue {
         })
       }
     }
-    function afterLeave(el: HTMLElement): void {
+    function afterLeave (el: HTMLElement): void {
       el.style.display = 'none'
       el.style.height = ''
       // @ts-ignore
