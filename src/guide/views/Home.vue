@@ -1,8 +1,10 @@
 <template>
   <m-view :fill-header="fillHeader"
           :fill-footer="fillFooter"
-          left-size="300px">
+          left-size="300px"
+          header-size="6.5rem">
     <m-app-bar v-if="isHeader" slot="header"
+               size="xl"
                font-color="white"
                :elevation="2">
       <m-button shape="circle" :elevation="0" icon="menu" />
