@@ -1,8 +1,8 @@
 <template>
   <div class="doc-entries">
-    <m-list-item :key="doc.name" v-for="doc in docsData" @click="handleDocClick(doc.name)">
+    <m-list :key="doc.name" v-for="doc in docsData" @click="handleDocClick(doc.name)">
       {{doc.name}}
-    </m-list-item>
+    </m-list>
   </div>
 </template>
 

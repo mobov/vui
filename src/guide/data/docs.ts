@@ -4,6 +4,10 @@ export default [
     docSrc: 'app/app.md'
   },
   {
+    name: 'view',
+    docSrc: 'view/view.md'
+  },
+  {
     name: 'app-bar',
     docSrc: 'app-bar/app-bar.md'
   },
@@ -26,6 +30,10 @@ export default [
   {
     name: 'layout',
     docSrc: 'layout/layout.md'
+  },
+  {
+    name: 'list',
+    docSrc: 'list/list.md'
   },
   {
     name: 'radio',

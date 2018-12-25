@@ -1,4 +1,4 @@
-## App
+## View
 
 ```vue
 <template>

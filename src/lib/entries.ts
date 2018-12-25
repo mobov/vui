@@ -9,7 +9,7 @@ export { default as MButton } from './button'
 export { default as MAvatar } from './avatar'
 export { default as MRadio } from './radio'
 export { default as MSideMenu } from './side-menu'
-export { MListItem } from './list'
+export { MList } from './list'
 
 // 指令和动画
 export { MRipple } from './animation'

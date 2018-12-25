@@ -1,11 +1,11 @@
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
-import { genColor, genElevation, genSize, genStaticStyles } from '@/lib/core/style-gen'
+import { genColor, genSize, genStaticStyles } from '@/lib/core/style-gen'
 import { Size } from '@/types/model'
 
-const _name = 'm-list-item'
+const _name = 'm-list'
 
 @Component
-export default class MListItem extends Vue {
+export default class MList extends Vue {
   @Prop({ type: String })
   private size!: Size
 

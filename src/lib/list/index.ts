@@ -1,11 +1,11 @@
-import './list-item.scss'
-import MListItem from './list-item'
+import './list.scss'
+import MList from './list'
 
 /* istanbul ignore next */
-MListItem.install = (Vue) => {
-  Vue.component(MListItem.name, MListItem)
+MList.install = (Vue) => {
+  Vue.component(MList.name, MList)
 }
 
 export {
-  MListItem
+  MList
 }

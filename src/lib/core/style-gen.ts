@@ -85,7 +85,7 @@ export function genElevation (styles: any, compName: string, val: number | undef
 }
 
 /***
- * 静态样式表
+ * 通用样式
  * @param styles
  * @param {string} compName
  * @param {string} property
