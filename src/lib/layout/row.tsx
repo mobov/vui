@@ -1,51 +1,45 @@
-import { Vue } from 'vue-property-decorator'
+import { ComponentOptions, CreateElement, RenderContext } from 'vue'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import { genStaticStyles } from '@/lib/core/style-gen'
-import { BREAKPOINT } from '@/lib/core/constant'
 
-const prefix = 'm-row'
+const _name = 'm-row'
 
-export default Vue.extend({
-  name: prefix,
-  functional: true,
-  props: {
-    id: {
-      type: String
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    wrap: {
-      type: String,
-      default: 'normal'
-    },
-    justify: {
-      type: String,
-      default: 'start'
-    },
-    align: {
-      type: String,
-      default: 'stretch'
-    },
-    space: {
-      type: String,
-      default: BREAKPOINT.xs
-    },
-    cols: {
-      type: Number
-    }
-  },
-  render (h, { props, data, children }) {
+@Component({
+  functional: true
+} as ComponentOptions<Vue>)
+export default class MRow extends Vue {
+  @Prop({ type: String })
+  private id!: string
+
+  @Prop({ type: String, default: 'div' })
+  private tag!: string
+
+  @Prop({ type: String, default: 'normal' })
+  private wrap!: string
+
+  @Prop({ type: String, default: 'start' })
+  private justify!: string
+
+  @Prop({ type: String, default: 'stretch' })
+  private align!: string
+
+  @Prop({ type: String, default: 'xs' })
+  private space!: string
+
+  @Prop({ type: Number })
+  private cols!: number
+
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     data.staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass += `${prefix} ${prefix}--wrap-${props.wrap} ${prefix}--justify-${props.justify} ${prefix}--align-${props.align} `
-    if (props.space) { data.staticClass += `${prefix}--space-${props.space}` }
+    data.staticClass += `${_name} ${_name}--wrap-${props.wrap} ${_name}--justify-${props.justify} ${_name}--align-${props.align} `
+    if (props.space) { data.staticClass += `${_name}--space-${props.space}` }
     data.staticClass = data.staticClass.trim()
 
     if (props.cols) {
       if (!data.staticStyle) {
         data.staticStyle = {}
       }
-      genStaticStyles(data.staticStyle, prefix, 'cols', props.cols)
+      genStaticStyles(data.staticStyle, _name, 'cols', props.cols)
     }
 
     if (props.id) {
@@ -55,4 +49,4 @@ export default Vue.extend({
 
     return h(props.tag, data, children)
   }
-})
+}

@@ -1,48 +1,44 @@
 import { BREAKPOINT, BREAKPOINTS } from '@/lib/core/constant'
-import { Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { genStaticStyles } from '@/lib/core/style-gen'
+import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 
-const prefix = 'm-col'
+const _name = 'm-col'
 
-export default Vue.extend({
-  name: prefix,
-  functional: true,
-  props: {
-    id: {
-      type: String
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    xs: {
-      type: Number
-    },
-    sm: {
-      type: Number
-    },
-    md: {
-      type: Number
-    },
-    lg: {
-      type: Number
-    },
-    xl: {
-      type: Number
-    }
-  },
-  render: function (h, { props, data, children }) {
+@Component({
+  functional: true
+} as ComponentOptions<Vue>)
+export default class MCol extends Vue {
+  @Prop({ type: String })
+  private id!: string
+
+  @Prop({ type: String, default: 'div' })
+  private tag!: string
+
+  @Prop({ type: Number })
+  private xs!: number
+
+  @Prop({ type: Number })
+  private sm!: number
+
+  @Prop({ type: Number })
+  private md!: number
+
+  @Prop({ type: Number })
+  private lg!: number
+
+  @Prop({ type: Number })
+  private xl!: number
+
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass = `${prefix} ${staticClass} `
+    data.staticClass = `${_name} ${staticClass} `
     data.staticClass = data.staticClass.trim()
 
-    if (!(data.staticStyle)) {
-      data.staticStyle = {}
-    }
-    console.log(props)
-    BREAKPOINTS.forEach(breakpoint => {
+    if (!(data.staticStyle)) { data.staticStyle = {} }
+    BREAKPOINTS.forEach((breakpoint: string) => {
       if (props[breakpoint]) {
-        genStaticStyles(data.staticStyle, prefix, `span-${breakpoint}`, props[breakpoint])
+        genStaticStyles(data.staticStyle, _name, `span-${breakpoint}`, props[breakpoint])
       }
     })
     if (props.id) {
@@ -51,4 +47,4 @@ export default Vue.extend({
     }
     return h(props.tag, data, children)
   }
-})
+}

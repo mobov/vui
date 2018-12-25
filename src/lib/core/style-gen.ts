@@ -23,7 +23,7 @@ function getStyleColorAttrVal (val: string): string {
  * @param {string} property
  * @param {string} val
  */
-export function genColor (styles: any, compName: string, property: string, val: string): void {
+export function genColor (styles: any, compName: string, property: string, val: string | undefined): void {
   if (val !== undefined) {
     styles[`--${compName}-${property}`] = getStyleColorAttrVal(val)
   }
@@ -36,7 +36,7 @@ export function genColor (styles: any, compName: string, property: string, val: 
  * @param {string} property
  * @param {string} val
  */
-export function genHover (styles: any, compName: string, property: string, val: string): void {
+export function genHover (styles: any, compName: string, property: string, val: string | undefined): void {
   if (val !== undefined) {
     let result = val
     if (HoverColor.exist(val)) {
@@ -62,7 +62,7 @@ export function genHover (styles: any, compName: string, property: string, val: 
  * @param {string} property
  * @param {number | string} val
  */
-export function genSize (styles: any, compName: string, property: string, val: number | string): void {
+export function genSize (styles: any, compName: string, property: string, val: number | string | undefined): void {
   if (val !== undefined) {
     styles[`--${compName}-${property}`] = typeof val === 'number'
       ? `${val}px`
@@ -78,20 +78,20 @@ export function genSize (styles: any, compName: string, property: string, val: n
  * @param {string} compName
  * @param {number | string} val
  */
-export function genElevation (styles: any, compName: string, val: number): void {
+export function genElevation (styles: any, compName: string, val: number | undefined): void {
   if (val !== undefined && val >= ELEVATION_MIN && val <= ELEVATION_MAX) {
     styles[`--${compName}-elevation`] = `var(--m-elevation-${val})`
   }
 }
 
 /***
- * 静态样式表
+ * 通用样式
  * @param styles
  * @param {string} compName
  * @param {string} property
  * @param {number | string} val
  */
-export function genStaticStyles (styles: any, compName: string, property: string, val: number | string): void {
+export function genStaticStyles (styles: any, compName: string, property: string, val: number | string| undefined): void {
   if (val !== undefined) {
     styles[`--${compName}-${property}`] = val
   }

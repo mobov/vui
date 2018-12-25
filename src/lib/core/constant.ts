@@ -11,8 +11,6 @@ export const ELEVATION_DEFAULT = 2
 
 export const ELEVATION_MAX = 24
 
-export const SHAPES = ['square', 'corner', 'round', 'circle']
-
 export enum STATUS {
   success = 0,
   pending = 1,
@@ -35,9 +33,19 @@ export enum VARIETY {
   outline = 'outline'
 }
 
+export const SHAPES = ['square', 'corner', 'round', 'circle']
+
 export enum SHAPE {
   circle = 'circle',
   round = 'round',
   corner = 'corner',
   square = 'square'
 }
+
+export enum FILL {
+  left = 'left',
+  both = 'both',
+  right = 'right',
+  none = 'none'
+}
+

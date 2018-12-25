@@ -1,14 +1,14 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Size, Color, Variety, Shape } from '@/typings/model'
+import { Size, Color, Variety, Shape, Image } from '@/types/model'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
 import { STATUS, VARIETY, SHAPE } from '@/lib/core/constant'
 
-const prefix = 'm-avatar'
+const _name = 'm-avatar'
 
 @Component
 export default class MAvatar extends Vue {
   @Prop({ type: String })
-  private size!: Size | number | string
+  private size!: Size
 
   @Prop({ type: Number })
   private elevation!: number
@@ -25,11 +25,11 @@ export default class MAvatar extends Vue {
   @Prop({ type: String, default: VARIETY.normal })
   private variety!: Variety
 
-  @Prop({ type: String, default: '' })
-  private src!: string
+  @Prop({ type: String })
+  private src!: Image
 
   @Watch('src', { immediate: true })
-  private srcUpdate (val: any): void {
+  srcUpdate (val: Image) {
     if (val !== undefined) {
       this.status = STATUS.pending
       this.curSrc = val
@@ -38,21 +38,21 @@ export default class MAvatar extends Vue {
 
   private status: number = STATUS.pending
 
-  private curSrc: string | any = ''
+  private curSrc!: Image
 
-  private get styles (): any {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
 
     return styles
   }
 
-  private get classes (): any {
+  get classes () {
     const { variety, shape, status } = this
 
     return {
@@ -62,27 +62,27 @@ export default class MAvatar extends Vue {
     }
   }
 
-  private loadSuccess (): void {
+  loadSuccess () {
     this.status = STATUS.success
   }
 
-  private loadFailure (): void {
+  loadFailure () {
     this.status = STATUS.failure
   }
 
-  private render () {
+  render () {
     const { curSrc, styles, classes, loadSuccess, loadFailure } = this
 
     return (
-      <div staticClass={prefix}
-        style={styles}
-        class={classes}>
+      <div staticClass={_name}
+           style={styles}
+           class={classes}>
         {this.$slots.default}
         <img onLoad={loadSuccess}
-          onError={loadFailure}
-          staticClass={`${prefix}__cover`}
-          alt=''
-          src={curSrc} />
+             onError={loadFailure}
+             staticClass={`${_name}__cover`}
+             alt=''
+             src={curSrc} />
       </div>
     )
   }

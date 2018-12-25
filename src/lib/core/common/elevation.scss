@@ -8,12 +8,11 @@
         --m-elevation-#{$index}: #{$elevation};
     }
 }
-
-///**
-// * common modifier class output.
-// */
-//@each $index, $elevation in $--Elevations {
-//    .m--elevation-#{$index} {
-//        box-shadow: #{$elevation};
-//    }
-//}
+/**
+ * common modifier class output.
+ */
+@each $index, $elevation in $--Elevations {
+    .m--elevation-#{$index} {
+        box-shadow: #{$elevation};
+    }
+}

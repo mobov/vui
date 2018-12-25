@@ -1,22 +1,21 @@
-import { Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 
-const prefix = 'm-container'
+const _name = 'm-container'
 
-export default Vue.extend({
-  name: prefix,
-  functional: true,
-  props: {
-    id: {
-      type: String
-    },
-    tag: {
-      type: String,
-      default: 'div'
-    }
-  },
-  render (h, { props, data, children }) {
+@Component({
+  functional: true
+} as ComponentOptions<Vue>)
+export default class MContainer extends Vue {
+  @Prop({ type: String })
+  private id!: string
+
+  @Prop({ type: String, default: 'div' })
+  private tag!: string
+
+  render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass = `${prefix} ${staticClass}`.trim()
+    data.staticClass = `${_name} ${staticClass}`.trim()
 
     if (props.id) {
       data.domProps = data.domProps || {}
@@ -24,4 +23,4 @@ export default Vue.extend({
     }
     return h(props.tag, data, children)
   }
-})
+}

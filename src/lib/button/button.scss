@@ -1,15 +1,19 @@
 @import "~@megmore/scss-helper";
-
+$--m-button-size-xs: 2rem;
+$--m-button-size-sm: 3rem;
+$--m-button-size-md: 3rem;
+$--m-button-size-lg: 5rem;
+$--m-button-size-xl: 6rem;
 /**
  * variables register.
  */
 .m-button {
   // selection
-  --m-button-size-xs: 2rem;
-  --m-button-size-sm: 3rem;
-  --m-button-size-md: 3rem;
-  --m-button-size-lg: 5rem;
-  --m-button-size-xl: 6rem;
+  --m-button-size-xs: #{$--m-button-size-xs};
+  --m-button-size-sm: #{$--m-button-size-sm};
+  --m-button-size-md: #{$--m-button-size-md};
+  --m-button-size-lg: #{$--m-button-size-lg};
+  --m-button-size-xl: #{$--m-button-size-xl};
 
   // default
   --m-button-color: var(--m-color-main);
@@ -22,6 +26,9 @@
   --m-button-border-size: .2rem;
 }
 
+/**
+ * components styles.
+ */
 .m-button {
   @include clear-button;
   background-color: var(--m-button-color);
@@ -49,13 +56,6 @@
   > * {
     vertical-align: middle;
   }
-  .m-button__icon {
-
-  }
-  .m-button__main {
-    margin: 0 calc(var(--m-button-size) / 4);
-  }
-
     // hover
   &:hover {
     background-color: var(--m-button-hover-color);
@@ -87,4 +87,11 @@
   }
 
   transition: all ease .3s;
+}
+
+.m-button__icon {
+
+}
+.m-button__main {
+  margin: 0 calc(var(--m-button-size) / 4);
 }

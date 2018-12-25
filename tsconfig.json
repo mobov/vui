@@ -4,7 +4,7 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "jsxFactory": "h",
+//    "jsxFactory": "h",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,

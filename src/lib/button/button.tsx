@@ -1,17 +1,16 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-import { VNode } from 'vue'
 // import MSpin from '@/components/spin'
 import MIcon from '@/lib/icon'
-import { Size, Color, Variety, Shape } from '@/typings/model'
+import { Size, Color, Variety, Shape } from '@/types/model'
 import { VARIETY, SHAPE } from '@/lib/core/constant'
 import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
 
-const prefix = 'm-button'
+const _name = 'm-button'
 
 @Component({ components: { MIcon } })
 export default class MButton extends Vue {
   @Prop({ type: String })
-  public size!: Size | number | string
+  private size!: Size
 
   @Prop({ type: Number })
   private elevation!: number
@@ -40,20 +39,20 @@ export default class MButton extends Vue {
   @Emit('click')
   private handleClick (e: MouseEvent): void { }
 
-  private get styles (): any {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
-    genHover(styles, prefix, 'hover-color', color)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
+    genHover(styles, _name, 'hover-color', color)
 
     return styles
   }
 
-  private get classes (): any {
+  get classes () {
     const { variety, shape, block } = this
 
     return {
@@ -68,14 +67,16 @@ export default class MButton extends Vue {
 
     return (
       <button v-m-ripple
-        staticClass={prefix}
-        style={styles}
-        class={classes}
-        onClick={handleClick}>
-        {icon ? <MIcon name={icon} /> : undefined}
+              staticClass={_name}
+              style={styles}
+              class={classes}
+              onClick={handleClick}>
+        {icon
+          ? <MIcon name={icon} />
+          : null}
         {this.$slots.default
-          ? <div class={`${prefix}__main`}>{this.$slots.default}</div>
-          : <template />}
+          ? <div class={`${_name}__main`}>{this.$slots.default}</div>
+          : null}
       </button>
     )
   }

@@ -3,9 +3,11 @@ import './core/common/elevation.scss'
 import './core/common/space.scss'
 import './core/common/shape.scss'
 import './core/common/theme.scss'
-import * as components from './components'
-import { VueConstructor } from 'vue'
-import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/typings'
+import './transition/fade.scss'
+import './transition/slide.scss'
+import * as components from './entries'
+import './icon/presets'
+import { Megmore as MegmorePlugin, MegmoreUseOptions } from '@/types'
 
 const Megmore: MegmorePlugin = {
   install (Vue, opts = {}): void {
@@ -14,7 +16,9 @@ const Megmore: MegmorePlugin = {
 
     // 注册组件
     const componentsList = opts.components || components
-    Object.values(componentsList).forEach((component: any) => {
+    console.log(componentsList)
+    Object.values(componentsList).forEach(component => {
+      console.log(component)
       Vue.use(component)
     })
   },

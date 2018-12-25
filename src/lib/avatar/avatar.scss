@@ -1,15 +1,20 @@
 @import "~@megmore/scss-helper";
 $--m-avatar-border-size: .2rem;
+$--m-avatar-size-xs: 1.5rem;
+$--m-avatar-size-sm: 2.5rem;
+$--m-avatar-size-md: 3.5rem;
+$--m-avatar-size-lg: 4.5rem;
+$--m-avatar-size-xl: 5.5rem;
 /**
  * variables register.
  */
 .m-avatar {
     // selection
-    --m-avatar-size-xs: 1.5rem;
-    --m-avatar-size-sm: 2.5rem;
-    --m-avatar-size-md: 3.5rem;
-    --m-avatar-size-lg: 4.5rem;
-    --m-avatar-size-xl: 5.5rem;
+    --m-avatar-size-xs: #{$--m-avatar-size-xs};
+    --m-avatar-size-sm: #{$--m-avatar-size-sm};
+    --m-avatar-size-md: #{$--m-avatar-size-md};
+    --m-avatar-size-lg: #{$--m-avatar-size-lg};
+    --m-avatar-size-xl: #{$--m-avatar-size-xl};
 
     // default
     --m-avatar-color: var(--m-color-main);
@@ -27,7 +32,6 @@ $--m-avatar-border-size: .2rem;
     background-color: var(--m-avatar-color);
     color: var(--m-avatar-font-color);
 
-
     width: var(--m-avatar-size);
     height: var(--m-avatar-size);
     font-size: var(--m-avatar-font-size);
@@ -40,16 +44,7 @@ $--m-avatar-border-size: .2rem;
     position: relative;
     //transition: all ease .3s;
 
-    .m-avatar__cover {
-        @include abs-size(100% ,xy);
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: inherit;
-    }
-
-    // variety 
+    // variety
     &.m--variety-outline {
         background-color: var(--m-bg-color-main);
         border-color: var(--m-avatar-color);
@@ -66,4 +61,13 @@ $--m-avatar-border-size: .2rem;
     &.m--status-failure {
         opacity: 0;
     }
+}
+
+.m-avatar__cover {
+    @include abs-size(100% ,xy);
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
 }

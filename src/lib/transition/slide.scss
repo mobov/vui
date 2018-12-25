@@ -1,0 +1,60 @@
+.m-transition-slide-left-enter,
+.m-transition-slide-left-leave-to {
+    transform: translate3D(-100%, 0, 0);
+}
+.m-transition-slide-left-leave,
+.m-transition-slide-left-enter-to {
+    transform: translate3D(0, 0, 0);
+}
+
+.m-transition-slide-left-leave-active,
+.m-transition-slide-left-enter-active {
+    transition: transform 0.15s linear;
+    will-change: transform;
+}
+
+.m-transition-slide-right-enter,
+.m-transition-slide-right-leave-to {
+    transform: translate3D(100%, 0, 0);
+}
+.m-transition-slide-right-leave,
+.m-transition-slide-right-enter-to {
+    transform: translate3D(0, 0, 0);
+}
+
+.m-transition-slide-right-leave-active,
+.m-transition-slide-right-enter-active {
+    transition: transform 0.15s linear;
+    will-change: transform;
+}
+
+.m-transition-slide-down-enter,
+.m-transition-slide-down-leave-to {
+    transform: translate3D(0, -100%, 0);
+}
+.m-transition-slide-down-leave,
+.m-transition-slide-down-enter-to {
+    transform: translate3D(0, 0, 0);
+}
+
+.m-transition-slide-down-leave-active,
+.m-transition-slide-down-enter-active {
+    transition: transform 0.15s linear;
+    will-change: transform;
+}
+
+.m-transition-slide-up-enter,
+.m-transition-slide-up-leave-to {
+    transform: translate3D(0, 100%, 0);
+}
+
+.m-transition-slide-up-leave,
+.m-transition-slide-up-enter-to {
+    transform: translate3D(0, 0, 0);
+}
+
+.m-slide-up-leave-active,
+.m-slide-up-enter-active {
+    transition: transform 0.15s linear;
+    will-change: transform;
+}
