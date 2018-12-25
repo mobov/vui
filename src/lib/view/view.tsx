@@ -25,17 +25,17 @@ export default class MView extends Vue {
   @Prop({ type: String })
   private rightSize?: Size
 
-  @Prop({ type: Boolean, default: true })
-  private showHeader = true
+  @Prop({ type: Number })
+  private headerIndex?: number
 
-  @Prop({ type: Boolean, default: true })
-  private showFooter = true
+  @Prop({ type: String })
+  private footerIndex?: number
 
-  @Prop({ type: Boolean, default: true })
-  private showLeft = true
+  @Prop({ type: String })
+  private leftIndex?: number
 
-  @Prop({ type: Boolean, default: true })
-  private showRight = true
+  @Prop({ type: String })
+  private rightIndex?: number
 
   private isHeader = false
   private isFooter = false

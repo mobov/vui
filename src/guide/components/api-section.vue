@@ -29,10 +29,8 @@
     }
   }
 </style>
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
+<script>
+export default {
   name: 'ApiSection',
   props: {
     apiPath: {
@@ -41,9 +39,9 @@ export default Vue.extend({
     }
   },
   computed: {
-    docData (): any {
+    docData () {
       return require(`@/lib/${this.apiPath}`).default
     }
   }
-})
+}
 </script>

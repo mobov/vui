@@ -1,8 +1,16 @@
 :root {
+    --m-font-base: 62.5%;
+
+    // theme mode variables
     --m-color-main: var(--m-color-deeppurple-700);
     --m-font-color-main: var(--m-color-grey-A200);
     --m-bg-color-main: var(--m-color-grey-A100);
 
-    --m-font-base: 62.5%;
+    --m-color-primary: var(--m-color-deeppurple-700);
+    --m-color-danger: var(--m-color-deeppurple-700);
+    --m-color-success: var(--m-color-deeppurple-700);
 
+    // day mode variables
+    --m-mode-font-color: var(--m-color-deeppurple-700);
+    --m-mode-bg-color: var(--m-color-grey-A100);
 }

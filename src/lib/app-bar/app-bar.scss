@@ -38,7 +38,7 @@ $--m-app-bar-size-xl: 6.5rem;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 calc(var(--m-app-bar-size) / 4);
+    padding: 0 var(--m-space-sm);
     box-sizing: border-box;
     transition: all ease .3s;
     position: var(--m-app-bar-position);

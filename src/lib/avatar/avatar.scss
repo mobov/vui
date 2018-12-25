@@ -44,15 +44,6 @@ $--m-avatar-size-xl: 5.5rem;
     position: relative;
     //transition: all ease .3s;
 
-    .m-avatar__cover {
-        @include abs-size(100% ,xy);
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: inherit;
-    }
-
     // variety
     &.m--variety-outline {
         background-color: var(--m-bg-color-main);
@@ -70,4 +61,13 @@ $--m-avatar-size-xl: 5.5rem;
     &.m--status-failure {
         opacity: 0;
     }
+}
+
+.m-avatar__cover {
+    @include abs-size(100% ,xy);
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
 }

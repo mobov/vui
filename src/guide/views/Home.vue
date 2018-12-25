@@ -1,10 +1,11 @@
 <template>
-  <m-view :fill-header="fillHeader"
+  <m-view class="home"
+          :fill-header="fillHeader"
           :fill-footer="fillFooter"
           left-size="300px"
-          header-size="6.5rem">
+          header-size="4rem">
     <m-app-bar v-if="isHeader" slot="header"
-               size="xl"
+               size="100%"
                font-color="white"
                :elevation="2">
       <m-button shape="circle" :elevation="0" icon="menu" />
@@ -36,9 +37,9 @@
   </m-view>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import ApiSection from '@/guide/components/api-section.vue'
+import ApiSection from '../components/api-section.vue'
 
 export default Vue.extend({
   components: { ApiSection },

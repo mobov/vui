@@ -56,13 +56,6 @@ $--m-button-size-xl: 6rem;
   > * {
     vertical-align: middle;
   }
-  .m-button__icon {
-
-  }
-  .m-button__main {
-    margin: 0 calc(var(--m-button-size) / 4);
-  }
-
     // hover
   &:hover {
     background-color: var(--m-button-hover-color);
@@ -94,4 +87,11 @@ $--m-button-size-xl: 6rem;
   }
 
   transition: all ease .3s;
+}
+
+.m-button__icon {
+
+}
+.m-button__main {
+  margin: 0 calc(var(--m-button-size) / 4);
 }
