@@ -8,6 +8,7 @@ export { default as MAppBar } from './app-bar'
 export { default as MButton } from './button'
 export { default as MAvatar } from './avatar'
 export { default as MRadio } from './radio'
+export { default as MChip } from './chip'
 export { default as MSideMenu } from './side-menu'
 export { MList } from './list'
 

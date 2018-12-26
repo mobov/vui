@@ -80,7 +80,7 @@ export default class MView extends Vue {
 
   RHeader () {
     return (
-      <transition name="m-transition-slide-down" >
+      <transition name="m-transition-slide-down">
         {this.isHeader ? <div staticClass={`${_name}-header`}>{this.$slots.header}</div>: undefined}
       </transition>
     )
