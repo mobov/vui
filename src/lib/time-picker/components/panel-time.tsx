@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Vue, Inject, Model, Provide, Watch } from 'vue-property-decorator'
-import { strStyles, getStyle } from 'es-treasure'
-import MButton from '@/components/button'
-import MIcon from '@/components/icon'
+import { getStyle } from '@megmore/es-helper'
+import MButton from '@/lib/button'
+import MIcon from '@/lib/icon'
 import { VNode } from 'vue'
 import { Color, DateTimeValueType } from '@/types/model'
 

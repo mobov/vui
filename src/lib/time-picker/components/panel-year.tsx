@@ -1,5 +1,5 @@
 import { Component, Prop, Emit, Vue, Inject, Model, Provide, Watch } from 'vue-property-decorator'
-import MButton from '@/components/button'
+import MButton from '@/lib/button'
 import { VNode } from 'vue'
 import { Color } from '@/types/model'
 

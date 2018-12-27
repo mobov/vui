@@ -1,4 +1,4 @@
-import '@/utils/date'
+import '@/lib/core/date'
 import MTimePicker from './picker'
 /* istanbul ignore next */
 MTimePicker.install = (Vue) => {
