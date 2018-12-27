@@ -19,7 +19,7 @@ export default class MList extends Vue {
   private disableRipple: boolean = false
 
   @Emit('click')
-  onClick (e: Event) {}
+  onClick (e: MouseEvent) {}
 
   get styles () {
     const { size } = this
@@ -32,7 +32,7 @@ export default class MList extends Vue {
 
   render () {
     const { styles, $slots, onClick } = this
-    console.log($slots)
+
     return (
       <div staticClass={_name}
            v-m-ripple

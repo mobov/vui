@@ -1,0 +1,213 @@
+//@import "~@megmore/scss-helper/import";
+//
+//$--size-time-picker-header: 100;
+//$--size-time-picker-panel: 275;
+//$--size-time-picker-clock: 200;
+//$--width-time-picker: 290;
+//$--width-time-picker-landscope: 450;
+//$--height-time-picker-landscope: 275;
+//$--height-time-picker-landscope-confirm: 325;
+//
+//$--size-time-picker-landscope-header: 130;
+//
+//.m-time-picker {
+//    user-select: none;
+//    overflow: hidden;
+//    line-height: 1.2;
+//    border-radius: d($--radius);
+//    width: d($--width-time-picker);
+//    &.m--landscope {
+//        display: flex;
+//        width: d($--width-time-picker-landscope);
+//        flex-direction: row;
+//        flex-wrap: wrap;
+//        align-items: stretch;
+//        height: d($--height-time-picker-landscope);
+//        .m-time-picker-header {
+//            width: d($--size-time-picker-landscope-header);
+//            height: 100%;
+//            align-items: stretch;
+//            flex-direction: column;
+//            .m-time-picker-header__date-year {
+//                display: flex;
+//                flex-direction: column;
+//                justify-content: flex-start;
+//                align-items: flex-start;
+//                .m-time-picker-header__date-weekDay {
+//                    margin-left: 0;
+//                }
+//            }
+//            .m-time-picker-header__date {
+//                justify-content: flex-start;
+//            }
+//            .m-time-picker-header__time-hours {
+//                text-align: left;
+//                margin-bottom: d(20);
+//            }
+//        }
+//        .m-time-picker__main {
+//            flex: 1;
+//            height: 100%;
+//        }
+//        .m-time-picker__panel {
+//            height: d($--height-time-picker-landscope);
+//        }
+//        &.m--confirmation {
+//            height: d($--height-time-picker-landscope-confirm);
+//        }
+//    }
+//    .m-time-picker__panel {
+//        height: d($--size-time-picker-panel);
+//    }
+//};
+//
+//.m-time-picker-header {
+//    color: getColor(gray, 300);
+//    padding: d($--space-y) d($--space-x / 1.5) d($--space-y / 2) d($--space-x / 1.5);
+//    display: flex;
+//    justify-content: space-between;
+//    align-items: stretch;
+//    height: d($--size-time-picker-header);
+//    transition: color .3s ease;
+//
+//    &__date {
+//        flex-grow: 1;
+//        display: flex;
+//        justify-content: space-between;
+//        flex-direction: column;
+//        &-year {
+//            cursor: pointer;
+//            font-size: d(20);
+//            margin-bottom: d(4);
+//        }
+//        &-date {
+//            cursor: pointer;
+//            font-size: d(30);
+//            margin-bottom: d(2);
+//        }
+//        &-weekDay{
+//            margin-left: d(10);
+//        }
+//    }
+//    &__year,
+//    &__month {
+//        color: white;
+//        flex-grow: 1;
+//        font-size: d(40);
+//    }
+//    &__time {
+//        height: d(70);
+//        display: flex;
+//        flex-direction: column;
+//        justify-content: space-between;
+//        text-align: right;
+//        &-hours {
+//            cursor: pointer;
+//            font-size: d(36)
+//        }
+//        &-ampm {
+//            display: flex;
+//            flex-direction: row;
+//            justify-content: flex-end;
+//            cursor: pointer;
+//            font-size: d(16);
+//            > * {
+//                margin-left: d(15);
+//            }
+//            //> div {
+//            //    margin-top: d(5);
+//            //}
+//        }
+//    }
+//    .m--active {
+//        color: white;
+//    }
+//}
+//
+//.m-time-picker-panel-date {
+//    color: getColor(gray, A700);
+//    padding: 0 d($--space-y / 2) d($--space-y / 2) d($--space-y / 2);
+//    &__header {
+//        display: flex;
+//        justify-content: space-between;
+//        font-size: d(12);
+//        &-handler {
+//            display: flex;
+//            justify-content: space-between;
+//        }
+//    }
+//    &__table {
+//        thead {
+//            font-weight: 600;
+//        }
+//        td {
+//            > * {
+//                margin: 0 auto;
+//            }
+//        }
+//        line-height: 1.5;
+//        border: none;
+//        border-spacing: 0;
+//        text-align: center;
+//        width: 100%;
+//    }
+//}
+//
+//.m-time-picker-panel-year {
+//    display: flex;
+//    padding: d($--space-y / 2);
+//    flex-wrap: wrap;
+//    height: 100%;
+//    > * {
+//        width: 33.333333%;
+//    }
+//    @include scroller();
+//    @include scroll-bar-slim(y, 4px)
+//}
+//
+//.m-time-picker-panel-month {
+//    height: 100%;
+//    padding: d($--space-y / 2);
+//    align-items: center;
+//    display: flex;
+//    flex-wrap: wrap;
+//    > * {
+//        width: 33%;
+//    }
+//}
+//
+//.m-time-picker-panel-time {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    height: 100%;
+//    &__clock {
+//        border-radius: 50%;
+//        height: d($--size-time-picker-clock);
+//        width: d($--size-time-picker-clock);
+//        border-width: d(5);
+//        border-style: solid;
+//        border-color: slategray;
+//        position: relative;
+//        .m-button {
+//            left: calc(50% - 1.075rem);
+//            top:  calc(50% - 1.075rem);
+//            position: absolute;
+//        }
+//    }
+//    &__list {
+//        flex:1;
+//        height: 100%;
+//        padding: d($--space-y / 2);
+//        @include scroller();
+//        @include scroll-bar-slim(y, 4px)
+//    }
+//
+//}
+//
+//.m-time-picker-handler {
+//    border-top: $--border;
+//    display: flex;
+//    align-items: center;
+//    justify-content: flex-end;
+//}

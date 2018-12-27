@@ -80,7 +80,7 @@ export default class MView extends Vue {
 
   RHeader () {
     return (
-      <transition name="m-transition-slide-down" >
+      <transition name="m-transition-slide-down">
         {this.isHeader ? <div staticClass={`${_name}-header`}>{this.$slots.header}</div>: undefined}
       </transition>
     )
@@ -119,7 +119,7 @@ export default class MView extends Vue {
     this.isRight = $slots.right !== undefined
 
     return (
-      <div staticClass={_name}
+      <section staticClass={_name}
            class={classes}
            style={styles}>
         <div staticClass={`${_name}-main`}>
@@ -129,7 +129,7 @@ export default class MView extends Vue {
         {RFooter()}
         {RLeft()}
         {RRight()}
-      </div>
+      </section>
     )
   }
 }

@@ -15,8 +15,8 @@ $--m-list-size-xl: 6rem;
     --m-list-size-xl: #{$--m-list-size-xl};
 
     // default
-    --m-list-color: var(--m-color-main);
-    --m-list-font-color: var(--m-color-main);
+    --m-list-color: var(--m-bg-color-main);
+    --m-list-font-color: var(--m-font-color-main);
     --m-list-active-color: var(--m-color-main);
     --m-list-size: var(--m-list-size-md);
 }
@@ -26,7 +26,7 @@ $--m-list-size-xl: 6rem;
  */
 .m-list {
     background-color: var(--m-list-color);
-    color: var(--m-list-color);
+    color: var(--m-list-font-color);
     min-height: var(--m-list-size);
     cursor: pointer;
     position: relative;

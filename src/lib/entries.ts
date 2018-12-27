@@ -8,7 +8,8 @@ export { default as MAppBar } from './app-bar'
 export { default as MButton } from './button'
 export { default as MAvatar } from './avatar'
 export { default as MRadio } from './radio'
-export { default as MSideMenu } from './side-menu'
+export { default as MCheckbox } from './checkbox'
+export { default as MChip } from './chip'
 export { MList } from './list'
 
 // 指令和动画

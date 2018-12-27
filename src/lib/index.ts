@@ -30,3 +30,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Megmore
+export * from './entries'

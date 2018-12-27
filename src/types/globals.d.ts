@@ -13,6 +13,7 @@ import {
   ThisTypedComponentOptionsWithRecordProps
 } from 'vue/types/options'
 // import { TouchStoredHandlers } from './directives/touch'
+import { Size } from '@/types/model'
 
 declare global {
   interface Window {
@@ -43,6 +44,20 @@ declare global {
     // }
   }
 
+  interface Date {
+    isLeapYear(): boolean
+
+    maxDayOfMonth(): number
+
+    firstWeekDay(): number
+
+    getZeroize(type: string): string
+  }
+
+  interface Number {
+    dateZeroize(): string
+  }
+
   function parseInt(s: string | number, radix?: number): number
   function parseFloat(string: string | number): number
 
@@ -64,8 +79,11 @@ declare module 'vue/types/vnode' {
 
 // vue插件参数接口拓展
 declare module 'vue/types/options' {
+
+
   interface ComponentOptions<V extends Vue> {
     class?: string
+    size?: Size
     onClick?: (e: MouseEvent) => void
   }
   interface DirectiveOptions {

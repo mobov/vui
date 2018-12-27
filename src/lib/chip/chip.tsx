@@ -1,19 +1,24 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import { Size, Color, Variety, Shape } from '@/types/model'
-import MAvatar from '@/lib/avatar'
-import MIcon from '@/lib//icon'
+import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
+import MAvatar from '../avatar'
+import MIcon from '../icon'
 
 const prefix = 'm-chip'
 
 @Component({ components: { MAvatar, MIcon }})
 export default class MChip extends Vue {
-  @Prop({ type: String, default: 'sm' })
+
+  @Prop({ type: String })
   private size!: Size | string
 
-  @Prop({ type: String, default: 'primary' })
-  private type!: Color
+  @Prop({ type: String })
+  private color!: Color
 
-  @Prop({ type: Number, default: 2 })
+  @Prop({ type: String })
+  private fontColor!: Color
+
+  @Prop({ type: Number })
   private elevation!: number
 
   @Prop({ type: String, default: 'normal' })
@@ -23,50 +28,75 @@ export default class MChip extends Vue {
   private shape!: Shape
 
   @Prop({ type: Boolean, default: false })
-  private closetoggle!: boolean
+  private closeable!: boolean
 
-  @Emit('close')
-  handleClose(e: MouseEvent) {
-    e.stopPropagation()
+  @Prop({ type: Boolean, default: false })
+  private closeover!: boolean
+
+  get styles() {
+    const { color, fontColor, size, elevation } = this
+    const styles = { }
+
+    genColor(styles, prefix, 'color', color)
+    genColor(styles, prefix, 'font-color', fontColor)
+    genSize(styles, prefix, 'size', size)
+    genElevation(styles, prefix, elevation)
+    genHover(styles, prefix, 'hover-color', color)
+
+    return styles
   }
 
-  @Emit('click')
-  handleClick(e: MouseEvent) {}
-
   get classes() {
-    const isNormal  = this.variety === 'normal'
-    const isOutline = this.variety === 'outline'
+    const { variety, shape, closeable, closeover } = this
 
     return{
-      [`m--${this.size}`]: true,
-      [`m--${this.variety}`]: true,
-      [`m--${this.shape}`]: true,
-      [`m--color-${this.type}`]: !isNormal,
-      [`m--border-${this.type}`]: isOutline,
-      [`m--bg-${this.type}`]: isNormal,
-      [`m--elevation-${this.elevation}`]: this.elevation,
-      [`m--closeable`]: this.$listeners.close,
-      [`m--closetoggle`]: this.closetoggle,
+      [`m--variety-${variety}`]: true,
+      [`m--shape-${shape}`]: true,
+      [`${prefix}--closeable`]: closeable,
+      [`${prefix}--closeover`]: closeover,
     }
+  }
+
+  @Emit('close')
+  onClose(e: MouseEvent): void { e.stopPropagation() }
+
+  @Emit('click')
+  onClick(e: MouseEvent): void {  }
+
+  RMedia()  {
+    const { $slots } = this
+
+    if ($slots.media) {
+      if (!$slots.media[0]!.data!.staticClass) {
+        $slots.media[0]!.data!.staticClass = ''
+      }
+      $slots.media[0]!.data!.staticClass += ` ${prefix}__media`
+
+      return $slots.media
+    }
+    return undefined
+  }
+
+  RClose() {
+    const { closeable, closeover, onClose } = this
+
+    return (
+      closeable || closeover
+        ? <MIcon class={`${prefix}__close`} onClick={onClose} name='cancel' />
+        : undefined
+    )
   }
 
   render() {
-    const { classes, $slots, $listeners, closetoggle, handleClose, handleClick } = this
-
-    const RMedia = () => {
-        return $slots.media ? <div staticClass={`${prefix}__media`}>
-            {$slots.media}
-        </div> : ''
-    }
-
-    const RClose = () => {
-        return $listeners.close || closetoggle ? <MIcon onClick={handleClose} name='cancel' /> : ''
-    }
+    const { classes, styles, $slots,  RMedia, RClose, onClick } = this
 
     return (
-      <div staticClass={prefix} class={classes} onClick={handleClick}>
+      <div staticClass={prefix}
+           style={styles}
+           class={classes}
+           onClick={onClick}>
         {RMedia()}
-        <div staticClass={`${prefix}__content`}>
+        <div staticClass={`${prefix}__main`}>
           {$slots.default}
         </div>
         {RClose()}

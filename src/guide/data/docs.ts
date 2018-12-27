@@ -38,5 +38,9 @@ export default [
   {
     name: 'radio',
     docSrc: 'radio/radio.md'
+  },
+  {
+    name: 'checkbox',
+    docSrc: 'checkbox/checkbox.md'
   }
 ]
