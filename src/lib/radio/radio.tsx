@@ -55,13 +55,13 @@ export default class MRadio extends Vue {
          class={isCheck ? `m--color-${color}` : ''}>
         <transition name='m--transition-scale'>
           { isCheck
-            ? <m-icon class={`${_name}__check-icon`}
+            ? <m-icon class={`${_name}__checked-icon`}
                       name={checkedIcon}
                       size={size}/>
             : null
           }
         </transition>
-        <m-icon name={uncheckIcon} />
+        <MIcon class={`${_name}__uncheck-icon`} size={size} name={uncheckIcon} />
         <div v-m-ripple staticClass={`${_name}__checkbox-wrapper`} />
       </a>
     )
@@ -71,7 +71,7 @@ export default class MRadio extends Vue {
     const { $slots, classes, label, handleClick, RRadio } = this
 
     return (
-      <div staticClass={`${_name}`}
+      <div staticClass={_name}
            class={classes}
            onClick={() => handleClick(label)}>
         {RRadio()}

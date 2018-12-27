@@ -2,45 +2,59 @@
   .example-view {
     width: 100%;
     height: 500px;
+
+    .view-header,
+    .view-left,
+    .view-right,
+    .view-footer,
+    .view-main {
+      width: 100%;
+      height: 100%;
+    }
+    .view-header,
+    .view-footer {
+      background-color: var(--m-color-deeppurple-300);
+    }
+    .view-left,
+    .view-right {
+      background-color: var(--m-color-grey-300);
+    }
+    .view-main {
+      background-color: var(--m-color-grey-50);
+    }
   }
 </style>
 <template>
-  <div class="example-view">
-    <m-view :fill-header="fillHeader"
+  <div class="example">
+    <m-view class="example-view m--elevation-4"
+            :fill-header="fillHeader"
             :fill-footer="fillFooter"
             left-size="300px"
             header-size="4rem">
-      <m-app-bar v-if="isHeader" slot="header"
-                 size="100%"
-                 font-color="white"
-                 :elevation="2">
-        <m-button shape="circle" :elevation="0" icon="menu" />
-        <m-avatar variety="outline"
-                  shape="circle"
-                  src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3643687533,272026720&fm=58">
-          A
-        </m-avatar>
-        <m-icon name="menu" />
-      </m-app-bar>
-      <div v-if="isLeft" slot="left" style="background-color: powderblue;height: 100%" class="m--elevation-2"></div>
-      <div v-if="isRight" slot="right" style="background-color: powderblue;height: 100%" class="m--elevation-2"></div>
-      <m-app-bar v-if="isFooter" slot="footer" size="md" font-color="white" :elevation="2"></m-app-bar>
-
-      <m-container style="width: 1000px">
-      </m-container>
+      <div class="view-header" v-if="isHeader" slot="header"></div>
+      <div class="view-left" v-if="isLeft" slot="left" ></div>
+      <div class="view-right" v-if="isRight" slot="right"></div>
+      <div class="view-footer" v-if="isFooter" slot="footer" size="md" font-color="white" :elevation="2"></div>
+      <div class="view-main"></div>
     </m-view>
-    <m-button @click="isHeader = !isHeader">isHeader</m-button>
-    <m-button @click="isFooter = !isFooter">isFooter</m-button>
-    <m-button @click="isLeft = !isLeft">isLeft</m-button>
-    <m-button @click="isRight = !isRight">isRight</m-button>
-    <m-button @click="fillHeader = 'both'">header-both</m-button>
-    <m-button @click="fillHeader = 'left'">header-left</m-button>
-    <m-button @click="fillHeader = 'right'">header-right</m-button>
-    <m-button @click="fillHeader = 'none'">header-none</m-button>
-    <m-button @click="fillFooter = 'both'">footer-both</m-button>
-    <m-button @click="fillFooter = 'left'">footer-left</m-button>
-    <m-button @click="fillFooter = 'right'">footer-right</m-button>
-    <m-button @click="fillFooter = 'none'">footer-none</m-button>
+    <div class="m--py-sm">
+      <m-button class="m--ml-0" @click="isHeader = !isHeader">isHeader</m-button>
+      <m-button @click="isFooter = !isFooter">isFooter</m-button>
+      <m-button @click="isLeft = !isLeft">isLeft</m-button>
+      <m-button @click="isRight = !isRight">isRight</m-button>
+    </div>
+    <div class="m--py-sm">
+      <m-button @click="fillHeader = 'both'">header-both</m-button>
+      <m-button @click="fillHeader = 'left'">header-left</m-button>
+      <m-button @click="fillHeader = 'right'">header-right</m-button>
+      <m-button @click="fillHeader = 'none'">header-none</m-button>
+    </div>
+    <div class="m--py-sm">
+      <m-button @click="fillFooter = 'both'">footer-both</m-button>
+      <m-button @click="fillFooter = 'left'">footer-left</m-button>
+      <m-button @click="fillFooter = 'right'">footer-right</m-button>
+      <m-button @click="fillFooter = 'none'">footer-none</m-button>
+    </div>
   </div>
 
 </template>

@@ -45,25 +45,28 @@ $--m-radio-wrapper-size-xl: 6rem;
     justify-content: flex-start;
     align-items: center;
     -webkit-font-smoothing: antialiased;
+
     &.m--disabled {
         opacity: .5;
     }
-    .m-icon {
-        height: var(--m-radio-size);
-        width: var(--m-radio-size);
+
+    &__checked-icon,
+    &__uncheck-icon,
+    &__checkbox {
+        height: var(--m-checkbox-size);
+        width: var(--m-checkbox-size);
     }
-    &__check-icon {
-        height: var(--m-radio-size);
-        width: var(--m-radio-size);
+
+    &__checkbox {
+        position: relative;
+    }
+
+    &__checked-icon {
         position: absolute;
         left: 0;
         top:0;
     }
-    &__checkbox {
-        position: relative;
-        height: var(--m-radio-size);
-        width: var(--m-radio-size);
-    }
+
     &__checkbox-wrapper {
         position: absolute;
         left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);
