@@ -13,7 +13,7 @@ import {
   ThisTypedComponentOptionsWithRecordProps
 } from 'vue/types/options'
 // import { TouchStoredHandlers } from './directives/touch'
-import { Size } from '@/types/model'
+import { Size, Variety, Shape, Color } from '@/types/model'
 
 declare global {
   interface Window {
@@ -79,12 +79,46 @@ declare module 'vue/types/vnode' {
 
 // vue插件参数接口拓展
 declare module 'vue/types/options' {
-
-
   interface ComponentOptions<V extends Vue> {
+    // default
+    staticClass?: string
     class?: string
-    size?: Size
+    style?: ElementCSSInlineStyle
+    ref?: string
+    // lifecycle
+    updated?: (() => void) | undefined
+    created?: (() => void) | undefined
+    mounted?: (() => void) | undefined
+    // events
     onClick?: (e: MouseEvent) => void
+    onInput?: (() => void) | undefined
+    nativeOnClick?: (() => void) | undefined
+    // base
+    elevation?: number
+    size?: Size
+    color?: Color
+    shape?: Shape
+    variety?: Variety
+    value?: any
+    // table
+    height?: string | number
+    border?: boolean
+    keyField?: string
+    noHeader?: string
+    rowSelect?: boolean
+    onRowClick?: (() => void) | undefined
+    onCheck?: (() => void) | undefined
+    updateSize?: (() => void) | undefined
+    // timePicker
+    max?: any
+    min?: any
+    firstDayOfWeek?: any
+    onPick?: (() => void) | undefined
+    onConfirm?: (() => void) | undefined
+    onCancel?: (() => void) | undefined
+    // checkbox & radio
+    label?: boolean | string | number
+
   }
   interface DirectiveOptions {
     name: string,

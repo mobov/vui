@@ -1,20 +1,62 @@
-//@import "~@megmore/scss-helper/import";
-//
-//$--size-time-picker-header: 100;
-//$--size-time-picker-panel: 275;
-//$--size-time-picker-clock: 200;
-//$--width-time-picker: 290;
-//$--width-time-picker-landscope: 450;
-//$--height-time-picker-landscope: 275;
-//$--height-time-picker-landscope-confirm: 325;
-//
-//$--size-time-picker-landscope-header: 130;
-//
+@import "~@megmore/scss-helper/import";
+
+$--size-time-picker-header: 100;
+$--size-time-picker-panel: 275;
+$--size-time-picker-clock: 200;
+$--width-time-picker: 290;
+$--width-time-picker-landscope: 450;
+$--height-time-picker-landscope: 275;
+$--height-time-picker-landscope-confirm: 325;
+
+$--size-time-picker-landscope-header: 130;
+
+$--m-time-picker-header-height: 9rem;
+$--m-time-picker-panel-height: 24.75rem;
+$--m-time-picker-clock-height: 18rem;
+$--m-time-picker-width: 26.1rem;
+$--m-time-picker-landscope-width: 40.5rem;
+$--m-time-picker-landscope-height: 24.75rem;
+$--m-time-picker-landscope-confirm-height: 29.25rem;
+$--m-time-picker-landscope-header-height: 11.7rem;
+
+/**
+ * variables register.
+ */
+.m-time-picker {
+    // selection
+    //--m-time-picker-size-xs: #{$--m-radio-size-xs};
+    //--m-time-picker-size-sm: #{$--m-radio-size-sm};
+    //--m-time-picker-size-md: #{$--m-radio-size-md};
+    //--m-time-picker-size-lg: #{$--m-radio-size-lg};
+    //--m-time-picker-size-xl: #{$--m-radio-size-xl};
+
+
+    // default
+    --m-radio-color: var(--m-color-main);
+    --m-radio-active-color: var(--m-color-main);
+
+    --m-time-picker-width: #{$--m-time-picker-width};
+    --m-time-picker-header-width: #{$--m-time-picker-width};
+}
+
+/**
+ * components styles.
+ */
+.m-time-picker {
+    user-select: none;
+    overflow: hidden;
+    line-height: 1.2;
+}
+.m-time-picker-header {
+    width: d($--size-time-picker-landscope-header);
+    height: 100%;
+    align-items: stretch;
+    flex-direction: column;
+}
 //.m-time-picker {
 //    user-select: none;
 //    overflow: hidden;
 //    line-height: 1.2;
-//    border-radius: d($--radius);
 //    width: d($--width-time-picker);
 //    &.m--landscope {
 //        display: flex;

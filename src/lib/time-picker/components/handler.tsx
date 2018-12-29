@@ -2,45 +2,43 @@
  * 时间选择器底部
  */
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-import { VNode } from 'vue'
 import { Color } from '@/types/model'
 import MButton from "@/lib/button"
-import MFlexFiller from "@/lib/layout/flex-filler"
 
-const prefix = 'm-time-picker-handler'
+const _name = 'm-time-picker-handler'
 
-@Component({ components: { MButton, MFlexFiller }})
+@Component({ components: { MButton }})
 export default class MTimePickerHandler extends Vue {
     @Prop({ type: String, default: 'primary' })
     private color!: Color
 
-    get classes(): any {
+    get classes () {
         return {
             [`m--color-${this.color}`]: this.color,
         }
     }
 
     @Emit('confirm')
-    public handleConfirm(): void { return }
+    onConfirm (): void { }
 
     @Emit('cancel')
-    public handleCancel(): void { return }
+    onCancel (): void { }
 
-    public render(): VNode {
-        const { classes, handleConfirm, handleCancel } = this
+    render () {
+        const { classes, onConfirm, onCancel } = this
 
         return (
-            <div staticClass={`${prefix} m--p-sm`} class={classes}>
+            <div staticClass={`${_name} m--p-sm`} class={classes}>
                 <MButton class="m--m-0 m--p-0"
                          size="md"
                          variety="flat"
                          color="primary"
-                         onClick={handleCancel}>cancel</MButton>
+                         onClick={onCancel}>cancel</MButton>
                 <MButton class="m--m-0 m--p-0"
                          size="md"
                          variety="flat"
                          color="primary"
-                         onClick={handleConfirm}>ok</MButton>
+                         onClick={onConfirm}>ok</MButton>
             </div>
         )
     }
