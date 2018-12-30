@@ -4,7 +4,7 @@ import { Color } from '@/types/model'
 
 const _name = 'm-time-picker-panel-year'
 
-@Component({ components: { MButton }})
+@Component({ components: { MButton } })
 export default class MTimePickerPanelYear extends Vue {
   @Prop({ type: String, default: 'primary' })
   private type!: Color

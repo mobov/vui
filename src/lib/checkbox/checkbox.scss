@@ -27,6 +27,7 @@ $--m-checkbox-wrapper-size-xl: 6rem;
 
     // default
     --m-checkbox-color: var(--m-color-main);
+    --m-checkbox-font-color: var(--m-color-main);
     --m-checkbox-active-color: var(--m-color-main);
 
     --m-checkbox-size: var(--m-checkbox-size-md);
@@ -37,7 +38,8 @@ $--m-checkbox-wrapper-size-xl: 6rem;
  * components styles.
  */
 .m-checkbox {
-    color: var(--m-checkbox-color);
+    color: var(--m-checkbox-font-color);
+    font-size: calc(var(--m-checkbox-size) / 2);
     height: var(--m-checkbox-color);
     cursor: pointer;
     position: relative;
@@ -47,6 +49,9 @@ $--m-checkbox-wrapper-size-xl: 6rem;
     -webkit-font-smoothing: antialiased;
     &.m--disabled {
         opacity: .5;
+    }
+    &.m--checked {
+        color: var(--m-checkbox-color);
     }
 
     &__checked-icon,

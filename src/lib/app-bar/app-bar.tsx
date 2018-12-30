@@ -32,7 +32,7 @@ export default class MAppBar extends Vue {
 
   render () {
     const { styles, $slots } = this
-    console.log($slots)
+
     return (
       <div staticClass={_name}
            style={styles}>

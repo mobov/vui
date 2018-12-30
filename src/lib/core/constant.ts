@@ -42,10 +42,18 @@ export enum SHAPE {
   square = 'square'
 }
 
+export const COLORS = ['primary', 'error', 'success', 'warning']
+
+export enum COLOR {
+  primary = 'primary',
+  error = 'error',
+  success = 'success',
+  warning = 'warning'
+}
+
 export enum FILL {
   left = 'left',
   both = 'both',
   right = 'right',
   none = 'none'
 }
-

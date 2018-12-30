@@ -6,7 +6,7 @@
 </style>
 <template>
   <div class="example-checkbox">
-    <m-checkbox v-model="checkVal"></m-checkbox>
+    <m-checkbox v-model="checkVal">checkbox</m-checkbox>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
     components: { MCheckbox },
     data () {
       return {
-        checkVal: false,
+        checkVal: false
       }
     }
   }

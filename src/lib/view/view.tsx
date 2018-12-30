@@ -1,4 +1,4 @@
-import { Component, Prop,Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Fill, Size } from '@/types/model'
 import { FILL, BREAKPOINT } from '@/lib/core/constant'
 import { genColor, genElevation, genHover, genSize } from '@/lib/core/style-gen'

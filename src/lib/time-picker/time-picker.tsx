@@ -1,5 +1,5 @@
 import { Component, Prop, Emit, Model, Provide, Vue } from 'vue-property-decorator'
-import { Color, DatePickerType } from "@/types/model"
+import { Color, DatePickerType } from '@/types/model'
 import { mixins } from 'vue-class-component'
 import TimePickerBase from './mixins'
 import MTimePickerHeader from './components/header'
@@ -11,15 +11,17 @@ import MTimePickerHandler from './components/handler'
 
 const _name = 'm-time-picker'
 
-@Component({ components: {
-  MTimePickerHeader,
-  MTimePickerPanelDate,
-  MTimePickerPanelYear,
-  MTimePickerPanelMonth,
-  MTimePickerPanelTime,
-  MTimePickerHandler,
-}})
-export default class MTimePicker extends mixins(TimePickerBase) {
+@Component({
+  components: {
+    MTimePickerHeader,
+    MTimePickerPanelDate,
+    MTimePickerPanelYear,
+    MTimePickerPanelMonth,
+    MTimePickerPanelTime,
+    MTimePickerHandler
+  }
+})
+export default class MTimePicker extends mixins (TimePickerBase) {
   @Prop({ type: String, default: 'primary' })
   private color!: Color
 
@@ -33,11 +35,11 @@ export default class MTimePicker extends mixins(TimePickerBase) {
   private timeSelectType!: 'list' | 'clock'
 
   get classes () {
-    const { elevation, landscope, confirmation} = this
-    return{
-      [`m--elevation-${elevation}`]: elevation,
-      [`m--landscope`]: landscope,
-      [`m--confirmation`]: confirmation,
+    const { landscope, confirmation } = this
+
+    return {
+      'm--landscope': landscope,
+      'm--confirmation': confirmation
     }
   }
 
@@ -52,30 +54,33 @@ export default class MTimePicker extends mixins(TimePickerBase) {
     const { activeType } = this.DateStore
 
     switch (activeType) {
-      case 'date':  return <MTimePickerPanelDate max={max}
-                                                 min={min}
-                                                 color={color}
-                                                 firstDayOfWeek={firstDayOfWeek} />;
-      case 'year':  return <MTimePickerPanelYear max={max}
-                                                 min={min}
-                                                 onPick={() => {handleActive('date')}}/>;
-      case 'month': return <MTimePickerPanelMonth onPick={() => {handleActive('date')}} />;
-      default:  return <MTimePickerPanelTime color={color}
-                                             onPick={() => {handleActive('date')}} />;
+      case 'date':
+        return <MTimePickerPanelDate max={max}
+                                     min={min}
+                                     color={color}
+                                     firstDayOfWeek={firstDayOfWeek} />
+      case 'year':
+        return <MTimePickerPanelYear max={max}
+                                     min={min}
+                                     onPick={() => { handleActive('date') }} />
+      case 'month':
+        return <MTimePickerPanelMonth onPick={() => { handleActive('date') }} />
+      default:
+        return <MTimePickerPanelTime color={color}
+                                     onPick={() => { handleActive('date') }} />
     }
   }
 
   RHandler () {
     const { confirmation, handleConfirm, handleCancel } = this
 
-    return confirmation
-      ? <MTimePickerHandler onConfirm={handleConfirm}
+    return !confirmation ? undefined
+      : <MTimePickerHandler onConfirm={handleConfirm}
                             onCancel={handleCancel} />
-      : undefined
   }
 
-  render() {
-    const { classes, color,  RPanel, RHandler } = this
+  render () {
+    const { classes, color, RPanel, RHandler } = this
     const { pickerType } = this.DateStore
 
     return (

@@ -16,9 +16,9 @@ $--m-button-size-xl: 6rem;
   --m-button-size-xl: #{$--m-button-size-xl};
 
   // default
-  --m-button-color: var(--m-color-main);
-  --m-button-hover-color: var(--m-color-main);
-  --m-button-font-color: var(--m-bg-color-main);
+  --m-button-color: var(--m-color-primary);
+  --m-button-hover-color: var(--m-color-primary);
+  --m-button-font-color: var(--m-bg-color);
   --m-button-elevation: var(--m-elevation-2);
   --m-button-shape: var(--m-shape-corner);
 
@@ -73,6 +73,10 @@ $--m-button-size-xl: 6rem;
       //background-color: var(--m-button-hover-color);
       color: var(--m-button-color);
     }
+  }
+  &.m--variety-flat {
+    background-color: var(--m-bg-color);
+    color: var(--m-button-color);
   }
 
   // shape

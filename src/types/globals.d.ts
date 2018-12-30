@@ -14,10 +14,12 @@ import {
 } from 'vue/types/options'
 // import { TouchStoredHandlers } from './directives/touch'
 import { Size, Variety, Shape, Color } from '@/types/model'
+import { Megmore } from './index'
 
 declare global {
   interface Window {
     Vue: VueConstructor
+    $Megmore: Megmore
   }
 
   interface HTMLCollection {

@@ -10,7 +10,7 @@ export { default as MAvatar } from './avatar'
 export { default as MRadio } from './radio'
 export { default as MCheckbox } from './checkbox'
 export { default as MChip } from './chip'
-export { default as MTimePicker } from './chip'
+export { default as MTimePicker } from './time-picker'
 export { MList } from './list'
 
 // 指令和动画

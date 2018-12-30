@@ -1,6 +1,4 @@
 /* eslint-disable */
-const VueMarkdownLoader = require('markdown-to-vue-loader')
-
 module.exports = {
   chainWebpack: (config) => {
     config.entry('app')
@@ -15,10 +13,6 @@ module.exports = {
       })
       .end()
 
-    // config.loader(VueMarkdownLoader)
-    //   .test(/\.md$/)
-    //   .exclude(/(node_modules)/)
-    //   .use(VueMarkdownLoader)
     config.module.rule('md')
       .test(/\.md/)
       .use('vue-loader')

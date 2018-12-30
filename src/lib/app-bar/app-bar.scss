@@ -16,8 +16,8 @@ $--m-app-bar-size-xl: 6.5rem;
     --m-app-bar-size-xl: #{$--m-app-bar-size-xl};
 
     // default
-    --m-app-bar-color: var(--m-color-main);
-    --m-app-bar-font-color: var(--m-font-color-main);
+    --m-app-bar-color: var(--m-color-primary);
+    --m-app-bar-font-color: var(--m-bg-color);
     --m-app-bar-elevation: var(--m-elevation-2);
 
     --m-app-bar-size: var(--m-app-bar-size-md);
