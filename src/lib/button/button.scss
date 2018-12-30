@@ -39,16 +39,14 @@ $--m-button-size-xl: 6rem;
   margin: .5em;
   border-radius: var(--m-button-shape);
   box-shadow: var(--m-button-elevation);
-  border-color: var(--m-button-color);
-  border-width: var(--m-button-border-size);
-
+  border: none;
+  padding: var(--m-button-border-size);
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;
-  border-style: solid;
   position: relative;
   //> * {
   //  margin: 0 calc(var(--m-button-size) / 2);
@@ -65,8 +63,10 @@ $--m-button-size-xl: 6rem;
   // variety
   &.m--variety-outline {
     background-color: var(--m-bg-color-main);
-    border-color: var(--m-button-color);
+    //border-color: var(--m-button-color);
     color: var(--m-button-color);
+    border: var(--m-button-border-size) solid var(--m-button-color);
+    padding: 0;
     &:hover {
       //color: var(--m-button-hover-color);
       //border-color: var(--m-button-hover-color);

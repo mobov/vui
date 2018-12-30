@@ -9,12 +9,22 @@
     <section>
       <h2>colors</h2>
       <m-button :color="color"
+                style="width: 80px"
                 :key="color"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
       <h2>outline</h2>
       <m-button variety="outline"
+                style="width: 80px"
+                :color="color"
+                :key="color"
+                v-for="color in COLORS">{{color}}</m-button>
+    </section>
+    <section>
+      <h2>flat</h2>
+      <m-button variety="flat"
+                style="width: 80px"
                 :color="color"
                 :key="color"
                 v-for="color in COLORS">{{color}}</m-button>

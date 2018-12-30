@@ -71,12 +71,10 @@ export default class MButton extends Vue {
               style={styles}
               class={classes}
               onClick={handleClick}>
-        {icon
-          ? <MIcon name={icon} />
-          : null}
-        {this.$slots.default
-          ? <div class={`${_name}__main`}>{this.$slots.default}</div>
-          : null}
+        {!icon ? undefined
+          : <MIcon name={icon} />}
+        {!this.$slots.default ? undefined
+          : <div class={`${_name}__main`}>{this.$slots.default}</div>}
       </button>
     )
   }

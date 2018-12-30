@@ -26,9 +26,8 @@ $--m-checkbox-wrapper-size-xl: 6rem;
     --m-checkbox-wrapper-size-xl: #{$--m-checkbox-wrapper-size-xl};
 
     // default
-    --m-checkbox-color: var(--m-color-main);
-    --m-checkbox-font-color: var(--m-color-main);
-    --m-checkbox-active-color: var(--m-color-main);
+    --m-checkbox-color: var(--m-color-primary);
+    --m-checkbox-font-color: var(--m-font-color);
 
     --m-checkbox-size: var(--m-checkbox-size-md);
     --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md);
@@ -39,7 +38,8 @@ $--m-checkbox-wrapper-size-xl: 6rem;
  */
 .m-checkbox {
     color: var(--m-checkbox-font-color);
-    font-size: calc(var(--m-checkbox-size) / 2);
+    font-size: calc(var(--m-checkbox-size) / 1.4);
+    line-height: 1;
     height: var(--m-checkbox-color);
     cursor: pointer;
     position: relative;
