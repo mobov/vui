@@ -54,7 +54,9 @@ export default class MTimePickerPanelTime extends Vue {
       Temps.push(
         <MButton onClick={() => onClick(tempTime, type)}
           size="sm"
-          class="m- -m-0 m--p-0 m--block" shape="round"
+          class="m- -m-0 m--p-0 m--block"
+          shape="circle"
+          elevation={0}
           variety={isCurrent ? 'normal' : 'flat'}
           color={isCurrent ? 'primary' : 'default'}>
           {tempTime}

@@ -10,27 +10,19 @@ $--height-time-picker-landscope-confirm: 325;
 
 $--size-time-picker-landscope-header: 130;
 
-$--m-time-picker-header-height: 9rem;
-$--m-time-picker-panel-height: 24.75rem;
+$--m-time-picker-header-height: 7rem;
+$--m-time-picker-panel-height: 26.2rem;
 $--m-time-picker-clock-height: 18rem;
 $--m-time-picker-width: 26.1rem;
 $--m-time-picker-landscope-width: 40.5rem;
-$--m-time-picker-landscope-height: 24.75rem;
-$--m-time-picker-landscope-confirm-height: 29.25rem;
+$--m-time-picker-landscope-height: 27.3rem;
+$--m-time-picker-landscope-confirm-height: 32.5rem;
 $--m-time-picker-landscope-header-height: 11.7rem;
 
 /**
  * variables register.
  */
 .m-time-picker {
-    // selection
-    //--m-time-picker-size-xs: #{$--m-radio-size-xs};
-    //--m-time-picker-size-sm: #{$--m-radio-size-sm};
-    //--m-time-picker-size-md: #{$--m-radio-size-md};
-    //--m-time-picker-size-lg: #{$--m-radio-size-lg};
-    //--m-time-picker-size-xl: #{$--m-radio-size-xl};
-
-
     // default
     --m-time-picker-color: var(--m-color-primary);
     --m-time-picker-elevation: var(--m-elevation-2);
@@ -45,8 +37,6 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     --m-time-picker-landscope-height: #{$--m-time-picker-landscope-height};
     --m-time-picker-landscope-header-height: #{$--m-time-picker-landscope-header-height};
     --m-time-picker-landscope-confirm-height: #{$--m-time-picker-landscope-confirm-height};
-
-
 }
 
 /**
@@ -55,7 +45,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
 .m-time-picker {
     user-select: none;
     overflow: hidden;
-    line-height: 1.2;
+    line-height: 1;
     box-shadow: var(--m-time-picker-elevation);
     width: var(--m-time-picker-width);
     &.m--landscope {
@@ -85,7 +75,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         }
         .m-time-picker-header__time-hours {
             text-align: left;
-            margin-bottom: var(--m-space-md);
+            margin-bottom: var(--m-space-sm);
         }
         .m-time-picker__main {
             flex: 1;
@@ -103,11 +93,11 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     }
 }
 .m-time-picker-header {
-    padding: var(--m-space-md);
+    padding: var(--m-space-sm);
     height: var(--m-time-picker-header-height);
     background-color: var(--m-time-picker-color);
     color: var(--m-time-picker-header-font-color);
-    //padding: var(--m-space-md) d($--space-y) d($--space-x / 1.5) d($--space-y / 2) d($--space-x / 1.5);
+    //padding: var(--m-space-sm) d($--space-y) d($--space-x / 1.5) d($--space-y / 2) d($--space-x / 1.5);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -121,12 +111,10 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         &-year {
             cursor: pointer;
             font-size: 2rem;
-            margin-bottom: .5rem;
         }
         &-date {
             cursor: pointer;
             font-size: 2.5rem;
-            margin-bottom: .5rem;
         }
         &-weekDay{
             margin-left: 1rem;
@@ -139,14 +127,13 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         font-size: 3rem
     }
     &__time {
-        height: 6rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         text-align: right;
         &-hours {
             cursor: pointer;
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
         &-ampm {
             display: flex;
@@ -166,7 +153,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
 
 .m-time-picker-panel-date {
     //color: getColor(gray, A700);
-    padding: var(--m-space-md);
+    padding: var(--m-space-sm);
     &__header {
         display: flex;
         justify-content: space-between;
@@ -195,7 +182,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
 
 .m-time-picker-panel-year {
     display: flex;
-    padding: var(--m-space-md);
+    padding: var(--m-space-sm);
     flex-wrap: wrap;
     height: 100%;
     > * {
@@ -207,7 +194,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
 
 .m-time-picker-panel-month {
     height: 100%;
-    padding: var(--m-space-md);
+    padding: var(--m-space-sm);
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -238,7 +225,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     &__list {
         flex:1;
         height: 100%;
-        padding: var(--m-space-md);
+        padding: var(--m-space-sm);
         @include scroller();
         @include slim-scroll-bar(y, 4px)
     }

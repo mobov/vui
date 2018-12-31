@@ -128,6 +128,7 @@ export default class MTimePickerPanelDate extends Vue {
           <div staticClass={`${_name}__header-year`}>
             <MButton variety='flat'
                      elevation={0}
+                     class='m--mx-0 m--mt-0'
                      color='default'
                      onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
               {viewYear}
@@ -137,6 +138,7 @@ export default class MTimePickerPanelDate extends Vue {
             <MButton variety='flat'
                      shape='circle'
                      elevation={0}
+                     class='m--mx-0 m--mt-0'
                      color='default'
                      icon='navigate_before'
                      onClick={() => handleMonthToggle('prev')}>
@@ -144,6 +146,7 @@ export default class MTimePickerPanelDate extends Vue {
             <MButton variety='flat'
                      shape='circle'
                      elevation={0}
+                     class='m--mx-0 m--mt-0'
                      color='default'
                      icon='navigate_next'
                      onClick={() => handleMonthToggle('next')} >
