@@ -90,6 +90,11 @@ $--m-button-size-xl: 6rem;
   &.m--shape-square {
     border-radius: var(--m-shape-square);
   }
+  // block
+  &.m--block {
+    width: 100%;
+    display: flex;
+  }
 
   transition: all ease .3s;
 }

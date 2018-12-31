@@ -6,7 +6,11 @@
 </style>
 <template>
   <div class="example-radio">
-    <m-radio class="m--mr-md" v-for="item in 4" v-model="radio" :label="item">
+    <m-radio class="m--mr-md"
+             :key="item"
+             v-model="radio"
+             :label="item"
+             v-for="item in 4">
       radio{{item}}
     </m-radio>
   </div>

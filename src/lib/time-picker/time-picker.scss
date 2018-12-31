@@ -101,6 +101,9 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    .m--active {
+        opacity: .6;
+    }
 
     transition: color .3s ease;
     &__date {
