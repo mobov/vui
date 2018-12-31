@@ -6,7 +6,7 @@ import { Color } from '@/types/model'
 const _name = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
 
-@Component({ components: { MButton, MIcon }})
+@Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
   @Prop({ type: String, default: 'primary' })
   private type!: Color
@@ -43,7 +43,7 @@ export default class MTimePickerPanelDate extends Vue {
     return this.viewDateValue.getDate()
   }
 
-  handleMonthToggle(action: 'prev' | 'next'): void {
+  handleMonthToggle (action: 'prev' | 'next'): void {
     const date = new Date(this.viewValue)
     const month = date.getMonth()
     date.setMonth(action === 'prev' ? month - 1 : month + 1)
@@ -51,7 +51,7 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   @Emit('pick')
-  onDateClick(yearVal: number, monthVal: number, dateVal: number): void {
+  onDateClick (yearVal: number, monthVal: number, dateVal: number): void {
     const { year, month, date } = this.DateStore
 
     if (yearVal === year
@@ -89,7 +89,7 @@ export default class MTimePickerPanelDate extends Vue {
     let Tds: any = []
 
     for (let pre = 0; pre < viewFirstWeekDay; pre ++) {
-      Tds.push(<td> </td>)
+      Tds.push(<td />)
     }
     for (let tempDate = 1; tempDate <= viewMonthDays; tempDate ++) {
       const isCurDate = isCurMonth && (tempDate === date)
@@ -100,6 +100,7 @@ export default class MTimePickerPanelDate extends Vue {
           <MButton class='m--m-0 m--p-0'
             size='sm'
             shape='circle'
+            elevation={0}
             variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'}
             color={isCurDate || isToday ? 'primary' : 'default'}
             onClick={() => onDateClick(viewYear, viewMonth, tempDate)}>
@@ -116,8 +117,7 @@ export default class MTimePickerPanelDate extends Vue {
     return (<tbody>{Trs}</tbody>)
   }
 
-
-  render() {
+  render () {
     const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this
 
     this.nowValue = new Date()
@@ -127,6 +127,7 @@ export default class MTimePickerPanelDate extends Vue {
         <div class={`${_name}__header`}>
           <div staticClass={`${_name}__header-year`}>
             <MButton variety='flat'
+                     elevation={0}
                      color='default'
                      onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
               {viewYear}
@@ -135,15 +136,17 @@ export default class MTimePickerPanelDate extends Vue {
           <div staticClass={`${_name}__header-handler`}>
             <MButton variety='flat'
                      shape='circle'
+                     elevation={0}
                      color='default'
+                     icon='navigate_before'
                      onClick={() => handleMonthToggle('prev')}>
-              <MIcon name='navigate_before' />
             </MButton>
             <MButton variety='flat'
                      shape='circle'
+                     elevation={0}
                      color='default'
+                     icon='navigate_next'
                      onClick={() => handleMonthToggle('next')} >
-              <MIcon name='navigate_next' />
             </MButton>
           </div>
         </div>

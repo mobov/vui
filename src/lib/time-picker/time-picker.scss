@@ -57,6 +57,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     overflow: hidden;
     line-height: 1.2;
     box-shadow: var(--m-time-picker-elevation);
+    width: var(--m-time-picker-width);
     &.m--landscope {
         display: flex;
         width: var(--m-time-picker-landscope-width);
