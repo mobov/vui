@@ -6,8 +6,7 @@ import { Color } from '@/types/model'
 const _name = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
 
-@Component({ components: { MButton, MIcon }})
-
+@Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
   @Prop({ type: String, default: 'primary' })
   private type!: Color
@@ -26,23 +25,23 @@ export default class MTimePickerPanelDate extends Vue {
 
   private viewValue: number = this.DateStore.value
 
-  get viewDateValue(): any {
+  get viewDateValue (): any {
     return new Date(this.viewValue)
   }
-  set viewDateValue(val: any) {
+  set viewDateValue (val: any) {
     this.viewValue = val
   }
-  get viewYear(): number {
+  get viewYear (): number {
     return this.viewDateValue.getFullYear()
   }
-  get viewMonth(): number {
+  get viewMonth (): number {
     return this.viewDateValue.getMonth()
   }
-  get viewDate(): number {
+  get viewDate (): number {
     return this.viewDateValue.getDate()
   }
 
-  handleMonthToggle(action: 'prev' | 'next'): void {
+  handleMonthToggle (action: 'prev' | 'next'): void {
     const date = new Date(this.viewValue)
     const month = date.getMonth()
     date.setMonth(action === 'prev' ? month - 1 : month + 1)
@@ -50,7 +49,7 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   @Emit('pick')
-  handleDateClick(yearVal: number, monthVal: number, dateVal: number): void {
+  handleDateClick (yearVal: number, monthVal: number, dateVal: number): void {
     const { year, month, date } = this.DateStore
 
     if (yearVal === year

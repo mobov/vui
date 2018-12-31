@@ -122,6 +122,7 @@ declare module 'vue/types/options' {
     label?: boolean | string | number
     // button
     icon?: string
+    block?: boolean
 
   }
   interface DirectiveOptions {
