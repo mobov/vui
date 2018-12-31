@@ -1,10 +1,13 @@
-## AppBar
+## Template
 
 ```vue
 <template>
-  <m-app>
-    <m-app-bar :color="red"></m-app-bar>
-  </m-app>
+  <m-button color="primary"
+            font-color=""
+            size=""
+            variety=""
+            block
+            icon=""></m-button>
 </template>
 ```
 

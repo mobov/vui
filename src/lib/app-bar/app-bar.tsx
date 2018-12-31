@@ -1,6 +1,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { genColor, genSize, genElevation } from '@/lib/core/style-gen'
-import { Size } from '@/types/model'
+import { Size, Variety } from '@/types/model'
+import { VARIETY } from '@/lib/core/constant'
 
 const _name = 'm-app-bar'
 
@@ -18,6 +19,9 @@ export default class MAppBar extends Vue {
   @Prop({ type: [String, Number] })
   private color!: string
 
+  @Prop({ type: String, default: VARIETY.normal })
+  private variety!: Variety
+
   get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = {}
@@ -30,11 +34,20 @@ export default class MAppBar extends Vue {
     return styles
   }
 
+  get classes () {
+    const { variety } = this
+
+    return {
+      [`m--variety-${variety}`]: true,
+    }
+  }
+
   render () {
-    const { styles, $slots } = this
-    console.log($slots)
+    const { styles, $slots, classes } = this
+
     return (
       <div staticClass={_name}
+           class={classes}
            style={styles}>
         {$slots.default}
       </div>

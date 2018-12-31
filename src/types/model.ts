@@ -1,6 +1,6 @@
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string // 尺寸
-export type Color = 'primary' | 'danger' | 'success' | 'warning' | 'info' | 'default' //  颜色主题类型
-export type Variety = 'normal' | 'flat' | 'outline' | 'pure' //  类型
+export type Color = 'primary' | 'danger' | 'success' | 'warning' | 'info' | 'default' | string //  颜色主题类型
+export type Variety = 'normal' | 'flat' | 'outline' //  类型
 export type Shape = 'square' | 'corner' | 'round' | 'circle' //  形状
 export type Align = 'left' | 'center' | 'right' //  水平轴
 

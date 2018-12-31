@@ -42,5 +42,9 @@ export default [
   {
     name: 'checkbox',
     docSrc: 'checkbox/checkbox.md'
+  },
+  {
+    name: 'time-picker',
+    docSrc: 'time-picker/time-picker.md'
   }
 ]

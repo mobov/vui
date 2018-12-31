@@ -1,4 +1,5 @@
 import Buffer from './buffer'
+import { COLORS } from './constant'
 
 /**
  * 验证是否是色板值
@@ -32,7 +33,7 @@ export function isCSSVar (val: string | number): boolean {
  * @return {string}
  */
 export function getCSSVal (val: string): string {
-  return isPalette(val)
+  return isPalette(val) || COLORS.includes(val)
     ? Buffer.docStyles.getPropertyValue(`--m-color-${val}`).trim()
     : isCSSVar(val)
       ? Buffer.docStyles.getPropertyValue(val).trim()

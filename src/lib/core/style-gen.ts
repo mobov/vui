@@ -1,5 +1,5 @@
 import Color from 'color'
-import { BREAKPOINTS, ELEVATION_MAX, ELEVATION_MIN, SHAPES } from './constant'
+import { BREAKPOINTS, ELEVATION_MAX, ELEVATION_MIN, SHAPES, COLORS } from './constant'
 import { isPalette, isCSSVar, getCSSVal } from './util'
 import { HoverColor } from './cache'
 
@@ -9,7 +9,7 @@ import { HoverColor } from './cache'
  * @return {string}
  */
 function getStyleColorAttrVal (val: string): string {
-  return isPalette(val)
+  return isPalette(val) || COLORS.includes(val)
     ? `var(--m-color-${val})`
     : isCSSVar(val)
       ? `var(${val})`
@@ -39,6 +39,7 @@ export function genColor (styles: any, compName: string, property: string, val: 
 export function genHover (styles: any, compName: string, property: string, val: string | undefined): void {
   if (val !== undefined) {
     let result = val
+
     if (HoverColor.exist(val)) {
       result = HoverColor.getItem(val)
     } else {

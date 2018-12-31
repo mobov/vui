@@ -2,7 +2,10 @@ import Vue, { Component, PluginFunction, PluginObject, VueConstructor, Directive
 
 export interface Megmore {
   install: PluginFunction<MegmoreUseOptions>
-  version: string
+  version: string,
+  constant: {
+    COLORS:
+  }
 }
 
 export type ComponentOrPack = Component & { $_megmore_subcomponents?: Record<string, ComponentOrPack> }

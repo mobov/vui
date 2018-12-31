@@ -26,8 +26,8 @@ $--m-radio-wrapper-size-xl: 6rem;
     --m-radio-wrapper-size-xl: #{$--m-radio-wrapper-size-xl};
 
     // default
-    --m-radio-color: var(--m-color-main);
-    --m-radio-active-color: var(--m-color-main);
+    --m-radio-color: var(--m-color-primary);
+    --m-radio-font-color: var(--m-font-color);
 
     --m-radio-size: var(--m-radio-size-md);
     --m-radio-wrapper-size: var(--m-radio-wrapper-size-md);
@@ -37,8 +37,10 @@ $--m-radio-wrapper-size-xl: 6rem;
  * components styles.
  */
 .m-radio {
-    color: var(--m-radio-color);
+    color: var(--m-radio-font-color);
     height: var(--m-radio-color);
+    line-height: 1;
+    font-size: calc(var(--m-radio-size) / 1.4);
     cursor: pointer;
     position: relative;
     display: inline-flex;
@@ -49,15 +51,18 @@ $--m-radio-wrapper-size-xl: 6rem;
     &.m--disabled {
         opacity: .5;
     }
+    &.m--checked {
+        color: var(--m-radio-color);
+    }
 
     &__checked-icon,
     &__uncheck-icon,
-    &__checkbox {
-        height: var(--m-checkbox-size);
-        width: var(--m-checkbox-size);
+    &__radio {
+        height: var(--m-radio-size);
+        width: var(--m-radio-size);
     }
 
-    &__checkbox {
+    &__radio {
         position: relative;
     }
 
@@ -67,7 +72,7 @@ $--m-radio-wrapper-size-xl: 6rem;
         top:0;
     }
 
-    &__checkbox-wrapper {
+    &__radio-wrapper {
         position: absolute;
         left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);
         top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);
