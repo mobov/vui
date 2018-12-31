@@ -2,7 +2,7 @@ import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 // import MSpin from '@/components/spin'
 import MIcon from '@/lib/icon'
 import { Size, Color, Variety, Shape } from '@/types/model'
-import { VARIETY, SHAPE } from '@/lib/core/constant'
+import { VARIETY, SHAPE, COLOR } from '@/lib/core/constant'
 import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
 
 const _name = 'm-button'
@@ -15,7 +15,7 @@ export default class MButton extends Vue {
   @Prop({ type: Number })
   private elevation!: number
 
-  @Prop({ type: String })
+  @Prop({ type: String, default: COLOR.primary })
   private color!: Color
 
   @Prop({ type: String })

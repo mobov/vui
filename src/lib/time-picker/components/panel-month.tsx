@@ -34,7 +34,7 @@ export default class MTimePickerPanelMonth extends Vue {
                  class="m--m-0 m--p-0"
                  shape="round"
                  variety={isCurrent ? 'normal' : 'flat'}
-                 color={isCurrent ? 'primary' : 'legacy'}
+                 color={isCurrent ? 'primary' : 'default'}
                  onClick={() => handleClick(tempValue)}>
           {MonthMap[tempValue]}
         </MButton>

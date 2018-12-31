@@ -12,12 +12,6 @@ export default class MTimePickerHandler extends Vue {
     @Prop({ type: String, default: 'primary' })
     private color!: Color
 
-    get classes () {
-        return {
-            [`m--color-${this.color}`]: this.color,
-        }
-    }
-
     @Emit('confirm')
     onConfirm (): void { }
 
@@ -28,7 +22,7 @@ export default class MTimePickerHandler extends Vue {
         const { classes, onConfirm, onCancel } = this
 
         return (
-            <div staticClass={`${_name} m--p-sm`} class={classes}>
+            <div staticClass={`${_name} m--p-sm`}>
                 <MButton class="m--m-0 m--p-0"
                          size="md"
                          variety="flat"

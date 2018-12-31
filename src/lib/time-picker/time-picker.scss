@@ -32,7 +32,9 @@ $--m-time-picker-landscope-header-height: 11.7rem;
 
 
     // default
-    --m-time-picker-color: var(--m-color-main);
+    --m-time-picker-color: var(--m-color-primary);
+    --m-time-picker-elevation: var(--m-elevation-2);
+    --m-time-picker-header-font-color: var(--m-bg-color);
 
     --m-time-picker-width: #{$--m-time-picker-width};
     --m-time-picker-header-width: #{$--m-time-picker-width};
@@ -54,7 +56,7 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     user-select: none;
     overflow: hidden;
     line-height: 1.2;
-
+    box-shadow: var(--m-time-picker-elevation);
     &.m--landscope {
         display: flex;
         width: var(--m-time-picker-landscope-width);
@@ -100,13 +102,15 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     }
 }
 .m-time-picker-header {
-    //color: getColor(gray, 300);
     padding: var(--m-space-md);
+    height: var(--m-time-picker-header-height);
+    background-color: var(--m-time-picker-color);
+    color: var(--m-time-picker-header-font-color);
     //padding: var(--m-space-md) d($--space-y) d($--space-x / 1.5) d($--space-y / 2) d($--space-x / 1.5);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: var(--m-time-picker-header-height);
+
     transition: color .3s ease;
     &__date {
         flex-grow: 1;

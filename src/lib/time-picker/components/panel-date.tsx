@@ -101,7 +101,7 @@ export default class MTimePickerPanelDate extends Vue {
             size='sm'
             shape='circle'
             variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'}
-            color={isCurDate || isToday ? 'primary' : 'legacy'}
+            color={isCurDate || isToday ? 'primary' : 'default'}
             onClick={() => onDateClick(viewYear, viewMonth, tempDate)}>
             {tempDate}
           </MButton>
@@ -127,7 +127,7 @@ export default class MTimePickerPanelDate extends Vue {
         <div class={`${_name}__header`}>
           <div staticClass={`${_name}__header-year`}>
             <MButton variety='flat'
-                     color='legacy'
+                     color='default'
                      onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
               {viewYear}
             </MButton>
@@ -135,13 +135,13 @@ export default class MTimePickerPanelDate extends Vue {
           <div staticClass={`${_name}__header-handler`}>
             <MButton variety='flat'
                      shape='circle'
-                     color='legacy'
+                     color='default'
                      onClick={() => handleMonthToggle('prev')}>
               <MIcon name='navigate_before' />
             </MButton>
             <MButton variety='flat'
                      shape='circle'
-                     color='legacy'
+                     color='default'
                      onClick={() => handleMonthToggle('next')} >
               <MIcon name='navigate_next' />
             </MButton>

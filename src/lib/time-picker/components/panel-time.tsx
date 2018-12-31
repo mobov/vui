@@ -56,7 +56,7 @@ export default class MTimePickerPanelTime extends Vue {
           size="sm"
           class="m- -m-0 m--p-0 m--block" shape="round"
           variety={isCurrent ? 'normal' : 'flat'}
-          color={isCurrent ? 'primary' : 'legacy'}>
+          color={isCurrent ? 'primary' : 'default'}>
           {tempTime}
         </MButton>
       )
