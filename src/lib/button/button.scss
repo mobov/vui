@@ -30,7 +30,9 @@ $--m-button-size-xl: 4rem;
  * components styles.
  */
 .m-button {
-  @include clear-button;
+  //@include clear-button;
+  //margin: unset;
+  outline: none;
   background-color: var(--m-button-color);
   color: var(--m-button-font-color);
   min-height: var(--m-button-size);
