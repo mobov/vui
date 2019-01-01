@@ -11,7 +11,7 @@ $--height-time-picker-landscope-confirm: 325;
 $--size-time-picker-landscope-header: 130;
 
 $--m-time-picker-header-height: 7rem;
-$--m-time-picker-panel-height: 26.2rem;
+$--m-time-picker-panel-height: 24.5rem;
 $--m-time-picker-clock-height: 18rem;
 $--m-time-picker-width: 26.1rem;
 $--m-time-picker-landscope-width: 40.5rem;
@@ -49,12 +49,8 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     box-shadow: var(--m-time-picker-elevation);
     width: var(--m-time-picker-width);
     &.m--landscope {
-        display: flex;
         width: var(--m-time-picker-landscope-width);
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: stretch;
-        height: var(--m-time-picker-landscope-height);
+        //height: var(--m-time-picker-landscope-height);
         .m-time-picker-header {
             width: var(--m-time-picker-landscope-header-height);
             height: 100%;
@@ -72,23 +68,27 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         }
         .m-time-picker-header__date {
             justify-content: flex-start;
+            > * {
+                margin-bottom: var(--m-space-md);
+            }
         }
         .m-time-picker-header__time-hours {
             text-align: left;
             margin-bottom: var(--m-space-sm);
         }
         .m-time-picker__main {
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: stretch;
+            height: var(--m-time-picker-panel-height);
+        }
+
+        .m-time-picker-panel {
             flex: 1;
-            height: 100%;
-        }
-        .m-time-picker__panel {
-            height: var(--m-time-picker-landscope-height);
-        }
-        &.m--confirmation {
-            height: var(--m-time-picker-landscope-confirm-height);
         }
     }
-    .m-time-picker__panel {
+    .m-time-picker-panel {
         height: var(--m-time-picker-panel-height);
     }
 }
@@ -114,12 +114,14 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         &-year {
             cursor: pointer;
             font-size: 2rem;
+            margin-bottom: var(--m-space-sm);
         }
         &-date {
             cursor: pointer;
             font-size: 2.5rem;
         }
         &-weekDay{
+            font-size: 2rem;
             margin-left: 1rem;
         }
     }
@@ -169,6 +171,9 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     &__table {
         thead {
             font-weight: 600;
+            td  {
+                padding: var(--m-space-sm) 0;
+            }
         }
         td {
             > * {
@@ -239,5 +244,11 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    > * {
+        margin-left: var(--m-space-sm);
+        &:first-child {
+            margin-left: 0;
+        }
+    }
 }
 

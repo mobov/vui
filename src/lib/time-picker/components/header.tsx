@@ -33,10 +33,11 @@ export default class MTimePickerHeader extends Vue {
     const { year, month, weekDay, date, pickerType, activeType } = this.DateStore
 
     return !['datetime', 'date'].includes(pickerType) ? undefined : (
-      <div class={`${_name}__date`}>
-        <div class={{'m--active': activeType === 'year'}}
-             staticClass={`${_name}__date-year`}>
-          <a onClick={() => {this.DateStore.SET_ACTIVE_TYPE('year')}}>{year}</a>
+      <div staticClass={`${_name}__date`}>
+        <div>
+          <a staticClass={`${_name}__date-year`}
+             class={{'m--active': activeType === 'year'}}
+             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('year')}}>{year}</a>
           <span staticClass={`${_name}__date-weekDay`}>{WeekMap[weekDay]}</span>
         </div>
         <div staticClass={`${_name}__date-date`}>
@@ -83,7 +84,7 @@ export default class MTimePickerHeader extends Vue {
     const { year, pickerType } = this.DateStore
 
     return 'year' !== pickerType ? undefined : (
-      <div className={`${_name}__year`}>
+      <div staticClass={`${_name}__year`}>
         {year}
       </div>
     )
@@ -93,7 +94,7 @@ export default class MTimePickerHeader extends Vue {
     const { month, pickerType } = this.DateStore
 
     return 'month' !== pickerType ? undefined : (
-      <div class={`${_name}__month`}>
+      <div staticClass={`${_name}__month`}>
         {MonthMap[month]}
       </div>
     )
@@ -105,10 +106,11 @@ export default class MTimePickerHeader extends Vue {
     return (
       <div staticClass={`${_name}`}
            class={classes}>
-        {RDate()}
-        {RTime()}
         {RYear()}
         {RMonth()}
+        {RDate()}
+        <div style="flex:1" />
+        {RTime()}
       </div>
     )
   }

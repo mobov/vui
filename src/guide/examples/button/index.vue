@@ -29,6 +29,13 @@
                 :key="color"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
+    <section>
+      <m-button :size="size"
+                class="m--px-md"
+                :key="size"
+                v-for="size in BREAKPOINTS">{{size}}</m-button>
+
+    </section>
 
   </div>
 </template>
@@ -36,14 +43,15 @@
 <script>
   import Megmore, { MButton } from '@/lib'
 
-  const { COLORS } = Megmore.constant
+  const { COLORS, BREAKPOINTS } = Megmore.constant
 
   export default {
     name: 'ExampleCheckbox',
     components: { MButton },
     data () {
       return {
-        COLORS
+        COLORS,
+        BREAKPOINTS
       }
     }
   }

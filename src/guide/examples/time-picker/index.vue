@@ -10,6 +10,7 @@
       <m-time-picker picker-type="datetime"
                      desync confirmation
                      value-format="Date"
+                     ampm
                      v-model="dateValue"
                      :elevation=2 />
     </div>

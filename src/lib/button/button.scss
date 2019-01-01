@@ -1,9 +1,9 @@
 @import "~@megmore/scss-helper";
 $--m-button-size-xs: 2rem;
-$--m-button-size-sm: 3rem;
+$--m-button-size-sm: 2.5rem;
 $--m-button-size-md: 3rem;
-$--m-button-size-lg: 5rem;
-$--m-button-size-xl: 6rem;
+$--m-button-size-lg: 3.5rem;
+$--m-button-size-xl: 4rem;
 /**
  * variables register.
  */
@@ -36,7 +36,7 @@ $--m-button-size-xl: 6rem;
   min-height: var(--m-button-size);
   height: var(--m-button-size);
   min-width: var(--m-button-size);
-  margin: .5em;
+  //margin: .5em;
   border-radius: var(--m-button-shape);
   box-shadow: var(--m-button-elevation);
   border: none;
