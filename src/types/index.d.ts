@@ -4,7 +4,7 @@ export interface Megmore {
   install: PluginFunction<MegmoreUseOptions>
   version: string,
   constant: {
-    COLORS:
+    COLORS: any
   }
 }
 

@@ -35,11 +35,10 @@ export default class MTimePicker extends mixins (TimePickerBase) {
   private timeSelectType!: 'list' | 'clock'
 
   get classes () {
-    const { landscope, confirmation } = this
+    const { landscope } = this
 
     return {
-      'm--landscope': landscope,
-      'm--confirmation': confirmation
+      'm--landscope': landscope
     }
   }
 
@@ -84,12 +83,13 @@ export default class MTimePicker extends mixins (TimePickerBase) {
     const { pickerType } = this.DateStore
 
     return (
-      <div staticClass={`${_name} m--${pickerType}`} class={classes}>
-        <MTimePickerHeader color={color} />
-        <div class={`${_name}__main`}>
-          <div class={`${_name}__panel`}>{RPanel()}</div>
-          {RHandler()}
+      <div staticClass={`${_name} m--${pickerType}`}
+           class={classes}>
+        <div staticClass={`${_name}__main`}>
+          <MTimePickerHeader color={color} />
+          <div staticClass={`${_name}-panel`}>{RPanel()}</div>
         </div>
+        {RHandler()}
       </div>
     )
   }

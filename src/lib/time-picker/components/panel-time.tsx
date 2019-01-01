@@ -1,16 +1,16 @@
-import { Component, Prop, Emit, Vue, Inject, Model, Provide, Watch } from 'vue-property-decorator'
-import { getStyle } from '@megmore/es-helper'
+import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
+// import { getStyle } from '@megmore/es-helper'
 import MButton from '@/lib/button'
 import MIcon from '@/lib/icon'
 import { Color, DateTimeValueType } from '@/types/model'
 
 const _name = 'm-time-picker-panel-time'
-const baseFont: any = getStyle(document.documentElement, 'font-size')
-const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
-const clockStyle = {
-    height: `${clockSize}px`,
-    width:  `${clockSize}px`,
-}
+// const baseFont: any = getStyle(document.documentElement, 'font-size')
+// const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
+// const clockStyle = {
+//     height: `${clockSize}px`,
+//     width:  `${clockSize}px`,
+// }
 
 @Component({ components: { MButton, MIcon }})
 export default class MTimePickerPanelTime extends Vue {
@@ -54,7 +54,10 @@ export default class MTimePickerPanelTime extends Vue {
       Temps.push(
         <MButton onClick={() => onClick(tempTime, type)}
           size="sm"
-          class="m- -m-0 m--p-0 m--block" shape="round"
+          block
+          class="m--m-0 m--p-0 m--block"
+          shape="circle"
+          elevation={0}
           variety={isCurrent ? 'normal' : 'flat'}
           color={isCurrent ? 'primary' : 'default'}>
           {tempTime}

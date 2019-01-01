@@ -85,7 +85,7 @@ declare module 'vue/types/options' {
     // default
     staticClass?: string
     class?: string
-    style?: ElementCSSInlineStyle
+    style?: ElementCSSInlineStyle | any
     ref?: string
     // lifecycle
     updated?: (() => void) | undefined
@@ -120,6 +120,9 @@ declare module 'vue/types/options' {
     onCancel?: (() => void) | undefined
     // checkbox & radio
     label?: boolean | string | number
+    // button
+    icon?: string
+    block?: boolean
 
   }
   interface DirectiveOptions {

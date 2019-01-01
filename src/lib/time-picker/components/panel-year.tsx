@@ -33,7 +33,8 @@ export default class MTimePickerPanelYear extends Vue {
       Cols.push(
         <MButton size="sm"
           class="m--m-0 m--p-0"
-          shape="round"
+          shape="circle"
+          elevation={0}
           variety={isCurrent ? 'normal' : 'flat'}
           color={isCurrent ? 'primary' : 'default'}
           onClick={() => onClick(tempYear)} >

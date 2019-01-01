@@ -6,7 +6,7 @@ import { Color } from '@/types/model'
 const _name = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
 
-@Component({ components: { MButton, MIcon }})
+@Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
   @Prop({ type: String, default: 'primary' })
   private type!: Color
@@ -25,8 +25,6 @@ export default class MTimePickerPanelDate extends Vue {
 
   private viewValue: number = this.DateStore.value
 
-  private nowValue: Date = new Date()
-
   get viewDateValue (): any {
     return new Date(this.viewValue)
   }
@@ -43,7 +41,7 @@ export default class MTimePickerPanelDate extends Vue {
     return this.viewDateValue.getDate()
   }
 
-  handleMonthToggle(action: 'prev' | 'next'): void {
+  handleMonthToggle (action: 'prev' | 'next'): void {
     const date = new Date(this.viewValue)
     const month = date.getMonth()
     date.setMonth(action === 'prev' ? month - 1 : month + 1)
@@ -51,12 +49,12 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   @Emit('pick')
-  onDateClick(yearVal: number, monthVal: number, dateVal: number): void {
+  handleDateClick (yearVal: number, monthVal: number, dateVal: number): void {
     const { year, month, date } = this.DateStore
 
     if (yearVal === year
       && monthVal === month
-      && dateVal === date ) { return }
+      && dateVal === date) { return }
 
     const temp = new Date(this.viewValue)
 
@@ -75,10 +73,9 @@ export default class MTimePickerPanelDate extends Vue {
 
   RTableBody () {
     const { viewDateValue, viewYear, viewMonth,
-      onDateClick, nowValue } = this
-
+      handleDateClick, RTableHead } = this
     const { year, month, date } = this.DateStore
-
+    const nowValue = new Date()
     const isNowDate = nowValue.getFullYear() === viewYear && nowValue.getMonth() === viewMonth
     const nowDate = nowValue.getDate()
     const viewMonthDays = viewDateValue.maxDayOfMonth()
@@ -95,18 +92,15 @@ export default class MTimePickerPanelDate extends Vue {
       const isCurDate = isCurMonth && (tempDate === date)
       const isToday =  isNowDate && (tempDate === nowDate)
 
-      Tds.push(
-        <td>
-          <MButton class='m--m-0 m--p-0'
-            size='sm'
-            shape='circle'
-            variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'}
-            color={isCurDate || isToday ? 'primary' : 'default'}
-            onClick={() => onDateClick(viewYear, viewMonth, tempDate)}>
-            {tempDate}
-          </MButton>
-        </td>
-      )
+      Tds.push(<td><MButton class='m--m-0 m--p-0'
+                            size='sm'
+                            shape='circle'
+                            elevation={0}
+                            variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'}
+                            color={isCurDate || isToday ? 'primary' : 'default'}
+                            onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
+        {tempDate}
+      </MButton></td>)
       if ((tempDate + viewFirstWeekDay) % 7 === 0 || tempDate === viewMonthDays) {
         Trs.push(<tr>{Tds}</tr>)
         Tds = []
@@ -116,35 +110,36 @@ export default class MTimePickerPanelDate extends Vue {
     return (<tbody>{Trs}</tbody>)
   }
 
-
-  render() {
+  render () {
     const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this
-
-    this.nowValue = new Date()
 
     return (
       <div staticClass={_name}>
         <div class={`${_name}__header`}>
           <div staticClass={`${_name}__header-year`}>
             <MButton variety='flat'
+                     staticClass='m--m-0'
                      color='default'
+                     elevation={0}
                      onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
               {viewYear}
             </MButton>
           </div>
           <div staticClass={`${_name}__header-handler`}>
             <MButton variety='flat'
+                     staticClass='m--m-0'
+                     elevation={0}
                      shape='circle'
                      color='default'
-                     onClick={() => handleMonthToggle('prev')}>
-              <MIcon name='navigate_before' />
-            </MButton>
+                     icon='navigate_before'
+                     onClick={() => handleMonthToggle('prev')} />
             <MButton variety='flat'
+                     staticClass='m--m-0'
+                     elevation={0}
                      shape='circle'
                      color='default'
-                     onClick={() => handleMonthToggle('next')} >
-              <MIcon name='navigate_next' />
-            </MButton>
+                     icon='navigate_next'
+                     onClick={() => handleMonthToggle('next')} />
           </div>
         </div>
         <table class={`${_name}__table`}>
@@ -153,5 +148,5 @@ export default class MTimePickerPanelDate extends Vue {
         </table>
       </div>
     )
-}
+  }
 }

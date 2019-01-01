@@ -11,6 +11,7 @@
       <m-button :color="color"
                 style="width: 80px"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -19,6 +20,7 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -27,7 +29,15 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
+    </section>
+    <section>
+      <m-button :size="size"
+                class="m--px-md m--mr-sm"
+                :key="size"
+                v-for="size in BREAKPOINTS">{{size}}</m-button>
+
     </section>
 
   </div>
@@ -36,14 +46,15 @@
 <script>
   import Megmore, { MButton } from '@/lib'
 
-  const { COLORS } = Megmore.constant
+  const { COLORS, BREAKPOINTS } = Megmore.constant
 
   export default {
     name: 'ExampleCheckbox',
     components: { MButton },
     data () {
       return {
-        COLORS
+        COLORS,
+        BREAKPOINTS
       }
     }
   }
