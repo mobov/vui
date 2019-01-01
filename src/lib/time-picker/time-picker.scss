@@ -1,23 +1,11 @@
 @import "~@megmore/scss-helper/import";
 
-$--size-time-picker-header: 100;
-$--size-time-picker-panel: 275;
-$--size-time-picker-clock: 200;
-$--width-time-picker: 290;
-$--width-time-picker-landscope: 450;
-$--height-time-picker-landscope: 275;
-$--height-time-picker-landscope-confirm: 325;
-
-$--size-time-picker-landscope-header: 130;
-
 $--m-time-picker-header-height: 7rem;
 $--m-time-picker-panel-height: 24.5rem;
 $--m-time-picker-clock-height: 18rem;
-$--m-time-picker-width: 26.1rem;
-$--m-time-picker-landscope-width: 40.5rem;
-$--m-time-picker-landscope-height: 27.3rem;
-$--m-time-picker-landscope-confirm-height: 32.5rem;
-$--m-time-picker-landscope-header-height: 11.7rem;
+$--m-time-picker-width: 26rem;
+$--m-time-picker-landscope-width: 37rem;
+$--m-time-picker-landscope-header-width: 11rem;
 
 /**
  * variables register.
@@ -29,14 +17,10 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     --m-time-picker-header-font-color: var(--m-bg-color);
 
     --m-time-picker-width: #{$--m-time-picker-width};
-    --m-time-picker-header-width: #{$--m-time-picker-width};
     --m-time-picker-header-height: #{$--m-time-picker-header-height};
     --m-time-picker-panel-height: #{$--m-time-picker-panel-height};
-
     --m-time-picker-landscope-width: #{$--m-time-picker-landscope-width};
-    --m-time-picker-landscope-height: #{$--m-time-picker-landscope-height};
-    --m-time-picker-landscope-header-height: #{$--m-time-picker-landscope-header-height};
-    --m-time-picker-landscope-confirm-height: #{$--m-time-picker-landscope-confirm-height};
+    --m-time-picker-landscope-header-width: #{$--m-time-picker-landscope-header-width};
 }
 
 /**
@@ -50,9 +34,8 @@ $--m-time-picker-landscope-header-height: 11.7rem;
     width: var(--m-time-picker-width);
     &.m--landscope {
         width: var(--m-time-picker-landscope-width);
-        //height: var(--m-time-picker-landscope-height);
         .m-time-picker-header {
-            width: var(--m-time-picker-landscope-header-height);
+            width: var(--m-time-picker-landscope-header-width);
             height: 100%;
             align-items: stretch;
             flex-direction: column;
@@ -251,4 +234,3 @@ $--m-time-picker-landscope-header-height: 11.7rem;
         }
     }
 }
-
