@@ -11,6 +11,7 @@
       <m-button :color="color"
                 style="width: 80px"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -19,6 +20,7 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -27,11 +29,12 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
+                class="m--mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
       <m-button :size="size"
-                class="m--px-md"
+                class="m--px-md m--mr-sm"
                 :key="size"
                 v-for="size in BREAKPOINTS">{{size}}</m-button>
 

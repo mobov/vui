@@ -17,14 +17,13 @@ export default class MTimePickerHeader extends Vue {
   @Inject()
   private DateStore!: any
 
-  get classes() {
+  get classes () {
     return {
-      [`m--bg-${this.color}`]: this.color,
-      [`m--${this.DateStore.pickerType}`]: true,
+      [`m--${this.DateStore.pickerType}`]: true
     }
   }
 
-  handleAMToggle(val: boolean, oldVal: boolean){
+  handleAMToggle (val: boolean, oldVal: boolean) {
     if (val === oldVal) { return }
     this.DateStore.SET_AM(val)
   }
@@ -37,16 +36,16 @@ export default class MTimePickerHeader extends Vue {
         <div>
           <a staticClass={`${_name}__date-year`}
              class={{'m--active': activeType === 'year'}}
-             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('year')}}>{year}</a>
+             onClick={ () => { this.DateStore.SET_ACTIVE_TYPE('year') } }>{year}</a>
           <span staticClass={`${_name}__date-weekDay`}>{WeekMap[weekDay]}</span>
         </div>
         <div staticClass={`${_name}__date-date`}>
           <a class={{'m--active': activeType === 'month'}}
-             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('month')}}>
+             onClick={ () => { this.DateStore.SET_ACTIVE_TYPE('month') } }>
             {(month + 1).dateZeroize()}
           </a>-
           <a class={{'m--active': activeType === 'date'}}
-             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('date')}}>
+             onClick={ () => { this.DateStore.SET_ACTIVE_TYPE('date') } }>
             {date.dateZeroize()}
           </a>
         </div>
@@ -62,17 +61,23 @@ export default class MTimePickerHeader extends Vue {
       <div class={`${_name}__time`}>
         { !ampm ? undefined :
           <div staticClass={`${_name}__time-ampm`}>
-            <a class={{'m--active': am }} onClick={() => {handleAMToggle(true, am)}}>AM</a>
-            <a class={{'m--active': !am }} onClick={() => {handleAMToggle(false, am)}}>PM</a>
+            <a class={{'m--active': am }}
+               onClick={ () => { handleAMToggle(true, am) } }>
+              AM
+            </a>
+            <a class={{'m--active': !am }}
+               onClick={ () => { handleAMToggle(false, am) } }>
+              PM
+            </a>
           </div>
         }
         <div staticClass={`${_name}__time-hours`}>
           <a class={{'m--active': activeType === 'hours'}}
-             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('hours')}}>
+             onClick={ () => { this.DateStore.SET_ACTIVE_TYPE('hours') } }>
             {hours.dateZeroize()}
           </a>:
           <a class={{'m--active': activeType === 'minutes'}}
-             onClick={() => {this.DateStore.SET_ACTIVE_TYPE('minutes')}}>
+             onClick={ () => { this.DateStore.SET_ACTIVE_TYPE('minutes') } }>
             {minutes.dateZeroize()}
           </a>
         </div>
@@ -83,7 +88,7 @@ export default class MTimePickerHeader extends Vue {
   RYear () {
     const { year, pickerType } = this.DateStore
 
-    return 'year' !== pickerType ? undefined : (
+    return pickerType !== 'year' ? undefined : (
       <div staticClass={`${_name}__year`}>
         {year}
       </div>
@@ -93,14 +98,14 @@ export default class MTimePickerHeader extends Vue {
   RMonth () {
     const { month, pickerType } = this.DateStore
 
-    return 'month' !== pickerType ? undefined : (
+    return pickerType !== 'month' ? undefined : (
       <div staticClass={`${_name}__month`}>
         {MonthMap[month]}
       </div>
     )
   }
 
-  render() {
+  render () {
     const { classes, RDate, RTime, RYear, RMonth } = this
 
     return (
