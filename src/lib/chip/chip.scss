@@ -10,11 +10,11 @@
     --m-chip-size-xl: 2.5rem;
 
     // default
-    --m-chip-color: var(--m-color-main);
-    --m-chip-hover-color: var(--m-color-main);
-    --m-chip-font-color: var(--m-bg-color-main);
+    --m-chip-color: var(--m-color-primary);
+    //--m-chip-hover-color: var(--m-color-main);
+    --m-chip-font-color: var(--m-bg-color);
     --m-chip-elevation: var(--m-elevation-2);
-    --m-chip-shape: var(--m-shape-corner);
+    --m-chip-shape: var(--m-chip-size-md);
 
     --m-chip-size: var(--m-button-size-md);
     --m-chip-border-size: .2rem;
@@ -38,6 +38,7 @@
     box-sizing: border-box;
     word-break: keep-all;
     user-select: none;
+    line-height: 1;
 
     &.m-chip--closeable {
         padding-right: calc(var(--m-chip__close-size) / 1.5);

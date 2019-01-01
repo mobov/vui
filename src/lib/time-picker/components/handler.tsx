@@ -29,7 +29,7 @@ export default class MTimePickerHandler extends Vue {
                          color="primary"
                          onClick={onCancel}>cancel</MButton>
                 <MButton size="sm"
-                         style={{width: '6rem'}}
+                         style={{width: '5rem'}}
                          color="primary"
                          onClick={onConfirm}>ok</MButton>
             </div>

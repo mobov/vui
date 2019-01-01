@@ -119,17 +119,17 @@ export default class MView extends Vue {
     this.isRight = $slots.right !== undefined
 
     return (
-      <section staticClass={_name}
+      <div staticClass={_name}
            class={classes}
            style={styles}>
-        <div staticClass={`${_name}-main`}>
+        <section staticClass={`${_name}-main`}>
           {$slots.default}
-        </div>
+        </section>
         {RHeader()}
         {RFooter()}
         {RLeft()}
         {RRight()}
-      </section>
+      </div>
     )
   }
 }

@@ -19,7 +19,9 @@ import { Megmore } from './index'
 declare global {
   interface Window {
     Vue: VueConstructor
-    $Megmore: Megmore
+    $Megmore: Megmore,
+    attachEvent(event: string, listener: EventListener): boolean
+    detachEvent(event: string, listener: EventListener): void
   }
 
   interface HTMLCollection {
@@ -41,6 +43,8 @@ declare global {
       options: boolean | AddEventListenerOptions
       target: EventTarget
     }
+    attachEvent(event: string, listener: EventListener): boolean
+    detachEvent(event: string, listener: EventListener): void
     // _touchHandlers?: {
     //   [_uid: number]: TouchStoredHandlers
     // }
@@ -76,58 +80,6 @@ declare module 'vue/types/vnode' {
       expression: string
       value: any
     }
-  }
-}
-
-// vue插件参数接口拓展
-declare module 'vue/types/options' {
-  interface ComponentOptions<V extends Vue> {
-    // default
-    staticClass?: string
-    class?: string
-    style?: ElementCSSInlineStyle | any
-    ref?: string
-    // lifecycle
-    updated?: (() => void) | undefined
-    created?: (() => void) | undefined
-    mounted?: (() => void) | undefined
-    // events
-    onClick?: (e: MouseEvent) => void
-    onInput?: (() => void) | undefined
-    nativeOnClick?: (() => void) | undefined
-    // base
-    elevation?: number
-    size?: Size
-    color?: Color
-    shape?: Shape
-    variety?: Variety
-    value?: any
-    // table
-    height?: string | number
-    border?: boolean
-    keyField?: string
-    noHeader?: string
-    rowSelect?: boolean
-    onRowClick?: (() => void) | undefined
-    onCheck?: (() => void) | undefined
-    updateSize?: (() => void) | undefined
-    // timePicker
-    max?: any
-    min?: any
-    firstDayOfWeek?: any
-    onPick?: (() => void) | undefined
-    onConfirm?: (() => void) | undefined
-    onCancel?: (() => void) | undefined
-    // checkbox & radio
-    label?: boolean | string | number
-    // button
-    icon?: string
-    block?: boolean
-
-  }
-  interface DirectiveOptions {
-    name: string,
-    install?: (Vue: VueConstructor) => void
   }
 }
 
