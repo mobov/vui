@@ -3,6 +3,7 @@ import { deepCopy } from '@megmore/es-helper'
 import { Size, Color } from '@/types/model'
 import TableHead from './components/head'
 import TableBody from './components/body'
+import { BREAKPOINT } from '@/lib/core/constant'
 
 const _name = 'm-table'
 const selfKeyField = '_table-key'
@@ -17,7 +18,7 @@ export default class MTable extends Vue {
   @Prop({ type: Number, default: 2 })
   private elevation?: number
 
-  @Prop({ type: String })
+  @Prop({ type: String, default: BREAKPOINT.md })
   private size?: Size
 
   @Prop({ type: [String, Number] })

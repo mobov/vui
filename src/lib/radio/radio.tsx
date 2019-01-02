@@ -1,22 +1,27 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '@/lib/icon'
 import { Size, Color } from '@/types/model'
+import { BREAKPOINT, COLOR } from '@/lib/core/constant'
+import {genColor, genSize} from "@/lib/core/style-gen";
 
 const _name = 'm-radio'
 
 @Component({ components: { MIcon } })
 export default class MRadio extends Vue {
-  @Prop({ type: String, default: 'md' })
+  @Prop({ type: String, default: BREAKPOINT.md })
   private size?: Size
+
+  @Prop({ type: String })
+  private fontColor!: Color
+
+  @Prop({ type: String, default: COLOR.primary })
+  private color!: Color
 
   @Prop({ type: [Boolean, Number, String], default: false })
   private value!: boolean | number | string
 
   @Prop({ type: [Boolean, Number, String], default: true })
   private label!: boolean | number | string
-
-  @Prop({ type: String, default: 'primary' })
-  private color!: Color
 
   @Prop({ type: String, default: 'radio_button_checked' })
   private checkedIcon!: string
@@ -37,6 +42,17 @@ export default class MRadio extends Vue {
     }
   }
 
+  get styles () {
+    const { color, fontColor, size } = this
+    const styles = { }
+
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+
+    return styles
+  }
+
   get isCheck () {
     return this.label === this.value
   }
@@ -54,11 +70,11 @@ export default class MRadio extends Vue {
     return (
       <a staticClass={`${_name}__radio`}>
         <transition name='m--transition-scale'>
-          {!isCheck ? undefined
-            : <m-icon class={`${_name}__checked-icon`}
+          {!isCheck ? undefined : (
+            <m-icon staticClass={`${_name}__checked-icon`}
                     name={checkedIcon}
                     size={size}/>
-          }
+          )}
         </transition>
         <MIcon class={`${_name}__uncheck-icon`} size={size} name={uncheckIcon} />
         <div v-m-ripple staticClass={`${_name}__radio-wrapper`} />
