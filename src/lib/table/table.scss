@@ -1,23 +1,27 @@
 @import "~@megmore/scss-helper/import";
 $--m-transition-table-base: ease .3s;
 
+$--m-table-cell-space-xs: .2rem;
+$--m-table-cell-space-sm: .4rem;
+$--m-table-cell-space-md: .6rem;
+$--m-table-cell-space-lg: .8rem;
+$--m-table-cell-space-xl: 1rem;
 /**
  * variables register.
  */
 .m-table {
     // selection
-    //--m-table-space-xs: #{$--m-table-size-xs};
-    //--m-table-space-sm: #{$--m-table-size-sm};
-    //--m-table-space-md: #{$--m-table-size-md};
-    //--m-table-space-lg: #{$--m-table-size-lg};
-    //--m-table-space-xl: #{$--m-table-size-xl};
-
+    --m-table-cell-space-xs: #{$--m-table-cell-space-xs};
+    --m-table-cell-space-sm: #{$--m-table-cell-space-sm};
+    --m-table-cell-space-md: #{$--m-table-cell-space-md};
+    --m-table-cell-space-lg: #{$--m-table-cell-space-lg};
+    --m-table-cell-space-xl: #{$--m-table-cell-space-xl};
     // default
     --m-table-color: var(--m-bg-color);
     --m-table-bg-color: var(--m-bg-color);
     --m-table-font-color: var(--m-font-color);
-    --m-table-active-color: var(--m-color-main);
-    --m-table-size: var(--m-table-size-md);
+    --m-table-active-color: var(--m-border-color);
+    --m-table-cell-space: var(--m-table-cell-space-md);
 }
 
 /**
@@ -63,30 +67,6 @@ $--m-transition-table-base: ease .3s;
                 bottom: 0;
             }
         }
-    }
-
-    .m-table__wrapper {
-        overflow: auto;
-        background-color: inherit;
-        @include slim-scroll-bar(xy);
-        width: 100%;
-    }
-    .m-table-head {
-        min-width: 100%;
-        background-color: inherit;
-    }
-    .m-table-body {
-        width: 100%;
-        background-color: inherit;
-        tr {
-            cursor: pointer;
-        }
-    }
-    .m-table-body__row {
-        transition: background-color $--m-transition-table-base;
-    }
-    .m-table-body__expand {
-        width: 100%;
     }
 
     // size
@@ -141,29 +121,50 @@ $--m-transition-table-base: ease .3s;
             //@include hover-bg();
         }
     }
+}
 
-
-    .m-table-body__row {
-        // row selected
-        &.m--selected {
-            background-color: var(--m-table-active-color);
-        }
-        // row disabled
-        &.m--disabled {
-            background-color: var(--m-table-active-color);
-        }
+.m-table__wrapper {
+    overflow: auto;
+    background-color: inherit;
+    @include slim-scroll-bar(xy);
+    width: 100%;
+}
+.m-table-head {
+    min-width: 100%;
+    background-color: inherit;
+}
+.m-table-body {
+    width: 100%;
+    background-color: inherit;
+    tr {
+        cursor: pointer;
     }
-
-    // expand
-    .m-table-body__expand {
-        height: 0 !important;
-        max-width: 100%;
-        > td {
-            padding: 0;
-        }
-        .m-table-body__expand-content {
-            box-shadow: var(--m-elevation-2) inset;
-            background-color: var(--m-table-active-color);
-        }
+}
+.m-table-body__row {
+    transition: background-color $--m-transition-table-base;
+    min-height: var(--m-table-cell-size);
+    // row selected
+    &.m--selected {
+        background-color: var(--m-table-active-color);
     }
+    // row disabled
+    &.m--disabled {
+        background-color: var(--m-table-active-color);
+    }
+}
+.m-table-head__cell,
+.m-table-body__cell {
+    padding: var(--m-table-cell-space) 0;
+}
+.m-table-body__expand {
+    width: 100%;
+    height: 0 !important;
+    max-width: 100%;
+    > td {
+        padding: 0;
+    }
+}
+.m-table-body__expand-content {
+    box-shadow: var(--m-elevation-2) inset;
+    background-color: var(--m-table-active-color);
 }

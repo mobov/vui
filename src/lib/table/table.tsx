@@ -6,31 +6,31 @@ import TableBody from './components/body'
 
 const _name = 'm-table'
 const selfKeyField = '_table-key'
-const selfSelectField = '_table-select'
-const selfExpandField = '_table-expand'
+// const selfSelectField = '_table-select'
+// const selfExpandField = '_table-expand'
 
 @Component({ components: { TableHead, TableBody } })
 export default class MTable extends Vue {
-  @Prop({ type: Array, default: () => [] })
-  private data!: any
-
-  @Prop({ type: String, default: selfKeyField })
-  private keyField?: string
-
-  @Prop({ type: String, default: 'primary' })
+  @Prop({ type: String })
   private color?: Color
 
   @Prop({ type: Number, default: 2 })
   private elevation?: number
 
-  @Prop({ type: String, default: 'md' })
+  @Prop({ type: String })
   private size?: Size
 
-  @Prop({ type: [String, Number], default: 'auto' })
+  @Prop({ type: [String, Number] })
   private height?: string | number
 
   @Prop({ type: Boolean, default: false })
   private border?: boolean
+
+  @Prop({ type: Array, default: () => [] })
+  private data!: any
+
+  @Prop({ type: String, default: selfKeyField })
+  private keyField?: string
 
   @Prop({ type: String, default: 'unset' })
   private header?: 'unset' | 'sticky' | 'none'
@@ -65,7 +65,7 @@ export default class MTable extends Vue {
   @Prop({ type: String, default: 'single' })
   private filterMulti?: string
 
-  private get classes () {
+  get classes () {
     const { border, header, hover } = this
 
     return {
@@ -231,17 +231,15 @@ export default class MTable extends Vue {
   render () {
     const { height, border, header, classes, size, select, expand, rowSelect, rowExpand } = this
     const noHeader = header === 'none'
-    console.log(noHeader)
+
     return (
       <div staticClass={`${_name}`} class={classes}>
-        <div staticClass={`${_name}__wrapper`}>
-          { noHeader ? undefined : (
-              <TableHead ref={'head'}
-                         size={size}
-                         select={select}/>
-            )
-
-          }
+        <section staticClass={`${_name}__wrapper`}>
+          {noHeader ? undefined : (
+            <TableHead ref={'head'}
+                       size={size}
+                       select={select}/>
+          )}
           <TableBody ref={'body'}
                      size={size}
                      height={height}
@@ -251,7 +249,7 @@ export default class MTable extends Vue {
                      rowSelect={rowSelect}
                      rowExpand={rowExpand}
                      noHeader={noHeader} />
-        </div>
+        </section>
       </div>
     )
   }

@@ -206,7 +206,7 @@ export default class TableBody extends Vue {
       <tr staticClass={`${_name}__expand`}>
         <td colSpan={TableCols.length}>
           <MTransitionExpansion>
-            { !isExpanded ? undefined : (
+            {!isExpanded ? undefined : (
               <div staticClass={`${_name}__expand-content`}>
                 {this.$parent.$scopedSlots.expand(row)}
               </div>

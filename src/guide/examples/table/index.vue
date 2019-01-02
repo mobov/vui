@@ -8,16 +8,15 @@
              key-field="name"
              select="single"
              expand="single"
-             row-select
              row-expand
              height="300px"
              hover="row">
       <m-table-col type="select" width="80"/>
       <m-table-col title="name" field="name" />
       <m-table-col title="calories" field="calories" />
-      <template slot="expand" slot-scope="scope">
+      <div class="m--p-md" slot="expand" slot-scope="scope">
         表格expand内容{{scope}}
-      </template>
+      </div>
     </m-table>
   </div>
 </template>
