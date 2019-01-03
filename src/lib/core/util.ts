@@ -1,5 +1,6 @@
 import Buffer from './buffer'
 import { COLORS } from './constant'
+import { isStyleUnit } from '@megmore/es-helper'
 
 /**
  * 验证是否是色板值
@@ -7,7 +8,6 @@ import { COLORS } from './constant'
  * @param {string | number} val
  * @return {boolean}
  */
-
 export function isPalette (val: string | number): boolean {
   return typeof val === 'number'
     ? false
@@ -38,4 +38,15 @@ export function getCSSVal (val: string): string {
     : isCSSVar(val)
       ? Buffer.docStyles.getPropertyValue(val).trim()
       : val
+}
+
+/**
+ * 获取真实渲染样式尺寸
+ * @param value
+ * @return {string}
+ */
+export function getStyleSize (value: string | number): string {
+  return (typeof value !== 'number' && isStyleUnit(value))
+    ? value
+    : `${value}px`
 }

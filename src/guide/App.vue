@@ -16,7 +16,7 @@
           A
         </m-avatar>
       </m-app-bar>
-      <div v-if="showLeft" slot="left" style="height: 100%" class="m--elevation-2">
+      <div v-if="showLeft" slot="left" style="height: 100%" class="m-elevation-2">
         <doc-entries></doc-entries>
       </div>
       <router-view />

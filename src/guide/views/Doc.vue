@@ -9,7 +9,7 @@
 </style>
 
 <template>
-  <div class="doc m--elevation-1 m--p-md">
+  <div class="doc m-elevation-1 m-p-md">
     <div class="doc-title">{{docName}}</div>
     <component  :is="example"></component>
     <api-section :api-path="docPath"></api-section>

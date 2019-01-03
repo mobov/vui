@@ -1,6 +1,6 @@
-import { BREAKPOINT, BREAKPOINTS } from '@/lib/core/constant'
+import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP, BREAKPOINT, BREAKPOINTS } from '@/lib/core/constant'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { genStaticStyles } from '@/lib/core/style-gen'
+import { genStaticStyles, genSpace } from '@/lib/core/style-gen'
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 
 const _name = 'm-col'
@@ -30,12 +30,20 @@ export default class MCol extends Vue {
   @Prop({ type: Number })
   private xl!: number
 
+  @Prop({ type: [String, Number] })
+  private gutter!: string
+
   render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass = `${_name} ${staticClass} `
+    data.staticClass = ` ${_name} ${staticClass} `
     data.staticClass = data.staticClass.trim()
 
-    if (!(data.staticStyle)) { data.staticStyle = {} }
+    if (!data.staticStyle) {
+      data.staticStyle = {}
+    }
+    if (props.gutter) {
+      genSpace(data.staticStyle, _name, 'gutter', props.gutter)
+    }
     BREAKPOINTS.forEach((breakpoint: string) => {
       if (props[breakpoint]) {
         genStaticStyles(data.staticStyle, _name, `span-${breakpoint}`, props[breakpoint])

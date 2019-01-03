@@ -666,10 +666,10 @@
   dependencies:
     clipboard "^2.0.0"
 
-"@megmore/scss-helper@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@megmore/scss-helper/-/scss-helper-0.0.3.tgz#10f271451eae28525e2fc6f68abd1bd5ccdec073"
-  integrity sha512-DnoaN22Q3q0SghFKgALTWC9goNAIMfc9nol8QgT9RZOSYrsi+z3nAfqCX+xyQGUDvtMKKtZTfjeiJIkRF/WarA==
+"@megmore/scss-helper@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/@megmore/scss-helper/-/scss-helper-0.0.4.tgz#b89a64db52e0f804ea1a636b7a0002ec542e9cea"
+  integrity sha512-4DJnpOK0I/kv3TRMcBJDsBt+eqP/dbl4gx/LZSo9ZCfY/PdvIhbnPOrESifkPQHPBQXbw2+mlf2TKqYaHV0i5w==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

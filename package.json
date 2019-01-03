@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@megmore/es-helper": "^0.0.24",
-    "@megmore/scss-helper": "^0.0.3",
+    "@megmore/scss-helper": "^0.0.4",
     "color": "^3.1.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.3.2",

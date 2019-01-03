@@ -56,8 +56,8 @@ export default class MAvatar extends Vue {
     const { variety, shape, status } = this
 
     return {
-      [`m--variety-${variety}`]: true,
-      [`m--shape-${shape}`]: true,
+      [`m-variety-${variety}`]: true,
+      [`m-shape-${shape}`]: true,
       [`m--status-${STATUS[status]}`]: true
     }
   }

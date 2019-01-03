@@ -46,5 +46,9 @@ export default [
   {
     name: 'time-picker',
     docSrc: 'time-picker/time-picker.md'
+  },
+  {
+    name: 'table',
+    docSrc: 'table/table.md'
   }
 ]

@@ -56,8 +56,8 @@ export default class MButton extends Vue {
     const { variety, shape, block } = this
 
     return {
-      [`m--variety-${variety}`]: true,
-      [`m--shape-${shape}`]: true,
+      [`m-variety-${variety}`]: true,
+      [`m-shape-${shape}`]: true,
       'm--block': block
     }
   }

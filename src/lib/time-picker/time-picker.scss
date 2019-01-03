@@ -223,7 +223,7 @@ $--m-time-picker-landscope-header-width: 11rem;
 }
 
 .m-time-picker-handler {
-    border-top: var(--m-border-base);
+    border-top: 1px solid var(--m-border-color);
     display: flex;
     align-items: center;
     justify-content: flex-end;

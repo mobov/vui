@@ -4,13 +4,12 @@ import { genColor, genElevation, genSize, genHover } from '@/lib/core/style-gen'
 import MAvatar from '../avatar'
 import MIcon from '../icon'
 
-const prefix = 'm-chip'
+const _name = 'm-chip'
 
-@Component({ components: { MAvatar, MIcon }})
+@Component({ components: { MAvatar, MIcon } })
 export default class MChip extends Vue {
-
   @Prop({ type: String })
-  private size!: Size | string
+  private size!: Size
 
   @Prop({ type: String })
   private color!: Color
@@ -33,70 +32,70 @@ export default class MChip extends Vue {
   @Prop({ type: Boolean, default: false })
   private closeover!: boolean
 
-  get styles() {
+  get styles () {
     const { color, fontColor, size, elevation } = this
     const styles = { }
 
-    genColor(styles, prefix, 'color', color)
-    genColor(styles, prefix, 'font-color', fontColor)
-    genSize(styles, prefix, 'size', size)
-    genElevation(styles, prefix, elevation)
-    genHover(styles, prefix, 'hover-color', color)
+    genColor(styles, _name, 'color', color)
+    genColor(styles, _name, 'font-color', fontColor)
+    genSize(styles, _name, 'size', size)
+    genElevation(styles, _name, elevation)
+    genHover(styles, _name, 'hover-color', color)
 
     return styles
   }
 
-  get classes() {
+  get classes () {
     const { variety, shape, closeable, closeover } = this
 
-    return{
-      [`m--variety-${variety}`]: true,
-      [`m--shape-${shape}`]: true,
-      [`${prefix}--closeable`]: closeable,
-      [`${prefix}--closeover`]: closeover,
+    return {
+      [`m-variety-${variety}`]: true,
+      [`m-shape-${shape}`]: true,
+      [`${_name}--closeable`]: closeable,
+      [`${_name}--closeover`]: closeover
     }
   }
 
   @Emit('close')
-  onClose(e: MouseEvent): void { e.stopPropagation() }
+  onClose (e: MouseEvent): void { e.stopPropagation() }
 
   @Emit('click')
-  onClick(e: MouseEvent): void {  }
+  onClick (e: MouseEvent): void {}
 
-  RMedia()  {
+  RMedia () {
     const { $slots } = this
 
     if ($slots.media) {
       if (!$slots.media[0]!.data!.staticClass) {
         $slots.media[0]!.data!.staticClass = ''
       }
-      $slots.media[0]!.data!.staticClass += ` ${prefix}__media`
+      $slots.media[0]!.data!.staticClass += ` ${_name}__media`
 
       return $slots.media
     }
     return undefined
   }
 
-  RClose() {
+  RClose () {
     const { closeable, closeover, onClose } = this
 
     return (
       closeable || closeover
-        ? <MIcon class={`${prefix}__close`} onClick={onClose} name='cancel' />
+        ? <MIcon class={`${_name}__close`} onClick={onClose} name='cancel' />
         : undefined
     )
   }
 
-  render() {
-    const { classes, styles, $slots,  RMedia, RClose, onClick } = this
+  render () {
+    const { classes, styles, $slots, RMedia, RClose, onClick } = this
 
     return (
-      <div staticClass={prefix}
+      <div staticClass={_name}
            style={styles}
            class={classes}
            onClick={onClick}>
         {RMedia()}
-        <div staticClass={`${prefix}__main`}>
+        <div staticClass={`${_name}__main`}>
           {$slots.default}
         </div>
         {RClose()}

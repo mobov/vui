@@ -1,0 +1,22 @@
+$--m-transition-expansion: .1s cubic-bezier(0.23, 1, 0.32, 1);
+
+.m-transition-expansion-enter-active,
+.m-transition-expansion-leave-active {
+    transition: all .35s $--m-transition-expansion;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    will-change: height;
+    overflow: hidden;
+    //opacity: 0;
+}
+
+.m-transition-scale-enter-active,
+.m-transition-scale-leave-active {
+    transition: all .2s ease;
+    backface-visibility: hidden;
+}
+.m-transition-scale-enter,
+.m-transition-scale-leave-active {
+    transform: scale(0);
+    opacity: 0;
+}

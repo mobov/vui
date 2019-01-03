@@ -1,9 +1,3 @@
-<style lang="scss">
-  .example-view {
-    width: 100%;
-    height: 500px;
-  }
-</style>
 <template>
   <div class="example-button">
     <section>
@@ -11,7 +5,7 @@
       <m-button :color="color"
                 style="width: 80px"
                 :key="color"
-                class="m--mr-sm"
+                class="m-mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -20,7 +14,7 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
-                class="m--mr-sm"
+                class="m-mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
@@ -29,12 +23,12 @@
                 style="width: 80px"
                 :color="color"
                 :key="color"
-                class="m--mr-sm"
+                class="m-mr-sm"
                 v-for="color in COLORS">{{color}}</m-button>
     </section>
     <section>
       <m-button :size="size"
-                class="m--px-md m--mr-sm"
+                class="m-px-md m-mr-sm"
                 :key="size"
                 v-for="size in BREAKPOINTS">{{size}}</m-button>
 
@@ -49,7 +43,7 @@
   const { COLORS, BREAKPOINTS } = Megmore.constant
 
   export default {
-    name: 'ExampleCheckbox',
+    name: 'ExampleButton',
     components: { MButton },
     data () {
       return {
@@ -59,7 +53,3 @@
     }
   }
 </script>
-
-<style lang='scss' scoped>
-
-</style>

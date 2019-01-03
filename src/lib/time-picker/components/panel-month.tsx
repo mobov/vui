@@ -31,7 +31,7 @@ export default class MTimePickerPanelMonth extends Vue {
       const isCurrent = tempValue === month
       Cols.push(
         <MButton size="sm"
-                 class="m--m-0 m--p-0"
+                 class="m-m-0 m-p-0"
                  shape="circle"
                  elevation={0}
                  variety={isCurrent ? 'normal' : 'flat'}

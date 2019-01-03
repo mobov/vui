@@ -16,8 +16,8 @@
       </m-avatar>
       <m-icon name="menu" />
     </m-app-bar>
-    <div v-if="isLeft" slot="left" style="background-color: powderblue;height: 100%" class="m--elevation-2"></div>
-    <div v-if="isRight" slot="right" style="background-color: powderblue;height: 100%" class="m--elevation-2"></div>
+    <div v-if="isLeft" slot="left" style="background-color: powderblue;height: 100%" class="m-elevation-2"></div>
+    <div v-if="isRight" slot="right" style="background-color: powderblue;height: 100%" class="m-elevation-2"></div>
     <m-app-bar v-if="isFooter" slot="footer" size="md" font-color="white" :elevation="2"></m-app-bar>
     <m-button @click="isHeader = !isHeader">isHeader</m-button>
     <m-button @click="isFooter = !isFooter">isFooter</m-button>
