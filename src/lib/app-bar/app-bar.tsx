@@ -38,7 +38,7 @@ export default class MAppBar extends Vue {
     const { variety } = this
 
     return {
-      [`m--variety-${variety}`]: true,
+      [`m-variety-${variety}`]: true,
     }
   }
 

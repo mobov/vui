@@ -12,7 +12,7 @@
  * common modifier class output.
  */
 @each $index, $elevation in $--Elevations {
-    .m--elevation-#{$index} {
+    .m-elevation-#{$index} {
         box-shadow: #{$elevation};
     }
 }

@@ -49,8 +49,8 @@ export default class MChip extends Vue {
     const { variety, shape, closeable, closeover } = this
 
     return {
-      [`m--variety-${variety}`]: true,
-      [`m--shape-${shape}`]: true,
+      [`m-variety-${variety}`]: true,
+      [`m-shape-${shape}`]: true,
       [`${_name}--closeable`]: closeable,
       [`${_name}--closeover`]: closeover
     }

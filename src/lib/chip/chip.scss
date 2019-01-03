@@ -58,21 +58,21 @@
         }
         transition: padding-right ease .3s;
     }
-    &.m--variety-outline {
+    &.m-variety-outline {
         border-style: solid;
         border-width: 1px;
     }
     // shape
-    &.m--shape-circle {
+    &.m-shape-circle {
         border-radius: var(--m-chip-size);
         .m-chip__media {
             border-radius: 50%;
         }
     }
-    &.m--shape-round {
+    &.m-shape-round {
         border-radius: var(--m-shape-round);
     }
-    &.m--shape-square {
+    &.m-shape-square {
         border-radius: var(--m-shape-square);
     }
 }

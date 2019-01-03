@@ -26,30 +26,55 @@
 </style>
 <template>
   <div class="example">
-    <m-view class="example-view m--elevation-4"
-            :fill-header="fillHeader"
-            :fill-footer="fillFooter"
-            left-size="300px"
-            header-size="4rem">
-      <div class="view-header" v-if="isHeader" slot="header"></div>
-      <div class="view-left" v-if="isLeft" slot="left" ></div>
-      <div class="view-right" v-if="isRight" slot="right"></div>
-      <div class="view-footer" v-if="isFooter" slot="footer" size="md" font-color="white" :elevation="2"></div>
-      <div class="view-main"></div>
-    </m-view>
-    <div class="m--py-sm">
-      <m-button class="m--ml-0" @click="isHeader = !isHeader">isHeader</m-button>
+    <example-box>
+      <m-view class="example-view"
+              :fill-header="fillHeader"
+              :fill-footer="fillFooter"
+              left-size="300px"
+              header-size="4rem">
+        <div class="view-header" v-if="isHeader" slot="header"></div>
+        <div class="view-left" v-if="isLeft" slot="left" ></div>
+        <div class="view-right" v-if="isRight" slot="right"></div>
+        <div class="view-footer" v-if="isFooter" slot="footer" size="md" font-color="white" :elevation="2"></div>
+        <div class="view-main"></div>
+      </m-view>
+      <template slot="handler">
+        <m-div align="center" :cols="3">
+          <m-div :xs="1" align="center">fillHeader</m-div>
+          <m-div :xs="2" align="center">
+            <m-radio class="m-mr-sm" v-model="fillHeader" label="none">none</m-radio>
+            <m-radio class="m-mr-sm" v-model="fillHeader" label="both">both</m-radio>
+            <m-radio class="m-mr-sm" v-model="fillHeader" label="left">left</m-radio>
+            <m-radio class="m-mr-sm" v-model="fillHeader" label="right">right</m-radio>
+          </m-div>
+        </m-div>
+        <m-row align="center">
+          <span class="m-mr-sm">fillFooter:</span>
+          <m-radio class="m-mr-sm" v-model="fillFooter" label="none">none</m-radio>
+          <m-radio class="m-mr-sm" v-model="fillFooter" label="both">both</m-radio>
+          <m-radio class="m-mr-sm" v-model="fillFooter" label="left">left</m-radio>
+          <m-radio class="m-mr-sm" v-model="fillFooter" label="right">right</m-radio>
+        </m-row>
+        <m-button class="m-ml-0" @click="isHeader = !isHeader">isHeader</m-button>
+        <m-button @click="isFooter = !isFooter">isFooter</m-button>
+        <m-button @click="isLeft = !isLeft">isLeft</m-button>
+        <m-button @click="isRight = !isRight">isRight</m-button>
+      </template>
+    </example-box>
+
+    <div class="m-py-sm">
+      <m-button class="m-ml-0" @click="isHeader = !isHeader">isHeader</m-button>
       <m-button @click="isFooter = !isFooter">isFooter</m-button>
       <m-button @click="isLeft = !isLeft">isLeft</m-button>
       <m-button @click="isRight = !isRight">isRight</m-button>
     </div>
-    <div class="m--py-sm">
+    <div class="m-py-sm">
       <m-button @click="fillHeader = 'both'">header-both</m-button>
       <m-button @click="fillHeader = 'left'">header-left</m-button>
       <m-button @click="fillHeader = 'right'">header-right</m-button>
       <m-button @click="fillHeader = 'none'">header-none</m-button>
     </div>
-    <div class="m--py-sm">
+    <div class="m-py-sm">
       <m-button @click="fillFooter = 'both'">footer-both</m-button>
       <m-button @click="fillFooter = 'left'">footer-left</m-button>
       <m-button @click="fillFooter = 'right'">footer-right</m-button>
@@ -60,11 +85,12 @@
 </template>
 
 <script>
+  import ExampleBox from '../../components/example-box'
   import { MView } from '@/lib'
 
   export default {
     name: 'ExampleView',
-    components: { MView },
+    components: { ExampleBox, MView },
     data () {
       return {
         fillHeader: 'both',

@@ -6,7 +6,7 @@
 </style>
 <template>
   <div class="example-radio">
-    <m-radio class="m--mr-md"
+    <m-radio class="m-mr-md"
              :key="item"
              v-model="radio"
              :label="item"

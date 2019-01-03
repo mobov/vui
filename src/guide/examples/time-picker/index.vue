@@ -6,7 +6,7 @@
 </style>
 <template>
   <div class="example-time-picker">
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="datetime"
                      desync confirmation
                      value-format="Date"
@@ -14,35 +14,35 @@
                      v-model="dateValue"
                      :elevation=2 />
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="date"
                      value-format="Date"
                      v-model="dateValue"
                      :elevation=2 />
 
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="time"
                      value-format="Date"
                      ampm
                      v-model="dateValue"
                      :elevation=2 />
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="year"
                      value-format="Date"
                      ampm
                      v-model="dateValue"
                      :elevation=2 />
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="month"
                      value-format="Date"
                      ampm
                      v-model="dateValue"
                      :elevation=2 />
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="datetime"
                      confirmation
                      landscope
@@ -50,7 +50,7 @@
                      v-model="dateValue"
                      :elevation=2 />
     </div>
-    <div class="m--mb-md">
+    <div class="m-mb-md">
       <m-time-picker picker-type="datetime"
                      landscope
                      value-format="Date"

@@ -4,6 +4,10 @@ export type Variety = 'normal' | 'flat' | 'outline' //  类型
 export type Shape = 'square' | 'corner' | 'round' | 'circle' //  形状
 export type Align = 'left' | 'center' | 'right' //  水平轴
 
+export type FlexAlign = 'start' | 'center' | 'stretch' | 'end'
+export type FlexWrap = 'normal' | 'reverse' | 'none'
+export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
+
 export type Image = URL | Uint8ClampedArray
 
 export type Fill = 'left' | 'both' | 'right' | 'none'

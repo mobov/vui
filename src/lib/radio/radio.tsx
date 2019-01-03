@@ -36,6 +36,7 @@ export default class MRadio extends Vue {
   private onInput (val: any) {}
 
   get classes () {
+
     return {
       'm--disabled': this.disabled,
       'm--checked': this.isCheck

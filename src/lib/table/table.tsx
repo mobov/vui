@@ -70,7 +70,7 @@ export default class MTable extends Vue {
     const { border, header, hover } = this
 
     return {
-      [`m--elevation-${this.elevation}`]: true,
+      [`m-elevation-${this.elevation}`]: true,
       [`m--${this.size}`]: true,
       'm--border': border,
       'm--sticky-header': header === 'sticky',

@@ -32,7 +32,7 @@ export default class MTimePickerPanelYear extends Vue {
       const isCurrent = tempYear === year
       Cols.push(
         <MButton size="sm"
-          class="m--m-0 m--p-0"
+          class="m-m-0 m-p-0"
           shape="circle"
           elevation={0}
           variety={isCurrent ? 'normal' : 'flat'}

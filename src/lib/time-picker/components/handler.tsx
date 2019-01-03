@@ -22,7 +22,7 @@ export default class MTimePickerHandler extends Vue {
         const { onConfirm, onCancel } = this
 
         return (
-            <div staticClass={`${_name} m--p-sm`}>
+            <div staticClass={`${_name} m-p-sm`}>
                 <MButton size="sm"
                          style={{width: '5rem'}}
                          variety="flat"

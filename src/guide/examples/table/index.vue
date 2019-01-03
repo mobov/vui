@@ -1,20 +1,22 @@
 
 <template>
   <div class="example-table">
+    <m-app-bar></m-app-bar>
     <m-table border
-             class="m--mb-lg"
+             header="sticky"
+             class="m-mb-lg"
              :data="tableData"
              :selected.sync="selectedData"
              key-field="name"
-             select="single"
-             expand="single"
+             select="multi"
+             expand="multi"
              row-expand
-             height="300px"
+             height="400px"
              hover="row">
       <m-table-col type="select" width="80"/>
       <m-table-col title="name" field="name" />
       <m-table-col title="calories" field="calories" />
-      <div class="m--p-md" slot="expand" slot-scope="scope">
+      <div class="m-p-md" slot="expand" slot-scope="scope">
         表格expand内容{{scope}}
       </div>
     </m-table>

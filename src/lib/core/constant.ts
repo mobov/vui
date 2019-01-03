@@ -58,3 +58,26 @@ export enum FILL {
   right = 'right',
   none = 'none'
 }
+
+export enum FLEX_JUSTIFY {
+  start = 'start',
+  center = 'center',
+  end = 'end',
+  between = 'between',
+  around = 'around',
+  evenly = 'evenly',
+  none = 'none'
+}
+
+export enum FLEX_WRAP {
+  normal = 'normal',
+  reverse = 'reverse',
+  none = 'none'
+}
+
+export enum FLEX_ALIGN {
+  start = 'start',
+  center = 'center',
+  end = 'end',
+  stretch = 'stretch',
+}
