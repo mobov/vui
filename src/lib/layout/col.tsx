@@ -35,7 +35,7 @@ export default class MCol extends Vue {
 
   render (h: CreateElement, { props, data, children }: RenderContext) {
     const staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass = `${_name} ${staticClass} `
+    data.staticClass = ` ${_name} ${staticClass} `
     data.staticClass = data.staticClass.trim()
 
     if (!data.staticStyle) {

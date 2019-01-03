@@ -33,7 +33,7 @@ export default class MRow extends Vue {
 
   render (h: CreateElement, { props, data, children }: RenderContext) {
     data.staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass += `${_name} m-flex-wrap-${props.wrap} m-flex-justify-${props.justify} m-flex-align-${props.align} `
+    data.staticClass += ` ${_name} m-flex-wrap-${props.wrap} m-flex-justify-${props.justify} m-flex-align-${props.align} `
     data.staticClass = data.staticClass.trim()
     if (!data.staticStyle) {
       data.staticStyle = {}
