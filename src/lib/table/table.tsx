@@ -4,6 +4,7 @@ import { Size, Color } from '@/types/model'
 import TableHead from './components/head'
 import TableBody from './components/body'
 import { BREAKPOINT } from '@/lib/core/constant'
+import {genColor, genSize} from "@/lib/core/style-gen";
 
 const _name = 'm-table'
 const selfKeyField = '_table-key'
@@ -33,8 +34,8 @@ export default class MTable extends Vue {
   @Prop({ type: String, default: selfKeyField })
   private keyField?: string
 
-  @Prop({ type: String, default: 'unset' })
-  private header?: 'unset' | 'sticky' | 'none'
+  @Prop({ type: String, default: 'default' })
+  private header?: 'default' | 'sticky' | 'none'
 
   @Prop({ type: String, default: 'none' })
   private hover?: 'none' | 'row' | 'cell'
@@ -60,6 +61,9 @@ export default class MTable extends Vue {
   @Prop({ type: [Array, String, Number], default: () => [] })
   private expanded?: any | string | number
 
+  @Prop({ type: Array, default: () => [] })
+  private noExpand?: any
+
   @Prop({ type: Function })
   private filter?: () => boolean
 
@@ -71,12 +75,21 @@ export default class MTable extends Vue {
 
     return {
       [`m-elevation-${this.elevation}`]: true,
-      [`m--${this.size}`]: true,
       'm--border': border,
       'm--sticky-header': header === 'sticky',
       [`m--${hover}-hover`]: hover !== 'none'
     }
   }
+
+  get styles () {
+    const { color, size } = this
+    const styles = { }
+
+    genSize(styles, _name, 'row-size', size)
+
+    return styles
+  }
+
     // 数据输入适配
   dataAdaptI (val: any): any {
     const { keyField } = this
@@ -185,6 +198,7 @@ export default class MTable extends Vue {
       this.syncSelected(this.TableStore.Selected)
     },
     SET_EXPANDED: (index: number): void => {
+      console.log(index)
       const { expand } = this
       const { Data, keyField } = this.TableStore
       const keyValue = Data[index][keyField]
@@ -230,11 +244,12 @@ export default class MTable extends Vue {
   }
 
   render () {
-    const { height, border, header, classes, size, select, expand, rowSelect, rowExpand } = this
+    const { height, border, header, classes, styles, size,
+            select, expand, rowSelect, rowExpand } = this
     const noHeader = header === 'none'
 
     return (
-      <div staticClass={`${_name}`} class={classes}>
+      <div staticClass={`${_name}`} class={classes} style={styles}>
         <section staticClass={`${_name}__wrapper`}>
           {noHeader ? undefined : (
             <TableHead ref={'head'}

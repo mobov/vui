@@ -1,27 +1,27 @@
 @import "~@megmore/scss-helper/import";
 $--m-transition-table-base: ease .3s;
 
-$--m-table-cell-space-xs: .2rem;
-$--m-table-cell-space-sm: .4rem;
-$--m-table-cell-space-md: .6rem;
-$--m-table-cell-space-lg: .8rem;
-$--m-table-cell-space-xl: 1rem;
+$--m-table-row-size-xs: 2rem;
+$--m-table-row-size-sm: 3rem;
+$--m-table-row-size-md: 4rem;
+$--m-table-row-size-lg: 5rem;
+$--m-table-row-size-xl: 6rem;
 /**
  * variables register.
  */
 .m-table {
     // selection
-    --m-table-cell-space-xs: #{$--m-table-cell-space-xs};
-    --m-table-cell-space-sm: #{$--m-table-cell-space-sm};
-    --m-table-cell-space-md: #{$--m-table-cell-space-md};
-    --m-table-cell-space-lg: #{$--m-table-cell-space-lg};
-    --m-table-cell-space-xl: #{$--m-table-cell-space-xl};
+    --m-table-row-size-xs: #{$--m-table-row-size-xs};
+    --m-table-row-size-sm: #{$--m-table-row-size-sm};
+    --m-table-row-size-md: #{$--m-table-row-size-md};
+    --m-table-row-size-lg: #{$--m-table-row-size-lg};
+    --m-table-row-size-xl: #{$--m-table-row-size-xl};
     // default
     --m-table-color: var(--m-bg-color);
     --m-table-bg-color: var(--m-bg-color);
     --m-table-font-color: var(--m-font-color);
-    --m-table-active-color: var(--m-border-color);
-    --m-table-cell-space: var(--m-table-cell-space-md);
+    --m-table-active-color: var(--m-day-bg-second-color);
+    --m-table-row-size: var(--m-table-row-size-md);
 }
 
 /**
@@ -112,13 +112,13 @@ $--m-table-cell-space-xl: 1rem;
 
     // hover
     &.m--row-hover {
-        .m-table-body__row {
-            //@include hover-bg();
+        .m-table-body__row:hover {
+            background-color: var(--m-table-active-color);
         }
     }
     &.m--cell-hover {
-        .m-table-body__cell {
-            //@include hover-bg();
+        .m-table-body__cell:hover {
+            background-color: var(--m-table-active-color);
         }
     }
 }
@@ -140,9 +140,14 @@ $--m-table-cell-space-xl: 1rem;
         cursor: pointer;
     }
 }
+.m-table-head__row,
+.m-table-body__row {
+    min-height: var(--m-table-row-size);
+    height: var(--m-table-row-size);
+}
 .m-table-body__row {
     transition: background-color $--m-transition-table-base;
-    min-height: var(--m-table-cell-size);
+
     // row selected
     &.m--selected {
         background-color: var(--m-table-active-color);
@@ -152,9 +157,8 @@ $--m-table-cell-space-xl: 1rem;
         background-color: var(--m-table-active-color);
     }
 }
-.m-table-head__cell,
 .m-table-body__cell {
-    padding: var(--m-table-cell-space) 0;
+    transition: background-color $--m-transition-table-base;
 }
 .m-table-body__expand {
     width: 100%;

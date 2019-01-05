@@ -1,45 +1,70 @@
 
 <template>
   <div class="example-table">
-    <m-app-bar></m-app-bar>
-    <m-table border
-             header="sticky"
-             class="m-mb-lg"
-             :data="tableData"
-             :selected.sync="selectedData"
-             key-field="name"
-             select="multi"
-             expand="multi"
-             row-expand
-             height="400px"
-             hover="row">
-      <m-table-col type="select" width="80"/>
-      <m-table-col title="name" field="name" />
-      <m-table-col title="calories" field="calories" />
-      <div class="m-p-md" slot="expand" slot-scope="scope">
-        表格expand内容{{scope}}
-      </div>
-    </m-table>
+    <example-box>
+      <m-table class="m-mb-lg"
+               key-field="name"
+               :data="tableData"
+               :selected.sync="selectedData"
+               :noselect.sync="noSelectData"
+               :expanded.sync="expandedData"
+               :noexpand.sync="noExpandData"
+               :size="PropsData.size"
+               :border="PropsData.border"
+               :header="PropsData.header"
+               :select="PropsData.select"
+               :expand="PropsData.expand"
+               :row-expand="PropsData['row-expand']"
+               :row-select="PropsData['row-select']"
+               :hover="PropsData.hover"
+               height="400px">
+        <m-table-col type="select" width="80"/>
+        <m-table-col title="name" field="name" />
+        <m-table-col title="calories" field="calories" />
+        <div class="m-p-md" slot="expand" slot-scope="scope">
+          表格expand内容{{scope}}
+        </div>
+      </m-table>
+      <template slot="handler">
+        <m-row class="m-my-md"
+               align="center"
+               :cols="24">
+          <template v-for="(prop, index) in Props">
+            <m-col class="m-mb-sm" :key="'field' + index" :xs="4" :md="2" align="center">{{prop.name}}</m-col>
+            <m-col class="m-mb-sm" :key="'value' + index" :xs="20" :md="10" align="center">
+              <m-radio class="m-mr-sm"
+                       v-model="prop.default"
+                       :key="index"
+                       v-for="(select, index) in prop.value"
+                       :label="select">{{select}}</m-radio>
+            </m-col>
+          </template>
+        </m-row>
+      </template>
+    </example-box>
   </div>
 </template>
 
 <script>
+  import ExampleBox from '../../components/example-box'
   import Megmore, { MTable, MTableCol } from '@/lib'
+  import Props from './props'
 
   const { COLORS } = Megmore.constant
 
   export default {
     name: 'ExampleAppBar',
-    components: { MTable, MTableCol },
+    components: { ExampleBox, MTable, MTableCol },
     data () {
       return {
         COLORS,
-        selectedData: ['Eclair'],
-        disSelectData: ['Cupcake'],
-        expandedData: ['Lollipop'],
+        Props,
+        selectedData: [],
+        noSelectData: [],
+        expandedData: [],
+        noExpandData: [],
         tableData: [
           {
-            isCheck: true,
             name: 'Frozen Yogurt',
             calories: 159,
             fat: 6.0,
@@ -48,7 +73,6 @@
             iron: 1
           },
           {
-            isCheck: false,
             name: 'Ice cream sandwich',
             calories: 237,
             fat: 9.0,
@@ -57,7 +81,6 @@
             iron: 1
           },
           {
-            isCheck: false,
             name: 'Eclair',
             calories: 262,
             fat: 16.0,
@@ -66,7 +89,6 @@
             iron: 7
           },
           {
-            isCheck: false,
             name: 'Cupcake',
             calories: 305,
             fat: 3.7,
@@ -75,7 +97,6 @@
             iron: 8
           },
           {
-            isCheck: false,
             name: 'Gingerbread',
             calories: 356,
             fat: 16.0,
@@ -84,7 +105,6 @@
             iron: 16
           },
           {
-            isCheck: false,
             name: 'Jelly bean',
             calories: 375,
             fat: 0.0,
@@ -93,7 +113,6 @@
             iron: 0
           },
           {
-            isCheck: true,
             name: 'Lollipop',
             calories: 392,
             fat: 0.2,
@@ -102,7 +121,6 @@
             iron: 2
           },
           {
-            isCheck: false,
             name: 'Honeycomb',
             calories: 408,
             fat: 3.2,
@@ -111,7 +129,6 @@
             iron: 45
           },
           {
-            isCheck: false,
             name: 'Donut',
             calories: 452,
             fat: 25.0,
@@ -120,7 +137,6 @@
             iron: 22
           },
           {
-            isCheck: false,
             name: 'KitKat',
             calories: 518,
             fat: 26.0,
@@ -130,10 +146,16 @@
           }
         ]
       }
+    },
+    computed: {
+      PropsData () {
+        const result = {}
+        this.Props.forEach(item => result[item.name] = item.default)
+        return result
+      }
+    },
+    created () {
+
     }
   }
 </script>
-
-<style lang='scss' scoped>
-
-</style>

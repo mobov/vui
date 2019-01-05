@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
+import { Component, Prop, Vue, Inject, Watch } from 'vue-property-decorator'
 import MIcon from '@/lib/icon'
 import { MTransitionExpansion } from '@/lib/transition'
 import MCheckbox from '@/lib/checkbox'
@@ -41,6 +41,9 @@ export default class TableBody extends Vue {
   @Inject()
   private TableStore!: any
 
+  @Watch('noHeader')
+  noHeaderToggle (val: string) { if (!val) { this.onDomUpdate() } }
+
   get selectable() {
       return this.select !== 'none'
   }
@@ -69,6 +72,7 @@ export default class TableBody extends Vue {
   }
 
   handleRowSelect (row: any, index: number) {
+    console.log(index)
     this.TableStore.SET_SELECTED(index)
   }
 
@@ -232,7 +236,7 @@ export default class TableBody extends Vue {
   }
 
   onDomUpdate () {
-    const { noHeader, border } = this
+    const { noHeader } = this
     const $tableBody: any = this.$el.querySelector('tbody')
 
     if (!!$tableBody.children.length && !noHeader) {

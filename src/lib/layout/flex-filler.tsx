@@ -9,7 +9,7 @@ const _name = 'm-flex-filler'
 export default class MFlexFiller extends Vue {
   render () {
     return (
-      <div class={_name} />
+      <div staticClass={_name} />
     )
   }
 }
