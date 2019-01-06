@@ -1,7 +1,7 @@
 <style lang="scss">
-  .doc {
-    font-weight: bold;
-  }
+  /*.doc {*/
+    /*font-weight: bold;*/
+  /*}*/
   .doc-title {
     font-size: 4rem;
     text-transform: capitalize;

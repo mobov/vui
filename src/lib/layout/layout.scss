@@ -65,6 +65,7 @@ $--Container-max-size: (
     }
 }
 
-.m-flex-filler {
-    flex-grow: 1!important
+.m-filler {
+    flex-grow: 1!important;
+    background-color: transparent;
 }

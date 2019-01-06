@@ -1,5 +1,8 @@
 .m-flex{
     display: flex;
+    &-inline {
+        display: inline-flex;
+    }
     &-wrap {
         &-normal {
             flex-wrap: wrap;

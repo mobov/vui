@@ -2,7 +2,7 @@ import './layout.scss'
 import MContainer from './container'
 import MRow from './row'
 import MCol from './col'
-import MFlexFiller from './flex-filler'
+import MFiller from './filler'
 
 /* istanbul ignore next */
 MContainer.install = (Vue) => {
@@ -14,13 +14,13 @@ MRow.install = (Vue) => {
 MCol.install = (Vue) => {
   Vue.component(MCol.name, MCol)
 }
-MFlexFiller.install = (Vue) => {
-  Vue.component(MFlexFiller.name, MFlexFiller)
+MFiller.install = (Vue) => {
+  Vue.component(MFiller.name, MFiller)
 }
 
 export {
   MContainer,
   MRow,
   MCol,
-  MFlexFiller
+  MFiller
 }
