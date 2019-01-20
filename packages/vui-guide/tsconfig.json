@@ -1,31 +1,38 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "lib": [
       "esnext",
       "dom",
       "dom.iterable",
       "scripthost"
-    ],
-    "strict": true,
-    "jsx": "preserve",
-//    "jsxFactory": "h",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": "./packages",
-    "types": [
-      "webpack-env"
-    ],
-    "paths": {
-      "@megmore/vui": ["./vui/src"],
-      "@megmore/vui/*": ["./vui/src/*"]
-    }
+    ]
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
