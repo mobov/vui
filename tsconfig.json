@@ -22,8 +22,8 @@
       "webpack-env"
     ],
     "paths": {
-      "@megmore/vui": ["./vui/src"],
-      "@megmore/vui/*": ["./vui/src/*"]
+//      "@megmore/vui": ["./vui/src"],
+//      "@megmore/vui/*": ["./vui/src/*"]
     }
   },
   "exclude": [

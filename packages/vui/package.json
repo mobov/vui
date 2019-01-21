@@ -8,6 +8,8 @@
   "scripts": {
     "build": "node scripts/build"
   },
+  "main": "src/index.ts",
+  "types": "src/types/index.d.ts",
   "peerDependencies": {
     "@megmore/es-helper": "^0.0.24",
     "@megmore/scss-helper": "^0.0.4",
