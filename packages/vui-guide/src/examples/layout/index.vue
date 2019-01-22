@@ -21,21 +21,21 @@
 </template>
 
 <script>
-  import ExampleBox from '../../components/example-box'
-  import Megmore, { MRow, MCol } from '@/lib'
+import ExampleBox from '../../components/example-box'
+import Megmore, { MRow, MCol } from '@megmore/vui'
 
-  const { COLORS, BREAKPOINTS } = Megmore.constant
+const { COLORS, BREAKPOINTS } = Megmore.constant
 
-  export default {
-    name: 'ExampleDiv',
-    components: { ExampleBox, MRow, MCol },
-    data () {
-      return {
-        COLORS,
-        BREAKPOINTS
-      }
+export default {
+  name: 'ExampleDiv',
+  components: { ExampleBox, MRow, MCol },
+  data () {
+    return {
+      COLORS,
+      BREAKPOINTS
     }
   }
+}
 </script>
 
 <style lang='scss' scoped>

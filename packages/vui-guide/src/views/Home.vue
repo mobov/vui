@@ -39,10 +39,8 @@
 
 <script>
 import Vue from 'vue'
-import ApiSection from '../components/api-section.vue'
 
 export default Vue.extend({
-  components: { ApiSection },
   data () {
     return {
       checkVal: false,

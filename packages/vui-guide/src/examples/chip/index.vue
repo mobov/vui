@@ -71,22 +71,18 @@
 </template>
 
 <script>
-  import Megmore, { MChip } from '@/lib'
+import Megmore, { MChip } from '@megmore/vui'
 
-  const { COLORS, BREAKPOINTS } = Megmore.constant
+const { COLORS, BREAKPOINTS } = Megmore.constant
 
-  export default {
-    name: 'ExampleChip',
-    components: { MChip },
-    data () {
-      return {
-        COLORS,
-        BREAKPOINTS
-      }
+export default {
+  name: 'ExampleChip',
+  components: { MChip },
+  data () {
+    return {
+      COLORS,
+      BREAKPOINTS
     }
   }
+}
 </script>
-
-<style lang='scss' scoped>
-
-</style>

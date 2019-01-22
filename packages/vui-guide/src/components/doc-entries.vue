@@ -7,21 +7,21 @@
 </template>
 
 <script>
-  import docsData from '../data/docs'
+import docsData from '../data/docs'
 
-  export default {
-    name: 'doc-entries',
-    data () {
-      return {
-        docsData
-      }
-    },
-    methods: {
-      handleDocClick (name) {
-        this.$router.push(`/doc/${name}`)
-      }
+export default {
+  name: 'doc-entries',
+  data () {
+    return {
+      docsData
+    }
+  },
+  methods: {
+    handleDocClick (name) {
+      this.$router.push(`/doc/${name}`)
     }
   }
+}
 </script>
 
 <style lang="scss">

@@ -38,18 +38,18 @@
 </template>
 
 <script>
-  import Megmore, { MButton } from '@/lib'
+import Megmore, { MButton } from '@megmore/vui'
 
-  const { COLORS, BREAKPOINTS } = Megmore.constant
+const { COLORS, BREAKPOINTS } = Megmore.constant
 
-  export default {
-    name: 'ExampleButton',
-    components: { MButton },
-    data () {
-      return {
-        COLORS,
-        BREAKPOINTS
-      }
+export default {
+  name: 'ExampleButton',
+  components: { MButton },
+  data () {
+    return {
+      COLORS,
+      BREAKPOINTS
     }
   }
+}
 </script>

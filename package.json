@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test":  "lerna run serve --scope lerna-test --stream",
     "init": "lerna init",
     "bootstrap": "lerna bootstrap",
-    "vui-guide:start": "lerna run start --scope @megmore/vui-guide --stream",
+    "vui-guide:start": "lerna run serve --scope @megmore/vui-guide --stream",
     "vui:build": "lerna run build --scope @megmore/vui --stream"
   },
   "devDependencies": {
-    "lerna": "^3.10.5"
+    "lerna": "^3.10.6"
   },
   "workspaces": [
     "packages/*"

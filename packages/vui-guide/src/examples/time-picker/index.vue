@@ -61,19 +61,15 @@
 </template>
 
 <script>
-  import { MTimePicker } from '@/lib'
+import { MTimePicker } from '@megmore/vui'
 
-  export default {
-    name: 'ExampleTimePicker',
-    components: { MTimePicker },
-    data () {
-      return {
-        dateValue: new Date()
-      }
+export default {
+  name: 'ExampleTimePicker',
+  components: { MTimePicker },
+  data () {
+    return {
+      dateValue: new Date()
     }
   }
+}
 </script>
-
-<style lang='scss' scoped>
-
-</style>

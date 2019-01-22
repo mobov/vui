@@ -19,6 +19,12 @@
     "vue-property-decorator": "^7.2.0"
   },
   "devDependencies": {
+    "@megmore/es-helper": "^0.0.24",
+    "@megmore/scss-helper": "^0.0.4",
+    "color": "^3.1.0",
+    "vue": "^2.5.21",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.2.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",

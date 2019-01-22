@@ -15,19 +15,19 @@
 </template>
 
 <script>
-  import Megmore, { MAppBar } from '@/lib'
+import Megmore, { MAppBar } from '@megmore/vui'
 
-  const { COLORS } = Megmore.constant
+const { COLORS } = Megmore.constant
 
-  export default {
-    name: 'ExampleAppBar',
-    components: { MAppBar },
-    data () {
-      return {
-        COLORS
-      }
+export default {
+  name: 'ExampleAppBar',
+  components: { MAppBar },
+  data () {
+    return {
+      COLORS
     }
   }
+}
 </script>
 
 <style lang='scss' scoped>

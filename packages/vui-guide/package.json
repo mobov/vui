@@ -3,20 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
-    "guide:build": "vue-cli-service build",
-    "lib:build": "node scripts/build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@megmore/es-helper": "^0.0.24",
-    "@megmore/scss-helper": "^0.0.4",
-    "color": "^3.1.0",
+    "@megmore/vui": "^0.0.1",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.21",
-    "vue-class-component": "^6.3.2",
-    "vue-property-decorator": "^7.2.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -31,14 +25,9 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "lint-staged": "^8.1.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "typescript": "~3.1.1",
-    "vue-template-compiler": "^2.5.21",
-    "babel-core": "7.0.0-bridge.0",
-    "ts-jest": "^23.0.0",
-    "vue-markdown-loader": "^2.4.1",
-    "webpack-node-externals": "^1.7.2"
+    "vue-template-compiler": "^2.5.21"
   }
 }

@@ -68,25 +68,21 @@
 </template>
 
 <script>
-  import ExampleBox from '../../components/example-box'
-  import { MView } from '@/lib'
+import { MView } from '@megmore/vui'
+import ExampleBox from '../../components/example-box'
 
-  export default {
-    name: 'ExampleView',
-    components: { ExampleBox, MView },
-    data () {
-      return {
-        fillHeader: 'both',
-        fillFooter: 'both',
-        isHeader: true,
-        isFooter: true,
-        isLeft: true,
-        isRight: true
-      }
+export default {
+  name: 'ExampleView',
+  components: { ExampleBox, MView },
+  data () {
+    return {
+      fillHeader: 'both',
+      fillFooter: 'both',
+      isHeader: true,
+      isFooter: true,
+      isLeft: true,
+      isRight: true
     }
   }
+}
 </script>
-
-<style lang='scss' scoped>
-
-</style>

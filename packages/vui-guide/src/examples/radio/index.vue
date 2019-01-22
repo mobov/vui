@@ -17,15 +17,15 @@
 </template>
 
 <script>
-  import { MRadio } from '@/lib'
+import { MRadio } from '@megmore/vui'
 
-  export default {
-    name: 'ExampleRadio',
-    components: { MRadio },
-    data () {
-      return {
-        radio: '1'
-      }
+export default {
+  name: 'ExampleRadio',
+  components: { MRadio },
+  data () {
+    return {
+      radio: '1'
     }
   }
+}
 </script>

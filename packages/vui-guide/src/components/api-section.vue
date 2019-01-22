@@ -40,7 +40,9 @@ export default {
   },
   computed: {
     docData () {
-      return require(`@/lib/${this.apiPath}`).default
+      // console.log(this.apiPath)
+      // return ''
+      //  return require(`@megmore/vui/${this.apiPath}`).default
     }
   }
 }

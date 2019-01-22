@@ -11,19 +11,15 @@
 </template>
 
 <script>
-  import { MCheckbox } from '@/lib'
+import { MCheckbox } from '@megmore/vui'
 
-  export default {
-    name: 'ExampleCheckbox',
-    components: { MCheckbox },
-    data () {
-      return {
-        checkVal: false
-      }
+export default {
+  name: 'ExampleCheckbox',
+  components: { MCheckbox },
+  data () {
+    return {
+      checkVal: false
     }
   }
+}
 </script>
-
-<style lang='scss' scoped>
-
-</style>
