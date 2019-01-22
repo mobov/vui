@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig",
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.vue",
+    "./src/types/**/*.ts"
+  ]
+}

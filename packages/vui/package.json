@@ -1,0 +1,39 @@
+{
+  "name": "@megmore/vui",
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node scripts/build"
+  },
+  "main": "src/index.ts",
+  "types": "src/types/index.d.ts",
+  "peerDependencies": {
+    "@megmore/es-helper": "^0.0.24",
+    "@megmore/scss-helper": "^0.0.4",
+    "color": "^3.1.0",
+    "vue": "^2.5.21",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.2.0"
+  },
+  "devDependencies": {
+    "@megmore/es-helper": "^0.0.24",
+    "@megmore/scss-helper": "^0.0.4",
+    "color": "^3.1.0",
+    "vue": "^2.5.21",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.2.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "typescript": "~3.1.1",
+    "vue-markdown-loader": "^2.4.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

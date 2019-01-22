@@ -1,0 +1,71 @@
+@import "../core/common/breakpoints";
+/*
+ * 断点
+ */
+$--Breakpoints: (xs sm md lg xl);
+
+/*
+ * 栅格响应断点
+ */
+$--Grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;
+
+/*
+ * 栅格容器尺寸
+ */
+$--Container-max-size: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px
+) !default;
+
+/**
+ * variables register.
+ */
+.m-row {
+    --m-row-cols: 24;
+    --m-row-gutter: 0;
+}
+.m-col {
+    --m-col-span-xs: var(--m-row-cols);
+    --m-col-span-sm: var(--m-col-span-xs);
+    --m-col-span-md: var(--m-col-span-sm);
+    --m-col-span-lg: var(--m-col-span-md);
+    --m-col-span-xl: var(--m-col-span-lg);
+    --m-col-gutter: 0;
+}
+
+/**
+ * components styles.
+ */
+.m-row,
+.m-col {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.m-row {
+    width: 100%;
+    padding: var(--m-row-gutter);
+}
+
+.m-col {
+    width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);
+    padding: var(--m-col-gutter);
+    @each $breakpoint, $value in $--Grid-breakpoints {
+        @include media-breakpoint-up($breakpoint, $--Grid-breakpoints) {
+            width: calc((var(--m-col-span-#{$breakpoint}) / var(--m-row-cols)) * 100%);
+        }
+    }
+}
+
+.m-filler {
+    flex-grow: 1!important;
+    background-color: transparent;
+}

@@ -1,0 +1,52 @@
+@import "~@megmore/scss-helper";
+$--m-app-bar-size-xs: 2.5rem;
+$--m-app-bar-size-sm: 3.5rem;
+$--m-app-bar-size-md: 4.5rem;
+$--m-app-bar-size-lg: 5.5rem;
+$--m-app-bar-size-xl: 6.5rem;
+/**
+ * variables register.
+ */
+.m-app-bar {
+    // selection
+    --m-app-bar-size-xs: #{$--m-app-bar-size-xs};
+    --m-app-bar-size-sm: #{$--m-app-bar-size-sm};
+    --m-app-bar-size-md: #{$--m-app-bar-size-md};
+    --m-app-bar-size-lg: #{$--m-app-bar-size-lg};
+    --m-app-bar-size-xl: #{$--m-app-bar-size-xl};
+
+    // default
+    --m-app-bar-color: var(--m-color-primary);
+    --m-app-bar-font-color: var(--m-bg-color);
+    --m-app-bar-elevation: var(--m-elevation-2);
+
+    --m-app-bar-size: var(--m-app-bar-size-md);
+
+    --m-app-bar-position: relative;
+}
+
+/**
+ * components styles.
+ */
+.m-app-bar {
+    // theme
+    box-shadow: var(--m-app-bar-elevation);
+    height: var(--m-app-bar-size);
+    color: var(--m-app-bar-font-color);
+    background-color: var(--m-app-bar-color);
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--m-space-sm);
+    box-sizing: border-box;
+    transition: all ease .3s;
+    //position: var(--m-app-bar-position);
+    //left: 0;
+    //top: 0;
+
+    &.m-variety-flat {
+        background-color: var(--m-bg-color);
+        color: var(--m-button-color);
+    }
+}
