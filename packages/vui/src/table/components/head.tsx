@@ -5,8 +5,7 @@ import { getStyleSize } from '../../core/util'
 import { Size } from '../../types/model'
 
 const _name = 'm-table-head'
-
-@Component({ components: { MCheckbox } })
+@Component({ components: { MCheckbox, MIcon } })
 export default class TableHead extends Vue {
   @Inject()
   private TableCols!: any
@@ -43,7 +42,7 @@ export default class TableHead extends Vue {
     const propsData = item.componentOptions.propsData
     const propsDefault = item.componentOptions.Ctor.options.props
 
-    const RContent = () => {
+    function RContent () {
       let content: any = null
       const type = item.componentOptions.propsData.type
 

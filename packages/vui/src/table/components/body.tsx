@@ -87,11 +87,11 @@ export default class TableBody extends Vue {
 
     const result: any = []
 
-    const RContent = (
+    function RContent (
         item: any,
         isSelect: boolean = false,
         isExpand: boolean = false
-    ) => {
+    ) {
       let content: any = []
 
       const scopedSlots = item.data.scopedSlots
@@ -147,7 +147,7 @@ export default class TableBody extends Vue {
       return content
     }
 
-    const RCell = (item: any) => {
+    function RCell (item: any) {
       const width = getStyleSize(
         item.componentOptions.propsData.width
       )
