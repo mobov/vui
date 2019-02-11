@@ -18,20 +18,20 @@ export default class MButton extends Mixins (
   elevated,
   variable,
   shapeable
-){
+) {
   @Prop({ type: Boolean })
-  private block!: boolean
+  block!: boolean
 
   @Prop({ type: String })
-  private icon!: string
+  icon!: string
 
   @Prop({ type: Boolean })
-  private loading!: boolean
+  loading!: boolean
 
   @Emit('click')
-  private onClick (e: MouseEvent | TouchEvent): void { }
+  onClick (e: MouseEvent | TouchEvent): void { }
 
-  private render () {
+  render () {
     const {  icon, onClick } = this
 
     return (

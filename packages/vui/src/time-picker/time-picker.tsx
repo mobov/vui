@@ -1,6 +1,5 @@
 import { Component, Prop, Emit, Model, Provide, Vue, Mixins } from 'vue-property-decorator'
 import { Color, DatePickerType } from '../types/model'
-import { mixins } from 'vue-class-component'
 import TimePickerBase from './mixins'
 import MTimePickerHeader from './components/header'
 import MTimePickerPanelDate from './components/panel-date'
@@ -21,7 +20,7 @@ const _name = 'm-time-picker'
     MTimePickerHandler
   }
 })
-export default class MTimePicker extends mixins(TimePickerBase) {
+export default class MTimePicker extends Mixins(TimePickerBase) {
   @Prop({ type: String, default: 'primary' })
   private color!: Color
 

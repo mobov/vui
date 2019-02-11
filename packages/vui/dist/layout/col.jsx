@@ -1,7 +1,28 @@
 import * as tslib_1 from "tslib";
-import { BREAKPOINTS } from '../core/constant/constant';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { genStaticStyles, genSpace } from '../core/style-gen';
+import { injectGlobal } from 'vue-styled-components';
+import breakpoint from 'styled-components-breakpoint';
+import { genStaticStyles, genSpace } from '../core/util';
+import { BREAKPOINTS } from '../core/constant';
+injectGlobal `
+  .m-col {
+      --m-col-span-xs: var(--m-row-cols);
+      --m-col-span-sm: var(--m-col-span-xs);
+      --m-col-span-md: var(--m-col-span-sm);
+      --m-col-span-lg: var(--m-col-span-md);
+      --m-col-span-xl: var(--m-col-span-lg);
+      --m-col-gutter: 0;
+      
+      display: flex;
+      box-sizing: border-box;
+      padding: var(--m-col-gutter);
+      ${BREAKPOINTS.forEach(point => {
+    breakpoint(point) `
+            width: calc((var(--m-col-span-${point}) / var(--m-row-cols)) * 100%);
+          `;
+})}
+  }
+`;
 const _name = 'm-col';
 let MCol = class MCol extends Vue {
     render(h, { props, data, children }) {

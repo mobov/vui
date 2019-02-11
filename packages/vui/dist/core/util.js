@@ -145,4 +145,104 @@ export function genElevation(compName, val) {
         }
     }
 }
+/**
+ * 计算hover颜色样式值
+ * @param {string} compName
+ * @param {string} val
+ */
+export function genHoverColor(compName, val) {
+    // if (val == undefined) {
+    //   return ''
+    // } else {
+    //   let result = val
+    //
+    //   if (HoverColor.exist(val)) {
+    //     result = HoverColor.getItem(val)
+    //   } else {
+    //     const realVal = getCSSVal(val)
+    //     const colorObj = Color(realVal)
+    //
+    //     result = colorObj.isDark()
+    //       ? colorObj.lighten(0.3)
+    //       : colorObj.darken(0.1)
+    //     HoverColor.setItem(val, result)
+    //   }
+    //   return `--${compName}-hover-color: ${val})`
+    // }
+}
+/**
+ * 计算基于space的margin padding
+ * @param styles
+ * @param compName
+ * @param property
+ * @param val
+ */
+export function genSpace(styles, compName, property, val) {
+    if (val !== undefined) {
+        styles[`--${compName}-${property}`] = typeof val === 'number'
+            ? `${val}px`
+            : BREAKPOINTS.includes(val)
+                ? `var(--m-space-${val})`
+                : val;
+    }
+}
+/***
+ * 通用样式
+ * @param styles
+ * @param {string} compName
+ * @param {string} property
+ * @param {number | string} val
+ */
+export function genStaticStyles(styles, compName, property, val) {
+    if (val !== undefined) {
+        styles[`--${compName}-${property}`] = val;
+    }
+}
+/**
+ * slim bar样式滚动条
+ */
+export function getScrollBarStyles(direction = 'y', size = '7px', bgColor = '#a6a6a6', color = '#e5e5e5') {
+    return `
+    &::-webkit-scrollbar-thumb {
+      background-color: ${bgColor};
+    }
+    &::-webkit-scrollbar-track {
+      background-color: ${color};
+    }
+    ${direction == 'y' ? `
+        &::-webkit-scrollbar {
+          width: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-left: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-left: 2px solid transparent;
+        }
+      ` : direction == 'x' ? `
+        &::-webkit-scrollbar {
+          height: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-top: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-top: 2px solid transparent;
+        }
+      ` : `
+        &::-webkit-scrollbar {
+          width: ${size};
+          height: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-left: 2px solid transparent;
+          border-top: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-left: 2px solid transparent;
+          border-top: 2px solid transparent;
+        }
+      `} 
+  `;
+}
 //# sourceMappingURL=util.js.map

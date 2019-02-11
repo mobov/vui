@@ -12,34 +12,34 @@ const _name = 'm-table-body'
 @Component({ components: { MCheckbox, MRadio, MIcon, MTransitionExpansion } })
 export default class TableBody extends Vue {
   @Prop({ type: String })
-  private height!: string
+  height?: string
 
   @Prop({ type: Boolean })
-  private border!: boolean
+  border?: boolean
 
   @Prop({ type: Boolean })
-  private noHeader!: boolean
+  noHeader?: boolean
 
   @Prop({ type: String })
-  private size!: Size
+  size?: Size
 
   @Prop({ type: Boolean })
-  private rowSelect!: boolean
+  rowSelect?: boolean
 
   @Prop({ type: Boolean })
-  private rowExpand!: boolean
+  rowExpand?: boolean
 
   @Prop({ type: String })
-  private select!: 'none' | 'single' | 'multi'
+  select?: 'none' | 'single' | 'multi'
 
   @Prop({ type: String })
-  private expand!: 'none' | 'single' | 'multi'
+  expand?: 'none' | 'single' | 'multi'
 
   @Inject()
-  private TableCols!: any
+  TableCols!: any
 
   @Inject()
-  private TableStore!: any
+  TableStore!: any
 
   @Watch('noHeader')
   noHeaderToggle (val: string) { if (!val) { this.onDomUpdate() } }

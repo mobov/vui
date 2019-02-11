@@ -40,7 +40,9 @@ tslib_1.__decorate([
     Watch('src', { immediate: true })
 ], MAvatar.prototype, "updateSrc", null);
 MAvatar = tslib_1.__decorate([
-    Component
+    Component({
+        components: { Avatar }
+    })
 ], MAvatar);
 export default MAvatar;
 //# sourceMappingURL=avatar.jsx.map

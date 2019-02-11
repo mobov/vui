@@ -1,11 +1,8 @@
 import colorable from '../core/mixin/colorable';
-declare const MAppBar_base: import("vue-class-component/lib/declarations").VueClass<colorable & object & Record<never, any> & {
-    elevation: number;
-} & {
-    size: string | number;
-} & {
-    variety: string;
-}>;
+import sizeable from '../core/mixin/sizeable';
+import elevated from '../core/mixin/elevated';
+import variable from '../core/mixin/variable';
+declare const MAppBar_base: import("vue-class-component/lib/declarations").VueClass<colorable & elevated & sizeable & variable>;
 export default class MAppBar extends MAppBar_base {
     render(): JSX.Element;
 }

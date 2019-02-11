@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '../icon'
 import { Size, Color } from '../types/model'
-import { BREAKPOINT, COLOR } from '../core/constant/constant'
+import { BREAKPOINT, COLOR } from '../core/constant'
 import { genColor, genSize } from '../core/style-gen'
 
 const _name = 'm-radio'
@@ -35,24 +35,6 @@ export default class MRadio extends Vue {
   @Emit('input')
   private onInput (val: any) {}
 
-  get classes () {
-    return {
-      'm--disabled': this.disabled,
-      'm--checked': this.isCheck
-    }
-  }
-
-  get styles () {
-    const { color, fontColor, size } = this
-    const styles = { }
-
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-
-    return styles
-  }
-
   get isCheck () {
     return this.label === this.value
   }
@@ -83,11 +65,10 @@ export default class MRadio extends Vue {
   }
 
   render () {
-    const { $slots, classes, label, handleClick, RRadio } = this
+    const { $slots, label, handleClick, RRadio } = this
 
     return (
       <div staticClass={_name}
-           class={classes}
            onClick={() => handleClick(label)}>
         {RRadio()}
         {$slots.default}

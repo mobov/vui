@@ -1,29 +1,18 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator';
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator';
+import Checkbox from './checkbox.style';
 import MIcon from '../icon';
-import { genColor, genSize } from '../core/style-gen';
+import colorable from '../core/mixin/colorable';
+import sizeable from '../core/mixin/sizeable';
 const _name = 'm-checkbox';
-let MCheckbox = class MCheckbox extends Vue {
+let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
     constructor() {
         super(...arguments);
         this.isArrayValue = false;
         this.isArrayLabel = false;
         this.isBooleanValue = false;
     }
-    get classes() {
-        return {
-            'm--disabled': this.disabled,
-            'm--checked': this.isCheck
-        };
-    }
-    get styles() {
-        const { color, fontColor, size } = this;
-        const styles = {};
-        genColor(styles, _name, 'color', color);
-        genColor(styles, _name, 'font-color', fontColor);
-        genSize(styles, _name, 'size', size);
-        return styles;
-    }
+    onInput(val) { }
     get isCheck() {
         const { value, label, isArrayValue, isArrayLabel } = this;
         let isCheck = false;
@@ -46,7 +35,6 @@ let MCheckbox = class MCheckbox extends Vue {
         }
         return isCheck;
     }
-    onInput(val) { }
     handleClick() {
         const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, isCheck } = this;
         if (disabled) {
@@ -85,7 +73,7 @@ let MCheckbox = class MCheckbox extends Vue {
         }
     }
     RCheckbox() {
-        const { color, size, checkedIcon, uncheckIcon, incheckIcon, value, label, isCheck, isArrayValue, isArrayLabel } = this;
+        const { size, checkedIcon, uncheckIcon, incheckIcon, value, label, isCheck, isArrayValue, isArrayLabel } = this;
         let checkIcon = checkedIcon;
         if (isArrayValue &&
             isArrayLabel &&
@@ -97,33 +85,24 @@ let MCheckbox = class MCheckbox extends Vue {
         return (<a staticClass={`${_name}__checkbox`}>
         <transition name='m-transition-scale'>
           {!isCheck ? undefined
-            : <MIcon class={`${_name}__checked-icon`} name={checkIcon} size={size}/>}
+            : <MIcon staticClass={`${_name}__checked-icon`} name={checkIcon} size={size}/>}
         </transition>
-        <MIcon class={`${_name}__uncheck-icon`} size={size} name={uncheckIcon}/>
+        <MIcon staticClass={`${_name}__uncheck-icon`} size={size} name={uncheckIcon}/>
         <div v-m-ripple staticClass={`${_name}__checkbox-wrapper`}/>
       </a>);
     }
     render() {
-        const { $slots, classes, RCheckbox, handleClick, value, label } = this;
+        const { $slots, color, fontColor, size, RCheckbox, handleClick, value, label, disabled, isCheck } = this;
         this.isArrayValue = value instanceof Array;
         this.isArrayLabel = label instanceof Array;
         // boolean模式下等价于switch
         this.isBooleanValue = typeof value === 'boolean';
-        return (<div staticClass={_name} class={classes} onClick={() => handleClick()}>
+        return (<Checkbox staticClass={_name} color={color} fontColor={fontColor} size={size} disabled={disabled} checked={isCheck} onClick={() => handleClick()}>
         {RCheckbox()}
         {$slots.default}
-      </div>);
+      </Checkbox>);
     }
 };
-tslib_1.__decorate([
-    Prop({ type: String, default: 'md' })
-], MCheckbox.prototype, "size", void 0);
-tslib_1.__decorate([
-    Prop({ type: String })
-], MCheckbox.prototype, "color", void 0);
-tslib_1.__decorate([
-    Prop({ type: String })
-], MCheckbox.prototype, "fontColor", void 0);
 tslib_1.__decorate([
     Prop({ type: [Array, Number, String, Boolean], default: false })
 ], MCheckbox.prototype, "value", void 0);
@@ -146,7 +125,9 @@ tslib_1.__decorate([
     Emit('input')
 ], MCheckbox.prototype, "onInput", null);
 MCheckbox = tslib_1.__decorate([
-    Component({ components: { MIcon } })
+    Component({
+        components: { Checkbox, MIcon }
+    })
 ], MCheckbox);
 export default MCheckbox;
 //# sourceMappingURL=checkbox.jsx.map

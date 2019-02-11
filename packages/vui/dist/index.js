@@ -7,7 +7,7 @@ import './core/common/mode.scss';
 import './core/common/flex.scss';
 import './core/common/utils.scss';
 import * as components from './entries';
-import * as constant from './core/constant/constant';
+import * as constant from './core/constant';
 import './icon/presets';
 const Megmore = {
     install(Vue, opts = {}) {

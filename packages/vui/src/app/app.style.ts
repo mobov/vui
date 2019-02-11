@@ -1,7 +1,7 @@
 import styled, { injectGlobal } from 'vue-styled-components'
 
 injectGlobal`
-    .m-app {
+  .m-app {
     height: 100%;
     width: 100%;
     overflow: hidden;

@@ -77,7 +77,7 @@ export default class MCheckbox extends Mixins (
         onInput(label)
       }
     } else if (isArrayValue) {
-      const result: any[] = [].concat(value)
+      const result: any = [].concat(value)
       if (isCheck) {
         const index = result.findIndex(item => item === label)
         result.splice(index, 1)

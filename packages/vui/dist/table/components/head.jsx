@@ -93,12 +93,6 @@ let TableHead = class TableHead extends Vue {
     }
 };
 tslib_1.__decorate([
-    Inject()
-], TableHead.prototype, "TableCols", void 0);
-tslib_1.__decorate([
-    Inject()
-], TableHead.prototype, "TableStore", void 0);
-tslib_1.__decorate([
     Prop({ type: String })
 ], TableHead.prototype, "size", void 0);
 tslib_1.__decorate([
@@ -110,6 +104,12 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({ type: Function })
 ], TableHead.prototype, "sort", void 0);
+tslib_1.__decorate([
+    Inject()
+], TableHead.prototype, "TableCols", void 0);
+tslib_1.__decorate([
+    Inject()
+], TableHead.prototype, "TableStore", void 0);
 TableHead = tslib_1.__decorate([
     Component({ components: { MCheckbox, MIcon } })
 ], TableHead);

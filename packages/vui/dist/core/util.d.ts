@@ -49,3 +49,29 @@ export declare function genSize(compName: string, val?: number | string): string
  * @param {number | string} val
  */
 export declare function genElevation(compName: string, val?: number): string;
+/**
+ * 计算hover颜色样式值
+ * @param {string} compName
+ * @param {string} val
+ */
+export declare function genHoverColor(compName: string, val?: string): void;
+/**
+ * 计算基于space的margin padding
+ * @param styles
+ * @param compName
+ * @param property
+ * @param val
+ */
+export declare function genSpace(styles: any, compName: string, property: string, val?: number | string): void;
+/***
+ * 通用样式
+ * @param styles
+ * @param {string} compName
+ * @param {string} property
+ * @param {number | string} val
+ */
+export declare function genStaticStyles(styles: any, compName: string, property: string, val: number | string): void;
+/**
+ * slim bar样式滚动条
+ */
+export declare function getScrollBarStyles(direction?: 'x' | 'y' | 'xy', size?: string, bgColor?: string, color?: string): string;

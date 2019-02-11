@@ -1,30 +1,20 @@
-$--m-list-size-xs: 2rem;
-$--m-list-size-sm: 3rem;
-$--m-list-size-md: 4rem;
-$--m-list-size-lg: 5rem;
-$--m-list-size-xl: 6rem;
-/**
- * variables register.
- */
-.m-list {
-    // selection
-    --m-list-size-xs: #{$--m-list-size-xs};
-    --m-list-size-sm: #{$--m-list-size-sm};
-    --m-list-size-md: #{$--m-list-size-md};
-    --m-list-size-lg: #{$--m-list-size-lg};
-    --m-list-size-xl: #{$--m-list-size-xl};
+import styled, { injectGlobal } from 'vue-styled-components'
+import { genColor, genFontColor, genSize } from '../core/util'
 
-    // default
+injectGlobal`
+	.m-list {
+    --m-list-size-xs: 2rem;
+    --m-list-size-sm: 3rem;
+    --m-list-size-md: 4rem;
+    --m-list-size-lg: 5rem;
+    --m-list-size-xl: 6rem;
+
+     // default
     --m-list-color: var(--m-bg-color-main);
     --m-list-font-color: var(--m-font-color-main);
     --m-list-active-color: var(--m-color-main);
     --m-list-size: var(--m-list-size-md);
-}
-
-/**
- * components styles.
- */
-.m-list {
+    
     background-color: var(--m-list-color);
     color: var(--m-list-font-color);
     min-height: var(--m-list-size);
@@ -36,8 +26,8 @@ $--m-list-size-xl: 6rem;
     padding-left: var(--m-space-sm);
     padding-right: var(--m-space-sm);
     font-size: 1.4rem;
-}
-//.m-list__cover {
-//}
-//.m-list__content {
-//}
+	}
+`
+export default styled.div`
+  ${props => genSize('m-list', props.size)}
+`

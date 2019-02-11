@@ -1,29 +1,19 @@
-$--m-radio-size-xs: 1rem;
-$--m-radio-size-sm: 1.5rem;
-$--m-radio-size-md: 2rem;
-$--m-radio-size-lg: 2.5rem;
-$--m-radio-size-xl: 3rem;
-$--m-radio-wrapper-size-xs: 2rem;
-$--m-radio-wrapper-size-sm: 3rem;
-$--m-radio-wrapper-size-md: 4rem;
-$--m-radio-wrapper-size-lg: 5rem;
-$--m-radio-wrapper-size-xl: 6rem;
+import styled, { injectGlobal } from 'vue-styled-components'
+import { genColor, genFontColor, genSize } from '../core/util'
 
-/**
- * variables register.
- */
-.m-radio {
+injectGlobal`
+	.m-radio {
     // selection
-    --m-radio-size-xs: #{$--m-radio-size-xs};
-    --m-radio-size-sm: #{$--m-radio-size-sm};
-    --m-radio-size-md: #{$--m-radio-size-md};
-    --m-radio-size-lg: #{$--m-radio-size-lg};
-    --m-radio-size-xl: #{$--m-radio-size-xl};
-    --m-radio-wrapper-size-xs: #{$--m-radio-wrapper-size-xs};
-    --m-radio-wrapper-size-sm: #{$--m-radio-wrapper-size-sm};
-    --m-radio-wrapper-size-md: #{$--m-radio-wrapper-size-md};
-    --m-radio-wrapper-size-lg: #{$--m-radio-wrapper-size-lg};
-    --m-radio-wrapper-size-xl: #{$--m-radio-wrapper-size-xl};
+    --m-radio-size-xs: 1rem;
+    --m-radio-size-sm: 1.5rem;
+    --m-radio-size-md: 2rem;
+    --m-radio-size-lg: 2.5rem;
+    --m-radio-size-xl: 3rem;
+    --m-radio-wrapper-size-xs: 2rem;
+    --m-radio-wrapper-size-sm: 3rem;
+    --m-radio-wrapper-size-md: 4rem;
+    --m-radio-wrapper-size-lg: 5rem;
+    --m-radio-wrapper-size-xl: 6rem;
 
     // default
     --m-radio-color: var(--m-color-primary);
@@ -31,12 +21,7 @@ $--m-radio-wrapper-size-xl: 6rem;
 
     --m-radio-size: var(--m-radio-size-md);
     --m-radio-wrapper-size: var(--m-radio-wrapper-size-md);
-}
-
-/**
- * components styles.
- */
-.m-radio {
+    
     color: var(--m-radio-font-color);
     height: var(--m-radio-color);
     line-height: 1;
@@ -47,11 +32,11 @@ $--m-radio-wrapper-size-xl: 6rem;
     justify-content: flex-start;
     align-items: center;
     -webkit-font-smoothing: antialiased;
-
-    &.m--disabled {
+    
+    &[disabled] {
         opacity: .5;
     }
-    &.m--checked {
+    &[checked] {
         color: var(--m-radio-color);
     }
 
@@ -84,4 +69,10 @@ $--m-radio-wrapper-size-xl: 6rem;
     &__label {
         color: transparent;
     }
-}
+	}
+`
+export default styled.div`
+  ${props => genColor('m-radio', props.color)}
+  ${props => genFontColor('m-radio', props.fontColor)}
+  ${props => genSize('m-radio', props.size)}
+`

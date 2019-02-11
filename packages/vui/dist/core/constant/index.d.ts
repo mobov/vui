@@ -2,6 +2,7 @@ import ELEVATION from './elevation';
 import PALETTE from './palette';
 export { ELEVATION, PALETTE };
 export declare const ELEVATIONS: number[];
+export declare type elevation = number;
 export declare enum STATUS {
     success = 0,
     pending = 1,
@@ -9,19 +10,30 @@ export declare enum STATUS {
 }
 export declare type breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export declare enum BREAKPOINT {
+    xs = 0,
+    sm = 576,
+    md = 768,
+    lg = 992,
+    xl = 1200
+}
+export declare const BREAKPOINTS: any[];
+export declare type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number;
+export declare enum SIZE {
     xs = "xs",
     sm = "sm",
     md = "md",
     lg = "lg",
     xl = "xl"
 }
-export declare const BREAKPOINTS: any[];
+export declare const SIZES: any[];
+export declare const COLS = 24;
 export declare type variety = 'normal' | 'flat' | 'outline';
 export declare enum VARIETY {
     normal = "normal",
     flat = "flat",
     outline = "outline"
 }
+export declare const VARIETYS: any[];
 export declare type shape = 'square' | 'corner' | 'round' | 'circle';
 export declare enum SHAPE {
     circle = "circle",

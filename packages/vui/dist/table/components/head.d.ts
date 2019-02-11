@@ -1,11 +1,17 @@
 import { Vue } from 'vue-property-decorator';
+import { Size } from '../../types/model';
+declare module 'vue/types/options' {
+    interface ComponentOptions<V extends Vue> {
+        select?: 'none' | 'single' | 'multi';
+    }
+}
 export default class TableHead extends Vue {
-    private TableCols;
-    private TableStore;
-    private size;
-    private select;
-    private sortable?;
-    private sort?;
+    size?: Size;
+    select?: 'none' | 'single' | 'multi';
+    sortable?: boolean;
+    sort?: () => boolean;
+    TableCols: any;
+    TableStore: any;
     private widthMap;
     updateSize(widthMap: any): void;
     handleSelectAll(): void;
@@ -13,6 +19,6 @@ export default class TableHead extends Vue {
     RHead(): JSX.Element;
     RSlotHeadPrepend(): JSX.Element | undefined;
     RSlotHeadAppend(): JSX.Element | undefined;
-    RSlotHeadExtra(): import("vue/types/vnode").VNode[] | undefined;
+    RSlotHeadExtra(): import("vue").VNode[] | undefined;
     render(): JSX.Element;
 }

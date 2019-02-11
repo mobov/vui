@@ -152,7 +152,7 @@ export function genElevation (compName: string, val?: number): string {
  * @param {string} compName
  * @param {string} val
  */
-export function genHoverColor ( compName: string, val?: string): string {
+export function genHoverColor ( compName: string, val?: string): void {
   // if (val == undefined) {
   //   return ''
   // } else {
@@ -173,4 +173,88 @@ export function genHoverColor ( compName: string, val?: string): string {
   // }
 }
 
+/**
+ * 计算基于space的margin padding
+ * @param styles
+ * @param compName
+ * @param property
+ * @param val
+ */
+export function genSpace (styles: any, compName: string, property: string, val?: number | string): void {
+  if (val !== undefined) {
+    styles[`--${compName}-${property}`] = typeof val === 'number'
+      ? `${val}px`
+      : BREAKPOINTS.includes(val)
+        ? `var(--m-space-${val})`
+        : val
+  }
+}
 
+/***
+ * 通用样式
+ * @param styles
+ * @param {string} compName
+ * @param {string} property
+ * @param {number | string} val
+ */
+export function genStaticStyles (styles: any, compName: string, property: string, val: number | string): void {
+  if (val !== undefined) {
+    styles[`--${compName}-${property}`] = val
+  }
+}
+
+/**
+ * slim bar样式滚动条
+ */
+
+export function getScrollBarStyles (
+  direction: 'x' | 'y' | 'xy' = 'y',
+  size: string = '7px',
+  bgColor:string = '#a6a6a6',
+  color:string = '#e5e5e5'
+) {
+  return `
+    &::-webkit-scrollbar-thumb {
+      background-color: ${bgColor};
+    }
+    &::-webkit-scrollbar-track {
+      background-color: ${color};
+    }
+    ${
+      direction == 'y' ? `
+        &::-webkit-scrollbar {
+          width: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-left: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-left: 2px solid transparent;
+        }
+      ` : direction == 'x' ? `
+        &::-webkit-scrollbar {
+          height: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-top: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-top: 2px solid transparent;
+        }
+      ` : `
+        &::-webkit-scrollbar {
+          width: ${size};
+          height: ${size};
+        }
+        &::-webkit-scrollbar-thumb {
+          border-left: 2px solid transparent;
+          border-top: 2px solid transparent;
+        }
+        &::-webkit-scrollbar-track {
+          border-left: 2px solid transparent;
+          border-top: 2px solid transparent;
+        }
+      `
+    } 
+  `
+}

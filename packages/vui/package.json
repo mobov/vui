@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "node scripts/build",
-    "build:source": "tsc --rootDir ./src"
+    "build:source": "tsc"
   },
   "main": "dist/index.js",
   "peerDependencies": {
@@ -16,7 +16,9 @@
     "color": "^3.1.0",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",
-    "vue-styled-components": "^1.4.4"
+    "vue-styled-components": "^1.4.4",
+    "vue-property-decorator": "^7.3.0",
+    "styled-components-breakpoint": "^2.1.1"
   },
   "devDependencies": {
     "@megmore/es-helper": "^0.0.24",
@@ -29,6 +31,8 @@
     "node-sass": "^4.9.0",
     "rollup": "^1.1.2",
     "sass-loader": "^7.0.1",
+    "styled-components-breakpoint": "^2.1.1",
+    "typescript": "^3.3.3",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^7.3.0",

@@ -1,13 +1,12 @@
-import { Vue } from 'vue-property-decorator';
-export default class MTable extends Vue {
-    private color?;
-    private elevation?;
-    private size?;
-    private height?;
-    private border?;
-    private data;
-    private keyField?;
-    private header?;
+import sizeable from '../core/mixin/sizeable';
+import elevated from '../core/mixin/elevated';
+declare const MTable_base: import("vue-class-component/lib/declarations").VueClass<sizeable & elevated>;
+export default class MTable extends MTable_base {
+    height?: string | number;
+    border?: boolean;
+    data: any[];
+    keyField?: string;
+    header?: 'default' | 'sticky' | 'none';
     private hover?;
     private rowSelect?;
     private select?;
@@ -19,25 +18,20 @@ export default class MTable extends Vue {
     private noExpand?;
     private filter?;
     private filterMulti?;
-    readonly classes: {
-        [x: string]: boolean | undefined;
-        'm--border': boolean | undefined;
-        'm--sticky-header': boolean;
-    };
-    readonly styles: {};
-    dataAdaptI(val: any): any;
-    handleDataUpdate(val: any): void;
-    handleSelectedUpdate(val: any): void;
-    handleExpandedUpdate(val: any): void;
-    syncSelected(data: any): void;
-    syncExpanded(data: any): void;
+    dataAdaptI(val?: any): any;
     onExpand(row: any, index: number): void;
     onExpandAll(row: any, index: number): void;
     onSelect(row: any, index: number): void;
     onSelectAll(row: any, index: number): void;
     onRowClick(row: any, index: number): void;
     onRowDblclick(row: any, index: number): void;
+    handleDataUpdate(val: any): void;
+    handleSelectedUpdate(val: any): void;
+    handleExpandedUpdate(val: any): void;
+    syncSelected(data: any): void;
+    syncExpanded(data: any): void;
     private TableStore;
     readonly TableCols: any;
     render(): JSX.Element;
 }
+export {};

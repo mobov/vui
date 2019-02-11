@@ -1,53 +1,63 @@
-import { Component, Prop, Emit, Vue, Provide, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
 import { deepCopy } from '@megmore/es-helper'
-import { Size, Color } from '../types/model'
+import Table from './table.style'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
 import TableHead from './components/head'
 import TableBody from './components/body'
-import { BREAKPOINT } from '../core/constant/constant'
-import { genColor, genSize } from '../core/style-gen'
 
 const _name = 'm-table'
-const selfKeyField = '_table-key'
-// const selfSelectField = '_table-select'
-// const selfExpandField = '_table-expand'
+const SELF_KEY = '_table-key'
 
-@Component({ components: { TableHead, TableBody } })
-export default class MTable extends Vue {
-  @Prop({ type: String })
-  private color?: Color
-
-  @Prop({ type: Number, default: 2 })
-  private elevation?: number
-
-  @Prop({ type: String, default: BREAKPOINT.md })
-  private size?: Size
-
+@Component({ components: { Table, TableHead, TableBody } })
+export default class MTable extends Mixins (
+  sizeable,
+  elevated
+) {
   @Prop({ type: [String, Number] })
-  private height?: string | number
+  height?: string | number
 
   @Prop({ type: Boolean, default: false })
-  private border?: boolean
+  border?: boolean
 
   @Prop({ type: Array, default: () => [] })
-  private data!: any
+  data!: any[]
 
-  @Prop({ type: String, default: selfKeyField })
-  private keyField?: string
+  @Prop({ type: String, default: SELF_KEY })
+  keyField?: string
 
-  @Prop({ type: String, default: 'default' })
-  private header?: 'default' | 'sticky' | 'none'
+  @Prop({
+    type: String,
+    default: 'default',
+    validator(value): boolean {
+      return ['default', 'sticky', 'none'].includes(value)
+    }
+  })
+  header?: 'default' | 'sticky' | 'none'
 
-  @Prop({ type: String, default: 'none' })
+  @Prop({
+    type: String,
+    default: 'none',
+    validator(value): boolean {
+      return ['none', 'row', 'cell'].includes(value)
+    }
+  })
   private hover?: 'none' | 'row' | 'cell'
 
   @Prop({ type: Boolean, default: false })
   private rowSelect?: boolean
 
-  @Prop({ type: String, default: 'none' })
+  @Prop({
+    type: String,
+    default: 'none',
+    validator(value): boolean {
+      return ['none', 'single', 'multi'].includes(value)
+    }
+  })
   private select?: 'none' | 'single' | 'multi'
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private selected?: any | string | number
+  private selected?: any
 
   @Prop({ type: Array, default: () => [] })
   private noSelect?: any
@@ -55,11 +65,17 @@ export default class MTable extends Vue {
   @Prop({ type: Boolean, default: false })
   private rowExpand?: boolean
 
-  @Prop({ type: String, default: 'single' })
+  @Prop({
+    type: String,
+    default: 'none',
+    validator(value): boolean {
+      return ['none', 'single', 'multi'].includes(value)
+    }
+  })
   private expand?: 'none' | 'single' | 'multi'
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private expanded?: any | string | number
+  private expanded?: any
 
   @Prop({ type: Array, default: () => [] })
   private noExpand?: any
@@ -70,31 +86,11 @@ export default class MTable extends Vue {
   @Prop({ type: String, default: 'single' })
   private filterMulti?: string
 
-  get classes () {
-    const { border, header, hover } = this
-
-    return {
-      [`m-elevation-${this.elevation}`]: true,
-      'm--border': border,
-      'm--sticky-header': header === 'sticky',
-      [`m--${hover}-hover`]: hover !== 'none'
-    }
-  }
-
-  get styles () {
-    const { color, size } = this
-    const styles = { }
-
-    genSize(styles, _name, 'row-size', size)
-
-    return styles
-  }
-
     // 数据输入适配
-  dataAdaptI (val: any): any {
+  dataAdaptI (val: any = []): any {
     const { keyField } = this
     const temp = deepCopy(val)
-    if (keyField === selfKeyField) {
+    if (keyField === SELF_KEY) {
       temp.forEach((item: any, index: number) => {
           item[keyField] = index
       })
@@ -102,6 +98,24 @@ export default class MTable extends Vue {
 
     return temp
   }
+
+  @Emit('expand')
+  onExpand (row: any, index: number): void {}
+
+  @Emit('expandAll')
+  onExpandAll (row: any, index: number): void {}
+
+  @Emit('select')
+  onSelect (row: any, index: number): void {}
+
+  @Emit('selectAll')
+  onSelectAll (row: any, index: number): void {}
+
+  @Emit('rowClick')
+  onRowClick (row: any, index: number): void {}
+
+  @Emit('rowDblclick')
+  onRowDblclick (row: any, index: number): void {}
 
   @Watch('data', { immediate: true, deep: true })
   handleDataUpdate (val: any): void {
@@ -123,24 +137,6 @@ export default class MTable extends Vue {
 
   @Emit('update:expanded')
   syncExpanded (data: any): void {}
-
-  @Emit('expand')
-  onExpand (row: any, index: number): void {}
-
-  @Emit('expandAll')
-  onExpandAll (row: any, index: number): void {}
-
-  @Emit('select')
-  onSelect (row: any, index: number): void {}
-
-  @Emit('selectAll')
-  onSelectAll (row: any, index: number): void {}
-
-  @Emit('rowClick')
-  onRowClick (row: any, index: number): void {}
-
-  @Emit('rowDblclick')
-  onRowDblclick (row: any, index: number): void {}
 
   @Provide()
   private TableStore: any = {
@@ -244,12 +240,14 @@ export default class MTable extends Vue {
   }
 
   render () {
-    const { height, border, header, classes, styles, size,
+    const { height, border, header, size, elevation,
             select, expand, rowSelect, rowExpand } = this
     const noHeader = header === 'none'
 
     return (
-      <div staticClass={`${_name}`} class={classes} style={styles}>
+      <Table staticClass={`${_name}`}
+             size={size}
+             elevation={elevation}>
         <section staticClass={`${_name}__wrapper`}>
           {noHeader ? undefined : (
             <TableHead ref={'head'}
@@ -266,7 +264,7 @@ export default class MTable extends Vue {
                      rowExpand={rowExpand}
                      noHeader={noHeader} />
         </section>
-      </div>
+      </Table>
     )
   }
 }

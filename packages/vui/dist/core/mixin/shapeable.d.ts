@@ -1,12 +1,5 @@
-import Vue from 'vue';
-declare const _default: import("vue/types/vue").VueConstructor<{
-    shape: string;
-} & Vue, {
-    name: string;
-    props: {
-        shape: {
-            type: StringConstructor;
-        };
-    };
-}>;
-export default _default;
+import { Vue } from 'vue-property-decorator';
+import { shape } from '../constant';
+export default class shapeable extends Vue {
+    shape: shape | undefined;
+}

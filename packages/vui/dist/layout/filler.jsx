@@ -1,5 +1,12 @@
 import * as tslib_1 from "tslib";
 import { Component, Vue } from 'vue-property-decorator';
+import { injectGlobal } from 'vue-styled-components';
+injectGlobal `
+  .m-filler {
+    flex-grow: 1!important;
+    background-color: transparent;
+  }
+`;
 const _name = 'm-filler';
 let MFiller = class MFiller extends Vue {
     render() {

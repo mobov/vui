@@ -10,19 +10,30 @@ export var STATUS;
 })(STATUS || (STATUS = {}));
 export var BREAKPOINT;
 (function (BREAKPOINT) {
-    BREAKPOINT["xs"] = "xs";
-    BREAKPOINT["sm"] = "sm";
-    BREAKPOINT["md"] = "md";
-    BREAKPOINT["lg"] = "lg";
-    BREAKPOINT["xl"] = "xl";
+    BREAKPOINT[BREAKPOINT["xs"] = 0] = "xs";
+    BREAKPOINT[BREAKPOINT["sm"] = 576] = "sm";
+    BREAKPOINT[BREAKPOINT["md"] = 768] = "md";
+    BREAKPOINT[BREAKPOINT["lg"] = 992] = "lg";
+    BREAKPOINT[BREAKPOINT["xl"] = 1200] = "xl";
 })(BREAKPOINT || (BREAKPOINT = {}));
 export const BREAKPOINTS = Object.values(BREAKPOINT);
+export var SIZE;
+(function (SIZE) {
+    SIZE["xs"] = "xs";
+    SIZE["sm"] = "sm";
+    SIZE["md"] = "md";
+    SIZE["lg"] = "lg";
+    SIZE["xl"] = "xl";
+})(SIZE || (SIZE = {}));
+export const SIZES = Object.values(SIZE);
+export const COLS = 24;
 export var VARIETY;
 (function (VARIETY) {
     VARIETY["normal"] = "normal";
     VARIETY["flat"] = "flat";
     VARIETY["outline"] = "outline";
 })(VARIETY || (VARIETY = {}));
+export const VARIETYS = Object.values(VARIETY);
 export var SHAPE;
 (function (SHAPE) {
     SHAPE["circle"] = "circle";

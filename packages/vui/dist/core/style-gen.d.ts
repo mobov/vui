@@ -30,10 +30,11 @@ export declare function genSize(styles: any, compName: string, property: string,
  */
 export declare function genElevation(styles: any, compName: string, val?: number): void;
 /**
- * 计算基于space的margin padding
+ *
  * @param styles
- * @param {string} compName
- * @param {number | string} val
+ * @param compName
+ * @param property
+ * @param val
  */
 export declare function genSpace(styles: any, compName: string, property: string, val?: number | string): void;
 /***

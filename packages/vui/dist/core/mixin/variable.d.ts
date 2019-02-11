@@ -1,14 +1,5 @@
-import Vue from 'vue';
-import { VARIETY } from '../constant';
-declare const _default: import("vue/types/vue").VueConstructor<{
-    variety: string;
-} & Vue, {
-    name: string;
-    props: {
-        variety: {
-            type: StringConstructor;
-            default: VARIETY;
-        };
-    };
-}>;
-export default _default;
+import { Vue } from 'vue-property-decorator';
+import { variety } from '../constant';
+export default class variable extends Vue {
+    variety: variety | undefined;
+}

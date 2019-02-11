@@ -1,4 +1,3 @@
-import './button.scss';
 import MButton from './button';
 /* istanbul ignore next */
 MButton.install = (Vue) => {

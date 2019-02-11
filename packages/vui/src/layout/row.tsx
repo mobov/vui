@@ -1,8 +1,20 @@
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { genStaticStyles, genSpace } from '../core/style-gen'
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant/constant'
-import { Size, FlexAlign, FlexJustify, FlexWrap } from '../types/model'
+import { injectGlobal } from 'vue-styled-components'
+import { genStaticStyles, genSpace } from '../core/util'
+import { COLS,  FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP, flexAlign, flexJustify, flexWrap, size } from '../core/constant'
+
+injectGlobal`
+  .m-row {
+      --m-row-cols: ${COLS};
+      --m-row-gutter: 0;
+      
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      padding: var(--m-row-gutter);
+  }
+`
 
 const _name = 'm-row'
 
@@ -17,16 +29,16 @@ export default class MRow extends Vue {
   private tag!: string
 
   @Prop({ type: String, default: FLEX_WRAP.normal })
-  private wrap!: FlexWrap
+  private wrap!: flexWrap
 
   @Prop({ type: String, default: FLEX_JUSTIFY.start })
-  private justify!: FlexJustify
+  private justify!: flexJustify
 
   @Prop({ type: String, default: FLEX_ALIGN.stretch })
-  private align!: FlexAlign
+  private align!: flexAlign
 
   @Prop({ type: [String, Number] })
-  private gutter?: Size
+  private gutter?: size
 
   @Prop({ type: Number })
   private cols?: number

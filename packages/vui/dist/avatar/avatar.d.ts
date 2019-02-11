@@ -1,13 +1,9 @@
 import colorable from '../core/mixin/colorable';
-declare const MAvatar_base: import("vue-class-component/lib/declarations").VueClass<colorable & object & Record<never, any> & {
-    size: string | number;
-} & {
-    elevation: number;
-} & {
-    variety: string;
-} & {
-    shape: string;
-}>;
+import sizeable from '../core/mixin/sizeable';
+import elevated from '../core/mixin/elevated';
+import variable from '../core/mixin/variable';
+import shapeable from '../core/mixin/shapeable';
+declare const MAvatar_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
 export default class MAvatar extends MAvatar_base {
     private src;
     updateSrc(val: string): void;

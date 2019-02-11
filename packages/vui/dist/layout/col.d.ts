@@ -9,5 +9,5 @@ export default class MCol extends Vue {
     private lg;
     private xl;
     private gutter;
-    render(h: CreateElement, { props, data, children }: RenderContext): import("vue/types/vnode").VNode;
+    render(h: CreateElement, { props, data, children }: RenderContext): import("vue").VNode;
 }

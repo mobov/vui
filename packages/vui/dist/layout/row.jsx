@@ -1,7 +1,19 @@
 import * as tslib_1 from "tslib";
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { genStaticStyles, genSpace } from '../core/style-gen';
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant/constant';
+import { injectGlobal } from 'vue-styled-components';
+import { genStaticStyles, genSpace } from '../core/util';
+import { COLS, FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant';
+injectGlobal `
+  .m-row {
+      --m-row-cols: ${COLS};
+      --m-row-gutter: 0;
+      
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      padding: var(--m-row-gutter);
+  }
+`;
 const _name = 'm-row';
 let MRow = class MRow extends Vue {
     render(h, { props, data, children }) {

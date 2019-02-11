@@ -1,20 +1,21 @@
 import { Vue } from 'vue-property-decorator';
+import { Size } from '../../types/model';
 export default class TableBody extends Vue {
-    private height;
-    private border;
-    private noHeader;
-    private size;
-    private rowSelect;
-    private rowExpand;
-    private select;
-    private expand;
-    private TableCols;
-    private TableStore;
+    height?: string;
+    border?: boolean;
+    noHeader?: boolean;
+    size?: Size;
+    rowSelect?: boolean;
+    rowExpand?: boolean;
+    select?: 'none' | 'single' | 'multi';
+    expand?: 'none' | 'single' | 'multi';
+    TableCols: any;
+    TableStore: any;
     noHeaderToggle(val: string): void;
     readonly selectable: boolean;
     readonly expandable: boolean;
     readonly styles: {
-        height: string | boolean;
+        height: string | boolean | undefined;
     };
     handleRowClick(row: any, index: number): void;
     handleRowSelect(row: any, index: number): void;

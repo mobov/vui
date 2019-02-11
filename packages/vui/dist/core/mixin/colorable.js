@@ -1,11 +1,6 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 let colorable = class colorable extends Vue {
-    constructor() {
-        super(...arguments);
-        this.fontColor = undefined;
-        this.color = undefined;
-    }
 };
 tslib_1.__decorate([
     Prop({ type: String })

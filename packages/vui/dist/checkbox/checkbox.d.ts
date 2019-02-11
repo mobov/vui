@@ -1,25 +1,20 @@
-import { Vue } from 'vue-property-decorator';
-export default class MCheckbox extends Vue {
-    private size?;
-    private color;
-    private fontColor;
+import colorable from '../core/mixin/colorable';
+import sizeable from '../core/mixin/sizeable';
+declare const MCheckbox_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable>;
+export default class MCheckbox extends MCheckbox_base {
     private value;
     private label;
     private checkedIcon;
     private uncheckIcon;
     private incheckIcon;
     private disabled;
+    onInput(val: any): void;
     private isArrayValue;
     private isArrayLabel;
     private isBooleanValue;
-    readonly classes: {
-        'm--disabled': boolean;
-        'm--checked': boolean;
-    };
-    readonly styles: {};
     readonly isCheck: boolean;
-    onInput(val: any): void;
     handleClick(): void;
     RCheckbox(): JSX.Element;
     render(): JSX.Element;
 }
+export {};

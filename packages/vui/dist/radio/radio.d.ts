@@ -9,11 +9,6 @@ export default class MRadio extends Vue {
     private uncheckIcon;
     private disabled;
     private onInput;
-    readonly classes: {
-        'm--disabled': boolean;
-        'm--checked': boolean;
-    };
-    readonly styles: {};
     readonly isCheck: boolean;
     handleClick(val: any): void;
     RRadio(): JSX.Element;

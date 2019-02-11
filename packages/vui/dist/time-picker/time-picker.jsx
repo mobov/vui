@@ -1,6 +1,5 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
+import { Component, Prop, Mixins } from 'vue-property-decorator';
 import TimePickerBase from './mixins';
 import MTimePickerHeader from './components/header';
 import MTimePickerPanelDate from './components/panel-date';
@@ -9,7 +8,7 @@ import MTimePickerPanelMonth from './components/panel-month';
 import MTimePickerPanelTime from './components/panel-time';
 import MTimePickerHandler from './components/handler';
 const _name = 'm-time-picker';
-let MTimePicker = class MTimePicker extends mixins(TimePickerBase) {
+let MTimePicker = class MTimePicker extends Mixins(TimePickerBase) {
     get classes() {
         const { landscope } = this;
         return {

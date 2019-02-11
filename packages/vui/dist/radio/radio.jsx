@@ -1,25 +1,10 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator';
 import MIcon from '../icon';
-import { BREAKPOINT, COLOR } from '../core/constant/constant';
-import { genColor, genSize } from '../core/style-gen';
+import { BREAKPOINT, COLOR } from '../core/constant';
 const _name = 'm-radio';
 let MRadio = class MRadio extends Vue {
     onInput(val) { }
-    get classes() {
-        return {
-            'm--disabled': this.disabled,
-            'm--checked': this.isCheck
-        };
-    }
-    get styles() {
-        const { color, fontColor, size } = this;
-        const styles = {};
-        genColor(styles, _name, 'color', color);
-        genColor(styles, _name, 'font-color', fontColor);
-        genSize(styles, _name, 'size', size);
-        return styles;
-    }
     get isCheck() {
         return this.label === this.value;
     }
@@ -43,8 +28,8 @@ let MRadio = class MRadio extends Vue {
       </a>);
     }
     render() {
-        const { $slots, classes, label, handleClick, RRadio } = this;
-        return (<div staticClass={_name} class={classes} onClick={() => handleClick(label)}>
+        const { $slots, label, handleClick, RRadio } = this;
+        return (<div staticClass={_name} onClick={() => handleClick(label)}>
         {RRadio()}
         {$slots.default}
       </div>);

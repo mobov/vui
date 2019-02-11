@@ -1,20 +1,16 @@
-import { Vue } from 'vue-property-decorator';
-export default class MChip extends Vue {
-    private size;
-    private color;
-    private fontColor;
-    private elevation;
-    private variety;
-    private shape;
+import colorable from '../core/mixin/colorable';
+import sizeable from '../core/mixin/sizeable';
+import elevated from '../core/mixin/elevated';
+import variable from '../core/mixin/variable';
+import shapeable from '../core/mixin/shapeable';
+declare const MChip_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
+export default class MChip extends MChip_base {
     private closeable;
     private closeover;
-    readonly styles: {};
-    readonly classes: {
-        [x: string]: boolean;
-    };
     onClose(e: MouseEvent): void;
     onClick(e: MouseEvent): void;
-    RMedia(): import("vue/types/vnode").VNode[] | undefined;
+    RMedia(): import("vue").VNode[] | undefined;
     RClose(): JSX.Element | undefined;
     render(): JSX.Element;
 }
+export {};

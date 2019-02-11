@@ -8,7 +8,7 @@ export {
 
 export const ELEVATIONS: number[] = ELEVATION.map((item, index) => index)
 
-export type elevation = { [K in ELEVATIONS]: boolean }
+export type elevation = number
 
 export enum STATUS {
   success = 0,
@@ -19,6 +19,18 @@ export enum STATUS {
 export type breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export enum BREAKPOINT {
+  xs = 0,
+  sm = 576,
+  md = 768,
+  lg = 992,
+  xl = 1200
+}
+
+export const BREAKPOINTS = Object.values(BREAKPOINT)
+
+export type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number
+
+export enum SIZE {
   xs = 'xs',
   sm = 'sm',
   md = 'md',
@@ -26,7 +38,9 @@ export enum BREAKPOINT {
   xl = 'xl'
 }
 
-export const BREAKPOINTS = Object.values(BREAKPOINT)
+export const SIZES = Object.values(SIZE)
+
+export const COLS = 24
 
 export type variety = 'normal' | 'flat' | 'outline'
 

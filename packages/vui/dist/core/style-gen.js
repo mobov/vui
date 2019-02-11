@@ -1,5 +1,5 @@
 import Color from 'color';
-import { BREAKPOINTS, ELEVATION_MAX, ELEVATION_MIN, COLORS } from './constant/constant';
+import { BREAKPOINTS, COLORS } from './constant';
 import { isPalette, isCSSVar, getCSSVal } from './util';
 import { HoverColor } from './cache';
 /**
@@ -73,15 +73,13 @@ export function genSize(styles, compName, property, val) {
  * @param {number | string} val
  */
 export function genElevation(styles, compName, val) {
-    if (val !== undefined && val >= ELEVATION_MIN && val <= ELEVATION_MAX) {
-        styles[`--${compName}-elevation`] = `var(--m-elevation-${val})`;
-    }
 }
 /**
- * 计算基于space的margin padding
+ *
  * @param styles
- * @param {string} compName
- * @param {number | string} val
+ * @param compName
+ * @param property
+ * @param val
  */
 export function genSpace(styles, compName, property, val) {
     if (val !== undefined) {

@@ -4,26 +4,33 @@ import MCheckbox from '../../checkbox'
 import { getStyleSize } from '../../core/util'
 import { Size } from '../../types/model'
 
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    select?: 'none' | 'single' | 'multi'
+  }
+}
+
 const _name = 'm-table-head'
+
 @Component({ components: { MCheckbox, MIcon } })
 export default class TableHead extends Vue {
-  @Inject()
-  private TableCols!: any
-
-  @Inject()
-  private TableStore!: any
+  @Prop({ type: String })
+  size?: Size
 
   @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: String })
-  private select!: 'none' | 'single' | 'multi'
+  select?: 'none' | 'single' | 'multi'
 
   @Prop({ type: Boolean, default: false })
-  private sortable?: boolean
+  sortable?: boolean
 
   @Prop({ type: Function })
-  private sort?: () => boolean
+  sort?: () => boolean
+
+  @Inject()
+  TableCols!: any
+
+  @Inject()
+  TableStore!: any
 
   private widthMap: any = []
 
