@@ -1,0 +1,43 @@
+import { Vue } from 'vue-property-decorator';
+export default class MTable extends Vue {
+    private color?;
+    private elevation?;
+    private size?;
+    private height?;
+    private border?;
+    private data;
+    private keyField?;
+    private header?;
+    private hover?;
+    private rowSelect?;
+    private select?;
+    private selected?;
+    private noSelect?;
+    private rowExpand?;
+    private expand?;
+    private expanded?;
+    private noExpand?;
+    private filter?;
+    private filterMulti?;
+    readonly classes: {
+        [x: string]: boolean | undefined;
+        'm--border': boolean | undefined;
+        'm--sticky-header': boolean;
+    };
+    readonly styles: {};
+    dataAdaptI(val: any): any;
+    handleDataUpdate(val: any): void;
+    handleSelectedUpdate(val: any): void;
+    handleExpandedUpdate(val: any): void;
+    syncSelected(data: any): void;
+    syncExpanded(data: any): void;
+    onExpand(row: any, index: number): void;
+    onExpandAll(row: any, index: number): void;
+    onSelect(row: any, index: number): void;
+    onSelectAll(row: any, index: number): void;
+    onRowClick(row: any, index: number): void;
+    onRowDblclick(row: any, index: number): void;
+    private TableStore;
+    readonly TableCols: any;
+    render(): JSX.Element;
+}

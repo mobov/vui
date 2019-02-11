@@ -49,7 +49,7 @@ export default class TimePickerBase extends Vue {
     }
     // 输出适配
     public valueAdaptO (val: number): any {
-        let result = null
+        let result: any = null
         if (this.valueFormat === 'timestamp') {
             result = val
         } else

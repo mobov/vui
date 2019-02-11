@@ -3,8 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-//
-import Megmore from '@megmore/vui'
+import { Megmore } from '@megmore/vui'
+
+console.log(Megmore)
 Vue.use(Megmore)
 
 Vue.config.productionTip = false

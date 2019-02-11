@@ -1,60 +1,30 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-import { Size, Color, Variety, Shape } from '../types/model'
-import { genColor, genElevation, genSize, genHover } from '../core/style-gen'
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
+import Chip from './chip.style'
 import MAvatar from '../avatar'
 import MIcon from '../icon'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
+import variable from '../core/mixin/variable'
+import shapeable from '../core/mixin/shapeable'
 
 const _name = 'm-chip'
 
-@Component({ components: { MAvatar, MIcon } })
-export default class MChip extends Vue {
-  @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: String })
-  private color!: Color
-
-  @Prop({ type: String })
-  private fontColor!: Color
-
-  @Prop({ type: Number })
-  private elevation!: number
-
-  @Prop({ type: String, default: 'normal' })
-  private variety!: Variety
-
-  @Prop({ type: String, default: 'circle' })
-  private shape!: Shape
-
+@Component({
+  components: { Chip, MAvatar, MIcon }
+})
+export default class MChip extends Mixins (
+  colorable,
+  sizeable,
+  elevated,
+  variable,
+  shapeable
+) {
   @Prop({ type: Boolean, default: false })
   private closeable!: boolean
 
   @Prop({ type: Boolean, default: false })
   private closeover!: boolean
-
-  get styles () {
-    const { color, fontColor, size, elevation } = this
-    const styles = { }
-
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-    genElevation(styles, _name, elevation)
-    genHover(styles, _name, 'hover-color', color)
-
-    return styles
-  }
-
-  get classes () {
-    const { variety, shape, closeable, closeover } = this
-
-    return {
-      [`m-variety-${variety}`]: true,
-      [`m-shape-${shape}`]: true,
-      [`${_name}--closeable`]: closeable,
-      [`${_name}--closeover`]: closeover
-    }
-  }
 
   @Emit('close')
   onClose (e: MouseEvent): void { e.stopPropagation() }
@@ -80,26 +50,30 @@ export default class MChip extends Vue {
     const { closeable, closeover, onClose } = this
 
     return (
-      closeable || closeover
-        ? <MIcon class={`${_name}__close`} onClick={onClose} name='cancel' />
+      (closeable || closeover)
+        ? <MIcon staticClass={`${_name}__close`} onClick={ () => onClose } name='cancel' />
         : undefined
     )
   }
 
   render () {
-    const { classes, styles, $slots, RMedia, RClose, onClick } = this
+    const { $slots, color, fontColor, elevation, variety, shape, size, RMedia, RClose, onClick } = this
 
     return (
-      <div staticClass={_name}
-           style={styles}
-           class={classes}
-           onClick={onClick}>
+      <Chip staticClass={_name}
+            color={color}
+            fontColor={fontColor}
+            elevation={elevation}
+            variety={variety}
+            shape={shape}
+            size={size}
+            onClick={onClick}>
         {RMedia()}
         <div staticClass={`${_name}__main`}>
           {$slots.default}
         </div>
         {RClose()}
-      </div>
+      </Chip>
     )
   }
 }

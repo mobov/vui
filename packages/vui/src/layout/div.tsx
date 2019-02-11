@@ -1,6 +1,6 @@
 import { ComponentOptions } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant'
+import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant/constant'
 import { FlexAlign, FlexJustify, FlexWrap, Size } from '../types/model'
 
 const _name = 'm-div'

@@ -40,7 +40,7 @@
 <script>
 import Vue from 'vue'
 
-export default Vue.extend({
+export default {
   data () {
     return {
       checkVal: false,
@@ -52,5 +52,5 @@ export default Vue.extend({
       isRight: true
     }
   }
-})
+}
 </script>

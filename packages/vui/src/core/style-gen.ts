@@ -1,5 +1,5 @@
 import Color from 'color'
-import { BREAKPOINTS, ELEVATION_MAX, ELEVATION_MIN, SHAPES, COLORS } from './constant'
+import { BREAKPOINTS, ELEVATION_MAX, ELEVATION_MIN, SHAPES, COLORS } from './constant/constant'
 import { isPalette, isCSSVar, getCSSVal } from './util'
 import { HoverColor } from './cache'
 

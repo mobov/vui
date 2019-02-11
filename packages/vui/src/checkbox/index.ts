@@ -1,4 +1,3 @@
-import './checkbox.scss'
 import MCheckbox from './checkbox'
 
 /* istanbul ignore next */

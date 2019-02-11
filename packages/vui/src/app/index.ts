@@ -1,4 +1,3 @@
-import './app.scss'
 import MApp from './app'
 
 /* istanbul ignore next */

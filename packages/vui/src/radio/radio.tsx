@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '../icon'
 import { Size, Color } from '../types/model'
-import { BREAKPOINT, COLOR } from '../core/constant'
+import { BREAKPOINT, COLOR } from '../core/constant/constant'
 import { genColor, genSize } from '../core/style-gen'
 
 const _name = 'm-radio'

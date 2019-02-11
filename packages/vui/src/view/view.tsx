@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Fill, Size } from '../types/model'
-import { FILL, BREAKPOINT } from '../core/constant'
+import { FILL, BREAKPOINT } from '../core/constant/constant'
 import { genColor, genElevation, genHover, genSize } from '../core/style-gen'
 
 const _name = 'm-view'

@@ -1,4 +1,4 @@
-import { Component, Prop, Emit, Model, Provide, Vue } from 'vue-property-decorator'
+import { Component, Prop, Emit, Model, Provide, Vue, Mixins } from 'vue-property-decorator'
 import { Color, DatePickerType } from '../types/model'
 import { mixins } from 'vue-class-component'
 import TimePickerBase from './mixins'

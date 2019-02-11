@@ -23,7 +23,7 @@
     </m-view>
   </m-app>
 </template>
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import DocEntries from './components/doc-entries.vue'
 

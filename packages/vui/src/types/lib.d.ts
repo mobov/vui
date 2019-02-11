@@ -17,10 +17,6 @@ export interface Megmore {
 declare module '@megmore/vui' {
   const MApp: Component
   const MIcon: Component
+  // const Megmore: Component
 
-  export default Megmore
-  export {
-    MApp,
-    MIcon
-  }
 }

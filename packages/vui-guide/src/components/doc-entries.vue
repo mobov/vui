@@ -28,5 +28,4 @@ export default {
   .doc-entries {
 
   }
-
 </style>

@@ -1,7 +1,7 @@
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { genStaticStyles, genSpace } from '../core/style-gen'
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant'
+import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant/constant'
 import { Size, FlexAlign, FlexJustify, FlexWrap } from '../types/model'
 
 const _name = 'm-row'

@@ -3,7 +3,7 @@ import { deepCopy } from '@megmore/es-helper'
 import { Size, Color } from '../types/model'
 import TableHead from './components/head'
 import TableBody from './components/body'
-import { BREAKPOINT } from '../core/constant'
+import { BREAKPOINT } from '../core/constant/constant'
 import { genColor, genSize } from '../core/style-gen'
 
 const _name = 'm-table'

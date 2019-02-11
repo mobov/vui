@@ -3,6 +3,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
 import { Color, DateTimeValueType } from '../../types/model'
+import {VNode} from "vue";
 
 const _name = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
@@ -47,7 +48,7 @@ export default class MTimePickerPanelTime extends Vue {
     const max = type === 'hours' ? ampm ? 11 : 23 : 59
     const step = type === 'hours' ? hourStep : minuteStep
     const time = this.DateStore[type]
-    const Temps = []
+    const Temps: any = []
 
     for (let tempTime = min; tempTime <= max; tempTime += step) {
       const isCurrent = tempTime === time
@@ -74,7 +75,7 @@ export default class MTimePickerPanelTime extends Vue {
 
   render () {
     const { RList, timeSelectType } = this
-    const Result = []
+    const Result: any = []
 
     if (timeSelectType === 'list') {
       Result.push(RList('hours'))

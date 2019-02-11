@@ -1,21 +1,19 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
+import Checkbox from './checkbox.style'
 import MIcon from '../icon'
-import { Size, Color } from '../types/model'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
 import { genColor, genSize } from '../core/style-gen'
 
 const _name = 'm-checkbox'
 
-@Component({ components: { MIcon } })
-export default class MCheckbox extends Vue {
-  @Prop({ type: String, default: 'md' })
-  private size?: Size
-
-  @Prop({ type: String })
-  private color!: Color
-
-  @Prop({ type: String })
-  private fontColor!: Color
-
+@Component({
+  components: { Checkbox, MIcon }
+})
+export default class MCheckbox extends Mixins (
+  colorable,
+  sizeable
+) {
   @Prop({ type: [Array, Number, String, Boolean], default: false })
   private value!: any
 
@@ -34,29 +32,14 @@ export default class MCheckbox extends Vue {
   @Prop({ type: Boolean, default: false })
   private disabled!: boolean
 
+  @Emit('input')
+  onInput (val: any): void { }
+
   private isArrayValue: boolean = false
 
   private isArrayLabel: boolean = false
 
   private isBooleanValue: boolean = false
-
-  get classes () {
-    return {
-      'm--disabled': this.disabled,
-      'm--checked': this.isCheck
-    }
-  }
-
-  get styles () {
-    const { color, fontColor, size } = this
-    const styles = { }
-
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-
-    return styles
-  }
 
   get isCheck () {
     const { value, label, isArrayValue, isArrayLabel } = this
@@ -82,11 +65,9 @@ export default class MCheckbox extends Vue {
     return isCheck
   }
 
-  @Emit('input')
-  onInput (val: any): void { }
-
   handleClick (): void {
     const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, isCheck } = this
+
     if (disabled) { return }
 
     if (isArrayValue && isArrayLabel) {
@@ -117,7 +98,7 @@ export default class MCheckbox extends Vue {
   }
 
   RCheckbox () {
-    const { color, size, checkedIcon, uncheckIcon, incheckIcon,
+    const { size, checkedIcon, uncheckIcon, incheckIcon,
             value, label, isCheck, isArrayValue, isArrayLabel } = this
 
     let checkIcon = checkedIcon
@@ -136,18 +117,19 @@ export default class MCheckbox extends Vue {
       <a staticClass={`${_name}__checkbox`}>
         <transition name='m-transition-scale'>
           {!isCheck ? undefined
-            : <MIcon class={`${_name}__checked-icon`}
+            : <MIcon staticClass={`${_name}__checked-icon`}
                      name={checkIcon}
                      size={size}/>
           }
         </transition>
-        <MIcon class={`${_name}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <MIcon staticClass={`${_name}__uncheck-icon`} size={size} name={uncheckIcon} />
         <div v-m-ripple staticClass={`${_name}__checkbox-wrapper`} />
       </a>
     )
   }
+
   render () {
-    const { $slots, classes, RCheckbox, handleClick, value, label } = this
+    const { $slots, color, fontColor, size, RCheckbox, handleClick, value, label, disabled, isCheck } = this
 
     this.isArrayValue = value instanceof Array
     this.isArrayLabel = label instanceof Array
@@ -155,12 +137,16 @@ export default class MCheckbox extends Vue {
     this.isBooleanValue = typeof value === 'boolean'
 
     return (
-      <div staticClass={_name}
-           class={classes}
-           onClick={() => handleClick()}>
+      <Checkbox staticClass={_name}
+                color={color}
+                fontColor={fontColor}
+                size={size}
+                disabled={disabled}
+                checked={isCheck}
+                onClick={() => handleClick()}>
         {RCheckbox()}
         {$slots.default}
-      </div>
+      </Checkbox>
     )
   }
 }

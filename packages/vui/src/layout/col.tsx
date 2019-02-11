@@ -1,4 +1,4 @@
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP, BREAKPOINT, BREAKPOINTS } from '../core/constant'
+import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP, BREAKPOINT, BREAKPOINTS } from '../core/constant/constant'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { genStaticStyles, genSpace } from '../core/style-gen'
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
