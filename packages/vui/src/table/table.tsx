@@ -1,4 +1,4 @@
-import { Vue, Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
+import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
 import { deepCopy } from '@megmore/es-helper'
 import Table from './table.style'
 import sizeable from '../core/mixin/sizeable'
@@ -87,7 +87,7 @@ export default class MTable extends Mixins (
   private filterMulti?: string
 
     // 数据输入适配
-  dataAdaptI (val: any = []): any {
+  dataAdaptI (val: any[] = []): any[] {
     const { keyField } = this
     const temp = deepCopy(val)
     if (keyField === SELF_KEY) {
@@ -118,7 +118,7 @@ export default class MTable extends Mixins (
   onRowDblclick (row: any, index: number): void {}
 
   @Watch('data', { immediate: true, deep: true })
-  handleDataUpdate (val: any): void {
+  handleDataUpdate (val: any[]): void {
     this.TableStore.Data = this.dataAdaptI(val)
   }
 
@@ -139,7 +139,7 @@ export default class MTable extends Mixins (
   syncExpanded (data: any): void {}
 
   @Provide()
-  private TableStore: any = {
+  TableStore: any = {
     Data: [],
     keyField: this.keyField,
     Selected: [],
@@ -216,7 +216,7 @@ export default class MTable extends Mixins (
   }
 
   @Provide()
-  get TableCols (): any {
+  get TableCols (): any[] {
     const { $slots } = this
     const result: any = []
     if ($slots.default) {

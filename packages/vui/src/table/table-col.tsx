@@ -1,27 +1,27 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Align, Color } from '../types/model'
+import { size, color } from '../core/constant'
 
 export const _name = 'm-table-col'
 
 @Component
 export default class MTableCol extends Vue {
     @Prop({ type: String })
-    private type?: 'select' | 'expand'
+    private type?: 'normal' | 'select' | 'expand'
 
     @Prop({ type: String })
     private title?: string
 
     @Prop({ type: [ String, Number ], default: 'auto' })
-    private width?: string
+    private width?: size
 
     @Prop({ type: String })
     private field?: string
 
     @Prop({ type: String, default: 'center' })
-    private align?: Align
+    private align?: 'left' | 'center' | 'right'
 
     @Prop({ type: String, default: 'primary' })
-    private color?: Color
+    private color?: color
 
     @Prop({ type: Function })
     private sort?: () => boolean

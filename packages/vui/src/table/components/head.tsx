@@ -2,20 +2,14 @@ import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
 import MIcon from '../../icon'
 import MCheckbox from '../../checkbox'
 import { getStyleSize } from '../../core/util'
-import { Size } from '../../types/model'
-
-declare module 'vue/types/options' {
-  interface ComponentOptions<V extends Vue> {
-    select?: 'none' | 'single' | 'multi'
-  }
-}
+import { size } from '../../core/constant'
 
 const _name = 'm-table-head'
 
 @Component({ components: { MCheckbox, MIcon } })
 export default class TableHead extends Vue {
   @Prop({ type: String })
-  size?: Size
+  size?: size
 
   @Prop({ type: String })
   select?: 'none' | 'single' | 'multi'

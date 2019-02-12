@@ -1,10 +1,11 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import { color } from '../constant'
 
 @Component
 export default class colorable extends Vue {
   @Prop({ type: String })
-  fontColor: string | undefined
+  fontColor: color | undefined
 
   @Prop({ type: String })
-  color: string | undefined
+  color: color | undefined
 }

@@ -42,7 +42,11 @@ export const SIZES = Object.values(SIZE)
 
 export const COLS = 24
 
-export type variety = 'normal' | 'flat' | 'outline'
+export enum variety {
+  normal = 'normal',
+  flat = 'flat',
+  outline = 'outline'
+}
 
 export enum VARIETY {
   normal = 'normal',
@@ -52,7 +56,12 @@ export enum VARIETY {
 
 export const VARIETYS = Object.values(VARIETY)
 
-export type shape = 'square' | 'corner' | 'round' | 'circle'
+export enum shape {
+  circle = 'circle',
+  round = 'round',
+  corner = 'corner',
+  square = 'square'
+}
 
 export enum SHAPE {
   circle = 'circle',
@@ -63,7 +72,13 @@ export enum SHAPE {
 
 export const SHAPES = Object.values(SHAPE)
 
-export type color = 'primary' | 'error' | 'success' | 'warning' | 'default'
+export enum color {
+  primary = 'primary',
+  error = 'error',
+  success = 'success',
+  warning = 'warning',
+  default = 'default'
+}
 
 export enum COLOR {
   primary = 'primary',
@@ -121,3 +136,5 @@ export enum FLEX_ALIGN {
   end = 'end',
   stretch = 'stretch',
 }
+
+export type align = 'left' | 'center' | 'right' //  水平轴

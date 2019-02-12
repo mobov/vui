@@ -5,7 +5,7 @@ import MCheckbox from '../../checkbox'
 import MRadio from '../../radio'
 import { getStyleSize } from '../../core/util'
 import { on, off } from '../../core/event'
-import { Size } from '../../types/model'
+import { size } from '../../core/constant'
 
 const _name = 'm-table-body'
 
@@ -21,7 +21,7 @@ export default class TableBody extends Vue {
   noHeader?: boolean
 
   @Prop({ type: String })
-  size?: Size
+  size?: size
 
   @Prop({ type: Boolean })
   rowSelect?: boolean
@@ -36,7 +36,7 @@ export default class TableBody extends Vue {
   expand?: 'none' | 'single' | 'multi'
 
   @Inject()
-  TableCols!: any
+  TableCols!: any[]
 
   @Inject()
   TableStore!: any

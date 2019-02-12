@@ -2,8 +2,8 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 // import { getStyle } from '@megmore/es-helper'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color, DateTimeValueType } from '../../types/model'
-import {VNode} from "vue";
+import { dateTimeValueType } from '../constant'
+import { color, variety, shape } from '../../core/constant'
 
 const _name = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
@@ -15,11 +15,8 @@ const _name = 'm-time-picker-panel-time'
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelTime extends Vue {
-  @Prop({ type: String, default: 'primary' })
-  private type!: Color
-
-  @Prop({ type: String, default: 'list' })
-  private timeSelectType!: 'list' | 'clock'
+  @Prop({ type: String, default: color.primary })
+  private type!: color
 
   @Prop({ type: Number, default: 1 })
   private hourStep!: number
@@ -31,22 +28,22 @@ export default class MTimePickerPanelTime extends Vue {
   private DateStore!: any
 
   @Emit('pick')
-  onClick (val: number, type: DateTimeValueType): void {
+  onClick (val: number, type: dateTimeValueType): void {
     this.DateStore.SET_ACTIVE_TYPE(type)
     this.DateStore.UPDATE(
-      (type === 'hours' && this.DateStore.ampm && !this.DateStore.am)
+      (type === dateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
         ? val + 12
         : val,
       type
     )
   }
 
-  RList (type: DateTimeValueType) {
+  RList (type: dateTimeValueType) {
     const { onClick, hourStep, minuteStep } = this
     const { ampm } = this.DateStore
     const min = 0
-    const max = type === 'hours' ? ampm ? 11 : 23 : 59
-    const step = type === 'hours' ? hourStep : minuteStep
+    const max = type === dateTimeValueType.hours ? ampm ? 11 : 23 : 59
+    const step = type === dateTimeValueType.hours ? hourStep : minuteStep
     const time = this.DateStore[type]
     const Temps: any = []
 
@@ -57,10 +54,10 @@ export default class MTimePickerPanelTime extends Vue {
           size="sm"
           block
           class="m-m-0 m-p-0 m--block"
-          shape="circle"
+          shape={shape.circle}
           elevation={0}
-          variety={isCurrent ? 'normal' : 'flat'}
-          color={isCurrent ? 'primary' : 'default'}>
+          variety={isCurrent ? variety.normal : variety.flat}
+          color={isCurrent ? color.primary : color.default}>
           {tempTime}
         </MButton>
       )
@@ -74,15 +71,11 @@ export default class MTimePickerPanelTime extends Vue {
   }
 
   render () {
-    const { RList, timeSelectType } = this
+    const { RList } = this
     const Result: any = []
 
-    if (timeSelectType === 'list') {
-      Result.push(RList('hours'))
-      Result.push(RList('minutes'))
-    } else {
-      // todo
-    }
+    Result.push(RList(dateTimeValueType.hours))
+    Result.push(RList(dateTimeValueType.minutes))
 
     return (
       <div staticClass={_name}>{Result}</div>
