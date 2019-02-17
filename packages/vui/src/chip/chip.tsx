@@ -86,11 +86,13 @@ export default class MChip extends Mixins (
   }
 
   render () {
-    const { $slots, RMedia, RClose, onClick } = this
+    const { classes, styles, $slots, RMedia, RClose, onClick } = this
 
     return (
       <div staticClass={compName}
-            onClick={onClick}>
+           class={classes}
+           style={styles}
+           onClick={onClick}>
         {RMedia()}
         <div staticClass={`${compName}__main`}>
           {$slots.default}

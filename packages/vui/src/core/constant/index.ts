@@ -29,7 +29,6 @@ export enum Breakpoint {
 
 export const BREAKPOINT = ['xs', 'sm', 'md', 'lg', 'xl']
 
-
 export enum Size {
   xs = 'xs',
   sm = 'sm',
@@ -43,12 +42,12 @@ export type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export const SIZE = Object.keys(Size)
 
 export enum Variety {
-  normal = 'normal',
+  default = 'default',
   flat = 'flat',
   outline = 'outline'
 }
 
-export type variety = 'normal' | 'flat' | 'outline'
+export type variety = 'default' | 'flat' | 'outline'
 
 export const VARIETY = Object.keys(Variety)
 
@@ -113,7 +112,7 @@ export enum FlexWrap {
   none = 'none'
 }
 
-export type flexWrap = 'normal' | 'reverse' | 'none'
+export type flexWrap = 'wrap' | 'reverse' | 'none'
 
 export const FLEX_WRAP = Object.keys(FlexWrap)
 

@@ -9,6 +9,7 @@ let MRow = class MRow extends Vue {
         data.staticStyle = data.staticStyle ? data.staticStyle : {};
         genStaticStyles(data.staticStyle, compName, 'cols', props.cols);
         genSize(data.staticStyle, `${compName}-gutter`, props.gutter);
+        console.log(data);
         if (props.id) {
             data.domProps = data.domProps || {};
             data.domProps.id = props.id;

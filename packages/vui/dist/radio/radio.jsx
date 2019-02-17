@@ -19,7 +19,7 @@ let MRadio = class MRadio extends Mixins(colorable, sizeable) {
         const { checked, disabled } = this;
         const classes = {
             'm--checked': checked,
-            'm--disabled': disabled,
+            'm--disabled': disabled
         };
         return classes;
     }
@@ -45,11 +45,15 @@ let MRadio = class MRadio extends Mixins(colorable, sizeable) {
         <div v-m-ripple staticClass={`${compName}__radio-wrapper`}/>
       </a>);
     }
+    RDefault() {
+        const { $slots } = this;
+        return $slots.default === undefined ? undefined : (<span staticClass={`${compName}__label`}>{$slots.default}</span>);
+    }
     render() {
-        const { $slots, styles, classes, label, handleClick, RRadio } = this;
+        const { styles, classes, label, handleClick, RRadio, RDefault } = this;
         return (<div staticClass={compName} class={classes} style={styles} onClick={() => handleClick(label)}>
         {RRadio()}
-        {$slots.default}
+        {RDefault()}
       </div>);
     }
 };

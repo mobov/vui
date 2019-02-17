@@ -3,7 +3,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { genStaticStyles } from '../core/util';
 import { FlexAlign, FlexJustify, FlexWrap } from '../core/constant';
 const compName = 'm-flex';
-let MRow = class MRow extends Vue {
+let MFlex = class MFlex extends Vue {
     render(h, { props, data, children }) {
         const staticClass = data.staticClass ? data.staticClass : '';
         data.staticClass = `${compName} m--wrap-${props.wrap} m--justify-${props.justify} m--align-${props.align} ${staticClass} `;
@@ -20,26 +20,26 @@ let MRow = class MRow extends Vue {
 };
 tslib_1.__decorate([
     Prop({ type: String })
-], MRow.prototype, "id", void 0);
+], MFlex.prototype, "id", void 0);
 tslib_1.__decorate([
     Prop({ type: String, default: 'div' })
-], MRow.prototype, "tag", void 0);
+], MFlex.prototype, "tag", void 0);
 tslib_1.__decorate([
     Prop({ type: String, default: false })
-], MRow.prototype, "inline", void 0);
+], MFlex.prototype, "inline", void 0);
 tslib_1.__decorate([
     Prop({ type: String, default: FlexWrap.normal })
-], MRow.prototype, "wrap", void 0);
+], MFlex.prototype, "wrap", void 0);
 tslib_1.__decorate([
     Prop({ type: String, default: FlexJustify.start })
-], MRow.prototype, "justify", void 0);
+], MFlex.prototype, "justify", void 0);
 tslib_1.__decorate([
     Prop({ type: String, default: FlexAlign.stretch })
-], MRow.prototype, "align", void 0);
-MRow = tslib_1.__decorate([
+], MFlex.prototype, "align", void 0);
+MFlex = tslib_1.__decorate([
     Component({
         functional: true
     })
-], MRow);
-export default MRow;
+], MFlex);
+export default MFlex;
 //# sourceMappingURL=flex.jsx.map

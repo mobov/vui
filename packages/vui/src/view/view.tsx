@@ -12,16 +12,16 @@ export default class MView extends Vue {
   @Prop({ type: String, default: Fill.both })
   fillFooter?: Fill
 
-  @Prop({ type: String })
+  @Prop({ type: [String, Number] })
   headerSize?: size
 
-  @Prop({ type: String })
+  @Prop({ type: [String, Number] })
   footerSize?: size
 
-  @Prop({ type: String })
+  @Prop({ type: [String, Number] })
   leftSize?: size
 
-  @Prop({ type: String })
+  @Prop({ type: [String, Number] })
   rightSize?: size
 
   @Prop({ type: Number })

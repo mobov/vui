@@ -18,8 +18,8 @@ let MView = class MView extends Vue {
             'm--with-footer': isFooter,
             'm--with-left': isLeft,
             'm--with-right': isRight,
-            [`m--Fill-header-${fillHeader}`]: true,
-            [`m--Fill-footer-${fillFooter}`]: true
+            [`m--fill-header-${fillHeader}`]: true,
+            [`m--fill-footer-${fillFooter}`]: true
         };
     }
     get styles() {
@@ -84,16 +84,16 @@ tslib_1.__decorate([
     Prop({ type: String, default: Fill.both })
 ], MView.prototype, "fillFooter", void 0);
 tslib_1.__decorate([
-    Prop({ type: String })
+    Prop({ type: [String, Number] })
 ], MView.prototype, "headerSize", void 0);
 tslib_1.__decorate([
-    Prop({ type: String })
+    Prop({ type: [String, Number] })
 ], MView.prototype, "footerSize", void 0);
 tslib_1.__decorate([
-    Prop({ type: String })
+    Prop({ type: [String, Number] })
 ], MView.prototype, "leftSize", void 0);
 tslib_1.__decorate([
-    Prop({ type: String })
+    Prop({ type: [String, Number] })
 ], MView.prototype, "rightSize", void 0);
 tslib_1.__decorate([
     Prop({ type: Number })

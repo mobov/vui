@@ -20,6 +20,7 @@ export default class MCheckbox extends MCheckbox_base {
     readonly checked: boolean;
     handleClick(): void;
     RCheckbox(): JSX.Element;
+    RDefault(): JSX.Element | undefined;
     render(): JSX.Element;
 }
 export {};

@@ -1,6 +1,6 @@
 import Megmore from '@megmore/vui'
 import { PropsPropertries } from '@/global'
-const { COLOR, Color, SIZE, Size, VARIETY, Variety, ELEVATION } = Megmore.constant
+const { COLOR, Color, SIZE, Size, Variety, VARIETY, Shape, SHAPE, ELEVATION } = Megmore.constant
 
 const props: Array<PropsPropertries> = [
   {
@@ -26,6 +26,12 @@ const props: Array<PropsPropertries> = [
     type: 'radio',
     default: Variety.default,
     value: VARIETY
+  },
+  {
+    name: 'shape',
+    type: 'radio',
+    default: Shape.corner,
+    value: SHAPE
   }
 ]
 

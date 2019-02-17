@@ -1,9 +1,33 @@
 import Megmore from '@megmore/vui'
 import { PropsPropertries } from '@/global'
 
-const { SIZE, Size, Fill, FILL } = Megmore.constant
+const { Fill, FILL } = Megmore.constant
 
-const props: Array<PropsPropertries> =  [
+const props: Array<PropsPropertries> = [
+  {
+    name: 'headerSlot',
+    type: 'radio',
+    default: true,
+    value: [true, false]
+  },
+  {
+    name: 'footerSlot',
+    type: 'radio',
+    default: true,
+    value: [true, false]
+  },
+  {
+    name: 'leftSlot',
+    type: 'radio',
+    default: true,
+    value: [true, false]
+  },
+  {
+    name: 'rightSlot',
+    type: 'radio',
+    default: true,
+    value: [true, false]
+  },
   {
     name: 'fillHeader',
     type: 'radio',
@@ -19,50 +43,50 @@ const props: Array<PropsPropertries> =  [
   {
     name: 'headerSize',
     type: 'radio',
-    default: 'default',
-    value: ['default', 'sticky', 'none']
+    default: 50,
+    value: [0, 50, 100]
   },
   {
     name: 'footerSize',
     type: 'radio',
-    default: 'multi',
-    value: ['multi', 'single', 'none']
+    default: 50,
+    value: [0, 50, 100]
   },
   {
     name: 'leftSize',
     type: 'radio',
-    default: true,
-    value: [true, false]
+    default: 100,
+    value: [0, 100, 300]
   },
   {
     name: 'rightSize',
     type: 'radio',
-    default: 'multi',
-    value: ['multi', 'single', 'none']
+    default: 100,
+    value: [0, 100, 300]
   },
   {
     name: 'headerIndex',
     type: 'radio',
-    default: false,
-    value: [true, false]
+    default: 3,
+    value: [0, 1, 2, 3]
   },
   {
     name: 'footerIndex',
     type: 'radio',
-    default: 'row',
-    value: ['row', 'cell', 'none']
+    default: 2,
+    value: [0, 1, 2, 3]
   },
   {
     name: 'leftIndex',
     type: 'radio',
-    default: false,
-    value: [true, false]
+    default: 1,
+    value: [0, 1, 2, 3]
   },
   {
     name: 'rightIndex',
     type: 'radio',
-    default: 'row',
-    value: ['row', 'cell', 'none']
+    default: 0,
+    value: [0, 1, 2, 3]
   }
 ]
 

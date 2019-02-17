@@ -101,7 +101,7 @@ export default class MTimePickerPanelDate extends Vue {
                             size='sm'
                             shape={Shape.circle}
                             elevation={0}
-                            variety={isCurDate ? Variety.normal : isToday ? Variety.outline : Variety.flat}
+                            variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat}
                             color={isCurDate || isToday ? Color.primary : Color.default}
                             onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}

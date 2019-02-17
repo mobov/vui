@@ -1,7 +1,7 @@
 import { CreateElement, RenderContext } from 'vue';
 import { Vue } from 'vue-property-decorator';
 import { FlexAlign, FlexJustify, FlexWrap } from '../core/constant';
-export default class MRow extends Vue {
+export default class MFlex extends Vue {
     id?: string;
     tag: string;
     inline: boolean;

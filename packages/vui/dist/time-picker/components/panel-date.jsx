@@ -73,7 +73,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
         for (let tempDate = 1; tempDate <= viewMonthDays; tempDate++) {
             const isCurDate = isCurMonth && (tempDate === date);
             const isToday = isNowDate && (tempDate === nowDate);
-            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape={Shape.circle} elevation={0} variety={isCurDate ? Variety.normal : isToday ? Variety.outline : Variety.flat} color={isCurDate || isToday ? Color.primary : Color.default} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
+            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape={Shape.circle} elevation={0} variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat} color={isCurDate || isToday ? Color.primary : Color.default} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}
       </MButton></td>);
             if ((tempDate + viewFirstWeekDay) % 7 === 0 || tempDate === viewMonthDays) {

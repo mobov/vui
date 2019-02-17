@@ -46,7 +46,7 @@ export default class MRadio extends Mixins (
     const { checked, disabled } = this
     const classes = {
       'm--checked': checked,
-      'm--disabled': disabled,
+      'm--disabled': disabled
     }
 
     return classes
@@ -83,7 +83,8 @@ export default class MRadio extends Mixins (
 
   RDefault () {
     const { $slots } = this
-    return $slots.default === undefined ? undefined :(
+
+    return $slots.default === undefined ? undefined : (
       <span staticClass={`${compName}__label`}>{$slots.default}</span>
     )
   }

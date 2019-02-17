@@ -16,6 +16,7 @@ export default class MRadio extends MRadio_base {
     readonly checked: boolean;
     handleClick(val: any): void;
     RRadio(): JSX.Element;
+    RDefault(): JSX.Element | undefined;
     render(): JSX.Element;
 }
 export {};

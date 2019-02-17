@@ -16,7 +16,7 @@ let MTimePickerPanelMonth = class MTimePickerPanelMonth extends Vue {
         const Cols = [];
         for (let tempValue = 0; tempValue <= 11; tempValue++) {
             const isCurrent = tempValue === month;
-            Cols.push(<MButton size="sm" class="m-m-0 m-p-0" shape={Shape.circle} elevation={0} variety={isCurrent ? Variety.normal : Variety.flat} color={isCurrent ? Color.primary : Color.default} onClick={() => handleClick(tempValue)}>
+            Cols.push(<MButton size="sm" class="m-m-0 m-p-0" shape={Shape.circle} elevation={0} variety={isCurrent ? Variety.default : Variety.flat} color={isCurrent ? Color.primary : Color.default} onClick={() => handleClick(tempValue)}>
           {MonthMap[tempValue]}
         </MButton>);
         }

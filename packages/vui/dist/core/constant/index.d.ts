@@ -27,11 +27,11 @@ export declare enum Size {
 export declare type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export declare const SIZE: string[];
 export declare enum Variety {
-    normal = "normal",
+    default = "default",
     flat = "flat",
     outline = "outline"
 }
-export declare type variety = 'normal' | 'flat' | 'outline';
+export declare type variety = 'default' | 'flat' | 'outline';
 export declare const VARIETY: string[];
 export declare enum Shape {
     circle = "circle",
@@ -79,7 +79,7 @@ export declare enum FlexWrap {
     reverse = "reverse",
     none = "none"
 }
-export declare type flexWrap = 'normal' | 'reverse' | 'none';
+export declare type flexWrap = 'wrap' | 'reverse' | 'none';
 export declare const FLEX_WRAP: string[];
 export declare enum FlexAlign {
     start = "start",

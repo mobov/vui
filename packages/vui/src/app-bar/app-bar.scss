@@ -41,7 +41,7 @@ $--m-app-bar-size-xl: 6.5rem;
     transition: all ease .3s;
     border: 0 solid transparent;
     // variety
-    &.m-variety-normal {
+    &.m-variety-default {
         color: var(--m-app-bar-font-color);
         background-color: var(--m-app-bar-color);
     }

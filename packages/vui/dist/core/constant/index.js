@@ -28,7 +28,7 @@ export var Size;
 export const SIZE = Object.keys(Size);
 export var Variety;
 (function (Variety) {
-    Variety["normal"] = "normal";
+    Variety["default"] = "default";
     Variety["flat"] = "flat";
     Variety["outline"] = "outline";
 })(Variety || (Variety = {}));
