@@ -1,52 +1,44 @@
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP, BREAKPOINT, BREAKPOINTS } from '../core/constant'
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { genStaticStyles, genSpace } from '../core/style-gen'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
+import { genStaticStyles, genSpace } from '../core/util'
+import { BREAKPOINT } from '../core/constant'
 
-const _name = 'm-col'
+const compName = 'm-col'
 
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
 export default class MCol extends Vue {
   @Prop({ type: String })
-  private id!: string
+  id?: string
 
   @Prop({ type: String, default: 'div' })
-  private tag!: string
+  tag!: string
 
   @Prop({ type: Number })
-  private xs!: number
+  xs?: number
 
   @Prop({ type: Number })
-  private sm!: number
+  sm?: number
 
   @Prop({ type: Number })
-  private md!: number
+  md?: number
 
   @Prop({ type: Number })
-  private lg!: number
+  lg?: number
 
   @Prop({ type: Number })
-  private xl!: number
-
-  @Prop({ type: [String, Number] })
-  private gutter!: string
+  xl?: number
 
   render (h: CreateElement, { props, data, children }: RenderContext) {
-    const staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass = ` ${_name} ${staticClass} `
-    data.staticClass = data.staticClass.trim()
+    const staticClass = data.staticClass ? data.staticClass : ''
+    data.staticClass = `${compName} ${staticClass}`
+    data.staticStyle = data.staticStyle ? data.staticStyle : {}
 
-    if (!data.staticStyle) {
-      data.staticStyle = {}
-    }
-    if (props.gutter) {
-      genSpace(data.staticStyle, _name, 'gutter', props.gutter)
-    }
-    BREAKPOINTS.forEach((breakpoint: string) => {
+    genSpace(data.staticStyle, compName, props.space)
+    BREAKPOINT.forEach((breakpoint: string) => {
       if (props[breakpoint]) {
-        genStaticStyles(data.staticStyle, _name, `span-${breakpoint}`, props[breakpoint])
+        genStaticStyles(data.staticStyle, compName, `span-${breakpoint}`, props[breakpoint])
       }
     })
     if (props.id) {

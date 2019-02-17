@@ -6,7 +6,7 @@
 </template>
 ```
 
-### Attributes
+### Props
 | Name      | Description | Type      | Accepted Values       | Default  |
 |---------- |------ |---------- |--------------------------------  |-------- |
 | fillHeader | 布局 | string | left/right/both/none | both |

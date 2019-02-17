@@ -1,12 +1,19 @@
 import Megmore from '@megmore/vui'
+const { SIZE, Size } = Megmore.constant
 
-console.log(Megmore)
-export default [
+interface PropsPropertries {
+  name: string,
+  type: string,
+  default: any,
+  value: any
+}
+
+const props: Array<PropsPropertries> =  [
   {
     name: 'size',
     type: 'radio',
-    default: 'md',
-    value: Megmore.constant.BREAKPOINTS
+    default: Size.md,
+    value: SIZE
   },
   {
     name: 'border',
@@ -51,3 +58,5 @@ export default [
     value: ['row', 'cell', 'none']
   }
 ]
+
+export default props

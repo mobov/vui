@@ -1,0 +1,1 @@
+{"version":3,"file":"remove.js","sourceRoot":"","sources":["../../../src/icon/icons/remove.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,QAAQ,EAAE;QACT,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,6CAA6C;SAC7C;KACD;CACD,CAAC,CAAA"}

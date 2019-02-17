@@ -101,7 +101,7 @@ $--m-table-row-size-xl: 6rem;
     }
 
     // sticky-header
-    &.m--sticky-header {
+    &.m--header-sticky {
         .m-table-head {
             position: sticky;
             top: 0;

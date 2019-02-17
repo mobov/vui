@@ -1,0 +1,1 @@
+{"version":3,"file":"flip_to_front.js","sourceRoot":"","sources":["../../../src/icon/icons/flip_to_front.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,odAAod;SACpd;KACD;CACD,CAAC,CAAA"}

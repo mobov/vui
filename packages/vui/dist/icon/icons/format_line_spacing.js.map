@@ -1,0 +1,1 @@
+{"version":3,"file":"format_line_spacing.js","sourceRoot":"","sources":["../../../src/icon/icons/format_line_spacing.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,qBAAqB,EAAE;QACtB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,0MAA0M;SAC1M;KACD;CACD,CAAC,CAAA"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"sentiment_dissatisfied.js","sourceRoot":"","sources":["../../../src/icon/icons/sentiment_dissatisfied.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,wBAAwB,EAAE;QACzB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,+jBAA+jB;SAC/jB;KACD;CACD,CAAC,CAAA"}

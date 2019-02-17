@@ -1,49 +1,34 @@
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { genStaticStyles, genSpace } from '../core/style-gen'
-import { FLEX_ALIGN, FLEX_JUSTIFY, FLEX_WRAP } from '../core/constant'
-import { Size, FlexAlign, FlexJustify, FlexWrap } from '../types/model'
+import { genStaticStyles, genSize } from '../core/util'
+import { size } from '../core/constant'
 
-const _name = 'm-row'
+const compName = 'm-row'
 
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
 export default class MRow extends Vue {
   @Prop({ type: String })
-  private id?: string
+  id?: string
 
   @Prop({ type: String, default: 'div' })
-  private tag!: string
-
-  @Prop({ type: String, default: FLEX_WRAP.normal })
-  private wrap!: FlexWrap
-
-  @Prop({ type: String, default: FLEX_JUSTIFY.start })
-  private justify!: FlexJustify
-
-  @Prop({ type: String, default: FLEX_ALIGN.stretch })
-  private align!: FlexAlign
+  tag!: string
 
   @Prop({ type: [String, Number] })
-  private gutter?: Size
+  gutter?: size
 
   @Prop({ type: Number })
-  private cols?: number
+  cols?: number
 
   render (h: CreateElement, { props, data, children }: RenderContext) {
-    data.staticClass = data.staticClass !== undefined ? data.staticClass : ''
-    data.staticClass += ` ${_name} m-flex-wrap-${props.wrap} m-flex-justify-${props.justify} m-flex-align-${props.align} `
-    data.staticClass = data.staticClass.trim()
-    if (!data.staticStyle) {
-      data.staticStyle = {}
-    }
-    if (props.cols) {
-      genStaticStyles(data.staticStyle, _name, 'cols', props.cols)
-    }
-    if (props.gutter) {
-      genSpace(data.staticStyle, _name, 'gutter', props.gutter)
-    }
+    const staticClass = data.staticClass ? data.staticClass : ''
+    data.staticClass = `${compName} ${staticClass}`
+    data.staticStyle = data.staticStyle ? data.staticStyle : {}
+    genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
+    genSize(data.staticStyle, `${compName}-gutter`, props.gutter)
+
+    console.log(data)
     if (props.id) {
       data.domProps = data.domProps || {}
       data.domProps.id = props.id

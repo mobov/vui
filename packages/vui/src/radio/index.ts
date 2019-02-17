@@ -1,4 +1,4 @@
-import './radio.scss'
+import'./radio.scss'
 import MRadio from './radio'
 
 /* istanbul ignore next */

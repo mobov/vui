@@ -1,66 +1,63 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-import { Size, Color, Variety, Shape } from '../types/model'
-import { genColor, genElevation, genSize, genHover } from '../core/style-gen'
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MAvatar from '../avatar'
 import MIcon from '../icon'
+import '../icon/icons/cancel'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
+import variable from '../core/mixin/variable'
+import shapeable from '../core/mixin/shapeable'
+import { genColor, genFontColor, genSize, genElevation, genVariety, genShape } from '../core/util'
 
-const _name = 'm-chip'
+const compName = 'm-chip'
 
-@Component({ components: { MAvatar, MIcon } })
-export default class MChip extends Vue {
-  @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: String })
-  private color!: Color
-
-  @Prop({ type: String })
-  private fontColor!: Color
-
-  @Prop({ type: Number })
-  private elevation!: number
-
-  @Prop({ type: String, default: 'normal' })
-  private variety!: Variety
-
-  @Prop({ type: String, default: 'circle' })
-  private shape!: Shape
+@Component({
+  components: { MAvatar, MIcon }
+})
+export default class MChip extends Mixins (
+  colorable,
+  sizeable,
+  elevated,
+  variable,
+  shapeable
+) {
+  @Prop({ type: Boolean, default: false })
+  closeable!: boolean
 
   @Prop({ type: Boolean, default: false })
-  private closeable!: boolean
-
-  @Prop({ type: Boolean, default: false })
-  private closeover!: boolean
-
-  get styles () {
-    const { color, fontColor, size, elevation } = this
-    const styles = { }
-
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-    genElevation(styles, _name, elevation)
-    genHover(styles, _name, 'hover-color', color)
-
-    return styles
-  }
-
-  get classes () {
-    const { variety, shape, closeable, closeover } = this
-
-    return {
-      [`m-variety-${variety}`]: true,
-      [`m-shape-${shape}`]: true,
-      [`${_name}--closeable`]: closeable,
-      [`${_name}--closeover`]: closeover
-    }
-  }
+  closeover!: boolean
 
   @Emit('close')
   onClose (e: MouseEvent): void { e.stopPropagation() }
 
   @Emit('click')
   onClick (e: MouseEvent): void {}
+
+  get styles () {
+    const { fontColor, size, color, elevation } = this
+    const styles = {}
+
+    genFontColor(styles, compName, fontColor)
+    genColor(styles, compName, color)
+    genSize(styles, compName, size)
+    genElevation(styles, compName, elevation)
+    // genHover(styles, _name, 'hover-color', color)
+
+    return styles
+  }
+
+  get classes () {
+    const { closeable, closeover, variety, shape } = this
+    const classes = {
+      'm--closeable': closeable,
+      'm--closeover': closeover,
+    }
+
+    genVariety(classes, variety)
+    genShape(classes, shape)
+
+    return classes
+  }
 
   RMedia () {
     const { $slots } = this
@@ -69,7 +66,7 @@ export default class MChip extends Vue {
       if (!$slots.media[0]!.data!.staticClass) {
         $slots.media[0]!.data!.staticClass = ''
       }
-      $slots.media[0]!.data!.staticClass += ` ${_name}__media`
+      $slots.media[0]!.data!.staticClass += ` ${compName}__media`
 
       return $slots.media
     }
@@ -80,8 +77,10 @@ export default class MChip extends Vue {
     const { closeable, closeover, onClose } = this
 
     return (
-      closeable || closeover
-        ? <MIcon class={`${_name}__close`} onClick={onClose} name='cancel' />
+      (closeable || closeover)
+        ? <MIcon staticClass={`${compName}__close`}
+                 onClick={ () => onClose }
+                 name='cancel' />
         : undefined
     )
   }
@@ -90,12 +89,12 @@ export default class MChip extends Vue {
     const { classes, styles, $slots, RMedia, RClose, onClick } = this
 
     return (
-      <div staticClass={_name}
-           style={styles}
+      <div staticClass={compName}
            class={classes}
+           style={styles}
            onClick={onClick}>
         {RMedia()}
-        <div staticClass={`${_name}__main`}>
+        <div staticClass={`${compName}__main`}>
           {$slots.default}
         </div>
         {RClose()}

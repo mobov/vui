@@ -1,0 +1,1 @@
+{"version":3,"file":"airline_seat_legroom_extra.js","sourceRoot":"","sources":["../../../src/icon/icons/airline_seat_legroom_extra.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,4BAA4B,EAAE;QAC7B,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,uSAAuS;SACvS;KACD;CACD,CAAC,CAAA"}

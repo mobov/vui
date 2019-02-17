@@ -47,12 +47,6 @@ $--m-checkbox-wrapper-size-xl: 6rem;
     justify-content: flex-start;
     align-items: center;
     -webkit-font-smoothing: antialiased;
-    &.m--disabled {
-        opacity: .5;
-    }
-    &.m--checked {
-        color: var(--m-checkbox-color);
-    }
 
     &__checked-icon,
     &__uncheck-icon,
@@ -81,6 +75,15 @@ $--m-checkbox-wrapper-size-xl: 6rem;
     }
 
     &__label {
-        color: transparent;
+        text-indent: .4em;
+    }
+
+    // disabled
+    &.m--disabled {
+        opacity: .5;
+    }
+    // checked
+    &.m--checked {
+        color: var(--m-checkbox-color);
     }
 }

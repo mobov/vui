@@ -1,81 +1,78 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
-// import MSpin from '@/components/spin'
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import { Size, Color, Variety, Shape } from '../types/model'
-import { VARIETY, SHAPE, COLOR } from '../core/constant'
-import { genColor, genElevation, genSize, genHover } from '../core/style-gen'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
+import variable from '../core/mixin/variable'
+import shapeable from '../core/mixin/shapeable'
+import { genColor, genElevation, genFontColor, genSize, genShape, genVariety } from '../core/util'
 
-const _name = 'm-button'
+const compName = 'm-button'
 
-@Component({ components: { MIcon } })
-export default class MButton extends Vue {
+@Component({
+  components: { MIcon }
+})
+export default class MButton extends Mixins (
+  colorable,
+  sizeable,
+  elevated,
+  variable,
+  shapeable
+) {
+  @Prop({ type: Boolean })
+  block!: boolean
+
   @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: Number })
-  private elevation!: number
-
-  @Prop({ type: String, default: COLOR.primary })
-  private color!: Color
-
-  @Prop({ type: String })
-  private fontColor!: Color
-
-  @Prop({ type: String, default: SHAPE.corner })
-  private shape!: Shape
-
-  @Prop({ type: String, default: VARIETY.normal })
-  private variety!: Variety
+  icon!: string
 
   @Prop({ type: Boolean })
-  private block!: boolean
-
-  @Prop({ type: String })
-  private icon!: string
+  loading!: boolean
 
   @Prop({ type: Boolean })
-  private loading!: boolean
+  disabled!: boolean
 
   @Emit('click')
-  private handleClick (e: MouseEvent): void { }
+  onClick (e: MouseEvent | TouchEvent): void { }
 
   get styles () {
-    const { color, fontColor, size, elevation } = this
-    const styles = { }
+    const { fontColor, size, color, elevation } = this
+    const styles = {}
 
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-    genElevation(styles, _name, elevation)
-    genHover(styles, _name, 'hover-color', color)
+    genFontColor(styles, compName, fontColor)
+    genColor(styles, compName, color)
+    genElevation(styles, compName, elevation)
+    genSize(styles, compName, size)
 
     return styles
   }
 
   get classes () {
-    const { variety, shape, block } = this
-
-    return {
-      [`m-variety-${variety}`]: true,
-      [`m-shape-${shape}`]: true,
-      'm--block': block
+    const { shape, variety, block, disabled } = this
+    const classes = {
+      'm--block': block,
+      'm--disabled': disabled,
     }
+
+    genShape(classes, shape)
+    genVariety(classes, variety)
+
+    return classes
   }
 
-  private render () {
-    const { classes, styles, icon, handleClick } = this
+  render () {
+    const { classes, styles, icon, onClick, color } = this
 
     return (
-      <button v-m-ripple
-              staticClass={_name}
-              style={styles}
-              class={classes}
-              onClick={handleClick}>
+      <div v-m-ripple
+           staticClass={compName}
+           class={classes}
+           style={styles}
+           onClick={onClick}>
         {!icon ? undefined
           : <MIcon name={icon} />}
         {!this.$slots.default ? undefined
-          : <div class={`${_name}__main`}>{this.$slots.default}</div>}
-      </button>
+          : <div class={`${compName}__main`}>{this.$slots.default}</div>}
+      </div>
     )
   }
 }

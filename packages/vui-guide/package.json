@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "gen:icons": "node src icon/icon-src/generate"
   },
   "dependencies": {
     "@megmore/vui": "^0.0.1",
@@ -27,7 +28,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "typescript": "~3.1.1",
+    "typescript": "^3.3.3",
     "vue-template-compiler": "^2.5.21"
   }
 }

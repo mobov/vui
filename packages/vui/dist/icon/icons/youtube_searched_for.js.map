@@ -1,0 +1,1 @@
+{"version":3,"file":"youtube_searched_for.js","sourceRoot":"","sources":["../../../src/icon/icons/youtube_searched_for.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,sBAAsB,EAAE;QACvB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,uYAAuY;SACvY;KACD;CACD,CAAC,CAAA"}

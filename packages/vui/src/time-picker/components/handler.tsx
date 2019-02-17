@@ -2,15 +2,15 @@
  * 时间选择器底部
  */
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-import { Color } from '../../types/model'
+import { Color, color, Variety, variety } from '../../core/constant'
 import MButton from '../../button'
 
-const _name = 'm-time-picker-handler'
+const compName = 'm-time-picker-handler'
 
 @Component({ components: { MButton } })
 export default class MTimePickerHandler extends Vue {
-    @Prop({ type: String, default: 'primary' })
-    private color!: Color
+    @Prop({ type: String, default: Color.primary })
+    color!: color
 
     @Emit('confirm')
     onConfirm (): void { }
@@ -22,15 +22,15 @@ export default class MTimePickerHandler extends Vue {
         const { onConfirm, onCancel } = this
 
         return (
-            <div staticClass={`${_name} m-p-sm`}>
+            <div staticClass={`${compName} m-p-sm`}>
                 <MButton size="sm"
                          style={{ width: '5rem' }}
-                         variety="flat"
-                         color="primary"
+                         variety={Variety.flat}
+                         color={Color.primary}
                          onClick={onCancel}>cancel</MButton>
                 <MButton size="sm"
                          style={{ width: '5rem' }}
-                         color="primary"
+                         color={Color.primary}
                          onClick={onConfirm}>ok</MButton>
             </div>
         )

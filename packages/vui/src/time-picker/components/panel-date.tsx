@@ -1,29 +1,35 @@
-import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
+import {Component, Emit, Inject, Prop, Vue} from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color } from '../../types/model'
+import { Color, color, Variety, variety, Shape, shape } from '../../core/constant'
+import { datePickerType } from '../constant'
 
-const _name = 'm-time-picker-panel-date'
+const compName = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
+
+const enum toggleAction {
+  prev = 'prev',
+  next = 'next'
+}
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
-  @Prop({ type: String, default: 'primary' })
-  private type!: Color
+  @Prop({ type: String, default: Color.primary })
+  type!: color
 
   @Prop({ type: Number })
-  private min!: number
+  min!: number
 
   @Prop({ type: Number })
-  private max!: number
+  max!: number
 
   @Prop({ type: Number, default: 0 })
-  private firstDayOfWeek!: number
+  firstDayOfWeek!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
-  private viewValue: number = this.DateStore.value
+  viewValue: number = this.DateStore.value
 
   get viewDateValue (): any {
     return new Date(this.viewValue)
@@ -44,7 +50,7 @@ export default class MTimePickerPanelDate extends Vue {
   handleMonthToggle (action: 'prev' | 'next'): void {
     const date = new Date(this.viewValue)
     const month = date.getMonth()
-    date.setMonth(action === 'prev' ? month - 1 : month + 1)
+    date.setMonth(action === toggleAction.prev ? month - 1 : month + 1)
     this.viewValue = date.getTime()
   }
 
@@ -72,8 +78,7 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   RTableBody () {
-    const { viewDateValue, viewYear, viewMonth,
-      handleDateClick, RTableHead } = this
+    const { viewDateValue, viewYear, viewMonth, handleDateClick } = this
     const { year, month, date } = this.DateStore
     const nowValue = new Date()
     const isNowDate = nowValue.getFullYear() === viewYear && nowValue.getMonth() === viewMonth
@@ -94,10 +99,10 @@ export default class MTimePickerPanelDate extends Vue {
 
       Tds.push(<td><MButton class='m-m-0 m-p-0'
                             size='sm'
-                            shape='circle'
+                            shape={Shape.circle}
                             elevation={0}
-                            variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'}
-                            color={isCurDate || isToday ? 'primary' : 'default'}
+                            variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat}
+                            color={isCurDate || isToday ? Color.primary : Color.default}
                             onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}
       </MButton></td>)
@@ -114,35 +119,35 @@ export default class MTimePickerPanelDate extends Vue {
     const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this
 
     return (
-      <div staticClass={_name}>
-        <div class={`${_name}__header`}>
-          <div staticClass={`${_name}__header-year`}>
-            <MButton variety='flat'
+      <div staticClass={compName}>
+        <div class={`${compName}__header`}>
+          <div staticClass={`${compName}__header-year`}>
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
-                     color='default'
+                     color={Color.default}
                      elevation={0}
-                     onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
+                     onClick={() => this.DateStore.SET_ACTIVE_TYPE(datePickerType.year)}>
               {viewYear}
             </MButton>
           </div>
-          <div staticClass={`${_name}__header-handler`}>
-            <MButton variety='flat'
+          <div staticClass={`${compName}__header-handler`}>
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
                      elevation={0}
-                     shape='circle'
-                     color='default'
+                     shape={Shape.circle}
+                     color={Color.default}
                      icon='navigate_before'
-                     onClick={() => handleMonthToggle('prev')} />
-            <MButton variety='flat'
+                     onClick={() => handleMonthToggle(toggleAction.prev)} />
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
                      elevation={0}
-                     shape='circle'
-                     color='default'
+                     shape={Shape.circle}
+                     color={Color.default}
                      icon='navigate_next'
-                     onClick={() => handleMonthToggle('next')} />
+                     onClick={() => handleMonthToggle(toggleAction.next)} />
           </div>
         </div>
-        <table class={`${_name}__table`}>
+        <table class={`${compName}__table`}>
           {RTableHead()}
           {RTableBody()}
         </table>

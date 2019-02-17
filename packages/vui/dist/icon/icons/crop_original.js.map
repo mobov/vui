@@ -1,0 +1,1 @@
+{"version":3,"file":"crop_original.js","sourceRoot":"","sources":["../../../src/icon/icons/crop_original.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,mRAAmR;SACnR;KACD;CACD,CAAC,CAAA"}

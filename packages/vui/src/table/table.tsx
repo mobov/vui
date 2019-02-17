@@ -1,128 +1,89 @@
-import { Component, Prop, Emit, Vue, Provide, Watch } from 'vue-property-decorator'
+import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
 import { deepCopy } from '@megmore/es-helper'
-import { Size, Color } from '../types/model'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
 import TableHead from './components/head'
 import TableBody from './components/body'
-import { BREAKPOINT } from '../core/constant'
-import { genColor, genSize } from '../core/style-gen'
+import { typeHeader,  typeHover, typeSelect }  from './constant'
 
-const _name = 'm-table'
-const selfKeyField = '_table-key'
-// const selfSelectField = '_table-select'
-// const selfExpandField = '_table-expand'
+const compName = 'm-table'
+const SELF_KEY = '_table-key'
 
-@Component({ components: { TableHead, TableBody } })
-export default class MTable extends Vue {
-  @Prop({ type: String })
-  private color?: Color
-
-  @Prop({ type: Number, default: 2 })
-  private elevation?: number
-
-  @Prop({ type: String, default: BREAKPOINT.md })
-  private size?: Size
-
+@Component({
+  components: { TableHead, TableBody }
+})
+export default class MTable extends Mixins (
+  sizeable,
+  elevated
+) {
   @Prop({ type: [String, Number] })
-  private height?: string | number
+  height?: string | number
 
   @Prop({ type: Boolean, default: false })
-  private border?: boolean
+  border?: boolean
 
   @Prop({ type: Array, default: () => [] })
-  private data!: any
+  data!: any[]
 
-  @Prop({ type: String, default: selfKeyField })
-  private keyField?: string
+  @Prop({ type: String, default: SELF_KEY })
+  keyField?: string
 
-  @Prop({ type: String, default: 'default' })
-  private header?: 'default' | 'sticky' | 'none'
+  @Prop({
+    type: String,
+    default: typeHeader.normal,
+    validator(value): boolean {
+      return typeHeader.hasOwnProperty(value)
+    }
+  })
+  header?: typeHeader
 
-  @Prop({ type: String, default: 'none' })
-  private hover?: 'none' | 'row' | 'cell'
+  @Prop({
+    type: String,
+    default: typeHover.none,
+    validator(value): boolean {
+      return typeHover.hasOwnProperty(value)
+    }
+  })
+  hover?: typeHover
 
   @Prop({ type: Boolean, default: false })
-  private rowSelect?: boolean
+  rowSelect?: boolean
 
-  @Prop({ type: String, default: 'none' })
-  private select?: 'none' | 'single' | 'multi'
+  @Prop({
+    type: String,
+    default: typeSelect.none,
+    validator(value): boolean {
+      return typeSelect.hasOwnProperty(value)
+    }
+  })
+  select?: typeSelect
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private selected?: any | string | number
+  selected?: any
 
   @Prop({ type: Array, default: () => [] })
-  private noSelect?: any
+  noSelect?: any
 
   @Prop({ type: Boolean, default: false })
-  private rowExpand?: boolean
+  rowExpand?: boolean
 
-  @Prop({ type: String, default: 'single' })
-  private expand?: 'none' | 'single' | 'multi'
+  @Prop({
+    type: String,
+    default: typeSelect.none,
+    validator(value): boolean {
+      return typeSelect.hasOwnProperty(value)
+    }
+  })
+  expand?: typeSelect
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private expanded?: any | string | number
+  expanded?: any
 
   @Prop({ type: Array, default: () => [] })
-  private noExpand?: any
+  noExpand?: any
 
   @Prop({ type: Function })
-  private filter?: () => boolean
-
-  @Prop({ type: String, default: 'single' })
-  private filterMulti?: string
-
-  get classes () {
-    const { border, header, hover } = this
-
-    return {
-      [`m-elevation-${this.elevation}`]: true,
-      'm--border': border,
-      'm--sticky-header': header === 'sticky',
-      [`m--${hover}-hover`]: hover !== 'none'
-    }
-  }
-
-  get styles () {
-    const { color, size } = this
-    const styles = { }
-
-    genSize(styles, _name, 'row-size', size)
-
-    return styles
-  }
-
-    // 数据输入适配
-  dataAdaptI (val: any): any {
-    const { keyField } = this
-    const temp = deepCopy(val)
-    if (keyField === selfKeyField) {
-      temp.forEach((item: any, index: number) => {
-          item[keyField] = index
-      })
-    }
-
-    return temp
-  }
-
-  @Watch('data', { immediate: true, deep: true })
-  handleDataUpdate (val: any): void {
-    this.TableStore.Data = this.dataAdaptI(val)
-  }
-
-  @Watch('selected', { immediate: true })
-  handleSelectedUpdate (val: any): void {
-    this.TableStore.Selected = deepCopy(val)
-  }
-
-  @Watch('expanded', { immediate: true })
-  handleExpandedUpdate (val: any): void {
-    this.TableStore.Expanded = deepCopy(val)
-  }
-
-  @Emit('update:selected')
-  syncSelected (data: any): void {}
-
-  @Emit('update:expanded')
-  syncExpanded (data: any): void {}
+  filter?: () => boolean
 
   @Emit('expand')
   onExpand (row: any, index: number): void {}
@@ -142,8 +103,29 @@ export default class MTable extends Vue {
   @Emit('rowDblclick')
   onRowDblclick (row: any, index: number): void {}
 
+  @Watch('data', { immediate: true, deep: true })
+  handleDataUpdate (val: any[]): void {
+    this.TableStore.Data = this.dataAdaptI(val)
+  }
+
+  @Watch('selected', { immediate: true })
+  handleSelectedUpdate (val: any): void {
+    this.TableStore.Selected = deepCopy(val)
+  }
+
+  @Watch('expanded', { immediate: true })
+  handleExpandedUpdate (val: any): void {
+    this.TableStore.Expanded = deepCopy(val)
+  }
+
+  @Emit('update:selected')
+  syncSelected (data: any): void {}
+
+  @Emit('update:expanded')
+  syncExpanded (data: any): void {}
+
   @Provide()
-  private TableStore: any = {
+  TableStore: any = {
     Data: [],
     keyField: this.keyField,
     Selected: [],
@@ -176,7 +158,7 @@ export default class MTable extends Vue {
       const targetIndex = Selected.indexOf(keyValue)
 
       if (targetIndex === -1) {
-        if (select === 'multi') {
+        if (select === typeSelect.multi) {
           // multi
           this.TableStore.Selected.push(keyValue)
         } else {
@@ -205,7 +187,7 @@ export default class MTable extends Vue {
       const targetIndex = this.TableStore.Expanded.indexOf(keyValue)
 
       if (targetIndex === -1) {
-        if (expand === 'multi') {
+        if (expand === typeSelect.multi) {
           // multi
           this.TableStore.Expanded.push(keyValue)
         } else {
@@ -220,7 +202,7 @@ export default class MTable extends Vue {
   }
 
   @Provide()
-  get TableCols (): any {
+  get TableCols (): any[] {
     const { $slots } = this
     const result: any = []
     if ($slots.default) {
@@ -243,14 +225,28 @@ export default class MTable extends Vue {
     return result
   }
 
+  // 数据输入适配
+  dataAdaptI (val: any[] = []): any[] {
+    const { keyField } = this
+    const temp = deepCopy(val)
+    if (keyField === SELF_KEY) {
+      temp.forEach((item: any, index: number) => {
+        item[keyField] = index
+      })
+    }
+
+    return temp
+  }
+
   render () {
-    const { height, border, header, classes, styles, size,
-            select, expand, rowSelect, rowExpand } = this
-    const noHeader = header === 'none'
+    const { height, border, header, size, elevation, select, expand, rowSelect, rowExpand } = this
+    const noHeader = header === typeHeader.none
 
     return (
-      <div staticClass={`${_name}`} class={classes} style={styles}>
-        <section staticClass={`${_name}__wrapper`}>
+      <div staticClass={compName}
+             size={size}
+             elevation={elevation}>
+        <section staticClass={`${compName}__wrapper`}>
           {noHeader ? undefined : (
             <TableHead ref={'head'}
                        size={size}

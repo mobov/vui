@@ -1,6 +1,6 @@
 <template>
   <m-app>
-    <m-view fill-header="none"
+    <m-view Fill-header="none"
             left-size="20rem">
       <m-app-bar slot="header"
                  size="100%"

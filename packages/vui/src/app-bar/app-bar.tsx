@@ -1,54 +1,48 @@
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { genColor, genSize, genElevation } from '../core/style-gen'
-import { Size, Variety } from '../types/model'
-import { VARIETY } from '../core/constant'
+import { Component, Mixins } from 'vue-property-decorator'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
+import variable from '../core/mixin/variable'
+import { genFontColor, genColor, genElevation, genSize, genVariety } from '../core/util'
 
-const _name = 'm-app-bar'
+const compName = 'm-app-bar'
 
 @Component
-export default class MAppBar extends Vue {
-  @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: Number })
-  private elevation!: number
-
-  @Prop({ type: [String, Number] })
-  private fontColor!: string
-
-  @Prop({ type: [String, Number] })
-  private color!: string
-
-  @Prop({ type: String, default: VARIETY.normal })
-  private variety!: Variety
-
+export default class MAppBar extends Mixins (
+  colorable,
+  elevated,
+  sizeable,
+  variable
+) {
   get styles () {
-    const { color, fontColor, size, elevation } = this
+    const { fontColor, size, color, elevation } = this
     const styles = {}
 
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
-    genElevation(styles, _name, elevation)
+    genFontColor(styles, compName, fontColor)
+    genColor(styles, compName, color)
+    genElevation(styles, compName, elevation)
+    genSize(styles, compName, size)
 
     return styles
   }
 
   get classes () {
     const { variety } = this
+    const classes = {}
 
-    return {
-      [`m-variety-${variety}`]: true
-    }
+    genVariety(classes, variety)
+
+    return classes
+
   }
 
   render () {
-    const { styles, $slots, classes } = this
+    const { $slots, classes, styles } = this
 
     return (
-      <div staticClass={_name}
-           class={classes}
-           style={styles}>
+      <div staticClass={compName}
+           style={styles}
+           class={classes}>
         {$slots.default}
       </div>
     )

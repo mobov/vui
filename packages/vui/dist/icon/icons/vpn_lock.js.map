@@ -1,0 +1,1 @@
+{"version":3,"file":"vpn_lock.js","sourceRoot":"","sources":["../../../src/icon/icons/vpn_lock.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,UAAU,EAAE;QACX,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,81BAA81B;SAC91B;KACD;CACD,CAAC,CAAA"}

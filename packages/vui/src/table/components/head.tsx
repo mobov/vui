@@ -2,29 +2,32 @@ import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
 import MIcon from '../../icon'
 import MCheckbox from '../../checkbox'
 import { getStyleSize } from '../../core/util'
-import { Size } from '../../types/model'
+import { typeSelect } from '../constant'
+import { size } from '../../core/constant'
 
-const _name = 'm-table-head'
+const compName = 'm-table-head'
 
-@Component({ components: { MCheckbox } })
+@Component({
+  components: { MCheckbox, MIcon }
+})
 export default class TableHead extends Vue {
-  @Inject()
-  private TableCols!: any
-
-  @Inject()
-  private TableStore!: any
+  @Prop({ type: String })
+  size?: size
 
   @Prop({ type: String })
-  private size!: Size
-
-  @Prop({ type: String })
-  private select!: 'none' | 'single' | 'multi'
+  select?: typeSelect
 
   @Prop({ type: Boolean, default: false })
-  private sortable?: boolean
+  sortable?: boolean
 
   @Prop({ type: Function })
-  private sort?: () => boolean
+  sort?: () => boolean
+
+  @Inject()
+  TableCols!: any
+
+  @Inject()
+  TableStore!: any
 
   private widthMap: any = []
 
@@ -43,7 +46,7 @@ export default class TableHead extends Vue {
     const propsData = item.componentOptions.propsData
     const propsDefault = item.componentOptions.Ctor.options.props
 
-    const RContent = () => {
+    function RContent () {
       let content: any = null
       const type = item.componentOptions.propsData.type
 
@@ -84,7 +87,7 @@ export default class TableHead extends Vue {
     const styles = { width, minWidth: width, maxWidth: width }
 
     return (
-      <td staticClass={`${_name}__cell`}
+      <td staticClass={`${compName}__cell`}
           style={styles}
           align={align}>
         {RContent()}
@@ -100,7 +103,7 @@ export default class TableHead extends Vue {
         result.push(RCell(item, index))
     })
 
-    return (<tr staticClass={`${_name}__row`}>{result}</tr>)
+    return (<tr staticClass={`${compName}__row`}>{result}</tr>)
   }
 
   RSlotHeadPrepend () {
@@ -108,7 +111,7 @@ export default class TableHead extends Vue {
     const $slotHeadPrepend = this.$parent.$slots['head-prepend']
 
     return !$slotHeadPrepend ? undefined : (
-      <tr staticClass={`${_name}__row`}>
+      <tr staticClass={`${compName}__row`}>
         <td colSpan={TableCols.length}>{$slotHeadPrepend}</td>
       </tr>
     )
@@ -119,7 +122,7 @@ export default class TableHead extends Vue {
     const $slotHeadAppend = this.$parent.$slots['head-append']
 
     return !$slotHeadAppend ? undefined : (
-      <tr staticClass={`${_name}__row`}>
+      <tr staticClass={`${compName}__row`}>
         <td colSpan={TableCols.length}>{$slotHeadAppend}</td>
       </tr>
     )
@@ -135,7 +138,7 @@ export default class TableHead extends Vue {
     const { RHead, RSlotHeadPrepend, RSlotHeadAppend, RSlotHeadExtra } = this
 
     return (
-      <table staticClass={_name}>
+      <table staticClass={compName}>
         <thead>
           {RSlotHeadPrepend()}
           {RSlotHeadExtra()}

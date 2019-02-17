@@ -12,7 +12,7 @@
               size="md"
               :key="color"
               class="m-mr-sm"
-              v-for="color in COLORS">{{color}}</m-chip>
+              v-for="color in COLOR">{{color}}</m-chip>
       <m-chip class="m-mr-sm" size="xs" closeable closeover>
         <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
         <span>呵呵</span>
@@ -73,15 +73,15 @@
 <script>
 import Megmore, { MChip } from '@megmore/vui'
 
-const { COLORS, BREAKPOINTS } = Megmore.constant
+const { COLOR, BREAKPOINT } = Megmore.constant
 
 export default {
   name: 'ExampleChip',
   components: { MChip },
   data () {
     return {
-      COLORS,
-      BREAKPOINTS
+      COLOR,
+      BREAKPOINT
     }
   }
 }

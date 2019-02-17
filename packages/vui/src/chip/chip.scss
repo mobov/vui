@@ -40,10 +40,10 @@
     user-select: none;
     line-height: 1;
 
-    &.m-chip--closeable {
+    &.m--closeable {
         padding-right: calc(var(--m-chip__close-size) / 1.5);
     }
-    &.m-chip--closeover {
+    &.m--closeover {
         padding-right: 0;
         .m-chip__close {
             opacity: 0;

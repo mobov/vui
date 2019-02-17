@@ -1,7 +1,7 @@
 import { ComponentOptions, CreateElement, RenderContext, VNode } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-const _name = 'm-transition-expansion'
+const compName = 'm-transition-expansion'
 
 function getSize (size: string): number {
     if (!size) { return 0 }
@@ -84,7 +84,7 @@ function afterLeave (el: HTMLElement): void {
 export default class MTransitionExpansion extends Vue {
   render (h: CreateElement, { props, data, children }: RenderContext): VNode {
     return (
-      <transition name={_name}
+      <transition name={compName}
                   onBeforeEnter={beforeEnter}
                   onEnter={enter}
                   onAfterEnter={afterEnter}

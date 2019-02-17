@@ -1,22 +1,16 @@
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
-import { genColor, genSize, genStaticStyles } from '../core/style-gen'
-import { Size } from '../types/model'
+import { genSize } from '../core/util'
+import { size } from '../core/constant'
 
-const _name = 'm-list'
+const compName = 'm-list'
 
 @Component
 export default class MList extends Vue {
   @Prop({ type: String })
-  private size!: Size
+  private size!: size
 
   @Prop({ type: [String, Number] })
   private mode!: string
-
-  @Prop({ type: [String, Number] })
-  private color!: string
-
-  @Prop({ type: Boolean })
-  private disableRipple: boolean = false
 
   @Emit('click')
   onClick (e: MouseEvent) {}
@@ -25,7 +19,7 @@ export default class MList extends Vue {
     const { size } = this
     const styles = {}
 
-    genSize(styles, _name, 'size', size)
+    genSize(styles, compName, size)
 
     return styles
   }
@@ -34,15 +28,14 @@ export default class MList extends Vue {
     const { styles, $slots, onClick } = this
 
     return (
-      <div staticClass={_name}
-           v-m-ripple
+      <div staticClass={compName}
            onClick={onClick}
            style={styles}>
-        {$slots.media ? <div staticClass={`${_name}__media`}>{$slots.media}</div> : undefined}
-        <div staticClass={`${_name}__content`}>
+        {$slots.media ? <div staticClass={`${compName}__media`}>{$slots.media}</div> : undefined}
+        <div staticClass={`${compName}__content`}>
           {$slots.default}
         </div>
-        {$slots.action ? <div staticClass={`${_name}__action`}>{$slots.action}</div> : undefined}
+        {$slots.action ? <div staticClass={`${compName}__action`}>{$slots.action}</div> : undefined}
       </div>
     )
   }

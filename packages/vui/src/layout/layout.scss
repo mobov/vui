@@ -1,4 +1,4 @@
-@import "../core/common/breakpoints";
+@import "../core/style/breakpoints";
 /*
  * 断点
  */
@@ -30,7 +30,7 @@ $--Container-max-size: (
  */
 .m-row {
     --m-row-cols: 24;
-    --m-row-gutter: 0;
+    --m-row-gutter-size: 0;
 }
 .m-col {
     --m-col-span-xs: var(--m-row-cols);
@@ -38,7 +38,6 @@ $--Container-max-size: (
     --m-col-span-md: var(--m-col-span-sm);
     --m-col-span-lg: var(--m-col-span-md);
     --m-col-span-xl: var(--m-col-span-lg);
-    --m-col-gutter: 0;
 }
 
 /**
@@ -51,13 +50,18 @@ $--Container-max-size: (
 }
 
 .m-row {
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
     width: 100%;
-    padding: var(--m-row-gutter);
+    padding: var(--m-row-gutter-size);
 }
 
 .m-col {
+    display: flex;
+    box-sizing: border-box;
     width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);
-    padding: var(--m-col-gutter);
+    padding: var(--m-row-gutter-size);
     @each $breakpoint, $value in $--Grid-breakpoints {
         @include media-breakpoint-up($breakpoint, $--Grid-breakpoints) {
             width: calc((var(--m-col-span-#{$breakpoint}) / var(--m-row-cols)) * 100%);
@@ -65,7 +69,60 @@ $--Container-max-size: (
     }
 }
 
-.m-filler {
+.m-flex {
+    display: flex;
+    &.m--inline {
+        display: inline-flex;
+    }
+    &.m--wrap {
+        &-normal {
+            flex-wrap: wrap;
+        }
+        &-reverse {
+            flex-wrap: wrap-reverse;
+        }
+        &-none {
+            flex-wrap: nowrap;
+        }
+    }
+    &.m--justify {
+        &-start {
+            justify-content: flex-start;
+        }
+        &-center {
+            justify-content: center;
+        }
+        &-end {
+            justify-content: flex-end;
+        }
+        &-between {
+            justify-content: space-between;
+        }
+        &-around {
+            justify-content: space-around;
+        }
+        &-evenly {
+            justify-content: space-evenly;
+        }
+    }
+    &.m--align {
+        &-start {
+            align-items: flex-start;
+        }
+        &-center {
+            align-items: center;
+        }
+        &-stretch {
+            align-items: stretch;
+        }
+        &-end {
+            align-items: flex-end;
+        }
+    }
+}
+
+
+.m-flex-filler {
     flex-grow: 1!important;
     background-color: transparent;
 }

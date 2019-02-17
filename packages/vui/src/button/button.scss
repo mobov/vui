@@ -51,6 +51,7 @@ $--m-button-size-xl: 4rem;
   box-sizing: border-box;
   position: relative;
   line-height: 1;
+  transition: all ease .3s;
   //> * {
   //  margin: 0 calc(var(--m-button-size) / 2);
   //}
@@ -97,8 +98,9 @@ $--m-button-size-xl: 4rem;
     width: 100%;
     display: flex;
   }
-
-  transition: all ease .3s;
+  // disabled
+  &.m--disabled {
+  }
 }
 
 .m-button__icon {

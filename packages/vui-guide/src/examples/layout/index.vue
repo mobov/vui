@@ -1,15 +1,18 @@
-<style lang="scss">
-  .example-chip {
-    width: 100%;
-    height: 500px;
+<style lang="scss" scoped>
+  .example-row {
+    background-color: #e1e1e1;
+  }
+  .example-col {
+    height: 50px;
   }
 </style>
 <template>
   <div class="example-layout">
     <example-box>
-      <m-row :gutter="5" :cols="18">
-        <m-col style="height: 50px;"
-               :gutter="5"
+      <m-row class="example-row"
+             :gutter="5"
+             :cols="18" >
+        <m-col class="example-col"
                :key="item"
                :xs="1"
                v-for="item in 24">
@@ -21,23 +24,15 @@
 </template>
 
 <script>
-import ExampleBox from '../../components/example-box'
+import ExampleBox from '@/components/example-box.vue'
 import Megmore, { MRow, MCol } from '@megmore/vui'
 
-const { COLORS, BREAKPOINTS } = Megmore.constant
-
 export default {
-  name: 'ExampleDiv',
+  name: 'ExampleLayout',
   components: { ExampleBox, MRow, MCol },
   data () {
     return {
-      COLORS,
-      BREAKPOINTS
     }
   }
 }
 </script>
-
-<style lang='scss' scoped>
-
-</style>

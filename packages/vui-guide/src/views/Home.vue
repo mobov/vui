@@ -1,7 +1,7 @@
 <template>
   <m-view class="home"
-          :fill-header="fillHeader"
-          :fill-footer="fillFooter"
+          :Fill-header="fillHeader"
+          :Fill-footer="fillFooter"
           left-size="300px"
           header-size="4rem">
     <m-app-bar v-if="isHeader" slot="header"
@@ -40,7 +40,7 @@
 <script>
 import Vue from 'vue'
 
-export default Vue.extend({
+export default {
   data () {
     return {
       checkVal: false,
@@ -52,5 +52,5 @@ export default Vue.extend({
       isRight: true
     }
   }
-})
+}
 </script>

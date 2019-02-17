@@ -1,0 +1,1 @@
+{"version":3,"file":"sentiment_very_satisfied.js","sourceRoot":"","sources":["../../../src/icon/icons/sentiment_very_satisfied.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,0BAA0B,EAAE;QAC3B,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qdAAqd;SACrd;KACD;CACD,CAAC,CAAA"}

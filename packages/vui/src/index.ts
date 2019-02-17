@@ -1,15 +1,27 @@
-import './core/common/color.scss'
-import './core/common/elevation.scss'
-import './core/common/space.scss'
-import './core/common/shape.scss'
-import './core/common/theme.scss'
-import './core/common/mode.scss'
-import './core/common/flex.scss'
-import './core/common/utils.scss'
+import './core/style/color.scss'
+import './core/style/elevation.scss'
+import './core/style/space.scss'
+import './core/style/shape.scss'
+import './core/style/theme.scss'
+import './core/style/mode.scss'
+import './core/style/utils.scss'
+import { Component, PluginFunction } from 'vue'
 import * as components from './entries'
 import * as constant from './core/constant'
 import './icon/presets'
-import { Megmore as MegmorePlugin, MegmoreUseOptions } from './types'
+
+
+export type ComponentOrPack = Component & { $_megmore_subcomponents?: Record<string, ComponentOrPack> }
+
+export interface MegmoreUseOptions {
+  components?: Record<string, ComponentOrPack>
+}
+
+export interface MegmorePlugin {
+  install: PluginFunction<MegmoreUseOptions>
+  version: string,
+  constant: typeof constant
+}
 
 const Megmore: MegmorePlugin = {
   install (Vue, opts = {}): void {
@@ -27,7 +39,7 @@ const Megmore: MegmorePlugin = {
     //   cons
     // }
     // 挂载根组件
-    window.$Megmore = this
+    window.Megmore = this
     // console.log(Vue)
     // console.log(this)
   },
@@ -38,5 +50,6 @@ const Megmore: MegmorePlugin = {
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(Megmore)
 }
+
 export default Megmore
 export * from './entries'

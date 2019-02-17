@@ -1,0 +1,1 @@
+{"version":3,"file":"border_horizontal.js","sourceRoot":"","sources":["../../../src/icon/icons/border_horizontal.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,mBAAmB,EAAE;QACpB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,smBAAsmB;SACtmB;KACD;CACD,CAAC,CAAA"}

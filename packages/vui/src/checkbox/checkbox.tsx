@@ -1,64 +1,67 @@
-import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
+import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import { Size, Color } from '../types/model'
-import { genColor, genSize } from '../core/style-gen'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import { genColor, genFontColor, genSize } from '../core/util'
 
-const _name = 'm-checkbox'
+const compName = 'm-checkbox'
 
-@Component({ components: { MIcon } })
-export default class MCheckbox extends Vue {
-  @Prop({ type: String, default: 'md' })
-  private size?: Size
-
-  @Prop({ type: String })
-  private color!: Color
-
-  @Prop({ type: String })
-  private fontColor!: Color
-
+@Component({
+  components: { MIcon }
+})
+export default class MCheckbox extends Mixins (
+  colorable,
+  sizeable
+) {
   @Prop({ type: [Array, Number, String, Boolean], default: false })
-  private value!: any
+  value!: any
 
   @Prop({ type: [Array, Number, String, Boolean], default: true })
-  private label!: any
+  label!: any
 
   @Prop({ type: String, default: 'check_box' })
-  private checkedIcon!: string
+  checkedIcon!: string
 
   @Prop({ type: String, default: 'check_box_outline_blank' })
-  private uncheckIcon!: string
+  uncheckIcon!: string
 
   @Prop({ type: String, default: 'indeterminate_check_box' })
-  private incheckIcon!: string
+  incheckIcon!: string
 
-  @Prop({ type: Boolean, default: false })
-  private disabled!: boolean
+  @Prop({ type: Boolean })
+  disabled!: boolean
 
-  private isArrayValue: boolean = false
+  @Emit('input')
+  onInput (val: any): void { }
 
-  private isArrayLabel: boolean = false
+  isArrayValue: boolean = false
 
-  private isBooleanValue: boolean = false
+  isArrayLabel: boolean = false
 
-  get classes () {
-    return {
-      'm--disabled': this.disabled,
-      'm--checked': this.isCheck
-    }
-  }
+  isBooleanValue: boolean = false
 
   get styles () {
-    const { color, fontColor, size } = this
-    const styles = { }
+    const { fontColor, size, color } = this
+    const styles = {}
 
-    genColor(styles, _name, 'color', color)
-    genColor(styles, _name, 'font-color', fontColor)
-    genSize(styles, _name, 'size', size)
+    genFontColor(styles, compName, fontColor)
+    genColor(styles, compName, color)
+    genSize(styles, compName, size)
 
     return styles
   }
 
-  get isCheck () {
+  get classes () {
+    const { checked, disabled } = this
+    const classes = {
+      'm--checked': checked,
+      'm--disabled': disabled
+    }
+
+    return classes
+  }
+
+  get checked () {
     const { value, label, isArrayValue, isArrayLabel } = this
 
     let isCheck = false
@@ -82,22 +85,20 @@ export default class MCheckbox extends Vue {
     return isCheck
   }
 
-  @Emit('input')
-  onInput (val: any): void { }
-
   handleClick (): void {
-    const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, isCheck } = this
+    const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, checked } = this
+
     if (disabled) { return }
 
     if (isArrayValue && isArrayLabel) {
-      if (isCheck) {
+      if (checked) {
         onInput([])
       } else {
         onInput(label)
       }
     } else if (isArrayValue) {
-      const result: any[] = [].concat(value)
-      if (isCheck) {
+      const result: any = [].concat(value)
+      if (checked) {
         const index = result.findIndex(item => item === label)
         result.splice(index, 1)
         onInput(result)
@@ -108,7 +109,7 @@ export default class MCheckbox extends Vue {
     } else if (isBooleanValue) {
       onInput(!value)
     } else {
-      if (isCheck) {
+      if (checked) {
         onInput(null)
       } else {
         onInput(label)
@@ -117,15 +118,15 @@ export default class MCheckbox extends Vue {
   }
 
   RCheckbox () {
-    const { color, size, checkedIcon, uncheckIcon, incheckIcon,
-            value, label, isCheck, isArrayValue, isArrayLabel } = this
+    const { size, checkedIcon, uncheckIcon, incheckIcon,
+            value, label, checked, isArrayValue, isArrayLabel } = this
 
     let checkIcon = checkedIcon
 
     if (
       isArrayValue &&
       isArrayLabel &&
-      isCheck &&
+      checked &&
       (label.length > value.length)
     ) {
       // Allcheck下value是数组, label也是数组
@@ -133,21 +134,29 @@ export default class MCheckbox extends Vue {
     }
 
     return (
-      <a staticClass={`${_name}__checkbox`}>
+      <a staticClass={`${compName}__checkbox`}>
         <transition name='m-transition-scale'>
-          {!isCheck ? undefined
-            : <MIcon class={`${_name}__checked-icon`}
+          {!checked ? undefined
+            : <MIcon staticClass={`${compName}__checked-icon`}
                      name={checkIcon}
                      size={size}/>
           }
         </transition>
-        <MIcon class={`${_name}__uncheck-icon`} size={size} name={uncheckIcon} />
-        <div v-m-ripple staticClass={`${_name}__checkbox-wrapper`} />
+        <MIcon staticClass={`${compName}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <div v-m-ripple staticClass={`${compName}__checkbox-wrapper`} />
       </a>
     )
   }
+
+  RDefault () {
+    const { $slots } = this
+    return $slots.default === undefined ? undefined : (
+      <span staticClass={`${compName}__label`}>{$slots.default}</span>
+    )
+  }
+
   render () {
-    const { $slots, classes, RCheckbox, handleClick, value, label } = this
+    const { classes, styles, RCheckbox, RDefault, handleClick, value, label } = this
 
     this.isArrayValue = value instanceof Array
     this.isArrayLabel = label instanceof Array
@@ -155,11 +164,12 @@ export default class MCheckbox extends Vue {
     this.isBooleanValue = typeof value === 'boolean'
 
     return (
-      <div staticClass={_name}
+      <div staticClass={compName}
            class={classes}
+           style={styles}
            onClick={() => handleClick()}>
         {RCheckbox()}
-        {$slots.default}
+        {RDefault()}
       </div>
     )
   }

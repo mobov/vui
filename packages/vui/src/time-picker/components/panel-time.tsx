@@ -2,9 +2,10 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 // import { getStyle } from '@megmore/es-helper'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color, DateTimeValueType } from '../../types/model'
+import { dateTimeValueType } from '../constant'
+import { Color, color, Variety, variety, Shape, shape  } from '../../core/constant'
 
-const _name = 'm-time-picker-panel-time'
+const compName = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
@@ -14,40 +15,37 @@ const _name = 'm-time-picker-panel-time'
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelTime extends Vue {
-  @Prop({ type: String, default: 'primary' })
-  private type!: Color
-
-  @Prop({ type: String, default: 'list' })
-  private timeSelectType!: 'list' | 'clock'
+  @Prop({ type: String, default: Color.primary })
+  type!: color
 
   @Prop({ type: Number, default: 1 })
-  private hourStep!: number
+  hourStep!: number
 
   @Prop({ type: Number, default: 1 })
-  private minuteStep!: number
+  minuteStep!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
   @Emit('pick')
-  onClick (val: number, type: DateTimeValueType): void {
+  onClick (val: number, type: dateTimeValueType): void {
     this.DateStore.SET_ACTIVE_TYPE(type)
     this.DateStore.UPDATE(
-      (type === 'hours' && this.DateStore.ampm && !this.DateStore.am)
+      (type === dateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
         ? val + 12
         : val,
       type
     )
   }
 
-  RList (type: DateTimeValueType) {
+  RList (type: dateTimeValueType) {
     const { onClick, hourStep, minuteStep } = this
     const { ampm } = this.DateStore
     const min = 0
-    const max = type === 'hours' ? ampm ? 11 : 23 : 59
-    const step = type === 'hours' ? hourStep : minuteStep
+    const max = type === dateTimeValueType.hours ? ampm ? 11 : 23 : 59
+    const step = type === dateTimeValueType.hours ? hourStep : minuteStep
     const time = this.DateStore[type]
-    const Temps = []
+    const Temps: any = []
 
     for (let tempTime = min; tempTime <= max; tempTime += step) {
       const isCurrent = tempTime === time
@@ -56,35 +54,31 @@ export default class MTimePickerPanelTime extends Vue {
           size="sm"
           block
           class="m-m-0 m-p-0 m--block"
-          shape="circle"
+          shape={Shape.circle}
           elevation={0}
-          variety={isCurrent ? 'normal' : 'flat'}
-          color={isCurrent ? 'primary' : 'default'}>
+          variety={isCurrent ? Variety.default : Variety.flat}
+          color={isCurrent ? Color.primary : Color.default}>
           {tempTime}
         </MButton>
       )
     }
 
     return (
-      <div staticClass={`${_name}__list ${_name}__list-${type}`}>
+      <div staticClass={`${compName}__list ${compName}__list-${type}`}>
         {Temps}
       </div>
     )
   }
 
   render () {
-    const { RList, timeSelectType } = this
-    const Result = []
+    const { RList } = this
+    const Result: any = []
 
-    if (timeSelectType === 'list') {
-      Result.push(RList('hours'))
-      Result.push(RList('minutes'))
-    } else {
-      // todo
-    }
+    Result.push(RList(dateTimeValueType.hours))
+    Result.push(RList(dateTimeValueType.minutes))
 
     return (
-      <div staticClass={_name}>{Result}</div>
+      <div staticClass={compName}>{Result}</div>
     )
   }
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"border_clear.js","sourceRoot":"","sources":["../../../src/icon/icons/border_clear.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,cAAc,EAAE;QACf,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2wBAA2wB;SAC3wB;KACD;CACD,CAAC,CAAA"}

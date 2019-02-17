@@ -1,7 +1,7 @@
-import { CreateElement, VNode, RenderContext, ComponentOptions } from 'vue'
+import { CreateElement, RenderContext, ComponentOptions } from 'vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
-
-const prefix = 'm-icon'
+import { size, Size } from '../core/constant'
+const compName = 'm-icon'
 
 const SIZE: any = {
   xs: 12,
@@ -13,41 +13,41 @@ const SIZE: any = {
 
 const Icons: any = {}
 
+export function register (data: any = {}): void {
+  for (const item in data) {
+    if (data.hasOwnProperty(item)) {
+      const icon = data[item]
+      if (icon.d) {
+        if (!icon.paths) {
+          icon.paths = []
+        }
+        icon.paths.push({ d: icon.d })
+      }
+
+      if (icon.points) {
+        if (!icon.polygons) {
+          icon.polygons = []
+        }
+        icon.polygons.push({ points: icon.points })
+      }
+
+      Icons[item] = icon
+    }
+  }
+}
+
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
 export default class MIcon extends Vue {
   @Prop({ type: String })
-  private name!: string
+  name!: string
 
-  @Prop({ type: [String, Number], default: 'sm' })
-  private size!: string | number
+  @Prop({ type: [String, Number], default: Size.sm })
+  size!: size | string | number
 
-  @Prop({ type: String, default: '#000000' })
-  private color!: string
-
-  static register (data: any = {}): void {
-    for (const item in data) {
-      if (data.hasOwnProperty(item)) {
-        const icon = data[item]
-        if (icon.d) {
-          if (!icon.paths) {
-            icon.paths = []
-          }
-          icon.paths.push({ d: icon.d })
-        }
-
-        if (icon.points) {
-          if (!icon.polygons) {
-            icon.polygons = []
-          }
-          icon.polygons.push({ points: icon.points })
-        }
-
-        Icons[item] = icon
-      }
-    }
-  }
+  @Prop({ type: String })
+  color!: string
 
   render (h: CreateElement, { props, data, children, listeners }: RenderContext) {
     const { name } = props
@@ -67,7 +67,7 @@ export default class MIcon extends Vue {
 
     return (
       <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
-           staticClass={`${prefix} ${prefix}__${name} ${staticClasses}`}
+           staticClass={`${compName} ${compName}__${name} ${staticClasses}`}
            class={classes}
            style={styles}
            height={height}

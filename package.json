@@ -6,7 +6,10 @@
     "init": "lerna init",
     "bootstrap": "lerna bootstrap",
     "vui-guide:start": "lerna run serve --scope @megmore/vui-guide --stream",
-    "vui:build": "lerna run build --scope @megmore/vui --stream"
+    "serve": "vue-cli-service serve",
+    "vui:build": "lerna run build --scope @megmore/vui --stream",
+    "vui:build:source": "lerna run build:source --scope @megmore/vui",
+    "vui:gen:icons": "lerna run gen:icons --scope @megmore/vui"
   },
   "devDependencies": {
     "lerna": "^3.10.6"
