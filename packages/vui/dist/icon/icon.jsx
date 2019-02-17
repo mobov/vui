@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Vue } from 'vue-property-decorator';
-const prefix = 'm-icon';
+const compName = 'm-icon';
 const SIZE = {
     xs: 12,
     sm: 24,
@@ -9,27 +9,27 @@ const SIZE = {
     xl: 50
 };
 const Icons = {};
-let MIcon = class MIcon extends Vue {
-    static register(data = {}) {
-        for (const item in data) {
-            if (data.hasOwnProperty(item)) {
-                const icon = data[item];
-                if (icon.d) {
-                    if (!icon.paths) {
-                        icon.paths = [];
-                    }
-                    icon.paths.push({ d: icon.d });
+export function register(data = {}) {
+    for (const item in data) {
+        if (data.hasOwnProperty(item)) {
+            const icon = data[item];
+            if (icon.d) {
+                if (!icon.paths) {
+                    icon.paths = [];
                 }
-                if (icon.points) {
-                    if (!icon.polygons) {
-                        icon.polygons = [];
-                    }
-                    icon.polygons.push({ points: icon.points });
-                }
-                Icons[item] = icon;
+                icon.paths.push({ d: icon.d });
             }
+            if (icon.points) {
+                if (!icon.polygons) {
+                    icon.polygons = [];
+                }
+                icon.polygons.push({ points: icon.points });
+            }
+            Icons[item] = icon;
         }
     }
+}
+let MIcon = class MIcon extends Vue {
     render(h, { props, data, children, listeners }) {
         const { name } = props;
         const icon = Icons[props.name];
@@ -41,9 +41,9 @@ let MIcon = class MIcon extends Vue {
         const width = height * (icon.height / icon.width);
         const staticClasses = data.staticClass !== undefined ? data.staticClass : '';
         const classes = data.class !== undefined ? data.class : '';
-        const styles = Object.assign({ fill: 'currentColor' }, data.style, data.staticStyle);
+        const styles = Object.assign({ Fill: 'currentColor' }, data.style, data.staticStyle);
         const click = listeners.click || 'javascript(0)';
-        return (<svg xmlns='http://www.w3.org/2000/svg' version='1.1' staticClass={`${prefix} ${prefix}__${name} ${staticClasses}`} class={classes} style={styles} height={height} width={width} viewBox={icon.viewBox} onClick={() => click}>
+        return (<svg xmlns='http://www.w3.org/2000/svg' version='1.1' staticClass={`${compName} ${compName}__${name} ${staticClasses}`} class={classes} style={styles} height={height} width={width} viewBox={icon.viewBox} onClick={() => click}>
         {icon.paths ? icon.paths.map((path) => <path d={path}/>) : <span />}
         {icon.polygons ? icon.polygons.map((path) => <polygon points={path}/>) : <span />}
       </svg>);

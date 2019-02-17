@@ -1,4 +1,3 @@
-import './view.scss';
 import MView from './view';
 /* istanbul ignore next */
 MView.install = (Vue) => {

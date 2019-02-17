@@ -1,3 +1,4 @@
+import '../icon/icons/cancel';
 import colorable from '../core/mixin/colorable';
 import sizeable from '../core/mixin/sizeable';
 import elevated from '../core/mixin/elevated';
@@ -9,6 +10,11 @@ export default class MChip extends MChip_base {
     private closeover;
     onClose(e: MouseEvent): void;
     onClick(e: MouseEvent): void;
+    readonly styles: {};
+    readonly classes: {
+        'm--closeable': boolean;
+        'm--closeover': boolean;
+    };
     RMedia(): import("vue").VNode[] | undefined;
     RClose(): JSX.Element | undefined;
     render(): JSX.Element;

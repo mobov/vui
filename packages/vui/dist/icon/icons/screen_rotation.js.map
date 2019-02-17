@@ -1,0 +1,1 @@
+{"version":3,"file":"screen_rotation.js","sourceRoot":"","sources":["../../../src/icon/icons/screen_rotation.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,iBAAiB,EAAE;QAClB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qeAAqe;SACre;KACD;CACD,CAAC,CAAA"}

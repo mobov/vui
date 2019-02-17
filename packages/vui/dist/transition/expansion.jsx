@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Component, Vue } from 'vue-property-decorator';
-const _name = 'm-transition-expansion';
+const compName = 'm-transition-expansion';
 function getSize(size) {
     if (!size) {
         return 0;
@@ -79,7 +79,7 @@ function afterLeave(el) {
 }
 let MTransitionExpansion = class MTransitionExpansion extends Vue {
     render(h, { props, data, children }) {
-        return (<transition name={_name} onBeforeEnter={beforeEnter} onEnter={enter} onAfterEnter={afterEnter} onBeforLeave={beforeLeave} onLeave={leave}>
+        return (<transition name={compName} onBeforeEnter={beforeEnter} onEnter={enter} onAfterEnter={afterEnter} onBeforLeave={beforeLeave} onLeave={leave}>
         {children}
       </transition>);
     }

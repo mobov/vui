@@ -1,0 +1,1 @@
+{"version":3,"file":"system_update.js","sourceRoot":"","sources":["../../../src/icon/icons/system_update.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,4QAA4Q;SAC5Q;KACD;CACD,CAAC,CAAA"}

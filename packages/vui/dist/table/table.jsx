@@ -1,12 +1,12 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator';
 import { deepCopy } from '@megmore/es-helper';
-import Table from './table.style';
 import sizeable from '../core/mixin/sizeable';
 import elevated from '../core/mixin/elevated';
 import TableHead from './components/head';
 import TableBody from './components/body';
-const _name = 'm-table';
+import { typeHeader, typeHover, typeSelect } from './constant';
+const compName = 'm-table';
 const SELF_KEY = '_table-key';
 let MTable = class MTable extends Mixins(sizeable, elevated) {
     constructor() {
@@ -45,7 +45,7 @@ let MTable = class MTable extends Mixins(sizeable, elevated) {
                 const keyValue = Data[index][keyField];
                 const targetIndex = Selected.indexOf(keyValue);
                 if (targetIndex === -1) {
-                    if (select === 'multi') {
+                    if (select === typeSelect.multi) {
                         // multi
                         this.TableStore.Selected.push(keyValue);
                     }
@@ -76,7 +76,7 @@ let MTable = class MTable extends Mixins(sizeable, elevated) {
                 const keyValue = Data[index][keyField];
                 const targetIndex = this.TableStore.Expanded.indexOf(keyValue);
                 if (targetIndex === -1) {
-                    if (expand === 'multi') {
+                    if (expand === typeSelect.multi) {
                         // multi
                         this.TableStore.Expanded.push(keyValue);
                     }
@@ -91,17 +91,6 @@ let MTable = class MTable extends Mixins(sizeable, elevated) {
                 this.syncExpanded(this.TableStore.Expanded);
             }
         };
-    }
-    // 数据输入适配
-    dataAdaptI(val = []) {
-        const { keyField } = this;
-        const temp = deepCopy(val);
-        if (keyField === SELF_KEY) {
-            temp.forEach((item, index) => {
-                item[keyField] = index;
-            });
-        }
-        return temp;
     }
     onExpand(row, index) { }
     onExpandAll(row, index) { }
@@ -141,15 +130,26 @@ let MTable = class MTable extends Mixins(sizeable, elevated) {
         }
         return result;
     }
+    // 数据输入适配
+    dataAdaptI(val = []) {
+        const { keyField } = this;
+        const temp = deepCopy(val);
+        if (keyField === SELF_KEY) {
+            temp.forEach((item, index) => {
+                item[keyField] = index;
+            });
+        }
+        return temp;
+    }
     render() {
         const { height, border, header, size, elevation, select, expand, rowSelect, rowExpand } = this;
-        const noHeader = header === 'none';
-        return (<Table staticClass={`${_name}`} size={size} elevation={elevation}>
-        <section staticClass={`${_name}__wrapper`}>
+        const noHeader = header === typeHeader.none;
+        return (<div staticClass={compName} size={size} elevation={elevation}>
+        <section staticClass={`${compName}__wrapper`}>
           {noHeader ? undefined : (<TableHead ref={'head'} size={size} select={select}/>)}
           <TableBody ref={'body'} size={size} height={height} border={border} select={select} expand={expand} rowSelect={rowSelect} rowExpand={rowExpand} noHeader={noHeader}/>
         </section>
-      </Table>);
+      </div>);
     }
 };
 tslib_1.__decorate([
@@ -167,18 +167,18 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({
         type: String,
-        default: 'default',
+        default: typeHeader.normal,
         validator(value) {
-            return ['default', 'sticky', 'none'].includes(value);
+            return typeHeader.hasOwnProperty(value);
         }
     })
 ], MTable.prototype, "header", void 0);
 tslib_1.__decorate([
     Prop({
         type: String,
-        default: 'none',
+        default: typeHover.none,
         validator(value) {
-            return ['none', 'row', 'cell'].includes(value);
+            return typeHover.hasOwnProperty(value);
         }
     })
 ], MTable.prototype, "hover", void 0);
@@ -188,9 +188,9 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({
         type: String,
-        default: 'none',
+        default: typeSelect.none,
         validator(value) {
-            return ['none', 'single', 'multi'].includes(value);
+            return typeSelect.hasOwnProperty(value);
         }
     })
 ], MTable.prototype, "select", void 0);
@@ -206,9 +206,9 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({
         type: String,
-        default: 'none',
+        default: typeSelect.none,
         validator(value) {
-            return ['none', 'single', 'multi'].includes(value);
+            return typeSelect.hasOwnProperty(value);
         }
     })
 ], MTable.prototype, "expand", void 0);
@@ -221,9 +221,6 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({ type: Function })
 ], MTable.prototype, "filter", void 0);
-tslib_1.__decorate([
-    Prop({ type: String, default: 'single' })
-], MTable.prototype, "filterMulti", void 0);
 tslib_1.__decorate([
     Emit('expand')
 ], MTable.prototype, "onExpand", null);
@@ -264,7 +261,9 @@ tslib_1.__decorate([
     Provide()
 ], MTable.prototype, "TableCols", null);
 MTable = tslib_1.__decorate([
-    Component({ components: { Table, TableHead, TableBody } })
+    Component({
+        components: { TableHead, TableBody }
+    })
 ], MTable);
 export default MTable;
 //# sourceMappingURL=table.jsx.map

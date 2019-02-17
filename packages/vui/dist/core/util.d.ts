@@ -27,42 +27,57 @@ export declare function getCSSVal(val: string): string;
 export declare function getStyleSize(value: string | number): string;
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export declare function genColor(compName: string, val: string): string;
+export declare function genColor(styles: any, compName: string, val: string | undefined): void;
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export declare function genFontColor(compName: string, val: string): string;
+export declare function genFontColor(styles: any, compName: string, val: string | undefined): void;
 /**
  * 计算尺寸样式值
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export declare function genSize(compName: string, val?: number | string): string;
+export declare function genSize(styles: any, compName: string, val?: number | string | undefined): void;
 /**
  * 计算阴影
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export declare function genElevation(compName: string, val?: number): string;
+export declare function genElevation(styles: any, compName: string, val?: number | undefined): void;
+/**
+ *
+ * @param styles
+ * @param compName
+ * @param val
+ */
+export declare function genSpace(styles: any, compName: string, val?: number | string): void;
+/**
+ * 计算形状
+ * @param classes
+ * @param val
+ */
+export declare function genShape(classes: any, val: string | undefined): void;
+/**
+ * 计算形态
+ * @param classes
+ * @param val
+ */
+export declare function genVariety(classes: any, val: string | undefined): void;
 /**
  * 计算hover颜色样式值
  * @param {string} compName
  * @param {string} val
  */
 export declare function genHoverColor(compName: string, val?: string): void;
-/**
- * 计算基于space的margin padding
- * @param styles
- * @param compName
- * @param property
- * @param val
- */
-export declare function genSpace(styles: any, compName: string, property: string, val?: number | string): void;
 /***
  * 通用样式
  * @param styles

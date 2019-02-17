@@ -23,7 +23,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "noLib": false,
-    "lib": ["dom", "es5", "es2017"]
+    "lib": ["dom", "es6", "es2017"]
   },
   "include": [
     "./src/**/*.ts",

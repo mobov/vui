@@ -1,12 +1,12 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { elevation, ELEVATIONS } from '../constant'
+import { elevation, ELEVATION } from '../constant'
 
 @Component
 export default class elevated extends Vue {
   @Prop({
     type: Number,
-    validator (val): boolean {
-      return typeof val === 'number' && ELEVATIONS.includes(val)
+    validator (value): boolean {
+      return ELEVATION.includes(value)
     }
   })
   elevation: elevation | undefined

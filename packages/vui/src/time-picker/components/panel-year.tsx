@@ -3,21 +3,21 @@ import MButton from '../../button'
 import { dateValueType } from '../constant'
 import { color, shape, variety } from '../../core/constant'
 
-const _name = 'm-time-picker-panel-year'
+const compName = 'm-time-picker-panel-year'
 
 @Component({ components: { MButton } })
 export default class MTimePickerPanelYear extends Vue {
   @Prop({ type: String, default: color.primary })
-  private type!: color
+  type!: color
 
   @Prop({ type: Number, default: 2100 })
-  private max!: number
+  max!: number
 
   @Prop({ type: Number, default: 1900 })
-  private min!: number
+  min!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
   @Emit('pick')
   onClick (year: number): void {
@@ -51,7 +51,7 @@ export default class MTimePickerPanelYear extends Vue {
     const { RCols } = this
 
     return (
-      <div staticClass={_name}>
+      <div staticClass={compName}>
         {RCols()}
       </div>
     )

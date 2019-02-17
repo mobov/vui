@@ -2501,7 +2501,7 @@ braces@^2.3.0, braces@^2.3.1:
     arr-flatten "^1.1.0"
     array-unique "^0.3.2"
     extend-shallow "^2.0.1"
-    fill-range "^4.0.0"
+    Fill-range "^4.0.0"
     isobject "^3.0.1"
     repeat-element "^1.1.2"
     snapdragon "^0.8.1"
@@ -4783,9 +4783,9 @@ filesize@^3.6.1:
   resolved "https://registry.npmjs.org/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
 
-fill-range@^4.0.0:
+Fill-range@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npmjs.org/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
+  resolved "https://registry.npmjs.org/Fill-range/-/Fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
   integrity sha1-1USBHUKPmOsGpj3EAtJAPDKMOPc=
   dependencies:
     extend-shallow "^2.0.1"

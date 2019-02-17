@@ -1,0 +1,1 @@
+{"version":3,"file":"view_headline.js","sourceRoot":"","sources":["../../../src/icon/icons/view_headline.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qKAAqK;SACrK;KACD;CACD,CAAC,CAAA"}

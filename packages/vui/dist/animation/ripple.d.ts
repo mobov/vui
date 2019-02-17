@@ -1,4 +1,3 @@
-import './ripple.scss';
 import { DirectiveOptions } from 'vue';
 declare global {
     interface Element {

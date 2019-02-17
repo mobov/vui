@@ -1,12 +1,12 @@
 import { Vue } from 'vue-property-decorator';
-import { DateTimeValueType } from '../../types/model';
+import { dateTimeValueType } from '../constant';
+import { color } from '../../core/constant';
 export default class MTimePickerPanelTime extends Vue {
-    private type;
-    private timeSelectType;
-    private hourStep;
-    private minuteStep;
-    private DateStore;
-    onClick(val: number, type: DateTimeValueType): void;
-    RList(type: DateTimeValueType): JSX.Element;
+    type: color;
+    hourStep: number;
+    minuteStep: number;
+    DateStore: any;
+    onClick(val: number, type: dateTimeValueType): void;
+    RList(type: dateTimeValueType): JSX.Element;
     render(): JSX.Element;
 }

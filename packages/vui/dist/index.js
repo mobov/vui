@@ -1,11 +1,10 @@
-import './core/common/color.scss';
-import './core/common/elevation.scss';
-import './core/common/space.scss';
-import './core/common/shape.scss';
-import './core/common/theme.scss';
-import './core/common/mode.scss';
-import './core/common/flex.scss';
-import './core/common/utils.scss';
+import './core/style/color.scss';
+import './core/style/elevation.scss';
+import './core/style/space.scss';
+import './core/style/shape.scss';
+import './core/style/theme.scss';
+import './core/style/mode.scss';
+import './core/style/utils.scss';
 import * as components from './entries';
 import * as constant from './core/constant';
 import './icon/presets';

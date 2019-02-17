@@ -3,7 +3,7 @@ import { Component, Prop, Vue, Inject } from 'vue-property-decorator';
 import MIcon from '../../icon';
 import MCheckbox from '../../checkbox';
 import { getStyleSize } from '../../core/util';
-const _name = 'm-table-head';
+const compName = 'm-table-head';
 let TableHead = class TableHead extends Vue {
     constructor() {
         super(...arguments);
@@ -50,7 +50,7 @@ let TableHead = class TableHead extends Vue {
         const align = item.componentOptions.align ||
             propsDefault.align.default;
         const styles = { width, minWidth: width, maxWidth: width };
-        return (<td staticClass={`${_name}__cell`} style={styles} align={align}>
+        return (<td staticClass={`${compName}__cell`} style={styles} align={align}>
         {RContent()}
       </td>);
     }
@@ -60,19 +60,19 @@ let TableHead = class TableHead extends Vue {
         TableCols.forEach((item, index) => {
             result.push(RCell(item, index));
         });
-        return (<tr staticClass={`${_name}__row`}>{result}</tr>);
+        return (<tr staticClass={`${compName}__row`}>{result}</tr>);
     }
     RSlotHeadPrepend() {
         const { TableCols } = this;
         const $slotHeadPrepend = this.$parent.$slots['head-prepend'];
-        return !$slotHeadPrepend ? undefined : (<tr staticClass={`${_name}__row`}>
+        return !$slotHeadPrepend ? undefined : (<tr staticClass={`${compName}__row`}>
         <td colSpan={TableCols.length}>{$slotHeadPrepend}</td>
       </tr>);
     }
     RSlotHeadAppend() {
         const { TableCols } = this;
         const $slotHeadAppend = this.$parent.$slots['head-append'];
-        return !$slotHeadAppend ? undefined : (<tr staticClass={`${_name}__row`}>
+        return !$slotHeadAppend ? undefined : (<tr staticClass={`${compName}__row`}>
         <td colSpan={TableCols.length}>{$slotHeadAppend}</td>
       </tr>);
     }
@@ -82,7 +82,7 @@ let TableHead = class TableHead extends Vue {
     }
     render() {
         const { RHead, RSlotHeadPrepend, RSlotHeadAppend, RSlotHeadExtra } = this;
-        return (<table staticClass={_name}>
+        return (<table staticClass={compName}>
         <thead>
           {RSlotHeadPrepend()}
           {RSlotHeadExtra()}
@@ -111,7 +111,9 @@ tslib_1.__decorate([
     Inject()
 ], TableHead.prototype, "TableStore", void 0);
 TableHead = tslib_1.__decorate([
-    Component({ components: { MCheckbox, MIcon } })
+    Component({
+        components: { MCheckbox, MIcon }
+    })
 ], TableHead);
 export default TableHead;
 //# sourceMappingURL=head.jsx.map

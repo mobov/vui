@@ -1,13 +1,12 @@
 import { Vue } from 'vue-property-decorator';
 import { CreateElement, RenderContext } from 'vue';
 export default class MCol extends Vue {
-    private id;
-    private tag;
-    private xs;
-    private sm;
-    private md;
-    private lg;
-    private xl;
-    private gutter;
+    id?: string;
+    tag: string;
+    xs?: number;
+    sm?: number;
+    md?: number;
+    lg?: number;
+    xl?: number;
     render(h: CreateElement, { props, data, children }: RenderContext): import("vue").VNode;
 }

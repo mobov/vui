@@ -1,10 +1,12 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
 import MButton from '../../button';
-const _name = 'm-time-picker-panel-year';
+import { dateValueType } from '../constant';
+import { color, shape, variety } from '../../core/constant';
+const compName = 'm-time-picker-panel-year';
 let MTimePickerPanelYear = class MTimePickerPanelYear extends Vue {
     onClick(year) {
-        this.DateStore.UPDATE(year, 'year');
+        this.DateStore.UPDATE(year, dateValueType.year);
     }
     RCols() {
         const { min, max, onClick } = this;
@@ -12,7 +14,7 @@ let MTimePickerPanelYear = class MTimePickerPanelYear extends Vue {
         const Cols = [];
         for (let tempYear = min; tempYear <= max; tempYear++) {
             const isCurrent = tempYear === year;
-            Cols.push(<MButton size="sm" class="m-m-0 m-p-0" shape="circle" elevation={0} variety={isCurrent ? 'normal' : 'flat'} color={isCurrent ? 'primary' : 'default'} onClick={() => onClick(tempYear)}>
+            Cols.push(<MButton size="sm" class="m-m-0 m-p-0" shape={shape.circle} elevation={0} variety={isCurrent ? variety.normal : variety.flat} color={isCurrent ? color.primary : color.default} onClick={() => onClick(tempYear)}>
           {tempYear}
         </MButton>);
         }
@@ -20,13 +22,13 @@ let MTimePickerPanelYear = class MTimePickerPanelYear extends Vue {
     }
     render() {
         const { RCols } = this;
-        return (<div staticClass={_name}>
+        return (<div staticClass={compName}>
         {RCols()}
       </div>);
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: 'primary' })
+    Prop({ type: String, default: color.primary })
 ], MTimePickerPanelYear.prototype, "type", void 0);
 tslib_1.__decorate([
     Prop({ type: Number, default: 2100 })

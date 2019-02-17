@@ -1,8 +1,10 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
+import { Component, Emit, Inject, Prop, Vue } from 'vue-property-decorator';
 import MButton from '../../button';
 import MIcon from '../../icon';
-const _name = 'm-time-picker-panel-date';
+import { color, variety, shape } from '../../core/constant';
+import { datePickerType } from '../constant';
+const compName = 'm-time-picker-panel-date';
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六'];
 let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
     constructor() {
@@ -27,7 +29,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
     handleMonthToggle(action) {
         const date = new Date(this.viewValue);
         const month = date.getMonth();
-        date.setMonth(action === 'prev' ? month - 1 : month + 1);
+        date.setMonth(action === "prev" /* prev */ ? month - 1 : month + 1);
         this.viewValue = date.getTime();
     }
     handleDateClick(yearVal, monthVal, dateVal) {
@@ -71,7 +73,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
         for (let tempDate = 1; tempDate <= viewMonthDays; tempDate++) {
             const isCurDate = isCurMonth && (tempDate === date);
             const isToday = isNowDate && (tempDate === nowDate);
-            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape='circle' elevation={0} variety={isCurDate ? 'normal' : isToday ? 'outline' : 'flat'} color={isCurDate || isToday ? 'primary' : 'default'} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
+            Tds.push(<td><MButton class='m-m-0 m-p-0' size='sm' shape={shape.circle} elevation={0} variety={isCurDate ? variety.normal : isToday ? variety.outline : variety.flat} color={isCurDate || isToday ? color.primary : color.default} onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}
       </MButton></td>);
             if ((tempDate + viewFirstWeekDay) % 7 === 0 || tempDate === viewMonthDays) {
@@ -83,19 +85,19 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
     }
     render() {
         const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this;
-        return (<div staticClass={_name}>
-        <div class={`${_name}__header`}>
-          <div staticClass={`${_name}__header-year`}>
-            <MButton variety='flat' staticClass='m-m-0' color='default' elevation={0} onClick={() => this.DateStore.SET_ACTIVE_TYPE('year')}>
+        return (<div staticClass={compName}>
+        <div class={`${compName}__header`}>
+          <div staticClass={`${compName}__header-year`}>
+            <MButton variety={variety.flat} staticClass='m-m-0' color={color.default} elevation={0} onClick={() => this.DateStore.SET_ACTIVE_TYPE(datePickerType.year)}>
               {viewYear}
             </MButton>
           </div>
-          <div staticClass={`${_name}__header-handler`}>
-            <MButton variety='flat' staticClass='m-m-0' elevation={0} shape='circle' color='default' icon='navigate_before' onClick={() => handleMonthToggle('prev')}/>
-            <MButton variety='flat' staticClass='m-m-0' elevation={0} shape='circle' color='default' icon='navigate_next' onClick={() => handleMonthToggle('next')}/>
+          <div staticClass={`${compName}__header-handler`}>
+            <MButton variety={variety.flat} staticClass='m-m-0' elevation={0} shape={shape.circle} color={color.default} icon='navigate_before' onClick={() => handleMonthToggle("prev" /* prev */)}/>
+            <MButton variety={variety.flat} staticClass='m-m-0' elevation={0} shape={shape.circle} color={color.default} icon='navigate_next' onClick={() => handleMonthToggle("next" /* next */)}/>
           </div>
         </div>
-        <table class={`${_name}__table`}>
+        <table class={`${compName}__table`}>
           {RTableHead()}
           {RTableBody()}
         </table>
@@ -103,7 +105,7 @@ let MTimePickerPanelDate = class MTimePickerPanelDate extends Vue {
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: 'primary' })
+    Prop({ type: String, default: color.primary })
 ], MTimePickerPanelDate.prototype, "type", void 0);
 tslib_1.__decorate([
     Prop({ type: Number })

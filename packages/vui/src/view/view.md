@@ -2,8 +2,8 @@
 
 ```vue
 <template>
-  <m-view :fill-header="both"
-          :fill-footer="both"
+  <m-view :Fill-header="both"
+          :Fill-footer="both"
           headerSize=""
           footerSize=""
           leftSize=""

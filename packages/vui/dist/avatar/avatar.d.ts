@@ -5,10 +5,14 @@ import variable from '../core/mixin/variable';
 import shapeable from '../core/mixin/shapeable';
 declare const MAvatar_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
 export default class MAvatar extends MAvatar_base {
-    private src;
+    src: string;
+    readonly styles: {};
+    readonly classes: {
+        [x: string]: boolean;
+    };
     updateSrc(val: string): void;
-    private status;
-    private curSrc;
+    status: number;
+    curSrc: string;
     loadSuccess(): void;
     loadFailure(): void;
     render(): JSX.Element;

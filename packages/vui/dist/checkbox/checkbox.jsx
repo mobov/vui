@@ -1,10 +1,10 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator';
-import Checkbox from './checkbox.style';
 import MIcon from '../icon';
 import colorable from '../core/mixin/colorable';
 import sizeable from '../core/mixin/sizeable';
-const _name = 'm-checkbox';
+import { genColor, genFontColor, genSize } from '../core/util';
+const compName = 'm-checkbox';
 let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
     constructor() {
         super(...arguments);
@@ -13,7 +13,23 @@ let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
         this.isBooleanValue = false;
     }
     onInput(val) { }
-    get isCheck() {
+    get styles() {
+        const { fontColor, size, color } = this;
+        const styles = {};
+        genFontColor(styles, compName, fontColor);
+        genColor(styles, compName, color);
+        genSize(styles, compName, size);
+        return styles;
+    }
+    get classes() {
+        const { checked, disabled } = this;
+        const classes = {
+            'm--checked': checked,
+            'm--disabled': disabled,
+        };
+        return classes;
+    }
+    get checked() {
         const { value, label, isArrayValue, isArrayLabel } = this;
         let isCheck = false;
         if (isArrayValue && isArrayLabel) {
@@ -36,12 +52,12 @@ let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
         return isCheck;
     }
     handleClick() {
-        const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, isCheck } = this;
+        const { disabled, isBooleanValue, isArrayValue, isArrayLabel, label, value, onInput, checked } = this;
         if (disabled) {
             return;
         }
         if (isArrayValue && isArrayLabel) {
-            if (isCheck) {
+            if (checked) {
                 onInput([]);
             }
             else {
@@ -50,7 +66,7 @@ let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
         }
         else if (isArrayValue) {
             const result = [].concat(value);
-            if (isCheck) {
+            if (checked) {
                 const index = result.findIndex(item => item === label);
                 result.splice(index, 1);
                 onInput(result);
@@ -64,7 +80,7 @@ let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
             onInput(!value);
         }
         else {
-            if (isCheck) {
+            if (checked) {
                 onInput(null);
             }
             else {
@@ -73,34 +89,34 @@ let MCheckbox = class MCheckbox extends Mixins(colorable, sizeable) {
         }
     }
     RCheckbox() {
-        const { size, checkedIcon, uncheckIcon, incheckIcon, value, label, isCheck, isArrayValue, isArrayLabel } = this;
+        const { size, checkedIcon, uncheckIcon, incheckIcon, value, label, checked, isArrayValue, isArrayLabel } = this;
         let checkIcon = checkedIcon;
         if (isArrayValue &&
             isArrayLabel &&
-            isCheck &&
+            checked &&
             (label.length > value.length)) {
             // Allcheck下value是数组, label也是数组
             checkIcon = incheckIcon;
         }
-        return (<a staticClass={`${_name}__checkbox`}>
+        return (<a staticClass={`${compName}__checkbox`}>
         <transition name='m-transition-scale'>
-          {!isCheck ? undefined
-            : <MIcon staticClass={`${_name}__checked-icon`} name={checkIcon} size={size}/>}
+          {!checked ? undefined
+            : <MIcon staticClass={`${compName}__checked-icon`} name={checkIcon} size={size}/>}
         </transition>
-        <MIcon staticClass={`${_name}__uncheck-icon`} size={size} name={uncheckIcon}/>
-        <div v-m-ripple staticClass={`${_name}__checkbox-wrapper`}/>
+        <MIcon staticClass={`${compName}__uncheck-icon`} size={size} name={uncheckIcon}/>
+        <div v-m-ripple staticClass={`${compName}__checkbox-wrapper`}/>
       </a>);
     }
     render() {
-        const { $slots, color, fontColor, size, RCheckbox, handleClick, value, label, disabled, isCheck } = this;
+        const { $slots, classes, styles, RCheckbox, handleClick, value, label } = this;
         this.isArrayValue = value instanceof Array;
         this.isArrayLabel = label instanceof Array;
         // boolean模式下等价于switch
         this.isBooleanValue = typeof value === 'boolean';
-        return (<Checkbox staticClass={_name} color={color} fontColor={fontColor} size={size} disabled={disabled} checked={isCheck} onClick={() => handleClick()}>
+        return (<div staticClass={compName} class={classes} style={styles} onClick={() => handleClick()}>
         {RCheckbox()}
         {$slots.default}
-      </Checkbox>);
+      </div>);
     }
 };
 tslib_1.__decorate([
@@ -119,14 +135,14 @@ tslib_1.__decorate([
     Prop({ type: String, default: 'indeterminate_check_box' })
 ], MCheckbox.prototype, "incheckIcon", void 0);
 tslib_1.__decorate([
-    Prop({ type: Boolean, default: false })
+    Prop({ type: Boolean })
 ], MCheckbox.prototype, "disabled", void 0);
 tslib_1.__decorate([
     Emit('input')
 ], MCheckbox.prototype, "onInput", null);
 MCheckbox = tslib_1.__decorate([
     Component({
-        components: { Checkbox, MIcon }
+        components: { MIcon }
     })
 ], MCheckbox);
 export default MCheckbox;

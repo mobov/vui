@@ -1,0 +1,1 @@
+{"version":3,"file":"move_to_inbox.js","sourceRoot":"","sources":["../../../src/icon/icons/move_to_inbox.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qTAAqT;SACrT;KACD;CACD,CAAC,CAAA"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"flight_land.js","sourceRoot":"","sources":["../../../src/icon/icons/flight_land.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,aAAa,EAAE;QACd,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qQAAqQ;SACrQ;KACD;CACD,CAAC,CAAA"}

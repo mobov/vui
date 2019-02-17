@@ -3,7 +3,7 @@ import PALETTE from './palette';
 export { ELEVATION, PALETTE };
 export declare const ELEVATIONS: number[];
 export declare type elevation = number;
-export declare enum STATUS {
+export declare enum Status {
     success = 0,
     pending = 1,
     failure = 2
@@ -27,14 +27,23 @@ export declare enum SIZE {
 }
 export declare const SIZES: any[];
 export declare const COLS = 24;
-export declare type variety = 'normal' | 'flat' | 'outline';
+export declare enum variety {
+    normal = "normal",
+    flat = "flat",
+    outline = "outline"
+}
 export declare enum VARIETY {
     normal = "normal",
     flat = "flat",
     outline = "outline"
 }
 export declare const VARIETYS: any[];
-export declare type shape = 'square' | 'corner' | 'round' | 'circle';
+export declare enum shape {
+    circle = "circle",
+    round = "round",
+    corner = "corner",
+    square = "square"
+}
 export declare enum SHAPE {
     circle = "circle",
     round = "round",
@@ -42,7 +51,13 @@ export declare enum SHAPE {
     square = "square"
 }
 export declare const SHAPES: any[];
-export declare type color = 'primary' | 'error' | 'success' | 'warning' | 'default';
+export declare enum color {
+    primary = "primary",
+    error = "error",
+    success = "success",
+    warning = "warning",
+    default = "default"
+}
 export declare enum COLOR {
     primary = "primary",
     error = "error",
@@ -57,14 +72,21 @@ export declare enum MODE {
     night = "night"
 }
 export declare const MODES: any[];
-export declare type fill = 'left' | 'both' | 'right' | 'none';
-export declare enum FILL {
+export declare enum Fill {
     left = "left",
     both = "both",
     right = "right",
     none = "none"
 }
-export declare type flexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | 'none';
+export declare enum FlexJustify {
+    start = "start",
+    center = "center",
+    end = "end",
+    between = "between",
+    around = "around",
+    evenly = "evenly",
+    none = "none"
+}
 export declare enum FLEX_JUSTIFY {
     start = "start",
     center = "center",
@@ -74,16 +96,30 @@ export declare enum FLEX_JUSTIFY {
     evenly = "evenly",
     none = "none"
 }
-export declare type flexWrap = 'normal' | 'reverse' | 'none';
+export declare enum FlexWrap {
+    normal = "normal",
+    reverse = "reverse",
+    none = "none"
+}
 export declare enum FLEX_WRAP {
     normal = "normal",
     reverse = "reverse",
     none = "none"
 }
-export declare type flexAlign = 'start' | 'center' | 'end' | 'stretch';
+export declare enum FlexAlign {
+    start = "start",
+    center = "center",
+    end = "end",
+    stretch = "stretch"
+}
 export declare enum FLEX_ALIGN {
     start = "start",
     center = "center",
     end = "end",
     stretch = "stretch"
+}
+export declare enum align {
+    left = "left",
+    center = "center",
+    right = "right"
 }

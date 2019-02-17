@@ -1,8 +1,9 @@
+import './layout.scss';
 import MContainer from './container';
 import MRow from './row';
 import MCol from './col';
-import MFiller from './filler';
-/* istanbul ignore next */
+import MFlex from './flex';
+import MFlexFiller from './flex-filler';
 MContainer.install = (Vue) => {
     Vue.component(MContainer.name, MContainer);
 };
@@ -12,8 +13,11 @@ MRow.install = (Vue) => {
 MCol.install = (Vue) => {
     Vue.component(MCol.name, MCol);
 };
-MFiller.install = (Vue) => {
-    Vue.component(MFiller.name, MFiller);
+MFlex.install = (Vue) => {
+    Vue.component(MFlex.name, MFlex);
 };
-export { MContainer, MRow, MCol, MFiller };
+MFlexFiller.install = (Vue) => {
+    Vue.component(MFlexFiller.name, MFlexFiller);
+};
+export { MContainer, MRow, MCol, MFlex, MFlexFiller };
 //# sourceMappingURL=index.js.map

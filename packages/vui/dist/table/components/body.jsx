@@ -6,16 +6,17 @@ import MCheckbox from '../../checkbox';
 import MRadio from '../../radio';
 import { getStyleSize } from '../../core/util';
 import { on, off } from '../../core/event';
-const _name = 'm-table-body';
+import { typeSelect } from '../constant';
+const compName = 'm-table-body';
 let TableBody = class TableBody extends Vue {
     noHeaderToggle(val) { if (!val) {
-        this.onDomUpdate();
+        this.updateDom();
     } }
     get selectable() {
-        return this.select !== 'none';
+        return this.select !== typeSelect.none;
     }
     get expandable() {
-        return this.expand !== 'none';
+        return this.expand !== typeSelect.none;
     }
     get styles() {
         const { height } = this;
@@ -50,7 +51,7 @@ let TableBody = class TableBody extends Vue {
             const field = item.componentOptions.propsData.field;
             if (isSelect) {
                 const isSelected = Selected.includes(row[keyField]);
-                if (select === 'multi') {
+                if (select === typeSelect.multi) {
                     content = (<div staticClass="m--center">
               <MCheckbox value={isSelected} size={size} nativeOnClick={(event) => {
                         event.stopPropagation();
@@ -99,7 +100,7 @@ let TableBody = class TableBody extends Vue {
             const type = item.componentOptions.propsData.type;
             const isSelect = (type === 'select' && selectable);
             const isExpand = (type === 'expand' && expandable);
-            return (<td staticClass={`${_name}__cell`} style={styles} align={align}>
+            return (<td staticClass={`${compName}__cell`} style={styles} align={align}>
           {RContent(item, isSelect, isExpand)}
         </td>);
         }
@@ -113,7 +114,7 @@ let TableBody = class TableBody extends Vue {
             'm--selected': Selected.includes(row[keyField]),
             'm--disabled': NoSelect.includes(row[keyField])
         };
-        return (<tr staticClass={`${_name}__row`} class={classes} onClick={() => handleRowClick(row, index)}>
+        return (<tr staticClass={`${compName}__row`} class={classes} onClick={() => handleRowClick(row, index)}>
         {RCols(row, index)}
       </tr>);
     }
@@ -127,10 +128,10 @@ let TableBody = class TableBody extends Vue {
             return undefined;
         }
         const isExpanded = Expanded.includes(row[keyField]);
-        return (<tr staticClass={`${_name}__expand`}>
+        return (<tr staticClass={`${compName}__expand`}>
         <td colSpan={TableCols.length}>
           <MTransitionExpansion>
-            {!isExpanded ? undefined : (<div staticClass={`${_name}__expand-content`}>
+            {!isExpanded ? undefined : (<div staticClass={`${compName}__expand-content`}>
                 {this.$parent.$scopedSlots.expand(row)}
               </div>)}
           </MTransitionExpansion>
@@ -148,7 +149,7 @@ let TableBody = class TableBody extends Vue {
         });
         return (<tbody>{result}</tbody>);
     }
-    onDomUpdate() {
+    updateDom() {
         const { noHeader } = this;
         const $tableBody = this.$el.querySelector('tbody');
         if (!!$tableBody.children.length && !noHeader) {
@@ -164,18 +165,18 @@ let TableBody = class TableBody extends Vue {
         }
     }
     mounted() {
-        this.onDomUpdate();
-        on(window, 'resize', this.onDomUpdate);
+        this.updateDom();
+        on(window, 'resize', this.updateDom);
     }
     updated() {
-        this.onDomUpdate();
+        this.updateDom();
     }
     beforeDestroy() {
-        off(window, 'resize', this.onDomUpdate);
+        off(window, 'resize', this.updateDom);
     }
     render() {
         const { styles, RTBody } = this;
-        return (<div staticClass={_name} style={styles}>
+        return (<div staticClass={compName} style={styles}>
         <table>{RTBody()}</table>
       </div>);
     }
@@ -214,7 +215,9 @@ tslib_1.__decorate([
     Watch('noHeader')
 ], TableBody.prototype, "noHeaderToggle", null);
 TableBody = tslib_1.__decorate([
-    Component({ components: { MCheckbox, MRadio, MIcon, MTransitionExpansion } })
+    Component({
+        components: { MCheckbox, MRadio, MIcon, MTransitionExpansion }
+    })
 ], TableBody);
 export default TableBody;
 //# sourceMappingURL=body.jsx.map

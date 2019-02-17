@@ -51,12 +51,12 @@ fileEntries.forEach((fileName, index) => {
  // let buffer = `${JSON.stringify(svgData)}`
   // fs.writeFile(path.resolve(__dirname, `${outputDir + name}.json`), buffer, (err) => { if (err) throw err })
   let buffer = `/* eslint-disable */
-import MIcon from '../icon'
+import { register } from '../icon'
 
-MIcon.register(${JSON.stringify(svgData, null, '\t')})
+register(${JSON.stringify(svgData, null, '\t')})
   `
-   fs.writeFile(path.resolve(__dirname, `${outputDir + name}.js`), buffer, (err) => { if (err) throw err })
-  collectBuffers += `export { default as MIcon_${name} } from './${name}.js'\n`
+   fs.writeFile(path.resolve(__dirname, `${outputDir + name}.ts`), buffer, (err) => { if (err) throw err })
+  // collectBuffers += `export { default as MIcon_${name} } from './${name}.js'\n`
 })
 
 // svgData = JSON.stringify(svgData, null, 1)

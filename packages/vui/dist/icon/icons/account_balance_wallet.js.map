@@ -1,0 +1,1 @@
+{"version":3,"file":"account_balance_wallet.js","sourceRoot":"","sources":["../../../src/icon/icons/account_balance_wallet.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,wBAAwB,EAAE;QACzB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,4XAA4X;SAC5X;KACD;CACD,CAAC,CAAA"}

@@ -1,19 +1,14 @@
-import { Vue, Component, Mixins } from 'vue-property-decorator'
-import App from './app.style'
+import { Vue, Component } from 'vue-property-decorator'
 
-const _name = 'm-app'
-
-@Component({
-  components: { App }
-})
+@Component
 export default class MApp extends Vue {
   render () {
     const { $slots } = this
 
     return (
-      <App staticClass={_name}>
+      <div staticClass="m-app">
         {$slots.default}
-      </App>
+      </div>
     )
   }
 }

@@ -1,6 +1,44 @@
 /* eslint-disable */
-import './ripple.scss'
 import { DirectiveOptions, PluginFunction, VNodeDirective, VueConstructor } from 'vue'
+import styled, { injectGlobal } from 'vue-styled-components'
+import { genColor, genFontColor, genSize, genElevation, getScrollBarStyles } from '../core/util'
+
+injectGlobal`
+  .v-ripple {
+      &__container {
+          color: inherit;
+          border-radius: inherit;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          overflow: hidden;
+          z-index: 0;
+          pointer-events: none;
+          contain: strict;
+      }
+      &__animation {
+          color: inherit;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          background: currentColor;
+          opacity: 0;
+          transition: .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+          pointer-events: none;
+          overflow: hidden;
+          will-change: transform, opacity;
+          &--enter {
+              transition: none
+          }
+          &--visible {
+              opacity: .15
+          }
+      }
+  }
+`
 
 const name = 'MRipple'
 

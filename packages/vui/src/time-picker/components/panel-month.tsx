@@ -3,20 +3,20 @@ import MButton from '../../button'
 import { dateValueType } from '../constant'
 import { color, variety, shape } from '../../core/constant'
 
-const _name = 'm-time-picker-panel-month'
+const compName = 'm-time-picker-panel-month'
 const MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月',
                   '七月', '八月', '九月', '十月', '十一月', '十二月']
 
 @Component({ components: { MButton } })
 export default class MTimePickerPanelMonth extends Vue {
   @Prop({ type: String, default: color.primary })
-  private type!: color
+  type!: color
 
   @Prop({ type: Array })
-  public disabledValue!: number
+  disabledValue!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
   @Emit('pick')
   handleClick (month: number): void {
@@ -50,7 +50,7 @@ export default class MTimePickerPanelMonth extends Vue {
     const { RCols } = this
 
     return (
-      <div staticClass={_name}>
+      <div staticClass={compName}>
         {RCols()}
       </div>
     )

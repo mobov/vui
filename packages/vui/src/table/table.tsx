@@ -1,15 +1,17 @@
 import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
 import { deepCopy } from '@megmore/es-helper'
-import Table from './table.style'
 import sizeable from '../core/mixin/sizeable'
 import elevated from '../core/mixin/elevated'
 import TableHead from './components/head'
 import TableBody from './components/body'
+import { typeHeader,  typeHover, typeSelect }  from './constant'
 
-const _name = 'm-table'
+const compName = 'm-table'
 const SELF_KEY = '_table-key'
 
-@Component({ components: { Table, TableHead, TableBody } })
+@Component({
+  components: { TableHead, TableBody }
+})
 export default class MTable extends Mixins (
   sizeable,
   elevated
@@ -28,76 +30,60 @@ export default class MTable extends Mixins (
 
   @Prop({
     type: String,
-    default: 'default',
+    default: typeHeader.normal,
     validator(value): boolean {
-      return ['default', 'sticky', 'none'].includes(value)
+      return typeHeader.hasOwnProperty(value)
     }
   })
-  header?: 'default' | 'sticky' | 'none'
+  header?: typeHeader
 
   @Prop({
     type: String,
-    default: 'none',
+    default: typeHover.none,
     validator(value): boolean {
-      return ['none', 'row', 'cell'].includes(value)
+      return typeHover.hasOwnProperty(value)
     }
   })
-  private hover?: 'none' | 'row' | 'cell'
+  hover?: typeHover
 
   @Prop({ type: Boolean, default: false })
-  private rowSelect?: boolean
+  rowSelect?: boolean
 
   @Prop({
     type: String,
-    default: 'none',
+    default: typeSelect.none,
     validator(value): boolean {
-      return ['none', 'single', 'multi'].includes(value)
+      return typeSelect.hasOwnProperty(value)
     }
   })
-  private select?: 'none' | 'single' | 'multi'
+  select?: typeSelect
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private selected?: any
+  selected?: any
 
   @Prop({ type: Array, default: () => [] })
-  private noSelect?: any
+  noSelect?: any
 
   @Prop({ type: Boolean, default: false })
-  private rowExpand?: boolean
+  rowExpand?: boolean
 
   @Prop({
     type: String,
-    default: 'none',
+    default: typeSelect.none,
     validator(value): boolean {
-      return ['none', 'single', 'multi'].includes(value)
+      return typeSelect.hasOwnProperty(value)
     }
   })
-  private expand?: 'none' | 'single' | 'multi'
+  expand?: typeSelect
 
   @Prop({ type: [Array, String, Number], default: () => [] })
-  private expanded?: any
+  expanded?: any
 
   @Prop({ type: Array, default: () => [] })
-  private noExpand?: any
+  noExpand?: any
 
   @Prop({ type: Function })
-  private filter?: () => boolean
-
-  @Prop({ type: String, default: 'single' })
-  private filterMulti?: string
-
-    // 数据输入适配
-  dataAdaptI (val: any[] = []): any[] {
-    const { keyField } = this
-    const temp = deepCopy(val)
-    if (keyField === SELF_KEY) {
-      temp.forEach((item: any, index: number) => {
-          item[keyField] = index
-      })
-    }
-
-    return temp
-  }
+  filter?: () => boolean
 
   @Emit('expand')
   onExpand (row: any, index: number): void {}
@@ -172,7 +158,7 @@ export default class MTable extends Mixins (
       const targetIndex = Selected.indexOf(keyValue)
 
       if (targetIndex === -1) {
-        if (select === 'multi') {
+        if (select === typeSelect.multi) {
           // multi
           this.TableStore.Selected.push(keyValue)
         } else {
@@ -201,7 +187,7 @@ export default class MTable extends Mixins (
       const targetIndex = this.TableStore.Expanded.indexOf(keyValue)
 
       if (targetIndex === -1) {
-        if (expand === 'multi') {
+        if (expand === typeSelect.multi) {
           // multi
           this.TableStore.Expanded.push(keyValue)
         } else {
@@ -239,16 +225,28 @@ export default class MTable extends Mixins (
     return result
   }
 
+  // 数据输入适配
+  dataAdaptI (val: any[] = []): any[] {
+    const { keyField } = this
+    const temp = deepCopy(val)
+    if (keyField === SELF_KEY) {
+      temp.forEach((item: any, index: number) => {
+        item[keyField] = index
+      })
+    }
+
+    return temp
+  }
+
   render () {
-    const { height, border, header, size, elevation,
-            select, expand, rowSelect, rowExpand } = this
-    const noHeader = header === 'none'
+    const { height, border, header, size, elevation, select, expand, rowSelect, rowExpand } = this
+    const noHeader = header === typeHeader.none
 
     return (
-      <Table staticClass={`${_name}`}
+      <div staticClass={compName}
              size={size}
              elevation={elevation}>
-        <section staticClass={`${_name}__wrapper`}>
+        <section staticClass={`${compName}__wrapper`}>
           {noHeader ? undefined : (
             <TableHead ref={'head'}
                        size={size}
@@ -264,7 +262,7 @@ export default class MTable extends Mixins (
                      rowExpand={rowExpand}
                      noHeader={noHeader} />
         </section>
-      </Table>
+      </div>
     )
   }
 }

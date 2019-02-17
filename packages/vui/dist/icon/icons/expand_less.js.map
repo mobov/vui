@@ -1,0 +1,1 @@
+{"version":3,"file":"expand_less.js","sourceRoot":"","sources":["../../../src/icon/icons/expand_less.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,aAAa,EAAE;QACd,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gEAAgE;SAChE;KACD;CACD,CAAC,CAAA"}

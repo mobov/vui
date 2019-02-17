@@ -6,10 +6,13 @@ import MRadio from '../../radio'
 import { getStyleSize } from '../../core/util'
 import { on, off } from '../../core/event'
 import { size } from '../../core/constant'
+import { typeHeader,  typeHover, typeSelect }  from '../constant'
 
-const _name = 'm-table-body'
+const compName = 'm-table-body'
 
-@Component({ components: { MCheckbox, MRadio, MIcon, MTransitionExpansion } })
+@Component({
+  components: { MCheckbox, MRadio, MIcon, MTransitionExpansion }
+})
 export default class TableBody extends Vue {
   @Prop({ type: String })
   height?: string
@@ -30,10 +33,10 @@ export default class TableBody extends Vue {
   rowExpand?: boolean
 
   @Prop({ type: String })
-  select?: 'none' | 'single' | 'multi'
+  select?: typeSelect
 
   @Prop({ type: String })
-  expand?: 'none' | 'single' | 'multi'
+  expand?: typeSelect
 
   @Inject()
   TableCols!: any[]
@@ -42,14 +45,14 @@ export default class TableBody extends Vue {
   TableStore!: any
 
   @Watch('noHeader')
-  noHeaderToggle (val: string) { if (!val) { this.onDomUpdate() } }
+  noHeaderToggle (val: string) { if (!val) { this.updateDom() } }
 
   get selectable () {
-      return this.select !== 'none'
+      return this.select !== typeSelect.none
   }
 
   get expandable () {
-      return this.expand !== 'none'
+      return this.expand !== typeSelect.none
   }
 
   get styles () {
@@ -100,7 +103,7 @@ export default class TableBody extends Vue {
       if (isSelect) {
         const isSelected = Selected.includes(row[keyField])
 
-        if (select === 'multi') {
+        if (select === typeSelect.multi) {
           content = (
             <div staticClass="m--center">
               <MCheckbox value={isSelected} size={size}
@@ -165,7 +168,7 @@ export default class TableBody extends Vue {
       const isExpand = (type === 'expand' && expandable)
 
       return (
-        <td staticClass={`${_name}__cell`}
+        <td staticClass={`${compName}__cell`}
             style={styles}
             align={align}>
           {RContent(item, isSelect, isExpand)}
@@ -188,7 +191,7 @@ export default class TableBody extends Vue {
     }
 
     return (
-      <tr staticClass={`${_name}__row`}
+      <tr staticClass={`${compName}__row`}
           class={classes}
           onClick={() => handleRowClick(row, index)}>
         {RCols(row, index)}
@@ -207,11 +210,11 @@ export default class TableBody extends Vue {
     const isExpanded = Expanded.includes(row[keyField])
 
     return (
-      <tr staticClass={`${_name}__expand`}>
+      <tr staticClass={`${compName}__expand`}>
         <td colSpan={TableCols.length}>
           <MTransitionExpansion>
             {!isExpanded ? undefined : (
-              <div staticClass={`${_name}__expand-content`}>
+              <div staticClass={`${compName}__expand-content`}>
                 {this.$parent.$scopedSlots.expand(row)}
               </div>
             )}
@@ -235,7 +238,7 @@ export default class TableBody extends Vue {
     return (<tbody>{result}</tbody>)
   }
 
-  onDomUpdate () {
+  updateDom () {
     const { noHeader } = this
     const $tableBody: any = this.$el.querySelector('tbody')
 
@@ -254,23 +257,24 @@ export default class TableBody extends Vue {
   }
 
   mounted () {
-    this.onDomUpdate()
-    on(window, 'resize', this.onDomUpdate)
+    this.updateDom()
+    on(window, 'resize', this.updateDom)
   }
 
   updated () {
-    this.onDomUpdate()
+    this.updateDom()
   }
 
   beforeDestroy () {
-    off(window, 'resize', this.onDomUpdate)
+    off(window, 'resize', this.updateDom)
   }
 
   render () {
     const { styles, RTBody } = this
 
     return (
-      <div staticClass={_name} style={styles}>
+      <div staticClass={compName}
+           style={styles}>
         <table>{RTBody()}</table>
       </div>
     )

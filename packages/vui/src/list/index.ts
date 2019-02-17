@@ -1,3 +1,4 @@
+import './list.scss'
 import MList from './list'
 
 /* istanbul ignore next */

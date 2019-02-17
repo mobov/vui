@@ -1,0 +1,1 @@
+{"version":3,"file":"wrap_text.js","sourceRoot":"","sources":["../../../src/icon/icons/wrap_text.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,WAAW,EAAE;QACZ,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,oQAAoQ;SACpQ;KACD;CACD,CAAC,CAAA"}

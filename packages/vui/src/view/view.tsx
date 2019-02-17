@@ -1,46 +1,40 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Fill, Size } from '../types/model'
-import { FILL, BREAKPOINT } from '../core/constant/constant'
-import { genColor, genElevation, genHover, genSize } from '../core/style-gen'
+import { genSize } from '../core/util'
+import { Fill, size } from '../core/constant'
 
-const _name = 'm-view'
+const compName = 'm-view'
 
 @Component
 export default class MView extends Vue {
-  @Prop({ type: String, default: FILL.both })
-  private fillHeader?: Fill
+  @Prop({ type: String, default: Fill.both })
+  fillHeader?: Fill
 
-  @Prop({ type: String, default: FILL.both })
-  private fillFooter?: Fill
-
-  @Prop({ type: String })
-  private headerSize?: Size
+  @Prop({ type: String, default: Fill.both })
+  fillFooter?: Fill
 
   @Prop({ type: String })
-  private footerSize?: Size
+  headerSize?: size
 
   @Prop({ type: String })
-  private leftSize?: Size
+  footerSize?: size
 
   @Prop({ type: String })
-  private rightSize?: Size
+  leftSize?: size
+
+  @Prop({ type: String })
+  rightSize?: size
 
   @Prop({ type: Number })
-  private headerIndex?: number
+  headerIndex?: number
 
   @Prop({ type: String })
-  private footerIndex?: number
+  footerIndex?: number
 
   @Prop({ type: String })
-  private leftIndex?: number
+  leftIndex?: number
 
   @Prop({ type: String })
-  private rightIndex?: number
-
-  private isHeader = false
-  private isFooter = false
-  private isLeft = false
-  private isRight = false
+  rightIndex?: number
 
   get classes () {
     const { fillHeader, fillFooter, isHeader, isFooter, isLeft, isRight } = this
@@ -50,38 +44,42 @@ export default class MView extends Vue {
       'm--with-footer': isFooter,
       'm--with-left': isLeft,
       'm--with-right': isRight,
-      [`m--fill-header-${fillHeader}`]: true,
-      [`m--fill-footer-${fillFooter}`]: true
+      [`m--Fill-header-${fillHeader}`]: true,
+      [`m--Fill-footer-${fillFooter}`]: true
     }
   }
 
   get styles () {
-    const {
-      isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
+    const { isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
     } = this
 
     const styles = { }
 
     if (isHeader) {
-      genSize(styles, _name, 'header-size', headerSize)
+      genSize(styles, `${compName}-header`, headerSize)
     }
     if (isFooter) {
-      genSize(styles, _name, 'footer-size', footerSize)
+      genSize(styles, `${compName}-footer`, footerSize)
     }
     if (isLeft) {
-      genSize(styles, _name, 'left-size', leftSize)
+      genSize(styles, `${compName}-left`, leftSize)
     }
     if (isRight) {
-      genSize(styles, _name, 'right-size', rightSize)
+      genSize(styles, `${compName}-right`, rightSize)
     }
 
     return styles
   }
 
+  isHeader = false
+  isFooter = false
+  isLeft = false
+  isRight = false
+
   RHeader () {
     return (
       <transition name="m-transition-slide-down">
-        {this.isHeader ? <div staticClass={`${_name}-header`}>{this.$slots.header}</div> : undefined}
+        {this.isHeader ? <div staticClass={`${compName}-header`}>{this.$slots.header}</div> : undefined}
       </transition>
     )
   }
@@ -89,7 +87,7 @@ export default class MView extends Vue {
   RFooter () {
     return (
       <transition name="m-transition-slide-up">
-        {this.isFooter ? <div staticClass={`${_name}-footer`}>{this.$slots.footer}</div> : undefined}
+        {this.isFooter ? <div staticClass={`${compName}-footer`}>{this.$slots.footer}</div> : undefined}
       </transition>
     )
   }
@@ -97,7 +95,7 @@ export default class MView extends Vue {
   RLeft () {
     return (
       <transition name="m-transition-slide-left">
-        {this.isLeft ? <div staticClass={`${_name}-left`}>{this.$slots.left}</div> : undefined}
+        {this.isLeft ? <div staticClass={`${compName}-left`}>{this.$slots.left}</div> : undefined}
       </transition>
     )
   }
@@ -105,24 +103,25 @@ export default class MView extends Vue {
   RRight () {
     return (
       <transition name="m-transition-slide-right">
-        {this.isRight ? <div staticClass={`${_name}-right`}>{this.$slots.right}</div> : undefined}
+        {this.isRight ? <div staticClass={`${compName}-right`}>{this.$slots.right}</div> : undefined}
       </transition>
     )
   }
 
   render () {
-    const { classes, $slots, styles, RHeader, RFooter, RLeft, RRight } = this
+    const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this
 
     this.isHeader = $slots.header !== undefined
     this.isFooter = $slots.footer !== undefined
     this.isLeft = $slots.left !== undefined
     this.isRight = $slots.right !== undefined
 
+    console.log(styles)
     return (
-      <div staticClass={_name}
-           class={classes}
-           style={styles}>
-        <section staticClass={`${_name}-main`}>
+      <div staticClass={compName}
+           style={styles}
+           class={classes}>
+        <section staticClass={`${compName}-main`}>
           {$slots.default}
         </section>
         {RHeader()}

@@ -1,10 +1,10 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop, Vue } from 'vue-property-decorator';
-const _name = 'm-container';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+const compName = 'm-container';
 let MContainer = class MContainer extends Vue {
     render(h, { props, data, children }) {
-        const staticClass = data.staticClass !== undefined ? data.staticClass : '';
-        data.staticClass = `${_name} ${staticClass}`.trim();
+        const staticClass = data.staticClass ? data.staticClass : '';
+        data.staticClass = `${compName} ${staticClass}`;
         if (props.id) {
             data.domProps = data.domProps || {};
             data.domProps.id = props.id;

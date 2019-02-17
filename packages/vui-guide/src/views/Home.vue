@@ -1,7 +1,7 @@
 <template>
   <m-view class="home"
-          :fill-header="fillHeader"
-          :fill-footer="fillFooter"
+          :Fill-header="fillHeader"
+          :Fill-footer="fillFooter"
           left-size="300px"
           header-size="4rem">
     <m-app-bar v-if="isHeader" slot="header"

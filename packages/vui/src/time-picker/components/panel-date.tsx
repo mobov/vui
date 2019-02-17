@@ -4,7 +4,7 @@ import MIcon from '../../icon'
 import { color, variety, shape } from '../../core/constant'
 import { datePickerType } from '../constant'
 
-const _name = 'm-time-picker-panel-date'
+const compName = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
 
 const enum toggleAction {
@@ -15,21 +15,21 @@ const enum toggleAction {
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
   @Prop({ type: String, default: color.primary })
-  private type!: color
+  type!: color
 
   @Prop({ type: Number })
-  private min!: number
+  min!: number
 
   @Prop({ type: Number })
-  private max!: number
+  max!: number
 
   @Prop({ type: Number, default: 0 })
-  private firstDayOfWeek!: number
+  firstDayOfWeek!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
-  private viewValue: number = this.DateStore.value
+  viewValue: number = this.DateStore.value
 
   get viewDateValue (): any {
     return new Date(this.viewValue)
@@ -120,9 +120,9 @@ export default class MTimePickerPanelDate extends Vue {
     const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this
 
     return (
-      <div staticClass={_name}>
-        <div class={`${_name}__header`}>
-          <div staticClass={`${_name}__header-year`}>
+      <div staticClass={compName}>
+        <div class={`${compName}__header`}>
+          <div staticClass={`${compName}__header-year`}>
             <MButton variety={variety.flat}
                      staticClass='m-m-0'
                      color={color.default}
@@ -131,7 +131,7 @@ export default class MTimePickerPanelDate extends Vue {
               {viewYear}
             </MButton>
           </div>
-          <div staticClass={`${_name}__header-handler`}>
+          <div staticClass={`${compName}__header-handler`}>
             <MButton variety={variety.flat}
                      staticClass='m-m-0'
                      elevation={0}
@@ -148,7 +148,7 @@ export default class MTimePickerPanelDate extends Vue {
                      onClick={() => handleMonthToggle(toggleAction.next)} />
           </div>
         </div>
-        <table class={`${_name}__table`}>
+        <table class={`${compName}__table`}>
           {RTableHead()}
           {RTableBody()}
         </table>

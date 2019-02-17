@@ -1,17 +1,15 @@
 import { Component, Prop, Watch, Mixins } from 'vue-property-decorator'
-import Avatar from './avatar.style'
 import colorable from '../core/mixin/colorable'
 import sizeable from '../core/mixin/sizeable'
 import elevated from '../core/mixin/elevated'
 import variable from '../core/mixin/variable'
 import shapeable from '../core/mixin/shapeable'
-import { STATUS } from '../core/constant'
+import { Status } from '../core/constant'
+import { genFontColor, genColor, genElevation, genSize, genShape, genVariety } from '../core/util'
 
-const _name = 'm-avatar'
+const compName = 'm-avatar'
 
-@Component({
-  components: { Avatar }
-})
+@Component
 export default class MAvatar extends Mixins (
   colorable,
   sizeable,
@@ -20,45 +18,66 @@ export default class MAvatar extends Mixins (
   shapeable
 ) {
   @Prop({ type: String })
-  private src!: string
+  src!: string
+
+  get styles () {
+    const { fontColor, size, color, elevation } = this
+    const styles = {}
+
+    genFontColor(styles, compName, fontColor)
+    genColor(styles, compName, color)
+    genElevation(styles, compName, elevation)
+    genSize(styles, compName, size)
+
+    return styles
+  }
+
+  get classes () {
+    const { shape, variety, status } = this
+    const classes = {
+      [`m--status-${Status[status]}`]: true
+    }
+
+    genShape(classes, shape)
+    genVariety(classes, variety)
+
+    return classes
+  }
 
   @Watch('src', { immediate: true })
   updateSrc (val: string) {
     if (val !== undefined) {
-      this.status = STATUS.pending
+      this.status = Status.pending
       this.curSrc = val
     }
   }
 
-  private status: number = STATUS.pending
+  status: number = Status.pending
 
-  private curSrc!: string
+  curSrc!: string
 
   loadSuccess () {
-    this.status = STATUS.success
+    this.status = Status.success
   }
 
   loadFailure () {
-    this.status = STATUS.failure
+    this.status = Status.failure
   }
 
   render () {
-    const { curSrc, loadSuccess, loadFailure, status, fontColor, size, color, variety } = this
+    const { styles, classes, curSrc, loadSuccess, loadFailure } = this
 
     return (
-      <Avatar staticClass={_name}
-              status={status}
-              size={size}
-              color={color}
-              variety={variety}
-              fontColor={fontColor}>
+      <div staticClass={compName}
+           class={classes}
+           style={styles}>
         {this.$slots.default}
-        <img staticClass={`${_name}__cover`}
+        <img staticClass={`${compName}__cover`}
              alt=''
              src={curSrc}
              onLoad={loadSuccess}
              onError={loadFailure} />
-      </Avatar>
+      </div>
     )
   }
 }

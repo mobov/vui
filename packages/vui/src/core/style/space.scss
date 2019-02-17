@@ -1,0 +1,120 @@
+/**
+ * variables register.
+ */
+@import "~@megmore/scss-helper/import";
+
+$--Spaces: (
+    xs: .5rem,
+    sm: 1rem,
+    md: 1.5rem,
+    lg: 2rem,
+    xl: 2.5rem
+);
+
+:root {
+    --m-space-xs: #{map_get($--Spaces, xs)};
+    --m-space-sm: #{map_get($--Spaces, sm)};
+    --m-space-md: #{map_get($--Spaces, md)};
+    --m-space-lg: #{map_get($--Spaces, lg)};
+    --m-space-xl: #{map_get($--Spaces, xl)};
+}
+
+@each $breakpoint in $--Breakpoints {
+    $value: #{--m-space-$breakpoint};
+
+    .m-mt-#{$breakpoint} {
+        margin-top: $value;
+    }
+    .m-mb-#{$breakpoint} {
+        margin-bottom: $value;
+    }
+    .m-ml-#{$breakpoint} {
+        margin-left: $value;
+    }
+    .m-mr-#{$breakpoint} {
+        margin-right: $value;
+    }
+    .m-mx-#{$breakpoint} {
+        margin-left: $value;
+        margin-right: $value;
+    }
+    .m-my-#{$breakpoint} {
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+    .m-m-#{$breakpoint} {
+        margin: $value;
+    }
+
+    .m-pt-#{$breakpoint} {
+        padding-top: $value;
+    }
+    .m-pb-#{$breakpoint} {
+        padding-bottom: $value;
+    }
+    .m-pl-#{$breakpoint} {
+        padding-left: $value;
+    }
+    .m-pr-#{$breakpoint} {
+        padding-right: $value;
+    }
+    .m-px-#{$breakpoint} {
+        padding-left: $value;
+        padding-right: $value;
+    }
+    .m-py-#{$breakpoint} {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+    .m-p-#{$breakpoint} {
+        padding: $value;
+    }
+}
+.m-mt-0 {
+    margin-top: 0!important;
+}
+.m-mb-0 {
+    margin-bottom: 0!important;
+}
+.m-ml-0 {
+    margin-left: 0!important;
+}
+.m-mr-0 {
+    margin-right: 0!important;
+}
+.m-mx-0 {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+.m-my-0 {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+.m-m-0 {
+    margin: 0!important;
+}
+
+.m-pt-0 {
+    padding-top: 0!important;
+}
+.m-pb-0 {
+    padding-bottom: 0!important;
+}
+.m-pl-0 {
+    padding-left: 0!important;
+}
+.m-pr-0 {
+    padding-right: 0!important;
+}
+.m-px-0 {
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.m-py-0 {
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+.m-p-0 {
+    padding: 0!important;
+}
+

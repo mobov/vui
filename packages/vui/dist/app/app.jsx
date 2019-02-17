@@ -1,19 +1,15 @@
 import * as tslib_1 from "tslib";
 import { Vue, Component } from 'vue-property-decorator';
-import App from './app.style';
-const _name = 'm-app';
 let MApp = class MApp extends Vue {
     render() {
         const { $slots } = this;
-        return (<App staticClass={_name}>
+        return (<div staticClass="m-app">
         {$slots.default}
-      </App>);
+      </div>);
     }
 };
 MApp = tslib_1.__decorate([
-    Component({
-        components: { App }
-    })
+    Component
 ], MApp);
 export default MApp;
 //# sourceMappingURL=app.jsx.map

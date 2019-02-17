@@ -1,7 +1,7 @@
 import { ComponentOptions } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-const _name = 'm-flex-filler'
+const compName = 'm-flex-filler'
 
 @Component({
   functional: true
@@ -9,7 +9,7 @@ const _name = 'm-flex-filler'
 export default class MFlexFiller extends Vue {
   render () {
     return (
-      <div class={_name} />
+      <div class={compName} />
     )
   }
 }

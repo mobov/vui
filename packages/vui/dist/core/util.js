@@ -72,77 +72,108 @@ function getStyleColor(val) {
 }
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genColor(compName, val) {
+export function genColor(styles = {}, compName, val) {
     if (val === undefined) {
-        return '';
-    }
-    else {
         if (COLORS.includes(val)) {
-            return `--${compName}-color: var(--m-color-${val})`;
+            styles[`--${compName}-color`] = `var(--m-color-${val})`;
         }
         else {
-            return `--${compName}-color: ${val})`;
+            styles[`--${compName}-color`] = `${val}`;
         }
     }
 }
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genFontColor(compName, val) {
-    if (val === undefined) {
-        return '';
-    }
-    else {
+export function genFontColor(styles = {}, compName, val) {
+    if (val !== undefined) {
         if (COLORS.includes(val)) {
-            return `--${compName}-font-color: var(--m-color-${val})`;
+            styles[`--${compName}-font-color`] = `var(--m-color-${val})`;
         }
         else {
-            return `--${compName}-font-color: ${val})`;
+            styles[`--${compName}-font-color`] = `${val}`;
         }
     }
 }
 /**
  * 计算尺寸样式值
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genSize(compName, val) {
-    if (val === undefined) {
-        return '';
-    }
-    else {
+export function genSize(styles = {}, compName, val) {
+    if (val !== undefined) {
         if (BREAKPOINTS.includes(val)) {
-            return `--${compName}-size: var(--${compName}-size-${val})`;
+            styles[`--${compName}-size`] = `var(--${compName}-size-${val})`;
         }
         else if (typeof val === 'number') {
-            return `--${compName}-size: ${val}px`;
+            styles[`--${compName}-size`] = `${val}px`;
         }
         else {
-            return `--${compName}-size: ${val}`;
+            styles[`--${compName}-size`] = `${val}`;
         }
     }
 }
 /**
  * 计算阴影
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genElevation(compName, val) {
-    if (val === undefined) {
-        return '';
-    }
-    else {
+export function genElevation(styles = {}, compName, val) {
+    if (val !== undefined) {
         if (ELEVATIONS.includes(val)) {
-            return `--${compName}-elevation: ${ELEVATION[val]}`;
+            styles[`--${compName}-elevation`] = `${ELEVATION[val]}`;
         }
         else {
-            return `--${compName}-elevation: ${val})`;
+            styles[`--${compName}-elevation`] = `${val}`;
         }
+    }
+}
+/**
+ *
+ * @param styles
+ * @param compName
+ * @param val
+ */
+export function genSpace(styles, compName, val) {
+    if (val !== undefined) {
+        if (BREAKPOINTS.includes(val)) {
+            styles[`--${compName}-space`] = `var(--m-space-${val})`;
+        }
+        else if (typeof val === 'number') {
+            styles[`--${compName}-space`] = `${val}px`;
+        }
+        else {
+            styles[`--${compName}-space`] = `${val}`;
+        }
+    }
+}
+/**
+ * 计算形状
+ * @param classes
+ * @param val
+ */
+export function genShape(classes = {}, val) {
+    if (val !== undefined) {
+        classes[`m-shape-${val}`] = true;
+    }
+}
+/**
+ * 计算形态
+ * @param classes
+ * @param val
+ */
+export function genVariety(classes = {}, val) {
+    if (val !== undefined) {
+        classes[`m-variety-${val}`] = true;
     }
 }
 /**
@@ -169,22 +200,6 @@ export function genHoverColor(compName, val) {
     //   }
     //   return `--${compName}-hover-color: ${val})`
     // }
-}
-/**
- * 计算基于space的margin padding
- * @param styles
- * @param compName
- * @param property
- * @param val
- */
-export function genSpace(styles, compName, property, val) {
-    if (val !== undefined) {
-        styles[`--${compName}-${property}`] = typeof val === 'number'
-            ? `${val}px`
-            : BREAKPOINTS.includes(val)
-                ? `var(--m-space-${val})`
-                : val;
-    }
 }
 /***
  * 通用样式

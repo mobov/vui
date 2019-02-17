@@ -1,6 +1,6 @@
 <template>
   <m-app>
-    <m-view fill-header="none"
+    <m-view Fill-header="none"
             left-size="20rem">
       <m-app-bar slot="header"
                  size="100%"
@@ -23,7 +23,7 @@
     </m-view>
   </m-app>
 </template>
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import DocEntries from './components/doc-entries.vue'
 

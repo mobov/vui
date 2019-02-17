@@ -1,0 +1,1 @@
+{"version":3,"file":"tab_unselected.js","sourceRoot":"","sources":["../../../src/icon/icons/tab_unselected.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,gBAAgB,EAAE;QACjB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qnBAAqnB;SACrnB;KACD;CACD,CAAC,CAAA"}

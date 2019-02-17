@@ -1,43 +1,17 @@
 import * as tslib_1 from "tslib";
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { injectGlobal } from 'vue-styled-components';
-import breakpoint from 'styled-components-breakpoint';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { genStaticStyles, genSpace } from '../core/util';
 import { BREAKPOINTS } from '../core/constant';
-injectGlobal `
-  .m-col {
-      --m-col-span-xs: var(--m-row-cols);
-      --m-col-span-sm: var(--m-col-span-xs);
-      --m-col-span-md: var(--m-col-span-sm);
-      --m-col-span-lg: var(--m-col-span-md);
-      --m-col-span-xl: var(--m-col-span-lg);
-      --m-col-gutter: 0;
-      
-      display: flex;
-      box-sizing: border-box;
-      padding: var(--m-col-gutter);
-      ${BREAKPOINTS.forEach(point => {
-    breakpoint(point) `
-            width: calc((var(--m-col-span-${point}) / var(--m-row-cols)) * 100%);
-          `;
-})}
-  }
-`;
-const _name = 'm-col';
+const compName = 'm-col';
 let MCol = class MCol extends Vue {
     render(h, { props, data, children }) {
-        const staticClass = data.staticClass !== undefined ? data.staticClass : '';
-        data.staticClass = ` ${_name} ${staticClass} `;
-        data.staticClass = data.staticClass.trim();
-        if (!data.staticStyle) {
-            data.staticStyle = {};
-        }
-        if (props.gutter) {
-            genSpace(data.staticStyle, _name, 'gutter', props.gutter);
-        }
+        const staticClass = data.staticClass ? data.staticClass : '';
+        data.staticClass = `${compName} ${staticClass}`;
+        data.staticStyle = data.staticStyle ? data.staticStyle : {};
+        genSpace(data.staticStyle, compName, props.space);
         BREAKPOINTS.forEach((breakpoint) => {
             if (props[breakpoint]) {
-                genStaticStyles(data.staticStyle, _name, `span-${breakpoint}`, props[breakpoint]);
+                genStaticStyles(data.staticStyle, compName, `span-${breakpoint}`, props[breakpoint]);
             }
         });
         if (props.id) {
@@ -68,9 +42,6 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     Prop({ type: Number })
 ], MCol.prototype, "xl", void 0);
-tslib_1.__decorate([
-    Prop({ type: [String, Number] })
-], MCol.prototype, "gutter", void 0);
 MCol = tslib_1.__decorate([
     Component({
         functional: true

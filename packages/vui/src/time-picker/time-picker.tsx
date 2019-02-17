@@ -9,7 +9,7 @@ import MTimePickerPanelTime from './components/panel-time'
 import MTimePickerHandler from './components/handler'
 import { dateValueFormat, datePickerType, dateValueType } from './constant'
 
-const _name = 'm-time-picker'
+const compName = 'm-time-picker'
 
 @Component({
   components: {
@@ -62,12 +62,12 @@ export default class MTimePicker extends Mixins(
   confirmation!: boolean
 
   @Emit('confirm')
-  handleConfirm () {
+  onConfirm () {
     this.DateStore.emitInput()
   }
 
   @Emit('cancel')
-  handleCancel () { }
+  onCancel () { }
 
   @Emit('input')
   onInput (val: any) { }
@@ -229,11 +229,11 @@ export default class MTimePicker extends Mixins(
   }
 
   RHandler () {
-    const { confirmation, handleConfirm, handleCancel } = this
+    const { confirmation, onConfirm, onCancel } = this
 
     return !confirmation ? undefined
-      : <MTimePickerHandler onConfirm={handleConfirm}
-                            onCancel={handleCancel} />
+      : <MTimePickerHandler onConfirm={onConfirm}
+                            onCancel={onCancel} />
   }
 
   render () {
@@ -241,11 +241,11 @@ export default class MTimePicker extends Mixins(
     const { pickerType } = this.DateStore
 
     return (
-      <div staticClass={`${_name} m--${pickerType}`}
+      <div staticClass={`${compName} m--${pickerType}`}
            class={classes}>
-        <div staticClass={`${_name}__main`}>
+        <div staticClass={`${compName}__main`}>
           <MTimePickerHeader color={color} />
-          <div staticClass={`${_name}-panel`}>{RPanel()}</div>
+          <div staticClass={`${compName}-panel`}>{RPanel()}</div>
         </div>
         {RHandler()}
       </div>

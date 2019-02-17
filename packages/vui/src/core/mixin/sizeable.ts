@@ -4,5 +4,5 @@ import { size } from '../constant'
 @Component
 export default class sizeable extends Vue {
   @Prop({ type: [String, Number] })
-  size: size | undefined
+  size: size | string | number | undefined
 }

@@ -1,8 +1,8 @@
-import sizeable from '../core/mixin/sizeable';
-declare const MList_base: import("vue-class-component/lib/declarations").VueClass<sizeable>;
-export default class MList extends MList_base {
+import { Vue } from 'vue-property-decorator';
+export default class MList extends Vue {
+    private size;
     private mode;
     onClick(e: MouseEvent): void;
+    readonly styles: {};
     render(): JSX.Element;
 }
-export {};

@@ -1,0 +1,1 @@
+{"version":3,"file":"import_contacts.js","sourceRoot":"","sources":["../../../src/icon/icons/import_contacts.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,iBAAiB,EAAE;QAClB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2iBAA2iB;SAC3iB;KACD;CACD,CAAC,CAAA"}

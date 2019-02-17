@@ -1,13 +1,9 @@
 import { Vue } from 'vue-property-decorator';
-import { Size } from '../../types/model';
-declare module 'vue/types/options' {
-    interface ComponentOptions<V extends Vue> {
-        select?: 'none' | 'single' | 'multi';
-    }
-}
+import { typeSelect } from '../constant';
+import { size } from '../../core/constant';
 export default class TableHead extends Vue {
-    size?: Size;
-    select?: 'none' | 'single' | 'multi';
+    size?: size;
+    select?: typeSelect;
     sortable?: boolean;
     sort?: () => boolean;
     TableCols: any;

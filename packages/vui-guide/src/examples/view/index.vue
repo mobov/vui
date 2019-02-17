@@ -28,8 +28,8 @@
   <div class="example">
     <example-box>
       <m-view class="example-view"
-              :fill-header="fillHeader"
-              :fill-footer="fillFooter"
+              :Fill-header="fillHeader"
+              :Fill-footer="fillFooter"
               left-size="300px"
               header-size="4rem">
         <div class="view-header" v-if="isHeader" slot="header"></div>

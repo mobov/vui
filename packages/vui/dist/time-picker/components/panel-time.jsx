@@ -3,7 +3,9 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
 // import { getStyle } from '@megmore/es-helper'
 import MButton from '../../button';
 import MIcon from '../../icon';
-const _name = 'm-time-picker-panel-time';
+import { dateTimeValueType } from '../constant';
+import { color, variety, shape } from '../../core/constant';
+const compName = 'm-time-picker-panel-time';
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
@@ -13,7 +15,7 @@ const _name = 'm-time-picker-panel-time';
 let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
     onClick(val, type) {
         this.DateStore.SET_ACTIVE_TYPE(type);
-        this.DateStore.UPDATE((type === 'hours' && this.DateStore.ampm && !this.DateStore.am)
+        this.DateStore.UPDATE((type === dateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
             ? val + 12
             : val, type);
     }
@@ -21,39 +23,31 @@ let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
         const { onClick, hourStep, minuteStep } = this;
         const { ampm } = this.DateStore;
         const min = 0;
-        const max = type === 'hours' ? ampm ? 11 : 23 : 59;
-        const step = type === 'hours' ? hourStep : minuteStep;
+        const max = type === dateTimeValueType.hours ? ampm ? 11 : 23 : 59;
+        const step = type === dateTimeValueType.hours ? hourStep : minuteStep;
         const time = this.DateStore[type];
         const Temps = [];
         for (let tempTime = min; tempTime <= max; tempTime += step) {
             const isCurrent = tempTime === time;
-            Temps.push(<MButton onClick={() => onClick(tempTime, type)} size="sm" block class="m-m-0 m-p-0 m--block" shape="circle" elevation={0} variety={isCurrent ? 'normal' : 'flat'} color={isCurrent ? 'primary' : 'default'}>
+            Temps.push(<MButton onClick={() => onClick(tempTime, type)} size="sm" block class="m-m-0 m-p-0 m--block" shape={shape.circle} elevation={0} variety={isCurrent ? variety.normal : variety.flat} color={isCurrent ? color.primary : color.default}>
           {tempTime}
         </MButton>);
         }
-        return (<div staticClass={`${_name}__list ${_name}__list-${type}`}>
+        return (<div staticClass={`${compName}__list ${compName}__list-${type}`}>
         {Temps}
       </div>);
     }
     render() {
-        const { RList, timeSelectType } = this;
+        const { RList } = this;
         const Result = [];
-        if (timeSelectType === 'list') {
-            Result.push(RList('hours'));
-            Result.push(RList('minutes'));
-        }
-        else {
-            // todo
-        }
-        return (<div staticClass={_name}>{Result}</div>);
+        Result.push(RList(dateTimeValueType.hours));
+        Result.push(RList(dateTimeValueType.minutes));
+        return (<div staticClass={compName}>{Result}</div>);
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: 'primary' })
+    Prop({ type: String, default: color.primary })
 ], MTimePickerPanelTime.prototype, "type", void 0);
-tslib_1.__decorate([
-    Prop({ type: String, default: 'list' })
-], MTimePickerPanelTime.prototype, "timeSelectType", void 0);
 tslib_1.__decorate([
     Prop({ type: Number, default: 1 })
 ], MTimePickerPanelTime.prototype, "hourStep", void 0);

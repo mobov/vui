@@ -2,12 +2,12 @@ import ELEVATION from './elevation';
 import PALETTE from './palette';
 export { ELEVATION, PALETTE };
 export const ELEVATIONS = ELEVATION.map((item, index) => index);
-export var STATUS;
-(function (STATUS) {
-    STATUS[STATUS["success"] = 0] = "success";
-    STATUS[STATUS["pending"] = 1] = "pending";
-    STATUS[STATUS["failure"] = 2] = "failure";
-})(STATUS || (STATUS = {}));
+export var Status;
+(function (Status) {
+    Status[Status["success"] = 0] = "success";
+    Status[Status["pending"] = 1] = "pending";
+    Status[Status["failure"] = 2] = "failure";
+})(Status || (Status = {}));
 export var BREAKPOINT;
 (function (BREAKPOINT) {
     BREAKPOINT[BREAKPOINT["xs"] = 0] = "xs";
@@ -27,6 +27,12 @@ export var SIZE;
 })(SIZE || (SIZE = {}));
 export const SIZES = Object.values(SIZE);
 export const COLS = 24;
+export var variety;
+(function (variety) {
+    variety["normal"] = "normal";
+    variety["flat"] = "flat";
+    variety["outline"] = "outline";
+})(variety || (variety = {}));
 export var VARIETY;
 (function (VARIETY) {
     VARIETY["normal"] = "normal";
@@ -34,6 +40,13 @@ export var VARIETY;
     VARIETY["outline"] = "outline";
 })(VARIETY || (VARIETY = {}));
 export const VARIETYS = Object.values(VARIETY);
+export var shape;
+(function (shape) {
+    shape["circle"] = "circle";
+    shape["round"] = "round";
+    shape["corner"] = "corner";
+    shape["square"] = "square";
+})(shape || (shape = {}));
 export var SHAPE;
 (function (SHAPE) {
     SHAPE["circle"] = "circle";
@@ -42,6 +55,14 @@ export var SHAPE;
     SHAPE["square"] = "square";
 })(SHAPE || (SHAPE = {}));
 export const SHAPES = Object.values(SHAPE);
+export var color;
+(function (color) {
+    color["primary"] = "primary";
+    color["error"] = "error";
+    color["success"] = "success";
+    color["warning"] = "warning";
+    color["default"] = "default";
+})(color || (color = {}));
 export var COLOR;
 (function (COLOR) {
     COLOR["primary"] = "primary";
@@ -57,13 +78,23 @@ export var MODE;
     MODE["night"] = "night";
 })(MODE || (MODE = {}));
 export const MODES = Object.values(MODE);
-export var FILL;
-(function (FILL) {
-    FILL["left"] = "left";
-    FILL["both"] = "both";
-    FILL["right"] = "right";
-    FILL["none"] = "none";
-})(FILL || (FILL = {}));
+export var Fill;
+(function (Fill) {
+    Fill["left"] = "left";
+    Fill["both"] = "both";
+    Fill["right"] = "right";
+    Fill["none"] = "none";
+})(Fill || (Fill = {}));
+export var FlexJustify;
+(function (FlexJustify) {
+    FlexJustify["start"] = "start";
+    FlexJustify["center"] = "center";
+    FlexJustify["end"] = "end";
+    FlexJustify["between"] = "between";
+    FlexJustify["around"] = "around";
+    FlexJustify["evenly"] = "evenly";
+    FlexJustify["none"] = "none";
+})(FlexJustify || (FlexJustify = {}));
 export var FLEX_JUSTIFY;
 (function (FLEX_JUSTIFY) {
     FLEX_JUSTIFY["start"] = "start";
@@ -74,12 +105,25 @@ export var FLEX_JUSTIFY;
     FLEX_JUSTIFY["evenly"] = "evenly";
     FLEX_JUSTIFY["none"] = "none";
 })(FLEX_JUSTIFY || (FLEX_JUSTIFY = {}));
+export var FlexWrap;
+(function (FlexWrap) {
+    FlexWrap["normal"] = "normal";
+    FlexWrap["reverse"] = "reverse";
+    FlexWrap["none"] = "none";
+})(FlexWrap || (FlexWrap = {}));
 export var FLEX_WRAP;
 (function (FLEX_WRAP) {
     FLEX_WRAP["normal"] = "normal";
     FLEX_WRAP["reverse"] = "reverse";
     FLEX_WRAP["none"] = "none";
 })(FLEX_WRAP || (FLEX_WRAP = {}));
+export var FlexAlign;
+(function (FlexAlign) {
+    FlexAlign["start"] = "start";
+    FlexAlign["center"] = "center";
+    FlexAlign["end"] = "end";
+    FlexAlign["stretch"] = "stretch";
+})(FlexAlign || (FlexAlign = {}));
 export var FLEX_ALIGN;
 (function (FLEX_ALIGN) {
     FLEX_ALIGN["start"] = "start";
@@ -87,4 +131,12 @@ export var FLEX_ALIGN;
     FLEX_ALIGN["end"] = "end";
     FLEX_ALIGN["stretch"] = "stretch";
 })(FLEX_ALIGN || (FLEX_ALIGN = {}));
+export var align;
+(function (align) {
+    align["left"] = "left";
+    align["center"] = "center";
+    align["right"] = "right";
+})(align || (align = {}));
+//
+// export type align = 'left' | 'center' | 'right' //  水平轴
 //# sourceMappingURL=index.js.map

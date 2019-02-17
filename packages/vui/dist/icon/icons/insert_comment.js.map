@@ -1,0 +1,1 @@
+{"version":3,"file":"insert_comment.js","sourceRoot":"","sources":["../../../src/icon/icons/insert_comment.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,gBAAgB,EAAE;QACjB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gPAAgP;SAChP;KACD;CACD,CAAC,CAAA"}

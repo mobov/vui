@@ -1,12 +1,10 @@
-// vue插件参数接口拓展
-import { Vue, VueConstructor } from 'vue/types/vue'
-import { variety, size, color, shape, elevation, mode, flexWrap, flexJustify, flexAlign, fill } from './core/constant'
-
-
+// 1. 确保在声明补充的类型之前导入 'vue'
+import Vue, { VueConstructor } from 'vue'
+import { variety, size, color, shape, elevation } from '@megmore/vui/core/constant'
 declare module 'vue/types/options' {
 
   interface ComponentOptions<V extends Vue> {
-    // default
+    // base
     staticClass?: string
     class?: string
     style?: ElementCSSInlineStyle | any
@@ -23,7 +21,7 @@ declare module 'vue/types/options' {
     elevation?: elevation
     fontColor?: color
     color?: color
-    size?: size
+    size?: size | string | number
     shape?: shape
     variety?: variety
     value?: any
@@ -58,10 +56,38 @@ declare module 'vue/types/options' {
     // button
     icon?: string
     block?: boolean
-  //
   }
   interface DirectiveOptions {
     name: string,
     install?: (Vue: VueConstructor) => void
   }
 }
+
+declare module 'vue/types/vue' {
+  export interface RawComponentOptions<
+    V extends Vue = Vue,
+    Data = {} | undefined,
+    Methods = {} | undefined,
+    Computed = {} | undefined,
+    Props = {} | undefined
+    > {
+    name?: string
+    install?: (Vue: VueConstructor) => void
+    data: Data
+    methods: Methods
+    computed: {
+      [C in keyof Computed]: (this: V) => Computed[C]
+    }
+    props: Props
+  }
+
+  export interface VueConstructor<
+    V extends Vue = Vue,
+    Options = Record<string, any>
+    > {
+    version: string
+    install?: (Vue: VueConstructor) => void
+    options: Options
+  }
+}
+

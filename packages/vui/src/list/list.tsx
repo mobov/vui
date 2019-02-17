@@ -1,34 +1,42 @@
-import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
-import List from './list.style'
-import sizeable from '../core/mixin/sizeable'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import { genSize } from '../core/util'
+import { size } from '../core/constant'
 
-const _name = 'm-list'
+const compName = 'm-list'
 
-@Component({
-  components: { List }
-})
-export default class MList extends Mixins (
-  sizeable
-) {
+@Component
+export default class MList extends Vue {
   @Prop({ type: String })
+  private size!: size
+
+  @Prop({ type: [String, Number] })
   private mode!: string
 
   @Emit('click')
   onClick (e: MouseEvent) {}
 
+  get styles () {
+    const { size } = this
+    const styles = {}
+
+    genSize(styles, compName, size)
+
+    return styles
+  }
+
   render () {
-    const { $slots, onClick, size } = this
+    const { styles, $slots, onClick } = this
 
     return (
-      <List staticClass={_name}
-            size={size}
-            onClick={onClick}>
-        {$slots.media ? <div staticClass={`${_name}__media`}>{$slots.media}</div> : undefined}
-        <div staticClass={`${_name}__content`}>
+      <div staticClass={compName}
+           onClick={onClick}
+           style={styles}>
+        {$slots.media ? <div staticClass={`${compName}__media`}>{$slots.media}</div> : undefined}
+        <div staticClass={`${compName}__content`}>
           {$slots.default}
         </div>
-        {$slots.action ? <div staticClass={`${_name}__action`}>{$slots.action}</div> : undefined}
-      </List>
+        {$slots.action ? <div staticClass={`${compName}__action`}>{$slots.action}</div> : undefined}
+      </div>
     )
   }
 }

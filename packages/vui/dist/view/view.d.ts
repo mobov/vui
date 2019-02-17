@@ -1,19 +1,16 @@
 import { Vue } from 'vue-property-decorator';
+import { Fill, size } from '../core/constant';
 export default class MView extends Vue {
-    private fillHeader?;
-    private fillFooter?;
-    private headerSize?;
-    private footerSize?;
-    private leftSize?;
-    private rightSize?;
-    private headerIndex?;
-    private footerIndex?;
-    private leftIndex?;
-    private rightIndex?;
-    private isHeader;
-    private isFooter;
-    private isLeft;
-    private isRight;
+    fillHeader?: Fill;
+    fillFooter?: Fill;
+    headerSize?: size;
+    footerSize?: size;
+    leftSize?: size;
+    rightSize?: size;
+    headerIndex?: number;
+    footerIndex?: number;
+    leftIndex?: number;
+    rightIndex?: number;
     readonly classes: {
         [x: string]: boolean;
         'm--with-header': boolean;
@@ -22,6 +19,10 @@ export default class MView extends Vue {
         'm--with-right': boolean;
     };
     readonly styles: {};
+    isHeader: boolean;
+    isFooter: boolean;
+    isLeft: boolean;
+    isRight: boolean;
     RHeader(): JSX.Element;
     RFooter(): JSX.Element;
     RLeft(): JSX.Element;

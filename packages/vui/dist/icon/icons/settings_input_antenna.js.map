@@ -1,0 +1,1 @@
+{"version":3,"file":"settings_input_antenna.js","sourceRoot":"","sources":["../../../src/icon/icons/settings_input_antenna.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,wBAAwB,EAAE;QACzB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2dAA2d;SAC3d;KACD;CACD,CAAC,CAAA"}

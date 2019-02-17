@@ -1,15 +1,16 @@
 import { Vue } from 'vue-property-decorator';
-import { Size } from '../../types/model';
+import { size } from '../../core/constant';
+import { typeSelect } from '../constant';
 export default class TableBody extends Vue {
     height?: string;
     border?: boolean;
     noHeader?: boolean;
-    size?: Size;
+    size?: size;
     rowSelect?: boolean;
     rowExpand?: boolean;
-    select?: 'none' | 'single' | 'multi';
-    expand?: 'none' | 'single' | 'multi';
-    TableCols: any;
+    select?: typeSelect;
+    expand?: typeSelect;
+    TableCols: any[];
     TableStore: any;
     noHeaderToggle(val: string): void;
     readonly selectable: boolean;
@@ -24,7 +25,7 @@ export default class TableBody extends Vue {
     RRow(row: any, index: number): JSX.Element;
     RExpand(row: any, index: number): JSX.Element | undefined;
     RTBody(): JSX.Element;
-    onDomUpdate(): void;
+    updateDom(): void;
     mounted(): void;
     updated(): void;
     beforeDestroy(): void;

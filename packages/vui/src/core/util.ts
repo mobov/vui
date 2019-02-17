@@ -1,5 +1,5 @@
 import Buffer from './buffer'
-import { BREAKPOINTS, COLORS, ELEVATIONS, ELEVATION } from './constant'
+import { SIZE, COLOR, ELEVATION, BREAKPOINT, SHAPE, VARIETY } from './constant'
 import { isStyleUnit } from '@megmore/es-helper'
 
 
@@ -34,7 +34,7 @@ export function isCSSVar (val: string | number): boolean {
  * @return {string}
  */
 export function getCSSVal (val: string): string {
-  return isPalette(val) || COLORS.includes(val)
+  return isPalette(val) || COLOR.includes(val)
     ? Buffer.docStyles.getPropertyValue(`--m-color-${val}`).trim()
     : isCSSVar(val)
       ? Buffer.docStyles.getPropertyValue(val).trim()
@@ -57,7 +57,7 @@ export function getStyleSize (value: string | number): string {
  * @return {string}
  */
 function getStyleColorAttrVal (val: string): string {
-  return isPalette(val) || COLORS.includes(val)
+  return isPalette(val) || COLOR.includes(val)
     ? `var(--m-color-${val})`
     : isCSSVar(val)
       ? `var(${val})`
@@ -70,7 +70,7 @@ function getStyleColorAttrVal (val: string): string {
  * @return {string}
  */
 function getStyleColor (val: string): string {
-  return isPalette(val) || COLORS.includes(val)
+  return isPalette(val) || COLOR.includes(val)
     ? `var(--m-color-${val})`
     : isCSSVar(val)
       ? `var(${val})`
@@ -79,70 +79,107 @@ function getStyleColor (val: string): string {
 
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genColor (compName: string, val: string): string {
-  if (val === undefined) {
-    return ''
-  } else {
-    if (COLORS.includes(val)) {
-      return `--${compName}-color: var(--m-color-${val})`
+export function genColor (styles: any = {}, compName: string, val: string | undefined): void {
+  if (val !== undefined) {
+    if (COLOR.includes(val)) {
+      styles[`--${compName}-color`] = `var(--m-color-${val})`
     } else {
-      return `--${compName}-color: ${val})`
+      styles[`--${compName}-color`] = `${val}`
     }
   }
 }
 
 /**
  * 获取计算颜色样式值
- * @param {string} compName
- * @param {string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genFontColor (compName: string, val: string): string {
-  if (val === undefined) {
-    return ''
-  } else {
-    if (COLORS.includes(val)) {
-      return `--${compName}-font-color: var(--m-color-${val})`
+export function genFontColor (styles: any = {}, compName: string, val: string | undefined): void {
+  if (val !== undefined) {
+    if (COLOR.includes(val)) {
+      styles[`--${compName}-font-color`] = `var(--m-color-${val})`
     } else {
-      return `--${compName}-font-color: ${val})`
+      styles[`--${compName}-font-color`] = `${val}`
     }
   }
 }
 
 /**
  * 计算尺寸样式值
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genSize (compName: string, val?: number | string): string {
-  if (val === undefined) {
-    return ''
-  } else {
-    if (BREAKPOINTS.includes(val)) {
-      return `--${compName}-size: var(--${compName}-size-${val})`
-    } else if (typeof val === 'number') {
-      return `--${compName}-size: ${val}px`
+export function genSize (styles: any = {}, compName: string, val?: number | string | undefined): void {
+  if (val !== undefined) {
+    if (typeof val === 'number') {
+      styles[`--${compName}-size`] = `${val}px`
+    } else if (SIZE.includes(val)) {
+      styles[`--${compName}-size`] = `var(--${compName}-size-${val})`
     } else {
-      return `--${compName}-size: ${val}`
+      styles[`--${compName}-size`] = `${val}`
     }
   }
 }
 
 /**
  * 计算阴影
- * @param {string} compName
- * @param {number | string} val
+ * @param styles
+ * @param compName
+ * @param val
  */
-export function genElevation (compName: string, val?: number): string {
-  if (val === undefined) {
-    return ''
-  } else {
-    if (ELEVATIONS.includes(val)) {
-      return `--${compName}-elevation: ${ELEVATION[val]}`
+export function genElevation (styles: any = {}, compName: string, val?: number | undefined): void {
+  if (val !== undefined) {
+    if (ELEVATION.includes(val)) {
+      styles[`--${compName}-elevation`] = `var(--m-elevation-${val})`
+    }
+  }
+}
+
+/**
+ *
+ * @param styles
+ * @param compName
+ * @param val
+ */
+export function genSpace (styles: any, compName: string, val?: number | string): void {
+  if (val !== undefined) {
+    if (typeof val === 'number') {
+      styles[`--${compName}-space`] = `${val}px`
+    } else if (BREAKPOINT.includes(val)) {
+      styles[`--${compName}-space`] = `var(--m-space-${val})`
     } else {
-      return `--${compName}-elevation: ${val})`
+      styles[`--${compName}-space`] = `${val}`
+    }
+  }
+}
+
+/**
+ * 计算形状
+ * @param classes
+ * @param val
+ */
+export function genShape (classes: any = {}, val: string | undefined): void {
+  if (val !== undefined) {
+    if (SHAPE.includes(val)) {
+      classes[`m-shape-${val}`] = true
+    }
+  }
+}
+/**
+ * 计算形态
+ * @param classes
+ * @param val
+ */
+export function genVariety (classes: any = {}, val: string | undefined): void {
+  if (val !== undefined) {
+    if (VARIETY.includes(val)) {
+      classes[`m-variety-${val}`] = true
     }
   }
 }
@@ -173,22 +210,6 @@ export function genHoverColor ( compName: string, val?: string): void {
   // }
 }
 
-/**
- * 计算基于space的margin padding
- * @param styles
- * @param compName
- * @param property
- * @param val
- */
-export function genSpace (styles: any, compName: string, property: string, val?: number | string): void {
-  if (val !== undefined) {
-    styles[`--${compName}-${property}`] = typeof val === 'number'
-      ? `${val}px`
-      : BREAKPOINTS.includes(val)
-        ? `var(--m-space-${val})`
-        : val
-  }
-}
 
 /***
  * 通用样式

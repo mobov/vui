@@ -1,16 +1,17 @@
-import ELEVATION from './elevation'
-import PALETTE from './palette'
+import Elevation from './elevation'
+import Palette from './palette'
 
 export {
-  ELEVATION,
-  PALETTE
+  Elevation,
+  Palette
 }
 
-export const ELEVATIONS: number[] = ELEVATION.map((item, index) => index)
+export type elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+                       11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 |  23 | 24
 
-export type elevation = number
+export const ELEVATION = Elevation.map((item, index) => index)
 
-export enum STATUS {
+export enum Status {
   success = 0,
   pending = 1,
   failure = 2
@@ -18,7 +19,7 @@ export enum STATUS {
 
 export type breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-export enum BREAKPOINT {
+export enum Breakpoint {
   xs = 0,
   sm = 576,
   md = 768,
@@ -26,11 +27,10 @@ export enum BREAKPOINT {
   xl = 1200
 }
 
-export const BREAKPOINTS = Object.values(BREAKPOINT)
+export const BREAKPOINT = ['xs', 'sm', 'md', 'lg', 'xl']
 
-export type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number
 
-export enum SIZE {
+export enum Size {
   xs = 'xs',
   sm = 'sm',
   md = 'md',
@@ -38,41 +38,32 @@ export enum SIZE {
   xl = 'xl'
 }
 
-export const SIZES = Object.values(SIZE)
+export type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-export const COLS = 24
+export const SIZE = Object.keys(Size)
 
-export enum variety {
+export enum Variety {
   normal = 'normal',
   flat = 'flat',
   outline = 'outline'
 }
 
-export enum VARIETY {
-  normal = 'normal',
-  flat = 'flat',
-  outline = 'outline'
-}
+export type variety = 'normal' | 'flat' | 'outline'
 
-export const VARIETYS = Object.values(VARIETY)
+export const VARIETY = Object.keys(Variety)
 
-export enum shape {
+export enum Shape {
   circle = 'circle',
   round = 'round',
   corner = 'corner',
   square = 'square'
 }
 
-export enum SHAPE {
-  circle = 'circle',
-  round = 'round',
-  corner = 'corner',
-  square = 'square'
-}
+export type shape = 'circle' | 'round' | 'corner' | 'square'
 
-export const SHAPES = Object.values(SHAPE)
+export const SHAPE = Object.keys(Shape)
 
-export enum color {
+export enum Color {
   primary = 'primary',
   error = 'error',
   success = 'success',
@@ -80,37 +71,29 @@ export enum color {
   default = 'default'
 }
 
-export enum COLOR {
-  primary = 'primary',
-  error = 'error',
-  success = 'success',
-  warning = 'warning',
-  default = 'default'
-}
+export type color = 'primary' | 'error' | 'success' | 'warning' | 'default'
 
-export const COLORS = Object.values(COLOR)
+export const COLOR = Object.keys(Color)
 
-export type mode = 'day' | 'night'
-
-export enum MODE {
+export enum Mode {
   day = 'day',
   night = 'night'
 }
 
-export const MODES = Object.values(MODE)
+export type mode = 'day' | 'night'
 
-export type fill = 'left' | 'both' | 'right' | 'none'
-
-export enum FILL {
+export enum Fill {
   left = 'left',
   both = 'both',
   right = 'right',
   none = 'none'
 }
 
-export type flexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | 'none'
+export type fill = 'left' | 'both' | 'right' | 'none'
 
-export enum FLEX_JUSTIFY {
+export const FILL = Object.keys(Fill)
+
+export enum FlexJustify {
   start = 'start',
   center = 'center',
   end = 'end',
@@ -120,21 +103,37 @@ export enum FLEX_JUSTIFY {
   none = 'none'
 }
 
-export type flexWrap = 'normal' | 'reverse' | 'none'
+export type flexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | 'none'
 
-export enum FLEX_WRAP {
+export const FLEX_JUSTIFY = Object.keys(FlexJustify)
+
+export enum FlexWrap {
   normal = 'normal',
   reverse = 'reverse',
   none = 'none'
 }
 
-export type flexAlign = 'start' | 'center' | 'end' | 'stretch'
+export type flexWrap = 'normal' | 'reverse' | 'none'
 
-export enum FLEX_ALIGN {
+export const FLEX_WRAP = Object.keys(FlexWrap)
+
+export enum FlexAlign {
   start = 'start',
   center = 'center',
   end = 'end',
   stretch = 'stretch',
 }
 
+export type flexAlign = 'start' | 'center' | 'end' | 'stretch'
+
+export const FLEX_ALIGN = Object.keys(FlexAlign)
+
+export enum Align {
+  left = 'left',
+  center = 'center',
+  right = 'right'
+}
+
 export type align = 'left' | 'center' | 'right' //  水平轴
+
+export const ALIGN = Object.keys(Align)

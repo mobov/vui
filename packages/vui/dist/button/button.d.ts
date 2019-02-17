@@ -8,7 +8,13 @@ export default class MButton extends MButton_base {
     block: boolean;
     icon: string;
     loading: boolean;
+    disabled: boolean;
     onClick(e: MouseEvent | TouchEvent): void;
+    readonly styles: {};
+    readonly classes: {
+        'm--block': boolean;
+        'm--disabled': boolean;
+    };
     render(): JSX.Element;
 }
 export {};

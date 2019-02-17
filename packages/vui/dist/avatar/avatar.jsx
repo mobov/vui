@@ -1,36 +1,54 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Watch, Mixins } from 'vue-property-decorator';
-import Avatar from './avatar.style';
 import colorable from '../core/mixin/colorable';
 import sizeable from '../core/mixin/sizeable';
 import elevated from '../core/mixin/elevated';
 import variable from '../core/mixin/variable';
 import shapeable from '../core/mixin/shapeable';
-import { STATUS } from '../core/constant';
-const _name = 'm-avatar';
+import { Status } from '../core/constant';
+import { genFontColor, genColor, genElevation, genSize, genShape, genVariety } from '../core/util';
+const compName = 'm-avatar';
 let MAvatar = class MAvatar extends Mixins(colorable, sizeable, elevated, variable, shapeable) {
     constructor() {
         super(...arguments);
-        this.status = STATUS.pending;
+        this.status = Status.pending;
+    }
+    get styles() {
+        const { fontColor, size, color, elevation } = this;
+        const styles = {};
+        genFontColor(styles, compName, fontColor);
+        genColor(styles, compName, color);
+        genElevation(styles, compName, elevation);
+        genSize(styles, compName, size);
+        return styles;
+    }
+    get classes() {
+        const { shape, variety, status } = this;
+        const classes = {
+            [`m--status-${Status[status]}`]: true
+        };
+        genShape(classes, shape);
+        genVariety(classes, variety);
+        return classes;
     }
     updateSrc(val) {
         if (val !== undefined) {
-            this.status = STATUS.pending;
+            this.status = Status.pending;
             this.curSrc = val;
         }
     }
     loadSuccess() {
-        this.status = STATUS.success;
+        this.status = Status.success;
     }
     loadFailure() {
-        this.status = STATUS.failure;
+        this.status = Status.failure;
     }
     render() {
-        const { curSrc, loadSuccess, loadFailure, status, fontColor, size, color, variety } = this;
-        return (<Avatar staticClass={_name} status={status} size={size} color={color} variety={variety} fontColor={fontColor}>
+        const { curSrc, loadSuccess, loadFailure } = this;
+        return (<div staticClass={compName}>
         {this.$slots.default}
-        <img staticClass={`${_name}__cover`} alt='' src={curSrc} onLoad={loadSuccess} onError={loadFailure}/>
-      </Avatar>);
+        <img staticClass={`${compName}__cover`} alt='' src={curSrc} onLoad={loadSuccess} onError={loadFailure}/>
+      </div>);
     }
 };
 tslib_1.__decorate([
@@ -40,9 +58,7 @@ tslib_1.__decorate([
     Watch('src', { immediate: true })
 ], MAvatar.prototype, "updateSrc", null);
 MAvatar = tslib_1.__decorate([
-    Component({
-        components: { Avatar }
-    })
+    Component
 ], MAvatar);
 export default MAvatar;
 //# sourceMappingURL=avatar.jsx.map

@@ -1,11 +1,12 @@
 import { Vue } from 'vue-property-decorator';
+import { color } from '../../core/constant';
 export default class MTimePickerPanelDate extends Vue {
-    private type;
-    private min;
-    private max;
-    private firstDayOfWeek;
-    private DateStore;
-    private viewValue;
+    type: color;
+    min: number;
+    max: number;
+    firstDayOfWeek: number;
+    DateStore: any;
+    viewValue: number;
     viewDateValue: any;
     readonly viewYear: number;
     readonly viewMonth: number;

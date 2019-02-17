@@ -5,7 +5,7 @@ import MIcon from '../../icon'
 import { dateTimeValueType } from '../constant'
 import { color, variety, shape } from '../../core/constant'
 
-const _name = 'm-time-picker-panel-time'
+const compName = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
@@ -16,16 +16,16 @@ const _name = 'm-time-picker-panel-time'
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelTime extends Vue {
   @Prop({ type: String, default: color.primary })
-  private type!: color
+  type!: color
 
   @Prop({ type: Number, default: 1 })
-  private hourStep!: number
+  hourStep!: number
 
   @Prop({ type: Number, default: 1 })
-  private minuteStep!: number
+  minuteStep!: number
 
   @Inject()
-  private DateStore!: any
+  DateStore!: any
 
   @Emit('pick')
   onClick (val: number, type: dateTimeValueType): void {
@@ -64,7 +64,7 @@ export default class MTimePickerPanelTime extends Vue {
     }
 
     return (
-      <div staticClass={`${_name}__list ${_name}__list-${type}`}>
+      <div staticClass={`${compName}__list ${compName}__list-${type}`}>
         {Temps}
       </div>
     )
@@ -78,7 +78,7 @@ export default class MTimePickerPanelTime extends Vue {
     Result.push(RList(dateTimeValueType.minutes))
 
     return (
-      <div staticClass={_name}>{Result}</div>
+      <div staticClass={compName}>{Result}</div>
     )
   }
 }
