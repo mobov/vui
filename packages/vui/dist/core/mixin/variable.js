@@ -1,13 +1,13 @@
 import * as tslib_1 from "tslib";
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { VARIETYS } from '../constant';
+import { VARIETY } from '../constant';
 let variable = class variable extends Vue {
 };
 tslib_1.__decorate([
     Prop({
         type: String,
         validator(value) {
-            return VARIETYS.includes(value);
+            return VARIETY.includes(value);
         }
     })
 ], variable.prototype, "variety", void 0);

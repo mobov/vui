@@ -3,7 +3,7 @@ import * as tslib_1 from "tslib";
  * 时间选择器头部显示板
  */
 import { Component, Prop, Vue, Inject } from 'vue-property-decorator';
-import { color } from '../../core/constant';
+import { Color } from '../../core/constant';
 import { datePickerType, dateTimeValueType } from '../constant';
 const WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 const MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月',
@@ -85,7 +85,7 @@ let MTimePickerHeader = class MTimePickerHeader extends Vue {
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: color.primary })
+    Prop({ type: String, default: Color.primary })
 ], MTimePickerHeader.prototype, "color", void 0);
 tslib_1.__decorate([
     Inject()

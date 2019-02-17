@@ -44,8 +44,8 @@ export default class MView extends Vue {
       'm--with-footer': isFooter,
       'm--with-left': isLeft,
       'm--with-right': isRight,
-      [`m--Fill-header-${fillHeader}`]: true,
-      [`m--Fill-footer-${fillFooter}`]: true
+      [`m--fill-header-${fillHeader}`]: true,
+      [`m--fill-footer-${fillFooter}`]: true
     }
   }
 

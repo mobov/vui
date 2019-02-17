@@ -1,16 +1,14 @@
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { injectGlobal } from 'vue-styled-components'
 import { genStaticStyles, genSpace } from '../core/util'
-import { FlexAlign, FlexJustify, FlexWrap } from '../core/constant'
-
+import { FlexAlign, flexAlign, FlexJustify, flexJustify, FlexWrap, flexWrap } from '../core/constant'
 
 const compName = 'm-flex'
 
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
-export default class MRow extends Vue {
+export default class MFlex extends Vue {
   @Prop({ type: String })
   id?: string
 
@@ -34,8 +32,8 @@ export default class MRow extends Vue {
     data.staticClass = `${compName} m--wrap-${props.wrap} m--justify-${props.justify} m--align-${props.align} ${staticClass} `
     data.staticClass += props.inline ? 'm--inline' : ''
     data.staticClass = data.staticClass.trim()
-
     data.staticStyle = data.staticStyle ? data.staticStyle : {}
+
     genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
 
     if (props.id) {

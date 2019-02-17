@@ -3,7 +3,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
 import { dateTimeValueType } from '../constant'
-import { color, variety, shape } from '../../core/constant'
+import { Color, color, Variety, variety, Shape, shape  } from '../../core/constant'
 
 const compName = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
@@ -15,7 +15,7 @@ const compName = 'm-time-picker-panel-time'
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelTime extends Vue {
-  @Prop({ type: String, default: color.primary })
+  @Prop({ type: String, default: Color.primary })
   type!: color
 
   @Prop({ type: Number, default: 1 })
@@ -54,10 +54,10 @@ export default class MTimePickerPanelTime extends Vue {
           size="sm"
           block
           class="m-m-0 m-p-0 m--block"
-          shape={shape.circle}
+          shape={Shape.circle}
           elevation={0}
-          variety={isCurrent ? variety.normal : variety.flat}
-          color={isCurrent ? color.primary : color.default}>
+          variety={isCurrent ? Variety.normal : Variety.flat}
+          color={isCurrent ? Color.primary : Color.default}>
           {tempTime}
         </MButton>
       )

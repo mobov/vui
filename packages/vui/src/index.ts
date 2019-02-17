@@ -20,10 +20,7 @@ export interface MegmoreUseOptions {
 export interface MegmorePlugin {
   install: PluginFunction<MegmoreUseOptions>
   version: string,
-  constant: {
-    COLORS: any,
-    BREAKPOINTS: any
-  }
+  constant: typeof constant
 }
 
 const Megmore: MegmorePlugin = {

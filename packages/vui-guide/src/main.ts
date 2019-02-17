@@ -3,10 +3,29 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import Megmore from '@megmore/vui'
+import Megmore, {
+  MApp, MView, MIcon, MButton, MFlexFiller, MFlex, MList,
+  MCheckbox, MRadio, MAppBar, MRow, MCol, MRipple, MAvatar
+} from '@megmore/vui'
 
-console.log(Megmore)
-Vue.use(Megmore)
+Vue.use(Megmore, {
+  components: {
+    MApp,
+    MAvatar,
+    MRipple,
+    MAppBar,
+    MIcon,
+    MButton,
+    MFlexFiller,
+    MFlex,
+    MList,
+    MView,
+    MCheckbox,
+    MRadio,
+    MRow,
+    MCol
+  }
+})
 
 Vue.config.productionTip = false
 

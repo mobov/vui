@@ -1,13 +1,13 @@
 import * as tslib_1 from "tslib";
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { SHAPES } from '../constant';
+import { SHAPE } from '../constant';
 let shapeable = class shapeable extends Vue {
 };
 tslib_1.__decorate([
     Prop({
         type: String,
         validator(value) {
-            return SHAPES.includes(value);
+            return SHAPE.includes(value);
         }
     })
 ], shapeable.prototype, "shape", void 0);

@@ -1,11 +1,11 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { color, align } from '../core/constant';
+import { Color, Align } from '../core/constant';
 export const compName = 'm-table-col';
 let MTableCol = class MTableCol extends Vue {
 };
 tslib_1.__decorate([
-    Prop({ type: String })
+    Prop({ type: String, default: 'normal' })
 ], MTableCol.prototype, "type", void 0);
 tslib_1.__decorate([
     Prop({ type: String })
@@ -17,10 +17,10 @@ tslib_1.__decorate([
     Prop({ type: String })
 ], MTableCol.prototype, "field", void 0);
 tslib_1.__decorate([
-    Prop({ type: String, default: align.center })
+    Prop({ type: String, default: Align.center })
 ], MTableCol.prototype, "align", void 0);
 tslib_1.__decorate([
-    Prop({ type: String, default: color.primary })
+    Prop({ type: String, default: Color.primary })
 ], MTableCol.prototype, "color", void 0);
 tslib_1.__decorate([
     Prop({ type: Function })

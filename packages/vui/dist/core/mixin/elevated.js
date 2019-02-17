@@ -1,13 +1,13 @@
 import * as tslib_1 from "tslib";
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ELEVATIONS } from '../constant';
+import { ELEVATION } from '../constant';
 let elevated = class elevated extends Vue {
 };
 tslib_1.__decorate([
     Prop({
         type: Number,
-        validator(val) {
-            return typeof val === 'number' && ELEVATIONS.includes(val);
+        validator(value) {
+            return ELEVATION.includes(value);
         }
     })
 ], elevated.prototype, "elevation", void 0);

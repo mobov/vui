@@ -44,8 +44,8 @@ let MAvatar = class MAvatar extends Mixins(colorable, sizeable, elevated, variab
         this.status = Status.failure;
     }
     render() {
-        const { curSrc, loadSuccess, loadFailure } = this;
-        return (<div staticClass={compName}>
+        const { styles, classes, curSrc, loadSuccess, loadFailure } = this;
+        return (<div staticClass={compName} class={classes} style={styles}>
         {this.$slots.default}
         <img staticClass={`${compName}__cover`} alt='' src={curSrc} onLoad={loadSuccess} onError={loadFailure}/>
       </div>);

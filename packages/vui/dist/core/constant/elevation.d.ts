@@ -1,2 +1,2 @@
-declare const ELEVATION: string[];
-export default ELEVATION;
+declare const Elevation: string[];
+export default Elevation;

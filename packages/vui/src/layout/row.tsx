@@ -1,6 +1,5 @@
 import { ComponentOptions, CreateElement, RenderContext } from 'vue'
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { injectGlobal } from 'vue-styled-components'
 import { genStaticStyles, genSize } from '../core/util'
 import { size } from '../core/constant'
 
@@ -29,6 +28,7 @@ export default class MRow extends Vue {
     genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
     genSize(data.staticStyle, `${compName}-gutter`, props.gutter)
 
+    console.log(data)
     if (props.id) {
       data.domProps = data.domProps || {}
       data.domProps.id = props.id

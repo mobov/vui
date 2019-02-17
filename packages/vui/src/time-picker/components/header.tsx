@@ -2,7 +2,7 @@
  * 时间选择器头部显示板
  */
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-import { color } from '../../core/constant'
+import { Color, color } from '../../core/constant'
 import { datePickerType, dateTimeValueType } from '../constant'
 
 const WeekMap = [ '星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ]
@@ -12,7 +12,7 @@ const compName = 'm-time-picker-header'
 
 @Component
 export default class MTimePickerHeader extends Vue {
-  @Prop({ type: String, default: color.primary })
+  @Prop({ type: String, default: Color.primary })
   color!: color
 
   @Inject()

@@ -1,7 +1,7 @@
 import {Component, Emit, Inject, Prop, Vue} from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { color, variety, shape } from '../../core/constant'
+import { Color, color, Variety, variety, Shape, shape } from '../../core/constant'
 import { datePickerType } from '../constant'
 
 const compName = 'm-time-picker-panel-date'
@@ -14,7 +14,7 @@ const enum toggleAction {
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
-  @Prop({ type: String, default: color.primary })
+  @Prop({ type: String, default: Color.primary })
   type!: color
 
   @Prop({ type: Number })
@@ -78,8 +78,7 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   RTableBody () {
-    const { viewDateValue, viewYear, viewMonth,
-      handleDateClick, RTableHead } = this
+    const { viewDateValue, viewYear, viewMonth, handleDateClick } = this
     const { year, month, date } = this.DateStore
     const nowValue = new Date()
     const isNowDate = nowValue.getFullYear() === viewYear && nowValue.getMonth() === viewMonth
@@ -100,10 +99,10 @@ export default class MTimePickerPanelDate extends Vue {
 
       Tds.push(<td><MButton class='m-m-0 m-p-0'
                             size='sm'
-                            shape={shape.circle}
+                            shape={Shape.circle}
                             elevation={0}
-                            variety={isCurDate ? variety.normal : isToday ? variety.outline : variety.flat}
-                            color={isCurDate || isToday ? color.primary : color.default}
+                            variety={isCurDate ? Variety.normal : isToday ? Variety.outline : Variety.flat}
+                            color={isCurDate || isToday ? Color.primary : Color.default}
                             onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
         {tempDate}
       </MButton></td>)
@@ -123,27 +122,27 @@ export default class MTimePickerPanelDate extends Vue {
       <div staticClass={compName}>
         <div class={`${compName}__header`}>
           <div staticClass={`${compName}__header-year`}>
-            <MButton variety={variety.flat}
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
-                     color={color.default}
+                     color={Color.default}
                      elevation={0}
                      onClick={() => this.DateStore.SET_ACTIVE_TYPE(datePickerType.year)}>
               {viewYear}
             </MButton>
           </div>
           <div staticClass={`${compName}__header-handler`}>
-            <MButton variety={variety.flat}
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
                      elevation={0}
-                     shape={shape.circle}
-                     color={color.default}
+                     shape={Shape.circle}
+                     color={Color.default}
                      icon='navigate_before'
                      onClick={() => handleMonthToggle(toggleAction.prev)} />
-            <MButton variety={variety.flat}
+            <MButton variety={Variety.flat}
                      staticClass='m-m-0'
                      elevation={0}
-                     shape={shape.circle}
-                     color={color.default}
+                     shape={Shape.circle}
+                     color={Color.default}
                      icon='navigate_next'
                      onClick={() => handleMonthToggle(toggleAction.next)} />
           </div>

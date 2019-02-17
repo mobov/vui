@@ -3,7 +3,7 @@ import * as tslib_1 from "tslib";
  * 时间选择器底部
  */
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator';
-import { color, variety } from '../../core/constant';
+import { Color, Variety } from '../../core/constant';
 import MButton from '../../button';
 const compName = 'm-time-picker-handler';
 let MTimePickerHandler = class MTimePickerHandler extends Vue {
@@ -12,13 +12,13 @@ let MTimePickerHandler = class MTimePickerHandler extends Vue {
     render() {
         const { onConfirm, onCancel } = this;
         return (<div staticClass={`${compName} m-p-sm`}>
-                <MButton size="sm" style={{ width: '5rem' }} variety={variety.flat} color={color.primary} onClick={onCancel}>cancel</MButton>
-                <MButton size="sm" style={{ width: '5rem' }} color={color.primary} onClick={onConfirm}>ok</MButton>
+                <MButton size="sm" style={{ width: '5rem' }} variety={Variety.flat} color={Color.primary} onClick={onCancel}>cancel</MButton>
+                <MButton size="sm" style={{ width: '5rem' }} color={Color.primary} onClick={onConfirm}>ok</MButton>
             </div>);
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: color.primary })
+    Prop({ type: String, default: Color.primary })
 ], MTimePickerHandler.prototype, "color", void 0);
 tslib_1.__decorate([
     Emit('confirm')

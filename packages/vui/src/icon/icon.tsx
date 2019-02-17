@@ -1,6 +1,6 @@
 import { CreateElement, RenderContext, ComponentOptions } from 'vue'
-import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
-import sizeable from '../core/mixin/sizeable'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { size, Size } from '../core/constant'
 const compName = 'm-icon'
 
 const SIZE: any = {
@@ -39,13 +39,14 @@ export function register (data: any = {}): void {
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
-export default class MIcon extends Mixins (
-  sizeable
-) {
+export default class MIcon extends Vue {
   @Prop({ type: String })
   name!: string
 
-  @Prop({ type: String, default: '#000000' })
+  @Prop({ type: [String, Number], default: Size.sm })
+  size!: size | string | number
+
+  @Prop({ type: String })
   color!: string
 
   render (h: CreateElement, { props, data, children, listeners }: RenderContext) {
@@ -61,7 +62,7 @@ export default class MIcon extends Mixins (
     const width = height * (icon.height / icon.width)
     const staticClasses = data.staticClass !== undefined ? data.staticClass : ''
     const classes = data.class !== undefined ? data.class : ''
-    const styles = Object.assign({ Fill: 'currentColor' }, data.style, data.staticStyle)
+    const styles = Object.assign({ fill: 'currentColor' }, data.style, data.staticStyle)
     const click = listeners.click || 'javascript(0)'
 
     return (

@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { genStaticStyles, genSpace } from '../core/util';
-import { BREAKPOINTS } from '../core/constant';
+import { BREAKPOINT } from '../core/constant';
 const compName = 'm-col';
 let MCol = class MCol extends Vue {
     render(h, { props, data, children }) {
@@ -9,7 +9,7 @@ let MCol = class MCol extends Vue {
         data.staticClass = `${compName} ${staticClass}`;
         data.staticStyle = data.staticStyle ? data.staticStyle : {};
         genSpace(data.staticStyle, compName, props.space);
-        BREAKPOINTS.forEach((breakpoint) => {
+        BREAKPOINT.forEach((breakpoint) => {
             if (props[breakpoint]) {
                 genStaticStyles(data.staticStyle, compName, `span-${breakpoint}`, props[breakpoint]);
             }

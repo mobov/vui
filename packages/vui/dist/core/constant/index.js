@@ -1,83 +1,60 @@
-import ELEVATION from './elevation';
-import PALETTE from './palette';
-export { ELEVATION, PALETTE };
-export const ELEVATIONS = ELEVATION.map((item, index) => index);
+import Elevation from './elevation';
+import Palette from './palette';
+export { Elevation, Palette };
+export const ELEVATION = Elevation.map((item, index) => index);
 export var Status;
 (function (Status) {
     Status[Status["success"] = 0] = "success";
     Status[Status["pending"] = 1] = "pending";
     Status[Status["failure"] = 2] = "failure";
 })(Status || (Status = {}));
-export var BREAKPOINT;
-(function (BREAKPOINT) {
-    BREAKPOINT[BREAKPOINT["xs"] = 0] = "xs";
-    BREAKPOINT[BREAKPOINT["sm"] = 576] = "sm";
-    BREAKPOINT[BREAKPOINT["md"] = 768] = "md";
-    BREAKPOINT[BREAKPOINT["lg"] = 992] = "lg";
-    BREAKPOINT[BREAKPOINT["xl"] = 1200] = "xl";
-})(BREAKPOINT || (BREAKPOINT = {}));
-export const BREAKPOINTS = Object.values(BREAKPOINT);
-export var SIZE;
-(function (SIZE) {
-    SIZE["xs"] = "xs";
-    SIZE["sm"] = "sm";
-    SIZE["md"] = "md";
-    SIZE["lg"] = "lg";
-    SIZE["xl"] = "xl";
-})(SIZE || (SIZE = {}));
-export const SIZES = Object.values(SIZE);
-export const COLS = 24;
-export var variety;
-(function (variety) {
-    variety["normal"] = "normal";
-    variety["flat"] = "flat";
-    variety["outline"] = "outline";
-})(variety || (variety = {}));
-export var VARIETY;
-(function (VARIETY) {
-    VARIETY["normal"] = "normal";
-    VARIETY["flat"] = "flat";
-    VARIETY["outline"] = "outline";
-})(VARIETY || (VARIETY = {}));
-export const VARIETYS = Object.values(VARIETY);
-export var shape;
-(function (shape) {
-    shape["circle"] = "circle";
-    shape["round"] = "round";
-    shape["corner"] = "corner";
-    shape["square"] = "square";
-})(shape || (shape = {}));
-export var SHAPE;
-(function (SHAPE) {
-    SHAPE["circle"] = "circle";
-    SHAPE["round"] = "round";
-    SHAPE["corner"] = "corner";
-    SHAPE["square"] = "square";
-})(SHAPE || (SHAPE = {}));
-export const SHAPES = Object.values(SHAPE);
-export var color;
-(function (color) {
-    color["primary"] = "primary";
-    color["error"] = "error";
-    color["success"] = "success";
-    color["warning"] = "warning";
-    color["default"] = "default";
-})(color || (color = {}));
-export var COLOR;
-(function (COLOR) {
-    COLOR["primary"] = "primary";
-    COLOR["error"] = "error";
-    COLOR["success"] = "success";
-    COLOR["warning"] = "warning";
-    COLOR["default"] = "default";
-})(COLOR || (COLOR = {}));
-export const COLORS = Object.values(COLOR);
-export var MODE;
-(function (MODE) {
-    MODE["day"] = "day";
-    MODE["night"] = "night";
-})(MODE || (MODE = {}));
-export const MODES = Object.values(MODE);
+export var Breakpoint;
+(function (Breakpoint) {
+    Breakpoint[Breakpoint["xs"] = 0] = "xs";
+    Breakpoint[Breakpoint["sm"] = 576] = "sm";
+    Breakpoint[Breakpoint["md"] = 768] = "md";
+    Breakpoint[Breakpoint["lg"] = 992] = "lg";
+    Breakpoint[Breakpoint["xl"] = 1200] = "xl";
+})(Breakpoint || (Breakpoint = {}));
+export const BREAKPOINT = ['xs', 'sm', 'md', 'lg', 'xl'];
+export var Size;
+(function (Size) {
+    Size["xs"] = "xs";
+    Size["sm"] = "sm";
+    Size["md"] = "md";
+    Size["lg"] = "lg";
+    Size["xl"] = "xl";
+})(Size || (Size = {}));
+export const SIZE = Object.keys(Size);
+export var Variety;
+(function (Variety) {
+    Variety["normal"] = "normal";
+    Variety["flat"] = "flat";
+    Variety["outline"] = "outline";
+})(Variety || (Variety = {}));
+export const VARIETY = Object.keys(Variety);
+export var Shape;
+(function (Shape) {
+    Shape["circle"] = "circle";
+    Shape["round"] = "round";
+    Shape["corner"] = "corner";
+    Shape["square"] = "square";
+})(Shape || (Shape = {}));
+export const SHAPE = Object.keys(Shape);
+export var Color;
+(function (Color) {
+    Color["primary"] = "primary";
+    Color["error"] = "error";
+    Color["success"] = "success";
+    Color["warning"] = "warning";
+    Color["default"] = "default";
+})(Color || (Color = {}));
+export const COLOR = Object.keys(Color);
+export var Mode;
+(function (Mode) {
+    Mode["day"] = "day";
+    Mode["night"] = "night";
+})(Mode || (Mode = {}));
 export var Fill;
 (function (Fill) {
     Fill["left"] = "left";
@@ -85,6 +62,7 @@ export var Fill;
     Fill["right"] = "right";
     Fill["none"] = "none";
 })(Fill || (Fill = {}));
+export const FILL = Object.keys(Fill);
 export var FlexJustify;
 (function (FlexJustify) {
     FlexJustify["start"] = "start";
@@ -95,28 +73,14 @@ export var FlexJustify;
     FlexJustify["evenly"] = "evenly";
     FlexJustify["none"] = "none";
 })(FlexJustify || (FlexJustify = {}));
-export var FLEX_JUSTIFY;
-(function (FLEX_JUSTIFY) {
-    FLEX_JUSTIFY["start"] = "start";
-    FLEX_JUSTIFY["center"] = "center";
-    FLEX_JUSTIFY["end"] = "end";
-    FLEX_JUSTIFY["between"] = "between";
-    FLEX_JUSTIFY["around"] = "around";
-    FLEX_JUSTIFY["evenly"] = "evenly";
-    FLEX_JUSTIFY["none"] = "none";
-})(FLEX_JUSTIFY || (FLEX_JUSTIFY = {}));
+export const FLEX_JUSTIFY = Object.keys(FlexJustify);
 export var FlexWrap;
 (function (FlexWrap) {
     FlexWrap["normal"] = "normal";
     FlexWrap["reverse"] = "reverse";
     FlexWrap["none"] = "none";
 })(FlexWrap || (FlexWrap = {}));
-export var FLEX_WRAP;
-(function (FLEX_WRAP) {
-    FLEX_WRAP["normal"] = "normal";
-    FLEX_WRAP["reverse"] = "reverse";
-    FLEX_WRAP["none"] = "none";
-})(FLEX_WRAP || (FLEX_WRAP = {}));
+export const FLEX_WRAP = Object.keys(FlexWrap);
 export var FlexAlign;
 (function (FlexAlign) {
     FlexAlign["start"] = "start";
@@ -124,19 +88,12 @@ export var FlexAlign;
     FlexAlign["end"] = "end";
     FlexAlign["stretch"] = "stretch";
 })(FlexAlign || (FlexAlign = {}));
-export var FLEX_ALIGN;
-(function (FLEX_ALIGN) {
-    FLEX_ALIGN["start"] = "start";
-    FLEX_ALIGN["center"] = "center";
-    FLEX_ALIGN["end"] = "end";
-    FLEX_ALIGN["stretch"] = "stretch";
-})(FLEX_ALIGN || (FLEX_ALIGN = {}));
-export var align;
-(function (align) {
-    align["left"] = "left";
-    align["center"] = "center";
-    align["right"] = "right";
-})(align || (align = {}));
-//
-// export type align = 'left' | 'center' | 'right' //  水平轴
+export const FLEX_ALIGN = Object.keys(FlexAlign);
+export var Align;
+(function (Align) {
+    Align["left"] = "left";
+    Align["center"] = "center";
+    Align["right"] = "right";
+})(Align || (Align = {}));
+export const ALIGN = Object.keys(Align);
 //# sourceMappingURL=index.js.map

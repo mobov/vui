@@ -39,18 +39,20 @@ $--m-app-bar-size-xl: 6.5rem;
     padding: 0 var(--m-space-sm);
     box-sizing: border-box;
     transition: all ease .3s;
-    //position: var(--m-app-bar-position);
-    //left: 0;
-    //top: 0;
-
+    border: 0 solid transparent;
     // variety
-    &.--m-variety-normal {
+    &.m-variety-normal {
         color: var(--m-app-bar-font-color);
         background-color: var(--m-app-bar-color);
     }
 
-    &.--m-variety-flat {
+    &.m-variety-flat {
         color: var(--m-app-bar-color);
         background-color: var(--m-bg-color);
+    }
+    &.m-variety-outline {
+        color: var(--m-app-bar-color);
+        background-color: var(--m-bg-color);
+        border: 2px solid var(--m-app-bar-color);
     }
 }

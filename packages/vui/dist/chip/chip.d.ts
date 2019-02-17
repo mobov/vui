@@ -6,8 +6,8 @@ import variable from '../core/mixin/variable';
 import shapeable from '../core/mixin/shapeable';
 declare const MChip_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
 export default class MChip extends MChip_base {
-    private closeable;
-    private closeover;
+    closeable: boolean;
+    closeover: boolean;
     onClose(e: MouseEvent): void;
     onClick(e: MouseEvent): void;
     readonly styles: {};

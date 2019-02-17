@@ -1,5 +1,6 @@
 import * as tslib_1 from "tslib";
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Size } from '../core/constant';
 const compName = 'm-icon';
 const SIZE = {
     xs: 12,
@@ -41,7 +42,7 @@ let MIcon = class MIcon extends Vue {
         const width = height * (icon.height / icon.width);
         const staticClasses = data.staticClass !== undefined ? data.staticClass : '';
         const classes = data.class !== undefined ? data.class : '';
-        const styles = Object.assign({ Fill: 'currentColor' }, data.style, data.staticStyle);
+        const styles = Object.assign({ fill: 'currentColor' }, data.style, data.staticStyle);
         const click = listeners.click || 'javascript(0)';
         return (<svg xmlns='http://www.w3.org/2000/svg' version='1.1' staticClass={`${compName} ${compName}__${name} ${staticClasses}`} class={classes} style={styles} height={height} width={width} viewBox={icon.viewBox} onClick={() => click}>
         {icon.paths ? icon.paths.map((path) => <path d={path}/>) : <span />}
@@ -53,10 +54,10 @@ tslib_1.__decorate([
     Prop({ type: String })
 ], MIcon.prototype, "name", void 0);
 tslib_1.__decorate([
-    Prop({ type: [String, Number], default: 'sm' })
+    Prop({ type: [String, Number], default: Size.sm })
 ], MIcon.prototype, "size", void 0);
 tslib_1.__decorate([
-    Prop({ type: String, default: '#000000' })
+    Prop({ type: String })
 ], MIcon.prototype, "color", void 0);
 MIcon = tslib_1.__decorate([
     Component({

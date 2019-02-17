@@ -1,6 +1,8 @@
 <template>
   <div class="doc-entries">
-    <m-list :key="doc.name" v-for="doc in docsData" @click="handleDocClick(doc.name)">
+    <m-list v-m-ripple :key="doc.name"
+            v-for="doc in docsData"
+            @click="handleDocClick(doc.name)">
       {{doc.name}}
     </m-list>
   </div>

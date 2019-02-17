@@ -1,4 +1,3 @@
-
 <template>
   <div class="example-table">
     <example-box>
@@ -47,18 +46,20 @@
 
 <script>
 import Megmore, { MTable, MTableCol } from '@megmore/vui'
-import ExampleBox from '../../components/example-box'
+import ExampleBox from '@/components/example-box'
+import exampleProps from '@/mixins/example-props'
 import Props from './props'
 
-const { COLORS } = Megmore.constant
+const { COLOR } = Megmore.constant
 
 export default {
-  name: 'ExampleAppBar',
+  name: 'ExampleTable',
   components: { ExampleBox, MTable, MTableCol },
+  mixins: [exampleProps],
   data () {
     return {
-      COLORS,
       Props,
+      COLOR,
       selectedData: [],
       noSelectData: [],
       expandedData: [],
@@ -145,13 +146,6 @@ export default {
           iron: 6
         }
       ]
-    }
-  },
-  computed: {
-    PropsData () {
-      const result = {}
-      this.Props.forEach(item => result[item.name] = item.default)
-      return result
     }
   },
   created () {

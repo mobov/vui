@@ -148,8 +148,16 @@ export default class MCheckbox extends Mixins (
     )
   }
 
+  RDefault () {
+    const { $slots } = this
+    return $slots.default === undefined ? undefined :(
+      <span staticClass={`${compName}__label`}>{$slots.default}</span>
+    )
+  }
+
+
   render () {
-    const { $slots, classes, styles, RCheckbox, handleClick, value, label } = this
+    const { classes, styles, RCheckbox, RDefault, handleClick, value, label } = this
 
     this.isArrayValue = value instanceof Array
     this.isArrayLabel = label instanceof Array
@@ -162,7 +170,7 @@ export default class MCheckbox extends Mixins (
            style={styles}
            onClick={() => handleClick()}>
         {RCheckbox()}
-        {$slots.default}
+        {RDefault()}
       </div>
     )
   }

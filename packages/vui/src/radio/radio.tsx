@@ -81,8 +81,15 @@ export default class MRadio extends Mixins (
     )
   }
 
+  RDefault () {
+    const { $slots } = this
+    return $slots.default === undefined ? undefined :(
+      <span staticClass={`${compName}__label`}>{$slots.default}</span>
+    )
+  }
+
   render () {
-    const { $slots, styles, classes, label, handleClick, RRadio } = this
+    const { styles, classes, label, handleClick, RRadio, RDefault } = this
 
     return (
       <div staticClass={compName}
@@ -90,7 +97,7 @@ export default class MRadio extends Mixins (
            style={styles}
            onClick={() => handleClick(label)}>
         {RRadio()}
-        {$slots.default}
+        {RDefault()}
       </div>
     )
   }

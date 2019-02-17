@@ -60,12 +60,13 @@ let MView = class MView extends Vue {
       </transition>);
     }
     render() {
-        const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight, headerSize, footerSize, leftSize, rightSize } = this;
+        const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this;
         this.isHeader = $slots.header !== undefined;
         this.isFooter = $slots.footer !== undefined;
         this.isLeft = $slots.left !== undefined;
         this.isRight = $slots.right !== undefined;
-        return (<div staticClass={compName} styles={styles} classes={classes}>
+        console.log(styles);
+        return (<div staticClass={compName} style={styles} class={classes}>
         <section staticClass={`${compName}-main`}>
           {$slots.default}
         </section>

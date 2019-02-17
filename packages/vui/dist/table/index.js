@@ -1,3 +1,4 @@
+import './table.scss';
 import MTable from './table';
 import MTableCol from './table-col';
 /* istanbul ignore next */

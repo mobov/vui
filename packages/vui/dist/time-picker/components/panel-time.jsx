@@ -4,7 +4,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator';
 import MButton from '../../button';
 import MIcon from '../../icon';
 import { dateTimeValueType } from '../constant';
-import { color, variety, shape } from '../../core/constant';
+import { Color, Variety, Shape } from '../../core/constant';
 const compName = 'm-time-picker-panel-time';
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
@@ -29,7 +29,7 @@ let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
         const Temps = [];
         for (let tempTime = min; tempTime <= max; tempTime += step) {
             const isCurrent = tempTime === time;
-            Temps.push(<MButton onClick={() => onClick(tempTime, type)} size="sm" block class="m-m-0 m-p-0 m--block" shape={shape.circle} elevation={0} variety={isCurrent ? variety.normal : variety.flat} color={isCurrent ? color.primary : color.default}>
+            Temps.push(<MButton onClick={() => onClick(tempTime, type)} size="sm" block class="m-m-0 m-p-0 m--block" shape={Shape.circle} elevation={0} variety={isCurrent ? Variety.normal : Variety.flat} color={isCurrent ? Color.primary : Color.default}>
           {tempTime}
         </MButton>);
         }
@@ -46,7 +46,7 @@ let MTimePickerPanelTime = class MTimePickerPanelTime extends Vue {
     }
 };
 tslib_1.__decorate([
-    Prop({ type: String, default: color.primary })
+    Prop({ type: String, default: Color.primary })
 ], MTimePickerPanelTime.prototype, "type", void 0);
 tslib_1.__decorate([
     Prop({ type: Number, default: 1 })

@@ -1,4 +1,4 @@
-const PALETTE = {
+const Palette = {
     red_50: '#ffebee',
     red_100: '#ffcdd2',
     red_200: '#ef9a9a',
@@ -248,5 +248,5 @@ const PALETTE = {
     bluegrey_A400: '#78909c',
     bluegrey_A700: '#455a64'
 };
-export default PALETTE;
+export default Palette;
 //# sourceMappingURL=palette.js.map

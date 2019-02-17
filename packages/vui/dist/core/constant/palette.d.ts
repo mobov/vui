@@ -1,4 +1,4 @@
-declare const PALETTE: {
+declare const Palette: {
     red_50: string;
     red_100: string;
     red_200: string;
@@ -248,4 +248,4 @@ declare const PALETTE: {
     bluegrey_A400: string;
     bluegrey_A700: string;
 };
-export default PALETTE;
+export default Palette;

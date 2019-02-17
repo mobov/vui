@@ -20,7 +20,8 @@ $--Spaces: (
 }
 
 @each $breakpoint in $--Breakpoints {
-    $value: #{--m-space-$breakpoint};
+    @debug $breakpoint;
+    $value: var(--m-space-#{$breakpoint});
 
     .m-mt-#{$breakpoint} {
         margin-top: $value;

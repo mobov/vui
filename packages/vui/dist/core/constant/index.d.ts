@@ -1,83 +1,68 @@
-import ELEVATION from './elevation';
-import PALETTE from './palette';
-export { ELEVATION, PALETTE };
-export declare const ELEVATIONS: number[];
-export declare type elevation = number;
+import Elevation from './elevation';
+import Palette from './palette';
+export { Elevation, Palette };
+export declare type elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24;
+export declare const ELEVATION: number[];
 export declare enum Status {
     success = 0,
     pending = 1,
     failure = 2
 }
 export declare type breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export declare enum BREAKPOINT {
+export declare enum Breakpoint {
     xs = 0,
     sm = 576,
     md = 768,
     lg = 992,
     xl = 1200
 }
-export declare const BREAKPOINTS: any[];
-export declare type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | number;
-export declare enum SIZE {
+export declare const BREAKPOINT: string[];
+export declare enum Size {
     xs = "xs",
     sm = "sm",
     md = "md",
     lg = "lg",
     xl = "xl"
 }
-export declare const SIZES: any[];
-export declare const COLS = 24;
-export declare enum variety {
+export declare type size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export declare const SIZE: string[];
+export declare enum Variety {
     normal = "normal",
     flat = "flat",
     outline = "outline"
 }
-export declare enum VARIETY {
-    normal = "normal",
-    flat = "flat",
-    outline = "outline"
-}
-export declare const VARIETYS: any[];
-export declare enum shape {
+export declare type variety = 'normal' | 'flat' | 'outline';
+export declare const VARIETY: string[];
+export declare enum Shape {
     circle = "circle",
     round = "round",
     corner = "corner",
     square = "square"
 }
-export declare enum SHAPE {
-    circle = "circle",
-    round = "round",
-    corner = "corner",
-    square = "square"
-}
-export declare const SHAPES: any[];
-export declare enum color {
+export declare type shape = 'circle' | 'round' | 'corner' | 'square';
+export declare const SHAPE: string[];
+export declare enum Color {
     primary = "primary",
     error = "error",
     success = "success",
     warning = "warning",
     default = "default"
 }
-export declare enum COLOR {
-    primary = "primary",
-    error = "error",
-    success = "success",
-    warning = "warning",
-    default = "default"
-}
-export declare const COLORS: any[];
-export declare type mode = 'day' | 'night';
-export declare enum MODE {
+export declare type color = 'primary' | 'error' | 'success' | 'warning' | 'default';
+export declare const COLOR: string[];
+export declare enum Mode {
     day = "day",
     night = "night"
 }
-export declare const MODES: any[];
+export declare type mode = 'day' | 'night';
 export declare enum Fill {
     left = "left",
     both = "both",
     right = "right",
     none = "none"
 }
+export declare type fill = 'left' | 'both' | 'right' | 'none';
+export declare const FILL: string[];
 export declare enum FlexJustify {
     start = "start",
     center = "center",
@@ -87,39 +72,27 @@ export declare enum FlexJustify {
     evenly = "evenly",
     none = "none"
 }
-export declare enum FLEX_JUSTIFY {
-    start = "start",
-    center = "center",
-    end = "end",
-    between = "between",
-    around = "around",
-    evenly = "evenly",
-    none = "none"
-}
+export declare type flexJustify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | 'none';
+export declare const FLEX_JUSTIFY: string[];
 export declare enum FlexWrap {
     normal = "normal",
     reverse = "reverse",
     none = "none"
 }
-export declare enum FLEX_WRAP {
-    normal = "normal",
-    reverse = "reverse",
-    none = "none"
-}
+export declare type flexWrap = 'normal' | 'reverse' | 'none';
+export declare const FLEX_WRAP: string[];
 export declare enum FlexAlign {
     start = "start",
     center = "center",
     end = "end",
     stretch = "stretch"
 }
-export declare enum FLEX_ALIGN {
-    start = "start",
-    center = "center",
-    end = "end",
-    stretch = "stretch"
-}
-export declare enum align {
+export declare type flexAlign = 'start' | 'center' | 'end' | 'stretch';
+export declare const FLEX_ALIGN: string[];
+export declare enum Align {
     left = "left",
     center = "center",
     right = "right"
 }
+export declare type align = 'left' | 'center' | 'right';
+export declare const ALIGN: string[];

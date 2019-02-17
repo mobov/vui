@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 import MButton from '../../button'
 import { dateValueType } from '../constant'
-import { color, variety, shape } from '../../core/constant'
+import { Color, color, Variety, variety, Shape, shape } from '../../core/constant'
 
 const compName = 'm-time-picker-panel-month'
 const MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月',
@@ -9,7 +9,7 @@ const MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月',
 
 @Component({ components: { MButton } })
 export default class MTimePickerPanelMonth extends Vue {
-  @Prop({ type: String, default: color.primary })
+  @Prop({ type: String, default: Color.primary })
   type!: color
 
   @Prop({ type: Array })
@@ -33,10 +33,10 @@ export default class MTimePickerPanelMonth extends Vue {
       Cols.push(
         <MButton size="sm"
                  class="m-m-0 m-p-0"
-                 shape={shape.circle}
+                 shape={Shape.circle}
                  elevation={0}
-                 variety={isCurrent ? variety.normal : variety.flat}
-                 color={isCurrent ? color.primary : color.default}
+                 variety={isCurrent ? Variety.normal : Variety.flat}
+                 color={isCurrent ? Color.primary : Color.default}
                  onClick={() => handleClick(tempValue)}>
           {MonthMap[tempValue]}
         </MButton>

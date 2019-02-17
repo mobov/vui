@@ -1,19 +1,29 @@
-import styled, { injectGlobal } from 'vue-styled-components'
-import { genColor, genFontColor, genSize } from '../core/util'
+$--m-checkbox-size-xs: 1rem;
+$--m-checkbox-size-sm: 1.5rem;
+$--m-checkbox-size-md: 2rem;
+$--m-checkbox-size-lg: 2.5rem;
+$--m-checkbox-size-xl: 3rem;
+$--m-checkbox-wrapper-size-xs: 2rem;
+$--m-checkbox-wrapper-size-sm: 3rem;
+$--m-checkbox-wrapper-size-md: 4rem;
+$--m-checkbox-wrapper-size-lg: 5rem;
+$--m-checkbox-wrapper-size-xl: 6rem;
 
-injectGlobal`
-	.m-checkbox {
+/**
+ * variables register.
+ */
+.m-checkbox {
     // selection
-    --m-checkbox-size-xs: 1rem;
-    --m-checkbox-size-sm: 1.5rem;
-    --m-checkbox-size-md: 2rem;
-    --m-checkbox-size-lg: 2.5rem;
-    --m-checkbox-size-xl: 3rem;
-    --m-checkbox-wrapper-size-xs: 2rem;
-    --m-checkbox-wrapper-size-sm: 3rem;
-    --m-checkbox-wrapper-size-md: 4rem;
-    --m-checkbox-wrapper-size-lg: 5rem;
-    --m-checkbox-wrapper-size-xl: 6rem;
+    --m-checkbox-size-xs: #{$--m-checkbox-size-xs};
+    --m-checkbox-size-sm: #{$--m-checkbox-size-sm};
+    --m-checkbox-size-md: #{$--m-checkbox-size-md};
+    --m-checkbox-size-lg: #{$--m-checkbox-size-lg};
+    --m-checkbox-size-xl: #{$--m-checkbox-size-xl};
+    --m-checkbox-wrapper-size-xs: #{$--m-checkbox-wrapper-size-xs};
+    --m-checkbox-wrapper-size-sm: #{$--m-checkbox-wrapper-size-sm};
+    --m-checkbox-wrapper-size-md: #{$--m-checkbox-wrapper-size-md};
+    --m-checkbox-wrapper-size-lg: #{$--m-checkbox-wrapper-size-lg};
+    --m-checkbox-wrapper-size-xl: #{$--m-checkbox-wrapper-size-xl};
 
     // default
     --m-checkbox-color: var(--m-color-primary);
@@ -21,7 +31,12 @@ injectGlobal`
 
     --m-checkbox-size: var(--m-checkbox-size-md);
     --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md);
-    
+}
+
+/**
+ * components styles.
+ */
+.m-checkbox {
     color: var(--m-checkbox-font-color);
     font-size: calc(var(--m-checkbox-size) / 1.4);
     line-height: 1;
@@ -32,12 +47,6 @@ injectGlobal`
     justify-content: flex-start;
     align-items: center;
     -webkit-font-smoothing: antialiased;
-    &[disabled] {
-        opacity: .5;
-    }
-    &[checked] {
-        color: var(--m-checkbox-color);
-    }
 
     &__checked-icon,
     &__uncheck-icon,
@@ -66,12 +75,15 @@ injectGlobal`
     }
 
     &__label {
-        color: transparent;
+        text-indent: .4em;
     }
-	}
-`
-export default styled.div`
-  ${props => genColor('m-checkbox', props.color)}
-  ${props => genFontColor('m-checkbox', props.fontColor)}
-  ${props => genSize('m-checkbox', props.size)}
-`
+
+    // disabled
+    &.m--disabled {
+        opacity: .5;
+    }
+    // checked
+    &.m--checked {
+        color: var(--m-checkbox-color);
+    }
+}

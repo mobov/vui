@@ -1,5 +1,5 @@
 import Buffer from './buffer';
-import { BREAKPOINTS, COLORS, ELEVATIONS, ELEVATION } from './constant';
+import { SIZE, COLOR, ELEVATION, BREAKPOINT, SHAPE, VARIETY } from './constant';
 import { isStyleUnit } from '@megmore/es-helper';
 /**
  * 验证是否是色板值
@@ -30,7 +30,7 @@ export function isCSSVar(val) {
  * @return {string}
  */
 export function getCSSVal(val) {
-    return isPalette(val) || COLORS.includes(val)
+    return isPalette(val) || COLOR.includes(val)
         ? Buffer.docStyles.getPropertyValue(`--m-color-${val}`).trim()
         : isCSSVar(val)
             ? Buffer.docStyles.getPropertyValue(val).trim()
@@ -52,7 +52,7 @@ export function getStyleSize(value) {
  * @return {string}
  */
 function getStyleColorAttrVal(val) {
-    return isPalette(val) || COLORS.includes(val)
+    return isPalette(val) || COLOR.includes(val)
         ? `var(--m-color-${val})`
         : isCSSVar(val)
             ? `var(${val})`
@@ -64,7 +64,7 @@ function getStyleColorAttrVal(val) {
  * @return {string}
  */
 function getStyleColor(val) {
-    return isPalette(val) || COLORS.includes(val)
+    return isPalette(val) || COLOR.includes(val)
         ? `var(--m-color-${val})`
         : isCSSVar(val)
             ? `var(${val})`
@@ -77,8 +77,8 @@ function getStyleColor(val) {
  * @param val
  */
 export function genColor(styles = {}, compName, val) {
-    if (val === undefined) {
-        if (COLORS.includes(val)) {
+    if (val !== undefined) {
+        if (COLOR.includes(val)) {
             styles[`--${compName}-color`] = `var(--m-color-${val})`;
         }
         else {
@@ -94,7 +94,7 @@ export function genColor(styles = {}, compName, val) {
  */
 export function genFontColor(styles = {}, compName, val) {
     if (val !== undefined) {
-        if (COLORS.includes(val)) {
+        if (COLOR.includes(val)) {
             styles[`--${compName}-font-color`] = `var(--m-color-${val})`;
         }
         else {
@@ -110,11 +110,11 @@ export function genFontColor(styles = {}, compName, val) {
  */
 export function genSize(styles = {}, compName, val) {
     if (val !== undefined) {
-        if (BREAKPOINTS.includes(val)) {
-            styles[`--${compName}-size`] = `var(--${compName}-size-${val})`;
-        }
-        else if (typeof val === 'number') {
+        if (typeof val === 'number') {
             styles[`--${compName}-size`] = `${val}px`;
+        }
+        else if (SIZE.includes(val)) {
+            styles[`--${compName}-size`] = `var(--${compName}-size-${val})`;
         }
         else {
             styles[`--${compName}-size`] = `${val}`;
@@ -129,11 +129,8 @@ export function genSize(styles = {}, compName, val) {
  */
 export function genElevation(styles = {}, compName, val) {
     if (val !== undefined) {
-        if (ELEVATIONS.includes(val)) {
-            styles[`--${compName}-elevation`] = `${ELEVATION[val]}`;
-        }
-        else {
-            styles[`--${compName}-elevation`] = `${val}`;
+        if (ELEVATION.includes(val)) {
+            styles[`--${compName}-elevation`] = `var(--m-elevation-${val})`;
         }
     }
 }
@@ -145,11 +142,11 @@ export function genElevation(styles = {}, compName, val) {
  */
 export function genSpace(styles, compName, val) {
     if (val !== undefined) {
-        if (BREAKPOINTS.includes(val)) {
-            styles[`--${compName}-space`] = `var(--m-space-${val})`;
-        }
-        else if (typeof val === 'number') {
+        if (typeof val === 'number') {
             styles[`--${compName}-space`] = `${val}px`;
+        }
+        else if (BREAKPOINT.includes(val)) {
+            styles[`--${compName}-space`] = `var(--m-space-${val})`;
         }
         else {
             styles[`--${compName}-space`] = `${val}`;
@@ -163,7 +160,9 @@ export function genSpace(styles, compName, val) {
  */
 export function genShape(classes = {}, val) {
     if (val !== undefined) {
-        classes[`m-shape-${val}`] = true;
+        if (SHAPE.includes(val)) {
+            classes[`m-shape-${val}`] = true;
+        }
     }
 }
 /**
@@ -173,7 +172,9 @@ export function genShape(classes = {}, val) {
  */
 export function genVariety(classes = {}, val) {
     if (val !== undefined) {
-        classes[`m-variety-${val}`] = true;
+        if (VARIETY.includes(val)) {
+            classes[`m-variety-${val}`] = true;
+        }
     }
 }
 /**

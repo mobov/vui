@@ -56,13 +56,11 @@ export default class MButton extends Mixins (
     genShape(classes, shape)
     genVariety(classes, variety)
 
-    console.log()
-
     return classes
   }
 
   render () {
-    const { classes, styles, icon, onClick } = this
+    const { classes, styles, icon, onClick, color } = this
 
     return (
       <div v-m-ripple

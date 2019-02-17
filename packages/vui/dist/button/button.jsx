@@ -30,8 +30,8 @@ let MButton = class MButton extends Mixins(colorable, sizeable, elevated, variab
         return classes;
     }
     render() {
-        const { icon, onClick } = this;
-        return (<div v-m-ripple staticClass={compName} onClick={onClick}>
+        const { classes, styles, icon, onClick, color } = this;
+        return (<div v-m-ripple staticClass={compName} class={classes} style={styles} onClick={onClick}>
         {!icon ? undefined
             : <MIcon name={icon}/>}
         {!this.$slots.default ? undefined
