@@ -29,11 +29,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Megmore, { MAvatar } from '@mobov/vui'
+import Mobov, { MAvatar } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
-const { COLOR } = Megmore.constant
+const { COLOR } = Mobov.constant
 
 export default Vue.extend({
   name: 'ExampleAvatar',

@@ -6,6 +6,7 @@ $--m-time-picker-clock-height: 18rem;
 $--m-time-picker-width: 26rem;
 $--m-time-picker-landscope-width: 37rem;
 $--m-time-picker-landscope-header-width: 11rem;
+$--m-time-picker-cell-size: 2.5rem;
 
 /**
  * variables register.
@@ -21,6 +22,7 @@ $--m-time-picker-landscope-header-width: 11rem;
     --m-time-picker-panel-height: #{$--m-time-picker-panel-height};
     --m-time-picker-landscope-width: #{$--m-time-picker-landscope-width};
     --m-time-picker-landscope-header-width: #{$--m-time-picker-landscope-header-width};
+    --m-time-picker-cell-size: #{$--m-time-picker-cell-size};
 }
 
 /**
@@ -74,6 +76,7 @@ $--m-time-picker-landscope-header-width: 11rem;
     .m-time-picker-panel {
         height: var(--m-time-picker-panel-height);
     }
+    //border: 1px solid lightgray;
 }
 .m-time-picker-header {
     padding: var(--m-space-sm);
@@ -146,6 +149,14 @@ $--m-time-picker-landscope-header-width: 11rem;
         display: flex;
         justify-content: space-between;
         font-size: 1rem;
+        &-year {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 1.4rem;
+            margin-left: .4rem;
+            cursor: pointer;
+        }
         &-handler {
             display: flex;
             justify-content: space-between;
@@ -168,6 +179,10 @@ $--m-time-picker-landscope-header-width: 11rem;
         border-spacing: 0;
         text-align: center;
         width: 100%;
+    }
+    .m-button__main {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -232,5 +247,30 @@ $--m-time-picker-landscope-header-width: 11rem;
         &:first-child {
             margin-left: 0;
         }
+    }
+}
+
+.m-time-picker-cell {
+    display: inline-flex;
+    line-height: 1;
+    height: var(--m-time-picker-cell-size);
+    min-width: var(--m-time-picker-cell-size);
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--m-time-picker-cell-size);
+    cursor: pointer;
+    color: var(--m-font-color);
+    &.m--current {
+        border: 2px solid var(--m-time-picker-color);
+    }
+    &.m--checked {
+        color: var(--m-bg-color);
+        background-color: var(--m-time-picker-color);
+    }
+}
+
+.m-time-picker-panel-time {
+    .m-time-picker-cell {
+        display: flex;
     }
 }

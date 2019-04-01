@@ -7442,7 +7442,7 @@ register({
   }
 });
 
-var Megmore = {
+var Mobov = {
   install: function install(Vue) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -7458,13 +7458,13 @@ var Megmore = {
     values$1(componentsList).forEach(function (component) {
       console.log(component);
       Vue.use(component);
-    }); // const $Megmore = {
+    }); // const $Mobov = {
     //   cons
     // }
     // 挂载根组件
 
 
-    window.Megmore = this; // console.log(Vue)
+    window.Mobov = this; // console.log(Vue)
     // console.log(this)
   },
   version: '1.0.0',
@@ -7472,7 +7472,7 @@ var Megmore = {
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Megmore);
+  window.Vue.use(Mobov);
 }
 
 exports.MApp = MApp$1;
@@ -7494,4 +7494,4 @@ exports.MTable = MTable$1;
 exports.MTableCol = MTableCol$1;
 exports.MTimePicker = MTimePicker$1;
 exports.MView = MView$1;
-exports.default = Megmore;
+exports.default = Mobov;

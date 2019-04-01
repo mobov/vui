@@ -9,16 +9,16 @@ import { Component, PluginFunction } from 'vue';
 import * as constant from './core/constant';
 import './icon/presets';
 export declare type ComponentOrPack = Component & {
-    $_megmore_subcomponents?: Record<string, ComponentOrPack>;
+    $_mobov_subcomponents?: Record<string, ComponentOrPack>;
 };
-export interface MegmoreUseOptions {
+export interface MobovUseOptions {
     components?: Record<string, ComponentOrPack>;
 }
-export interface MegmorePlugin {
-    install: PluginFunction<MegmoreUseOptions>;
+export interface MobovPlugin {
+    install: PluginFunction<MobovUseOptions>;
     version: string;
     constant: typeof constant;
 }
-declare const Megmore: MegmorePlugin;
-export default Megmore;
+declare const Mobov: MobovPlugin;
+export default Mobov;
 export * from './entries';

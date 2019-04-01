@@ -1,8 +1,7 @@
 import {Component, Emit, Inject, Prop, Vue} from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color, color, Variety, variety, Shape, shape } from '../../core/constant'
-import { datePickerType } from '../constant'
+import { Color, color, Variety, Shape, DatePickerType } from '../../core/constant'
 
 const compName = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
@@ -14,9 +13,6 @@ const enum toggleAction {
 
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelDate extends Vue {
-  @Prop({ type: String, default: Color.primary })
-  type!: color
-
   @Prop({ type: Number })
   min!: number
 
@@ -97,15 +93,16 @@ export default class MTimePickerPanelDate extends Vue {
       const isCurDate = isCurMonth && (tempDate === date)
       const isToday = isNowDate && (tempDate === nowDate)
 
-      Tds.push(<td><MButton class='m-m-0 m-p-0'
-                            size='sm'
-                            shape={Shape.circle}
-                            elevation={0}
-                            variety={isCurDate ? Variety.default : isToday ? Variety.outline : Variety.flat}
-                            color={isCurDate || isToday ? Color.primary : Color.default}
-                            onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
-        {tempDate}
-      </MButton></td>)
+      Tds.push(
+        <td>
+          <div v-m-ripple
+               staticClass='m-time-picker-cell'
+               class={{ 'm--checked': isCurDate, 'm--current': isToday }}
+               onClick={() => handleDateClick(viewYear, viewMonth, tempDate)}>
+            {tempDate}
+          </div>
+        </td>
+      )
       if ((tempDate + viewFirstWeekDay) % 7 === 0 || tempDate === viewMonthDays) {
         Trs.push(<tr>{Tds}</tr>)
         Tds = []
@@ -116,19 +113,14 @@ export default class MTimePickerPanelDate extends Vue {
   }
 
   render () {
-    const { viewYear, handleMonthToggle, RTableHead, RTableBody } = this
+    const { viewYear, viewMonth, handleMonthToggle, RTableHead, RTableBody } = this
 
     return (
       <div staticClass={compName}>
         <div class={`${compName}__header`}>
           <div staticClass={`${compName}__header-year`}>
-            <MButton variety={Variety.flat}
-                     staticClass='m-m-0'
-                     color={Color.default}
-                     elevation={0}
-                     onClick={() => this.DateStore.SET_ACTIVE_TYPE(datePickerType.year)}>
-              {viewYear}
-            </MButton>
+            <span onClick={() => this.DateStore.SET_ACTIVE_TYPE(DatePickerType.year)}>{viewYear}</span>-
+            <span onClick={() => this.DateStore.SET_ACTIVE_TYPE(DatePickerType.month)}>{(viewMonth + 1).dateZeroize()}</span>
           </div>
           <div staticClass={`${compName}__header-handler`}>
             <MButton variety={Variety.flat}

@@ -2,8 +2,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 // import { getStyle } from '@mobov/es-helper'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { dateTimeValueType } from '../constant'
-import { Color, color, Variety, variety, Shape, shape  } from '../../core/constant'
+import { Color, color, Variety, Shape, DateTimeValueType, dateTimeValueType } from '../../core/constant'
 
 const compName = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')
@@ -16,7 +15,7 @@ const compName = 'm-time-picker-panel-time'
 @Component({ components: { MButton, MIcon } })
 export default class MTimePickerPanelTime extends Vue {
   @Prop({ type: String, default: Color.primary })
-  type!: color
+  color!: color
 
   @Prop({ type: Number, default: 1 })
   hourStep!: number
@@ -31,7 +30,7 @@ export default class MTimePickerPanelTime extends Vue {
   onClick (val: number, type: dateTimeValueType): void {
     this.DateStore.SET_ACTIVE_TYPE(type)
     this.DateStore.UPDATE(
-      (type === dateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
+      (type === DateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am)
         ? val + 12
         : val,
       type
@@ -39,27 +38,23 @@ export default class MTimePickerPanelTime extends Vue {
   }
 
   RList (type: dateTimeValueType) {
-    const { onClick, hourStep, minuteStep } = this
+    const { color, onClick, hourStep, minuteStep } = this
     const { ampm } = this.DateStore
     const min = 0
-    const max = type === dateTimeValueType.hours ? ampm ? 11 : 23 : 59
-    const step = type === dateTimeValueType.hours ? hourStep : minuteStep
+    const max = type === DateTimeValueType.hours ? ampm ? 11 : 23 : 59
+    const step = type === DateTimeValueType.hours ? hourStep : minuteStep
     const time = this.DateStore[type]
     const Temps: any = []
 
     for (let tempTime = min; tempTime <= max; tempTime += step) {
       const isCurrent = tempTime === time
       Temps.push(
-        <MButton onClick={() => onClick(tempTime, type)}
-          size="sm"
-          block
-          class="m-m-0 m-p-0 m--block"
-          shape={Shape.circle}
-          elevation={0}
-          variety={isCurrent ? Variety.default : Variety.flat}
-          color={isCurrent ? Color.primary : Color.default}>
+        <div v-m-ripple
+             staticClass='m-time-picker-cell'
+             class={{ 'm--checked': isCurrent }}
+             onClick={() => onClick(tempTime, type)}>
           {tempTime}
-        </MButton>
+        </div>
       )
     }
 
@@ -74,8 +69,8 @@ export default class MTimePickerPanelTime extends Vue {
     const { RList } = this
     const Result: any = []
 
-    Result.push(RList(dateTimeValueType.hours))
-    Result.push(RList(dateTimeValueType.minutes))
+    Result.push(RList(DateTimeValueType.hours))
+    Result.push(RList(DateTimeValueType.minutes))
 
     return (
       <div staticClass={compName}>{Result}</div>

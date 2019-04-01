@@ -1,5 +1,5 @@
-import Megmore from '@mobov/vui'
-const { SIZE, Size } = Megmore.constant
+import Mobov from '@mobov/vui'
+const { SIZE, Size } = Mobov.constant
 
 interface PropsPropertries {
   name: string,

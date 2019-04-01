@@ -45,12 +45,12 @@
 </template>
 
 <script>
-import Megmore, { MTable, MTableCol } from '@mobov/vui'
+import Mobov, { MTable, MTableCol } from '@mobov/vui'
 import ExampleBox from '@/components/example-box'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
 
-const { COLOR } = Megmore.constant
+const { COLOR } = Mobov.constant
 
 export default {
   name: 'ExampleTable',

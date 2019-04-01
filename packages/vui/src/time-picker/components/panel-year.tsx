@@ -1,15 +1,10 @@
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-import MButton from '../../button'
-import { dateValueType } from '../constant'
-import { Color, color, Shape, shape, Variety, variety } from '../../core/constant'
+import { DateValueType } from '../../core/constant'
 
 const compName = 'm-time-picker-panel-year'
 
-@Component({ components: { MButton } })
+@Component
 export default class MTimePickerPanelYear extends Vue {
-  @Prop({ type: String, default: Color.primary })
-  type!: color
-
   @Prop({ type: Number, default: 2100 })
   max!: number
 
@@ -21,7 +16,7 @@ export default class MTimePickerPanelYear extends Vue {
 
   @Emit('pick')
   onClick (year: number): void {
-    this.DateStore.UPDATE(year, dateValueType.year)
+    this.DateStore.UPDATE(year, DateValueType.year)
   }
 
   RCols () {
@@ -31,16 +26,14 @@ export default class MTimePickerPanelYear extends Vue {
 
     for (let tempYear = min; tempYear <= max; tempYear++) {
       const isCurrent = tempYear === year
+
       Cols.push(
-        <MButton size="sm"
-          class="m-m-0 m-p-0"
-          shape={Shape.circle}
-          elevation={0}
-          variety={isCurrent ? Variety.default : Variety.flat}
-          color={isCurrent ? Color.primary : Color.default}
-          onClick={() => onClick(tempYear)} >
+        <div v-m-ripple
+             staticClass='m-time-picker-cell'
+             class={{ 'm--checked': isCurrent }}
+             onClick={() => onClick(tempYear)}>
           {tempYear}
-        </MButton>
+        </div>
       )
     }
 

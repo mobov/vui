@@ -7,7 +7,7 @@ export {
 }
 
 export type elevation = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
-                       11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 |  23 | 24
+  11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
 
 export const ELEVATION = Elevation.map((item, index) => index)
 
@@ -136,3 +136,40 @@ export enum Align {
 export type align = 'left' | 'center' | 'right' //  水平轴
 
 export const ALIGN = Object.keys(Align)
+
+export enum DateValueFormat {
+  timestamp = 'timestamp',
+  Date = 'Date'
+}
+
+export type dateValueFormat = 'timestamp' | 'Date'
+
+export enum DatePickerType {
+  datetime = 'datetime',
+  date = 'date',
+  year = 'year',
+  month = 'month',
+  time = 'time'
+}
+
+export type datePickerType = 'datetime' | 'date' | 'year' | 'month' | 'time'
+
+export enum DateValueType {
+  year = 'year',
+  month = 'month',
+  week = 'week',
+  date = 'date',
+  time = 'time',
+  hours = 'hours',
+  minutes = 'minutes'
+}
+
+export type dateValueType = 'year' | 'month' | 'week' | 'date' | 'time' | 'hours' | 'minutes'
+
+export enum DateTimeValueType {
+  time = 'time',
+  hours = 'hours',
+  minutes = 'minutes'
+}
+
+export type dateTimeValueType = 'time' | 'hours' | 'minutes'

@@ -1,6 +1,6 @@
 import Mobov from '@mobov/vui'
 import { PropsPropertries } from '@/global'
-const { COLOR, Color, SIZE, Size, VARIETY, Variety, ELEVATION } = Mobov.constant
+const { COLOR, Color, SIZE, Size } = Mobov.constant
 
 const props: Array<PropsPropertries> = [
   {
@@ -14,18 +14,6 @@ const props: Array<PropsPropertries> = [
     type: 'radio',
     default: Color.primary,
     value: COLOR
-  },
-  {
-    name: 'elevation',
-    type: 'radio',
-    default: 2,
-    value: ELEVATION
-  },
-  {
-    name: 'variety',
-    type: 'radio',
-    default: Variety.default,
-    value: VARIETY
   }
 ]
 

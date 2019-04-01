@@ -1,88 +1,46 @@
-<style lang="scss">
-  .example-chip {
-    width: 100%;
-    height: 500px;
-  }
-</style>
 <template>
-  <div class="example-chip">
-    <section>
-      <h2>colors</h2>
-      <m-chip :color="color"
-              size="md"
-              :key="color"
-              class="m-mr-sm"
-              v-for="color in COLOR">{{color}}</m-chip>
-      <m-chip class="m-mr-sm" size="xs" closeable closeover>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="sm" closeable closeover>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="md" closeable closeover>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="lg" closeable closeover>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" color="green" size="40px" closeable closeover>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="xs">
-        <!--<m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />-->
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="sm">
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="md">
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-      <m-chip class="m-mr-sm" size="lg" closeable>
-        <m-avatar slot="media" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532848823575&di=940fe99aec0381b8ef366c52ab006095&imgtype=0&src=http%3A%2F%2Fwww.wodeyiku.com%2Fuploads3%2Fimage%2F201703%2F0301l1k3cuc3avi.jpg" />
-        <span>呵呵</span>
-      </m-chip>
-    </section>
-      <!--<section>-->
-        <!--<h2>outline</h2>-->
-        <!--<m-button variety="outline"-->
-                  <!--style="width: 80px"-->
-                  <!--:color="color"-->
-                  <!--:key="color"-->
-                  <!--class="m&#45;&#45;mr-sm"-->
-                  <!--v-for="color in COLORS">{{color}}</m-button>-->
-      <!--</section>-->
-    <!--<section>-->
-      <!--<m-button :size="size"-->
-                <!--class="m&#45;&#45;px-md m&#45;&#45;mr-sm"-->
-                <!--:key="size"-->
-                <!--v-for="size in BREAKPOINTS">{{size}}</m-button>-->
-
-    <!--</section>-->
-
-  </div>
+  <example-box>
+    <m-chip :color="PropsData.color"
+            :variety="PropsData.variety"
+            :shape="PropsData.shape"
+            :elevation="PropsData.elevation"
+            :closeable="PropsData.closeable"
+            :closeover="PropsData.closeover"
+            :size="PropsData.size">just we</m-chip>
+    <m-row slot="handler"
+           class="m-my-md"
+           align="center"
+           :cols="24">
+      <template v-for="(prop, index) in Props">
+        <m-col class="m-mb-sm" :key="'field' + index" :xs="4" :md="4" align="center">{{prop.name}}</m-col>
+        <m-col class="m-mb-sm" :key="'value' + index" :xs="20" :md="20" align="center">
+          <m-flex>
+            <m-radio class="m-mr-sm"
+                     v-model="prop.default"
+                     :key="index"
+                     v-for="(select, index) in prop.value"
+                     :label="select">{{select}}</m-radio>
+          </m-flex>
+        </m-col>
+      </template>
+    </m-row>
+  </example-box>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+import { MChip } from '@mobov/vui'
+import ExampleBox from '@/components/example-box.vue'
+import exampleProps from '@/mixins/example-props'
+import Props from './props'
 
-<script>
-import Megmore, { MChip } from '@mobov/vui'
-
-const { COLOR, BREAKPOINT } = Megmore.constant
-
-export default {
+export default Vue.extend({
   name: 'ExampleChip',
-  components: { MChip },
+  mixins: [exampleProps],
+  components: { ExampleBox, MChip },
   data () {
     return {
-      COLOR,
-      BREAKPOINT
+      Props
     }
   }
-}
+})
 </script>

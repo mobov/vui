@@ -12,6 +12,12 @@
       height: 100%;
     }
     .view-header,
+    .view-left,
+    .view-right,
+    .view-footer {
+      box-shadow: var(--m-elevation-5);
+    }
+    .view-header,
     .view-footer {
       background-color: var(--m-color-deeppurple-300);
     }
@@ -32,7 +38,11 @@
             :header-size="PropsData.headerSize"
             :footer-size="PropsData.footerSize"
             :left-size="PropsData.leftSize"
-            :right-size="PropsData.rightSize">
+            :right-size="PropsData.rightSize"
+            :header-index="PropsData.headerIndex"
+            :footer-index="PropsData.footerIndex"
+            :left-index="PropsData.leftIndex"
+            :right-index="PropsData.rightIndex">
       <div class="view-header" v-if="PropsData.headerSlot" slot="header"></div>
       <div class="view-left" v-if="PropsData.leftSlot" slot="left" ></div>
       <div class="view-right" v-if="PropsData.rightSlot" slot="right"></div>

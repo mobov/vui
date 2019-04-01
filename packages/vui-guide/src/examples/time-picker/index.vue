@@ -1,74 +1,54 @@
 <style lang="scss">
-  .example-view {
-    width: 100%;
-    height: 500px;
-  }
+
 </style>
 <template>
-  <div class="example-time-picker">
-    <div class="m-mb-md">
-      <m-time-picker picker-type="datetime"
-                     desync confirmation
-                     value-format="Date"
-                     ampm
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="date"
-                     value-format="Date"
-                     v-model="dateValue"
-                     :elevation=2 />
-
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="time"
-                     value-format="Date"
-                     ampm
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="year"
-                     value-format="Date"
-                     ampm
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="month"
-                     value-format="Date"
-                     ampm
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="datetime"
-                     confirmation
-                     landscope
-                     value-format="Date"
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-    <div class="m-mb-md">
-      <m-time-picker picker-type="datetime"
-                     landscope
-                     value-format="Date"
-                     v-model="dateValue"
-                     :elevation=2 />
-    </div>
-  </div>
+  <ExampleBox>
+    <MTimePicker :color="PropsData.color"
+                 :elevation="PropsData.elevation"
+                 :pickerType="PropsData.pickerType"
+                 :landscope="PropsData.landscope"
+                 :desync="PropsData.desync"
+                 :confirmation="PropsData.confirmation"
+                 :ampm="PropsData.ampm"
+                 :valueFormat="valueFormat"
+                 v-model="dateValue" />
+    <MRow slot="handler"
+          class="m-my-md"
+          align="center"
+          :cols="24">
+      <template v-for="(prop, index) in Props">
+        <MCol class="m-mb-sm" :key="'field' + index" :xs="4" :md="4" align="center">{{prop.name}}</MCol>
+        <MCol class="m-mb-sm" :key="'value' + index" :xs="20" :md="20" align="center">
+          <MFlex>
+            <MRadio class="m-mr-sm"
+                    v-model="prop.default"
+                    :key="index"
+                    v-for="(select, index) in prop.value"
+                    :label="select">{{select}}</MRadio>
+          </MFlex>
+        </MCol>
+      </template>
+    </MRow>
+  </ExampleBox>
 </template>
 
 <script>
-import { MTimePicker } from '@mobov/vui'
+import Mobov, { MTimePicker } from '@mobov/vui'
+import ExampleBox from '@/components/example-box.vue'
+import exampleProps from '@/mixins/example-props'
+import Props from './props'
+
+const { DateValueFormat } = Mobov.constant
 
 export default {
   name: 'ExampleTimePicker',
-  components: { MTimePicker },
+  components: { ExampleBox, MTimePicker },
+  mixins: [exampleProps],
   data () {
     return {
-      dateValue: new Date()
+      dateValue: new Date(),
+      valueFormat: DateValueFormat.Date,
+      Props
     }
   }
 }

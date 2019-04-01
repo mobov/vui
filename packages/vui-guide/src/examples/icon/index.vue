@@ -1,8 +1,6 @@
 <template>
   <ExampleBox>
-    <MCheckbox v-model="checkVal"
-            :color="PropsData.color"
-            :size="PropsData.size">just we</MCheckbox>
+    <MIcon name="3d_totation"></MIcon>
     <MRow slot="handler"
            class="m-my-md"
            align="center"
@@ -22,21 +20,21 @@
     </MRow>
   </ExampleBox>
 </template>
-<script>
-import { MCheckbox } from '@mobov/vui'
+<script lang="ts">
+import Vue from 'vue'
+import { MIcon } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
 
-export default {
-  name: 'ExampleCheckbox',
-  components: { ExampleBox, MCheckbox },
+export default Vue.extend({
+  name: 'ExampleIcon',
   mixins: [exampleProps],
+  components: { ExampleBox, MIcon },
   data () {
     return {
-      checkVal: false,
       Props
     }
   }
-}
+})
 </script>

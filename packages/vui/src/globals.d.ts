@@ -14,12 +14,12 @@ import {
 } from 'vue/types/options'
 // import { TouchStoredHandlers } from './directives/touch'
 
-import { MegmorePlugin as Megmore }  from '.'
+import { MobovPlugin as Mobov }  from '.'
 
 declare global {
   interface Window {
     Vue: VueConstructor
-    Megmore: Megmore,
+    Mobov: Mobov,
     attachEvent(event: string, listener: EventListener): boolean
     detachEvent(event: string, listener: EventListener): void
   }

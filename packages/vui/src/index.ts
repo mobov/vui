@@ -11,19 +11,19 @@ import * as constant from './core/constant'
 import './icon/presets'
 
 
-export type ComponentOrPack = Component & { $_megmore_subcomponents?: Record<string, ComponentOrPack> }
+export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<string, ComponentOrPack> }
 
-export interface MegmoreUseOptions {
+export interface MobovUseOptions {
   components?: Record<string, ComponentOrPack>
 }
 
-export interface MegmorePlugin {
-  install: PluginFunction<MegmoreUseOptions>
+export interface MobovPlugin {
+  install: PluginFunction<MobovUseOptions>
   version: string,
   constant: typeof constant
 }
 
-const Megmore: MegmorePlugin = {
+const Mobov: MobovPlugin = {
   install (Vue, opts = {}): void {
     if ((this as any).installed) { return }
     (this as any).installed = true
@@ -35,11 +35,11 @@ const Megmore: MegmorePlugin = {
       console.log(component)
       Vue.use(component)
     })
-    // const $Megmore = {
+    // const $Mobov = {
     //   cons
     // }
     // 挂载根组件
-    window.Megmore = this
+    window.Mobov = this
     // console.log(Vue)
     // console.log(this)
   },
@@ -48,8 +48,8 @@ const Megmore: MegmorePlugin = {
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Megmore)
+  window.Vue.use(Mobov)
 }
 
-export default Megmore
+export default Mobov
 export * from './entries'
