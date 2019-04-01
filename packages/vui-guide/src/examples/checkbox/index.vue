@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { MCheckbox } from '@megmore/vui'
+import { MCheckbox } from '@mobov/vui'
 
 export default {
   name: 'ExampleCheckbox',

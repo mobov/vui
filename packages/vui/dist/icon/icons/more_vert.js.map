@@ -1,1 +1,0 @@
-{"version":3,"file":"more_vert.js","sourceRoot":"","sources":["../../../src/icon/icons/more_vert.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,WAAW,EAAE;QACZ,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,4VAA4V;SAC5V;KACD;CACD,CAAC,CAAA"}

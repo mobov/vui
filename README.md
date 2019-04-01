@@ -1,4 +1,4 @@
-# @megmore/ui
+# @mobov/ui
 
 ## Project setup
 ```

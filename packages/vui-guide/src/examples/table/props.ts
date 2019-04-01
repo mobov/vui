@@ -1,4 +1,4 @@
-import Megmore from '@megmore/vui'
+import Megmore from '@mobov/vui'
 const { SIZE, Size } = Megmore.constant
 
 interface PropsPropertries {

@@ -1,4 +1,4 @@
-import Megmore from '@megmore/vui'
+import Megmore from '@mobov/vui'
 import { PropsPropertries } from '@/global'
 const { COLOR, Color, SIZE, Size, Variety, VARIETY, Shape, SHAPE, ELEVATION } = Megmore.constant
 

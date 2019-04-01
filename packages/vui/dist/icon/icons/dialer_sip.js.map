@@ -1,1 +1,0 @@
-{"version":3,"file":"dialer_sip.js","sourceRoot":"","sources":["../../../src/icon/icons/dialer_sip.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,YAAY,EAAE;QACb,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,ikBAAikB;SACjkB;KACD;CACD,CAAC,CAAA"}

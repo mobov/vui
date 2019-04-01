@@ -1,1 +1,0 @@
-{"version":3,"file":"system_update_alt.js","sourceRoot":"","sources":["../../../src/icon/icons/system_update_alt.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,mBAAmB,EAAE;QACpB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,8OAA8O;SAC9O;KACD;CACD,CAAC,CAAA"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"settings_system_daydream.js","sourceRoot":"","sources":["../../../src/icon/icons/settings_system_daydream.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,0BAA0B,EAAE;QAC3B,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2YAA2Y;SAC3Y;KACD;CACD,CAAC,CAAA"}

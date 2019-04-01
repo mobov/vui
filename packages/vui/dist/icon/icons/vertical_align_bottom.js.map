@@ -1,1 +1,0 @@
-{"version":3,"file":"vertical_align_bottom.js","sourceRoot":"","sources":["../../../src/icon/icons/vertical_align_bottom.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,uBAAuB,EAAE;QACxB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2GAA2G;SAC3G;KACD;CACD,CAAC,CAAA"}

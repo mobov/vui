@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MView } from '@megmore/vui'
+import { MView } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'

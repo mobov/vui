@@ -1,5 +1,5 @@
 import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
-import { deepCopy } from '@megmore/es-helper'
+import { deepCopy } from '@mobov/es-helper'
 import sizeable from '../core/mixin/sizeable'
 import elevated from '../core/mixin/elevated'
 import TableHead from './components/head'

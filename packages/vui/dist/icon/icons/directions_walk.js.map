@@ -1,1 +1,0 @@
-{"version":3,"file":"directions_walk.js","sourceRoot":"","sources":["../../../src/icon/icons/directions_walk.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,iBAAiB,EAAE;QAClB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,0ZAA0Z;SAC1Z;KACD;CACD,CAAC,CAAA"}

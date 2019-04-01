@@ -1,7 +1,7 @@
 /**
  * variables register.
  */
-@import "~@megmore/scss-helper/import";
+@import "~@mobov/scss-helper/import";
 
 $--Spaces: (
     xs: .5rem,
@@ -20,7 +20,6 @@ $--Spaces: (
 }
 
 @each $breakpoint in $--Breakpoints {
-    @debug $breakpoint;
     $value: var(--m-space-#{$breakpoint});
 
     .m-mt-#{$breakpoint} {

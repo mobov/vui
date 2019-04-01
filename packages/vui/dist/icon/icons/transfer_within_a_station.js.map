@@ -1,1 +1,0 @@
-{"version":3,"file":"transfer_within_a_station.js","sourceRoot":"","sources":["../../../src/icon/icons/transfer_within_a_station.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,2BAA2B,EAAE;QAC5B,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,oiBAAoiB;SACpiB;KACD;CACD,CAAC,CAAA"}

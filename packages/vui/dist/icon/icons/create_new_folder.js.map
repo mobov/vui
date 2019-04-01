@@ -1,1 +1,0 @@
-{"version":3,"file":"create_new_folder.js","sourceRoot":"","sources":["../../../src/icon/icons/create_new_folder.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,mBAAmB,EAAE;QACpB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gPAAgP;SAChP;KACD;CACD,CAAC,CAAA"}

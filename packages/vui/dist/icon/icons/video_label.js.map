@@ -1,1 +1,0 @@
-{"version":3,"file":"video_label.js","sourceRoot":"","sources":["../../../src/icon/icons/video_label.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,aAAa,EAAE;QACd,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gMAAgM;SAChM;KACD;CACD,CAAC,CAAA"}

@@ -1,6 +1,6 @@
 import Buffer from './buffer'
 import { SIZE, COLOR, ELEVATION, BREAKPOINT, SHAPE, VARIETY } from './constant'
-import { isStyleUnit } from '@megmore/es-helper'
+import { isStyleUnit } from '@mobov/es-helper'
 
 
 /**

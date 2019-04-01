@@ -1,1 +1,0 @@
-{"version":3,"file":"warning.js","sourceRoot":"","sources":["../../../src/icon/icons/warning.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,SAAS,EAAE;QACV,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,8HAA8H;SAC9H;KACD;CACD,CAAC,CAAA"}

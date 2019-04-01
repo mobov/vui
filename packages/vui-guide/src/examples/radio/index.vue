@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { MRadio } from '@megmore/vui'
+import { MRadio } from '@mobov/vui'
 
 export default {
   name: 'ExampleRadio',

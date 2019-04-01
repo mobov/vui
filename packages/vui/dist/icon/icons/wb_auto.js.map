@@ -1,1 +1,0 @@
-{"version":3,"file":"wb_auto.js","sourceRoot":"","sources":["../../../src/icon/icons/wb_auto.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,SAAS,EAAE;QACV,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,sWAAsW;SACtW;KACD;CACD,CAAC,CAAA"}

@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { MTimePicker } from '@megmore/vui'
+import { MTimePicker } from '@mobov/vui'
 
 export default {
   name: 'ExampleTimePicker',

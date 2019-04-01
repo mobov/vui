@@ -1,5 +1,5 @@
 {
-  "name": "@megmore/vui",
+  "name": "@mobov/vui",
   "version": "0.0.1",
   "private": false,
   "publishConfig": {
@@ -7,35 +7,41 @@
   },
   "scripts": {
     "build": "node scripts/build",
-    "build:source": "tsc"
+    "build:lib": "cross-env MODULE=cjs rollup --config build/rollup.config.js"
   },
   "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "peerDependencies": {
-    "@megmore/es-helper": "^0.0.24",
-    "@megmore/scss-helper": "^0.0.4",
-    "color": "^3.1.0",
+    "@mobov/es-helper": "^1.0.4",
+    "@mobov/scss-helper": "^0.0.5",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^7.3.0"
   },
   "devDependencies": {
-    "@megmore/es-helper": "^0.0.24",
-    "@megmore/scss-helper": "^0.0.4",
+    "@mobov/es-helper": "^1.0.4",
+    "@mobov/scss-helper": "^0.0.5",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0-beta.3",
+    "@vue/babel-preset-jsx": "^1.0.0-beta.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "color": "^3.1.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "node-sass": "^4.9.0",
-    "rollup": "^1.1.2",
+    "rollup": "^1.7.4",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-jsx": "^1.0.3",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "rollup-plugin-vue": "^4.7.2",
     "sass-loader": "^7.0.1",
-    "styled-components-breakpoint": "^2.1.1",
     "typescript": "^3.3.3",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",
     "vue-property-decorator": "^7.3.0",
-    "vue-styled-components": "^1.4.4",
     "vue-template-compiler": "^2.5.21",
     "webpack-node-externals": "^1.7.2"
   }

@@ -1,1 +1,0 @@
-{"version":3,"file":"account_circle.js","sourceRoot":"","sources":["../../../src/icon/icons/account_circle.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,gBAAgB,EAAE;QACjB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2TAA2T;SAC3T;KACD;CACD,CAAC,CAAA"}

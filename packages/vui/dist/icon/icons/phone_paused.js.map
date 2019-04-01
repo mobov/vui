@@ -1,1 +1,0 @@
-{"version":3,"file":"phone_paused.js","sourceRoot":"","sources":["../../../src/icon/icons/phone_paused.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,cAAc,EAAE;QACf,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gdAAgd;SAChd;KACD;CACD,CAAC,CAAA"}

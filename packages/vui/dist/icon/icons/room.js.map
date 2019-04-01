@@ -1,1 +1,0 @@
-{"version":3,"file":"room.js","sourceRoot":"","sources":["../../../src/icon/icons/room.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,MAAM,EAAE;QACP,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2PAA2P;SAC3P;KACD;CACD,CAAC,CAAA"}

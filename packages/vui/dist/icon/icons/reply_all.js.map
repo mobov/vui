@@ -1,1 +1,0 @@
-{"version":3,"file":"reply_all.js","sourceRoot":"","sources":["../../../src/icon/icons/reply_all.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,WAAW,EAAE;QACZ,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,wLAAwL;SACxL;KACD;CACD,CAAC,CAAA"}

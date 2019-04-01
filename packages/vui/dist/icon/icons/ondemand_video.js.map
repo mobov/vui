@@ -1,1 +1,0 @@
-{"version":3,"file":"ondemand_video.js","sourceRoot":"","sources":["../../../src/icon/icons/ondemand_video.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,gBAAgB,EAAE;QACjB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,wPAAwP;SACxP;KACD;CACD,CAAC,CAAA"}

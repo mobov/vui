@@ -1,1 +1,0 @@
-{"version":3,"file":"rotate_right.js","sourceRoot":"","sources":["../../../src/icon/icons/rotate_right.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,cAAc,EAAE;QACf,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,8dAA8d;SAC9d;KACD;CACD,CAAC,CAAA"}

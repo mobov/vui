@@ -1,1 +1,0 @@
-{"version":3,"file":"favorite_border.js","sourceRoot":"","sources":["../../../src/icon/icons/favorite_border.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,iBAAiB,EAAE;QAClB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,qdAAqd;SACrd;KACD;CACD,CAAC,CAAA"}

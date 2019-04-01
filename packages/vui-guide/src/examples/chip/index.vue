@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import Megmore, { MChip } from '@megmore/vui'
+import Megmore, { MChip } from '@mobov/vui'
 
 const { COLOR, BREAKPOINT } = Megmore.constant
 

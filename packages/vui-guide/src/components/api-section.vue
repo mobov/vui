@@ -42,7 +42,7 @@ export default {
     docData () {
       // console.log(this.apiPath)
       // return ''
-      //  return require(`@megmore/vui/${this.apiPath}`).default
+      //  return require(`@mobov/vui/${this.apiPath}`).default
     }
   }
 }

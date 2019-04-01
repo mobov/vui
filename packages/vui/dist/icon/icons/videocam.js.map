@@ -1,1 +1,0 @@
-{"version":3,"file":"videocam.js","sourceRoot":"","sources":["../../../src/icon/icons/videocam.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,UAAU,EAAE;QACX,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2MAA2M;SAC3M;KACD;CACD,CAAC,CAAA"}

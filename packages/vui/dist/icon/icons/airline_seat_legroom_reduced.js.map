@@ -1,1 +1,0 @@
-{"version":3,"file":"airline_seat_legroom_reduced.js","sourceRoot":"","sources":["../../../src/icon/icons/airline_seat_legroom_reduced.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,8BAA8B,EAAE;QAC/B,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,gSAAgS;SAChS;KACD;CACD,CAAC,CAAA"}

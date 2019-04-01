@@ -1,1 +1,0 @@
-{"version":3,"file":"format_align_right.js","sourceRoot":"","sources":["../../../src/icon/icons/format_align_right.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,oBAAoB,EAAE;QACrB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,0IAA0I;SAC1I;KACD;CACD,CAAC,CAAA"}

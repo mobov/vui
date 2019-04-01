@@ -6,7 +6,7 @@ import './registerServiceWorker'
 import Megmore, {
   MApp, MView, MIcon, MButton, MFlexFiller, MFlex, MList,
   MCheckbox, MRadio, MAppBar, MRow, MCol, MRipple, MAvatar
-} from '@megmore/vui'
+} from '@mobov/vui'
 
 Vue.use(Megmore, {
   components: {

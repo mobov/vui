@@ -1,1 +1,0 @@
-{"version":3,"file":"pets.js","sourceRoot":"","sources":["../../../src/icon/icons/pets.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,MAAM,EAAE;QACP,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,68BAA68B;SAC78B;KACD;CACD,CAAC,CAAA"}

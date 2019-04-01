@@ -25,7 +25,7 @@
 
 <script>
 import ExampleBox from '@/components/example-box.vue'
-import Megmore, { MRow, MCol } from '@megmore/vui'
+import Megmore, { MRow, MCol } from '@mobov/vui'
 
 export default {
   name: 'ExampleLayout',

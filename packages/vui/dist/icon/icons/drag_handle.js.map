@@ -1,1 +1,0 @@
-{"version":3,"file":"drag_handle.js","sourceRoot":"","sources":["../../../src/icon/icons/drag_handle.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,aAAa,EAAE;QACd,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,8EAA8E;SAC9E;KACD;CACD,CAAC,CAAA"}

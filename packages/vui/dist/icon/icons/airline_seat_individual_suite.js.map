@@ -1,1 +1,0 @@
-{"version":3,"file":"airline_seat_individual_suite.js","sourceRoot":"","sources":["../../../src/icon/icons/airline_seat_individual_suite.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,+BAA+B,EAAE;QAChC,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,wKAAwK;SACxK;KACD;CACD,CAAC,CAAA"}

@@ -9,7 +9,7 @@
       "scripthost"
     ],
     "strict": true,
-    "jsx": "preserve",
+//    "jsx": "preserve",
 //    "jsxFactory": "h",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -22,8 +22,8 @@
       "webpack-env"
     ],
     "paths": {
-      "@megmore/vui": ["./vui/src"],
-      "@megmore/vui/*": ["./vui/src/*"]
+      "@mobov/vui": ["./vui/src"],
+      "@mobov/vui/*": ["./vui/src/*"]
     }
   }
 }

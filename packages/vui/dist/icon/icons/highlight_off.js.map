@@ -1,1 +1,0 @@
-{"version":3,"file":"highlight_off.js","sourceRoot":"","sources":["../../../src/icon/icons/highlight_off.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,eAAe,EAAE;QAChB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,2XAA2X;SAC3X;KACD;CACD,CAAC,CAAA"}

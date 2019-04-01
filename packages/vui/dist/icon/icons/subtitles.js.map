@@ -1,1 +1,0 @@
-{"version":3,"file":"subtitles.js","sourceRoot":"","sources":["../../../src/icon/icons/subtitles.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,WAAW,EAAE;QACZ,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,kUAAkU;SAClU;KACD;CACD,CAAC,CAAA"}

@@ -1,5 +1,5 @@
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-// import { getStyle } from '@megmore/es-helper'
+// import { getStyle } from '@mobov/es-helper'
 import MButton from '../../button'
 import MIcon from '../../icon'
 import { dateTimeValueType } from '../constant'

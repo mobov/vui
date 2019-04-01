@@ -1,1 +1,0 @@
-{"version":3,"file":"notifications_off.js","sourceRoot":"","sources":["../../../src/icon/icons/notifications_off.ts"],"names":[],"mappings":"AAAA,oBAAoB;AACpB,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAA;AAElC,QAAQ,CAAC;IACR,mBAAmB,EAAE;QACpB,QAAQ,EAAE,IAAI;QACd,OAAO,EAAE,IAAI;QACb,SAAS,EAAE,WAAW;QACtB,OAAO,EAAE;YACR,4cAA4c;SAC5c;KACD;CACD,CAAC,CAAA"}

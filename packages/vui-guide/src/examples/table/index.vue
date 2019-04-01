@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Megmore, { MTable, MTableCol } from '@megmore/vui'
+import Megmore, { MTable, MTableCol } from '@mobov/vui'
 import ExampleBox from '@/components/example-box'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
