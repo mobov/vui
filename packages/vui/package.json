@@ -6,13 +6,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "cross-env rollup --config build/rollup.config.js"
+    "build": "rollup --config build/rollup.config.js"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "types": "types/index.d.ts",
   "peerDependencies": {
-    "@mobov/es-helper": "^1.0.4",
+    "@mobov/es-helper": "^1.0.6",
     "@mobov/scss-helper": "^0.0.5",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",

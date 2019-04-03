@@ -8,7 +8,6 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import packages from '../package.json'
 
-const buildType = process.env.MODULE
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 // const externals = ['@mobov/es-helper', '@mobov/scss-helper', 'vue']
 const external = Object.keys(packages.dependencies)
@@ -20,7 +19,7 @@ const baseConfig = {
     name,
   },
   plugins: [
-    postcss({ extensions: ['.scss'], extract: `lib/style.css`  }),
+    postcss({ extensions: ['.scss'], extract: `lib/style.css` }),
     typescript({
       importHelpers: true,
       // objectHashIgnoreUnknownHack: true,
@@ -77,17 +76,15 @@ const baseConfig = {
 
 export default [
   merge(baseConfig, {
-    output: {
+    output: [{
       file: `lib/index.es.js`,
-      format: 'es'
-    },
-    external
-  }),
-  merge(baseConfig, {
-    output: {
+      format: 'es',
+      exports: 'named'
+    },{
       file: `lib/index.cjs.js`,
-      format: 'cjs'
-    },
+      format: 'cjs',
+      exports: 'named'
+    }],
     external
   })
 ]
