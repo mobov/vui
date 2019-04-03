@@ -1,14 +1,14 @@
 /**
  * day and night mode
  */
-:root {
+html {
     --m-day-font-color: var(--m-color-grey-A700);
     --m-day-bg-color: var(--m-color-grey-A100);
     --m-day-border-color: var(--m-color-grey-300);
     --m-day-bg-second-color: var(--m-color-grey-200);
 }
 
-:root {
+html {
     --m-font-color: var(--m-day-font-color);
     --m-bg-color: var(--m-day-bg-color);
     --m-border-color: var(--m-day-border-color);

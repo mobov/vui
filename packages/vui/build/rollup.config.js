@@ -1,63 +1,93 @@
+import { merge }  from 'lodash'
 import commonjs from 'rollup-plugin-commonjs'
 // import vue from 'rollup-plugin-vue'
-import sass from 'rollup-plugin-sass'
+// import sass from 'rollup-plugin-sass'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
+import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import packages from '../package.json'
 
 const buildType = process.env.MODULE
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+// const externals = ['@mobov/es-helper', '@mobov/scss-helper', 'vue']
+const external = Object.keys(packages.dependencies)
+const name = 'MobovUI'
 
-const rollupConfig = {
+const baseConfig = {
   input: 'src/index.ts',
   output: {
-    file: `lib/index.${buildType}.js`,
-    format: buildType,
-    name: 'MobovUI',
+    name,
   },
   plugins: [
-    sass(),
+    postcss({ extensions: ['.scss'], extract: `lib/style.css`  }),
     typescript({
+      importHelpers: true,
       // objectHashIgnoreUnknownHack: true,
       // rollupCommonJSResolveHack: true,
       // tsconfig: 'tsconfig.json',
       clean: true,
-      rootDir: "./src",
-      declarationDir:  "./types/",
+      rootDir: './src',
+      declarationDir:  './types/',
       useTsconfigDeclarationDir: true,
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions
     }),
     babel({
       runtimeHelpers: true,
       babelrc: false,
       presets: [
-        '@vue/app',
         '@babel/preset-env',
-        // ['@babel/preset-env', {
-        //     modules: 'cjs'
+        // ['@vue/babel-preset-jsx', {
+        //     'injectH': false
         //   }
         // ],
-        ['@vue/babel-preset-jsx', {
-            'injectH': false
-          }
-        ]
+        '@vue/babel-preset-jsx',
+        '@babel/preset-typescript',
+        // 'stage-2',
+        // 'es2015-rollup',
       ],
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      // 'plugins': [
+      //   [
+      //     '@babel/plugin-transform-runtime',
+      //     {
+      //       'absoluteRuntime': false,
+      //       'corejs': false,
+      //       'helpers': true,
+      //       'regenerator': true,
+      //       'useESModules': false
+      //     }
+      //   ]
+      // ],
+      // exclude: 'node_modules/@babel/runtime/**',
+      extensions,
+      exclude: 'node_modules/**'
     }),
     resolve({
-      // jsnext: true,
-      // main: true,
+      jsnext: true,
+      main: true,
       browser: true,
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      extensions
     }),
     commonjs({
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      exclude: /node_modules/,
+      extensions
     }),
   ]
 }
 
-if (buildType !== 'umd') {
-  rollupConfig.external = Object.keys(packages.peerDependencies)
-}
-
-export default rollupConfig
+export default [
+  merge(baseConfig, {
+    output: {
+      file: `lib/index.es.js`,
+      format: 'es'
+    },
+    external
+  }),
+  merge(baseConfig, {
+    output: {
+      file: `lib/index.cjs.js`,
+      format: 'cjs'
+    },
+    external
+  })
+]

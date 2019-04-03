@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
+// import '@mobov/vui/lib/MobovUI.css'
 import Mobov, {
   MApp, MView, MIcon, MButton, MFlexFiller, MFlex, MList,
   MCheckbox, MRadio, MAppBar, MRow, MCol, MRipple, MAvatar

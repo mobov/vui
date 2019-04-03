@@ -11,7 +11,7 @@ $--Spaces: (
     xl: 2.5rem
 );
 
-:root {
+html {
     --m-space-xs: #{map_get($--Spaces, xs)};
     --m-space-sm: #{map_get($--Spaces, sm)};
     --m-space-md: #{map_get($--Spaces, md)};

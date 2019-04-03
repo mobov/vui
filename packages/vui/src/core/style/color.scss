@@ -2,7 +2,7 @@
 /**
  * variables register.
  */
-:root {
+html {
     // color
     @each $main, $colors in $--Palettes {
         @each $key, $color in $colors {
