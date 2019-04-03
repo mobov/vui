@@ -14,7 +14,7 @@
     "vui:gen:icons": "lerna run gen:icons --scope @mobov/vui --stream"
   },
   "devDependencies": {
-    "lerna": "^3.10.6"
+    "lerna": "^3.13.1"
   },
   "workspaces": [
     "packages/*"
