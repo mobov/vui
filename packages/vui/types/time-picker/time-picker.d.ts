@@ -1,12 +1,12 @@
 import colorable from '../core/mixin/colorable';
 import elevated from '../core/mixin/elevated';
-import { dateValueFormat, datePickerType } from './constant';
+import { datePickerType } from '../core/constant';
 declare const MTimePicker_base: import("vue-class-component/lib/declarations").VueClass<colorable & elevated>;
 export default class MTimePicker extends MTimePicker_base {
     landscope: boolean;
     desync: boolean;
     value: any;
-    valueFormat: dateValueFormat;
+    private valueFormat;
     ampm: boolean;
     hourStep: number;
     minuteStep: number;
@@ -18,6 +18,7 @@ export default class MTimePicker extends MTimePicker_base {
     onConfirm(): void;
     onCancel(): void;
     onInput(val: any): void;
+    readonly styles: {};
     valueAdaptI(val: any): number;
     valueAdaptO(val: number): any;
     onValueUpdate(val: any, oldVal: any): void;

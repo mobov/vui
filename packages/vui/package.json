@@ -6,12 +6,22 @@
     "access": "public"
   },
   "scripts": {
-    "build": "node scripts/build",
-    "build:lib": "cross-env MODULE=cjs rollup --config build/rollup.config.js"
+    "build": "yarn build:cjs && yarn build:umd",
+    "build:es": "cross-env MODULE=es rollup --config build/rollup.config.js",
+    "build:cjs": "cross-env MODULE=cjs rollup --config build/rollup.config.js",
+    "build:umd": "cross-env MODULE=umd rollup --config build/rollup.config.js"
   },
-  "main": "src/index.ts",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.es.js",
+  "types": "types/index.d.ts",
   "peerDependencies": {
+    "@mobov/es-helper": "^1.0.4",
+    "@mobov/scss-helper": "^0.0.5",
+    "vue": "^2.5.21",
+    "vue-class-component": "^6.3.2",
+    "vue-property-decorator": "^7.3.0"
+  },
+  "dependencies": {
     "@mobov/es-helper": "^1.0.4",
     "@mobov/scss-helper": "^0.0.5",
     "vue": "^2.5.21",

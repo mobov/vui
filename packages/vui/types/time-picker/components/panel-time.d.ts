@@ -1,8 +1,7 @@
 import { Vue } from 'vue-property-decorator';
-import { dateTimeValueType } from '../constant';
-import { color } from '../../core/constant';
+import { color, dateTimeValueType } from '../../core/constant';
 export default class MTimePickerPanelTime extends Vue {
-    type: color;
+    color: color;
     hourStep: number;
     minuteStep: number;
     DateStore: any;

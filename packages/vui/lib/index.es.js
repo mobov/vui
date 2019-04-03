@@ -1,9 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var vuePropertyDecorator = require('vue-property-decorator');
-var esHelper = require('@mobov/es-helper');
+import { Vue, Component, Prop, Mixins, Emit, Watch, Inject, Provide } from 'vue-property-decorator';
+import { isStyleUnit, deepCopy } from '@mobov/es-helper';
 
 var _objectDp = /*#__PURE__*/Object.freeze({
 
@@ -1876,9 +1872,9 @@ function (_Vue) {
   }]);
 
   return MApp;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-MApp = __decorate([vuePropertyDecorator.Component], MApp);
+MApp = __decorate([Component], MApp);
 var MApp$1 = MApp;
 
 /* istanbul ignore next */
@@ -2661,7 +2657,7 @@ var constant = /*#__PURE__*/Object.freeze({
  */
 
 function getStyleSize(value) {
-  return typeof value !== 'number' && esHelper.isStyleUnit(value) ? value : "".concat(value, "px");
+  return typeof value !== 'number' && isStyleUnit(value) ? value : "".concat(value, "px");
 }
 /**
  * 获取计算颜色样式值
@@ -2970,51 +2966,51 @@ function (_Vue) {
   }]);
 
   return MView;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Fill.both
 }), __metadata("design:type", String)], MView.prototype, "fillHeader", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Fill.both
 }), __metadata("design:type", String)], MView.prototype, "fillFooter", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "rightSize", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
 
-MView = __decorate([vuePropertyDecorator.Component], MView);
+MView = __decorate([Component], MView);
 var MView$1 = MView;
 
 /* istanbul ignore next */
@@ -3196,22 +3192,22 @@ function (_Vue) {
   }]);
 
   return MIcon;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MIcon.prototype, "name", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number],
   default: Size.sm
 }), __metadata("design:type", Object)], MIcon.prototype, "size", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MIcon.prototype, "color", void 0);
 
-MIcon = __decorate([vuePropertyDecorator.Component({
+MIcon = __decorate([Component({
   functional: true
 })], MIcon);
 var MIcon$1 = MIcon;
@@ -3252,18 +3248,18 @@ function (_Vue) {
   }]);
 
   return MContainer;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MContainer.prototype, "id", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'div'
 }), __metadata("design:type", String)], MContainer.prototype, "tag", void 0);
 
-MContainer = __decorate([vuePropertyDecorator.Component({
+MContainer = __decorate([Component({
   functional: true
 })], MContainer);
 var MContainer$1 = MContainer;
@@ -3304,26 +3300,26 @@ function (_Vue) {
   }]);
 
   return MRow;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MRow.prototype, "id", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'div'
 }), __metadata("design:type", String)], MRow.prototype, "tag", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MRow.prototype, "gutter", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MRow.prototype, "cols", void 0);
 
-MRow = __decorate([vuePropertyDecorator.Component({
+MRow = __decorate([Component({
   functional: true
 })], MRow);
 var MRow$1 = MRow;
@@ -3367,38 +3363,38 @@ function (_Vue) {
   }]);
 
   return MCol;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MCol.prototype, "id", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'div'
 }), __metadata("design:type", String)], MCol.prototype, "tag", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "xs", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "sm", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "md", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "lg", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "xl", void 0);
 
-MCol = __decorate([vuePropertyDecorator.Component({
+MCol = __decorate([Component({
   functional: true
 })], MCol);
 var MCol$1 = MCol;
@@ -3439,38 +3435,38 @@ function (_Vue) {
   }]);
 
   return MFlex;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MFlex.prototype, "id", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'div'
 }), __metadata("design:type", String)], MFlex.prototype, "tag", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: false
 }), __metadata("design:type", Boolean)], MFlex.prototype, "inline", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: FlexWrap.normal
 }), __metadata("design:type", String)], MFlex.prototype, "wrap", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: FlexJustify.start
 }), __metadata("design:type", String)], MFlex.prototype, "justify", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: FlexAlign.stretch
 }), __metadata("design:type", String)], MFlex.prototype, "align", void 0);
 
-MFlex = __decorate([vuePropertyDecorator.Component({
+MFlex = __decorate([Component({
   functional: true
 })], MFlex);
 var MFlex$1 = MFlex;
@@ -3499,9 +3495,9 @@ function (_Vue) {
   }]);
 
   return MFlexFiller;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-MFlexFiller = __decorate([vuePropertyDecorator.Component({
+MFlexFiller = __decorate([Component({
   functional: true
 })], MFlexFiller);
 var MFlexFiller$1 = MFlexFiller;
@@ -3538,17 +3534,17 @@ function (_Vue) {
   }
 
   return colorable;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", Object)], colorable.prototype, "fontColor", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", Object)], colorable.prototype, "color", void 0);
 
-colorable = __decorate([vuePropertyDecorator.Component], colorable);
+colorable = __decorate([Component], colorable);
 var colorable$1 = colorable;
 
 var sizeable =
@@ -3563,13 +3559,13 @@ function (_Vue) {
   }
 
   return sizeable;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", Object)], sizeable.prototype, "size", void 0);
 
-sizeable = __decorate([vuePropertyDecorator.Component], sizeable);
+sizeable = __decorate([Component], sizeable);
 var sizeable$1 = sizeable;
 
 var elevated =
@@ -3584,16 +3580,16 @@ function (_Vue) {
   }
 
   return elevated;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   validator: function validator(value) {
     return ELEVATION.includes(value);
   }
 }), __metadata("design:type", Object)], elevated.prototype, "elevation", void 0);
 
-elevated = __decorate([vuePropertyDecorator.Component], elevated);
+elevated = __decorate([Component], elevated);
 var elevated$1 = elevated;
 
 var variable =
@@ -3608,16 +3604,16 @@ function (_Vue) {
   }
 
   return variable;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   validator: function validator(value) {
     return VARIETY.includes(value);
   }
 }), __metadata("design:type", Object)], variable.prototype, "variety", void 0);
 
-variable = __decorate([vuePropertyDecorator.Component], variable);
+variable = __decorate([Component], variable);
 var variable$1 = variable;
 
 var compName$7 = 'm-app-bar';
@@ -3671,9 +3667,9 @@ function (_Mixins) {
   }]);
 
   return MAppBar;
-}(vuePropertyDecorator.Mixins(colorable$1, elevated$1, sizeable$1, variable$1));
+}(Mixins(colorable$1, elevated$1, sizeable$1, variable$1));
 
-MAppBar = __decorate([vuePropertyDecorator.Component], MAppBar);
+MAppBar = __decorate([Component], MAppBar);
 var MAppBar$1 = MAppBar;
 
 MAppBar$1.install = function (Vue) {
@@ -3692,16 +3688,16 @@ function (_Vue) {
   }
 
   return shapeable;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   validator: function validator(value) {
     return SHAPE.includes(value);
   }
 }), __metadata("design:type", Object)], shapeable.prototype, "shape", void 0);
 
-shapeable = __decorate([vuePropertyDecorator.Component], shapeable);
+shapeable = __decorate([Component], shapeable);
 var shapeable$1 = shapeable;
 
 var compName$8 = 'm-button';
@@ -3780,27 +3776,27 @@ function (_Mixins) {
   }]);
 
   return MButton;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], MButton.prototype, "block", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MButton.prototype, "icon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], MButton.prototype, "loading", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], MButton.prototype, "disabled", void 0);
 
-__decorate([vuePropertyDecorator.Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MButton.prototype, "onClick", null);
+__decorate([Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MButton.prototype, "onClick", null);
 
-MButton = __decorate([vuePropertyDecorator.Component({
+MButton = __decorate([Component({
   components: {
     MIcon: MIcon$1
   }
@@ -3901,17 +3897,17 @@ function (_Mixins) {
   }]);
 
   return MAvatar;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MAvatar.prototype, "src", void 0);
 
-__decorate([vuePropertyDecorator.Watch('src', {
+__decorate([Watch('src', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [String]), __metadata("design:returntype", void 0)], MAvatar.prototype, "updateSrc", null);
 
-MAvatar = __decorate([vuePropertyDecorator.Component], MAvatar);
+MAvatar = __decorate([Component], MAvatar);
 var MAvatar$1 = MAvatar;
 
 MAvatar$1.install = function (Vue) {
@@ -4042,36 +4038,36 @@ function (_Mixins) {
   }]);
 
   return MRadio;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1));
+}(Mixins(colorable$1, sizeable$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Boolean, Number, String],
   default: false
 }), __metadata("design:type", Object)], MRadio.prototype, "value", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Boolean, Number, String],
   default: true
 }), __metadata("design:type", Object)], MRadio.prototype, "label", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'radio_button_checked'
 }), __metadata("design:type", String)], MRadio.prototype, "checkedIcon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'radio_button_unchecked'
 }), __metadata("design:type", String)], MRadio.prototype, "uncheckIcon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MRadio.prototype, "disabled", void 0);
 
-__decorate([vuePropertyDecorator.Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MRadio.prototype, "onInput", null);
+__decorate([Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MRadio.prototype, "onInput", null);
 
-MRadio = __decorate([vuePropertyDecorator.Component({
+MRadio = __decorate([Component({
   components: {
     MIcon: MIcon$1
   }
@@ -4305,40 +4301,40 @@ function (_Mixins) {
   }]);
 
   return MCheckbox;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1));
+}(Mixins(colorable$1, sizeable$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Array, Number, String, Boolean],
   default: false
 }), __metadata("design:type", Object)], MCheckbox.prototype, "value", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Array, Number, String, Boolean],
   default: true
 }), __metadata("design:type", Object)], MCheckbox.prototype, "label", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'check_box'
 }), __metadata("design:type", String)], MCheckbox.prototype, "checkedIcon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'check_box_outline_blank'
 }), __metadata("design:type", String)], MCheckbox.prototype, "uncheckIcon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'indeterminate_check_box'
 }), __metadata("design:type", String)], MCheckbox.prototype, "incheckIcon", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], MCheckbox.prototype, "disabled", void 0);
 
-__decorate([vuePropertyDecorator.Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MCheckbox.prototype, "onInput", null);
+__decorate([Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MCheckbox.prototype, "onInput", null);
 
-MCheckbox = __decorate([vuePropertyDecorator.Component({
+MCheckbox = __decorate([Component({
   components: {
     MIcon: MIcon$1
   }
@@ -4469,23 +4465,23 @@ function (_Mixins) {
   }]);
 
   return MChip;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MChip.prototype, "closeable", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MChip.prototype, "closeover", void 0);
 
-__decorate([vuePropertyDecorator.Emit('close'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MChip.prototype, "onClose", null);
+__decorate([Emit('close'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MChip.prototype, "onClose", null);
 
-__decorate([vuePropertyDecorator.Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MChip.prototype, "onClick", null);
+__decorate([Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MChip.prototype, "onClick", null);
 
-MChip = __decorate([vuePropertyDecorator.Component({
+MChip = __decorate([Component({
   components: {
     MAvatar: MAvatar$1,
     MIcon: MIcon$1
@@ -4720,11 +4716,11 @@ function (_Vue) {
   }]);
 
   return MTimePickerHeader;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], MTimePickerHeader.prototype, "DateStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerHeader.prototype, "DateStore", void 0);
 
-MTimePickerHeader = __decorate([vuePropertyDecorator.Component], MTimePickerHeader);
+MTimePickerHeader = __decorate([Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
 var compName$e = 'm-time-picker-panel-date';
@@ -4943,26 +4939,26 @@ function (_Vue) {
   }]);
 
   return MTimePickerPanelDate;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "min", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number
 }), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "max", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 0
 }), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "firstDayOfWeek", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], MTimePickerPanelDate.prototype, "DateStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelDate.prototype, "DateStore", void 0);
 
-__decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, Number, Number]), __metadata("design:returntype", void 0)], MTimePickerPanelDate.prototype, "handleDateClick", null);
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, Number, Number]), __metadata("design:returntype", void 0)], MTimePickerPanelDate.prototype, "handleDateClick", null);
 
-MTimePickerPanelDate = __decorate([vuePropertyDecorator.Component({
+MTimePickerPanelDate = __decorate([Component({
   components: {
     MButton: MButton$1,
     MIcon: MIcon$1
@@ -5035,23 +5031,23 @@ function (_Vue) {
   }]);
 
   return MTimePickerPanelYear;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 2100
 }), __metadata("design:type", Number)], MTimePickerPanelYear.prototype, "max", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 1900
 }), __metadata("design:type", Number)], MTimePickerPanelYear.prototype, "min", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], MTimePickerPanelYear.prototype, "DateStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelYear.prototype, "DateStore", void 0);
 
-__decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelYear.prototype, "onClick", null);
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelYear.prototype, "onClick", null);
 
-MTimePickerPanelYear = __decorate([vuePropertyDecorator.Component], MTimePickerPanelYear);
+MTimePickerPanelYear = __decorate([Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
 var compName$g = 'm-time-picker-panel-month';
@@ -5118,17 +5114,17 @@ function (_Vue) {
   }]);
 
   return MTimePickerPanelMonth;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Array
 }), __metadata("design:type", Number)], MTimePickerPanelMonth.prototype, "disabledValue", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], MTimePickerPanelMonth.prototype, "DateStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelMonth.prototype, "DateStore", void 0);
 
-__decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelMonth.prototype, "handleClick", null);
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelMonth.prototype, "handleClick", null);
 
-MTimePickerPanelMonth = __decorate([vuePropertyDecorator.Component({
+MTimePickerPanelMonth = __decorate([Component({
   components: {
     MButton: MButton$1
   }
@@ -5216,28 +5212,28 @@ function (_Vue) {
   }]);
 
   return MTimePickerPanelTime;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Color.primary
 }), __metadata("design:type", String)], MTimePickerPanelTime.prototype, "color", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 1
 }), __metadata("design:type", Number)], MTimePickerPanelTime.prototype, "hourStep", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 1
 }), __metadata("design:type", Number)], MTimePickerPanelTime.prototype, "minuteStep", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], MTimePickerPanelTime.prototype, "DateStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelTime.prototype, "DateStore", void 0);
 
-__decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, String]), __metadata("design:returntype", void 0)], MTimePickerPanelTime.prototype, "onClick", null);
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, String]), __metadata("design:returntype", void 0)], MTimePickerPanelTime.prototype, "onClick", null);
 
-MTimePickerPanelTime = __decorate([vuePropertyDecorator.Component({
+MTimePickerPanelTime = __decorate([Component({
   components: {
     MButton: MButton$1,
     MIcon: MIcon$1
@@ -5300,18 +5296,18 @@ function (_Vue) {
   }]);
 
   return MTimePickerHandler;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Color.primary
 }), __metadata("design:type", String)], MTimePickerHandler.prototype, "color", void 0);
 
-__decorate([vuePropertyDecorator.Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onConfirm", null);
+__decorate([Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onConfirm", null);
 
-__decorate([vuePropertyDecorator.Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onCancel", null);
+__decorate([Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onCancel", null);
 
-MTimePickerHandler = __decorate([vuePropertyDecorator.Component({
+MTimePickerHandler = __decorate([Component({
   components: {
     MButton: MButton$1
   }
@@ -5634,89 +5630,89 @@ function (_Mixins) {
   }]);
 
   return MTimePicker;
-}(vuePropertyDecorator.Mixins(colorable$1, elevated$1));
+}(Mixins(colorable$1, elevated$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTimePicker.prototype, "landscope", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTimePicker.prototype, "desync", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Date, Number, String],
   default: new Date().getTime()
 }), __metadata("design:type", Object)], MTimePicker.prototype, "value", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: DateValueFormat.timestamp
 }), __metadata("design:type", String)], MTimePicker.prototype, "valueFormat", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTimePicker.prototype, "ampm", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 1
 }), __metadata("design:type", Number)], MTimePicker.prototype, "hourStep", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 1
 }), __metadata("design:type", Number)], MTimePicker.prototype, "minuteStep", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Date, Number, String],
   default: 2100
 }), __metadata("design:type", Object)], MTimePicker.prototype, "max", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Date, Number, String],
   default: 1900
 }), __metadata("design:type", Object)], MTimePicker.prototype, "min", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Number,
   default: 0
 }), __metadata("design:type", Number)], MTimePicker.prototype, "firstDayOfWeek", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: DatePickerType.date
 }), __metadata("design:type", String)], MTimePicker.prototype, "pickerType", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTimePicker.prototype, "confirmation", void 0);
 
-__decorate([vuePropertyDecorator.Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onConfirm", null);
+__decorate([Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onConfirm", null);
 
-__decorate([vuePropertyDecorator.Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onCancel", null);
+__decorate([Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onCancel", null);
 
-__decorate([vuePropertyDecorator.Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onInput", null);
+__decorate([Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onInput", null);
 
-__decorate([vuePropertyDecorator.Watch('value', {
+__decorate([Watch('value', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onValueUpdate", null);
 
-__decorate([vuePropertyDecorator.Watch('ampm', {
+__decorate([Watch('ampm', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onAMPMUpdate", null);
 
-__decorate([vuePropertyDecorator.Watch('pickerType', {
+__decorate([Watch('pickerType', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onPickerTypeChange", null);
 
-__decorate([vuePropertyDecorator.Provide(), __metadata("design:type", Object)], MTimePicker.prototype, "DateStore", void 0);
+__decorate([Provide(), __metadata("design:type", Object)], MTimePicker.prototype, "DateStore", void 0);
 
-MTimePicker = __decorate([vuePropertyDecorator.Component({
+MTimePicker = __decorate([Component({
   components: {
     MTimePickerHeader: MTimePickerHeader$1,
     MTimePickerPanelDate: MTimePickerPanelDate$1,
@@ -5780,19 +5776,19 @@ function (_Vue) {
   }]);
 
   return MList;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MList.prototype, "size", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MList.prototype, "mode", void 0);
 
-__decorate([vuePropertyDecorator.Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MList.prototype, "onClick", null);
+__decorate([Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MList.prototype, "onClick", null);
 
-MList = __decorate([vuePropertyDecorator.Component], MList);
+MList = __decorate([Component], MList);
 var MList$1 = MList;
 
 /* istanbul ignore next */
@@ -5982,30 +5978,30 @@ function (_Vue) {
   }]);
 
   return TableHead;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableHead.prototype, "size", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableHead.prototype, "select", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], TableHead.prototype, "sortable", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Function
 }), __metadata("design:type", Function)], TableHead.prototype, "sort", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], TableHead.prototype, "TableCols", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], TableHead.prototype, "TableCols", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], TableHead.prototype, "TableStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], TableHead.prototype, "TableStore", void 0);
 
-TableHead = __decorate([vuePropertyDecorator.Component({
+TableHead = __decorate([Component({
   components: {
     MCheckbox: MCheckbox$1,
     MIcon: MIcon$1
@@ -6125,9 +6121,9 @@ function (_Vue) {
   }]);
 
   return MTransitionExpansion;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-MTransitionExpansion = __decorate([vuePropertyDecorator.Component({
+MTransitionExpansion = __decorate([Component({
   functional: true
 })], MTransitionExpansion);
 var MTransitionExpansion$1 = MTransitionExpansion;
@@ -6510,47 +6506,47 @@ function (_Vue) {
   }]);
 
   return TableBody;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableBody.prototype, "height", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], TableBody.prototype, "border", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], TableBody.prototype, "noHeader", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableBody.prototype, "size", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], TableBody.prototype, "rowSelect", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], TableBody.prototype, "rowExpand", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableBody.prototype, "select", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], TableBody.prototype, "expand", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Array)], TableBody.prototype, "TableCols", void 0);
+__decorate([Inject(), __metadata("design:type", Array)], TableBody.prototype, "TableCols", void 0);
 
-__decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], TableBody.prototype, "TableStore", void 0);
+__decorate([Inject(), __metadata("design:type", Object)], TableBody.prototype, "TableStore", void 0);
 
-__decorate([vuePropertyDecorator.Watch('noHeader'), __metadata("design:type", Function), __metadata("design:paramtypes", [String]), __metadata("design:returntype", void 0)], TableBody.prototype, "noHeaderToggle", null);
+__decorate([Watch('noHeader'), __metadata("design:type", Function), __metadata("design:paramtypes", [String]), __metadata("design:returntype", void 0)], TableBody.prototype, "noHeaderToggle", null);
 
-TableBody = __decorate([vuePropertyDecorator.Component({
+TableBody = __decorate([Component({
   components: {
     MCheckbox: MCheckbox$1,
     MRadio: MRadio$1,
@@ -6700,12 +6696,12 @@ function (_Mixins) {
   }, {
     key: "handleSelectedUpdate",
     value: function handleSelectedUpdate(val) {
-      this.TableStore.Selected = esHelper.deepCopy(val);
+      this.TableStore.Selected = deepCopy(val);
     }
   }, {
     key: "handleExpandedUpdate",
     value: function handleExpandedUpdate(val) {
-      this.TableStore.Expanded = esHelper.deepCopy(val);
+      this.TableStore.Expanded = deepCopy(val);
     }
   }, {
     key: "syncSelected",
@@ -6719,7 +6715,7 @@ function (_Mixins) {
     value: function dataAdaptI() {
       var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var keyField = this.keyField;
-      var temp = esHelper.deepCopy(val);
+      var temp = deepCopy(val);
 
       if (keyField === SELF_KEY) {
         temp.forEach(function (item, index) {
@@ -6799,30 +6795,30 @@ function (_Mixins) {
   }]);
 
   return MTable;
-}(vuePropertyDecorator.Mixins(sizeable$1, elevated$1));
+}(Mixins(sizeable$1, elevated$1));
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", Object)], MTable.prototype, "height", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTable.prototype, "border", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Array,
   default: function _default() {
     return [];
   }
 }), __metadata("design:type", Array)], MTable.prototype, "data", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: SELF_KEY
 }), __metadata("design:type", String)], MTable.prototype, "keyField", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: typeHeader.normal,
   validator: function validator(value) {
@@ -6830,7 +6826,7 @@ __decorate([vuePropertyDecorator.Prop({
   }
 }), __metadata("design:type", String)], MTable.prototype, "header", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: typeHover.none,
   validator: function validator(value) {
@@ -6838,12 +6834,12 @@ __decorate([vuePropertyDecorator.Prop({
   }
 }), __metadata("design:type", String)], MTable.prototype, "hover", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTable.prototype, "rowSelect", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: typeSelect.none,
   validator: function validator(value) {
@@ -6851,26 +6847,26 @@ __decorate([vuePropertyDecorator.Prop({
   }
 }), __metadata("design:type", String)], MTable.prototype, "select", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Array, String, Number],
   default: function _default() {
     return [];
   }
 }), __metadata("design:type", Object)], MTable.prototype, "selected", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Array,
   default: function _default() {
     return [];
   }
 }), __metadata("design:type", Object)], MTable.prototype, "noSelect", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTable.prototype, "rowExpand", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: typeSelect.none,
   validator: function validator(value) {
@@ -6878,58 +6874,58 @@ __decorate([vuePropertyDecorator.Prop({
   }
 }), __metadata("design:type", String)], MTable.prototype, "expand", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [Array, String, Number],
   default: function _default() {
     return [];
   }
 }), __metadata("design:type", Object)], MTable.prototype, "expanded", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Array,
   default: function _default() {
     return [];
   }
 }), __metadata("design:type", Object)], MTable.prototype, "noExpand", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Function
 }), __metadata("design:type", Function)], MTable.prototype, "filter", void 0);
 
-__decorate([vuePropertyDecorator.Emit('expand'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onExpand", null);
+__decorate([Emit('expand'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onExpand", null);
 
-__decorate([vuePropertyDecorator.Emit('expandAll'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onExpandAll", null);
+__decorate([Emit('expandAll'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onExpandAll", null);
 
-__decorate([vuePropertyDecorator.Emit('select'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onSelect", null);
+__decorate([Emit('select'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onSelect", null);
 
-__decorate([vuePropertyDecorator.Emit('selectAll'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onSelectAll", null);
+__decorate([Emit('selectAll'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onSelectAll", null);
 
-__decorate([vuePropertyDecorator.Emit('rowClick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onRowClick", null);
+__decorate([Emit('rowClick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onRowClick", null);
 
-__decorate([vuePropertyDecorator.Emit('rowDblclick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onRowDblclick", null);
+__decorate([Emit('rowDblclick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Number]), __metadata("design:returntype", void 0)], MTable.prototype, "onRowDblclick", null);
 
-__decorate([vuePropertyDecorator.Watch('data', {
+__decorate([Watch('data', {
   immediate: true,
   deep: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Array]), __metadata("design:returntype", void 0)], MTable.prototype, "handleDataUpdate", null);
 
-__decorate([vuePropertyDecorator.Watch('selected', {
+__decorate([Watch('selected', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "handleSelectedUpdate", null);
 
-__decorate([vuePropertyDecorator.Watch('expanded', {
+__decorate([Watch('expanded', {
   immediate: true
 }), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "handleExpandedUpdate", null);
 
-__decorate([vuePropertyDecorator.Emit('update:selected'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "syncSelected", null);
+__decorate([Emit('update:selected'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "syncSelected", null);
 
-__decorate([vuePropertyDecorator.Emit('update:expanded'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "syncExpanded", null);
+__decorate([Emit('update:expanded'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTable.prototype, "syncExpanded", null);
 
-__decorate([vuePropertyDecorator.Provide(), __metadata("design:type", Object)], MTable.prototype, "TableStore", void 0);
+__decorate([Provide(), __metadata("design:type", Object)], MTable.prototype, "TableStore", void 0);
 
-__decorate([vuePropertyDecorator.Provide(), __metadata("design:type", Array), __metadata("design:paramtypes", [])], MTable.prototype, "TableCols", null);
+__decorate([Provide(), __metadata("design:type", Array), __metadata("design:paramtypes", [])], MTable.prototype, "TableCols", null);
 
-MTable = __decorate([vuePropertyDecorator.Component({
+MTable = __decorate([Component({
   components: {
     TableHead: TableHead$1,
     TableBody: TableBody$1
@@ -6949,46 +6945,46 @@ function (_Vue) {
   }
 
   return MTableCol;
-}(vuePropertyDecorator.Vue);
+}(Vue);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: 'normal'
 }), __metadata("design:type", String)], MTableCol.prototype, "type", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MTableCol.prototype, "title", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: [String, Number],
   default: 'auto'
 }), __metadata("design:type", String)], MTableCol.prototype, "width", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String
 }), __metadata("design:type", String)], MTableCol.prototype, "field", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Align.center
 }), __metadata("design:type", String)], MTableCol.prototype, "align", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: String,
   default: Color.primary
 }), __metadata("design:type", String)], MTableCol.prototype, "color", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Function
 }), __metadata("design:type", Function)], MTableCol.prototype, "sort", void 0);
 
-__decorate([vuePropertyDecorator.Prop({
+__decorate([Prop({
   type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MTableCol.prototype, "sortable", void 0);
 
-MTableCol = __decorate([vuePropertyDecorator.Component], MTableCol);
+MTableCol = __decorate([Component], MTableCol);
 var MTableCol$1 = MTableCol;
 
 /* istanbul ignore next */
@@ -7463,23 +7459,5 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(Mobov);
 }
 
-exports.MApp = MApp$1;
-exports.MAppBar = MAppBar$1;
-exports.MAvatar = MAvatar$1;
-exports.MButton = MButton$1;
-exports.MCheckbox = MCheckbox$1;
-exports.MChip = MChip$1;
-exports.MCol = MCol$1;
-exports.MContainer = MContainer$1;
-exports.MFlex = MFlex$1;
-exports.MFlexFiller = MFlexFiller$1;
-exports.MIcon = MIcon$1;
-exports.MList = MList$1;
-exports.MRadio = MRadio$1;
-exports.MRipple = MRipple;
-exports.MRow = MRow$1;
-exports.MTable = MTable$1;
-exports.MTableCol = MTableCol$1;
-exports.MTimePicker = MTimePicker$1;
-exports.MView = MView$1;
-exports.default = Mobov;
+export default Mobov;
+export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRipple, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MView$1 as MView };

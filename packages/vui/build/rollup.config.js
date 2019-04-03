@@ -16,41 +16,45 @@ const rollupConfig = {
     name: 'MobovUI',
   },
   plugins: [
+    sass(),
     typescript({
-      objectHashIgnoreUnknownHack: true,
-      rollupCommonJSResolveHack: true,
-      tsconfig: 'tsconfig.json',
-      useTsconfigDeclarationDir: true
+      // objectHashIgnoreUnknownHack: true,
+      // rollupCommonJSResolveHack: true,
+      // tsconfig: 'tsconfig.json',
+      clean: true,
+      rootDir: "./src",
+      declarationDir:  "./types/",
+      useTsconfigDeclarationDir: true,
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     babel({
       runtimeHelpers: true,
+      babelrc: false,
       presets: [
-        [
-          '@vue/babel-preset-jsx',
-          {
+        '@vue/app',
+        '@babel/preset-env',
+        // ['@babel/preset-env', {
+        //     modules: 'cjs'
+        //   }
+        // ],
+        ['@vue/babel-preset-jsx', {
             'injectH': false
           }
         ]
       ],
-      extensions: ['.js', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     resolve({
       // jsnext: true,
       // main: true,
-      // browser: true,
-      extensions: ['.js', '.ts', '.tsx'],
+      browser: true,
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
     commonjs({
-      namedExports: {
-        'node_modules/vue-class-component/dist/vue-class-component.common.js': ['createDecorator'],
-      },
-      extensions: ['.js', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
-
-    sass()
   ]
 }
-console.log( Object.keys(packages.peerDependencies))
 
 if (buildType !== 'umd') {
   rollupConfig.external = Object.keys(packages.peerDependencies)

@@ -96,3 +96,32 @@ export declare enum Align {
 }
 export declare type align = 'left' | 'center' | 'right';
 export declare const ALIGN: string[];
+export declare enum DateValueFormat {
+    timestamp = "timestamp",
+    Date = "Date"
+}
+export declare type dateValueFormat = 'timestamp' | 'Date';
+export declare enum DatePickerType {
+    datetime = "datetime",
+    date = "date",
+    year = "year",
+    month = "month",
+    time = "time"
+}
+export declare type datePickerType = 'datetime' | 'date' | 'year' | 'month' | 'time';
+export declare enum DateValueType {
+    year = "year",
+    month = "month",
+    week = "week",
+    date = "date",
+    time = "time",
+    hours = "hours",
+    minutes = "minutes"
+}
+export declare type dateValueType = 'year' | 'month' | 'week' | 'date' | 'time' | 'hours' | 'minutes';
+export declare enum DateTimeValueType {
+    time = "time",
+    hours = "hours",
+    minutes = "minutes"
+}
+export declare type dateTimeValueType = 'time' | 'hours' | 'minutes';
