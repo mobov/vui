@@ -5,7 +5,7 @@ import MTransitionExpansion from './expansion'
 
 /* istanbul ignore next */
 MTransitionExpansion.install = (Vue) => {
-  Vue.component(MTransitionExpansion.name, MTransitionExpansion)
+  Vue.component('MTransitionExpansion', MTransitionExpansion)
 }
 
 export {

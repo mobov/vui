@@ -3,7 +3,7 @@ import MRadio from './radio'
 
 /* istanbul ignore next */
 MRadio.install = (Vue) => {
-  Vue.component(MRadio.name, MRadio)
+  Vue.component('MRadio', MRadio)
 }
 
 export default MRadio

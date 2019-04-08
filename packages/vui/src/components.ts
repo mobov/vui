@@ -13,6 +13,3 @@ export { default as MChip } from './chip'
 export { default as MTimePicker } from './time-picker'
 export { MList } from './list'
 export { MTable, MTableCol } from './table'
-
-// 指令和动画
-export { MRipple } from './animation'

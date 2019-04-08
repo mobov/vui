@@ -7,12 +7,14 @@ const path = require('path')
 
 const nodeExternals = require('webpack-node-externals')
 
+const output = '../lib'
+
 const config = {
   mode: 'production',
   entry: path.resolve(__dirname, '../src/index.ts'),
   output: {
-    path: path.resolve(__dirname, '../lib'),
-    filename: 'index.js',
+    path: path.resolve(__dirname, output),
+    filename: 'index.cjs.js',
     library: 'mobov',
     libraryTarget: 'commonjs2'
   },
@@ -45,19 +47,6 @@ const config = {
         test: /\.tsx?$/,
         loader: 'ts-loader'
       }
-      // {
-      //   test: /\.vue$/,
-      //   use: [
-      //     {
-      //       loader: 'vue-loader',
-      //       options: {
-      //         compilerOptions: {
-      //           preserveWhitespace: false
-      //         }
-      //       }
-      //     }
-      //   ]
-      // }
     ]
   },
   resolve: {
@@ -90,7 +79,7 @@ const config = {
   devtool: 'source-map'
 }
 
-rm(path.resolve(__dirname, '../lib'), err => {
+rm(path.resolve(__dirname, output), err => {
   if (err) throw err
   webpack(config, (err, stats) => {
     if (err) throw err

@@ -3,7 +3,7 @@ import MApp from './app'
 
 /* istanbul ignore next */
 MApp.install = (Vue) => {
-  Vue.component(MApp.name, MApp)
+  Vue.component('MApp', MApp)
 }
 
 export default MApp

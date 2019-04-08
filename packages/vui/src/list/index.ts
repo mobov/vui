@@ -3,7 +3,7 @@ import MList from './list'
 
 /* istanbul ignore next */
 MList.install = (Vue) => {
-  Vue.component(MList.name, MList)
+  Vue.component('MList', MList)
 }
 
 export {

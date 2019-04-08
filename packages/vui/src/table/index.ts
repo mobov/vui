@@ -4,10 +4,10 @@ import MTableCol from './table-col'
 
 /* istanbul ignore next */
 MTable.install = (Vue) => {
-    Vue.component(MTable.name, MTable)
+    Vue.component('MTable', MTable)
 }
 MTableCol.install = (Vue) => {
-    Vue.component(MTableCol.name, MTableCol)
+    Vue.component('MTableCol', MTableCol)
 }
 
 export {

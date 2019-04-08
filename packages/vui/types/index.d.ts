@@ -13,6 +13,7 @@ export declare type ComponentOrPack = Component & {
 };
 export interface MobovUseOptions {
     components?: Record<string, ComponentOrPack>;
+    directives?: Record<string, ComponentOrPack>;
 }
 export interface MobovPlugin {
     install: PluginFunction<MobovUseOptions>;
@@ -21,4 +22,4 @@ export interface MobovPlugin {
 }
 declare const Mobov: MobovPlugin;
 export default Mobov;
-export * from './entries';
+export * from './components';

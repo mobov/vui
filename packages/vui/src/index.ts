@@ -6,7 +6,8 @@ import './core/style/theme.scss'
 import './core/style/mode.scss'
 import './core/style/utils.scss'
 import { Component, PluginFunction } from 'vue'
-import * as components from './entries'
+import * as components from './components'
+import * as directives from './directives'
 import * as constant from './core/constant'
 import './icon/presets'
 
@@ -15,6 +16,7 @@ export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<strin
 
 export interface MobovUseOptions {
   components?: Record<string, ComponentOrPack>
+  directives?: Record<string, ComponentOrPack>
 }
 
 export interface MobovPlugin {
@@ -30,14 +32,14 @@ const Mobov: MobovPlugin = {
 
     // 注册组件
     const componentsList = opts.components || components
-    console.log(componentsList)
-    Object.values(componentsList).forEach(component => {
-      console.log(component)
-      Vue.use(component)
+    const directivesList = opts.directives || directives
+    Object.values(componentsList).forEach(item => {
+      Vue.use(item)
     })
-    // const $Mobov = {
-    //   cons
-    // }
+    Object.values(directivesList).forEach(item => {
+      Vue.use(item)
+    })
+
     // 挂载根组件
     window.Mobov = this
     // console.log(Vue)
@@ -52,4 +54,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Mobov
-export * from './entries'
+export * from './components'

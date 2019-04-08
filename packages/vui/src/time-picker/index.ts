@@ -3,7 +3,7 @@ import '../core/date'
 import MTimePicker from './time-picker'
 
 MTimePicker.install = (Vue) => {
-  Vue.component(MTimePicker.name, MTimePicker)
+  Vue.component('MTimePicker', MTimePicker)
 }
 
 export default MTimePicker

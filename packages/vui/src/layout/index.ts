@@ -6,19 +6,19 @@ import MFlex from './flex'
 import MFlexFiller from './flex-filler'
 
 MContainer.install = (Vue) => {
-  Vue.component(MContainer.name, MContainer)
+  Vue.component('MContainer', MContainer)
 }
 MRow.install = (Vue) => {
-  Vue.component(MRow.name, MRow)
+  Vue.component('MRow', MRow)
 }
 MCol.install = (Vue) => {
-  Vue.component(MCol.name, MCol)
+  Vue.component('MCol', MCol)
 }
 MFlex.install = (Vue) => {
-  Vue.component(MFlex.name, MFlex)
+  Vue.component('MFlex', MFlex)
 }
 MFlexFiller.install = (Vue) => {
-  Vue.component(MFlexFiller.name, MFlexFiller)
+  Vue.component('MFlexFiller', MFlexFiller)
 }
 
 export {
