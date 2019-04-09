@@ -8,7 +8,7 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import packages from '../package.json'
 
-const {version, dependencies} = packages
+const { version, dependencies } = packages
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 const external = ['@mobov/es-helper', 'vue']
 //const external = Object.keys(dependencies)
@@ -23,7 +23,28 @@ const baseConfig = {
   },
   plugins: [
     postcss({extensions: ['.scss'], extract: `lib/style.css`}),
+    typescript({
+      importHelpers: true,
+      // objectHashIgnoreUnknownHack: true,
+      /// rollupCommonJSResolveHack: true,
+      tsconfig: 'tsconfig.json',
+      clean: true,
+      // rootDir: './src',
+      // declarationDir: './types/',
+      useTsconfigDeclarationDir: true,
+      extensions
+    }),
     vue(),
+    babel({
+      runtimeHelpers: true,
+      babelrc: false,
+      presets: [
+        '@babel/preset-env',
+        '@vue/babel-preset-jsx'
+      ],
+      extensions,
+      exclude: /node_modules/
+    }),
     resolve({
       jsnext: true,
       main: true,
@@ -34,53 +55,6 @@ const baseConfig = {
       include: /node_modules/,
       extensions
     }),
-    typescript({
-      importHelpers: true,
-      // objectHashIgnoreUnknownHack: true,
-      /// rollupCommonJSResolveHack: true,
-      tsconfig: 'tsconfig.json',
-      clean: true,
-      // rootDir: './src',
-      // declarationDir: './types/',
-      // useTsconfigDeclarationDir: false,
-      extensions
-    }),
-    babel({
-      runtimeHelpers: true,
-      babelrc: false,
-      presets: [
-        // '@babel/preset-env',
-        // ['@vue/babel-preset-jsx', {
-        //     'injectH': false
-        //   }
-        // ],
-        [
-          '@babel/preset-env',
-          {
-            modules: false
-          }
-        ],
-        '@vue/babel-preset-jsx',
-        '@babel/preset-typescript'
-      ],
-      plugins: [
-        // [
-        //   '@babel/plugin-transform-runtime',
-        //   {
-        //     'absoluteRuntime': false,
-        //     'corejs': false,
-        //     'helpers': true,
-        //     'regenerator': true,
-        //     'useESModules': false
-        //   }
-        // ],
-        // ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        // ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-      ],
-      // exclude: 'node_modules/@babel/runtime/**',
-      extensions,
-      exclude: /node_modules/
-    })
   ]
 }
 

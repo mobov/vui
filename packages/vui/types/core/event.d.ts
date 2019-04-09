@@ -5,6 +5,6 @@
  * @param handler
  * @param propgation
  */
-export declare const on: (element: Window | HTMLElement, event: string, handler?: () => any, propagation?: boolean) => void;
-export declare const off: (element: Window | HTMLElement, event: string, handler?: () => any, propagation?: boolean) => void;
-export declare const once: (element: Window | HTMLElement, event: string, handler: () => void) => void;
+export declare const on: (element: HTMLElement | Window, event: string, handler?: () => any, propagation?: boolean) => void;
+export declare const off: (element: HTMLElement | Window, event: string, handler?: () => any, propagation?: boolean) => void;
+export declare const once: (element: HTMLElement | Window, event: string, handler: () => void) => void;

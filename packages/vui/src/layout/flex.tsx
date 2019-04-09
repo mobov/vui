@@ -15,7 +15,7 @@ export default class MFlex extends Vue {
   @Prop({ type: String, default: 'div' })
   tag!: string
 
-  @Prop({ type: String, default: false })
+  @Prop({ type: Boolean, default: false })
   inline!: boolean
 
   @Prop({ type: String, default: FlexWrap.normal })

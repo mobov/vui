@@ -1742,7 +1742,7 @@ __decorate([Prop({
 }), __metadata("design:type", String)], MFlex.prototype, "tag", void 0);
 
 __decorate([Prop({
-  type: String,
+  type: Boolean,
   default: false
 }), __metadata("design:type", Boolean)], MFlex.prototype, "inline", void 0);
 
@@ -2821,20 +2821,31 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var _name = 'm-time-picker-header';
-var MTimePickerHeader = Vue.extend({
-  name: 'MTimePickerHeader',
-  components: {
-    MButton: MButton$1
-  },
-  inject: ['DateStore'],
-  props: {
-    color: {
-      type: String
+var compName$d = 'm-time-picker-header';
+
+var MTimePickerHeader =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerHeader, _Vue);
+
+  function MTimePickerHeader() {
+    _classCallCheck(this, MTimePickerHeader);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerHeader).apply(this, arguments));
+  }
+
+  _createClass(MTimePickerHeader, [{
+    key: "handleAMToggle",
+    value: function handleAMToggle(val, oldVal) {
+      if (val === oldVal) {
+        return;
+      }
+
+      this.DateStore.SET_AM(val);
     }
-  },
-  methods: {
-    RDate: function RDate() {
+  }, {
+    key: "RDate",
+    value: function RDate() {
       var _this = this;
 
       var h = this.$createElement;
@@ -2846,45 +2857,48 @@ var MTimePickerHeader = Vue.extend({
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(_name, "__date")
+        "staticClass": "".concat(compName$d, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(_name, "__date-year"),
+        "staticClass": "".concat(compName$d, "__date-year"),
         "class": {
-          'm--active': activeType === 'year'
+          'm--active': activeType === DatePickerType.year
         },
         "on": {
           "click": function click() {
-            _this.DateStore.SET_ACTIVE_TYPE('year');
+            _this.DateStore.SET_ACTIVE_TYPE(DatePickerType.year);
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(_name, "__date-weekDay")
+        "staticClass": "".concat(compName$d, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(_name, "__date-date")
+        "staticClass": "".concat(compName$d, "__date-date")
       }, [h("a", {
         "class": {
-          'm--active': activeType === 'month'
+          'm--active': activeType === DatePickerType.month
         },
         "on": {
           "click": function click() {
-            _this.DateStore.SET_ACTIVE_TYPE('month');
+            _this.DateStore.SET_ACTIVE_TYPE(DatePickerType.month);
           }
         }
       }, [(month + 1).dateZeroize()]), "-", h("a", {
         "class": {
-          'm--active': activeType === 'date'
+          'm--active': activeType === DatePickerType.date
         },
         "on": {
           "click": function click() {
-            _this.DateStore.SET_ACTIVE_TYPE('date');
+            _this.DateStore.SET_ACTIVE_TYPE(DatePickerType.date);
           }
         }
       }, [date.dateZeroize()])])]);
-    },
-    RTime: function RTime() {
+    }
+  }, {
+    key: "RTime",
+    value: function RTime() {
       var _this2 = this;
 
       var h = this.$createElement;
+      var handleAMToggle = this.handleAMToggle;
       var _this$DateStore2 = this.DateStore,
           hours = _this$DateStore2.hours,
           minutes = _this$DateStore2.minutes,
@@ -2893,16 +2907,16 @@ var MTimePickerHeader = Vue.extend({
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(_name, "__time")
+        "class": "".concat(compName$d, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(_name, "__time-ampm")
+        "staticClass": "".concat(compName$d, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
         },
         "on": {
           "click": function click() {
-            _this2.DateStore.SET_AM(true);
+            handleAMToggle(true, am);
           }
         }
       }, ["AM"]), h("a", {
@@ -2911,106 +2925,115 @@ var MTimePickerHeader = Vue.extend({
         },
         "on": {
           "click": function click() {
-            _this2.DateStore.SET_AM(false);
+            handleAMToggle(false, am);
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(_name, "__time-hours")
+        "staticClass": "".concat(compName$d, "__time-hours")
       }, [h("a", {
         "class": {
-          'm--active': activeType === 'hours'
+          'm--active': activeType === DateTimeValueType.hours
         },
         "on": {
           "click": function click() {
-            _this2.DateStore.SET_ACTIVE_TYPE('hours');
+            _this2.DateStore.SET_ACTIVE_TYPE(DateTimeValueType.hours);
           }
         }
       }, [hours.dateZeroize()]), ":", h("a", {
         "class": {
-          'm--active': activeType === 'minutes'
+          'm--active': activeType === DateTimeValueType.minutes
         },
         "on": {
           "click": function click() {
-            _this2.DateStore.SET_ACTIVE_TYPE('minutes');
+            _this2.DateStore.SET_ACTIVE_TYPE(DateTimeValueType.minutes);
           }
         }
       }, [minutes.dateZeroize()])])]);
-    },
-    RYear: function RYear() {
+    }
+  }, {
+    key: "RYear",
+    value: function RYear() {
       var h = this.$createElement;
       var _this$DateStore3 = this.DateStore,
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(_name, "__year")
+        "staticClass": "".concat(compName$d, "__year")
       }, [year]);
-    },
-    RMonth: function RMonth() {
+    }
+  }, {
+    key: "RMonth",
+    value: function RMonth() {
       var h = this.$createElement;
       var _this$DateStore4 = this.DateStore,
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
-      return pickerType !== 'month' ? undefined : h("div", {
-        "staticClass": "".concat(_name, "__month")
+      return pickerType !== DatePickerType.month ? undefined : h("div", {
+        "staticClass": "".concat(compName$d, "__month")
       }, [MonthMap[month]]);
     }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var classes = this.classes,
-        RDate = this.RDate,
-        RTime = this.RTime,
-        RYear = this.RYear,
-        RMonth = this.RMonth;
-    return h("div", {
-      "staticClass": "".concat(_name),
-      "class": classes
-    }, [RYear(), RMonth(), RDate(), h("div", {
-      "style": "flex:1"
-    }), RTime()]);
-  }
-});
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var classes = this.classes,
+          RDate = this.RDate,
+          RTime = this.RTime,
+          RYear = this.RYear,
+          RMonth = this.RMonth;
+      return h("div", {
+        "staticClass": "".concat(compName$d),
+        "class": classes
+      }, [RYear(), RMonth(), RDate(), h("div", {
+        "style": "flex-grow:1"
+      }), RTime()]);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return _defineProperty({}, "m--".concat(this.DateStore.pickerType), true);
+    }
+  }]);
 
+  return MTimePickerHeader;
+}(Vue);
+
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerHeader.prototype, "DateStore", void 0);
+
+MTimePickerHeader = __decorate([Component], MTimePickerHeader);
+var MTimePickerHeader$1 = MTimePickerHeader;
+
+var compName$e = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
-var _name$1 = 'm-time-picker-panel-date';
-var MTimePickerPanelDate = Vue.extend({
-  name: 'MTimePickerHeader',
-  components: {
-    MButton: MButton$1,
-    MIcon: MIcon$1
-  },
-  inject: ['DateStore'],
-  props: {
-    color: {
-      type: String
+
+var MTimePickerPanelDate =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerPanelDate, _Vue);
+
+  function MTimePickerPanelDate() {
+    var _this;
+
+    _classCallCheck(this, MTimePickerPanelDate);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerPanelDate).apply(this, arguments));
+    _this.viewValue = _this.DateStore.value;
+    return _this;
+  }
+
+  _createClass(MTimePickerPanelDate, [{
+    key: "handleMonthToggle",
+    value: function handleMonthToggle(action) {
+      var date = new Date(this.viewValue);
+      var month = date.getMonth();
+      date.setMonth(action === "prev"
+      /* prev */
+      ? month - 1 : month + 1);
+      this.viewValue = date.getTime();
     }
-  },
-  data: function data() {
-    return {
-      viewValue: this.DateStore.value
-    };
-  },
-  computed: {
-    viewDateValue: {
-      get: function get() {
-        return new Date(this.viewValue);
-      },
-      set: function set(val) {
-        this.viewValue = val;
-      }
-    },
-    viewYear: function viewYear() {
-      return this.viewDateValue.getFullYear();
-    },
-    viewMonth: function viewMonth() {
-      return this.viewDateValue.getMonth();
-    },
-    viewDate: function viewDate() {
-      return this.viewDateValue.getDate();
-    }
-  },
-  methods: {
-    handleDateClick: function handleDateClick(yearVal, monthVal, dateVal) {
+  }, {
+    key: "handleDateClick",
+    value: function handleDateClick(yearVal, monthVal, dateVal) {
       var _this$DateStore = this.DateStore,
           year = _this$DateStore.year,
           month = _this$DateStore.month,
@@ -3035,24 +3058,20 @@ var MTimePickerPanelDate = Vue.extend({
       }
 
       this.DateStore.UPDATE(temp.getTime());
-      this.$emit('pick');
-    },
-    handleMonthToggle: function handleMonthToggle() {
-      var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'next';
-      var date = new Date(this.viewValue);
-      var month = date.getMonth();
-      date.setMonth(action === 'prev' ? month - 1 : month + 1);
-      this.viewValue = date.getTime();
-    },
-    RTableHead: function RTableHead() {
+    }
+  }, {
+    key: "RTableHead",
+    value: function RTableHead() {
       var h = this.$createElement;
       var Tds = [];
       WeekMap$1.forEach(function (week) {
         return Tds.push(h("td", [week]));
       });
       return h("thead", [h("tr", [Tds])]);
-    },
-    RTableBody: function RTableBody() {
+    }
+  }, {
+    key: "RTableBody",
+    value: function RTableBody() {
       var h = this.$createElement;
       var viewDateValue = this.viewDateValue,
           viewYear = this.viewYear,
@@ -3078,14 +3097,15 @@ var MTimePickerPanelDate = Vue.extend({
       var _loop = function _loop(tempDate) {
         var isCurDate = isCurMonth && tempDate === date;
         var isToday = isNowDate && tempDate === nowDate;
-        Tds.push(h("td", [h(MButton$1, {
-          "class": 'm-m-0 m-p-0',
-          "attrs": {
-            "size": 'sm',
-            "shape": 'circle',
-            "elevation": 0,
-            "variety": isCurDate ? 'normal' : isToday ? 'outline' : 'flat',
-            "color": isCurDate || isToday ? 'primary' : 'default'
+        Tds.push(h("td", [h("div", {
+          "directives": [{
+            name: "m-ripple",
+            value: true
+          }],
+          "staticClass": 'm-time-picker-cell',
+          "class": {
+            'm--checked': isCurDate,
+            'm--current': isToday
           },
           "on": {
             "click": function click() {
@@ -3106,92 +3126,147 @@ var MTimePickerPanelDate = Vue.extend({
 
       return h("tbody", [Trs]);
     }
-  },
-  render: function render() {
-    var _this = this;
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
 
-    var h = arguments[0];
-    var viewYear = this.viewYear,
-        handleMonthToggle = this.handleMonthToggle,
-        RTableHead = this.RTableHead,
-        RTableBody = this.RTableBody;
-    return h("div", {
-      "staticClass": _name$1
-    }, [h("div", {
-      "class": "".concat(_name$1, "__header")
-    }, [h("div", {
-      "staticClass": "".concat(_name$1, "__header-year")
-    }, [h(MButton$1, {
-      "attrs": {
-        "variety": 'flat',
-        "color": 'default',
-        "elevation": 0
-      },
-      "staticClass": 'm-m-0',
-      "on": {
-        "click": function click() {
-          return _this.DateStore.SET_ACTIVE_TYPE('year');
+      var h = arguments[0];
+      var viewYear = this.viewYear,
+          viewMonth = this.viewMonth,
+          handleMonthToggle = this.handleMonthToggle,
+          RTableHead = this.RTableHead,
+          RTableBody = this.RTableBody;
+      return h("div", {
+        "staticClass": compName$e
+      }, [h("div", {
+        "class": "".concat(compName$e, "__header")
+      }, [h("div", {
+        "staticClass": "".concat(compName$e, "__header-year")
+      }, [h("span", {
+        "on": {
+          "click": function click() {
+            return _this2.DateStore.SET_ACTIVE_TYPE(DatePickerType.year);
+          }
         }
-      }
-    }, [viewYear])]), h("div", {
-      "staticClass": "".concat(_name$1, "__header-handler")
-    }, [h(MButton$1, {
-      "attrs": {
-        "variety": 'flat',
-        "elevation": 0,
-        "shape": 'circle',
-        "color": 'default',
-        "icon": 'navigate_before'
-      },
-      "staticClass": 'm-m-0',
-      "on": {
-        "click": function click() {
-          return handleMonthToggle('prev');
+      }, [viewYear]), "-", h("span", {
+        "on": {
+          "click": function click() {
+            return _this2.DateStore.SET_ACTIVE_TYPE(DatePickerType.month);
+          }
         }
-      }
-    }), h(MButton$1, {
-      "attrs": {
-        "variety": 'flat',
-        "elevation": 0,
-        "shape": 'circle',
-        "color": 'default',
-        "icon": 'navigate_next'
-      },
-      "staticClass": 'm-m-0',
-      "on": {
-        "click": function click() {
-          return handleMonthToggle('next');
+      }, [(viewMonth + 1).dateZeroize()])]), h("div", {
+        "staticClass": "".concat(compName$e, "__header-handler")
+      }, [h(MButton$1, {
+        "attrs": {
+          "variety": Variety.flat,
+          "elevation": 0,
+          "shape": Shape.circle,
+          "color": Color.default,
+          "icon": 'navigate_before'
+        },
+        "staticClass": 'm-m-0',
+        "on": {
+          "click": function click() {
+            return handleMonthToggle("prev"
+            /* prev */
+            );
+          }
         }
-      }
-    })])]), h("table", {
-      "class": "".concat(_name$1, "__table")
-    }, [RTableHead(), RTableBody()])]);
-  }
-});
-
-var _name$2 = 'm-time-picker-panel-year';
-var MTimePickerPanelYear = Vue.extend({
-  name: 'MTimePickerPanelYear',
-  components: {
-    MButton: MButton$1
-  },
-  inject: ['DateStore'],
-  props: {
-    max: {
-      type: Number,
-      default: 2100
-    },
-    min: {
-      type: Number,
-      default: 1900
+      }), h(MButton$1, {
+        "attrs": {
+          "variety": Variety.flat,
+          "elevation": 0,
+          "shape": Shape.circle,
+          "color": Color.default,
+          "icon": 'navigate_next'
+        },
+        "staticClass": 'm-m-0',
+        "on": {
+          "click": function click() {
+            return handleMonthToggle("next"
+            /* next */
+            );
+          }
+        }
+      })])]), h("table", {
+        "class": "".concat(compName$e, "__table")
+      }, [RTableHead(), RTableBody()])]);
     }
-  },
-  methods: {
-    onClick: function onClick(year) {
-      this.DateStore.UPDATE(year, 'year');
-      this.$emit('pick');
+  }, {
+    key: "viewDateValue",
+    get: function get() {
+      return new Date(this.viewValue);
     },
-    RList: function RList() {
+    set: function set(val) {
+      this.viewValue = val;
+    }
+  }, {
+    key: "viewYear",
+    get: function get() {
+      return this.viewDateValue.getFullYear();
+    }
+  }, {
+    key: "viewMonth",
+    get: function get() {
+      return this.viewDateValue.getMonth();
+    }
+  }, {
+    key: "viewDate",
+    get: function get() {
+      return this.viewDateValue.getDate();
+    }
+  }]);
+
+  return MTimePickerPanelDate;
+}(Vue);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "min", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "max", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 0
+}), __metadata("design:type", Number)], MTimePickerPanelDate.prototype, "firstDayOfWeek", void 0);
+
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelDate.prototype, "DateStore", void 0);
+
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, Number, Number]), __metadata("design:returntype", void 0)], MTimePickerPanelDate.prototype, "handleDateClick", null);
+
+MTimePickerPanelDate = __decorate([Component({
+  components: {
+    MButton: MButton$1,
+    MIcon: MIcon$1
+  }
+})], MTimePickerPanelDate);
+var MTimePickerPanelDate$1 = MTimePickerPanelDate;
+
+var compName$f = 'm-time-picker-panel-year';
+
+var MTimePickerPanelYear =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerPanelYear, _Vue);
+
+  function MTimePickerPanelYear() {
+    _classCallCheck(this, MTimePickerPanelYear);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerPanelYear).apply(this, arguments));
+  }
+
+  _createClass(MTimePickerPanelYear, [{
+    key: "onClick",
+    value: function onClick(year) {
+      this.DateStore.UPDATE(year, DateValueType.year);
+    }
+  }, {
+    key: "RCols",
+    value: function RCols() {
       var h = this.$createElement;
       var min = this.min,
           max = this.max,
@@ -3201,15 +3276,15 @@ var MTimePickerPanelYear = Vue.extend({
 
       var _loop = function _loop(tempYear) {
         var isCurrent = tempYear === year;
-        Cols.push(h(MButton$1, {
-          "attrs": {
-            "size": "sm",
-            "shape": "circle",
-            "elevation": 0,
-            "variety": isCurrent ? 'normal' : 'flat',
-            "color": isCurrent ? 'primary' : 'default'
+        Cols.push(h("div", {
+          "directives": [{
+            name: "m-ripple",
+            value: true
+          }],
+          "staticClass": 'm-time-picker-cell',
+          "class": {
+            'm--checked': isCurrent
           },
-          "class": "m-m-0 m-p-0",
           "on": {
             "click": function click() {
               return onClick(tempYear);
@@ -3224,35 +3299,59 @@ var MTimePickerPanelYear = Vue.extend({
 
       return Cols;
     }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var RList = this.RList;
-    return h("div", {
-      "staticClass": _name$2
-    }, [RList()]);
-  }
-});
-
-var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var _name$3 = 'm-time-picker-panel-month';
-var MTimePickerPanelMonth = Vue.extend({
-  name: 'MTimePickerPanelMonth',
-  components: {
-    MButton: MButton$1
-  },
-  inject: ['DateStore'],
-  props: {
-    color: {
-      type: String
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var RCols = this.RCols;
+      return h("div", {
+        "staticClass": compName$f
+      }, [RCols()]);
     }
-  },
-  methods: {
-    handleClick: function handleClick(month) {
-      this.DateStore.UPDATE(month, 'month');
-      this.$emit('pick');
-    },
-    RCols: function RCols() {
+  }]);
+
+  return MTimePickerPanelYear;
+}(Vue);
+
+__decorate([Prop({
+  type: Number,
+  default: 2100
+}), __metadata("design:type", Number)], MTimePickerPanelYear.prototype, "max", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 1900
+}), __metadata("design:type", Number)], MTimePickerPanelYear.prototype, "min", void 0);
+
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelYear.prototype, "DateStore", void 0);
+
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelYear.prototype, "onClick", null);
+
+MTimePickerPanelYear = __decorate([Component], MTimePickerPanelYear);
+var MTimePickerPanelYear$1 = MTimePickerPanelYear;
+
+var compName$g = 'm-time-picker-panel-month';
+var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+
+var MTimePickerPanelMonth =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerPanelMonth, _Vue);
+
+  function MTimePickerPanelMonth() {
+    _classCallCheck(this, MTimePickerPanelMonth);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerPanelMonth).apply(this, arguments));
+  }
+
+  _createClass(MTimePickerPanelMonth, [{
+    key: "handleClick",
+    value: function handleClick(month) {
+      this.DateStore.UPDATE(month, DateValueType.month);
+    }
+  }, {
+    key: "RCols",
+    value: function RCols() {
       var h = this.$createElement;
       var handleClick = this.handleClick;
       var month = this.DateStore.month;
@@ -3260,15 +3359,15 @@ var MTimePickerPanelMonth = Vue.extend({
 
       var _loop = function _loop(tempValue) {
         var isCurrent = tempValue === month;
-        Cols.push(h(MButton$1, {
-          "attrs": {
-            "size": "sm",
-            "shape": "circle",
-            "elevation": 0,
-            "variety": isCurrent ? 'normal' : 'flat',
-            "color": isCurrent ? 'primary' : 'default'
+        Cols.push(h("div", {
+          "directives": [{
+            name: "m-ripple",
+            value: true
+          }],
+          "staticClass": 'm-time-picker-cell',
+          "class": {
+            'm--checked': isCurrent
           },
-          "class": "m-m-0 m-p-0",
           "on": {
             "click": function click() {
               return handleClick(tempValue);
@@ -3283,69 +3382,90 @@ var MTimePickerPanelMonth = Vue.extend({
 
       return Cols;
     }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var RCols = this.RCols;
-    return h("div", {
-      "staticClass": _name$3
-    }, [RCols()]);
-  }
-});
-
-var _name$4 = 'm-time-picker-panel-time';
-var MTimePickerPanelTime = Vue.extend({
-  name: 'MTimePickerPanelMonth',
-  components: {
-    MButton: MButton$1,
-    MIcon: MIcon$1
-  },
-  inject: ['DateStore'],
-  props: {
-    hourStep: {
-      type: Number,
-      default: 1
-    },
-    minuteStep: {
-      type: Number,
-      default: 1
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var RCols = this.RCols;
+      return h("div", {
+        "staticClass": compName$g
+      }, [RCols()]);
     }
-  },
-  methods: {
-    onClick: function onClick(val, type) {
+  }]);
+
+  return MTimePickerPanelMonth;
+}(Vue);
+
+__decorate([Prop({
+  type: Array
+}), __metadata("design:type", Number)], MTimePickerPanelMonth.prototype, "disabledValue", void 0);
+
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelMonth.prototype, "DateStore", void 0);
+
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number]), __metadata("design:returntype", void 0)], MTimePickerPanelMonth.prototype, "handleClick", null);
+
+MTimePickerPanelMonth = __decorate([Component({
+  components: {
+    MButton: MButton$1
+  }
+})], MTimePickerPanelMonth);
+var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
+
+var compName$h = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+// const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
+// const clockStyle = {
+//     height: `${clockSize}px`,
+//     width:  `${clockSize}px`,
+// }
+
+var MTimePickerPanelTime =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerPanelTime, _Vue);
+
+  function MTimePickerPanelTime() {
+    _classCallCheck(this, MTimePickerPanelTime);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerPanelTime).apply(this, arguments));
+  }
+
+  _createClass(MTimePickerPanelTime, [{
+    key: "onClick",
+    value: function onClick(val, type) {
       this.DateStore.SET_ACTIVE_TYPE(type);
-      this.DateStore.UPDATE(type === 'hours' && this.DateStore.ampm && !this.DateStore.am ? val + 12 : val, type);
-      this.$emit('pick');
-    },
-    RList: function RList(type) {
+      this.DateStore.UPDATE(type === DateTimeValueType.hours && this.DateStore.ampm && !this.DateStore.am ? val + 12 : val, type);
+    }
+  }, {
+    key: "RList",
+    value: function RList(type) {
       var h = this.$createElement;
-      var onClick = this.onClick,
+      var color = this.color,
+          onClick = this.onClick,
           hourStep = this.hourStep,
           minuteStep = this.minuteStep;
       var ampm = this.DateStore.ampm;
       var min = 0;
-      var max = type === 'hours' ? ampm ? 11 : 23 : 59;
-      var step = type === 'hours' ? hourStep : minuteStep;
+      var max = type === DateTimeValueType.hours ? ampm ? 11 : 23 : 59;
+      var step = type === DateTimeValueType.hours ? hourStep : minuteStep;
       var time = this.DateStore[type];
       var Temps = [];
 
       var _loop = function _loop(tempTime) {
         var isCurrent = tempTime === time;
-        Temps.push(h(MButton$1, {
+        Temps.push(h("div", {
+          "directives": [{
+            name: "m-ripple",
+            value: true
+          }],
+          "staticClass": 'm-time-picker-cell',
+          "class": {
+            'm--checked': isCurrent
+          },
           "on": {
             "click": function click() {
               return onClick(tempTime, type);
             }
-          },
-          "attrs": {
-            "size": "sm",
-            "block": true,
-            "shape": "circle",
-            "elevation": 0,
-            "variety": isCurrent ? 'normal' : 'flat',
-            "color": isCurrent ? 'primary' : 'default'
-          },
-          "class": "m-m-0 m-p-0 m--block"
+          }
         }, [tempTime]));
       };
 
@@ -3354,455 +3474,541 @@ var MTimePickerPanelTime = Vue.extend({
       }
 
       return h("div", {
-        "staticClass": "".concat(_name$4, "__list ").concat(_name$4, "__list-").concat(type)
+        "staticClass": "".concat(compName$h, "__list ").concat(compName$h, "__list-").concat(type)
       }, [Temps]);
     }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var RList = this.RList;
-    var Result = [];
-    Result.push(RList('hours'));
-    Result.push(RList('minutes'));
-    return h("div", {
-      "staticClass": _name$4
-    }, [Result]);
-  }
-});
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var RList = this.RList;
+      var Result = [];
+      Result.push(RList(DateTimeValueType.hours));
+      Result.push(RList(DateTimeValueType.minutes));
+      return h("div", {
+        "staticClass": compName$h
+      }, [Result]);
+    }
+  }]);
 
-var _name$5 = 'm-time-picker-handler';
-var MTimePickerHandler = Vue.extend({
-  name: 'MTimePickerHandler',
+  return MTimePickerPanelTime;
+}(Vue);
+
+__decorate([Prop({
+  type: String,
+  default: Color.primary
+}), __metadata("design:type", String)], MTimePickerPanelTime.prototype, "color", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 1
+}), __metadata("design:type", Number)], MTimePickerPanelTime.prototype, "hourStep", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 1
+}), __metadata("design:type", Number)], MTimePickerPanelTime.prototype, "minuteStep", void 0);
+
+__decorate([Inject(), __metadata("design:type", Object)], MTimePickerPanelTime.prototype, "DateStore", void 0);
+
+__decorate([Emit('pick'), __metadata("design:type", Function), __metadata("design:paramtypes", [Number, String]), __metadata("design:returntype", void 0)], MTimePickerPanelTime.prototype, "onClick", null);
+
+MTimePickerPanelTime = __decorate([Component({
+  components: {
+    MButton: MButton$1,
+    MIcon: MIcon$1
+  }
+})], MTimePickerPanelTime);
+var MTimePickerPanelTime$1 = MTimePickerPanelTime;
+
+var compName$i = 'm-time-picker-handler';
+
+var MTimePickerHandler =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTimePickerHandler, _Vue);
+
+  function MTimePickerHandler() {
+    _classCallCheck(this, MTimePickerHandler);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTimePickerHandler).apply(this, arguments));
+  }
+
+  _createClass(MTimePickerHandler, [{
+    key: "onConfirm",
+    value: function onConfirm() {}
+  }, {
+    key: "onCancel",
+    value: function onCancel() {}
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var onConfirm = this.onConfirm,
+          onCancel = this.onCancel;
+      return h("div", {
+        "staticClass": "".concat(compName$i, " m-p-sm")
+      }, [h(MButton$1, {
+        "attrs": {
+          "size": "sm",
+          "variety": Variety.flat,
+          "color": Color.default
+        },
+        "style": {
+          width: '5rem'
+        },
+        "on": {
+          "click": onCancel
+        }
+      }, ["cancel"]), h(MButton$1, {
+        "attrs": {
+          "size": "sm",
+          "color": Color.primary
+        },
+        "style": {
+          width: '5rem'
+        },
+        "on": {
+          "click": onConfirm
+        }
+      }, ["ok"])]);
+    }
+  }]);
+
+  return MTimePickerHandler;
+}(Vue);
+
+__decorate([Prop({
+  type: String,
+  default: Color.primary
+}), __metadata("design:type", String)], MTimePickerHandler.prototype, "color", void 0);
+
+__decorate([Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onConfirm", null);
+
+__decorate([Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePickerHandler.prototype, "onCancel", null);
+
+MTimePickerHandler = __decorate([Component({
   components: {
     MButton: MButton$1
-  },
-  props: {
-    color: {
-      type: String
-    }
-  },
-  methods: {
-    onConfirm: function onConfirm() {
-      this.$emit('confirm');
-    },
-    onCancel: function onCancel() {
-      this.$emit('cancel');
-    }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var onConfirm = this.onConfirm,
-        onCancel = this.onCancel,
-        color = this.color;
-    return h("div", {
-      "staticClass": "".concat(_name$5, " m-p-sm")
-    }, [h(MButton$1, {
-      "attrs": {
-        "size": "sm",
-        "variety": "flat",
-        "color": color
-      },
-      "style": {
-        width: '5rem'
-      },
-      "on": {
-        "click": onCancel
-      }
-    }, ["cancel"]), h(MButton$1, {
-      "attrs": {
-        "size": "sm",
-        "color": color
-      },
-      "style": {
-        width: '5rem'
-      },
-      "on": {
-        "click": onConfirm
-      }
-    }, ["ok"])]);
   }
-});
+})], MTimePickerHandler);
+var MTimePickerHandler$1 = MTimePickerHandler;
 
-var _name$6 = 'm-time-picker';
-var MTimePicker = Vue.extend({
-  name: 'MTimePicker',
-  components: {
-    MTimePickerHeader: MTimePickerHeader,
-    MTimePickerPanelDate: MTimePickerPanelDate,
-    MTimePickerPanelYear: MTimePickerPanelYear,
-    MTimePickerPanelMonth: MTimePickerPanelMonth,
-    MTimePickerPanelTime: MTimePickerPanelTime,
-    MTimePickerHandler: MTimePickerHandler
-  },
-  props: {
-    color: {
-      type: String,
-      default: COLOR.primary
-    },
-    elevation: {
-      type: Number,
-      default: 2
-    },
-    size: {
-      type: String,
-      default: BREAKPOINT.md
-    },
-    landscope: {
-      type: Boolean,
-      default: false
-    },
-    pickerType: {
-      type: String,
-      default: 'date'
-    },
-    desync: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: [Date, Number, String],
-      default: new Date().getTime()
-    },
-    max: {
-      type: [Date, Number, String],
-      default: 2100
-    },
-    min: {
-      type: [Date, Number, String],
-      default: 1900
-    },
-    valueFormat: {
-      type: String,
-      default: 'timestamp'
-    },
-    ampm: {
-      type: Boolean,
-      default: false
-    },
-    hourStep: {
-      type: Number,
-      default: 1
-    },
-    minuteStep: {
-      type: Number,
-      default: 1
-    },
-    firstDayOfWeek: {
-      type: Number,
-      default: 0
-    },
-    confirmation: {
-      type: Boolean,
-      default: false
-    }
-  },
-  computed: {
-    classes: function classes() {
-      var landscope = this.landscope,
-          pickerType = this.pickerType;
-      return _defineProperty({
-        'm--landscope': landscope
-      }, "m--".concat(pickerType), true);
-    }
-  },
-  watch: {
-    value: {
-      immediate: true,
-      handler: function handler(newVal, oldVal) {
-        if (newVal === oldVal) {
+var compName$j = 'm-time-picker';
+
+var MTimePicker =
+/*#__PURE__*/
+function (_Mixins) {
+  _inherits(MTimePicker, _Mixins);
+
+  function MTimePicker() {
+    var _this;
+
+    _classCallCheck(this, MTimePicker);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MTimePicker).apply(this, arguments));
+    _this.DateStore = {
+      value: _this.valueAdaptI(_this.value),
+      pickerType: _this.pickerType,
+      activeType: DatePickerType.date,
+      ampm: false,
+
+      get dateValue() {
+        return new Date(this.value);
+      },
+
+      get year() {
+        return this.dateValue.getFullYear();
+      },
+
+      get month() {
+        return this.dateValue.getMonth();
+      },
+
+      get weekDay() {
+        return this.dateValue.getDay();
+      },
+
+      get date() {
+        return this.dateValue.getDate();
+      },
+
+      get hours() {
+        var result = this.dateValue.getHours();
+
+        if (this.ampm && result >= 12) {
+          result = result - 12;
+        }
+
+        return result;
+      },
+
+      get minutes() {
+        return this.dateValue.getMinutes();
+      },
+
+      get am() {
+        return this.dateValue.getHours() < 12;
+      },
+
+      SET_ACTIVE_TYPE: function SET_ACTIVE_TYPE(type) {
+        if (type === this.activeType) {
           return;
         }
 
-        this.DateStore.UPDATE(this.valueAdaptI(newVal));
-      }
-    },
-    ampm: {
-      immediate: true,
-      handler: function handler(newVal, oldVal) {
-        if (newVal === oldVal) {
+        this.activeType = type;
+      },
+      SET_PICKER_TYPE: function SET_PICKER_TYPE(type) {
+        if (type === this.pickerType) {
           return;
         }
 
-        this.DateStore.SET_AMPM(newVal);
-      }
-    },
-    pickerType: {
-      immediate: true,
-      handler: function handler(newVal, oldVal) {
-        if (newVal === oldVal) {
+        this.pickerType = type;
+      },
+      SET_AM: function SET_AM(val) {
+        if (val === this.am) {
           return;
         }
 
-        this.DateStore.SET_PICKER_TYPE(val);
-
-        switch (newVal) {
-          case 'datetime':
-            this.DateStore.SET_ACTIVE_TYPE('date');
-            break;
-
-          default:
-            this.DateStore.SET_ACTIVE_TYPE(newVal);
+        var temp = new Date(this.value);
+        temp.setHours(val ? this.hours : this.hours + 12);
+        this.value = temp.getTime();
+      },
+      SET_AMPM: function SET_AMPM(val) {
+        if (val === this.ampm) {
+          return;
         }
+
+        this.ampm = val;
+      },
+      UPDATE: function UPDATE(val) {
+        var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DateValueType.date;
+        var self = _this.DateStore;
+        var result = new Date(self.value);
+
+        if (type === DateValueType.year) {
+          result.setFullYear(val);
+          self.value = result.getTime();
+        } else if (type === DateValueType.month) {
+          result.setMonth(val);
+          self.value = result.getTime();
+        } else if (type === DateValueType.hours) {
+          result.setHours(val);
+          self.value = result.getTime();
+        } else if (type === DateValueType.minutes) {
+          result.setMinutes(val);
+          self.value = result.getTime();
+        } else {
+          self.value = val;
+        }
+
+        if (_this.desync) {
+          return;
+        }
+
+        if (_this.confirmation) {
+          return;
+        }
+
+        if (_this.valueAdaptI(_this.value) === self.value) {
+          return;
+        }
+
+        self.emitInput();
+      },
+      emitInput: function emitInput() {
+        var self = _this.DateStore;
+
+        var outValue = _this.valueAdaptO(self.value);
+
+        _this.onInput(outValue);
       }
-    }
-  },
-  methods: {
-    onConfirm: function onConfirm() {
+    };
+    return _this;
+  }
+
+  _createClass(MTimePicker, [{
+    key: "onConfirm",
+    value: function onConfirm() {
       this.DateStore.emitInput();
-    },
-    onCancel: function onCancel() {
-      this.$emit('cancel');
-    },
-    onInput: function onInput() {
-      this.$emit('input');
-    },
+    }
+  }, {
+    key: "onCancel",
+    value: function onCancel() {}
+  }, {
+    key: "onInput",
+    value: function onInput(val) {}
+  }, {
+    key: "valueAdaptI",
     // 输入适配
-    valueAdaptI: function valueAdaptI(val) {
+    value: function valueAdaptI(val) {
       var result = 0;
 
-      if (this.valueFormat === 'timestamp') {
+      if (this.valueFormat === DateValueFormat.timestamp) {
         result = typeof val === 'string' ? Number(val) : val;
-      } else if (this.valueFormat === 'Date') {
+      } else if (this.valueFormat === DateValueFormat.Date) {
         result = val.getTime();
       }
 
       return result;
-    },
-    // 输出适配
-    valueAdaptO: function valueAdaptO(val) {
+    } // 输出适配
+
+  }, {
+    key: "valueAdaptO",
+    value: function valueAdaptO(val) {
       var result = null;
 
-      if (this.valueFormat === 'timestamp') {
+      if (this.valueFormat === DateValueFormat.timestamp) {
         result = val;
-      } else if (this.valueFormat === 'Date') {
+      } else if (this.valueFormat === DateValueFormat.Date) {
         result = new Date(val);
       }
 
       return result;
-    },
-    handleActive: function handleActive(type) {
-      if (['datetime', 'date'].includes(this.pickerType)) {
-        this.DateStore.SET_ACTIVE_TYPE(type);
+    }
+  }, {
+    key: "onValueUpdate",
+    value: function onValueUpdate(val, oldVal) {
+      if (val === oldVal) {
+        return;
       }
-    },
-    RPanel: function RPanel() {
+
+      this.DateStore.UPDATE(this.valueAdaptI(val));
+    }
+  }, {
+    key: "onAMPMUpdate",
+    value: function onAMPMUpdate(val, oldVal) {
+      if (val === oldVal) {
+        return;
+      }
+
+      this.DateStore.SET_AMPM(val);
+    }
+  }, {
+    key: "onPickerTypeChange",
+    value: function onPickerTypeChange(val) {
+      this.DateStore.SET_PICKER_TYPE(val);
+
+      switch (val) {
+        case DatePickerType.datetime:
+          this.DateStore.SET_ACTIVE_TYPE(DateValueType.date);
+          break;
+
+        default:
+          this.DateStore.SET_ACTIVE_TYPE(val);
+      }
+    }
+  }, {
+    key: "RPanel",
+    value: function RPanel() {
+      var _this2 = this;
+
       var h = this.$createElement;
-      var color = this.color,
-          firstDayOfWeek = this.firstDayOfWeek,
+      var firstDayOfWeek = this.firstDayOfWeek,
           max = this.max,
-          min = this.min,
-          handleActive = this.handleActive;
+          min = this.min;
       var activeType = this.DateStore.activeType;
 
       switch (activeType) {
-        case 'date':
-          return h(MTimePickerPanelDate, {
+        case DatePickerType.date:
+          return h(MTimePickerPanelDate$1, {
             "attrs": {
               "max": max,
               "min": min,
-              "color": color,
               "firstDayOfWeek": firstDayOfWeek
             }
           });
 
-        case 'year':
-          return h(MTimePickerPanelYear, {
+        case DatePickerType.year:
+          return h(MTimePickerPanelYear$1, {
             "attrs": {
               "max": max,
               "min": min
             },
             "on": {
               "pick": function pick() {
-                handleActive('date');
+                _this2.DateStore.SET_ACTIVE_TYPE(DatePickerType.date);
               }
             }
           });
 
-        case 'month':
-          return h(MTimePickerPanelMonth, {
+        case DatePickerType.month:
+          return h(MTimePickerPanelMonth$1, {
             "on": {
               "pick": function pick() {
-                handleActive('date');
+                _this2.DateStore.SET_ACTIVE_TYPE(DatePickerType.date);
               }
             }
           });
 
         default:
-          return h(MTimePickerPanelTime, {
-            "attrs": {
-              "color": color
-            },
+          return h(MTimePickerPanelTime$1, {
             "on": {
               "pick": function pick() {
-                handleActive('date');
+                _this2.DateStore.SET_ACTIVE_TYPE(DatePickerType.date);
               }
             }
           });
       }
-    },
-    RHandler: function RHandler() {
+    }
+  }, {
+    key: "RHandler",
+    value: function RHandler() {
       var h = this.$createElement;
       var confirmation = this.confirmation,
-          handleConfirm = this.handleConfirm,
-          handleCancel = this.handleCancel;
-      return !confirmation ? undefined : h(MTimePickerHandler, {
+          onConfirm = this.onConfirm,
+          onCancel = this.onCancel,
+          color = this.color;
+      return !confirmation ? undefined : h(MTimePickerHandler$1, {
         "on": {
-          "confirm": handleConfirm,
-          "cancel": handleCancel
+          "confirm": onConfirm,
+          "cancel": onCancel
+        },
+        "attrs": {
+          "color": color
         }
       });
     }
-  },
-  provide: function provide() {
-    var _this = this;
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var styles = this.styles,
+          classes = this.classes,
+          color = this.color,
+          RPanel = this.RPanel,
+          RHandler = this.RHandler;
+      var pickerType = this.DateStore.pickerType;
+      return h("div", {
+        "staticClass": "".concat(compName$j, " m--").concat(pickerType),
+        "style": styles,
+        "class": classes
+      }, [h("div", {
+        "staticClass": "".concat(compName$j, "__main")
+      }, [h(MTimePickerHeader$1), h("div", {
+        "staticClass": "".concat(compName$j, "-panel")
+      }, [RPanel()])]), RHandler()]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var elevation = this.elevation,
+          color = this.color;
+      var styles = {};
+      genColor(styles, compName$j, color);
+      genElevation(styles, compName$j, elevation);
+      return styles;
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      var landscope = this.landscope;
+      return {
+        'm--landscope': landscope
+      };
+    }
+  }]);
 
-    return {
-      DateStore: {
-        value: this.valueAdaptI(this.value),
-        pickerType: this.pickerType,
-        activeType: 'date',
-        ampm: false,
+  return MTimePicker;
+}(vueClassComponent_common_2(colorable$1, elevated$1));
 
-        get dateValue() {
-          return new Date(this.value);
-        },
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MTimePicker.prototype, "landscope", void 0);
 
-        get year() {
-          return this.dateValue.getFullYear();
-        },
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MTimePicker.prototype, "desync", void 0);
 
-        get month() {
-          return this.dateValue.getMonth();
-        },
+__decorate([Prop({
+  type: [Date, Number, String],
+  default: new Date().getTime()
+}), __metadata("design:type", Object)], MTimePicker.prototype, "value", void 0);
 
-        get weekDay() {
-          return this.dateValue.getDay();
-        },
+__decorate([Prop({
+  type: String,
+  default: DateValueFormat.timestamp
+}), __metadata("design:type", String)], MTimePicker.prototype, "valueFormat", void 0);
 
-        get date() {
-          return this.dateValue.getDate();
-        },
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MTimePicker.prototype, "ampm", void 0);
 
-        get hours() {
-          var result = this.dateValue.getHours();
+__decorate([Prop({
+  type: Number,
+  default: 1
+}), __metadata("design:type", Number)], MTimePicker.prototype, "hourStep", void 0);
 
-          if (this.ampm && result >= 12) {
-            result = result - 12;
-          }
+__decorate([Prop({
+  type: Number,
+  default: 1
+}), __metadata("design:type", Number)], MTimePicker.prototype, "minuteStep", void 0);
 
-          return result;
-        },
+__decorate([Prop({
+  type: [Date, Number, String],
+  default: 2100
+}), __metadata("design:type", Object)], MTimePicker.prototype, "max", void 0);
 
-        get minutes() {
-          return this.dateValue.getMinutes();
-        },
+__decorate([Prop({
+  type: [Date, Number, String],
+  default: 1900
+}), __metadata("design:type", Object)], MTimePicker.prototype, "min", void 0);
 
-        get am() {
-          return this.dateValue.getHours() < 12;
-        },
+__decorate([Prop({
+  type: Number,
+  default: 0
+}), __metadata("design:type", Number)], MTimePicker.prototype, "firstDayOfWeek", void 0);
 
-        SET_ACTIVE_TYPE: function SET_ACTIVE_TYPE(type) {
-          if (type === this.activeType) {
-            return;
-          }
+__decorate([Prop({
+  type: String,
+  default: DatePickerType.date
+}), __metadata("design:type", String)], MTimePicker.prototype, "pickerType", void 0);
 
-          this.activeType = type;
-        },
-        SET_PICKER_TYPE: function SET_PICKER_TYPE(type) {
-          if (type === this.pickerType) {
-            return;
-          }
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MTimePicker.prototype, "confirmation", void 0);
 
-          this.pickerType = type;
-        },
-        SET_AM: function SET_AM(val) {
-          if (val === this.am) {
-            return;
-          }
+__decorate([Emit('confirm'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onConfirm", null);
 
-          var temp = new Date(this.value);
-          temp.setHours(val ? this.hours : this.hours + 12);
-          this.value = temp.getTime();
-        },
-        SET_AMPM: function SET_AMPM(val) {
-          if (val === this.ampm) {
-            return;
-          }
+__decorate([Emit('cancel'), __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onCancel", null);
 
-          this.ampm = val;
-        },
-        UPDATE: function UPDATE(val) {
-          var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'date';
-          var self = _this.DateStore;
-          var result = new Date(self.value);
+__decorate([Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onInput", null);
 
-          if (type === 'year') {
-            result.setFullYear(val);
-            self.value = result.getTime();
-          } else if (type === 'month') {
-            result.setMonth(val);
-            self.value = result.getTime();
-          } else if (type === 'hours') {
-            result.setHours(val);
-            self.value = result.getTime();
-          } else if (type === 'minutes') {
-            result.setMinutes(val);
-            self.value = result.getTime();
-          } else {
-            self.value = val;
-          }
+__decorate([Watch('value', {
+  immediate: true
+}), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onValueUpdate", null);
 
-          if (_this.desync) {
-            return;
-          }
+__decorate([Watch('ampm', {
+  immediate: true
+}), __metadata("design:type", Function), __metadata("design:paramtypes", [Object, Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onAMPMUpdate", null);
 
-          if (_this.confirmation) {
-            return;
-          }
+__decorate([Watch('pickerType', {
+  immediate: true
+}), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MTimePicker.prototype, "onPickerTypeChange", null);
 
-          if (_this.valueAdaptI(_this.value) === self.value) {
-            return;
-          }
+__decorate([Provide(), __metadata("design:type", Object)], MTimePicker.prototype, "DateStore", void 0);
 
-          self.emitInput();
-        },
-        emitInput: function emitInput() {
-          var self = _this.DateStore;
-
-          var outValue = _this.valueAdaptO(self.value);
-
-          _this.onInput(outValue);
-        }
-      }
-    };
-  },
-  render: function render() {
-    var h = arguments[0];
-    var classes = this.classes,
-        color = this.color,
-        RPanel = this.RPanel,
-        RHandler = this.RHandler;
-    var pickerType = this.DateStore.pickerType;
-    return h("div", {
-      "staticClass": "".concat(_name$6, " m--").concat(pickerType),
-      "class": classes
-    }, [h("div", {
-      "staticClass": "".concat(_name$6, "__main")
-    }, [h(MTimePickerHeader, {
-      "attrs": {
-        "color": color
-      }
-    }), h("div", {
-      "staticClass": "".concat(_name$6, "-panel")
-    }, [RPanel()])]), RHandler()]);
+MTimePicker = __decorate([Component({
+  components: {
+    MTimePickerHeader: MTimePickerHeader$1,
+    MTimePickerPanelDate: MTimePickerPanelDate$1,
+    MTimePickerPanelYear: MTimePickerPanelYear$1,
+    MTimePickerPanelMonth: MTimePickerPanelMonth$1,
+    MTimePickerPanelTime: MTimePickerPanelTime$1,
+    MTimePickerHandler: MTimePickerHandler$1
   }
-});
+})], MTimePicker);
+var MTimePicker$1 = MTimePicker;
 
-MTimePicker.install = function (Vue) {
-  Vue.component(MTimePicker.name, MTimePicker);
+MTimePicker$1.install = function (Vue) {
+  Vue.component('MTimePicker', MTimePicker$1);
 };
 
-var compName$d = 'm-list';
+var compName$k = 'm-list';
 
 var MList =
 /*#__PURE__*/
@@ -3826,17 +4032,17 @@ function (_Vue) {
           $slots = this.$slots,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$d,
+        "staticClass": compName$k,
         "on": {
           "click": onClick
         },
         "style": styles
       }, [$slots.media ? h("div", {
-        "staticClass": "".concat(compName$d, "__media")
+        "staticClass": "".concat(compName$k, "__media")
       }, [$slots.media]) : undefined, h("div", {
-        "staticClass": "".concat(compName$d, "__content")
+        "staticClass": "".concat(compName$k, "__content")
       }, [$slots.default]), $slots.action ? h("div", {
-        "staticClass": "".concat(compName$d, "__action")
+        "staticClass": "".concat(compName$k, "__action")
       }, [$slots.action]) : undefined]);
     }
   }, {
@@ -3844,7 +4050,7 @@ function (_Vue) {
     get: function get() {
       var size = this.size;
       var styles = {};
-      genSize(styles, compName$d, size);
+      genSize(styles, compName$k, size);
       return styles;
     }
   }]);
@@ -3895,7 +4101,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$e = 'm-table-head';
+var compName$l = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -3982,7 +4188,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$e, "__cell"),
+        "staticClass": "".concat(compName$l, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -4000,7 +4206,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$e, "__row")
+        "staticClass": "".concat(compName$l, "__row")
       }, [result]);
     }
   }, {
@@ -4010,7 +4216,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$e, "__row")
+        "staticClass": "".concat(compName$l, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4024,7 +4230,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$e, "__row")
+        "staticClass": "".concat(compName$l, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4046,7 +4252,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$e
+        "staticClass": compName$l
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -4083,7 +4289,7 @@ TableHead = __decorate([Component({
 })], TableHead);
 var TableHead$1 = TableHead;
 
-var compName$f = 'm-transition-expansion';
+var compName$m = 'm-transition-expansion';
 
 function getSize(size) {
   if (!size) {
@@ -4181,7 +4387,7 @@ function (_Vue) {
           children = _ref.children;
       return h("transition", {
         "attrs": {
-          "name": compName$f
+          "name": compName$m
         },
         "on": {
           "beforeEnter": beforeEnter,
@@ -4264,7 +4470,7 @@ var off = function () {
   }
 }();
 
-var compName$g = 'm-table-body';
+var compName$n = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -4426,7 +4632,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$g, "__cell"),
+          "staticClass": "".concat(compName$n, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -4455,7 +4661,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$g, "__row"),
+        "staticClass": "".concat(compName$n, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -4485,13 +4691,13 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$g, "__expand")
+        "staticClass": "".concat(compName$n, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
         }
       }, [h(MTransitionExpansion$1, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$g, "__expand-content")
+        "staticClass": "".concat(compName$n, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -4555,7 +4761,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$g,
+        "staticClass": compName$n,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -4630,7 +4836,7 @@ TableBody = __decorate([Component({
 })], TableBody);
 var TableBody$1 = TableBody;
 
-var compName$h = 'm-table';
+var compName$o = 'm-table';
 var SELF_KEY = '_table-key';
 
 var MTable =
@@ -4814,13 +5020,13 @@ function (_Mixins) {
           rowExpand = this.rowExpand;
       var noHeader = header === typeHeader.none;
       return h("div", {
-        "staticClass": compName$h,
+        "staticClass": compName$o,
         "attrs": {
           "size": size,
           "elevation": elevation
         }
       }, [h("section", {
-        "staticClass": "".concat(compName$h, "__wrapper")
+        "staticClass": "".concat(compName$o, "__wrapper")
       }, [noHeader ? undefined : h(TableHead$1, {
         "ref": 'head',
         "attrs": {
@@ -5088,7 +5294,7 @@ var components = /*#__PURE__*/Object.freeze({
     MRadio: MRadio$1,
     MCheckbox: MCheckbox$1,
     MChip: MChip$1,
-    MTimePicker: MTimePicker,
+    MTimePicker: MTimePicker$1,
     MList: MList$1,
     MTable: MTable$1,
     MTableCol: MTableCol$1
@@ -5536,4 +5742,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Mobov;
-export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker, MView$1 as MView };
+export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MView$1 as MView };

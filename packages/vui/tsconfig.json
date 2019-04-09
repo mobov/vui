@@ -23,7 +23,7 @@
     "removeComments": false,
     "noImplicitAny": false,
     "rootDir": "./src",
-    "declarationDir":  "./types/",
+    "declarationDir":  "./types",
     "noLib": false,
     "lib": ["dom", "es6", "es2017"]
   },
