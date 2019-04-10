@@ -1357,15 +1357,15 @@ __decorate([Prop({
 }), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
 
 __decorate([Prop({
-  type: String
+  type: Number
 }), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
 
 __decorate([Prop({
-  type: String
+  type: Number
 }), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
 
 __decorate([Prop({
-  type: String
+  type: Number
 }), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
 
 MView = __decorate([Component], MView);

@@ -27,13 +27,13 @@ export default class MView extends Vue {
   @Prop({ type: Number })
   headerIndex?: number
 
-  @Prop({ type: String })
+  @Prop({ type: Number })
   footerIndex?: number
 
-  @Prop({ type: String })
+  @Prop({ type: Number })
   leftIndex?: number
 
-  @Prop({ type: String })
+  @Prop({ type: Number })
   rightIndex?: number
 
   get classes () {
