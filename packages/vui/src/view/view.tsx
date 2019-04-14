@@ -1,6 +1,11 @@
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { genSize } from '../core/util'
 import { Fill, size } from '../core/constant'
+import colorable from '../core/mixin/colorable'
+import sizeable from '../core/mixin/sizeable'
+import elevated from '../core/mixin/elevated'
+import variable from '../core/mixin/variable'
+import shapeable from '../core/mixin/shapeable'
 
 const compName = 'm-view'
 
@@ -36,7 +41,7 @@ export default class MView extends Vue {
   @Prop({ type: Number })
   rightIndex?: number
 
-  get classes () {
+  private get classes () {
     const { fillHeader, fillFooter, isHeader, isFooter, isLeft, isRight } = this
 
     return {
@@ -49,7 +54,7 @@ export default class MView extends Vue {
     }
   }
 
-  get styles () {
+  private get styles () {
     const { isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
     } = this
 
@@ -71,12 +76,12 @@ export default class MView extends Vue {
     return styles
   }
 
-  isHeader = false
-  isFooter = false
-  isLeft = false
-  isRight = false
+  private isHeader = false
+  private isFooter = false
+  private isLeft = false
+  private isRight = false
 
-  RHeader () {
+  private RHeader () {
     return (
       <transition name="m-transition-slide-down">
         {this.isHeader ? <div staticClass={`${compName}-header`}>{this.$slots.header}</div> : undefined}
@@ -84,7 +89,7 @@ export default class MView extends Vue {
     )
   }
 
-  RFooter () {
+  private RFooter () {
     return (
       <transition name="m-transition-slide-up">
         {this.isFooter ? <div staticClass={`${compName}-footer`}>{this.$slots.footer}</div> : undefined}
@@ -92,7 +97,7 @@ export default class MView extends Vue {
     )
   }
 
-  RLeft () {
+  private RLeft () {
     return (
       <transition name="m-transition-slide-left">
         {this.isLeft ? <div staticClass={`${compName}-left`}>{this.$slots.left}</div> : undefined}
@@ -100,7 +105,7 @@ export default class MView extends Vue {
     )
   }
 
-  RRight () {
+  private RRight () {
     return (
       <transition name="m-transition-slide-right">
         {this.isRight ? <div staticClass={`${compName}-right`}>{this.$slots.right}</div> : undefined}
@@ -108,26 +113,25 @@ export default class MView extends Vue {
     )
   }
 
-  render () {
+  private render () {
     const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this
 
     this.isHeader = $slots.header !== undefined
     this.isFooter = $slots.footer !== undefined
     this.isLeft = $slots.left !== undefined
     this.isRight = $slots.right !== undefined
-
-    console.log(styles)
+console.log(this)
     return (
       <div staticClass={compName}
            style={styles}
            class={classes}>
+        {RHeader()}
+        {RLeft()}
+        {RRight()}
+        {RFooter()}
         <section staticClass={`${compName}-main`}>
           {$slots.default}
         </section>
-        {RHeader()}
-        {RFooter()}
-        {RLeft()}
-        {RRight()}
       </div>
     )
   }

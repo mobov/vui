@@ -3,30 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 // import './registerServiceWorker'
-import '@mobov/vui/lib/style.css'
+// import '@mobov/vui/lib/style.css'
 import mobov, {
   MApp, MView, MIcon, MButton, MFlexFiller, MFlex, MList,
   MCheckbox, MRadio, MAppBar, MRow, MCol, MAvatar
 } from '@mobov/vui'
 
-
-// Mobov.install(Vue, {
-//   components: {
-//     MApp,
-//     MAvatar,
-//     MAppBar,
-//     MIcon,
-//     MButton,
-//     MFlexFiller,
-//     MFlex,
-//     MList,
-//     MView,
-//     MCheckbox,
-//     MRadio,
-//     MRow,
-//     MCol
-//   }
-// })
 Vue.use(mobov, {
   components: {
     MApp,

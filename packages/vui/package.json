@@ -9,7 +9,7 @@
     "build": "rollup --config build/rollup.config.js"
   },
   "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
+  "module": "src/index.ts",
   "types": "types/index.d.ts",
   "peerDependencies": {
     "@mobov/es-helper": "^1.0.6",

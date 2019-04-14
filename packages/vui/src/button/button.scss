@@ -30,6 +30,7 @@ $--m-button-size-xl: 4rem;
  * components styles.
  */
 .m-button {
+  //
   //@include clear-button;
   //margin: unset;
   outline: none;
@@ -46,6 +47,7 @@ $--m-button-size-xl: 4rem;
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
+  border-width: 0;
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;
