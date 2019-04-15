@@ -5,7 +5,6 @@
   "scripts": {
     "init": "lerna init",
     "bootstrap": "lerna bootstrap",
-    "serve": "yarn vui:serve && yarn vui-guide:serve",
     "vui-guide:serve": "lerna run serve --scope @mobov/vui-guide --stream",
     "vui-guide:build": "lerna run build --scope @mobov/vui-guide --stream",
     "vui:serve": "lerna run serve --scope @mobov/vui --stream",

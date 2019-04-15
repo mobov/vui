@@ -11,21 +11,15 @@ export default class MView extends Vue {
     footerIndex?: number;
     leftIndex?: number;
     rightIndex?: number;
-    readonly classes: {
-        [x: string]: boolean;
-        'm--with-header': boolean;
-        'm--with-footer': boolean;
-        'm--with-left': boolean;
-        'm--with-right': boolean;
-    };
-    readonly styles: {};
-    isHeader: boolean;
-    isFooter: boolean;
-    isLeft: boolean;
-    isRight: boolean;
-    RHeader(): JSX.Element;
-    RFooter(): JSX.Element;
-    RLeft(): JSX.Element;
-    RRight(): JSX.Element;
-    render(): JSX.Element;
+    private readonly classes;
+    private readonly styles;
+    private isHeader;
+    private isFooter;
+    private isLeft;
+    private isRight;
+    private RHeader;
+    private RFooter;
+    private RLeft;
+    private RRight;
+    private render;
 }

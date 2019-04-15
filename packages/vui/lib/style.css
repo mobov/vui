@@ -1373,6 +1373,7 @@ body,
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  border-width: 0;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1502,8 +1503,10 @@ body,
           box-sizing: border-box;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
   -webkit-transition: all ease .3s;
-  transition: all ease .3s; }
+  transition: all ease .3s;
+  border-width: 0; }
   .m-avatar.m-variety-outline {
     background-color: var(--m-bg-color);
     border-color: var(--m-avatar-color);
@@ -1525,8 +1528,7 @@ body,
   display: block;
   position: absolute;
   left: 0;
-  top: 0;
-  border-radius: inherit; }
+  top: 0; }
 
 /**
  * variables register.
