@@ -6,10 +6,11 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rollup --config build/rollup.config.js"
+    "serve": "rollup -w --config build/rollup.config.watch.js",
+    "build": "rollup --name=MobovUI --config build/rollup.config.bundle.js"
   },
   "main": "lib/index.cjs.js",
-  "module": "src/index.ts",
+  "module": "lib/index.esm.js",
   "types": "types/index.d.ts",
   "peerDependencies": {
     "@mobov/es-helper": "^1.0.6",
