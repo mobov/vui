@@ -4,6 +4,10 @@ export default [
     docSrc: 'app/app.md'
   },
   {
+    name: 'frame',
+    docSrc: 'frame/frame.md'
+  },
+  {
     name: 'view',
     docSrc: 'view/view.md'
   },

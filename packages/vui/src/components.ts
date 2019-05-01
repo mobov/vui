@@ -1,5 +1,6 @@
 // 基础
 export { default as MApp } from './app'
+export { default as MFrame } from './frame'
 export { default as MView } from './view'
 export { default as MIcon } from './icon'
 export { MContainer, MRow, MCol, MFlex, MFlexFiller } from './layout'
@@ -11,5 +12,6 @@ export { default as MRadio } from './radio'
 export { default as MCheckbox } from './checkbox'
 export { default as MChip } from './chip'
 export { default as MTimePicker } from './time-picker'
+export { default as MTransition } from './transition'
 export { MList } from './list'
 export { MTable, MTableCol } from './table'

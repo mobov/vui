@@ -1,6 +1,6 @@
 import { Component, Prop, Vue, Inject, Watch } from 'vue-property-decorator'
 import MIcon from '../../icon'
-import { MTransitionExpansion } from '../../transition'
+import MTransition from '../../transition'
 import MCheckbox from '../../checkbox'
 import MRadio from '../../radio'
 import { getStyleSize } from '../../core/util'
@@ -11,7 +11,7 @@ import { typeHeader,  typeHover, typeSelect }  from '../constant'
 const compName = 'm-table-body'
 
 @Component({
-  components: { MCheckbox, MRadio, MIcon, MTransitionExpansion }
+  components: { MCheckbox, MRadio, MIcon, MTransition }
 })
 export default class TableBody extends Vue {
   @Prop({ type: String })
@@ -212,13 +212,13 @@ export default class TableBody extends Vue {
     return (
       <tr staticClass={`${compName}__expand`}>
         <td colSpan={TableCols.length}>
-          <MTransitionExpansion>
+          <MTransition name={'expansion'}>
             {!isExpanded ? undefined : (
               <div staticClass={`${compName}__expand-content`}>
                 {this.$parent.$scopedSlots.expand(row)}
               </div>
             )}
-          </MTransitionExpansion>
+          </MTransition>
         </td>
       </tr>
     )

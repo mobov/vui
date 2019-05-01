@@ -1,6 +1,59 @@
 import { Vue, Component, Prop, Mixins, Emit, Watch, Inject, Provide } from 'vue-property-decorator';
 import { isStyleUnit, deepCopy } from '@mobov/es-helper';
 
+function styleInject(css, ref) {
+  if (ref === void 0) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') {
+    return;
+  }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\nhtml {\n  --m-color-red-50: #ffebee;\n  --m-color-red-100: #ffcdd2;\n  --m-color-red-200: #ef9a9a;\n  --m-color-red-300: #e57373;\n  --m-color-red-400: #ef5350;\n  --m-color-red-500: #f44336;\n  --m-color-red-600: #e53935;\n  --m-color-red-700: #d32f2f;\n  --m-color-red-800: #c62828;\n  --m-color-red-900: #b71c1c;\n  --m-color-red-A100: #ff8a80;\n  --m-color-red-A200: #ff5252;\n  --m-color-red-A400: #ff1744;\n  --m-color-red-A700: #d50000;\n  --m-color-pink-50: #fce4ec;\n  --m-color-pink-100: #f8bbd0;\n  --m-color-pink-200: #f48fb1;\n  --m-color-pink-300: #f06292;\n  --m-color-pink-400: #ec407a;\n  --m-color-pink-500: #e91e63;\n  --m-color-pink-600: #d81b60;\n  --m-color-pink-700: #c2185b;\n  --m-color-pink-800: #ad1457;\n  --m-color-pink-900: #880e4f;\n  --m-color-pink-A100: #ff80ab;\n  --m-color-pink-A200: #ff4081;\n  --m-color-pink-A400: #f50057;\n  --m-color-pink-A700: #c51162;\n  --m-color-purple-50: #f3e5f5;\n  --m-color-purple-100: #e1bee7;\n  --m-color-purple-200: #ce93d8;\n  --m-color-purple-300: #ba68c8;\n  --m-color-purple-400: #ab47bc;\n  --m-color-purple-500: #9c27b0;\n  --m-color-purple-600: #8e24aa;\n  --m-color-purple-700: #7b1fa2;\n  --m-color-purple-800: #6a1b9a;\n  --m-color-purple-900: #4a148c;\n  --m-color-purple-A100: #ea80fc;\n  --m-color-purple-A200: #e040fb;\n  --m-color-purple-A400: #d500f9;\n  --m-color-purple-A700: #aa00ff;\n  --m-color-deeppurple-50: #ede7f6;\n  --m-color-deeppurple-100: #d1c4e9;\n  --m-color-deeppurple-200: #b39ddb;\n  --m-color-deeppurple-300: #9575cd;\n  --m-color-deeppurple-400: #7e57c2;\n  --m-color-deeppurple-500: #673ab7;\n  --m-color-deeppurple-600: #5e35b1;\n  --m-color-deeppurple-700: #512da8;\n  --m-color-deeppurple-800: #4527a0;\n  --m-color-deeppurple-900: #311b92;\n  --m-color-deeppurple-A100: #b388ff;\n  --m-color-deeppurple-A200: #7c4dff;\n  --m-color-deeppurple-A400: #651fff;\n  --m-color-deeppurple-A700: #6200ea;\n  --m-color-indigo-50: #e8eaf6;\n  --m-color-indigo-100: #c5cae9;\n  --m-color-indigo-200: #9fa8da;\n  --m-color-indigo-300: #7986cb;\n  --m-color-indigo-400: #5c6bc0;\n  --m-color-indigo-500: #3f51b5;\n  --m-color-indigo-600: #3949ab;\n  --m-color-indigo-700: #303f9f;\n  --m-color-indigo-800: #283593;\n  --m-color-indigo-900: #1a237e;\n  --m-color-indigo-A100: #8c9eff;\n  --m-color-indigo-A200: #536dfe;\n  --m-color-indigo-A400: #3d5afe;\n  --m-color-indigo-A700: #304ffe;\n  --m-color-blue-50: #e3f2fd;\n  --m-color-blue-100: #bbdefb;\n  --m-color-blue-200: #90caf9;\n  --m-color-blue-300: #64b5f6;\n  --m-color-blue-400: #42a5f5;\n  --m-color-blue-500: #2196f3;\n  --m-color-blue-600: #1e88e5;\n  --m-color-blue-700: #1976d2;\n  --m-color-blue-800: #1565c0;\n  --m-color-blue-900: #0d47a1;\n  --m-color-blue-A100: #82b1ff;\n  --m-color-blue-A200: #448aff;\n  --m-color-blue-A400: #2979ff;\n  --m-color-blue-A700: #2962ff;\n  --m-color-lightblue-50: #e1f5fe;\n  --m-color-lightblue-100: #b3e5fc;\n  --m-color-lightblue-200: #81d4fa;\n  --m-color-lightblue-300: #4fc3f7;\n  --m-color-lightblue-400: #29b6f6;\n  --m-color-lightblue-500: #03a9f4;\n  --m-color-lightblue-600: #039be5;\n  --m-color-lightblue-700: #0288d1;\n  --m-color-lightblue-800: #0277bd;\n  --m-color-lightblue-900: #01579b;\n  --m-color-lightblue-A100: #80d8ff;\n  --m-color-lightblue-A200: #40c4ff;\n  --m-color-lightblue-A400: #00b0ff;\n  --m-color-lightblue-A700: #0091ea;\n  --m-color-cyan-50: #e0f7fa;\n  --m-color-cyan-100: #b2ebf2;\n  --m-color-cyan-200: #80deea;\n  --m-color-cyan-300: #4dd0e1;\n  --m-color-cyan-400: #26c6da;\n  --m-color-cyan-500: #00bcd4;\n  --m-color-cyan-600: #00acc1;\n  --m-color-cyan-700: #0097a7;\n  --m-color-cyan-800: #00838f;\n  --m-color-cyan-900: #006064;\n  --m-color-cyan-A100: #84ffff;\n  --m-color-cyan-A200: #18ffff;\n  --m-color-cyan-A400: #00e5ff;\n  --m-color-cyan-A700: #00b8d4;\n  --m-color-teal-50: #e0f2f1;\n  --m-color-teal-100: #b2dfdb;\n  --m-color-teal-200: #80cbc4;\n  --m-color-teal-300: #4db6ac;\n  --m-color-teal-400: #26a69a;\n  --m-color-teal-500: #009688;\n  --m-color-teal-600: #00897b;\n  --m-color-teal-700: #00796b;\n  --m-color-teal-800: #00695c;\n  --m-color-teal-900: #004d40;\n  --m-color-teal-A100: #a7ffeb;\n  --m-color-teal-A200: #64ffda;\n  --m-color-teal-A400: #1de9b6;\n  --m-color-teal-A700: #00bfa5;\n  --m-color-green-50: #e8f5e9;\n  --m-color-green-100: #c8e6c9;\n  --m-color-green-200: #a5d6a7;\n  --m-color-green-300: #81c784;\n  --m-color-green-400: #66bb6a;\n  --m-color-green-500: #4caf50;\n  --m-color-green-600: #43a047;\n  --m-color-green-700: #388e3c;\n  --m-color-green-800: #2e7d32;\n  --m-color-green-900: #1b5e20;\n  --m-color-green-A100: #b9f6ca;\n  --m-color-green-A200: #69f0ae;\n  --m-color-green-A400: #00e676;\n  --m-color-green-A700: #00c853;\n  --m-color-lightgreen-50: #f1f8e9;\n  --m-color-lightgreen-100: #dcedc8;\n  --m-color-lightgreen-200: #c5e1a5;\n  --m-color-lightgreen-300: #aed581;\n  --m-color-lightgreen-400: #9ccc65;\n  --m-color-lightgreen-500: #8bc34a;\n  --m-color-lightgreen-600: #7cb342;\n  --m-color-lightgreen-700: #689f38;\n  --m-color-lightgreen-800: #558b2f;\n  --m-color-lightgreen-900: #33691e;\n  --m-color-lightgreen-A100: #ccff90;\n  --m-color-lightgreen-A200: #b2ff59;\n  --m-color-lightgreen-A400: #76ff03;\n  --m-color-lightgreen-A700: #64dd17;\n  --m-color-lime-50: #f9fbe7;\n  --m-color-lime-100: #f0f4c3;\n  --m-color-lime-200: #e6ee9c;\n  --m-color-lime-300: #dce775;\n  --m-color-lime-400: #d4e157;\n  --m-color-lime-500: #cddc39;\n  --m-color-lime-600: #c0ca33;\n  --m-color-lime-700: #afb42b;\n  --m-color-lime-800: #9e9d24;\n  --m-color-lime-900: #827717;\n  --m-color-lime-A100: #f4ff81;\n  --m-color-lime-A200: #eeff41;\n  --m-color-lime-A400: #c6ff00;\n  --m-color-lime-A700: #aeea00;\n  --m-color-yellow-50: #fffde7;\n  --m-color-yellow-100: #fff9c4;\n  --m-color-yellow-200: #fff59d;\n  --m-color-yellow-300: #fff176;\n  --m-color-yellow-400: #ffee58;\n  --m-color-yellow-500: #ffeb3b;\n  --m-color-yellow-600: #fdd835;\n  --m-color-yellow-700: #fbc02d;\n  --m-color-yellow-800: #f9a825;\n  --m-color-yellow-900: #f57f17;\n  --m-color-yellow-A100: #ffff8d;\n  --m-color-yellow-A200: #ffff00;\n  --m-color-yellow-A400: #ffea00;\n  --m-color-yellow-A700: #ffd600;\n  --m-color-amber-50: #fff8e1;\n  --m-color-amber-100: #ffecb3;\n  --m-color-amber-200: #ffe082;\n  --m-color-amber-300: #ffd54f;\n  --m-color-amber-400: #ffca28;\n  --m-color-amber-500: #ffc107;\n  --m-color-amber-600: #ffb300;\n  --m-color-amber-700: #ffa000;\n  --m-color-amber-800: #ff8f00;\n  --m-color-amber-900: #ff6f00;\n  --m-color-amber-A100: #ffe57f;\n  --m-color-amber-A200: #ffd740;\n  --m-color-amber-A400: #ffc400;\n  --m-color-amber-A700: #ffab00;\n  --m-color-orange-50: #fff3e0;\n  --m-color-orange-100: #ffe0b2;\n  --m-color-orange-200: #ffcc80;\n  --m-color-orange-300: #ffb74d;\n  --m-color-orange-400: #ffa726;\n  --m-color-orange-500: #ff9800;\n  --m-color-orange-600: #f57c00;\n  --m-color-orange-700: #f57c00;\n  --m-color-orange-800: #ef6c00;\n  --m-color-orange-900: #e65100;\n  --m-color-orange-A100: #ffd180;\n  --m-color-orange-A200: #ffab40;\n  --m-color-orange-A400: #ff9100;\n  --m-color-orange-A700: #ff6d00;\n  --m-color-deeporange-50: #fbe9e7;\n  --m-color-deeporange-100: #ffccbc;\n  --m-color-deeporange-200: #ffab91;\n  --m-color-deeporange-300: #ff8a65;\n  --m-color-deeporange-400: #ff7043;\n  --m-color-deeporange-500: #ff5722;\n  --m-color-deeporange-600: #f4511e;\n  --m-color-deeporange-700: #e64a19;\n  --m-color-deeporange-800: #d84315;\n  --m-color-deeporange-900: #bf360c;\n  --m-color-deeporange-A100: #ff9e80;\n  --m-color-deeporange-A200: #ff6e40;\n  --m-color-deeporange-A400: #ff3d00;\n  --m-color-deeporange-A700: #dd2c00;\n  --m-color-brown-50: #efebe9;\n  --m-color-brown-100: #d7ccc8;\n  --m-color-brown-200: #bcaaa4;\n  --m-color-brown-300: #a1887f;\n  --m-color-brown-400: #8d6e63;\n  --m-color-brown-500: #795548;\n  --m-color-brown-600: #6d4c41;\n  --m-color-brown-700: #5d4037;\n  --m-color-brown-800: #4e342e;\n  --m-color-brown-900: #3e2723;\n  --m-color-brown-A100: #d7ccc8;\n  --m-color-brown-A200: #bcaaa4;\n  --m-color-brown-A400: #8d6e63;\n  --m-color-brown-A700: #5d4037;\n  --m-color-grey-50: #fafafa;\n  --m-color-grey-100: #f5f5f5;\n  --m-color-grey-200: #eeeeee;\n  --m-color-grey-300: #e0e0e0;\n  --m-color-grey-400: #bdbdbd;\n  --m-color-grey-500: #9e9e9e;\n  --m-color-grey-600: #757575;\n  --m-color-grey-700: #616161;\n  --m-color-grey-800: #424242;\n  --m-color-grey-900: #212121;\n  --m-color-grey-A100: #fff;\n  --m-color-grey-A200: #000000;\n  --m-color-grey-A400: #303030;\n  --m-color-grey-A700: #616161;\n  --m-color-bluegrey-50: #eceff1;\n  --m-color-bluegrey-100: #cfd8dc;\n  --m-color-bluegrey-200: #b0bec5;\n  --m-color-bluegrey-300: #90a4ae;\n  --m-color-bluegrey-400: #78909c;\n  --m-color-bluegrey-500: #607d8b;\n  --m-color-bluegrey-600: #546e7a;\n  --m-color-bluegrey-700: #455a64;\n  --m-color-bluegrey-800: #37474f;\n  --m-color-bluegrey-900: #263238;\n  --m-color-bluegrey-A100: #cfd8dc;\n  --m-color-bluegrey-A200: #b0bec5;\n  --m-color-bluegrey-A400: #78909c;\n  --m-color-bluegrey-A700: #455a64; }\n";
+styleInject(css);
+
+var css$1 = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\nhtml {\n  --m-elevation-0: none;\n  --m-elevation-1: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-2: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-3: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-4: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-5: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-6: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n  --m-elevation-7: 0 4px 5px -2px rgba(0, 0, 0, 0.2), 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12);\n  --m-elevation-8: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);\n  --m-elevation-9: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);\n  --m-elevation-10: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12);\n  --m-elevation-11: 0 6px 7px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12);\n  --m-elevation-12: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12);\n  --m-elevation-13: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);\n  --m-elevation-14: 0 7px 9px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12);\n  --m-elevation-15: 0 8px 9px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12);\n  --m-elevation-16: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);\n  --m-elevation-17: 0 8px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12);\n  --m-elevation-18: 0 9px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12);\n  --m-elevation-19: 0 9px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12);\n  --m-elevation-20: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12);\n  --m-elevation-21: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12);\n  --m-elevation-22: 0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12);\n  --m-elevation-23: 0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12);\n  --m-elevation-24: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12); }\n\n/**\r\n * common modifier class output.\r\n */\n.m-elevation-0 {\n  -webkit-box-shadow: none;\n          box-shadow: none; }\n\n.m-elevation-1 {\n  -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-2 {\n  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-3 {\n  -webkit-box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-4 {\n  -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-5 {\n  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-6 {\n  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12); }\n\n.m-elevation-7 {\n  -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2), 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2), 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-8 {\n  -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-9 {\n  -webkit-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-10 {\n  -webkit-box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 6px 6px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-11 {\n  -webkit-box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-12 {\n  -webkit-box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-13 {\n  -webkit-box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-14 {\n  -webkit-box-shadow: 0 7px 9px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 7px 9px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-15 {\n  -webkit-box-shadow: 0 8px 9px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 8px 9px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-16 {\n  -webkit-box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-17 {\n  -webkit-box-shadow: 0 8px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 8px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-18 {\n  -webkit-box-shadow: 0 9px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 9px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-19 {\n  -webkit-box-shadow: 0 9px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 9px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-20 {\n  -webkit-box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-21 {\n  -webkit-box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-22 {\n  -webkit-box-shadow: 0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-23 {\n  -webkit-box-shadow: 0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12); }\n\n.m-elevation-24 {\n  -webkit-box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);\n          box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12); }\n";
+styleInject(css$1);
+
+var css$2 = "@charset \"UTF-8\";\n/**\r\n * variables register.\r\n */\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\nhtml {\n  --m-space-xs: 0.5rem;\n  --m-space-sm: 1rem;\n  --m-space-md: 1.5rem;\n  --m-space-lg: 2rem;\n  --m-space-xl: 2.5rem; }\n\n.m-mt-xs {\n  margin-top: var(--m-space-xs); }\n\n.m-mb-xs {\n  margin-bottom: var(--m-space-xs); }\n\n.m-ml-xs {\n  margin-left: var(--m-space-xs); }\n\n.m-mr-xs {\n  margin-right: var(--m-space-xs); }\n\n.m-mx-xs {\n  margin-left: var(--m-space-xs);\n  margin-right: var(--m-space-xs); }\n\n.m-my-xs {\n  margin-top: var(--m-space-xs);\n  margin-bottom: var(--m-space-xs); }\n\n.m-m-xs {\n  margin: var(--m-space-xs); }\n\n.m-pt-xs {\n  padding-top: var(--m-space-xs); }\n\n.m-pb-xs {\n  padding-bottom: var(--m-space-xs); }\n\n.m-pl-xs {\n  padding-left: var(--m-space-xs); }\n\n.m-pr-xs {\n  padding-right: var(--m-space-xs); }\n\n.m-px-xs {\n  padding-left: var(--m-space-xs);\n  padding-right: var(--m-space-xs); }\n\n.m-py-xs {\n  padding-top: var(--m-space-xs);\n  padding-bottom: var(--m-space-xs); }\n\n.m-p-xs {\n  padding: var(--m-space-xs); }\n\n.m-mt-sm {\n  margin-top: var(--m-space-sm); }\n\n.m-mb-sm {\n  margin-bottom: var(--m-space-sm); }\n\n.m-ml-sm {\n  margin-left: var(--m-space-sm); }\n\n.m-mr-sm {\n  margin-right: var(--m-space-sm); }\n\n.m-mx-sm {\n  margin-left: var(--m-space-sm);\n  margin-right: var(--m-space-sm); }\n\n.m-my-sm {\n  margin-top: var(--m-space-sm);\n  margin-bottom: var(--m-space-sm); }\n\n.m-m-sm {\n  margin: var(--m-space-sm); }\n\n.m-pt-sm {\n  padding-top: var(--m-space-sm); }\n\n.m-pb-sm {\n  padding-bottom: var(--m-space-sm); }\n\n.m-pl-sm {\n  padding-left: var(--m-space-sm); }\n\n.m-pr-sm {\n  padding-right: var(--m-space-sm); }\n\n.m-px-sm {\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm); }\n\n.m-py-sm {\n  padding-top: var(--m-space-sm);\n  padding-bottom: var(--m-space-sm); }\n\n.m-p-sm {\n  padding: var(--m-space-sm); }\n\n.m-mt-md {\n  margin-top: var(--m-space-md); }\n\n.m-mb-md {\n  margin-bottom: var(--m-space-md); }\n\n.m-ml-md {\n  margin-left: var(--m-space-md); }\n\n.m-mr-md {\n  margin-right: var(--m-space-md); }\n\n.m-mx-md {\n  margin-left: var(--m-space-md);\n  margin-right: var(--m-space-md); }\n\n.m-my-md {\n  margin-top: var(--m-space-md);\n  margin-bottom: var(--m-space-md); }\n\n.m-m-md {\n  margin: var(--m-space-md); }\n\n.m-pt-md {\n  padding-top: var(--m-space-md); }\n\n.m-pb-md {\n  padding-bottom: var(--m-space-md); }\n\n.m-pl-md {\n  padding-left: var(--m-space-md); }\n\n.m-pr-md {\n  padding-right: var(--m-space-md); }\n\n.m-px-md {\n  padding-left: var(--m-space-md);\n  padding-right: var(--m-space-md); }\n\n.m-py-md {\n  padding-top: var(--m-space-md);\n  padding-bottom: var(--m-space-md); }\n\n.m-p-md {\n  padding: var(--m-space-md); }\n\n.m-mt-lg {\n  margin-top: var(--m-space-lg); }\n\n.m-mb-lg {\n  margin-bottom: var(--m-space-lg); }\n\n.m-ml-lg {\n  margin-left: var(--m-space-lg); }\n\n.m-mr-lg {\n  margin-right: var(--m-space-lg); }\n\n.m-mx-lg {\n  margin-left: var(--m-space-lg);\n  margin-right: var(--m-space-lg); }\n\n.m-my-lg {\n  margin-top: var(--m-space-lg);\n  margin-bottom: var(--m-space-lg); }\n\n.m-m-lg {\n  margin: var(--m-space-lg); }\n\n.m-pt-lg {\n  padding-top: var(--m-space-lg); }\n\n.m-pb-lg {\n  padding-bottom: var(--m-space-lg); }\n\n.m-pl-lg {\n  padding-left: var(--m-space-lg); }\n\n.m-pr-lg {\n  padding-right: var(--m-space-lg); }\n\n.m-px-lg {\n  padding-left: var(--m-space-lg);\n  padding-right: var(--m-space-lg); }\n\n.m-py-lg {\n  padding-top: var(--m-space-lg);\n  padding-bottom: var(--m-space-lg); }\n\n.m-p-lg {\n  padding: var(--m-space-lg); }\n\n.m-mt-xl {\n  margin-top: var(--m-space-xl); }\n\n.m-mb-xl {\n  margin-bottom: var(--m-space-xl); }\n\n.m-ml-xl {\n  margin-left: var(--m-space-xl); }\n\n.m-mr-xl {\n  margin-right: var(--m-space-xl); }\n\n.m-mx-xl {\n  margin-left: var(--m-space-xl);\n  margin-right: var(--m-space-xl); }\n\n.m-my-xl {\n  margin-top: var(--m-space-xl);\n  margin-bottom: var(--m-space-xl); }\n\n.m-m-xl {\n  margin: var(--m-space-xl); }\n\n.m-pt-xl {\n  padding-top: var(--m-space-xl); }\n\n.m-pb-xl {\n  padding-bottom: var(--m-space-xl); }\n\n.m-pl-xl {\n  padding-left: var(--m-space-xl); }\n\n.m-pr-xl {\n  padding-right: var(--m-space-xl); }\n\n.m-px-xl {\n  padding-left: var(--m-space-xl);\n  padding-right: var(--m-space-xl); }\n\n.m-py-xl {\n  padding-top: var(--m-space-xl);\n  padding-bottom: var(--m-space-xl); }\n\n.m-p-xl {\n  padding: var(--m-space-xl); }\n\n.m-mt-0 {\n  margin-top: 0 !important; }\n\n.m-mb-0 {\n  margin-bottom: 0 !important; }\n\n.m-ml-0 {\n  margin-left: 0 !important; }\n\n.m-mr-0 {\n  margin-right: 0 !important; }\n\n.m-mx-0 {\n  margin-left: 0 !important;\n  margin-right: 0 !important; }\n\n.m-my-0 {\n  margin-top: 0 !important;\n  margin-bottom: 0 !important; }\n\n.m-m-0 {\n  margin: 0 !important; }\n\n.m-pt-0 {\n  padding-top: 0 !important; }\n\n.m-pb-0 {\n  padding-bottom: 0 !important; }\n\n.m-pl-0 {\n  padding-left: 0 !important; }\n\n.m-pr-0 {\n  padding-right: 0 !important; }\n\n.m-px-0 {\n  padding-left: 0 !important;\n  padding-right: 0 !important; }\n\n.m-py-0 {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important; }\n\n.m-p-0 {\n  padding: 0 !important; }\n";
+styleInject(css$2);
+
+var css$3 = "/**\r\n * variables register.\r\n */\nhtml {\n  --m-shape-circle: 50%;\n  --m-shape-round: 1rem;\n  --m-shape-corner: .2rem;\n  --m-shape-square: 0; }\n\n/**\r\n * common modifier class output.\r\n */\n.m-shape-circle {\n  border-radius: var(--m-shape-circle); }\n\n.m-shape-round {\n  border-radius: var(--m-shape-round); }\n\n.m-shape-corner {\n  border-radius: var(--m-shape-corner); }\n\n.m-shape-square {\n  border-radius: var(--m-shape-square); }\n";
+styleInject(css$3);
+
+var css$4 = "/**\r\n * theme\r\n */\nhtml {\n  --m-font-base: 62.5%;\n  --m-color-primary: var(--m-color-deeppurple-700);\n  --m-color-error: var(--m-color-red-A400);\n  --m-color-success: var(--m-color-green-500);\n  --m-color-warning: var(--m-color-orange-A700);\n  --m-color-default: var(--m-font-color); }\n";
+styleInject(css$4);
+
+var css$5 = "/**\r\n * day and night mode\r\n */\nhtml {\n  --m-day-font-color: var(--m-color-grey-A700);\n  --m-day-bg-color: var(--m-color-grey-A100);\n  --m-day-border-color: var(--m-color-grey-300);\n  --m-day-bg-second-color: var(--m-color-grey-200); }\n\nhtml {\n  --m-font-color: var(--m-day-font-color);\n  --m-bg-color: var(--m-day-bg-color);\n  --m-border-color: var(--m-day-border-color); }\n";
+styleInject(css$5);
+
+var css$6 = ".m-hr-b {\n  border-bottom: 1px solid var(--m-border-color); }\n\n.m-hr-t {\n  border-top: 1px solid var(--m-border-color); }\n\n.m-hr-l {\n  border-left: 1px solid var(--m-border-color); }\n\n.m-hr-r {\n  border-right: 1px solid var(--m-border-color); }\n";
+styleInject(css$6);
+
+var css$7 = "/**\r\n * components styles.\r\n */\nhtml,\nbody,\n#app,\n.m-app {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  background-color: var(--m-bg-color);\n  position: relative; }\n\n* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n";
+styleInject(css$7);
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -144,6 +197,9 @@ var MApp$1 = MApp;
 MApp$1.install = function (Vue) {
   Vue.component('MApp', MApp$1);
 };
+
+var css$8 = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-frame {\n  --m-frame-header-size-xs: 2.5rem;\n  --m-frame-header-size-sm: 3.5rem;\n  --m-frame-header-size-md: 4.5rem;\n  --m-frame-header-size-lg: 5.5rem;\n  --m-frame-header-size-xl: 6.5rem;\n  --m-frame-footer-size-xs: 2.5rem;\n  --m-frame-footer-size-sm: 3.5rem;\n  --m-frame-footer-size-md: 4.5rem;\n  --m-frame-footer-size-lg: 5.5rem;\n  --m-frame-footer-size-xl: 6.5rem;\n  --m-frame-left-size-xs:   2.5rem;\n  --m-frame-left-size-sm:   3.5rem;\n  --m-frame-left-size-md:   4.5rem;\n  --m-frame-left-size-lg:   5.5rem;\n  --m-frame-left-size-xl:   6.5rem;\n  --m-frame-right-size-xs:  2.5rem;\n  --m-frame-right-size-sm:  3.5rem;\n  --m-frame-right-size-md:  4.5rem;\n  --m-frame-right-size-lg:  5.5rem;\n  --m-frame-right-size-xl:  6.5rem;\n  --m-frame-header-size: 0;\n  --m-frame-footer-size: 0;\n  --m-frame-left-size: 0;\n  --m-frame-right-size: 0;\n  --m-frame-header-grow: 100%;\n  --m-frame-footer-grow: 100%;\n  --m-frame-left-grow: 100%;\n  --m-frame-right-grow: 100%;\n  --m-frame-header-shrink: 0;\n  --m-frame-footer-shrink: 0;\n  --m-frame-left-shrink: 0;\n  --m-frame-right-shrink: 0; }\n\n/**\r\n * components styles.\r\n */\n.m-frame {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  position: relative; }\n  .m-frame.m--transition {\n    -webkit-transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease;\n    transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease; }\n    .m-frame.m--transition > .m-frame-header,\n    .m-frame.m--transition > .m-frame-footer,\n    .m-frame.m--transition > .m-frame-left,\n    .m-frame.m--transition > .m-frame-right {\n      -webkit-transition: all 0.25s ease;\n      transition: all 0.25s ease; }\n\n.m-frame.m--with-header {\n  padding-top: var(--m-frame-header-size); }\n\n.m-frame.m--with-footer {\n  padding-bottom: var(--m-frame-footer-size); }\n\n.m-frame.m--with-left {\n  padding-left: var(--m-frame-left-size); }\n\n.m-frame.m--with-right {\n  padding-right: var(--m-frame-right-size); }\n\n.m-frame.m--with-header.m--fill-header-left {\n  --m-frame-left-shrink: var(--m-frame-header-size);\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-header.m--fill-header-both {\n  --m-frame-left-shrink: var(--m-frame-header-size);\n  --m-frame-right-shrink: var(--m-frame-header-size);\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size));\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-header.m--fill-header-right {\n  --m-frame-right-shrink: var(--m-frame-header-size);\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-left {\n  --m-frame-left-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-both {\n  --m-frame-left-grow: calc(100% - var(--m-frame-footer-size));\n  --m-frame-right-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-right {\n  --m-frame-right-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-left.m--fill-header-none, .m-frame.m--with-left.m--fill-header-right {\n  --m-frame-header-shrink: var(--m-frame-left-size);\n  --m-frame-header-grow: calc(100% - var(--m-frame-left-size)); }\n\n.m-frame.m--with-left.m--fill-footer-right, .m-frame.m--with-left.m--fill-footer-none {\n  --m-frame-footer-shrink: var(--m-frame-left-size);\n  --m-frame-footer-grow: calc(100% - var(--m-frame-left-size)); }\n\n.m-frame.m--with-right.m--fill-header-none, .m-frame.m--with-right.m--fill-header-left {\n  --m-frame-header-grow: calc(100% - var(--m-frame-right-size)); }\n\n.m-frame.m--with-right.m--fill-footer-left, .m-frame.m--with-right.m--fill-footer-none {\n  --m-frame-footer-grow: calc(100% - var(--m-frame-right-size)); }\n\n.m-frame.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-left, .m-frame.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-both, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-left, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-right, .m-frame.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-both, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-right, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-left.m--with-right.m--fill-header-none {\n  --m-frame-header-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size)); }\n\n.m-frame.m--with-left.m--with-right.m--fill-footer-none {\n  --m-frame-footer-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size)); }\n\n.m-frame-main {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-frame-main::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-frame-main::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-frame-main::-webkit-scrollbar {\n    width: 7px; }\n  .m-frame-main::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-frame-mainl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-frame-header, .m-frame-footer, .m-frame-left, .m-frame-right {\n  position: absolute;\n  z-index: 2; }\n\n.m-frame-header {\n  top: 0;\n  left: var(--m-frame-header-shrink);\n  width: var(--m-frame-header-grow);\n  height: var(--m-frame-header-size); }\n\n.m-frame-footer {\n  bottom: 0;\n  width: var(--m-frame-footer-grow);\n  left: var(--m-frame-footer-shrink);\n  height: var(--m-frame-footer-size); }\n\n.m-frame-left {\n  left: 0;\n  top: var(--m-frame-left-shrink);\n  height: var(--m-frame-left-grow);\n  width: var(--m-frame-left-size); }\n\n.m-frame-right {\n  right: 0;\n  top: var(--m-frame-right-shrink);\n  height: var(--m-frame-right-grow);\n  width: var(--m-frame-right-size); }\n\n.m-frame-transition-header-enter,\n.m-frame-transition-header-leave-to {\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%); }\n\n.m-frame-transition-footer-enter,\n.m-frame-transition-footer-leave-to {\n  -webkit-transform: translateY(100%);\n          transform: translateY(100%); }\n\n.m-frame-transition-left-enter,\n.m-frame-transition-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-frame-transition-right-enter,\n.m-frame-transition-right-leave-to {\n  -webkit-transform: translateX(100%);\n          transform: translateX(100%); }\n\n.m-frame-transition-header-enter-active,\n.m-frame-transition-header-leave-active {\n  will-change: transform;\n  -webkit-transition: -webkit-transform 0.25s ease;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n  transition: transform 0.25s ease, -webkit-transform 0.25s ease; }\n";
+styleInject(css$8);
 
 /* eslint-disable */
 var Buffer =
@@ -588,36 +644,48 @@ var DateTimeValueType;
   DateTimeValueType["minutes"] = "minutes";
 })(DateTimeValueType || (DateTimeValueType = {}));
 
+var TransitionName;
+
+(function (TransitionName) {
+  TransitionName["none"] = "none";
+  TransitionName["slideLeft"] = "slide-left";
+  TransitionName["slideRight"] = "slide-right";
+  TransitionName["slideUp"] = "slide-up";
+  TransitionName["slideDown"] = "slide-down";
+  TransitionName["expansion"] = "expansion";
+})(TransitionName || (TransitionName = {}));
+
 var constant = /*#__PURE__*/Object.freeze({
-    Elevation: Elevation,
-    Palette: Palette,
-    ELEVATION: ELEVATION,
-    get Status () { return Status; },
-    get Breakpoint () { return Breakpoint; },
-    BREAKPOINT: BREAKPOINT,
-    get Size () { return Size; },
-    SIZE: SIZE,
-    get Variety () { return Variety; },
-    VARIETY: VARIETY,
-    get Shape () { return Shape; },
-    SHAPE: SHAPE,
-    get Color () { return Color; },
-    COLOR: COLOR,
-    get Mode () { return Mode; },
-    get Fill () { return Fill; },
-    FILL: FILL,
-    get FlexJustify () { return FlexJustify; },
-    FLEX_JUSTIFY: FLEX_JUSTIFY,
-    get FlexWrap () { return FlexWrap; },
-    FLEX_WRAP: FLEX_WRAP,
-    get FlexAlign () { return FlexAlign; },
-    FLEX_ALIGN: FLEX_ALIGN,
-    get Align () { return Align; },
-    ALIGN: ALIGN,
-    get DateValueFormat () { return DateValueFormat; },
-    get DatePickerType () { return DatePickerType; },
-    get DateValueType () { return DateValueType; },
-    get DateTimeValueType () { return DateTimeValueType; }
+  Elevation: Elevation,
+  Palette: Palette,
+  ELEVATION: ELEVATION,
+  get Status () { return Status; },
+  get Breakpoint () { return Breakpoint; },
+  BREAKPOINT: BREAKPOINT,
+  get Size () { return Size; },
+  SIZE: SIZE,
+  get Variety () { return Variety; },
+  VARIETY: VARIETY,
+  get Shape () { return Shape; },
+  SHAPE: SHAPE,
+  get Color () { return Color; },
+  COLOR: COLOR,
+  get Mode () { return Mode; },
+  get Fill () { return Fill; },
+  FILL: FILL,
+  get FlexJustify () { return FlexJustify; },
+  FLEX_JUSTIFY: FLEX_JUSTIFY,
+  get FlexWrap () { return FlexWrap; },
+  FLEX_WRAP: FLEX_WRAP,
+  get FlexAlign () { return FlexAlign; },
+  FLEX_ALIGN: FLEX_ALIGN,
+  get Align () { return Align; },
+  ALIGN: ALIGN,
+  get DateValueFormat () { return DateValueFormat; },
+  get DatePickerType () { return DatePickerType; },
+  get DateValueType () { return DateValueType; },
+  get DateTimeValueType () { return DateTimeValueType; },
+  get TransitionName () { return TransitionName; }
 });
 
 /**
@@ -792,7 +860,450 @@ function genStaticStyles(styles, compName, property, val) {
   }
 }
 
-var compName = 'm-view';
+var css$9 = ".m-fade {\n  -webkit-transition: opacity ease 10s;\n  transition: opacity ease 10s; }\n\n.m-fade-enter {\n  will-change: opacity;\n  opacity: 0; }\n\n.m-fade-enter-active {\n  -webkit-transition: opacity ease 10s;\n  transition: opacity ease 10s; }\n\n.m-fade-enter-to {\n  will-change: auto;\n  opacity: 1; }\n";
+styleInject(css$9);
+
+var css$a = ".m-transition-slide-left-enter,\n.m-transition-slide-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-transition-slide-left-enter-active,\n.m-transition-slide-left-leave-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear; }\n\n.m-transition-slide-right-enter,\n.m-transition-slide-right-leave-to {\n  -webkit-transform: translate3D(100%, 0, 0);\n          transform: translate3D(100%, 0, 0); }\n\n.m-transition-slide-right-leave,\n.m-transition-slide-right-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-right-leave-active,\n.m-transition-slide-right-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-down-enter,\n.m-transition-slide-down-leave-to {\n  -webkit-transform: translate3D(0, -100%, 0);\n          transform: translate3D(0, -100%, 0); }\n\n.m-transition-slide-down-leave,\n.m-transition-slide-down-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-down-leave-active,\n.m-transition-slide-down-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-up-enter,\n.m-transition-slide-up-leave-to {\n  -webkit-transform: translate3D(0, 100%, 0);\n          transform: translate3D(0, 100%, 0); }\n\n.m-transition-slide-up-leave,\n.m-transition-slide-up-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-slide-up-leave-active,\n.m-slide-up-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n";
+styleInject(css$a);
+
+var css$b = ".m-transition-expansion-enter-active,\n.m-transition-expansion-leave-active {\n  -webkit-transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  -webkit-transform: translate3d(0, 0, 0);\n          transform: translate3d(0, 0, 0);\n  will-change: height;\n  overflow: hidden; }\n\n.m-transition-scale-enter-active,\n.m-transition-scale-leave-active {\n  -webkit-transition: all .2s ease;\n  transition: all .2s ease;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.m-transition-scale-enter,\n.m-transition-scale-leave-active {\n  -webkit-transform: scale(0);\n          transform: scale(0);\n  opacity: 0; }\n";
+styleInject(css$b);
+
+var compName = 'm-transition';
+
+function getSize(size) {
+  if (!size) {
+    return 0;
+  }
+
+  var index = size.indexOf('px');
+
+  if (index === -1) {
+    return 0;
+  }
+
+  return Number(size.substring(0, index));
+}
+
+var Expansion = {
+  beforeEnter: function beforeEnter(el) {
+    // @ts-ignore
+    el.dataset.originPaddingTop = el.style.paddingTop; // @ts-ignore
+
+    el.dataset.originPaddingBottom = el.style.paddingBottom; // @ts-ignore
+
+    el.dataset.originOverflow = el.style.overflow;
+    el.style.paddingTop = '0';
+    el.style.paddingBottom = '0';
+    el.style.height = '0';
+  },
+  enter: function enter(el) {
+    el.style.display = 'block';
+    el.style.overflow = 'hidden'; // @ts-ignore
+
+    el.style.height = el.scrollHeight + getSize(el.dataset.originPaddingTop) + getSize(el.dataset.originPaddingBottom) + 'px'; // @ts-ignore
+
+    el.style.paddingTop = el.dataset.originPaddingTop; // @ts-ignore
+
+    el.style.paddingBottom = el.dataset.originPaddingBottom;
+  },
+  afterEnter: function afterEnter(el) {
+    // el.style.display = '';
+    // el.style.height = '';
+    // @ts-ignore
+    el.style.overflow = el.dataset.originOverflow; // @ts-ignore
+
+    el.style.paddingTop = el.dataset.originPaddingTop; // @ts-ignore
+
+    el.style.paddingBottom = el.dataset.originPaddingBottom;
+  },
+  beforeLeave: function beforeLeave(el) {
+    // @ts-ignore
+    el.dataset.originPaddingTop = el.style.paddingTop; // @ts-ignore
+
+    el.dataset.originPaddingBottom = el.style.paddingBottom; // @ts-ignore
+
+    el.dataset.originOverflow = el.style.overflow;
+    el.style.display = 'block';
+
+    if (el.scrollHeight !== 0) {
+      el.style.height = el.scrollHeight + 'px';
+    }
+
+    el.style.overflow = 'hidden';
+  },
+  leave: function leave(el) {
+    if (el.scrollHeight !== 0) {
+      setTimeout(function () {
+        // @ts-ignore
+        el.style.height = 0; // @ts-ignore
+
+        el.style.paddingTop = 0; // @ts-ignore
+
+        el.style.paddingBottom = 0;
+      });
+    }
+  },
+  afterLeave: function afterLeave(el) {
+    el.style.display = 'none';
+    el.style.height = ''; // @ts-ignore
+
+    el.style.overflow = el.dataset.originOverflow; // @ts-ignore
+
+    el.style.paddingTop = el.dataset.originPaddingTop; // @ts-ignore
+
+    el.style.paddingBottom = el.dataset.originPaddingBottom;
+  }
+}; //
+
+var MTransition =
+/*#__PURE__*/
+// @Component
+function (_Vue) {
+  _inherits(MTransition, _Vue);
+
+  function MTransition() {
+    _classCallCheck(this, MTransition);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MTransition).apply(this, arguments));
+  }
+
+  _createClass(MTransition, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children,
+          listeners = _ref.listeners;
+      var name = props.name;
+
+      var _beforeEnter = function beforeEnter(el) {};
+
+      var enter = function enter(el) {};
+
+      var _afterEnter = function afterEnter(el) {};
+
+      var _beforeLeave = function beforeLeave(el) {};
+
+      var leave = function leave(el) {};
+
+      var _afterLeave = function afterLeave(el) {};
+
+      if (name === TransitionName.expansion) {
+        _beforeEnter = Expansion.beforeEnter;
+        enter = Expansion.enter;
+        _afterEnter = Expansion.afterEnter;
+        _beforeLeave = Expansion.beforeLeave;
+        leave = Expansion.leave;
+        _afterLeave = Expansion.afterLeave;
+      }
+
+      return h("transition", {
+        "attrs": {
+          "name": "".concat(compName, "-").concat(name)
+        },
+        "on": {
+          "beforeEnter": function beforeEnter(el) {
+            if (listeners.onBeforeEnter && listeners.onBeforeEnter instanceof Function) {
+              listeners.onBeforeEnter();
+            }
+
+            _beforeEnter(el);
+          },
+          "enter": enter,
+          "afterEnter": function afterEnter(el) {
+            if (listeners.onAfterEnter && listeners.onAfterEnter instanceof Function) {
+              listeners.onAfterEnter(el);
+            }
+
+            _afterEnter(el);
+          },
+          "beforeLeave": function beforeLeave(el) {
+            if (listeners.onBeforeLeave && listeners.onBeforeLeave instanceof Function) {
+              listeners.onBeforeLeave(el);
+            }
+
+            _beforeLeave(el);
+          },
+          "leave": leave,
+          "afterLeave": function afterLeave(el) {
+            if (listeners.onAfterLeave && listeners.onAfterLeave instanceof Function) {
+              listeners.onAfterLeave(el);
+            }
+
+            _afterLeave(el);
+          }
+        }
+      }, [children]);
+    }
+  }]);
+
+  return MTransition;
+}(Vue);
+
+__decorate([Prop({
+  type: String,
+  default: TransitionName.none
+}), __metadata("design:type", String)], MTransition.prototype, "name", void 0);
+
+MTransition = __decorate([Component({
+  functional: true
+}) // @Component
+], MTransition);
+var MTransition$1 = MTransition;
+
+/* istanbul ignore next */
+
+MTransition$1.install = function (Vue) {
+  Vue.component('MTransition', MTransition$1);
+};
+
+var compName$1 = 'm-frame';
+
+var MFrame =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MFrame, _Vue);
+
+  function MFrame() {
+    var _this;
+
+    _classCallCheck(this, MFrame);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MFrame).apply(this, arguments));
+    _this.isHeader = false;
+    _this.isFooter = false;
+    _this.isLeft = false;
+    _this.isRight = false;
+    return _this;
+  }
+
+  _createClass(MFrame, [{
+    key: "RHeader",
+    value: function RHeader() {
+      var h = this.$createElement;
+      var result = this.isHeader ? h("div", {
+        "staticClass": "".concat(compName$1, "-header")
+      }, [this.$slots.header]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-frame-transition-header"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RFooter",
+    value: function RFooter() {
+      var h = this.$createElement;
+      var result = this.isFooter ? h("div", {
+        "staticClass": "".concat(compName$1, "-footer")
+      }, [this.$slots.footer]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-frame-transition-footer"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RLeft",
+    value: function RLeft() {
+      var h = this.$createElement;
+      var result = this.isLeft ? h("div", {
+        "staticClass": "".concat(compName$1, "-left")
+      }, [this.$slots.left]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-frame-transition-left"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RRight",
+    value: function RRight() {
+      var h = this.$createElement;
+      var result = this.isRight ? h("div", {
+        "staticClass": "".concat(compName$1, "-right")
+      }, [this.$slots.right]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-frame-transition-right"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var $slots = this.$slots,
+          styles = this.styles,
+          classes = this.classes,
+          RHeader = this.RHeader,
+          RFooter = this.RFooter,
+          RLeft = this.RLeft,
+          RRight = this.RRight;
+      this.isHeader = $slots.header !== undefined;
+      this.isFooter = $slots.footer !== undefined;
+      this.isLeft = $slots.left !== undefined;
+      this.isRight = $slots.right !== undefined;
+      return h("div", {
+        "staticClass": compName$1,
+        "class": classes,
+        "style": styles
+      }, [RHeader(), RLeft(), RRight(), RFooter(), h("section", {
+        "staticClass": "".concat(compName$1, "-main")
+      }, [$slots.default])]);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      var _ref;
+
+      var fillHeader = this.fillHeader,
+          fillFooter = this.fillFooter,
+          isHeader = this.isHeader,
+          isFooter = this.isFooter,
+          isLeft = this.isLeft,
+          isRight = this.isRight,
+          headerFloat = this.headerFloat,
+          footerFloat = this.footerFloat,
+          leftFloat = this.leftFloat,
+          rightFloat = this.rightFloat,
+          transition = this.transition;
+      return _ref = {
+        'm--with-header': isHeader,
+        'm--with-footer': isFooter,
+        'm--with-left': isLeft,
+        'm--with-right': isRight,
+        'm--float-header': headerFloat,
+        'm--float-footer': footerFloat,
+        'm--float-left': leftFloat,
+        'm--float-right': rightFloat,
+        'm--transition': transition
+      }, _defineProperty(_ref, "m--fill-header-".concat(fillHeader), true), _defineProperty(_ref, "m--fill-footer-".concat(fillFooter), true), _ref;
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var isHeader = this.isHeader,
+          isFooter = this.isFooter,
+          isLeft = this.isLeft,
+          isRight = this.isRight,
+          headerSize = this.headerSize,
+          footerSize = this.footerSize,
+          leftSize = this.leftSize,
+          rightSize = this.rightSize;
+      var styles = {}; // if (isHeader) {
+      //   genSize(styles, `${compName}-header`, headerSize)
+      // }
+      // if (isFooter) {
+      //   genSize(styles, `${compName}-footer`, footerSize)
+      // }
+      // if (isLeft) {
+      //   genSize(styles, `${compName}-left`, leftSize)
+      // }
+      // if (isRight) {
+      //   genSize(styles, `${compName}-right`, rightSize)
+      // }
+
+      genSize(styles, "".concat(compName$1, "-header"), headerSize);
+      genSize(styles, "".concat(compName$1, "-footer"), footerSize);
+      genSize(styles, "".concat(compName$1, "-left"), leftSize);
+      genSize(styles, "".concat(compName$1, "-right"), rightSize);
+      return styles;
+    }
+  }]);
+
+  return MFrame;
+}(Vue);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFrame.prototype, "transition", void 0);
+
+__decorate([Prop({
+  type: String,
+  default: Fill.both
+}), __metadata("design:type", String)], MFrame.prototype, "fillHeader", void 0);
+
+__decorate([Prop({
+  type: String,
+  default: Fill.both
+}), __metadata("design:type", String)], MFrame.prototype, "fillFooter", void 0);
+
+__decorate([Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MFrame.prototype, "headerSize", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MFrame.prototype, "headerIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFrame.prototype, "headerFloat", void 0);
+
+__decorate([Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MFrame.prototype, "footerSize", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MFrame.prototype, "footerIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFrame.prototype, "footerFloat", void 0);
+
+__decorate([Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MFrame.prototype, "leftSize", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MFrame.prototype, "leftIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFrame.prototype, "leftFloat", void 0);
+
+__decorate([Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MFrame.prototype, "rightSize", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MFrame.prototype, "rightIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFrame.prototype, "rightFloat", void 0);
+
+MFrame = __decorate([Component({
+  components: {
+    MTransition: MTransition$1
+  }
+})], MFrame);
+var MFrame$1 = MFrame;
+
+/* istanbul ignore next */
+
+MFrame$1.install = function (Vue) {
+  Vue.component('MFrame', MFrame$1);
+};
+
+var css$c = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-view {\n  --m-view-header-size: 4.5rem;\n  --m-view-footer-size: 4.5rem;\n  --m-view-left-size: 4.5rem;\n  --m-view-right-size: 4.5rem;\n  --m-view-header-grow: 100%;\n  --m-view-footer-grow: 100%;\n  --m-view-left-grow: 100%;\n  --m-view-right-grow: 100%;\n  --m-view-header-shrink: 0;\n  --m-view-footer-shrink: 0;\n  --m-view-left-shrink: 0;\n  --m-view-right-shrink: 0; }\n\n/**\r\n * components styles.\r\n */\n.m-view {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  position: relative;\n  -webkit-transition: padding-left linear .15s,\r padding-right linear .15s,\r padding-top linear .15s,\r padding-bottom linear .15s;\n  transition: padding-left linear .15s,\r padding-right linear .15s,\r padding-top linear .15s,\r padding-bottom linear .15s; }\n\n.m-view-header, .m-view-footer, .m-view-left, .m-view-right {\n  position: absolute;\n  z-index: 2;\n  -webkit-transition: all linear .15s;\n  transition: all linear .15s; }\n\n.m-view.m--with-header {\n  padding-top: var(--m-view-header-size); }\n\n.m-view.m--with-footer {\n  padding-bottom: var(--m-view-footer-size); }\n\n.m-view.m--with-left {\n  padding-left: var(--m-view-left-size); }\n\n.m-view.m--with-right {\n  padding-right: var(--m-view-right-size); }\n\n.m-view.m--with-header.m--fill-header-left {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-both {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size));\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-right {\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-footer.m--fill-footer-left {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size));\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-right {\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--fill-header-none, .m-view.m--with-left.m--fill-header-right {\n  --m-view-header-shrink: var(--m-view-left-size);\n  --m-view-header-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-left.m--fill-footer-right, .m-view.m--with-left.m--fill-footer-none {\n  --m-view-footer-shrink: var(--m-view-left-size);\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-right.m--fill-header-none, .m-view.m--with-right.m--fill-header-left {\n  --m-view-header-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-right.m--fill-footer-left, .m-view.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-right-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-header-none {\n  --m-view-header-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view-main {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-view-main::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-view-main::-webkit-scrollbar {\n    width: 7px; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-view-mainl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-view-header {\n  top: 0;\n  left: var(--m-view-header-shrink);\n  width: var(--m-view-header-grow);\n  height: var(--m-view-header-size); }\n\n.m-view-footer {\n  bottom: 0;\n  width: var(--m-view-footer-grow);\n  left: var(--m-view-footer-shrink);\n  height: var(--m-view-footer-size); }\n\n.m-view-left {\n  left: 0;\n  top: var(--m-view-left-shrink);\n  height: var(--m-view-left-grow);\n  width: var(--m-view-left-size); }\n\n.m-view-right {\n  right: 0;\n  top: var(--m-view-right-shrink);\n  height: var(--m-view-right-grow);\n  width: var(--m-view-right-size); }\n";
+styleInject(css$c);
+
+var compName$2 = 'm-view';
 
 var MView =
 /*#__PURE__*/
@@ -821,7 +1332,7 @@ function (_Vue) {
           "name": "m-transition-slide-down"
         }
       }, [this.isHeader ? h("div", {
-        "staticClass": "".concat(compName, "-header")
+        "staticClass": "".concat(compName$2, "-header")
       }, [this.$slots.header]) : undefined]);
     }
   }, {
@@ -833,7 +1344,7 @@ function (_Vue) {
           "name": "m-transition-slide-up"
         }
       }, [this.isFooter ? h("div", {
-        "staticClass": "".concat(compName, "-footer")
+        "staticClass": "".concat(compName$2, "-footer")
       }, [this.$slots.footer]) : undefined]);
     }
   }, {
@@ -845,7 +1356,7 @@ function (_Vue) {
           "name": "m-transition-slide-left"
         }
       }, [this.isLeft ? h("div", {
-        "staticClass": "".concat(compName, "-left")
+        "staticClass": "".concat(compName$2, "-left")
       }, [this.$slots.left]) : undefined]);
     }
   }, {
@@ -857,8 +1368,12 @@ function (_Vue) {
           "name": "m-transition-slide-right"
         }
       }, [this.isRight ? h("div", {
-        "staticClass": "".concat(compName, "-right")
+        "staticClass": "".concat(compName$2, "-right")
       }, [this.$slots.right]) : undefined]);
+    }
+  }, {
+    key: "handlePartShow",
+    value: function handlePartShow($part) {
     }
   }, {
     key: "render",
@@ -871,17 +1386,17 @@ function (_Vue) {
           RFooter = this.RFooter,
           RLeft = this.RLeft,
           RRight = this.RRight;
+      console.log(this);
       this.isHeader = $slots.header !== undefined;
       this.isFooter = $slots.footer !== undefined;
       this.isLeft = $slots.left !== undefined;
       this.isRight = $slots.right !== undefined;
-      console.log(this);
       return h("div", {
-        "staticClass": compName,
-        "style": styles,
-        "class": classes
+        "staticClass": compName$2,
+        "class": classes,
+        "style": styles
       }, [RHeader(), RLeft(), RRight(), RFooter(), h("section", {
-        "staticClass": "".concat(compName, "-main")
+        "staticClass": "".concat(compName$2, "-main")
       }, [$slots.default])]);
     }
   }, {
@@ -916,19 +1431,19 @@ function (_Vue) {
       var styles = {};
 
       if (isHeader) {
-        genSize(styles, "".concat(compName, "-header"), headerSize);
+        genSize(styles, "".concat(compName$2, "-header"), headerSize);
       }
 
       if (isFooter) {
-        genSize(styles, "".concat(compName, "-footer"), footerSize);
+        genSize(styles, "".concat(compName$2, "-footer"), footerSize);
       }
 
       if (isLeft) {
-        genSize(styles, "".concat(compName, "-left"), leftSize);
+        genSize(styles, "".concat(compName$2, "-left"), leftSize);
       }
 
       if (isRight) {
-        genSize(styles, "".concat(compName, "-right"), rightSize);
+        genSize(styles, "".concat(compName$2, "-right"), rightSize);
       }
 
       return styles;
@@ -953,12 +1468,39 @@ __decorate([Prop({
 }), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
 
 __decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "headerTransition", void 0);
+
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
 
 __decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "footerTransition", void 0);
+
+__decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
+
+__decorate([Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "leftTransition", void 0);
 
 __decorate([Prop({
   type: [String, Number]
@@ -966,19 +1508,12 @@ __decorate([Prop({
 
 __decorate([Prop({
   type: Number
-}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
-
-__decorate([Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
-
-__decorate([Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
-
-__decorate([Prop({
-  type: Number
 }), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "rightTransition", void 0);
 
 MView = __decorate([Component], MView);
 var MView$1 = MView;
@@ -989,7 +1524,7 @@ MView$1.install = function (Vue) {
   Vue.component('MView', MView$1);
 };
 
-var compName$1 = 'm-icon';
+var compName$3 = 'm-icon';
 var SIZE$1 = {
   xs: 12,
   sm: 24,
@@ -1074,7 +1609,7 @@ function (_Vue) {
           "width": width,
           "viewBox": icon.viewBox
         },
-        "staticClass": "".concat(compName$1, " ").concat(compName$1, "__").concat(name, " ").concat(staticClasses),
+        "staticClass": "".concat(compName$3, " ").concat(compName$3, "__").concat(name, " ").concat(staticClasses),
         "class": classes,
         "style": styles,
         "on": {
@@ -1123,7 +1658,10 @@ MIcon$1.install = function (Vue) {
   Vue.component('MIcon', MIcon$1);
 };
 
-var compName$2 = 'm-container';
+var css$d = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .m-flex.m--inline {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+styleInject(css$d);
+
+var compName$4 = 'm-container';
 
 var MContainer =
 /*#__PURE__*/
@@ -1143,7 +1681,7 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$2, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -1171,7 +1709,7 @@ MContainer = __decorate([Component({
 })], MContainer);
 var MContainer$1 = MContainer;
 
-var compName$3 = 'm-row';
+var compName$5 = 'm-row';
 
 var MRow =
 /*#__PURE__*/
@@ -1191,10 +1729,10 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$3, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$5, " ").concat(staticClass);
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$3, 'cols', props.cols);
-      genSize(data.staticStyle, "".concat(compName$3, "-gutter"), props.gutter);
+      genStaticStyles(data.staticStyle, compName$5, 'cols', props.cols);
+      genSize(data.staticStyle, "".concat(compName$5, "-gutter"), props.gutter);
       console.log(data);
 
       if (props.id) {
@@ -1231,7 +1769,7 @@ MRow = __decorate([Component({
 })], MRow);
 var MRow$1 = MRow;
 
-var compName$4 = 'm-col';
+var compName$6 = 'm-col';
 
 var MCol =
 /*#__PURE__*/
@@ -1251,12 +1789,12 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$6, " ").concat(staticClass);
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genSpace(data.staticStyle, compName$4, props.space);
+      genSpace(data.staticStyle, compName$6, props.space);
       BREAKPOINT.forEach(function (breakpoint) {
         if (props[breakpoint]) {
-          genStaticStyles(data.staticStyle, compName$4, "span-".concat(breakpoint), props[breakpoint]);
+          genStaticStyles(data.staticStyle, compName$6, "span-".concat(breakpoint), props[breakpoint]);
         }
       });
 
@@ -1306,7 +1844,7 @@ MCol = __decorate([Component({
 })], MCol);
 var MCol$1 = MCol;
 
-var compName$5 = 'm-flex';
+var compName$7 = 'm-flex';
 
 var MFlex =
 /*#__PURE__*/
@@ -1326,11 +1864,11 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$5, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
+      data.staticClass = "".concat(compName$7, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
       data.staticClass += props.inline ? 'm--inline' : '';
       data.staticClass = data.staticClass.trim();
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$5, 'cols', props.cols);
+      genStaticStyles(data.staticStyle, compName$7, 'cols', props.cols);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -1378,7 +1916,7 @@ MFlex = __decorate([Component({
 })], MFlex);
 var MFlex$1 = MFlex;
 
-var compName$6 = 'm-flex-filler';
+var compName$8 = 'm-flex-filler';
 
 var MFlexFiller =
 /*#__PURE__*/
@@ -1396,7 +1934,7 @@ function (_Vue) {
     value: function render() {
       var h = arguments[0];
       return h("div", {
-        "class": compName$6
+        "class": compName$8
       });
     }
   }]);
@@ -1428,6 +1966,9 @@ MFlex$1.install = function (Vue) {
 MFlexFiller$1.install = function (Vue) {
   Vue.component('MFlexFiller', MFlexFiller$1);
 };
+
+var css$e = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
+styleInject(css$e);
 
 var colorable =
 /*#__PURE__*/
@@ -1523,7 +2064,7 @@ __decorate([Prop({
 variable = __decorate([Component], variable);
 var variable$1 = variable;
 
-var compName$7 = 'm-app-bar';
+var compName$9 = 'm-app-bar';
 
 var MAppBar =
 /*#__PURE__*/
@@ -1544,7 +2085,7 @@ function (_Mixins) {
           classes = this.classes,
           styles = this.styles;
       return h("div", {
-        "staticClass": compName$7,
+        "staticClass": compName$9,
         "style": styles,
         "class": classes
       }, [$slots.default]);
@@ -1557,10 +2098,10 @@ function (_Mixins) {
           color = this.color,
           elevation = this.elevation;
       var styles = {};
-      genFontColor(styles, compName$7, fontColor);
-      genColor(styles, compName$7, color);
-      genElevation(styles, compName$7, elevation);
-      genSize(styles, compName$7, size);
+      genFontColor(styles, compName$9, fontColor);
+      genColor(styles, compName$9, color);
+      genElevation(styles, compName$9, elevation);
+      genSize(styles, compName$9, size);
       return styles;
     }
   }, {
@@ -1582,6 +2123,9 @@ var MAppBar$1 = MAppBar;
 MAppBar$1.install = function (Vue) {
   Vue.component('MAppBar', MAppBar$1);
 };
+
+var css$f = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-elevation: var(--m-elevation-2);\n  --m-button-shape: var(--m-shape-corner);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-button-shape);\n  -webkit-box-shadow: var(--m-button-elevation);\n          box-shadow: var(--m-button-elevation);\n  border: none;\n  padding: var(--m-button-border-size);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    vertical-align: middle; }\n  .m-button:hover {\n    background-color: var(--m-button-hover-color);\n    border-color: var(--m-button-hover-color); }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.m-button__main {\n  margin: 0 calc(var(--m-button-size) / 4); }\n";
+styleInject(css$f);
 
 var shapeable =
 /*#__PURE__*/
@@ -1607,7 +2151,7 @@ __decorate([Prop({
 shapeable = __decorate([Component], shapeable);
 var shapeable$1 = shapeable;
 
-var compName$8 = 'm-button';
+var compName$a = 'm-button';
 
 var MButton =
 /*#__PURE__*/
@@ -1637,7 +2181,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": compName$8,
+        "staticClass": compName$a,
         "class": classes,
         "style": styles,
         "on": {
@@ -1648,7 +2192,7 @@ function (_Mixins) {
           "name": icon
         }
       }), !this.$slots.default ? undefined : h("div", {
-        "class": "".concat(compName$8, "__main")
+        "class": "".concat(compName$a, "__main")
       }, [this.$slots.default])]);
     }
   }, {
@@ -1659,10 +2203,10 @@ function (_Mixins) {
           color = this.color,
           elevation = this.elevation;
       var styles = {};
-      genFontColor(styles, compName$8, fontColor);
-      genColor(styles, compName$8, color);
-      genElevation(styles, compName$8, elevation);
-      genSize(styles, compName$8, size);
+      genFontColor(styles, compName$a, fontColor);
+      genColor(styles, compName$a, color);
+      genElevation(styles, compName$a, elevation);
+      genSize(styles, compName$a, size);
       return styles;
     }
   }, {
@@ -1714,7 +2258,10 @@ MButton$1.install = function (Vue) {
   Vue.component('MButton', MButton$1);
 };
 
-var compName$9 = 'm-avatar';
+var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-elevation: var(--m-elevation-0);\n  --m-avatar-shape: var(--m-shape-circle);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  -webkit-box-shadow: var(--m-avatar-elevation);\n          box-shadow: var(--m-avatar-elevation);\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border-width: 0; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-success {\n    opacity: 1; }\n  .m-avatar.m--status-pending, .m-avatar.m--status-failure {\n    opacity: 0; }\n\n.m-avatar__cover {\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
+styleInject(css$g);
+
+var compName$b = 'm-avatar';
 
 var MAvatar =
 /*#__PURE__*/
@@ -1759,11 +2306,11 @@ function (_Mixins) {
           loadSuccess = this.loadSuccess,
           loadFailure = this.loadFailure;
       return h("div", {
-        "staticClass": compName$9,
+        "staticClass": compName$b,
         "class": classes,
         "style": styles
       }, [this.$slots.default, h("img", {
-        "staticClass": "".concat(compName$9, "__cover"),
+        "staticClass": "".concat(compName$b, "__cover"),
         "attrs": {
           "alt": '',
           "src": curSrc
@@ -1782,10 +2329,10 @@ function (_Mixins) {
           color = this.color,
           elevation = this.elevation;
       var styles = {};
-      genFontColor(styles, compName$9, fontColor);
-      genColor(styles, compName$9, color);
-      genElevation(styles, compName$9, elevation);
-      genSize(styles, compName$9, size);
+      genFontColor(styles, compName$b, fontColor);
+      genColor(styles, compName$b, color);
+      genElevation(styles, compName$b, elevation);
+      genSize(styles, compName$b, size);
       return styles;
     }
   }, {
@@ -1821,7 +2368,10 @@ MAvatar$1.install = function (Vue) {
   Vue.component('MAvatar', MAvatar$1);
 };
 
-var compName$a = 'm-radio';
+var css$h = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-size-xs: 1rem;\n  --m-radio-size-sm: 1.5rem;\n  --m-radio-size-md: 2rem;\n  --m-radio-size-lg: 2.5rem;\n  --m-radio-size-xl: 3rem;\n  --m-radio-wrapper-size-xs: 2rem;\n  --m-radio-wrapper-size-sm: 3rem;\n  --m-radio-wrapper-size-md: 4rem;\n  --m-radio-wrapper-size-lg: 5rem;\n  --m-radio-wrapper-size-xl: 6rem;\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: var(--m-radio-size-md);\n  --m-radio-wrapper-size: var(--m-radio-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  line-height: 1;\n  font-size: calc(var(--m-radio-size) / 1.4);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
+styleInject(css$h);
+
+var compName$c = 'm-radio';
 
 var MRadio =
 /*#__PURE__*/
@@ -1859,19 +2409,19 @@ function (_Mixins) {
           uncheckIcon = this.uncheckIcon,
           checked = this.checked;
       return h("a", {
-        "staticClass": "".concat(compName$a, "__radio")
+        "staticClass": "".concat(compName$c, "__radio")
       }, [h("transition", {
         "attrs": {
           "name": 'm--transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$a, "__checked-icon"),
+        "staticClass": "".concat(compName$c, "__checked-icon"),
         "attrs": {
           "name": checkedIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$a, "__uncheck-icon"),
+        "staticClass": "".concat(compName$c, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -1881,7 +2431,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$a, "__radio-wrapper")
+        "staticClass": "".concat(compName$c, "__radio-wrapper")
       })]);
     }
   }, {
@@ -1890,7 +2440,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$a, "__label")
+        "staticClass": "".concat(compName$c, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -1904,7 +2454,7 @@ function (_Mixins) {
           RRadio = this.RRadio,
           RDefault = this.RDefault;
       return h("div", {
-        "staticClass": compName$a,
+        "staticClass": compName$c,
         "class": classes,
         "style": styles,
         "on": {
@@ -1921,9 +2471,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$a, fontColor);
-      genColor(styles, compName$a, color);
-      genSize(styles, compName$a, size);
+      genFontColor(styles, compName$c, fontColor);
+      genColor(styles, compName$c, color);
+      genSize(styles, compName$c, size);
       return styles;
     }
   }, {
@@ -1987,7 +2537,10 @@ MRadio$1.install = function (Vue) {
   Vue.component('MRadio', MRadio$1);
 };
 
-var compName$b = 'm-checkbox';
+var css$i = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-size-xs: 1rem;\n  --m-checkbox-size-sm: 1.5rem;\n  --m-checkbox-size-md: 2rem;\n  --m-checkbox-size-lg: 2.5rem;\n  --m-checkbox-size-xl: 3rem;\n  --m-checkbox-wrapper-size-xs: 2rem;\n  --m-checkbox-wrapper-size-sm: 3rem;\n  --m-checkbox-wrapper-size-md: 4rem;\n  --m-checkbox-wrapper-size-lg: 5rem;\n  --m-checkbox-wrapper-size-xl: 6rem;\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: var(--m-checkbox-size-md);\n  --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: calc(var(--m-checkbox-size) / 1.4);\n  line-height: 1;\n  height: var(--m-checkbox-color);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
+styleInject(css$i);
+
+var compName$d = 'm-checkbox';
 
 var MCheckbox =
 /*#__PURE__*/
@@ -2075,19 +2628,19 @@ function (_Mixins) {
       }
 
       return h("a", {
-        "staticClass": "".concat(compName$b, "__checkbox")
+        "staticClass": "".concat(compName$d, "__checkbox")
       }, [h("transition", {
         "attrs": {
           "name": 'm-transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__checked-icon"),
+        "staticClass": "".concat(compName$d, "__checked-icon"),
         "attrs": {
           "name": checkIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__uncheck-icon"),
+        "staticClass": "".concat(compName$d, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2097,7 +2650,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$b, "__checkbox-wrapper")
+        "staticClass": "".concat(compName$d, "__checkbox-wrapper")
       })]);
     }
   }, {
@@ -2106,7 +2659,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$b, "__label")
+        "staticClass": "".concat(compName$d, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2125,7 +2678,7 @@ function (_Mixins) {
 
       this.isBooleanValue = typeof value === 'boolean';
       return h("div", {
-        "staticClass": compName$b,
+        "staticClass": compName$d,
         "class": classes,
         "style": styles,
         "on": {
@@ -2142,9 +2695,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$b, fontColor);
-      genColor(styles, compName$b, color);
-      genSize(styles, compName$b, size);
+      genFontColor(styles, compName$d, fontColor);
+      genColor(styles, compName$d, color);
+      genSize(styles, compName$d, size);
       return styles;
     }
   }, {
@@ -2232,6 +2785,9 @@ MCheckbox$1.install = function (Vue) {
   Vue.component('MCheckbox', MCheckbox$1);
 };
 
+var css$j = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-elevation: var(--m-elevation-2);\n  --m-chip-shape: var(--m-chip-size-md);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  -webkit-box-shadow: var(--m-chip-elevation);\n          box-shadow: var(--m-chip-elevation);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .3s;\n    transition: padding-right ease .3s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: 1px; }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .3s;\n  transition: opacity ease .3s; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
+styleInject(css$j);
+
 /* eslint-disable */
 register({
   "cancel": {
@@ -2242,7 +2798,7 @@ register({
   }
 });
 
-var compName$c = 'm-chip';
+var compName$e = 'm-chip';
 
 var MChip =
 /*#__PURE__*/
@@ -2273,7 +2829,7 @@ function (_Mixins) {
           $slots.media[0].data.staticClass = '';
         }
 
-        $slots.media[0].data.staticClass += " ".concat(compName$c, "__media");
+        $slots.media[0].data.staticClass += " ".concat(compName$e, "__media");
         return $slots.media;
       }
 
@@ -2287,7 +2843,7 @@ function (_Mixins) {
           closeover = this.closeover,
           onClose = this.onClose;
       return closeable || closeover ? h(MIcon$1, {
-        "staticClass": "".concat(compName$c, "__close"),
+        "staticClass": "".concat(compName$e, "__close"),
         "on": {
           "click": function click() {
             return onClose;
@@ -2309,14 +2865,14 @@ function (_Mixins) {
           RClose = this.RClose,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$c,
+        "staticClass": compName$e,
         "class": classes,
         "style": styles,
         "on": {
           "click": onClick
         }
       }, [RMedia(), h("div", {
-        "staticClass": "".concat(compName$c, "__main")
+        "staticClass": "".concat(compName$e, "__main")
       }, [$slots.default]), RClose()]);
     }
   }, {
@@ -2327,10 +2883,10 @@ function (_Mixins) {
           color = this.color,
           elevation = this.elevation;
       var styles = {};
-      genFontColor(styles, compName$c, fontColor);
-      genColor(styles, compName$c, color);
-      genSize(styles, compName$c, size);
-      genElevation(styles, compName$c, elevation); // genHover(styles, _name, 'hover-color', color)
+      genFontColor(styles, compName$e, fontColor);
+      genColor(styles, compName$e, color);
+      genSize(styles, compName$e, size);
+      genElevation(styles, compName$e, elevation); // genHover(styles, _name, 'hover-color', color)
 
       return styles;
     }
@@ -2381,6 +2937,9 @@ var MChip$1 = MChip;
 MChip$1.install = function (Vue) {
   Vue.component('MChip', MChip$1);
 };
+
+var css$k = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\n * variables register.\n */\n.m-time-picker {\n  --m-time-picker-color: var(--m-color-primary);\n  --m-time-picker-elevation: var(--m-elevation-2);\n  --m-time-picker-header-font-color: var(--m-bg-color);\n  --m-time-picker-width: 26rem;\n  --m-time-picker-header-height: 7rem;\n  --m-time-picker-panel-height: 24.5rem;\n  --m-time-picker-landscope-width: 37rem;\n  --m-time-picker-landscope-header-width: 11rem;\n  --m-time-picker-cell-size: 2.5rem; }\n\n/**\n * components styles.\n */\n.m-time-picker {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  line-height: 1;\n  -webkit-box-shadow: var(--m-time-picker-elevation);\n          box-shadow: var(--m-time-picker-elevation);\n  width: var(--m-time-picker-width); }\n  .m-time-picker.m--landscope {\n    width: var(--m-time-picker-landscope-width); }\n    .m-time-picker.m--landscope .m-time-picker-header {\n      width: var(--m-time-picker-landscope-header-width);\n      height: 100%;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-weekDay {\n      margin-left: 0; }\n    .m-time-picker.m--landscope .m-time-picker-header__date {\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start; }\n      .m-time-picker.m--landscope .m-time-picker-header__date > * {\n        margin-bottom: var(--m-space-md); }\n    .m-time-picker.m--landscope .m-time-picker-header__time-hours {\n      text-align: left;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker.m--landscope .m-time-picker__main {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: stretch;\n          -ms-flex-pack: stretch;\n              justify-content: stretch;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      height: var(--m-time-picker-panel-height); }\n    .m-time-picker.m--landscope .m-time-picker-panel {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1; }\n  .m-time-picker .m-time-picker-panel {\n    height: var(--m-time-picker-panel-height); }\n\n.m-time-picker-header {\n  padding: var(--m-space-sm);\n  height: var(--m-time-picker-header-height);\n  background-color: var(--m-time-picker-color);\n  color: var(--m-time-picker-header-font-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-transition: color .3s ease;\n  transition: color .3s ease; }\n  .m-time-picker-header .m--active {\n    opacity: .6; }\n  .m-time-picker-header__date {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .m-time-picker-header__date-year {\n      cursor: pointer;\n      font-size: 2rem;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker-header__date-date {\n      cursor: pointer;\n      font-size: 2.5rem; }\n    .m-time-picker-header__date-weekDay {\n      font-size: 2rem;\n      margin-left: 1rem; }\n  .m-time-picker-header__year, .m-time-picker-header__month {\n    color: white;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    font-size: 3rem; }\n  .m-time-picker-header__time {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    text-align: right; }\n    .m-time-picker-header__time-hours {\n      cursor: pointer;\n      font-size: 3.5rem; }\n    .m-time-picker-header__time-ampm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      cursor: pointer;\n      font-size: 2rem; }\n      .m-time-picker-header__time-ampm > * {\n        margin-left: 2rem; }\n  .m-time-picker-header .m--active {\n    color: white; }\n\n.m-time-picker-panel-date {\n  padding: var(--m-space-sm); }\n  .m-time-picker-panel-date__header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-size: 1rem; }\n    .m-time-picker-panel-date__header-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: 1.4rem;\n      margin-left: .4rem;\n      cursor: pointer; }\n    .m-time-picker-panel-date__header-handler {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n  .m-time-picker-panel-date__table {\n    line-height: 1.5;\n    border: none;\n    border-spacing: 0;\n    text-align: center;\n    width: 100%; }\n    .m-time-picker-panel-date__table thead {\n      font-weight: 600; }\n      .m-time-picker-panel-date__table thead td {\n        padding: var(--m-space-sm) 0; }\n    .m-time-picker-panel-date__table td > * {\n      margin: 0 auto; }\n  .m-time-picker-panel-date .m-button__main {\n    margin-left: 0;\n    margin-right: 0; }\n\n.m-time-picker-panel-year {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: var(--m-space-sm);\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  height: 100%;\n  overflow: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0); }\n  .m-time-picker-panel-year > * {\n    width: 33.333333%; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-time-picker-panel-year::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-time-picker-panel-year::-webkit-scrollbar {\n    width: 4px; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-time-picker-panel-yearl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-time-picker-panel-month {\n  height: 100%;\n  padding: var(--m-space-sm);\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n  .m-time-picker-panel-month > * {\n    width: 33%; }\n\n.m-time-picker-panel-time {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .m-time-picker-panel-time__list {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    height: 100%;\n    padding: var(--m-space-sm);\n    overflow: auto;\n    overflow-x: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      background-color: #a6a6a6; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-track {\n      background-color: #e5e5e5; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar {\n      width: 4px; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      border-left: 2px solid transparent; }\n    .m-time-picker-panel-time__listl::-webkit-scrollbar-track {\n      border-left: 2px solid transparent; }\n\n.m-time-picker-handler {\n  border-top: 1px solid var(--m-border-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .m-time-picker-handler > * {\n    margin-left: var(--m-space-sm); }\n    .m-time-picker-handler > *:first-child {\n      margin-left: 0; }\n\n.m-time-picker-cell {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 1;\n  height: var(--m-time-picker-cell-size);\n  min-width: var(--m-time-picker-cell-size);\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-radius: var(--m-time-picker-cell-size);\n  cursor: pointer;\n  color: var(--m-font-color); }\n  .m-time-picker-cell.m--current {\n    border: 2px solid var(--m-time-picker-color); }\n  .m-time-picker-cell.m--checked {\n    color: var(--m-bg-color);\n    background-color: var(--m-time-picker-color); }\n\n.m-time-picker-panel-time .m-time-picker-cell {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n";
+styleInject(css$k);
 
 /**
  * 判断闰年
@@ -2433,7 +2992,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$d = 'm-time-picker-header';
+var compName$f = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -2469,9 +3028,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$d, "__date")
+        "staticClass": "".concat(compName$f, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$d, "__date-year"),
+        "staticClass": "".concat(compName$f, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -2481,9 +3040,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$d, "__date-weekDay")
+        "staticClass": "".concat(compName$f, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$d, "__date-date")
+        "staticClass": "".concat(compName$f, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -2519,9 +3078,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$d, "__time")
+        "class": "".concat(compName$f, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$d, "__time-ampm")
+        "staticClass": "".concat(compName$f, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -2541,7 +3100,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$d, "__time-hours")
+        "staticClass": "".concat(compName$f, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -2570,7 +3129,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$d, "__year")
+        "staticClass": "".concat(compName$f, "__year")
       }, [year]);
     }
   }, {
@@ -2581,7 +3140,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$d, "__month")
+        "staticClass": "".concat(compName$f, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -2594,7 +3153,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$d),
+        "staticClass": "".concat(compName$f),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -2615,7 +3174,7 @@ __decorate([Inject(), __metadata("design:type", Object)], MTimePickerHeader.prot
 MTimePickerHeader = __decorate([Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$e = 'm-time-picker-panel-date';
+var compName$g = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -2750,11 +3309,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$e
+        "staticClass": compName$g
       }, [h("div", {
-        "class": "".concat(compName$e, "__header")
+        "class": "".concat(compName$g, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$e, "__header-year")
+        "staticClass": "".concat(compName$g, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -2768,7 +3327,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$e, "__header-handler")
+        "staticClass": "".concat(compName$g, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -2802,7 +3361,7 @@ function (_Vue) {
           }
         }
       })])]), h("table", {
-        "class": "".concat(compName$e, "__table")
+        "class": "".concat(compName$g, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -2858,7 +3417,7 @@ MTimePickerPanelDate = __decorate([Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$f = 'm-time-picker-panel-year';
+var compName$h = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -2917,7 +3476,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$f
+        "staticClass": compName$h
       }, [RCols()]);
     }
   }]);
@@ -2942,7 +3501,7 @@ __decorate([Emit('pick'), __metadata("design:type", Function), __metadata("desig
 MTimePickerPanelYear = __decorate([Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$g = 'm-time-picker-panel-month';
+var compName$i = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -3000,7 +3559,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$g
+        "staticClass": compName$i
       }, [RCols()]);
     }
   }]);
@@ -3023,7 +3582,7 @@ MTimePickerPanelMonth = __decorate([Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$h = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$j = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -3086,7 +3645,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$h, "__list ").concat(compName$h, "__list-").concat(type)
+        "staticClass": "".concat(compName$j, "__list ").concat(compName$j, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -3098,7 +3657,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$h
+        "staticClass": compName$j
       }, [Result]);
     }
   }]);
@@ -3133,7 +3692,7 @@ MTimePickerPanelTime = __decorate([Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$i = 'm-time-picker-handler';
+var compName$k = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -3159,7 +3718,7 @@ function (_Vue) {
       var onConfirm = this.onConfirm,
           onCancel = this.onCancel;
       return h("div", {
-        "staticClass": "".concat(compName$i, " m-p-sm")
+        "staticClass": "".concat(compName$k, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "sm",
@@ -3206,7 +3765,7 @@ MTimePickerHandler = __decorate([Component({
 })], MTimePickerHandler);
 var MTimePickerHandler$1 = MTimePickerHandler;
 
-var compName$j = 'm-time-picker';
+var compName$l = 'm-time-picker';
 
 var MTimePicker =
 /*#__PURE__*/
@@ -3492,13 +4051,13 @@ function (_Mixins) {
           RHandler = this.RHandler;
       var pickerType = this.DateStore.pickerType;
       return h("div", {
-        "staticClass": "".concat(compName$j, " m--").concat(pickerType),
+        "staticClass": "".concat(compName$l, " m--").concat(pickerType),
         "style": styles,
         "class": classes
       }, [h("div", {
-        "staticClass": "".concat(compName$j, "__main")
+        "staticClass": "".concat(compName$l, "__main")
       }, [h(MTimePickerHeader$1), h("div", {
-        "staticClass": "".concat(compName$j, "-panel")
+        "staticClass": "".concat(compName$l, "-panel")
       }, [RPanel()])]), RHandler()]);
     }
   }, {
@@ -3507,8 +4066,8 @@ function (_Mixins) {
       var elevation = this.elevation,
           color = this.color;
       var styles = {};
-      genColor(styles, compName$j, color);
-      genElevation(styles, compName$j, elevation);
+      genColor(styles, compName$l, color);
+      genElevation(styles, compName$l, elevation);
       return styles;
     }
   }, {
@@ -3620,7 +4179,10 @@ MTimePicker$1.install = function (Vue) {
   Vue.component('MTimePicker', MTimePicker$1);
 };
 
-var compName$k = 'm-list';
+var css$l = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 3rem;\n  --m-list-size-md: 4rem;\n  --m-list-size-lg: 5rem;\n  --m-list-size-xl: 6rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  min-height: var(--m-list-size);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n";
+styleInject(css$l);
+
+var compName$m = 'm-list';
 
 var MList =
 /*#__PURE__*/
@@ -3644,17 +4206,17 @@ function (_Vue) {
           $slots = this.$slots,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$k,
+        "staticClass": compName$m,
         "on": {
           "click": onClick
         },
         "style": styles
       }, [$slots.media ? h("div", {
-        "staticClass": "".concat(compName$k, "__media")
+        "staticClass": "".concat(compName$m, "__media")
       }, [$slots.media]) : undefined, h("div", {
-        "staticClass": "".concat(compName$k, "__content")
+        "staticClass": "".concat(compName$m, "__content")
       }, [$slots.default]), $slots.action ? h("div", {
-        "staticClass": "".concat(compName$k, "__action")
+        "staticClass": "".concat(compName$m, "__action")
       }, [$slots.action]) : undefined]);
     }
   }, {
@@ -3662,7 +4224,7 @@ function (_Vue) {
     get: function get() {
       var size = this.size;
       var styles = {};
-      genSize(styles, compName$k, size);
+      genSize(styles, compName$m, size);
       return styles;
     }
   }]);
@@ -3689,6 +4251,9 @@ MList$1.install = function (Vue) {
   Vue.component('MList', MList$1);
 };
 
+var css$m = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-row-size-xs: 2rem;\n  --m-table-row-size-sm: 3rem;\n  --m-table-row-size-md: 4rem;\n  --m-table-row-size-lg: 5rem;\n  --m-table-row-size-xl: 6rem;\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: var(--m-table-row-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-2) inset;\n          box-shadow: var(--m-elevation-2) inset;\n  background-color: var(--m-table-active-color); }\n";
+styleInject(css$m);
+
 var typeHeader;
 
 (function (typeHeader) {
@@ -3713,7 +4278,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$l = 'm-table-head';
+var compName$n = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -3800,7 +4365,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$l, "__cell"),
+        "staticClass": "".concat(compName$n, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -3818,7 +4383,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$l, "__row")
+        "staticClass": "".concat(compName$n, "__row")
       }, [result]);
     }
   }, {
@@ -3828,7 +4393,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$l, "__row")
+        "staticClass": "".concat(compName$n, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -3842,7 +4407,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$l, "__row")
+        "staticClass": "".concat(compName$n, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -3864,7 +4429,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$l
+        "staticClass": compName$n
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -3900,131 +4465,6 @@ TableHead = __decorate([Component({
   }
 })], TableHead);
 var TableHead$1 = TableHead;
-
-var compName$m = 'm-transition-expansion';
-
-function getSize(size) {
-  if (!size) {
-    return 0;
-  }
-
-  var index = size.indexOf('px');
-
-  if (index === -1) {
-    return 0;
-  }
-
-  return Number(size.substring(0, index));
-}
-
-function beforeEnter(el) {
-  // @ts-ignore
-  el.dataset.originPaddingTop = el.style.paddingTop; // @ts-ignore
-
-  el.dataset.originPaddingBottom = el.style.paddingBottom; // @ts-ignore
-
-  el.dataset.originOverflow = el.style.overflow;
-  el.style.paddingTop = '0';
-  el.style.paddingBottom = '0';
-  el.style.height = '0';
-}
-
-function enter(el) {
-  el.style.display = 'block';
-  el.style.overflow = 'hidden'; // @ts-ignore
-
-  el.style.height = el.scrollHeight + getSize(el.dataset.originPaddingTop) + getSize(el.dataset.originPaddingBottom) + 'px'; // @ts-ignore
-
-  el.style.paddingTop = el.dataset.originPaddingTop; // @ts-ignore
-
-  el.style.paddingBottom = el.dataset.originPaddingBottom;
-}
-
-function afterEnter(el) {
-  // el.style.display = '';
-  // el.style.height = '';
-  // @ts-ignore
-  el.style.overflow = el.dataset.originOverflow; // @ts-ignore
-
-  el.style.paddingTop = el.dataset.originPaddingTop; // @ts-ignore
-
-  el.style.paddingBottom = el.dataset.originPaddingBottom;
-}
-
-function beforeLeave(el) {
-  // @ts-ignore
-  el.dataset.originPaddingTop = el.style.paddingTop; // @ts-ignore
-
-  el.dataset.originPaddingBottom = el.style.paddingBottom; // @ts-ignore
-
-  el.dataset.originOverflow = el.style.overflow;
-  el.style.display = 'block';
-
-  if (el.scrollHeight !== 0) {
-    el.style.height = el.scrollHeight + 'px';
-  }
-
-  el.style.overflow = 'hidden';
-}
-
-function leave(el) {
-  if (el.scrollHeight !== 0) {
-    setTimeout(function () {
-      // @ts-ignore
-      el.style.height = 0; // @ts-ignore
-
-      el.style.paddingTop = 0; // @ts-ignore
-
-      el.style.paddingBottom = 0;
-    });
-  }
-}
-
-var MTransitionExpansion =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MTransitionExpansion, _Vue);
-
-  function MTransitionExpansion() {
-    _classCallCheck(this, MTransitionExpansion);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MTransitionExpansion).apply(this, arguments));
-  }
-
-  _createClass(MTransitionExpansion, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      return h("transition", {
-        "attrs": {
-          "name": compName$m
-        },
-        "on": {
-          "beforeEnter": beforeEnter,
-          "enter": enter,
-          "afterEnter": afterEnter,
-          "beforLeave": beforeLeave,
-          "leave": leave
-        }
-      }, [children]);
-    }
-  }]);
-
-  return MTransitionExpansion;
-}(Vue);
-
-MTransitionExpansion = __decorate([Component({
-  functional: true
-})], MTransitionExpansion);
-var MTransitionExpansion$1 = MTransitionExpansion;
-
-/* istanbul ignore next */
-
-MTransitionExpansion$1.install = function (Vue) {
-  Vue.component('MTransitionExpansion', MTransitionExpansion$1);
-};
 
 /**
  * 事件绑定
@@ -4082,7 +4522,7 @@ var off = function () {
   }
 }();
 
-var compName$n = 'm-table-body';
+var compName$o = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -4244,7 +4684,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$n, "__cell"),
+          "staticClass": "".concat(compName$o, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -4273,7 +4713,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__row"),
+        "staticClass": "".concat(compName$o, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -4303,13 +4743,17 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__expand")
+        "staticClass": "".concat(compName$o, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
         }
-      }, [h(MTransitionExpansion$1, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$n, "__expand-content")
+      }, [h(MTransition$1, {
+        "attrs": {
+          "name": 'expansion'
+        }
+      }, [!isExpanded ? undefined : h("div", {
+        "staticClass": "".concat(compName$o, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -4373,7 +4817,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$n,
+        "staticClass": compName$o,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -4443,12 +4887,12 @@ TableBody = __decorate([Component({
     MCheckbox: MCheckbox$1,
     MRadio: MRadio$1,
     MIcon: MIcon$1,
-    MTransitionExpansion: MTransitionExpansion$1
+    MTransition: MTransition$1
   }
 })], TableBody);
 var TableBody$1 = TableBody;
 
-var compName$o = 'm-table';
+var compName$p = 'm-table';
 var SELF_KEY = '_table-key';
 
 var MTable =
@@ -4632,13 +5076,13 @@ function (_Mixins) {
           rowExpand = this.rowExpand;
       var noHeader = header === typeHeader.none;
       return h("div", {
-        "staticClass": compName$o,
+        "staticClass": compName$p,
         "attrs": {
           "size": size,
           "elevation": elevation
         }
       }, [h("section", {
-        "staticClass": "".concat(compName$o, "__wrapper")
+        "staticClass": "".concat(compName$p, "__wrapper")
       }, [noHeader ? undefined : h(TableHead$1, {
         "ref": 'head',
         "attrs": {
@@ -4892,25 +5336,30 @@ MTableCol$1.install = function (Vue) {
 // 基础
 
 var components = /*#__PURE__*/Object.freeze({
-    MApp: MApp$1,
-    MView: MView$1,
-    MIcon: MIcon$1,
-    MContainer: MContainer$1,
-    MRow: MRow$1,
-    MCol: MCol$1,
-    MFlex: MFlex$1,
-    MFlexFiller: MFlexFiller$1,
-    MAppBar: MAppBar$1,
-    MButton: MButton$1,
-    MAvatar: MAvatar$1,
-    MRadio: MRadio$1,
-    MCheckbox: MCheckbox$1,
-    MChip: MChip$1,
-    MTimePicker: MTimePicker$1,
-    MList: MList$1,
-    MTable: MTable$1,
-    MTableCol: MTableCol$1
+  MApp: MApp$1,
+  MFrame: MFrame$1,
+  MView: MView$1,
+  MIcon: MIcon$1,
+  MContainer: MContainer$1,
+  MRow: MRow$1,
+  MCol: MCol$1,
+  MFlex: MFlex$1,
+  MFlexFiller: MFlexFiller$1,
+  MAppBar: MAppBar$1,
+  MButton: MButton$1,
+  MAvatar: MAvatar$1,
+  MRadio: MRadio$1,
+  MCheckbox: MCheckbox$1,
+  MChip: MChip$1,
+  MTimePicker: MTimePicker$1,
+  MTransition: MTransition$1,
+  MList: MList$1,
+  MTable: MTable$1,
+  MTableCol: MTableCol$1
 });
+
+var css$n = ".v-ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict; }\n\n.v-ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  -webkit-transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity; }\n  .v-ripple__animation--enter {\n    -webkit-transition: none;\n    transition: none; }\n  .v-ripple__animation--visible {\n    opacity: .15; }\n";
+styleInject(css$n);
 
 var name = 'MRipple';
 
@@ -5100,7 +5549,7 @@ MRipple.install = function (Vue) {
 // 指令和动画
 
 var directives = /*#__PURE__*/Object.freeze({
-    MRipple: MRipple
+  MRipple: MRipple
 });
 
 /* eslint-disable */
@@ -5354,4 +5803,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Mobov;
-export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MView$1 as MView };
+export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MFrame$1 as MFrame, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MTransition$1 as MTransition, MView$1 as MView };

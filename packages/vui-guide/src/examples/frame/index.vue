@@ -1,54 +1,55 @@
 <style lang="scss">
-  .example-view {
+  .example-frame {
     width: 100%;
     height: 500px;
 
-    .view-header,
-    .view-left,
-    .view-right,
-    .view-footer,
-    .view-main {
+    .frame-header,
+    .frame-left,
+    .frame-right,
+    .frame-footer,
+    .frame-main {
       width: 100%;
       height: 100%;
     }
-    .view-header,
-    .view-left,
-    .view-right,
-    .view-footer {
+    .frame-header,
+    .frame-left,
+    .frame-right,
+    .frame-footer {
       box-shadow: var(--m-elevation-5);
     }
-    .view-header,
-    .view-footer {
+    .frame-header,
+    .frame-footer {
       background-color: var(--m-color-deeppurple-300);
     }
-    .view-left,
-    .view-right {
+    .frame-left,
+    .frame-right {
       background-color: var(--m-color-grey-300);
     }
-    .view-main {
+    .frame-main {
       background-color: var(--m-color-grey-50);
     }
   }
 </style>
 <template>
   <example-box>
-    <m-view class="example-view"
+    <m-frame class="example-frame"
             :fill-header="PropsData.fillHeader"
             :fill-footer="PropsData.fillFooter"
             :header-size="PropsData.headerSize"
             :footer-size="PropsData.footerSize"
+            :transition="PropsData.transition"
             :left-size="PropsData.leftSize"
             :right-size="PropsData.rightSize"
             :header-index="PropsData.headerIndex"
             :footer-index="PropsData.footerIndex"
             :left-index="PropsData.leftIndex"
             :right-index="PropsData.rightIndex">
-      <div class="view-header" v-show="PropsData.headerSlot" slot="header"></div>
-      <div class="view-left" v-show="PropsData.leftSlot" slot="left" ></div>
-      <div class="view-right" v-show="PropsData.rightSlot" slot="right"></div>
-      <div class="view-footer" v-show="PropsData.footerSlot" slot="footer"></div>
-      <div class="view-main"></div>
-    </m-view>
+      <div class="frame-header" v-if="PropsData.headerSlot" slot="header"></div>
+      <div class="frame-left" v-if="PropsData.leftSlot" slot="left" ></div>
+      <div class="frame-right" v-if="PropsData.rightSlot" slot="right"></div>
+      <div class="frame-footer" v-if="PropsData.footerSlot" slot="footer"></div>
+      <div class="frame-main"></div>
+    </m-frame>
     <m-row slot="handler"
            class="m-my-md"
            align="center"
@@ -71,14 +72,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MView } from '@mobov/vui'
+import { MFrame } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
 
 export default Vue.extend({
-  name: 'ExampleView',
-  components: { ExampleBox, MView },
+  name: 'ExampleFrame',
+  components: { ExampleBox, MFrame },
   mixins: [exampleProps],
   data () {
     return {

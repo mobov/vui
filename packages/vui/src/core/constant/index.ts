@@ -173,3 +173,15 @@ export enum DateTimeValueType {
 }
 
 export type dateTimeValueType = 'time' | 'hours' | 'minutes'
+
+export type transitionName = 'slide-left' | 'slide-right' | 'slide-up'| 'slide-down' | 'expansion'
+
+export enum TransitionName {
+  none = 'none',
+  slideLeft = 'slide-left',
+  slideRight = 'slide-right',
+  slideUp = 'slide-up',
+  slideDown = 'slide-down',
+  expansion = 'expansion'
+}
+

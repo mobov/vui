@@ -4,7 +4,16 @@
               :elevation="PropsData.elevation"
               :shape="PropsData.shape"
               :variety="PropsData.variety"
-              :size="PropsData.size">
+              :size="PropsData.size"
+              class="m-mx-md">
+      just we
+    </m-button>
+    <m-button :color="PropsData.color"
+              :elevation="PropsData.elevation"
+              :shape="PropsData.shape"
+              :variety="PropsData.variety"
+              :size="PropsData.size"
+              class="m-mx-md">
       just we
     </m-button>
     <m-row slot="handler"

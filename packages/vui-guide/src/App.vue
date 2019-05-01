@@ -1,7 +1,9 @@
 <template>
   <m-app>
-    <m-view Fill-header="none"
-            left-size="20rem">
+    <m-frame fill-header="none"
+             transition
+             header-size="md"
+             left-size="20rem">
       <m-app-bar slot="header"
                  size="100%"
                  font-color="white"
@@ -16,11 +18,11 @@
           A
         </m-avatar>
       </m-app-bar>
-      <div v-if="showLeft" slot="left" style="height: 100%" class="m-elevation-2">
+      <div v-if="showLeft" slot="left" class="m-elevation-2" style="height: 100%">
         <doc-entries></doc-entries>
       </div>
       <router-view />
-    </m-view>
+    </m-frame>
   </m-app>
 </template>
 <script lang="ts">

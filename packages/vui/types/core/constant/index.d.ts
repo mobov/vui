@@ -125,3 +125,12 @@ export declare enum DateTimeValueType {
     minutes = "minutes"
 }
 export declare type dateTimeValueType = 'time' | 'hours' | 'minutes';
+export declare type transitionName = 'slide-left' | 'slide-right' | 'slide-up' | 'slide-down' | 'expansion';
+export declare enum TransitionName {
+    none = "none",
+    slideLeft = "slide-left",
+    slideRight = "slide-right",
+    slideUp = "slide-up",
+    slideDown = "slide-down",
+    expansion = "expansion"
+}

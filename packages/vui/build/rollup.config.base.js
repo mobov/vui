@@ -13,7 +13,7 @@ const config = {
   // inputOptions
   input: 'src/index.ts',
   plugins: [
-    postcss({ extensions: ['.scss'], extract: `lib/style.css` }),
+    postcss({ extensions: ['.scss'] }),
     typescript({
       importHelpers: true,
       // objectHashIgnoreUnknownHack: true,
@@ -25,7 +25,11 @@ const config = {
       useTsconfigDeclarationDir: true,
       extensions
     }),
-    vue(),
+    vue({
+      data: {
+        scss: '@import "~@mobov/scss-helper/import";'
+      }
+    }),
     babel({
       runtimeHelpers: true,
       babelrc: false,

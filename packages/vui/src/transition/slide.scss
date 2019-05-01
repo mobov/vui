@@ -1,19 +1,23 @@
-$--m-transition-slide: 0.15s linear;
+$--m-transition-slide: 3s linear;
+
+//.m-transition-slide-left-leave,
+//.m-transition-slide-left-enter-to {
+//    transform: translateX(0);
+//}
 
 .m-transition-slide-left-enter,
 .m-transition-slide-left-leave-to {
-    transform: translate3D(-100%, 0, 0);
+    transform: translateX(-100%);
 }
-.m-transition-slide-left-leave,
-.m-transition-slide-left-enter-to {
-    transform: translate3D(0, 0, 0);
+.m-transition-slide-left-enter-active,
+.m-transition-slide-left-leave-active{
+    transition: transform $--m-transition-slide;
 }
 
-.m-transition-slide-left-leave-active,
-.m-transition-slide-left-enter-active {
-    transition: transform $--m-transition-slide;
-    will-change: transform;
-}
+//.m-transition-slide-left {
+//    transform: translate3d(0, 0, 0);
+//
+//}
 
 .m-transition-slide-right-enter,
 .m-transition-slide-right-leave-to {
