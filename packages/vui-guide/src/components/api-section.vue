@@ -1,5 +1,10 @@
 <template>
-  <component class="api-section" :is="docData"></component>
+  <!--<component class="api-section" :is="docData"></component>-->
+  <div class="api-section">
+    <vue-markdown>
+      {docData}
+    </vue-markdown>
+  </div>
 </template>
 <style lang="scss">
   .api-section {
@@ -30,8 +35,11 @@
   }
 </style>
 <script>
+// import VueMarkdown from 'vue-markdown'
+
 export default {
   name: 'ApiSection',
+  // components: { VueMarkdown },
   props: {
     apiPath: {
       type: String,
@@ -40,9 +48,9 @@ export default {
   },
   computed: {
     docData () {
-      // console.log(this.apiPath)
+      console.log(this.apiPath)
       // return ''
-      //  return require(`@mobov/vui/${this.apiPath}`).default
+      return require(`@mobov/vui/${this.apiPath}`)
     }
   }
 }

@@ -180,7 +180,6 @@ export default class MTable extends Mixins (
       this.syncSelected(this.TableStore.Selected)
     },
     SET_EXPANDED: (index: number): void => {
-      console.log(index)
       const { expand } = this
       const { Data, keyField } = this.TableStore
       const keyValue = Data[index][keyField]

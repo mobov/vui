@@ -1386,7 +1386,6 @@ function (_Vue) {
           RFooter = this.RFooter,
           RLeft = this.RLeft,
           RRight = this.RRight;
-      console.log(this);
       this.isHeader = $slots.header !== undefined;
       this.isFooter = $slots.footer !== undefined;
       this.isLeft = $slots.left !== undefined;
@@ -1733,7 +1732,6 @@ function (_Vue) {
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
       genStaticStyles(data.staticStyle, compName$5, 'cols', props.cols);
       genSize(data.staticStyle, "".concat(compName$5, "-gutter"), props.gutter);
-      console.log(data);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -4561,13 +4559,11 @@ function (_Vue) {
   }, {
     key: "handleRowSelect",
     value: function handleRowSelect(row, index) {
-      console.log(index);
       this.TableStore.SET_SELECTED(index);
     }
   }, {
     key: "handleRowExpand",
     value: function handleRowExpand(row, index) {
-      console.log(index);
       this.TableStore.SET_EXPANDED(index);
     }
   }, {
@@ -4976,8 +4972,6 @@ function (_Mixins) {
         _this.syncSelected(_this.TableStore.Selected);
       },
       SET_EXPANDED: function SET_EXPANDED(index) {
-        console.log(index);
-
         var _assertThisInitialize2 = _assertThisInitialized(_this),
             expand = _assertThisInitialize2.expand;
 

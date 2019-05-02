@@ -28,7 +28,6 @@ export default class MRow extends Vue {
     genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
     genSize(data.staticStyle, `${compName}-gutter`, props.gutter)
 
-    console.log(data)
     if (props.id) {
       data.domProps = data.domProps || {}
       data.domProps.id = props.id

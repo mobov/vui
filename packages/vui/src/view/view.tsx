@@ -1,6 +1,6 @@
 import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { genSize } from '../core/util'
-import { style } from 'typestyle'
+// import { style } from 'typestyle'
 import { Fill, size } from '../core/constant'
 import colorable from '../core/mixin/colorable'
 import sizeable from '../core/mixin/sizeable'
@@ -136,7 +136,6 @@ export default class MView extends Vue {
   private render () {
     const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this
 
-    console.log(this)
     this.isHeader = $slots.header !== undefined
     this.isFooter = $slots.footer !== undefined
     this.isLeft = $slots.left !== undefined

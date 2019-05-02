@@ -75,12 +75,10 @@ export default class TableBody extends Vue {
   }
 
   handleRowSelect (row: any, index: number) {
-    console.log(index)
     this.TableStore.SET_SELECTED(index)
   }
 
   handleRowExpand (row: any, index: number) {
-    console.log(index)
     this.TableStore.SET_EXPANDED(index)
   }
 
