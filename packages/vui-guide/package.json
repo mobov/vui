@@ -3,17 +3,20 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "cross-env ENV=development vue-cli-service serve",
+    "build": "cross-env ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "gen:icons": "node src icon/icon-src/generate"
   },
   "dependencies": {
+    "@mobov/es-helper": "^1.0.10",
     "@mobov/vui": "^0.2.2",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
+    "vmark": "^1.0.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
+    "vue-i18n": "^8.11.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -28,11 +31,13 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
+    "vmark-loader": "^1.0.0",
     "vue-template-compiler": "^2.5.21"
   }
 }

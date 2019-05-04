@@ -218,9 +218,21 @@ export function genHoverColor ( compName: string, val?: string): void {
  * @param {string} property
  * @param {number | string} val
  */
-export function genStaticStyles (styles: any, compName: string, property: string, val: number | string): void {
+export function genStaticStyles (styles: any, compName: string, property: string, val: number | string | undefined): void {
   if (val !== undefined) {
     styles[`--${compName}-${property}`] = val
+  }
+}
+
+/***
+ * 通用样式
+ * @param styles
+ * @param {string} property
+ * @param {number | string} val
+ */
+export function genCommonStyle (styles: any, property: string, val: number | string | undefined): void {
+  if (val !== undefined) {
+    styles[property] = val
   }
 }
 

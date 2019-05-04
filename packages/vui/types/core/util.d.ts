@@ -85,7 +85,14 @@ export declare function genHoverColor(compName: string, val?: string): void;
  * @param {string} property
  * @param {number | string} val
  */
-export declare function genStaticStyles(styles: any, compName: string, property: string, val: number | string): void;
+export declare function genStaticStyles(styles: any, compName: string, property: string, val: number | string | undefined): void;
+/***
+ * 通用样式
+ * @param styles
+ * @param {string} property
+ * @param {number | string} val
+ */
+export declare function genCommonStyle(styles: any, property: string, val: number | string | undefined): void;
 /**
  * slim bar样式滚动条
  */

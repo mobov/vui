@@ -1,4 +1,6 @@
-
+export interface VuiComponent {
+  name: string
+}
 
 export default [
   {
@@ -43,4 +45,4 @@ export default [
   {
     name: 'table'
   }
-]
+] as Array<VuiComponent>

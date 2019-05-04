@@ -1,0 +1,63 @@
+export interface DocData {
+  name: string,
+  docSrc: string
+}
+
+const Data: Array<DocData> = [  {
+  name: 'app',
+  docSrc: 'app/app.md'
+},
+  {
+    name: 'frame',
+    docSrc: 'frame/frame.md'
+  },
+  {
+    name: 'view',
+    docSrc: 'view/view.md'
+  },
+  {
+    name: 'app-bar',
+    docSrc: 'app-bar/app-bar.md'
+  },
+  {
+    name: 'avatar',
+    docSrc: 'avatar/avatar.md'
+  },
+  {
+    name: 'button',
+    docSrc: 'button/button.md'
+  },
+  {
+    name: 'chip',
+    docSrc: 'chip/chip.md'
+  },
+  {
+    name: 'icon',
+    docSrc: 'icon/icon.md'
+  },
+  {
+    name: 'layout',
+    docSrc: 'layout/layout.md'
+  },
+  {
+    name: 'list',
+    docSrc: 'list/list.md'
+  },
+  {
+    name: 'radio',
+    docSrc: 'radio/radio.md'
+  },
+  {
+    name: 'checkbox',
+    docSrc: 'checkbox/checkbox.md'
+  },
+  {
+    name: 'time-picker',
+    docSrc: 'time-picker/time-picker.md'
+  },
+  {
+    name: 'table',
+    docSrc: 'table/table.md'
+  }]
+
+export default Data

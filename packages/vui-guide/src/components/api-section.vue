@@ -1,9 +1,9 @@
 <template>
   <!--<component class="api-section" :is="docData"></component>-->
   <div class="api-section">
-    <vue-markdown>
-      {docData}
-    </vue-markdown>
+    <!--<vue-markdown>-->
+      <!--{docData}-->
+    <!--</vue-markdown>-->
   </div>
 </template>
 <style lang="scss">
@@ -50,7 +50,7 @@ export default {
     docData () {
       console.log(this.apiPath)
       // return ''
-      return require(`@mobov/vui/${this.apiPath}`)
+      //return require(`@mobov/vui/${this.apiPath}`)
     }
   }
 }

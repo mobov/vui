@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
-import { genSize } from '../core/util'
+import { genSize, genStaticStyles } from '../core/util'
 import { Fill, size } from '../core/constant'
 import MTransition from '../transition'
 import colorable from '../core/mixin/colorable'
@@ -80,7 +80,9 @@ export default class MFrame extends Vue {
 
   private get styles () {
     const {
-      isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
+      isHeader, isFooter, isLeft, isRight,
+      headerSize, footerSize, leftSize, rightSize,
+      headerIndex, footerIndex, leftIndex, rightIndex,
     } = this
 
     const styles = { }
@@ -101,6 +103,10 @@ export default class MFrame extends Vue {
     genSize(styles, `${compName}-footer`, footerSize)
     genSize(styles, `${compName}-left`, leftSize)
     genSize(styles, `${compName}-right`, rightSize)
+    genStaticStyles(styles, `${compName}-header`,'z-index', headerIndex)
+    genStaticStyles(styles, `${compName}-footer`,'z-index', footerIndex)
+    genStaticStyles(styles, `${compName}-left`,'z-index', leftIndex)
+    genStaticStyles(styles, `${compName}-right`,'z-index', rightIndex)
 
     return styles
   }

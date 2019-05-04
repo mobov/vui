@@ -58,6 +58,11 @@ $--m-frame-transition-base: .25s ease;
     --m-frame-left-size: 0;
     --m-frame-right-size: 0;
 
+    --m-frame-header-z-index: 1;
+    --m-frame-footer-z-index: 1;
+    --m-frame-left-z-index: 1;
+    --m-frame-right-z-index: 1;
+
     --m-frame-header-grow: 100%;
     --m-frame-footer-grow: 100%;
     --m-frame-left-grow: 100%;
@@ -189,7 +194,6 @@ $--m-frame-transition-base: .25s ease;
 }
 %m-frame-parts-base {
     position: absolute;
-    z-index: 2;
 }
 .m-frame-header {
     @extend %m-frame-parts-base;
@@ -197,6 +201,7 @@ $--m-frame-transition-base: .25s ease;
     left: var(--m-frame-header-shrink);
     width: var(--m-frame-header-grow);
     height: var(--m-frame-header-size);
+    z-index: var(--m-frame-header-z-index);
 }
 .m-frame-footer {
     @extend %m-frame-parts-base;
@@ -204,6 +209,7 @@ $--m-frame-transition-base: .25s ease;
     width: var(--m-frame-footer-grow);
     left: var(--m-frame-footer-shrink);
     height: var(--m-frame-footer-size);
+    z-index: var(--m-frame-footer-z-index);
 }
 .m-frame-left {
     @extend %m-frame-parts-base;
@@ -211,6 +217,7 @@ $--m-frame-transition-base: .25s ease;
     top: var(--m-frame-left-shrink);
     height: var(--m-frame-left-grow);
     width: var(--m-frame-left-size);
+    z-index: var(--m-frame-left-z-index);
 }
 .m-frame-right {
     @extend %m-frame-parts-base;
@@ -218,6 +225,7 @@ $--m-frame-transition-base: .25s ease;
     top: var(--m-frame-right-shrink);
     height: var(--m-frame-right-grow);
     width: var(--m-frame-right-size);
+    z-index: var(--m-frame-right-z-index);
 }
 
 
