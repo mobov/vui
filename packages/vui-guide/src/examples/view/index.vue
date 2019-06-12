@@ -1,8 +1,8 @@
 <style lang="scss">
   .example-view {
-    width: 100%;
-    height: 500px;
-
+    width: 700px;
+    margin: 0 auto;
+    height: 400px;
     .view-header,
     .view-left,
     .view-right,
@@ -32,21 +32,22 @@
 </style>
 <template>
   <example-box>
-    <m-view class="example-view"
+    <m-view class="example-view m-elevation-2 m-shape-corner"
             :fill-header="PropsData.fillHeader"
             :fill-footer="PropsData.fillFooter"
             :header-size="PropsData.headerSize"
             :footer-size="PropsData.footerSize"
+            :transition="PropsData.transition"
             :left-size="PropsData.leftSize"
             :right-size="PropsData.rightSize"
             :header-index="PropsData.headerIndex"
             :footer-index="PropsData.footerIndex"
             :left-index="PropsData.leftIndex"
             :right-index="PropsData.rightIndex">
-      <div class="view-header" v-show="PropsData.headerSlot" slot="header"></div>
-      <div class="view-left" v-show="PropsData.leftSlot" slot="left" ></div>
-      <div class="view-right" v-show="PropsData.rightSlot" slot="right"></div>
-      <div class="view-footer" v-show="PropsData.footerSlot" slot="footer"></div>
+      <div class="view-header" v-if="PropsData.headerSlot" slot="header"></div>
+      <div class="view-left" v-if="PropsData.leftSlot" slot="left" ></div>
+      <div class="view-right" v-if="PropsData.rightSlot" slot="right"></div>
+      <div class="view-footer" v-if="PropsData.footerSlot" slot="footer"></div>
       <div class="view-main"></div>
     </m-view>
     <m-row slot="handler"
@@ -77,7 +78,7 @@ import exampleProps from '@/mixins/example-props'
 import Props from './props'
 
 export default Vue.extend({
-  name: 'ExampleView',
+  name: 'ExampleFrame',
   components: { ExampleBox, MView },
   mixins: [exampleProps],
   data () {

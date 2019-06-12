@@ -5,12 +5,19 @@ import './core/style/shape.scss'
 import './core/style/theme.scss'
 import './core/style/mode.scss'
 import './core/style/utils.scss'
-import { Component, PluginFunction } from 'vue'
+import {
+  Component,
+  PluginFunction,
+  PluginObject,
+  PropOptions,
+  ComponentOptions,
+  FunctionalComponentOptions,
+  VueConstructor
+} from 'vue'
 import * as components from './components'
 import * as directives from './directives'
 import * as constant from './core/constant'
 import './icon/presets'
-
 
 export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<string, ComponentOrPack> }
 
@@ -23,6 +30,19 @@ export interface MobovPlugin {
   install: PluginFunction<MobovUseOptions>
   version: string,
   constant: typeof constant
+}
+
+export interface MobovObject  {
+  install?: (V: any) => void
+  name: string
+  functional?: true
+  props?: any
+  data?: any
+  computed?: any
+  methods?: object
+  $slots?: any
+  classes?: any
+  styles?: any
 }
 
 const Mobov: MobovPlugin = {

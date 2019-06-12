@@ -5,6 +5,12 @@ const { Fill, FILL } = Mobov.constant
 
 const props: Array<PropsPropertries> = [
   {
+    name: 'transition',
+    type: 'radio',
+    default: true,
+    value: [true, false]
+  },
+  {
     name: 'headerSlot',
     type: 'radio',
     default: true,

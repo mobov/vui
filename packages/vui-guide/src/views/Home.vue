@@ -21,7 +21,6 @@
 
 <script>
 import Vue from 'vue'
-import ApiSection from '../components/api-section.vue'
 
 export default {
   data () {

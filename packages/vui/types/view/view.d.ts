@@ -1,20 +1,21 @@
 import { Vue } from 'vue-property-decorator';
 import { Fill, size } from '../core/constant';
-export default class MView extends Vue {
+export default class MFrame extends Vue {
+    transition?: boolean;
     fillHeader?: Fill;
     fillFooter?: Fill;
     headerSize?: size;
     headerIndex?: number;
-    headerTransition?: boolean;
+    headerFloat?: boolean;
     footerSize?: size;
     footerIndex?: number;
-    footerTransition?: boolean;
+    footerFloat?: boolean;
     leftSize?: size;
     leftIndex?: number;
-    leftTransition?: boolean;
+    leftFloat?: boolean;
     rightSize?: size;
     rightIndex?: number;
-    rightTransition?: boolean;
+    rightFloat?: boolean;
     private readonly classes;
     private readonly styles;
     private isHeader;
@@ -25,6 +26,5 @@ export default class MView extends Vue {
     private RFooter;
     private RLeft;
     private RRight;
-    private handlePartShow;
     private render;
 }

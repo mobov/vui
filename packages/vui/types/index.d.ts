@@ -20,6 +20,18 @@ export interface MobovPlugin {
     version: string;
     constant: typeof constant;
 }
+export interface MobovObject {
+    install?: (V: any) => void;
+    name: string;
+    functional?: true;
+    props?: any;
+    data?: any;
+    computed?: any;
+    methods?: object;
+    $slots?: any;
+    classes?: any;
+    styles?: any;
+}
 declare const Mobov: MobovPlugin;
 export default Mobov;
 export * from './components';

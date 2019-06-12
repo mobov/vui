@@ -1,9 +1,10 @@
 <template>
   <m-app>
-    <m-frame fill-header="none"
-             transition
-             header-size="md"
-             left-size="20rem">
+    <m-view fill-header="none"
+            transition
+            header-size="md"
+            :left-index="5"
+            left-size="20rem">
       <m-app-bar slot="header"
                  size="100%"
                  font-color="white"
@@ -22,7 +23,7 @@
         <doc-entries></doc-entries>
       </div>
       <router-view />
-    </m-frame>
+    </m-view>
   </m-app>
 </template>
 <script lang="ts">

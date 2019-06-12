@@ -7,9 +7,6 @@ export default [
     name: 'app'
   },
   {
-    name: 'frame'
-  },
-  {
     name: 'view'
   },
   {

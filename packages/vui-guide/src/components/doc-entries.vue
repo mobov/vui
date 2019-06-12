@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import docsData from '../data/docs'
+import docsData from '../vui-components'
 
 export default {
   name: 'doc-entries',

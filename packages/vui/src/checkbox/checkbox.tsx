@@ -1,7 +1,8 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import colorable from '../core/mixin/colorable'
-import sizeable from '../core/mixin/sizeable'
+import color from '../core/mixin/colorable'
+import size from '../core/mixin/sizeable'
+import space from '../core/mixin/space'
 import { genColor, genFontColor, genSize } from '../core/util'
 
 const compName = 'm-checkbox'
@@ -10,8 +11,9 @@ const compName = 'm-checkbox'
   components: { MIcon }
 })
 export default class MCheckbox extends Mixins (
-  colorable,
-  sizeable
+  color,
+  size,
+  space
 ) {
   @Prop({ type: [Array, Number, String, Boolean], default: false })
   value!: any

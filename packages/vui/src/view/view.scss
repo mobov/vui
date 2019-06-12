@@ -10,21 +10,58 @@ $--m-view-footer-size-sm: 3.5rem;
 $--m-view-footer-size-md: 4.5rem;
 $--m-view-footer-size-lg: 5.5rem;
 $--m-view-footer-size-xl: 6.5rem;
-$--m-view-side-size-xs: 2.5rem;
-$--m-view-side-size-sm: 3.5rem;
-$--m-view-side-size-md: 4.5rem;
-$--m-view-side-size-lg: 5.5rem;
-$--m-view-side-size-xl: 6.5rem;
-$--m-view-scroll-bar-size-xs: 5px;
+$--m-view-left-size-xs: 2.5rem;
+$--m-view-left-size-sm: 3.5rem;
+$--m-view-left-size-md: 4.5rem;
+$--m-view-left-size-lg: 5.5rem;
+$--m-view-left-size-xl: 6.5rem;
+$--m-view-right-size-xs: 2.5rem;
+$--m-view-right-size-sm: 3.5rem;
+$--m-view-right-size-md: 4.5rem;
+$--m-view-right-size-lg: 5.5rem;
+$--m-view-right-size-xl: 6.5rem;
+
+$--m-view-transition-base: .25s ease;
+
 
 /**
  * variables register.
  */
 .m-view {
-    --m-view-header-size: #{$--m-view-header-size-md};
-    --m-view-footer-size: #{$--m-view-footer-size-md};
-    --m-view-left-size: #{$--m-view-side-size-md};
-    --m-view-right-size: #{$--m-view-side-size-md};
+    --m-view-header-size-xs: #{ $--m-view-header-size-xs};
+    --m-view-header-size-sm: #{ $--m-view-header-size-sm};
+    --m-view-header-size-md: #{ $--m-view-header-size-md};
+    --m-view-header-size-lg: #{ $--m-view-header-size-lg};
+    --m-view-header-size-xl: #{ $--m-view-header-size-xl};
+    --m-view-footer-size-xs: #{ $--m-view-footer-size-xs};
+    --m-view-footer-size-sm: #{ $--m-view-footer-size-sm};
+    --m-view-footer-size-md: #{ $--m-view-footer-size-md};
+    --m-view-footer-size-lg: #{ $--m-view-footer-size-lg};
+    --m-view-footer-size-xl: #{ $--m-view-footer-size-xl};
+    --m-view-left-size-xs:   #{ $--m-view-left-size-xs};
+    --m-view-left-size-sm:   #{ $--m-view-left-size-sm};
+    --m-view-left-size-md:   #{ $--m-view-left-size-md};
+    --m-view-left-size-lg:   #{ $--m-view-left-size-lg};
+    --m-view-left-size-xl:   #{ $--m-view-left-size-xl};
+    --m-view-right-size-xs:  #{ $--m-view-right-size-xs};
+    --m-view-right-size-sm:  #{ $--m-view-right-size-sm};
+    --m-view-right-size-md:  #{ $--m-view-right-size-md};
+    --m-view-right-size-lg:  #{ $--m-view-right-size-lg};
+    --m-view-right-size-xl:  #{ $--m-view-right-size-xl};
+
+    //--m-view-header-size: #{$--m-view-header-size-md};
+    //--m-view-footer-size: #{$--m-view-footer-size-md};
+    //--m-view-left-size: #{$--m-view-side-size-md};
+    //--m-view-right-size: #{$--m-view-side-size-md};
+    --m-view-header-size: 0;
+    --m-view-footer-size: 0;
+    --m-view-left-size: 0;
+    --m-view-right-size: 0;
+
+    --m-view-header-z-index: 1;
+    --m-view-footer-z-index: 1;
+    --m-view-left-z-index: 1;
+    --m-view-right-z-index: 1;
 
     --m-view-header-grow: 100%;
     --m-view-footer-grow: 100%;
@@ -49,16 +86,18 @@ $--m-view-scroll-bar-size-xs: 5px;
     font-size: var(--m-font-base);
     color: var(--m-font-color);
     position: relative;
-    transition: padding-left linear .15s,
-                padding-right linear .15s,
-                padding-top linear .15s,
-                padding-bottom linear .15s;
-}
-
-%m-view-parts-base {
-    position: absolute;
-    z-index: 2;
-    transition: all linear .15s;
+    &.m--transition {
+        transition: padding-left $--m-view-transition-base,
+            padding-right $--m-view-transition-base,
+            padding-top $--m-view-transition-base,
+            padding-bottom $--m-view-transition-base;
+        >.m-view-header,
+        >.m-view-footer,
+        >.m-view-left,
+        >.m-view-right {
+            transition: all $--m-view-transition-base;
+        }
+    }
 }
 .m-view {
     // layout
@@ -153,12 +192,16 @@ $--m-view-scroll-bar-size-xs: 5px;
     overflow: auto;
     @include slim-scroll-bar();
 }
+%m-view-parts-base {
+    position: absolute;
+}
 .m-view-header {
     @extend %m-view-parts-base;
     top: 0;
     left: var(--m-view-header-shrink);
     width: var(--m-view-header-grow);
     height: var(--m-view-header-size);
+    z-index: var(--m-view-header-z-index);
 }
 .m-view-footer {
     @extend %m-view-parts-base;
@@ -166,6 +209,7 @@ $--m-view-scroll-bar-size-xs: 5px;
     width: var(--m-view-footer-grow);
     left: var(--m-view-footer-shrink);
     height: var(--m-view-footer-size);
+    z-index: var(--m-view-footer-z-index);
 }
 .m-view-left {
     @extend %m-view-parts-base;
@@ -173,6 +217,7 @@ $--m-view-scroll-bar-size-xs: 5px;
     top: var(--m-view-left-shrink);
     height: var(--m-view-left-grow);
     width: var(--m-view-left-size);
+    z-index: var(--m-view-left-z-index);
 }
 .m-view-right {
     @extend %m-view-parts-base;
@@ -180,4 +225,31 @@ $--m-view-scroll-bar-size-xs: 5px;
     top: var(--m-view-right-shrink);
     height: var(--m-view-right-grow);
     width: var(--m-view-right-size);
+    z-index: var(--m-view-right-z-index);
 }
+
+
+.m-view-transition-header-enter,
+.m-view-transition-header-leave-to {
+    transform: translateY(-100%);
+}
+.m-view-transition-footer-enter,
+.m-view-transition-footer-leave-to {
+    transform: translateY(100%);
+}
+.m-view-transition-left-enter,
+.m-view-transition-left-leave-to {
+    transform: translateX(-100%);
+}
+.m-view-transition-right-enter,
+.m-view-transition-right-leave-to {
+    transform: translateX(100%);
+}
+
+.m-view-transition-header-enter-active,
+.m-view-transition-header-leave-active {
+    //transform: translateZ(0);
+    will-change: transform;
+    transition: transform $--m-view-transition-base;
+}
+
