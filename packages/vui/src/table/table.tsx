@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
 import { deepCopy } from '@mobov/es-helper'
-import sizeable from '../core/mixin/sizeable'
-import elevated from '../core/mixin/elevated'
+import size from '../core/mixin/size'
+import elevation from '../core/mixin/elevation'
 import TableHead from './components/head'
 import TableBody from './components/body'
 import { typeHeader,  typeHover, typeSelect }  from './constant'
@@ -13,8 +13,8 @@ const SELF_KEY = '_table-key'
   components: { TableHead, TableBody }
 })
 export default class MTable extends Mixins (
-  sizeable,
-  elevated
+  size,
+  elevation
 ) {
   @Prop({ type: [String, Number] })
   height?: string | number

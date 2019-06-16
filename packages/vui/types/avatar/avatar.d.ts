@@ -1,15 +1,30 @@
-import colorable from '../core/mixin/colorable';
-import sizeable from '../core/mixin/sizeable';
-import elevated from '../core/mixin/elevated';
-import variable from '../core/mixin/variable';
-import shapeable from '../core/mixin/shapeable';
-declare const MAvatar_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
+import mixBase from '../core/mixin/base';
+import mixVariety from '../core/mixin/variety';
+import mixShape from '../core/mixin/shape';
+declare const MAvatar_base;
 export default class MAvatar extends MAvatar_base {
+    name: string;
     src: string;
-    readonly styles: {};
-    readonly classes: {
-        [x: string]: boolean;
+    readonly styles: {
+        size?: string | number | undefined;
+        height?: string | number | undefined;
+        width?: string | number | undefined;
+        margin?: string | undefined;
+        marginX?: string | undefined;
+        marginY?: string | undefined;
+        marginTop?: string | undefined;
+        marginBottom?: string | undefined;
+        marginLeft?: string | undefined;
+        marginRight?: string | undefined;
+        padding?: string | undefined;
+        paddingX?: string | undefined;
+        paddingY?: string | undefined;
+        paddingTop?: string | undefined;
+        paddingBottom?: string | undefined;
+        paddingLeft?: string | undefined;
+        paddingRight?: string | undefined;
     };
+    readonly classes: {};
     updateSrc(val: string): void;
     status: number;
     curSrc: string;

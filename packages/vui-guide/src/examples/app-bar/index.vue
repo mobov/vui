@@ -4,6 +4,7 @@
 <template>
   <ExampleBox>
     <MAppBar :color="PropsData.color"
+             padding="10px"
                :elevation="PropsData.elevation"
                :variety="PropsData.variety"
                :size="PropsData.size">

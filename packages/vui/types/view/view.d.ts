@@ -1,6 +1,9 @@
-import { Vue } from 'vue-property-decorator';
 import { Fill, size } from '../core/constant';
-export default class MFrame extends Vue {
+import mixSize from '../core/mixin/size';
+import mixElevation from '../core/mixin/elevation';
+declare const MView_base;
+export default class MView extends MView_base {
+    name: string;
     transition?: boolean;
     fillHeader?: Fill;
     fillFooter?: Fill;
@@ -28,3 +31,4 @@ export default class MFrame extends Vue {
     private RRight;
     private render;
 }
+export {};

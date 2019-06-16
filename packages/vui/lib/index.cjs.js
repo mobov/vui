@@ -202,7 +202,7 @@ MApp$1.install = function (Vue) {
   Vue.component('MApp', MApp$1);
 };
 
-var css$8 = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-frame {\n  --m-frame-header-size-xs: 2.5rem;\n  --m-frame-header-size-sm: 3.5rem;\n  --m-frame-header-size-md: 4.5rem;\n  --m-frame-header-size-lg: 5.5rem;\n  --m-frame-header-size-xl: 6.5rem;\n  --m-frame-footer-size-xs: 2.5rem;\n  --m-frame-footer-size-sm: 3.5rem;\n  --m-frame-footer-size-md: 4.5rem;\n  --m-frame-footer-size-lg: 5.5rem;\n  --m-frame-footer-size-xl: 6.5rem;\n  --m-frame-left-size-xs:   2.5rem;\n  --m-frame-left-size-sm:   3.5rem;\n  --m-frame-left-size-md:   4.5rem;\n  --m-frame-left-size-lg:   5.5rem;\n  --m-frame-left-size-xl:   6.5rem;\n  --m-frame-right-size-xs:  2.5rem;\n  --m-frame-right-size-sm:  3.5rem;\n  --m-frame-right-size-md:  4.5rem;\n  --m-frame-right-size-lg:  5.5rem;\n  --m-frame-right-size-xl:  6.5rem;\n  --m-frame-header-size: 0;\n  --m-frame-footer-size: 0;\n  --m-frame-left-size: 0;\n  --m-frame-right-size: 0;\n  --m-frame-header-z-index: 1;\n  --m-frame-footer-z-index: 1;\n  --m-frame-left-z-index: 1;\n  --m-frame-right-z-index: 1;\n  --m-frame-header-grow: 100%;\n  --m-frame-footer-grow: 100%;\n  --m-frame-left-grow: 100%;\n  --m-frame-right-grow: 100%;\n  --m-frame-header-shrink: 0;\n  --m-frame-footer-shrink: 0;\n  --m-frame-left-shrink: 0;\n  --m-frame-right-shrink: 0; }\n\n/**\r\n * components styles.\r\n */\n.m-frame {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  position: relative; }\n  .m-frame.m--transition {\n    -webkit-transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease;\n    transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease; }\n    .m-frame.m--transition > .m-frame-header,\n    .m-frame.m--transition > .m-frame-footer,\n    .m-frame.m--transition > .m-frame-left,\n    .m-frame.m--transition > .m-frame-right {\n      -webkit-transition: all 0.25s ease;\n      transition: all 0.25s ease; }\n\n.m-frame.m--with-header {\n  padding-top: var(--m-frame-header-size); }\n\n.m-frame.m--with-footer {\n  padding-bottom: var(--m-frame-footer-size); }\n\n.m-frame.m--with-left {\n  padding-left: var(--m-frame-left-size); }\n\n.m-frame.m--with-right {\n  padding-right: var(--m-frame-right-size); }\n\n.m-frame.m--with-header.m--fill-header-left {\n  --m-frame-left-shrink: var(--m-frame-header-size);\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-header.m--fill-header-both {\n  --m-frame-left-shrink: var(--m-frame-header-size);\n  --m-frame-right-shrink: var(--m-frame-header-size);\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size));\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-header.m--fill-header-right {\n  --m-frame-right-shrink: var(--m-frame-header-size);\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-left {\n  --m-frame-left-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-both {\n  --m-frame-left-grow: calc(100% - var(--m-frame-footer-size));\n  --m-frame-right-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-footer.m--fill-footer-right {\n  --m-frame-right-grow: calc(100% - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-left.m--fill-header-none, .m-frame.m--with-left.m--fill-header-right {\n  --m-frame-header-shrink: var(--m-frame-left-size);\n  --m-frame-header-grow: calc(100% - var(--m-frame-left-size)); }\n\n.m-frame.m--with-left.m--fill-footer-right, .m-frame.m--with-left.m--fill-footer-none {\n  --m-frame-footer-shrink: var(--m-frame-left-size);\n  --m-frame-footer-grow: calc(100% - var(--m-frame-left-size)); }\n\n.m-frame.m--with-right.m--fill-header-none, .m-frame.m--with-right.m--fill-header-left {\n  --m-frame-header-grow: calc(100% - var(--m-frame-right-size)); }\n\n.m-frame.m--with-right.m--fill-footer-left, .m-frame.m--with-right.m--fill-footer-none {\n  --m-frame-footer-grow: calc(100% - var(--m-frame-right-size)); }\n\n.m-frame.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-left, .m-frame.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-both, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-left, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-frame-left-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-right, .m-frame.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-both, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-right, .m-frame.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-frame-right-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size)); }\n\n.m-frame.m--with-left.m--with-right.m--fill-header-none {\n  --m-frame-header-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size)); }\n\n.m-frame.m--with-left.m--with-right.m--fill-footer-none {\n  --m-frame-footer-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size)); }\n\n.m-frame-main {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-frame-main::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-frame-main::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-frame-main::-webkit-scrollbar {\n    width: 7px; }\n  .m-frame-main::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-frame-mainl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-frame-header, .m-frame-footer, .m-frame-left, .m-frame-right {\n  position: absolute; }\n\n.m-frame-header {\n  top: 0;\n  left: var(--m-frame-header-shrink);\n  width: var(--m-frame-header-grow);\n  height: var(--m-frame-header-size);\n  z-index: var(--m-frame-header-z-index); }\n\n.m-frame-footer {\n  bottom: 0;\n  width: var(--m-frame-footer-grow);\n  left: var(--m-frame-footer-shrink);\n  height: var(--m-frame-footer-size);\n  z-index: var(--m-frame-footer-z-index); }\n\n.m-frame-left {\n  left: 0;\n  top: var(--m-frame-left-shrink);\n  height: var(--m-frame-left-grow);\n  width: var(--m-frame-left-size);\n  z-index: var(--m-frame-left-z-index); }\n\n.m-frame-right {\n  right: 0;\n  top: var(--m-frame-right-shrink);\n  height: var(--m-frame-right-grow);\n  width: var(--m-frame-right-size);\n  z-index: var(--m-frame-right-z-index); }\n\n.m-frame-transition-header-enter,\n.m-frame-transition-header-leave-to {\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%); }\n\n.m-frame-transition-footer-enter,\n.m-frame-transition-footer-leave-to {\n  -webkit-transform: translateY(100%);\n          transform: translateY(100%); }\n\n.m-frame-transition-left-enter,\n.m-frame-transition-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-frame-transition-right-enter,\n.m-frame-transition-right-leave-to {\n  -webkit-transform: translateX(100%);\n          transform: translateX(100%); }\n\n.m-frame-transition-header-enter-active,\n.m-frame-transition-header-leave-active {\n  will-change: transform;\n  -webkit-transition: -webkit-transform 0.25s ease;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n  transition: transform 0.25s ease, -webkit-transform 0.25s ease; }\n";
+var css$8 = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-view {\n  --m-view-header-size-xs: 2.5rem;\n  --m-view-header-size-sm: 3.5rem;\n  --m-view-header-size-md: 4.5rem;\n  --m-view-header-size-lg: 5.5rem;\n  --m-view-header-size-xl: 6.5rem;\n  --m-view-footer-size-xs: 2.5rem;\n  --m-view-footer-size-sm: 3.5rem;\n  --m-view-footer-size-md: 4.5rem;\n  --m-view-footer-size-lg: 5.5rem;\n  --m-view-footer-size-xl: 6.5rem;\n  --m-view-left-size-xs:   2.5rem;\n  --m-view-left-size-sm:   3.5rem;\n  --m-view-left-size-md:   4.5rem;\n  --m-view-left-size-lg:   5.5rem;\n  --m-view-left-size-xl:   6.5rem;\n  --m-view-right-size-xs:  2.5rem;\n  --m-view-right-size-sm:  3.5rem;\n  --m-view-right-size-md:  4.5rem;\n  --m-view-right-size-lg:  5.5rem;\n  --m-view-right-size-xl:  6.5rem;\n  --m-view-header-size: 0;\n  --m-view-footer-size: 0;\n  --m-view-left-size: 0;\n  --m-view-right-size: 0;\n  --m-view-header-z-index: 1;\n  --m-view-footer-z-index: 1;\n  --m-view-left-z-index: 1;\n  --m-view-right-z-index: 1;\n  --m-view-header-grow: 100%;\n  --m-view-footer-grow: 100%;\n  --m-view-left-grow: 100%;\n  --m-view-right-grow: 100%;\n  --m-view-header-shrink: 0;\n  --m-view-footer-shrink: 0;\n  --m-view-left-shrink: 0;\n  --m-view-right-shrink: 0; }\n\n/**\r\n * components styles.\r\n */\n.m-view {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  position: relative; }\n  .m-view.m--transition {\n    -webkit-transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease;\n    transition: padding-left 0.25s ease, padding-right 0.25s ease, padding-top 0.25s ease, padding-bottom 0.25s ease; }\n    .m-view.m--transition > .m-view-header,\n    .m-view.m--transition > .m-view-footer,\n    .m-view.m--transition > .m-view-left,\n    .m-view.m--transition > .m-view-right {\n      -webkit-transition: all 0.25s ease;\n      transition: all 0.25s ease; }\n\n.m-view.m--with-header {\n  padding-top: var(--m-view-header-size); }\n\n.m-view.m--with-footer {\n  padding-bottom: var(--m-view-footer-size); }\n\n.m-view.m--with-left {\n  padding-left: var(--m-view-left-size); }\n\n.m-view.m--with-right {\n  padding-right: var(--m-view-right-size); }\n\n.m-view.m--with-header.m--fill-header-left {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-both {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size));\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-right {\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-footer.m--fill-footer-left {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size));\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-right {\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--fill-header-none, .m-view.m--with-left.m--fill-header-right {\n  --m-view-header-shrink: var(--m-view-left-size);\n  --m-view-header-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-left.m--fill-footer-right, .m-view.m--with-left.m--fill-footer-none {\n  --m-view-footer-shrink: var(--m-view-left-size);\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-right.m--fill-header-none, .m-view.m--with-right.m--fill-header-left {\n  --m-view-header-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-right.m--fill-footer-left, .m-view.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-right-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-header-none {\n  --m-view-header-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view-main {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-view-main::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-view-main::-webkit-scrollbar {\n    width: 7px; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-view-mainl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-view-header, .m-view-footer, .m-view-left, .m-view-right {\n  position: absolute; }\n\n.m-view-header {\n  top: 0;\n  left: var(--m-view-header-shrink);\n  width: var(--m-view-header-grow);\n  height: var(--m-view-header-size);\n  z-index: var(--m-view-header-z-index); }\n\n.m-view-footer {\n  bottom: 0;\n  width: var(--m-view-footer-grow);\n  left: var(--m-view-footer-shrink);\n  height: var(--m-view-footer-size);\n  z-index: var(--m-view-footer-z-index); }\n\n.m-view-left {\n  left: 0;\n  top: var(--m-view-left-shrink);\n  height: var(--m-view-left-grow);\n  width: var(--m-view-left-size);\n  z-index: var(--m-view-left-z-index); }\n\n.m-view-right {\n  right: 0;\n  top: var(--m-view-right-shrink);\n  height: var(--m-view-right-grow);\n  width: var(--m-view-right-size);\n  z-index: var(--m-view-right-z-index); }\n\n.m-view-transition-header-enter,\n.m-view-transition-header-leave-to {\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%); }\n\n.m-view-transition-footer-enter,\n.m-view-transition-footer-leave-to {\n  -webkit-transform: translateY(100%);\n          transform: translateY(100%); }\n\n.m-view-transition-left-enter,\n.m-view-transition-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-view-transition-right-enter,\n.m-view-transition-right-leave-to {\n  -webkit-transform: translateX(100%);\n          transform: translateX(100%); }\n\n.m-view-transition-header-enter-active,\n.m-view-transition-header-leave-active {\n  will-change: transform;\n  -webkit-transition: -webkit-transform 0.25s ease;\n  transition: -webkit-transform 0.25s ease;\n  transition: transform 0.25s ease;\n  transition: transform 0.25s ease, -webkit-transform 0.25s ease; }\n";
 styleInject(css$8);
 
 /* eslint-disable */
@@ -1062,19 +1062,117 @@ MTransition$1.install = function (Vue) {
   Vue.component('MTransition', MTransition$1);
 };
 
-var compName$1 = 'm-frame';
-
-var MFrame =
+var VuiComponent =
 /*#__PURE__*/
 function (_Vue) {
-  _inherits(MFrame, _Vue);
+  _inherits(VuiComponent, _Vue);
 
-  function MFrame() {
+  function VuiComponent() {
+    _classCallCheck(this, VuiComponent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(VuiComponent).call(this));
+  }
+
+  return VuiComponent;
+}(vuePropertyDecorator.Vue);
+
+var SizeMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(SizeMixin, _VuiComponent);
+
+  function SizeMixin() {
+    _classCallCheck(this, SizeMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SizeMixin).apply(this, arguments));
+  }
+
+  _createClass(SizeMixin, [{
+    key: "sizeStyle",
+    get: function get() {
+      var height = this.height,
+          width = this.width,
+          size = this.size;
+      var styles = {};
+      genSize(styles, this.name, size);
+
+      if (height !== undefined) {
+        styles.height = getStyleSize(height);
+      }
+
+      if (width !== undefined) {
+        styles.width = getStyleSize(width);
+      }
+
+      return styles;
+    }
+  }]);
+
+  return SizeMixin;
+}(VuiComponent);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "size", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "height", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
+
+SizeMixin = __decorate([vuePropertyDecorator.Component], SizeMixin);
+var size = SizeMixin;
+
+var ElevationMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(ElevationMixin, _VuiComponent);
+
+  function ElevationMixin() {
+    _classCallCheck(this, ElevationMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ElevationMixin).apply(this, arguments));
+  }
+
+  _createClass(ElevationMixin, [{
+    key: "elevationStyle",
+    get: function get() {
+      var styles = {};
+      genElevation(styles, this.name, this.elevation);
+      return styles;
+    }
+  }]);
+
+  return ElevationMixin;
+}(VuiComponent);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number,
+  validator: function validator(value) {
+    return ELEVATION.includes(value);
+  }
+}), __metadata("design:type", Object)], ElevationMixin.prototype, "elevation", void 0);
+
+ElevationMixin = __decorate([vuePropertyDecorator.Component], ElevationMixin);
+var elevation = ElevationMixin;
+
+var compName$1 = 'm-view';
+
+var MView =
+/*#__PURE__*/
+function (_Mixins) {
+  _inherits(MView, _Mixins);
+
+  function MView() {
     var _this;
 
-    _classCallCheck(this, MFrame);
+    _classCallCheck(this, MView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MFrame).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MView).apply(this, arguments));
+    _this.name = 'm-view';
     _this.isHeader = false;
     _this.isFooter = false;
     _this.isLeft = false;
@@ -1082,7 +1180,7 @@ function (_Vue) {
     return _this;
   }
 
-  _createClass(MFrame, [{
+  _createClass(MView, [{
     key: "RHeader",
     value: function RHeader() {
       var h = this.$createElement;
@@ -1091,7 +1189,7 @@ function (_Vue) {
       }, [this.$slots.header]) : undefined;
       return this.transition ? h("transition", {
         "attrs": {
-          "name": "m-frame-transition-header"
+          "name": "m-view-transition-header"
         }
       }, [result]) : result;
     }
@@ -1104,7 +1202,7 @@ function (_Vue) {
       }, [this.$slots.footer]) : undefined;
       return this.transition ? h("transition", {
         "attrs": {
-          "name": "m-frame-transition-footer"
+          "name": "m-view-transition-footer"
         }
       }, [result]) : result;
     }
@@ -1117,7 +1215,7 @@ function (_Vue) {
       }, [this.$slots.left]) : undefined;
       return this.transition ? h("transition", {
         "attrs": {
-          "name": "m-frame-transition-left"
+          "name": "m-view-transition-left"
         }
       }, [result]) : result;
     }
@@ -1130,7 +1228,7 @@ function (_Vue) {
       }, [this.$slots.right]) : undefined;
       return this.transition ? h("transition", {
         "attrs": {
-          "name": "m-frame-transition-right"
+          "name": "m-view-transition-right"
         }
       }, [result]) : result;
     }
@@ -1217,178 +1315,85 @@ function (_Vue) {
     }
   }]);
 
-  return MFrame;
-}(vuePropertyDecorator.Vue);
+  return MView;
+}(vuePropertyDecorator.Mixins(size, elevation));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "transition", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "transition", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
   default: Fill.both
-}), __metadata("design:type", String)], MFrame.prototype, "fillHeader", void 0);
+}), __metadata("design:type", String)], MView.prototype, "fillHeader", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
   default: Fill.both
-}), __metadata("design:type", String)], MFrame.prototype, "fillFooter", void 0);
+}), __metadata("design:type", String)], MView.prototype, "fillFooter", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "headerSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "headerIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "headerFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "headerFloat", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "footerSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "footerIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "footerFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "footerFloat", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "leftSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "leftIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "leftFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "leftFloat", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "rightSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "rightSize", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "rightIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "rightFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "rightFloat", void 0);
 
-MFrame = __decorate([vuePropertyDecorator.Component({
+MView = __decorate([vuePropertyDecorator.Component({
   components: {
     MTransition: MTransition$1
   }
-})], MFrame);
-var MFrame$1 = MFrame;
-
-/* istanbul ignore next */
-
-MFrame$1.install = function (Vue) {
-  Vue.component('MFrame', MFrame$1);
-};
-
-var css$c = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-view {\n  --m-view-header-size: 4.5rem;\n  --m-view-footer-size: 4.5rem;\n  --m-view-left-size: 4.5rem;\n  --m-view-right-size: 4.5rem;\n  --m-view-header-grow: 100%;\n  --m-view-footer-grow: 100%;\n  --m-view-left-grow: 100%;\n  --m-view-right-grow: 100%;\n  --m-view-header-shrink: 0;\n  --m-view-footer-shrink: 0;\n  --m-view-left-shrink: 0;\n  --m-view-right-shrink: 0; }\n\n/**\r\n * components styles.\r\n */\n.m-view {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  position: relative;\n  -webkit-transition: padding-left linear .15s,\r padding-right linear .15s,\r padding-top linear .15s,\r padding-bottom linear .15s;\n  transition: padding-left linear .15s,\r padding-right linear .15s,\r padding-top linear .15s,\r padding-bottom linear .15s; }\n\n.m-view-header, .m-view-footer, .m-view-left, .m-view-right {\n  position: absolute;\n  z-index: 2;\n  -webkit-transition: all linear .15s;\n  transition: all linear .15s; }\n\n.m-view.m--with-header {\n  padding-top: var(--m-view-header-size); }\n\n.m-view.m--with-footer {\n  padding-bottom: var(--m-view-footer-size); }\n\n.m-view.m--with-left {\n  padding-left: var(--m-view-left-size); }\n\n.m-view.m--with-right {\n  padding-right: var(--m-view-right-size); }\n\n.m-view.m--with-header.m--fill-header-left {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-both {\n  --m-view-left-shrink: var(--m-view-header-size);\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-left-grow: calc(100% - var(--m-view-header-size));\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-header.m--fill-header-right {\n  --m-view-right-shrink: var(--m-view-header-size);\n  --m-view-right-grow: calc(100% - var(--m-view-header-size)); }\n\n.m-view.m--with-footer.m--fill-footer-left {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-footer-size));\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-footer.m--fill-footer-right {\n  --m-view-right-grow: calc(100% - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--fill-header-none, .m-view.m--with-left.m--fill-header-right {\n  --m-view-header-shrink: var(--m-view-left-size);\n  --m-view-header-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-left.m--fill-footer-right, .m-view.m--with-left.m--fill-footer-none {\n  --m-view-footer-shrink: var(--m-view-left-size);\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size)); }\n\n.m-view.m--with-right.m--fill-header-none, .m-view.m--with-right.m--fill-header-left {\n  --m-view-header-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-right.m--fill-footer-left, .m-view.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-right-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-left.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-left, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-left-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-right.m--fill-footer-both, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-right, .m-view.m--with-header.m--with-footer.m--fill-header-both.m--fill-footer-both {\n  --m-view-right-grow: calc(100% - var(--m-view-header-size) - var(--m-view-footer-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-header-none {\n  --m-view-header-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view.m--with-left.m--with-right.m--fill-footer-none {\n  --m-view-footer-grow: calc(100% - var(--m-view-left-size) - var(--m-view-right-size)); }\n\n.m-view-main {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-view-main::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-view-main::-webkit-scrollbar {\n    width: 7px; }\n  .m-view-main::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-view-mainl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-view-header {\n  top: 0;\n  left: var(--m-view-header-shrink);\n  width: var(--m-view-header-grow);\n  height: var(--m-view-header-size); }\n\n.m-view-footer {\n  bottom: 0;\n  width: var(--m-view-footer-grow);\n  left: var(--m-view-footer-shrink);\n  height: var(--m-view-footer-size); }\n\n.m-view-left {\n  left: 0;\n  top: var(--m-view-left-shrink);\n  height: var(--m-view-left-grow);\n  width: var(--m-view-left-size); }\n\n.m-view-right {\n  right: 0;\n  top: var(--m-view-right-shrink);\n  height: var(--m-view-right-grow);\n  width: var(--m-view-right-size); }\n";
-styleInject(css$c);
-
-var compName$2 = 'm-view';
-
-var MView =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MView, _Vue);
-
-  function MView() {
-    var _this;
-
-    _classCallCheck(this, MView);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MView).apply(this, arguments));
-    _this.isHeader = false;
-    _this.isFooter = false;
-    return _this;
-  }
-
-  _createClass(MView, [{
-    key: "render",
-    value: function render() {
-      var h = arguments[0];
-      var $slots = this.$slots,
-          styles = this.styles,
-          classes = this.classes;
-      this.isHeader = $slots.header !== undefined;
-      this.isFooter = $slots.footer !== undefined;
-      return h("div", {
-        "staticClass": compName$2,
-        "class": classes,
-        "style": styles
-      }, [h("slot", {
-        "attrs": {
-          "name": "left"
-        }
-      }), h("section", {
-        "class": "m-view-main"
-      }, [h("slot")]), h("slot", {
-        "attrs": {
-          "name": "right"
-        }
-      })]);
-    }
-  }, {
-    key: "classes",
-    get: function get() {
-      var isHeader = this.isHeader,
-          isFooter = this.isFooter;
-      return {
-        'm--with-header': isHeader,
-        'm--with-footer': isFooter
-      };
-    }
-  }, {
-    key: "styles",
-    get: function get() {
-      var isHeader = this.isHeader,
-          isFooter = this.isFooter;
-      var styles = {};
-      return styles;
-    }
-  }]);
-
-  return MView;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: '100%'
-}), __metadata("design:type", String)], MView.prototype, "height", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: '100%'
-}), __metadata("design:type", String)], MView.prototype, "width", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "horizon", void 0);
-
-MView = __decorate([vuePropertyDecorator.Component], MView);
+})], MView);
 var MView$1 = MView;
 
 /* istanbul ignore next */
@@ -1397,7 +1402,7 @@ MView$1.install = function (Vue) {
   Vue.component('MView', MView$1);
 };
 
-var compName$3 = 'm-icon';
+var compName$2 = 'm-icon';
 var SIZE$1 = {
   xs: 12,
   sm: 24,
@@ -1482,7 +1487,7 @@ function (_Vue) {
           "width": width,
           "viewBox": icon.viewBox
         },
-        "staticClass": "".concat(compName$3, " ").concat(compName$3, "__").concat(name, " ").concat(staticClasses),
+        "staticClass": "".concat(compName$2, " ").concat(compName$2, "__").concat(name, " ").concat(staticClasses),
         "class": classes,
         "style": styles,
         "on": {
@@ -1531,10 +1536,10 @@ MIcon$1.install = function (Vue) {
   Vue.component('MIcon', MIcon$1);
 };
 
-var css$d = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .m-flex.m--inline {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
-styleInject(css$d);
+var css$c = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .m-flex.m--inline {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+styleInject(css$c);
 
-var compName$4 = 'm-container';
+var compName$3 = 'm-container';
 
 var MContainer =
 /*#__PURE__*/
@@ -1554,7 +1559,7 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$3, " ").concat(staticClass);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -1582,7 +1587,7 @@ MContainer = __decorate([vuePropertyDecorator.Component({
 })], MContainer);
 var MContainer$1 = MContainer;
 
-var compName$5 = 'm-row';
+var compName$4 = 'm-row';
 
 var MRow =
 /*#__PURE__*/
@@ -1602,10 +1607,10 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$5, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$5, 'cols', props.cols);
-      genSize(data.staticStyle, "".concat(compName$5, "-gutter"), props.gutter);
+      genStaticStyles(data.staticStyle, compName$4, 'cols', props.cols);
+      genSize(data.staticStyle, "".concat(compName$4, "-gutter"), props.gutter);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -1641,7 +1646,7 @@ MRow = __decorate([vuePropertyDecorator.Component({
 })], MRow);
 var MRow$1 = MRow;
 
-var compName$6 = 'm-col';
+var compName$5 = 'm-col';
 
 var MCol =
 /*#__PURE__*/
@@ -1661,12 +1666,12 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$6, " ").concat(staticClass);
+      data.staticClass = "".concat(compName$5, " ").concat(staticClass);
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genSpace(data.staticStyle, compName$6, props.space);
+      genSpace(data.staticStyle, compName$5, props.space);
       BREAKPOINT.forEach(function (breakpoint) {
         if (props[breakpoint]) {
-          genStaticStyles(data.staticStyle, compName$6, "span-".concat(breakpoint), props[breakpoint]);
+          genStaticStyles(data.staticStyle, compName$5, "span-".concat(breakpoint), props[breakpoint]);
         }
       });
 
@@ -1716,7 +1721,7 @@ MCol = __decorate([vuePropertyDecorator.Component({
 })], MCol);
 var MCol$1 = MCol;
 
-var compName$7 = 'm-flex';
+var compName$6 = 'm-flex';
 
 var MFlex =
 /*#__PURE__*/
@@ -1736,11 +1741,11 @@ function (_Vue) {
           data = _ref.data,
           children = _ref.children;
       var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$7, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
+      data.staticClass = "".concat(compName$6, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
       data.staticClass += props.inline ? 'm--inline' : '';
       data.staticClass = data.staticClass.trim();
       data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$7, 'cols', props.cols);
+      genStaticStyles(data.staticStyle, compName$6, 'cols', props.cols);
 
       if (props.id) {
         data.domProps = data.domProps || {};
@@ -1788,7 +1793,7 @@ MFlex = __decorate([vuePropertyDecorator.Component({
 })], MFlex);
 var MFlex$1 = MFlex;
 
-var compName$8 = 'm-flex-filler';
+var compName$7 = 'm-flex-filler';
 
 var MFlexFiller =
 /*#__PURE__*/
@@ -1806,7 +1811,7 @@ function (_Vue) {
     value: function render() {
       var h = arguments[0];
       return h("div", {
-        "class": compName$8
+        "class": compName$7
       });
     }
   }]);
@@ -1839,193 +1844,349 @@ MFlexFiller$1.install = function (Vue) {
   Vue.component('MFlexFiller', MFlexFiller$1);
 };
 
-var css$e = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
-styleInject(css$e);
+var css$d = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
+styleInject(css$d);
 
-var name = 'm-app-bar';
-var MAppBar = {
-  name: name,
-  props: {
-    size: {
-      type: String,
-      default: 'md'
-    },
-    fontColor: {
-      type: String,
-      default: 'md'
-    },
-    color: {
-      type: String,
-      default: 'md'
-    },
-    elevation: {
-      type: Number,
-      default: 0
-    },
-    variety: {
-      type: String,
-      default: '0'
-    }
-  },
-  computed: {
-    styles: function styles() {
-      var fontColor = this.fontColor,
-          color = this.color,
-          elevation = this.elevation,
+var BaseMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(BaseMixin, _VuiComponent);
+
+  function BaseMixin() {
+    _classCallCheck(this, BaseMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BaseMixin).apply(this, arguments));
+  }
+
+  _createClass(BaseMixin, [{
+    key: "sizeStyle",
+    get: function get() {
+      var height = this.height,
+          width = this.width,
           size = this.size;
       var styles = {};
-      genFontColor(styles, name, fontColor);
-      genColor(styles, name, color);
-      genElevation(styles, name, elevation);
-      genSize(styles, name, size);
+      genSize(styles, this.name, size);
+
+      if (height !== undefined) {
+        styles.height = getStyleSize(height);
+      }
+
+      if (width !== undefined) {
+        styles.width = getStyleSize(width);
+      }
+
       return styles;
-    },
-    classes: function classes() {
-      var variety = this.variety;
-      var classes = {};
-      genVariety(classes, variety);
-      return classes;
     }
-  },
-  render: function render() {
-    var h = arguments[0];
-    var $slots = this.$slots,
-        classes = this.classes,
-        styles = this.styles;
-    return h("div", {
-      "staticClass": name,
-      "style": styles,
-      "class": classes
-    }, [$slots.default]);
-  }
-};
+  }, {
+    key: "colorStyle",
+    get: function get() {
+      var styles = {};
+      genFontColor(styles, this.name, this.fontColor);
+      genColor(styles, this.name, this.color);
+      return styles;
+    }
+  }, {
+    key: "elevationStyle",
+    get: function get() {
+      var styles = {};
+      genElevation(styles, this.name, this.elevation);
+      return styles;
+    }
+  }, {
+    key: "spaceStyle",
+    get: function get() {
+      var margin = this.margin,
+          marginX = this.marginX,
+          marginY = this.marginY,
+          marginTop = this.marginTop,
+          marginBottom = this.marginBottom,
+          marginLeft = this.marginLeft,
+          marginRight = this.marginRight,
+          padding = this.padding,
+          paddingX = this.paddingX,
+          paddingY = this.paddingY,
+          paddingTop = this.paddingTop,
+          paddingBottom = this.paddingBottom,
+          paddingLeft = this.paddingLeft,
+          paddingRight = this.paddingRight;
+      var styles = {};
 
-MAppBar.install = function (Vue) {
-  Vue.component(MAppBar.name, MAppBar);
-};
+      if (margin !== undefined) {
+        styles.margin = getStyleSize(margin);
+      }
 
-var css$f = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-elevation: var(--m-elevation-2);\n  --m-button-shape: var(--m-shape-corner);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-button-shape);\n  -webkit-box-shadow: var(--m-button-elevation);\n          box-shadow: var(--m-button-elevation);\n  border: none;\n  padding: var(--m-button-border-size);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    vertical-align: middle; }\n  .m-button:hover {\n    background-color: var(--m-button-hover-color);\n    border-color: var(--m-button-hover-color); }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.m-button__main {\n  margin: 0 calc(var(--m-button-size) / 4); }\n";
-styleInject(css$f);
+      if (marginX !== undefined) {
+        styles.marginLeft = getStyleSize(marginX);
+        styles.marginRight = getStyleSize(marginX);
+      }
 
-var colorable =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(colorable, _Vue);
+      if (marginY !== undefined) {
+        styles.marginTop = getStyleSize(marginY);
+        styles.marginBottom = getStyleSize(marginY);
+      }
 
-  function colorable() {
-    _classCallCheck(this, colorable);
+      if (marginTop !== undefined) {
+        styles.marginTop = getStyleSize(marginTop);
+      }
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(colorable).apply(this, arguments));
-  }
+      if (marginBottom !== undefined) {
+        styles.marginBottom = getStyleSize(marginBottom);
+      }
 
-  return colorable;
-}(vuePropertyDecorator.Vue);
+      if (marginLeft !== undefined) {
+        styles.marginLeft = getStyleSize(marginLeft);
+      }
 
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", Object)], colorable.prototype, "fontColor", void 0);
+      if (marginRight !== undefined) {
+        styles.marginRight = getStyleSize(marginRight);
+      }
 
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", Object)], colorable.prototype, "color", void 0);
+      if (padding !== undefined) {
+        styles.padding = getStyleSize(padding);
+      }
 
-colorable = __decorate([vuePropertyDecorator.Component], colorable);
-var colorable$1 = colorable;
+      if (paddingX !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingX);
+        styles.paddingRight = getStyleSize(paddingX);
+      }
 
-var sizeable =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(sizeable, _Vue);
+      if (paddingY !== undefined) {
+        styles.paddingTop = getStyleSize(paddingY);
+        styles.paddingBottom = getStyleSize(paddingY);
+      }
 
-  function sizeable() {
-    _classCallCheck(this, sizeable);
+      if (paddingTop !== undefined) {
+        styles.paddingTop = getStyleSize(paddingTop);
+      }
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(sizeable).apply(this, arguments));
-  }
+      if (paddingBottom !== undefined) {
+        styles.paddingBottom = getStyleSize(paddingBottom);
+      }
 
-  return sizeable;
-}(vuePropertyDecorator.Vue);
+      if (paddingLeft !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingLeft);
+      }
+
+      if (paddingRight !== undefined) {
+        styles.paddingRight = getStyleSize(paddingRight);
+      }
+
+      return styles;
+    }
+  }, {
+    key: "baseStyle",
+    get: function get() {
+      return Object.assign({}, this.elevationStyle, this.colorStyle, this.spaceStyle, this.sizeStyle);
+    }
+  }]);
+
+  return BaseMixin;
+}(VuiComponent);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], sizeable.prototype, "size", void 0);
+}), __metadata("design:type", Object)], BaseMixin.prototype, "size", void 0);
 
-sizeable = __decorate([vuePropertyDecorator.Component], sizeable);
-var sizeable$1 = sizeable;
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "height", void 0);
 
-var elevated =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(elevated, _Vue);
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "width", void 0);
 
-  function elevated() {
-    _classCallCheck(this, elevated);
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", Object)], BaseMixin.prototype, "fontColor", void 0);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(elevated).apply(this, arguments));
-  }
-
-  return elevated;
-}(vuePropertyDecorator.Vue);
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", Object)], BaseMixin.prototype, "color", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number,
   validator: function validator(value) {
     return ELEVATION.includes(value);
   }
-}), __metadata("design:type", Object)], elevated.prototype, "elevation", void 0);
+}), __metadata("design:type", Object)], BaseMixin.prototype, "elevation", void 0);
 
-elevated = __decorate([vuePropertyDecorator.Component], elevated);
-var elevated$1 = elevated;
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginLeft", void 0);
 
-var variable =
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginRight", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginTop", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginBottom", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginX", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginY", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "margin", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingLeft", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingRight", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingTop", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingBottom", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingX", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingY", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "padding", void 0);
+
+BaseMixin = __decorate([vuePropertyDecorator.Component], BaseMixin);
+var mixBase = BaseMixin;
+
+var VarietyMixin =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(variable, _Vue);
+function (_VuiComponent) {
+  _inherits(VarietyMixin, _VuiComponent);
 
-  function variable() {
-    _classCallCheck(this, variable);
+  function VarietyMixin() {
+    _classCallCheck(this, VarietyMixin);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(variable).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(VarietyMixin).apply(this, arguments));
   }
 
-  return variable;
-}(vuePropertyDecorator.Vue);
+  _createClass(VarietyMixin, [{
+    key: "varietyClass",
+    get: function get() {
+      var classes = {};
+      genVariety(classes, this.variety);
+      return classes;
+    }
+  }]);
+
+  return VarietyMixin;
+}(VuiComponent);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
   validator: function validator(value) {
     return VARIETY.includes(value);
   }
-}), __metadata("design:type", Object)], variable.prototype, "variety", void 0);
+}), __metadata("design:type", String)], VarietyMixin.prototype, "variety", void 0);
 
-variable = __decorate([vuePropertyDecorator.Component], variable);
-var variable$1 = variable;
+VarietyMixin = __decorate([vuePropertyDecorator.Component], VarietyMixin);
+var mixVariety = VarietyMixin;
 
-var shapeable =
+var ShapeMixin =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(shapeable, _Vue);
+function (_VuiComponent) {
+  _inherits(ShapeMixin, _VuiComponent);
 
-  function shapeable() {
-    _classCallCheck(this, shapeable);
+  function ShapeMixin() {
+    _classCallCheck(this, ShapeMixin);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(shapeable).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(ShapeMixin).apply(this, arguments));
   }
 
-  return shapeable;
-}(vuePropertyDecorator.Vue);
+  _createClass(ShapeMixin, [{
+    key: "shapeClass",
+    get: function get() {
+      var classes = {};
+      genShape(classes, this.shape);
+      return classes;
+    }
+  }]);
+
+  return ShapeMixin;
+}(VuiComponent);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
   validator: function validator(value) {
     return SHAPE.includes(value);
   }
-}), __metadata("design:type", Object)], shapeable.prototype, "shape", void 0);
+}), __metadata("design:type", String)], ShapeMixin.prototype, "shape", void 0);
 
-shapeable = __decorate([vuePropertyDecorator.Component], shapeable);
-var shapeable$1 = shapeable;
+ShapeMixin = __decorate([vuePropertyDecorator.Component], ShapeMixin);
+var mixShape = ShapeMixin;
 
-var compName$9 = 'm-button';
+var MAppBar =
+/*#__PURE__*/
+function (_Mixins) {
+  _inherits(MAppBar, _Mixins);
+
+  function MAppBar() {
+    var _this;
+
+    _classCallCheck(this, MAppBar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MAppBar).apply(this, arguments));
+    _this.name = 'm-app-bar';
+    return _this;
+  }
+
+  _createClass(MAppBar, [{
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var $slots = this.$slots,
+          classes = this.classes,
+          styles = this.styles;
+      return h("div", {
+        "staticClass": this.name,
+        "style": styles,
+        "class": classes
+      }, [$slots.default]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      return Object.assign({}, this.baseStyle);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign({}, this.varietyClass, this.shapeClass);
+    }
+  }]);
+
+  return MAppBar;
+}(vuePropertyDecorator.Mixins(mixBase, mixVariety, mixShape));
+
+MAppBar = __decorate([vuePropertyDecorator.Component], MAppBar);
+var MAppBar$1 = MAppBar;
+
+MAppBar$1.install = function (Vue) {
+  Vue.component(MAppBar$1.name, MAppBar$1);
+};
+
+var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-elevation: var(--m-elevation-2);\n  --m-button-shape: var(--m-shape-corner);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-button-shape);\n  -webkit-box-shadow: var(--m-button-elevation);\n          box-shadow: var(--m-button-elevation);\n  border: none;\n  padding: var(--m-button-border-size);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    vertical-align: middle; }\n  .m-button:hover {\n    background-color: var(--m-button-hover-color);\n    border-color: var(--m-button-hover-color); }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.m-button__main {\n  margin: 0 calc(var(--m-button-size) / 4); }\n";
+styleInject(css$e);
 
 var MButton =
 /*#__PURE__*/
@@ -2033,9 +2194,13 @@ function (_Mixins) {
   _inherits(MButton, _Mixins);
 
   function MButton() {
+    var _this;
+
     _classCallCheck(this, MButton);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MButton).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MButton).apply(this, arguments));
+    _this.name = 'm-button';
+    return _this;
   }
 
   _createClass(MButton, [{
@@ -2045,17 +2210,17 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var classes = this.classes,
+      var name = this.name,
+          classes = this.classes,
           styles = this.styles,
           icon = this.icon,
-          onClick = this.onClick,
-          color = this.color;
+          onClick = this.onClick;
       return h("div", {
         "directives": [{
           name: "m-ripple",
           value: true
         }],
-        "staticClass": compName$9,
+        "staticClass": name,
         "class": classes,
         "style": styles,
         "on": {
@@ -2066,42 +2231,28 @@ function (_Mixins) {
           "name": icon
         }
       }), !this.$slots.default ? undefined : h("div", {
-        "class": "".concat(compName$9, "__main")
+        "class": "".concat(name, "__main")
       }, [this.$slots.default])]);
     }
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$9, fontColor);
-      genColor(styles, compName$9, color);
-      genElevation(styles, compName$9, elevation);
-      genSize(styles, compName$9, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      var shape = this.shape,
-          variety = this.variety,
-          block = this.block,
+      var block = this.block,
           disabled = this.disabled;
-      var classes = {
+      return Object.assign({}, this.shapeClass, this.varietyClass, {
         'm--block': block,
         'm--disabled': disabled
-      };
-      genShape(classes, shape);
-      genVariety(classes, variety);
-      return classes;
+      });
     }
   }]);
 
   return MButton;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(vuePropertyDecorator.Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean
@@ -2132,10 +2283,8 @@ MButton$1.install = function (Vue) {
   Vue.component('MButton', MButton$1);
 };
 
-var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-elevation: var(--m-elevation-0);\n  --m-avatar-shape: var(--m-shape-circle);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  -webkit-box-shadow: var(--m-avatar-elevation);\n          box-shadow: var(--m-avatar-elevation);\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border-width: 0; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-success {\n    opacity: 1; }\n  .m-avatar.m--status-pending, .m-avatar.m--status-failure {\n    opacity: 0; }\n\n.m-avatar__cover {\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
-styleInject(css$g);
-
-var compName$a = 'm-avatar';
+var css$f = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-elevation: var(--m-elevation-0);\n  --m-avatar-shape: var(--m-shape-circle);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  -webkit-box-shadow: var(--m-avatar-elevation);\n          box-shadow: var(--m-avatar-elevation);\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border-width: 0; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-success {\n    opacity: 1; }\n  .m-avatar.m--status-pending, .m-avatar.m--status-failure {\n    opacity: 0; }\n\n.m-avatar__cover {\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
+styleInject(css$f);
 
 var MAvatar =
 /*#__PURE__*/
@@ -2148,6 +2297,7 @@ function (_Mixins) {
     _classCallCheck(this, MAvatar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MAvatar).apply(this, arguments));
+    _this.name = 'm-avatar';
     _this.status = Status.pending;
     return _this;
   }
@@ -2174,17 +2324,18 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var styles = this.styles,
+      var name = this.name,
+          styles = this.styles,
           classes = this.classes,
           curSrc = this.curSrc,
           loadSuccess = this.loadSuccess,
           loadFailure = this.loadFailure;
       return h("div", {
-        "staticClass": compName$a,
+        "staticClass": name,
         "class": classes,
         "style": styles
       }, [this.$slots.default, h("img", {
-        "staticClass": "".concat(compName$a, "__cover"),
+        "staticClass": "".concat(name, "__cover"),
         "attrs": {
           "alt": '',
           "src": curSrc
@@ -2198,34 +2349,18 @@ function (_Mixins) {
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$a, fontColor);
-      genColor(styles, compName$a, color);
-      genElevation(styles, compName$a, elevation);
-      genSize(styles, compName$a, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      var shape = this.shape,
-          variety = this.variety,
-          status = this.status;
-
-      var classes = _defineProperty({}, "m--status-".concat(Status[status]), true);
-
-      genShape(classes, shape);
-      genVariety(classes, variety);
-      return classes;
+      var status = this.status;
+      return Object.assign({}, this.shapeClass, this.varietyClass, _defineProperty({}, "m--status-".concat(Status[status]), true));
     }
   }]);
 
   return MAvatar;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(vuePropertyDecorator.Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([vuePropertyDecorator.Prop({
   type: String
@@ -2242,10 +2377,45 @@ MAvatar$1.install = function (Vue) {
   Vue.component('MAvatar', MAvatar$1);
 };
 
-var css$h = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-size-xs: 1rem;\n  --m-radio-size-sm: 1.5rem;\n  --m-radio-size-md: 2rem;\n  --m-radio-size-lg: 2.5rem;\n  --m-radio-size-xl: 3rem;\n  --m-radio-wrapper-size-xs: 2rem;\n  --m-radio-wrapper-size-sm: 3rem;\n  --m-radio-wrapper-size-md: 4rem;\n  --m-radio-wrapper-size-lg: 5rem;\n  --m-radio-wrapper-size-xl: 6rem;\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: var(--m-radio-size-md);\n  --m-radio-wrapper-size: var(--m-radio-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  line-height: 1;\n  font-size: calc(var(--m-radio-size) / 1.4);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
-styleInject(css$h);
+var css$g = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-size-xs: 1rem;\n  --m-radio-size-sm: 1.5rem;\n  --m-radio-size-md: 2rem;\n  --m-radio-size-lg: 2.5rem;\n  --m-radio-size-xl: 3rem;\n  --m-radio-wrapper-size-xs: 2rem;\n  --m-radio-wrapper-size-sm: 3rem;\n  --m-radio-wrapper-size-md: 4rem;\n  --m-radio-wrapper-size-lg: 5rem;\n  --m-radio-wrapper-size-xl: 6rem;\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: var(--m-radio-size-md);\n  --m-radio-wrapper-size: var(--m-radio-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  line-height: 1;\n  font-size: calc(var(--m-radio-size) / 1.4);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
+styleInject(css$g);
 
-var compName$b = 'm-radio';
+var ColorMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(ColorMixin, _VuiComponent);
+
+  function ColorMixin() {
+    _classCallCheck(this, ColorMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ColorMixin).apply(this, arguments));
+  }
+
+  _createClass(ColorMixin, [{
+    key: "colorStyle",
+    get: function get() {
+      var styles = {};
+      genFontColor(styles, this.name, this.fontColor);
+      genColor(styles, this.name, this.color);
+      return styles;
+    }
+  }]);
+
+  return ColorMixin;
+}(VuiComponent);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", Object)], ColorMixin.prototype, "fontColor", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", Object)], ColorMixin.prototype, "color", void 0);
+
+ColorMixin = __decorate([vuePropertyDecorator.Component], ColorMixin);
+var color = ColorMixin;
+
+var compName$8 = 'm-radio';
 
 var MRadio =
 /*#__PURE__*/
@@ -2283,19 +2453,19 @@ function (_Mixins) {
           uncheckIcon = this.uncheckIcon,
           checked = this.checked;
       return h("a", {
-        "staticClass": "".concat(compName$b, "__radio")
+        "staticClass": "".concat(compName$8, "__radio")
       }, [h("transition", {
         "attrs": {
           "name": 'm--transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__checked-icon"),
+        "staticClass": "".concat(compName$8, "__checked-icon"),
         "attrs": {
           "name": checkedIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__uncheck-icon"),
+        "staticClass": "".concat(compName$8, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2305,7 +2475,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$b, "__radio-wrapper")
+        "staticClass": "".concat(compName$8, "__radio-wrapper")
       })]);
     }
   }, {
@@ -2314,7 +2484,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$b, "__label")
+        "staticClass": "".concat(compName$8, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2328,7 +2498,7 @@ function (_Mixins) {
           RRadio = this.RRadio,
           RDefault = this.RDefault;
       return h("div", {
-        "staticClass": compName$b,
+        "staticClass": compName$8,
         "class": classes,
         "style": styles,
         "on": {
@@ -2345,9 +2515,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$b, fontColor);
-      genColor(styles, compName$b, color);
-      genSize(styles, compName$b, size);
+      genFontColor(styles, compName$8, fontColor);
+      genColor(styles, compName$8, color);
+      genSize(styles, compName$8, size);
       return styles;
     }
   }, {
@@ -2369,7 +2539,7 @@ function (_Mixins) {
   }]);
 
   return MRadio;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1));
+}(vuePropertyDecorator.Mixins(color, size));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [Boolean, Number, String],
@@ -2411,10 +2581,166 @@ MRadio$1.install = function (Vue) {
   Vue.component('MRadio', MRadio$1);
 };
 
-var css$i = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-size-xs: 1rem;\n  --m-checkbox-size-sm: 1.5rem;\n  --m-checkbox-size-md: 2rem;\n  --m-checkbox-size-lg: 2.5rem;\n  --m-checkbox-size-xl: 3rem;\n  --m-checkbox-wrapper-size-xs: 2rem;\n  --m-checkbox-wrapper-size-sm: 3rem;\n  --m-checkbox-wrapper-size-md: 4rem;\n  --m-checkbox-wrapper-size-lg: 5rem;\n  --m-checkbox-wrapper-size-xl: 6rem;\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: var(--m-checkbox-size-md);\n  --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: calc(var(--m-checkbox-size) / 1.4);\n  line-height: 1;\n  height: var(--m-checkbox-color);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
-styleInject(css$i);
+var css$h = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-size-xs: 1rem;\n  --m-checkbox-size-sm: 1.5rem;\n  --m-checkbox-size-md: 2rem;\n  --m-checkbox-size-lg: 2.5rem;\n  --m-checkbox-size-xl: 3rem;\n  --m-checkbox-wrapper-size-xs: 2rem;\n  --m-checkbox-wrapper-size-sm: 3rem;\n  --m-checkbox-wrapper-size-md: 4rem;\n  --m-checkbox-wrapper-size-lg: 5rem;\n  --m-checkbox-wrapper-size-xl: 6rem;\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: var(--m-checkbox-size-md);\n  --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: calc(var(--m-checkbox-size) / 1.4);\n  line-height: 1;\n  height: var(--m-checkbox-color);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
+styleInject(css$h);
 
-var compName$c = 'm-checkbox';
+var SpaceMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(SpaceMixin, _VuiComponent);
+
+  function SpaceMixin() {
+    _classCallCheck(this, SpaceMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SpaceMixin).apply(this, arguments));
+  }
+
+  _createClass(SpaceMixin, [{
+    key: "spaceStyle",
+    get: function get() {
+      var margin = this.margin,
+          marginX = this.marginX,
+          marginY = this.marginY,
+          marginTop = this.marginTop,
+          marginBottom = this.marginBottom,
+          marginLeft = this.marginLeft,
+          marginRight = this.marginRight,
+          padding = this.padding,
+          paddingX = this.paddingX,
+          paddingY = this.paddingY,
+          paddingTop = this.paddingTop,
+          paddingBottom = this.paddingBottom,
+          paddingLeft = this.paddingLeft,
+          paddingRight = this.paddingRight;
+      var styles = {};
+
+      if (margin !== undefined) {
+        styles.margin = getStyleSize(margin);
+      }
+
+      if (marginX !== undefined) {
+        styles.marginLeft = getStyleSize(marginX);
+        styles.marginRight = getStyleSize(marginX);
+      }
+
+      if (marginY !== undefined) {
+        styles.marginTop = getStyleSize(marginY);
+        styles.marginBottom = getStyleSize(marginY);
+      }
+
+      if (marginTop !== undefined) {
+        styles.marginTop = getStyleSize(marginTop);
+      }
+
+      if (marginBottom !== undefined) {
+        styles.marginBottom = getStyleSize(marginBottom);
+      }
+
+      if (marginLeft !== undefined) {
+        styles.marginLeft = getStyleSize(marginLeft);
+      }
+
+      if (marginRight !== undefined) {
+        styles.marginRight = getStyleSize(marginRight);
+      }
+
+      if (padding !== undefined) {
+        styles.padding = getStyleSize(padding);
+      }
+
+      if (paddingX !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingX);
+        styles.paddingRight = getStyleSize(paddingX);
+      }
+
+      if (paddingY !== undefined) {
+        styles.paddingTop = getStyleSize(paddingY);
+        styles.paddingBottom = getStyleSize(paddingY);
+      }
+
+      if (paddingTop !== undefined) {
+        styles.paddingTop = getStyleSize(paddingTop);
+      }
+
+      if (paddingBottom !== undefined) {
+        styles.paddingBottom = getStyleSize(paddingBottom);
+      }
+
+      if (paddingLeft !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingLeft);
+      }
+
+      if (paddingRight !== undefined) {
+        styles.paddingRight = getStyleSize(paddingRight);
+      }
+
+      return styles;
+    }
+  }]);
+
+  return SpaceMixin;
+}(VuiComponent);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginLeft", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginRight", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginTop", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginBottom", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginX", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginY", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "margin", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingLeft", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingRight", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingTop", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingBottom", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingX", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingY", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "padding", void 0);
+
+SpaceMixin = __decorate([vuePropertyDecorator.Component], SpaceMixin);
+var space = SpaceMixin;
+
+var compName$9 = 'm-checkbox';
 
 var MCheckbox =
 /*#__PURE__*/
@@ -2502,19 +2828,19 @@ function (_Mixins) {
       }
 
       return h("a", {
-        "staticClass": "".concat(compName$c, "__checkbox")
+        "staticClass": "".concat(compName$9, "__checkbox")
       }, [h("transition", {
         "attrs": {
           "name": 'm-transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$c, "__checked-icon"),
+        "staticClass": "".concat(compName$9, "__checked-icon"),
         "attrs": {
           "name": checkIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$c, "__uncheck-icon"),
+        "staticClass": "".concat(compName$9, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2524,7 +2850,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$c, "__checkbox-wrapper")
+        "staticClass": "".concat(compName$9, "__checkbox-wrapper")
       })]);
     }
   }, {
@@ -2533,7 +2859,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$c, "__label")
+        "staticClass": "".concat(compName$9, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2552,7 +2878,7 @@ function (_Mixins) {
 
       this.isBooleanValue = typeof value === 'boolean';
       return h("div", {
-        "staticClass": compName$c,
+        "staticClass": compName$9,
         "class": classes,
         "style": styles,
         "on": {
@@ -2569,9 +2895,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$c, fontColor);
-      genColor(styles, compName$c, color);
-      genSize(styles, compName$c, size);
+      genFontColor(styles, compName$9, fontColor);
+      genColor(styles, compName$9, color);
+      genSize(styles, compName$9, size);
       return styles;
     }
   }, {
@@ -2615,7 +2941,7 @@ function (_Mixins) {
   }]);
 
   return MCheckbox;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1));
+}(vuePropertyDecorator.Mixins(color, size, space));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [Array, Number, String, Boolean],
@@ -2659,8 +2985,8 @@ MCheckbox$1.install = function (Vue) {
   Vue.component('MCheckbox', MCheckbox$1);
 };
 
-var css$j = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-elevation: var(--m-elevation-2);\n  --m-chip-shape: var(--m-chip-size-md);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  -webkit-box-shadow: var(--m-chip-elevation);\n          box-shadow: var(--m-chip-elevation);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .3s;\n    transition: padding-right ease .3s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: 1px; }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .3s;\n  transition: opacity ease .3s; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
-styleInject(css$j);
+var css$i = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-elevation: var(--m-elevation-2);\n  --m-chip-shape: var(--m-chip-size-md);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  -webkit-box-shadow: var(--m-chip-elevation);\n          box-shadow: var(--m-chip-elevation);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .3s;\n    transition: padding-right ease .3s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: 1px; }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .3s;\n  transition: opacity ease .3s; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
+styleInject(css$i);
 
 /* eslint-disable */
 register({
@@ -2672,17 +2998,19 @@ register({
   }
 });
 
-var compName$d = 'm-chip';
-
 var MChip =
 /*#__PURE__*/
 function (_Mixins) {
   _inherits(MChip, _Mixins);
 
   function MChip() {
+    var _this;
+
     _classCallCheck(this, MChip);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MChip).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MChip).apply(this, arguments));
+    _this.name = 'm-chip';
+    return _this;
   }
 
   _createClass(MChip, [{
@@ -2696,14 +3024,15 @@ function (_Mixins) {
   }, {
     key: "RMedia",
     value: function RMedia() {
-      var $slots = this.$slots;
+      var name = this.name,
+          $slots = this.$slots;
 
       if ($slots.media) {
         if (!$slots.media[0].data.staticClass) {
           $slots.media[0].data.staticClass = '';
         }
 
-        $slots.media[0].data.staticClass += " ".concat(compName$d, "__media");
+        $slots.media[0].data.staticClass += " ".concat(name, "__media");
         return $slots.media;
       }
 
@@ -2713,11 +3042,12 @@ function (_Mixins) {
     key: "RClose",
     value: function RClose() {
       var h = this.$createElement;
-      var closeable = this.closeable,
+      var name = this.name,
+          closeable = this.closeable,
           closeover = this.closeover,
           onClose = this.onClose;
       return closeable || closeover ? h(MIcon$1, {
-        "staticClass": "".concat(compName$d, "__close"),
+        "staticClass": "".concat(name, "__close"),
         "on": {
           "click": function click() {
             return onClose;
@@ -2732,57 +3062,43 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var classes = this.classes,
+      var name = this.name,
+          classes = this.classes,
           styles = this.styles,
           $slots = this.$slots,
           RMedia = this.RMedia,
           RClose = this.RClose,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$d,
+        "staticClass": name,
         "class": classes,
         "style": styles,
         "on": {
           "click": onClick
         }
       }, [RMedia(), h("div", {
-        "staticClass": "".concat(compName$d, "__main")
+        "staticClass": "".concat(name, "__main")
       }, [$slots.default]), RClose()]);
     }
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$d, fontColor);
-      genColor(styles, compName$d, color);
-      genSize(styles, compName$d, size);
-      genElevation(styles, compName$d, elevation); // genHover(styles, _name, 'hover-color', color)
-
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var closeable = this.closeable,
-          closeover = this.closeover,
-          variety = this.variety,
-          shape = this.shape;
-      var classes = {
+          closeover = this.closeover;
+      return Object.assign({}, this.shapeClass, this.varietyClass, {
         'm--closeable': closeable,
         'm--closeover': closeover
-      };
-      genVariety(classes, variety);
-      genShape(classes, shape);
-      return classes;
+      });
     }
   }]);
 
   return MChip;
-}(vuePropertyDecorator.Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(vuePropertyDecorator.Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
@@ -2812,8 +3128,8 @@ MChip$1.install = function (Vue) {
   Vue.component('MChip', MChip$1);
 };
 
-var css$k = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-time-picker {\n  --m-time-picker-color: var(--m-color-primary);\n  --m-time-picker-elevation: var(--m-elevation-2);\n  --m-time-picker-header-font-color: var(--m-bg-color);\n  --m-time-picker-width: 26rem;\n  --m-time-picker-header-height: 7rem;\n  --m-time-picker-panel-height: 24.5rem;\n  --m-time-picker-landscope-width: 37rem;\n  --m-time-picker-landscope-header-width: 11rem;\n  --m-time-picker-cell-size: 2.5rem; }\n\n/**\r\n * components styles.\r\n */\n.m-time-picker {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  line-height: 1;\n  -webkit-box-shadow: var(--m-time-picker-elevation);\n          box-shadow: var(--m-time-picker-elevation);\n  width: var(--m-time-picker-width); }\n  .m-time-picker.m--landscope {\n    width: var(--m-time-picker-landscope-width); }\n    .m-time-picker.m--landscope .m-time-picker-header {\n      width: var(--m-time-picker-landscope-header-width);\n      height: 100%;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-weekDay {\n      margin-left: 0; }\n    .m-time-picker.m--landscope .m-time-picker-header__date {\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start; }\n      .m-time-picker.m--landscope .m-time-picker-header__date > * {\n        margin-bottom: var(--m-space-md); }\n    .m-time-picker.m--landscope .m-time-picker-header__time-hours {\n      text-align: left;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker.m--landscope .m-time-picker__main {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: stretch;\n          -ms-flex-pack: stretch;\n              justify-content: stretch;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      height: var(--m-time-picker-panel-height); }\n    .m-time-picker.m--landscope .m-time-picker-panel {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1; }\n  .m-time-picker .m-time-picker-panel {\n    height: var(--m-time-picker-panel-height); }\n\n.m-time-picker-header {\n  padding: var(--m-space-sm);\n  height: var(--m-time-picker-header-height);\n  background-color: var(--m-time-picker-color);\n  color: var(--m-time-picker-header-font-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-transition: color .3s ease;\n  transition: color .3s ease; }\n  .m-time-picker-header .m--active {\n    opacity: .6; }\n  .m-time-picker-header__date {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .m-time-picker-header__date-year {\n      cursor: pointer;\n      font-size: 2rem;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker-header__date-date {\n      cursor: pointer;\n      font-size: 2.5rem; }\n    .m-time-picker-header__date-weekDay {\n      font-size: 2rem;\n      margin-left: 1rem; }\n  .m-time-picker-header__year, .m-time-picker-header__month {\n    color: white;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    font-size: 3rem; }\n  .m-time-picker-header__time {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    text-align: right; }\n    .m-time-picker-header__time-hours {\n      cursor: pointer;\n      font-size: 3.5rem; }\n    .m-time-picker-header__time-ampm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      cursor: pointer;\n      font-size: 2rem; }\n      .m-time-picker-header__time-ampm > * {\n        margin-left: 2rem; }\n  .m-time-picker-header .m--active {\n    color: white; }\n\n.m-time-picker-panel-date {\n  padding: var(--m-space-sm); }\n  .m-time-picker-panel-date__header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-size: 1rem; }\n    .m-time-picker-panel-date__header-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: 1.4rem;\n      margin-left: .4rem;\n      cursor: pointer; }\n    .m-time-picker-panel-date__header-handler {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n  .m-time-picker-panel-date__table {\n    line-height: 1.5;\n    border: none;\n    border-spacing: 0;\n    text-align: center;\n    width: 100%; }\n    .m-time-picker-panel-date__table thead {\n      font-weight: 600; }\n      .m-time-picker-panel-date__table thead td {\n        padding: var(--m-space-sm) 0; }\n    .m-time-picker-panel-date__table td > * {\n      margin: 0 auto; }\n  .m-time-picker-panel-date .m-button__main {\n    margin-left: 0;\n    margin-right: 0; }\n\n.m-time-picker-panel-year {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: var(--m-space-sm);\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  height: 100%;\n  overflow: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0); }\n  .m-time-picker-panel-year > * {\n    width: 33.333333%; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-time-picker-panel-year::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-time-picker-panel-year::-webkit-scrollbar {\n    width: 4px; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-time-picker-panel-yearl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-time-picker-panel-month {\n  height: 100%;\n  padding: var(--m-space-sm);\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n  .m-time-picker-panel-month > * {\n    width: 33%; }\n\n.m-time-picker-panel-time {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .m-time-picker-panel-time__list {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    height: 100%;\n    padding: var(--m-space-sm);\n    overflow: auto;\n    overflow-x: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      background-color: #a6a6a6; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-track {\n      background-color: #e5e5e5; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar {\n      width: 4px; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      border-left: 2px solid transparent; }\n    .m-time-picker-panel-time__listl::-webkit-scrollbar-track {\n      border-left: 2px solid transparent; }\n\n.m-time-picker-handler {\n  border-top: 1px solid var(--m-border-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .m-time-picker-handler > * {\n    margin-left: var(--m-space-sm); }\n    .m-time-picker-handler > *:first-child {\n      margin-left: 0; }\n\n.m-time-picker-cell {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 1;\n  height: var(--m-time-picker-cell-size);\n  min-width: var(--m-time-picker-cell-size);\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-radius: var(--m-time-picker-cell-size);\n  cursor: pointer;\n  color: var(--m-font-color); }\n  .m-time-picker-cell.m--current {\n    border: 2px solid var(--m-time-picker-color); }\n  .m-time-picker-cell.m--checked {\n    color: var(--m-bg-color);\n    background-color: var(--m-time-picker-color); }\n\n.m-time-picker-panel-time .m-time-picker-cell {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n";
-styleInject(css$k);
+var css$j = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-time-picker {\n  --m-time-picker-color: var(--m-color-primary);\n  --m-time-picker-elevation: var(--m-elevation-2);\n  --m-time-picker-header-font-color: var(--m-bg-color);\n  --m-time-picker-width: 26rem;\n  --m-time-picker-header-height: 7rem;\n  --m-time-picker-panel-height: 24.5rem;\n  --m-time-picker-landscope-width: 37rem;\n  --m-time-picker-landscope-header-width: 11rem;\n  --m-time-picker-cell-size: 2.5rem; }\n\n/**\r\n * components styles.\r\n */\n.m-time-picker {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  line-height: 1;\n  -webkit-box-shadow: var(--m-time-picker-elevation);\n          box-shadow: var(--m-time-picker-elevation);\n  width: var(--m-time-picker-width); }\n  .m-time-picker.m--landscope {\n    width: var(--m-time-picker-landscope-width); }\n    .m-time-picker.m--landscope .m-time-picker-header {\n      width: var(--m-time-picker-landscope-header-width);\n      height: 100%;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-weekDay {\n      margin-left: 0; }\n    .m-time-picker.m--landscope .m-time-picker-header__date {\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start; }\n      .m-time-picker.m--landscope .m-time-picker-header__date > * {\n        margin-bottom: var(--m-space-md); }\n    .m-time-picker.m--landscope .m-time-picker-header__time-hours {\n      text-align: left;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker.m--landscope .m-time-picker__main {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: stretch;\n          -ms-flex-pack: stretch;\n              justify-content: stretch;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      height: var(--m-time-picker-panel-height); }\n    .m-time-picker.m--landscope .m-time-picker-panel {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1; }\n  .m-time-picker .m-time-picker-panel {\n    height: var(--m-time-picker-panel-height); }\n\n.m-time-picker-header {\n  padding: var(--m-space-sm);\n  height: var(--m-time-picker-header-height);\n  background-color: var(--m-time-picker-color);\n  color: var(--m-time-picker-header-font-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-transition: color .3s ease;\n  transition: color .3s ease; }\n  .m-time-picker-header .m--active {\n    opacity: .6; }\n  .m-time-picker-header__date {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .m-time-picker-header__date-year {\n      cursor: pointer;\n      font-size: 2rem;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker-header__date-date {\n      cursor: pointer;\n      font-size: 2.5rem; }\n    .m-time-picker-header__date-weekDay {\n      font-size: 2rem;\n      margin-left: 1rem; }\n  .m-time-picker-header__year, .m-time-picker-header__month {\n    color: white;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    font-size: 3rem; }\n  .m-time-picker-header__time {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    text-align: right; }\n    .m-time-picker-header__time-hours {\n      cursor: pointer;\n      font-size: 3.5rem; }\n    .m-time-picker-header__time-ampm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      cursor: pointer;\n      font-size: 2rem; }\n      .m-time-picker-header__time-ampm > * {\n        margin-left: 2rem; }\n  .m-time-picker-header .m--active {\n    color: white; }\n\n.m-time-picker-panel-date {\n  padding: var(--m-space-sm); }\n  .m-time-picker-panel-date__header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-size: 1rem; }\n    .m-time-picker-panel-date__header-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: 1.4rem;\n      margin-left: .4rem;\n      cursor: pointer; }\n    .m-time-picker-panel-date__header-handler {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n  .m-time-picker-panel-date__table {\n    line-height: 1.5;\n    border: none;\n    border-spacing: 0;\n    text-align: center;\n    width: 100%; }\n    .m-time-picker-panel-date__table thead {\n      font-weight: 600; }\n      .m-time-picker-panel-date__table thead td {\n        padding: var(--m-space-sm) 0; }\n    .m-time-picker-panel-date__table td > * {\n      margin: 0 auto; }\n  .m-time-picker-panel-date .m-button__main {\n    margin-left: 0;\n    margin-right: 0; }\n\n.m-time-picker-panel-year {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: var(--m-space-sm);\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  height: 100%;\n  overflow: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0); }\n  .m-time-picker-panel-year > * {\n    width: 33.333333%; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-time-picker-panel-year::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-time-picker-panel-year::-webkit-scrollbar {\n    width: 4px; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-time-picker-panel-yearl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-time-picker-panel-month {\n  height: 100%;\n  padding: var(--m-space-sm);\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n  .m-time-picker-panel-month > * {\n    width: 33%; }\n\n.m-time-picker-panel-time {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .m-time-picker-panel-time__list {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    height: 100%;\n    padding: var(--m-space-sm);\n    overflow: auto;\n    overflow-x: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      background-color: #a6a6a6; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-track {\n      background-color: #e5e5e5; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar {\n      width: 4px; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      border-left: 2px solid transparent; }\n    .m-time-picker-panel-time__listl::-webkit-scrollbar-track {\n      border-left: 2px solid transparent; }\n\n.m-time-picker-handler {\n  border-top: 1px solid var(--m-border-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .m-time-picker-handler > * {\n    margin-left: var(--m-space-sm); }\n    .m-time-picker-handler > *:first-child {\n      margin-left: 0; }\n\n.m-time-picker-cell {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 1;\n  height: var(--m-time-picker-cell-size);\n  min-width: var(--m-time-picker-cell-size);\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-radius: var(--m-time-picker-cell-size);\n  cursor: pointer;\n  color: var(--m-font-color); }\n  .m-time-picker-cell.m--current {\n    border: 2px solid var(--m-time-picker-color); }\n  .m-time-picker-cell.m--checked {\n    color: var(--m-bg-color);\n    background-color: var(--m-time-picker-color); }\n\n.m-time-picker-panel-time .m-time-picker-cell {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n";
+styleInject(css$j);
 
 /**
  * 判断闰年
@@ -2866,7 +3182,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$e = 'm-time-picker-header';
+var compName$a = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -2902,9 +3218,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__date")
+        "staticClass": "".concat(compName$a, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$e, "__date-year"),
+        "staticClass": "".concat(compName$a, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -2914,9 +3230,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$e, "__date-weekDay")
+        "staticClass": "".concat(compName$a, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$e, "__date-date")
+        "staticClass": "".concat(compName$a, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -2952,9 +3268,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$e, "__time")
+        "class": "".concat(compName$a, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__time-ampm")
+        "staticClass": "".concat(compName$a, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -2974,7 +3290,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$e, "__time-hours")
+        "staticClass": "".concat(compName$a, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -3003,7 +3319,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__year")
+        "staticClass": "".concat(compName$a, "__year")
       }, [year]);
     }
   }, {
@@ -3014,7 +3330,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__month")
+        "staticClass": "".concat(compName$a, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -3027,7 +3343,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$e),
+        "staticClass": "".concat(compName$a),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -3048,7 +3364,7 @@ __decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], M
 MTimePickerHeader = __decorate([vuePropertyDecorator.Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$f = 'm-time-picker-panel-date';
+var compName$b = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -3183,11 +3499,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$f
+        "staticClass": compName$b
       }, [h("div", {
-        "class": "".concat(compName$f, "__header")
+        "class": "".concat(compName$b, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$f, "__header-year")
+        "staticClass": "".concat(compName$b, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -3201,7 +3517,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$f, "__header-handler")
+        "staticClass": "".concat(compName$b, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -3235,7 +3551,7 @@ function (_Vue) {
           }
         }
       })])]), h("table", {
-        "class": "".concat(compName$f, "__table")
+        "class": "".concat(compName$b, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -3291,7 +3607,7 @@ MTimePickerPanelDate = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$g = 'm-time-picker-panel-year';
+var compName$c = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -3350,7 +3666,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$g
+        "staticClass": compName$c
       }, [RCols()]);
     }
   }]);
@@ -3375,7 +3691,7 @@ __decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Functio
 MTimePickerPanelYear = __decorate([vuePropertyDecorator.Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$h = 'm-time-picker-panel-month';
+var compName$d = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -3433,7 +3749,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$h
+        "staticClass": compName$d
       }, [RCols()]);
     }
   }]);
@@ -3456,7 +3772,7 @@ MTimePickerPanelMonth = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$i = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$e = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -3519,7 +3835,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$i, "__list ").concat(compName$i, "__list-").concat(type)
+        "staticClass": "".concat(compName$e, "__list ").concat(compName$e, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -3531,7 +3847,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$i
+        "staticClass": compName$e
       }, [Result]);
     }
   }]);
@@ -3566,7 +3882,7 @@ MTimePickerPanelTime = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$j = 'm-time-picker-handler';
+var compName$f = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -3592,7 +3908,7 @@ function (_Vue) {
       var onConfirm = this.onConfirm,
           onCancel = this.onCancel;
       return h("div", {
-        "staticClass": "".concat(compName$j, " m-p-sm")
+        "staticClass": "".concat(compName$f, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "sm",
@@ -3639,7 +3955,7 @@ MTimePickerHandler = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerHandler);
 var MTimePickerHandler$1 = MTimePickerHandler;
 
-var compName$k = 'm-time-picker';
+var compName$g = 'm-time-picker';
 
 var MTimePicker =
 /*#__PURE__*/
@@ -3925,13 +4241,13 @@ function (_Mixins) {
           RHandler = this.RHandler;
       var pickerType = this.DateStore.pickerType;
       return h("div", {
-        "staticClass": "".concat(compName$k, " m--").concat(pickerType),
+        "staticClass": "".concat(compName$g, " m--").concat(pickerType),
         "style": styles,
         "class": classes
       }, [h("div", {
-        "staticClass": "".concat(compName$k, "__main")
+        "staticClass": "".concat(compName$g, "__main")
       }, [h(MTimePickerHeader$1), h("div", {
-        "staticClass": "".concat(compName$k, "-panel")
+        "staticClass": "".concat(compName$g, "-panel")
       }, [RPanel()])]), RHandler()]);
     }
   }, {
@@ -3940,8 +4256,8 @@ function (_Mixins) {
       var elevation = this.elevation,
           color = this.color;
       var styles = {};
-      genColor(styles, compName$k, color);
-      genElevation(styles, compName$k, elevation);
+      genColor(styles, compName$g, color);
+      genElevation(styles, compName$g, elevation);
       return styles;
     }
   }, {
@@ -3955,7 +4271,7 @@ function (_Mixins) {
   }]);
 
   return MTimePicker;
-}(vuePropertyDecorator.Mixins(colorable$1, elevated$1));
+}(vuePropertyDecorator.Mixins(color, elevation));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
@@ -4053,10 +4369,10 @@ MTimePicker$1.install = function (Vue) {
   Vue.component('MTimePicker', MTimePicker$1);
 };
 
-var css$l = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 3rem;\n  --m-list-size-md: 4rem;\n  --m-list-size-lg: 5rem;\n  --m-list-size-xl: 6rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  min-height: var(--m-list-size);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n";
-styleInject(css$l);
+var css$k = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 3rem;\n  --m-list-size-md: 4rem;\n  --m-list-size-lg: 5rem;\n  --m-list-size-xl: 6rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  min-height: var(--m-list-size);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n";
+styleInject(css$k);
 
-var compName$l = 'm-list';
+var compName$h = 'm-list';
 
 var MList =
 /*#__PURE__*/
@@ -4080,17 +4396,17 @@ function (_Vue) {
           $slots = this.$slots,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$l,
+        "staticClass": compName$h,
         "on": {
           "click": onClick
         },
         "style": styles
       }, [$slots.media ? h("div", {
-        "staticClass": "".concat(compName$l, "__media")
+        "staticClass": "".concat(compName$h, "__media")
       }, [$slots.media]) : undefined, h("div", {
-        "staticClass": "".concat(compName$l, "__content")
+        "staticClass": "".concat(compName$h, "__content")
       }, [$slots.default]), $slots.action ? h("div", {
-        "staticClass": "".concat(compName$l, "__action")
+        "staticClass": "".concat(compName$h, "__action")
       }, [$slots.action]) : undefined]);
     }
   }, {
@@ -4098,7 +4414,7 @@ function (_Vue) {
     get: function get() {
       var size = this.size;
       var styles = {};
-      genSize(styles, compName$l, size);
+      genSize(styles, compName$h, size);
       return styles;
     }
   }]);
@@ -4125,8 +4441,8 @@ MList$1.install = function (Vue) {
   Vue.component('MList', MList$1);
 };
 
-var css$m = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-row-size-xs: 2rem;\n  --m-table-row-size-sm: 3rem;\n  --m-table-row-size-md: 4rem;\n  --m-table-row-size-lg: 5rem;\n  --m-table-row-size-xl: 6rem;\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: var(--m-table-row-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-2) inset;\n          box-shadow: var(--m-elevation-2) inset;\n  background-color: var(--m-table-active-color); }\n";
-styleInject(css$m);
+var css$l = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-row-size-xs: 2rem;\n  --m-table-row-size-sm: 3rem;\n  --m-table-row-size-md: 4rem;\n  --m-table-row-size-lg: 5rem;\n  --m-table-row-size-xl: 6rem;\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: var(--m-table-row-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.3s;\n  transition: background-color ease 0.3s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-2) inset;\n          box-shadow: var(--m-elevation-2) inset;\n  background-color: var(--m-table-active-color); }\n";
+styleInject(css$l);
 
 var typeHeader;
 
@@ -4152,7 +4468,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$m = 'm-table-head';
+var compName$i = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -4239,7 +4555,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$m, "__cell"),
+        "staticClass": "".concat(compName$i, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -4257,7 +4573,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [result]);
     }
   }, {
@@ -4267,7 +4583,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4281,7 +4597,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4303,7 +4619,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$m
+        "staticClass": compName$i
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -4396,7 +4712,7 @@ var off = function () {
   }
 }();
 
-var compName$n = 'm-table-body';
+var compName$j = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -4556,7 +4872,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$n, "__cell"),
+          "staticClass": "".concat(compName$j, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -4585,7 +4901,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__row"),
+        "staticClass": "".concat(compName$j, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -4615,7 +4931,7 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__expand")
+        "staticClass": "".concat(compName$j, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4625,7 +4941,7 @@ function (_Vue) {
           "name": 'expansion'
         }
       }, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$n, "__expand-content")
+        "staticClass": "".concat(compName$j, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -4689,7 +5005,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$n,
+        "staticClass": compName$j,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -4764,7 +5080,7 @@ TableBody = __decorate([vuePropertyDecorator.Component({
 })], TableBody);
 var TableBody$1 = TableBody;
 
-var compName$o = 'm-table';
+var compName$k = 'm-table';
 var SELF_KEY = '_table-key';
 
 var MTable =
@@ -4946,13 +5262,13 @@ function (_Mixins) {
           rowExpand = this.rowExpand;
       var noHeader = header === typeHeader.none;
       return h("div", {
-        "staticClass": compName$o,
+        "staticClass": compName$k,
         "attrs": {
           "size": size,
           "elevation": elevation
         }
       }, [h("section", {
-        "staticClass": "".concat(compName$o, "__wrapper")
+        "staticClass": "".concat(compName$k, "__wrapper")
       }, [noHeader ? undefined : h(TableHead$1, {
         "ref": 'head',
         "attrs": {
@@ -5001,7 +5317,7 @@ function (_Mixins) {
   }]);
 
   return MTable;
-}(vuePropertyDecorator.Mixins(sizeable$1, elevated$1));
+}(vuePropertyDecorator.Mixins(size, elevation));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
@@ -5207,7 +5523,6 @@ MTableCol$1.install = function (Vue) {
 
 var components = /*#__PURE__*/Object.freeze({
   MApp: MApp$1,
-  MFrame: MFrame$1,
   MView: MView$1,
   MIcon: MIcon$1,
   MContainer: MContainer$1,
@@ -5215,7 +5530,7 @@ var components = /*#__PURE__*/Object.freeze({
   MCol: MCol$1,
   MFlex: MFlex$1,
   MFlexFiller: MFlexFiller$1,
-  MAppBar: MAppBar,
+  MAppBar: MAppBar$1,
   MButton: MButton$1,
   MAvatar: MAvatar$1,
   MRadio: MRadio$1,
@@ -5228,10 +5543,10 @@ var components = /*#__PURE__*/Object.freeze({
   MTableCol: MTableCol$1
 });
 
-var css$n = ".v-ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict; }\n\n.v-ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  -webkit-transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity; }\n  .v-ripple__animation--enter {\n    -webkit-transition: none;\n    transition: none; }\n  .v-ripple__animation--visible {\n    opacity: .15; }\n";
-styleInject(css$n);
+var css$m = ".v-ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict; }\n\n.v-ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  -webkit-transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity; }\n  .v-ripple__animation--enter {\n    -webkit-transition: none;\n    transition: none; }\n  .v-ripple__animation--visible {\n    opacity: .15; }\n";
+styleInject(css$m);
 
-var name$1 = 'MRipple';
+var name = 'MRipple';
 
 function style(el, value) {
   el.style.transform = value;
@@ -5404,7 +5719,7 @@ function update(el, binding) {
 }
 
 var MRipple = {
-  name: name$1,
+  name: name,
   bind: directive,
   unbind: unbind,
   update: update
@@ -5673,7 +5988,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 exports.MApp = MApp$1;
-exports.MAppBar = MAppBar;
+exports.MAppBar = MAppBar$1;
 exports.MAvatar = MAvatar$1;
 exports.MButton = MButton$1;
 exports.MCheckbox = MCheckbox$1;
@@ -5682,7 +5997,6 @@ exports.MCol = MCol$1;
 exports.MContainer = MContainer$1;
 exports.MFlex = MFlex$1;
 exports.MFlexFiller = MFlexFiller$1;
-exports.MFrame = MFrame$1;
 exports.MIcon = MIcon$1;
 exports.MList = MList$1;
 exports.MRadio = MRadio$1;

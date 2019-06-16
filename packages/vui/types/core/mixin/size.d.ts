@@ -5,7 +5,7 @@ declare type SizeStyles = {
     height?: string | number;
     width?: string | number;
 };
-export default class MixinSize extends VuiComponent {
+export default class SizeMixin extends VuiComponent {
     size?: size | string | number;
     height?: string | number;
     width?: string | number;

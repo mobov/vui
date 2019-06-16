@@ -1,6 +1,6 @@
 import { Component, Prop, Emit, Provide, Mixins, Watch } from 'vue-property-decorator'
-import colorable from '../core/mixin/colorable'
-import elevated from '../core/mixin/elevated'
+import color from '../core/mixin/color'
+import elevation from '../core/mixin/elevation'
 import MTimePickerHeader from './components/header'
 import MTimePickerPanelDate from './components/panel-date'
 import MTimePickerPanelYear from './components/panel-year'
@@ -23,8 +23,8 @@ const compName = 'm-time-picker'
   }
 })
 export default class MTimePicker extends Mixins(
-  colorable,
-  elevated
+  color,
+  elevation
 ) {
   @Prop({ type: Boolean, default: false })
   landscope!: boolean

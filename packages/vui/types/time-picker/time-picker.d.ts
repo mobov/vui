@@ -1,7 +1,7 @@
-import colorable from '../core/mixin/colorable';
-import elevated from '../core/mixin/elevated';
+import color from '../core/mixin/color';
+import elevation from '../core/mixin/elevation';
 import { datePickerType } from '../core/constant';
-declare const MTimePicker_base: import("vue-class-component/lib/declarations").VueClass<colorable & elevated>;
+declare const MTimePicker_base;
 export default class MTimePicker extends MTimePicker_base {
     landscope: boolean;
     desync: boolean;

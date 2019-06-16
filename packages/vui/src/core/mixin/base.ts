@@ -1,7 +1,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import VuiComponent from '../vuiComponent'
-import { size } from '../constant'
-import { genSize, getStyleSize } from '../util'
+import { color, elevation, ELEVATION, size } from '../constant'
+import { genColor, genElevation, genFontColor, genSize, getStyleSize } from '../util'
+
+type SizeStyles = {
+  size?: size | string | number
+  height?: string | number
+  width?: string | number
+}
 
 type SpaceSize = size | string | number | undefined
 
@@ -23,7 +29,30 @@ type SpaceStyles = {
 }
 
 @Component
-export default class SpaceMixin extends VuiComponent {
+export default class BaseMixin extends VuiComponent {
+  @Prop({ type: [String, Number] })
+  size?: size | string | number
+
+  @Prop({ type: [String, Number] })
+  height?: string | number
+
+  @Prop({ type: [String, Number] })
+  width?: string | number
+
+  @Prop({ type: String })
+  fontColor: color | undefined
+
+  @Prop({ type: String })
+  color: color | undefined
+
+  @Prop({
+    type: Number,
+    validator (value): boolean {
+      return ELEVATION.includes(value)
+    }
+  })
+  elevation!: elevation | undefined
+
   @Prop({ type: [String, Number] })
   marginLeft: SpaceSize
 
@@ -66,9 +95,41 @@ export default class SpaceMixin extends VuiComponent {
   @Prop({ type: [String, Number] })
   padding: SpaceSize
 
+  get sizeStyle () {
+    const { height, width, size } = this
+    const styles: SizeStyles = {}
+
+    genSize(styles, this.name, size)
+
+    if (height !== undefined) {
+      styles.height = getStyleSize(height)
+    }
+    if (width !== undefined) {
+      styles.width = getStyleSize(width)
+    }
+
+    return styles
+  }
+
+  get colorStyle () {
+    const styles = {}
+
+    genFontColor(styles, this.name, this.fontColor)
+    genColor(styles, this.name, this.color)
+
+    return styles
+  }
+
+  get elevationStyle () {
+    const styles = {}
+    genElevation(styles, this.name, this.elevation)
+
+    return styles
+  }
+
   get spaceStyle () {
     const { margin, marginX, marginY, marginTop, marginBottom, marginLeft, marginRight,
-            padding, paddingX, paddingY, paddingTop, paddingBottom, paddingLeft, paddingRight } = this
+      padding, paddingX, paddingY, paddingTop, paddingBottom, paddingLeft, paddingRight } = this
     const styles: SpaceStyles = {}
 
     if (margin !== undefined) {
@@ -119,5 +180,14 @@ export default class SpaceMixin extends VuiComponent {
     }
 
     return styles
+  }
+
+  get baseStyle () {
+    return {
+      ...this.elevationStyle,
+      ...this.colorStyle,
+      ...this.spaceStyle,
+      ...this.sizeStyle
+    }
   }
 }

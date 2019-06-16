@@ -1,16 +1,33 @@
 import '../icon/icons/cancel';
-import colorable from '../core/mixin/colorable';
-import sizeable from '../core/mixin/sizeable';
-import elevated from '../core/mixin/elevated';
-import variable from '../core/mixin/variable';
-import shapeable from '../core/mixin/shapeable';
-declare const MChip_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable & elevated & variable & shapeable>;
+import mixBase from '../core/mixin/base';
+import mixVariety from '../core/mixin/variety';
+import mixShape from '../core/mixin/shape';
+declare const MChip_base;
 export default class MChip extends MChip_base {
+    name: string;
     closeable: boolean;
     closeover: boolean;
     onClose(e: MouseEvent): void;
     onClick(e: MouseEvent): void;
-    readonly styles: {};
+    readonly styles: {
+        size?: string | number | undefined;
+        height?: string | number | undefined;
+        width?: string | number | undefined;
+        margin?: string | undefined;
+        marginX?: string | undefined;
+        marginY?: string | undefined;
+        marginTop?: string | undefined;
+        marginBottom?: string | undefined;
+        marginLeft?: string | undefined;
+        marginRight?: string | undefined;
+        padding?: string | undefined;
+        paddingX?: string | undefined;
+        paddingY?: string | undefined;
+        paddingTop?: string | undefined;
+        paddingBottom?: string | undefined;
+        paddingLeft?: string | undefined;
+        paddingRight?: string | undefined;
+    };
     readonly classes: {
         'm--closeable': boolean;
         'm--closeover': boolean;

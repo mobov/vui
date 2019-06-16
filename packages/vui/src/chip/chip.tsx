@@ -2,25 +2,20 @@ import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MAvatar from '../avatar'
 import MIcon from '../icon'
 import '../icon/icons/cancel'
-import colorable from '../core/mixin/colorable'
-import sizeable from '../core/mixin/sizeable'
-import elevated from '../core/mixin/elevated'
-import variable from '../core/mixin/variable'
-import shapeable from '../core/mixin/shapeable'
-import { genColor, genFontColor, genSize, genElevation, genVariety, genShape } from '../core/util'
-
-const compName = 'm-chip'
+import mixBase from '../core/mixin/base'
+import mixVariety from '../core/mixin/variety'
+import mixShape from '../core/mixin/shape'
 
 @Component({
   components: { MAvatar, MIcon }
 })
 export default class MChip extends Mixins (
-  colorable,
-  sizeable,
-  elevated,
-  variable,
-  shapeable
+  mixBase,
+  mixVariety,
+  mixShape
 ) {
+  name = 'm-chip'
+
   @Prop({ type: Boolean, default: false })
   closeable!: boolean
 
@@ -34,39 +29,29 @@ export default class MChip extends Mixins (
   onClick (e: MouseEvent): void {}
 
   get styles () {
-    const { fontColor, size, color, elevation } = this
-    const styles = {}
-
-    genFontColor(styles, compName, fontColor)
-    genColor(styles, compName, color)
-    genSize(styles, compName, size)
-    genElevation(styles, compName, elevation)
-    // genHover(styles, _name, 'hover-color', color)
-
-    return styles
+    return {
+      ...this.baseStyle
+    }
   }
 
   get classes () {
-    const { closeable, closeover, variety, shape } = this
-    const classes = {
+    const { closeable, closeover } = this
+    return {
+      ...this.shapeClass,
+      ...this.varietyClass,
       'm--closeable': closeable,
       'm--closeover': closeover,
     }
-
-    genVariety(classes, variety)
-    genShape(classes, shape)
-
-    return classes
   }
 
   RMedia () {
-    const { $slots } = this
+    const { name, $slots } = this
 
     if ($slots.media) {
       if (!$slots.media[0]!.data!.staticClass) {
         $slots.media[0]!.data!.staticClass = ''
       }
-      $slots.media[0]!.data!.staticClass += ` ${compName}__media`
+      $slots.media[0]!.data!.staticClass += ` ${name}__media`
 
       return $slots.media
     }
@@ -74,11 +59,11 @@ export default class MChip extends Mixins (
   }
 
   RClose () {
-    const { closeable, closeover, onClose } = this
+    const { name, closeable, closeover, onClose } = this
 
     return (
       (closeable || closeover)
-        ? <MIcon staticClass={`${compName}__close`}
+        ? <MIcon staticClass={`${name}__close`}
                  onClick={ () => onClose }
                  name='cancel' />
         : undefined
@@ -86,15 +71,15 @@ export default class MChip extends Mixins (
   }
 
   render () {
-    const { classes, styles, $slots, RMedia, RClose, onClick } = this
+    const { name, classes, styles, $slots, RMedia, RClose, onClick } = this
 
     return (
-      <div staticClass={compName}
+      <div staticClass={name}
            class={classes}
            style={styles}
            onClick={onClick}>
         {RMedia()}
-        <div staticClass={`${compName}__main`}>
+        <div staticClass={`${name}__main`}>
           {$slots.default}
         </div>
         {RClose()}

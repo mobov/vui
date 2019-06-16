@@ -1,47 +1,34 @@
 import { Component, Prop, Watch, Mixins } from 'vue-property-decorator'
-import colorable from '../core/mixin/colorable'
-import sizeable from '../core/mixin/sizeable'
-import elevated from '../core/mixin/elevated'
-import variable from '../core/mixin/variable'
-import shapeable from '../core/mixin/shapeable'
-import { Status } from '../core/constant'
-import { genFontColor, genColor, genElevation, genSize, genShape, genVariety } from '../core/util'
+import mixBase from '../core/mixin/base'
+import mixVariety from '../core/mixin/variety'
+import mixShape from '../core/mixin/shape'
 
-const compName = 'm-avatar'
+import { Status } from '../core/constant'
 
 @Component
 export default class MAvatar extends Mixins (
-  colorable,
-  sizeable,
-  elevated,
-  variable,
-  shapeable
+  mixBase,
+  mixVariety,
+  mixShape
 ) {
+  name = 'm-avatar'
+
   @Prop({ type: String })
   src!: string
 
   get styles () {
-    const { fontColor, size, color, elevation } = this
-    const styles = {}
-
-    genFontColor(styles, compName, fontColor)
-    genColor(styles, compName, color)
-    genElevation(styles, compName, elevation)
-    genSize(styles, compName, size)
-
-    return styles
+    return {
+      ...this.baseStyle,
+    }
   }
 
   get classes () {
-    const { shape, variety, status } = this
-    const classes = {
+    const { status } = this
+    return {
+      ...this.shapeClass,
+      ...this.varietyClass,
       [`m--status-${Status[status]}`]: true
     }
-
-    genShape(classes, shape)
-    genVariety(classes, variety)
-
-    return classes
   }
 
   @Watch('src', { immediate: true })
@@ -65,14 +52,14 @@ export default class MAvatar extends Mixins (
   }
 
   render () {
-    const { styles, classes, curSrc, loadSuccess, loadFailure } = this
+    const { name, styles, classes, curSrc, loadSuccess, loadFailure } = this
 
     return (
-      <div staticClass={compName}
+      <div staticClass={name}
            class={classes}
            style={styles}>
         {this.$slots.default}
-        <img staticClass={`${compName}__cover`}
+        <img staticClass={`${name}__cover`}
              alt=''
              src={curSrc}
              onLoad={loadSuccess}

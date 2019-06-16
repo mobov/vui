@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import color from '../core/mixin/colorable'
-import size from '../core/mixin/sizeable'
+import color from '../core/mixin/color'
+import size from '../core/mixin/size'
 import space from '../core/mixin/space'
 import { genColor, genFontColor, genSize } from '../core/util'
 

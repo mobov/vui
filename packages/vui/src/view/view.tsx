@@ -2,18 +2,20 @@ import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { genSize } from '../core/util'
 import { Fill, size } from '../core/constant'
 import MTransition from '../transition'
-import colorable from '../core/mixin/colorable'
-import sizeable from '../core/mixin/sizeable'
-import elevated from '../core/mixin/elevated'
-import variable from '../core/mixin/variable'
-import shapeable from '../core/mixin/shapeable'
+import mixSize from '../core/mixin/size'
+import mixElevation from '../core/mixin/elevation'
 
 const compName = 'm-view'
 
 @Component({
   components: { MTransition }
 })
-export default class MFrame extends Vue {
+export default class MView extends Mixins (
+  mixSize,
+  mixElevation
+) {
+  name = 'm-view'
+
   @Prop({ type: Boolean, default: false })
   transition?: boolean
 
@@ -60,8 +62,10 @@ export default class MFrame extends Vue {
   rightFloat?: boolean
 
   private get classes () {
-    const { fillHeader, fillFooter, isHeader, isFooter, isLeft, isRight,
-      headerFloat, footerFloat, leftFloat, rightFloat, transition } = this
+    const {
+      fillHeader, fillFooter, isHeader, isFooter, isLeft, isRight,
+      headerFloat, footerFloat, leftFloat, rightFloat, transition
+    } = this
 
     return {
       'm--with-header': isHeader,

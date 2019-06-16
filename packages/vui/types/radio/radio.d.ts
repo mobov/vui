@@ -1,6 +1,6 @@
-import colorable from '../core/mixin/colorable';
-import sizeable from '../core/mixin/sizeable';
-declare const MRadio_base: import("vue-class-component/lib/declarations").VueClass<colorable & sizeable>;
+import color from '../core/mixin/color';
+import size from '../core/mixin/size';
+declare const MRadio_base;
 export default class MRadio extends MRadio_base {
     value: boolean | number | string;
     label: boolean | number | string;

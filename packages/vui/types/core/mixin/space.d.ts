@@ -1,18 +1,37 @@
-import { Vue } from 'vue-property-decorator';
+import VuiComponent from '../vuiComponent';
 import { size } from '../constant';
-export default class space extends Vue {
-    marginLeft: size | string | number | undefined;
-    marginRight: size | string | number | undefined;
-    marginTop: size | string | number | undefined;
-    marginBottom: size | string | number | undefined;
-    marginX: size | string | number | undefined;
-    marginY: size | string | number | undefined;
-    margin: size | string | number | undefined;
-    paddingLeft: size | string | number | undefined;
-    paddingRight: size | string | number | undefined;
-    paddingTop: size | string | number | undefined;
-    paddingBottom: size | string | number | undefined;
-    paddingX: size | string | number | undefined;
-    paddingY: size | string | number | undefined;
-    padding: size | string | number | undefined;
+declare type SpaceSize = size | string | number | undefined;
+declare type SpaceStyles = {
+    margin?: string;
+    marginX?: string;
+    marginY?: string;
+    marginTop?: string;
+    marginBottom?: string;
+    marginLeft?: string;
+    marginRight?: string;
+    padding?: string;
+    paddingX?: string;
+    paddingY?: string;
+    paddingTop?: string;
+    paddingBottom?: string;
+    paddingLeft?: string;
+    paddingRight?: string;
+};
+export default class SpaceMixin extends VuiComponent {
+    marginLeft: SpaceSize;
+    marginRight: SpaceSize;
+    marginTop: SpaceSize;
+    marginBottom: SpaceSize;
+    marginX: SpaceSize;
+    marginY: SpaceSize;
+    margin: SpaceSize;
+    paddingLeft: SpaceSize;
+    paddingRight: SpaceSize;
+    paddingTop: SpaceSize;
+    paddingBottom: SpaceSize;
+    paddingX: SpaceSize;
+    paddingY: SpaceSize;
+    padding: SpaceSize;
+    readonly spaceStyle: SpaceStyles;
 }
+export {};

@@ -1058,19 +1058,117 @@ MTransition$1.install = function (Vue) {
   Vue.component('MTransition', MTransition$1);
 };
 
-var compName$1 = 'm-view';
-
-var MFrame =
+var VuiComponent =
 /*#__PURE__*/
 function (_Vue) {
-  _inherits(MFrame, _Vue);
+  _inherits(VuiComponent, _Vue);
 
-  function MFrame() {
+  function VuiComponent() {
+    _classCallCheck(this, VuiComponent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(VuiComponent).call(this));
+  }
+
+  return VuiComponent;
+}(Vue);
+
+var SizeMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(SizeMixin, _VuiComponent);
+
+  function SizeMixin() {
+    _classCallCheck(this, SizeMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SizeMixin).apply(this, arguments));
+  }
+
+  _createClass(SizeMixin, [{
+    key: "sizeStyle",
+    get: function get() {
+      var height = this.height,
+          width = this.width,
+          size = this.size;
+      var styles = {};
+      genSize(styles, this.name, size);
+
+      if (height !== undefined) {
+        styles.height = getStyleSize(height);
+      }
+
+      if (width !== undefined) {
+        styles.width = getStyleSize(width);
+      }
+
+      return styles;
+    }
+  }]);
+
+  return SizeMixin;
+}(VuiComponent);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "size", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "height", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
+
+SizeMixin = __decorate([Component], SizeMixin);
+var size = SizeMixin;
+
+var ElevationMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(ElevationMixin, _VuiComponent);
+
+  function ElevationMixin() {
+    _classCallCheck(this, ElevationMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ElevationMixin).apply(this, arguments));
+  }
+
+  _createClass(ElevationMixin, [{
+    key: "elevationStyle",
+    get: function get() {
+      var styles = {};
+      genElevation(styles, this.name, this.elevation);
+      return styles;
+    }
+  }]);
+
+  return ElevationMixin;
+}(VuiComponent);
+
+__decorate([Prop({
+  type: Number,
+  validator: function validator(value) {
+    return ELEVATION.includes(value);
+  }
+}), __metadata("design:type", Object)], ElevationMixin.prototype, "elevation", void 0);
+
+ElevationMixin = __decorate([Component], ElevationMixin);
+var elevation = ElevationMixin;
+
+var compName$1 = 'm-view';
+
+var MView =
+/*#__PURE__*/
+function (_Mixins) {
+  _inherits(MView, _Mixins);
+
+  function MView() {
     var _this;
 
-    _classCallCheck(this, MFrame);
+    _classCallCheck(this, MView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MFrame).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MView).apply(this, arguments));
+    _this.name = 'm-view';
     _this.isHeader = false;
     _this.isFooter = false;
     _this.isLeft = false;
@@ -1078,7 +1176,7 @@ function (_Vue) {
     return _this;
   }
 
-  _createClass(MFrame, [{
+  _createClass(MView, [{
     key: "RHeader",
     value: function RHeader() {
       var h = this.$createElement;
@@ -1213,91 +1311,91 @@ function (_Vue) {
     }
   }]);
 
-  return MFrame;
-}(Vue);
+  return MView;
+}(Mixins(size, elevation));
 
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "transition", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "transition", void 0);
 
 __decorate([Prop({
   type: String,
   default: Fill.both
-}), __metadata("design:type", String)], MFrame.prototype, "fillHeader", void 0);
+}), __metadata("design:type", String)], MView.prototype, "fillHeader", void 0);
 
 __decorate([Prop({
   type: String,
   default: Fill.both
-}), __metadata("design:type", String)], MFrame.prototype, "fillFooter", void 0);
+}), __metadata("design:type", String)], MView.prototype, "fillFooter", void 0);
 
 __decorate([Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "headerSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
 
 __decorate([Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "headerIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
 
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "headerFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "headerFloat", void 0);
 
 __decorate([Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "footerSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
 
 __decorate([Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "footerIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
 
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "footerFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "footerFloat", void 0);
 
 __decorate([Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "leftSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
 
 __decorate([Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "leftIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
 
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "leftFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "leftFloat", void 0);
 
 __decorate([Prop({
   type: [String, Number],
   default: 0
-}), __metadata("design:type", String)], MFrame.prototype, "rightSize", void 0);
+}), __metadata("design:type", String)], MView.prototype, "rightSize", void 0);
 
 __decorate([Prop({
   type: Number
-}), __metadata("design:type", Number)], MFrame.prototype, "rightIndex", void 0);
+}), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
 
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MFrame.prototype, "rightFloat", void 0);
+}), __metadata("design:type", Boolean)], MView.prototype, "rightFloat", void 0);
 
-MFrame = __decorate([Component({
+MView = __decorate([Component({
   components: {
     MTransition: MTransition$1
   }
-})], MFrame);
-var MView = MFrame;
+})], MView);
+var MView$1 = MView;
 
 /* istanbul ignore next */
 
-MView.install = function (Vue) {
-  Vue.component('MView', MView);
+MView$1.install = function (Vue) {
+  Vue.component('MView', MView$1);
 };
 
 var compName$2 = 'm-icon';
@@ -1745,101 +1843,293 @@ MFlexFiller$1.install = function (Vue) {
 var css$d = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
 styleInject(css$d);
 
-var colorable =
+var BaseMixin =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(colorable, _Vue);
+function (_VuiComponent) {
+  _inherits(BaseMixin, _VuiComponent);
 
-  function colorable() {
-    _classCallCheck(this, colorable);
+  function BaseMixin() {
+    _classCallCheck(this, BaseMixin);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(colorable).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(BaseMixin).apply(this, arguments));
   }
 
-  return colorable;
-}(Vue);
+  _createClass(BaseMixin, [{
+    key: "sizeStyle",
+    get: function get() {
+      var height = this.height,
+          width = this.width,
+          size = this.size;
+      var styles = {};
+      genSize(styles, this.name, size);
 
-__decorate([Prop({
-  type: String
-}), __metadata("design:type", Object)], colorable.prototype, "fontColor", void 0);
+      if (height !== undefined) {
+        styles.height = getStyleSize(height);
+      }
 
-__decorate([Prop({
-  type: String
-}), __metadata("design:type", Object)], colorable.prototype, "color", void 0);
+      if (width !== undefined) {
+        styles.width = getStyleSize(width);
+      }
 
-colorable = __decorate([Component], colorable);
-var colorable$1 = colorable;
+      return styles;
+    }
+  }, {
+    key: "colorStyle",
+    get: function get() {
+      var styles = {};
+      genFontColor(styles, this.name, this.fontColor);
+      genColor(styles, this.name, this.color);
+      return styles;
+    }
+  }, {
+    key: "elevationStyle",
+    get: function get() {
+      var styles = {};
+      genElevation(styles, this.name, this.elevation);
+      return styles;
+    }
+  }, {
+    key: "spaceStyle",
+    get: function get() {
+      var margin = this.margin,
+          marginX = this.marginX,
+          marginY = this.marginY,
+          marginTop = this.marginTop,
+          marginBottom = this.marginBottom,
+          marginLeft = this.marginLeft,
+          marginRight = this.marginRight,
+          padding = this.padding,
+          paddingX = this.paddingX,
+          paddingY = this.paddingY,
+          paddingTop = this.paddingTop,
+          paddingBottom = this.paddingBottom,
+          paddingLeft = this.paddingLeft,
+          paddingRight = this.paddingRight;
+      var styles = {};
 
-var sizeable =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(sizeable, _Vue);
+      if (margin !== undefined) {
+        styles.margin = getStyleSize(margin);
+      }
 
-  function sizeable() {
-    _classCallCheck(this, sizeable);
+      if (marginX !== undefined) {
+        styles.marginLeft = getStyleSize(marginX);
+        styles.marginRight = getStyleSize(marginX);
+      }
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(sizeable).apply(this, arguments));
-  }
+      if (marginY !== undefined) {
+        styles.marginTop = getStyleSize(marginY);
+        styles.marginBottom = getStyleSize(marginY);
+      }
 
-  return sizeable;
-}(Vue);
+      if (marginTop !== undefined) {
+        styles.marginTop = getStyleSize(marginTop);
+      }
+
+      if (marginBottom !== undefined) {
+        styles.marginBottom = getStyleSize(marginBottom);
+      }
+
+      if (marginLeft !== undefined) {
+        styles.marginLeft = getStyleSize(marginLeft);
+      }
+
+      if (marginRight !== undefined) {
+        styles.marginRight = getStyleSize(marginRight);
+      }
+
+      if (padding !== undefined) {
+        styles.padding = getStyleSize(padding);
+      }
+
+      if (paddingX !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingX);
+        styles.paddingRight = getStyleSize(paddingX);
+      }
+
+      if (paddingY !== undefined) {
+        styles.paddingTop = getStyleSize(paddingY);
+        styles.paddingBottom = getStyleSize(paddingY);
+      }
+
+      if (paddingTop !== undefined) {
+        styles.paddingTop = getStyleSize(paddingTop);
+      }
+
+      if (paddingBottom !== undefined) {
+        styles.paddingBottom = getStyleSize(paddingBottom);
+      }
+
+      if (paddingLeft !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingLeft);
+      }
+
+      if (paddingRight !== undefined) {
+        styles.paddingRight = getStyleSize(paddingRight);
+      }
+
+      return styles;
+    }
+  }, {
+    key: "baseStyle",
+    get: function get() {
+      return Object.assign({}, this.elevationStyle, this.colorStyle, this.spaceStyle, this.sizeStyle);
+    }
+  }]);
+
+  return BaseMixin;
+}(VuiComponent);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], sizeable.prototype, "size", void 0);
+}), __metadata("design:type", Object)], BaseMixin.prototype, "size", void 0);
 
-sizeable = __decorate([Component], sizeable);
-var sizeable$1 = sizeable;
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "height", void 0);
 
-var elevated =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(elevated, _Vue);
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "width", void 0);
 
-  function elevated() {
-    _classCallCheck(this, elevated);
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", Object)], BaseMixin.prototype, "fontColor", void 0);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(elevated).apply(this, arguments));
-  }
-
-  return elevated;
-}(Vue);
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", Object)], BaseMixin.prototype, "color", void 0);
 
 __decorate([Prop({
   type: Number,
   validator: function validator(value) {
     return ELEVATION.includes(value);
   }
-}), __metadata("design:type", Object)], elevated.prototype, "elevation", void 0);
+}), __metadata("design:type", Object)], BaseMixin.prototype, "elevation", void 0);
 
-elevated = __decorate([Component], elevated);
-var elevated$1 = elevated;
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginLeft", void 0);
 
-var variable =
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginRight", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginTop", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginBottom", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginX", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "marginY", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "margin", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingLeft", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingRight", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingTop", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingBottom", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingX", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "paddingY", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], BaseMixin.prototype, "padding", void 0);
+
+BaseMixin = __decorate([Component], BaseMixin);
+var mixBase = BaseMixin;
+
+var VarietyMixin =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(variable, _Vue);
+function (_VuiComponent) {
+  _inherits(VarietyMixin, _VuiComponent);
 
-  function variable() {
-    _classCallCheck(this, variable);
+  function VarietyMixin() {
+    _classCallCheck(this, VarietyMixin);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(variable).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(VarietyMixin).apply(this, arguments));
   }
 
-  return variable;
-}(Vue);
+  _createClass(VarietyMixin, [{
+    key: "varietyClass",
+    get: function get() {
+      var classes = {};
+      genVariety(classes, this.variety);
+      return classes;
+    }
+  }]);
+
+  return VarietyMixin;
+}(VuiComponent);
 
 __decorate([Prop({
   type: String,
   validator: function validator(value) {
     return VARIETY.includes(value);
   }
-}), __metadata("design:type", Object)], variable.prototype, "variety", void 0);
+}), __metadata("design:type", String)], VarietyMixin.prototype, "variety", void 0);
 
-variable = __decorate([Component], variable);
-var variable$1 = variable;
+VarietyMixin = __decorate([Component], VarietyMixin);
+var mixVariety = VarietyMixin;
 
-var compName$8 = 'm-app-bar';
+var ShapeMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(ShapeMixin, _VuiComponent);
+
+  function ShapeMixin() {
+    _classCallCheck(this, ShapeMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ShapeMixin).apply(this, arguments));
+  }
+
+  _createClass(ShapeMixin, [{
+    key: "shapeClass",
+    get: function get() {
+      var classes = {};
+      genShape(classes, this.shape);
+      return classes;
+    }
+  }]);
+
+  return ShapeMixin;
+}(VuiComponent);
+
+__decorate([Prop({
+  type: String,
+  validator: function validator(value) {
+    return SHAPE.includes(value);
+  }
+}), __metadata("design:type", String)], ShapeMixin.prototype, "shape", void 0);
+
+ShapeMixin = __decorate([Component], ShapeMixin);
+var mixShape = ShapeMixin;
 
 var MAppBar =
 /*#__PURE__*/
@@ -1847,9 +2137,13 @@ function (_Mixins) {
   _inherits(MAppBar, _Mixins);
 
   function MAppBar() {
+    var _this;
+
     _classCallCheck(this, MAppBar);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MAppBar).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MAppBar).apply(this, arguments));
+    _this.name = 'm-app-bar';
+    return _this;
   }
 
   _createClass(MAppBar, [{
@@ -1860,7 +2154,7 @@ function (_Mixins) {
           classes = this.classes,
           styles = this.styles;
       return h("div", {
-        "staticClass": compName$8,
+        "staticClass": this.name,
         "style": styles,
         "class": classes
       }, [$slots.default]);
@@ -1868,29 +2162,17 @@ function (_Mixins) {
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$8, fontColor);
-      genColor(styles, compName$8, color);
-      genElevation(styles, compName$8, elevation);
-      genSize(styles, compName$8, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      var variety = this.variety;
-      var classes = {};
-      genVariety(classes, variety);
-      return classes;
+      return Object.assign({}, this.varietyClass, this.shapeClass);
     }
   }]);
 
   return MAppBar;
-}(Mixins(colorable$1, elevated$1, sizeable$1, variable$1));
+}(Mixins(mixBase, mixVariety, mixShape));
 
 MAppBar = __decorate([Component], MAppBar);
 var MAppBar$1 = MAppBar;
@@ -1902,41 +2184,19 @@ MAppBar$1.install = function (Vue) {
 var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-elevation: var(--m-elevation-2);\n  --m-button-shape: var(--m-shape-corner);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-button-shape);\n  -webkit-box-shadow: var(--m-button-elevation);\n          box-shadow: var(--m-button-elevation);\n  border: none;\n  padding: var(--m-button-border-size);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    vertical-align: middle; }\n  .m-button:hover {\n    background-color: var(--m-button-hover-color);\n    border-color: var(--m-button-hover-color); }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.m-button__main {\n  margin: 0 calc(var(--m-button-size) / 4); }\n";
 styleInject(css$e);
 
-var shapeable =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(shapeable, _Vue);
-
-  function shapeable() {
-    _classCallCheck(this, shapeable);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(shapeable).apply(this, arguments));
-  }
-
-  return shapeable;
-}(Vue);
-
-__decorate([Prop({
-  type: String,
-  validator: function validator(value) {
-    return SHAPE.includes(value);
-  }
-}), __metadata("design:type", Object)], shapeable.prototype, "shape", void 0);
-
-shapeable = __decorate([Component], shapeable);
-var shapeable$1 = shapeable;
-
-var compName$9 = 'm-button';
-
 var MButton =
 /*#__PURE__*/
 function (_Mixins) {
   _inherits(MButton, _Mixins);
 
   function MButton() {
+    var _this;
+
     _classCallCheck(this, MButton);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MButton).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MButton).apply(this, arguments));
+    _this.name = 'm-button';
+    return _this;
   }
 
   _createClass(MButton, [{
@@ -1946,17 +2206,17 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var classes = this.classes,
+      var name = this.name,
+          classes = this.classes,
           styles = this.styles,
           icon = this.icon,
-          onClick = this.onClick,
-          color = this.color;
+          onClick = this.onClick;
       return h("div", {
         "directives": [{
           name: "m-ripple",
           value: true
         }],
-        "staticClass": compName$9,
+        "staticClass": name,
         "class": classes,
         "style": styles,
         "on": {
@@ -1967,42 +2227,28 @@ function (_Mixins) {
           "name": icon
         }
       }), !this.$slots.default ? undefined : h("div", {
-        "class": "".concat(compName$9, "__main")
+        "class": "".concat(name, "__main")
       }, [this.$slots.default])]);
     }
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$9, fontColor);
-      genColor(styles, compName$9, color);
-      genElevation(styles, compName$9, elevation);
-      genSize(styles, compName$9, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      var shape = this.shape,
-          variety = this.variety,
-          block = this.block,
+      var block = this.block,
           disabled = this.disabled;
-      var classes = {
+      return Object.assign({}, this.shapeClass, this.varietyClass, {
         'm--block': block,
         'm--disabled': disabled
-      };
-      genShape(classes, shape);
-      genVariety(classes, variety);
-      return classes;
+      });
     }
   }]);
 
   return MButton;
-}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([Prop({
   type: Boolean
@@ -2036,8 +2282,6 @@ MButton$1.install = function (Vue) {
 var css$f = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-elevation: var(--m-elevation-0);\n  --m-avatar-shape: var(--m-shape-circle);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  -webkit-box-shadow: var(--m-avatar-elevation);\n          box-shadow: var(--m-avatar-elevation);\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border-width: 0; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-success {\n    opacity: 1; }\n  .m-avatar.m--status-pending, .m-avatar.m--status-failure {\n    opacity: 0; }\n\n.m-avatar__cover {\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
 styleInject(css$f);
 
-var compName$a = 'm-avatar';
-
 var MAvatar =
 /*#__PURE__*/
 function (_Mixins) {
@@ -2049,6 +2293,7 @@ function (_Mixins) {
     _classCallCheck(this, MAvatar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MAvatar).apply(this, arguments));
+    _this.name = 'm-avatar';
     _this.status = Status.pending;
     return _this;
   }
@@ -2075,17 +2320,18 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var styles = this.styles,
+      var name = this.name,
+          styles = this.styles,
           classes = this.classes,
           curSrc = this.curSrc,
           loadSuccess = this.loadSuccess,
           loadFailure = this.loadFailure;
       return h("div", {
-        "staticClass": compName$a,
+        "staticClass": name,
         "class": classes,
         "style": styles
       }, [this.$slots.default, h("img", {
-        "staticClass": "".concat(compName$a, "__cover"),
+        "staticClass": "".concat(name, "__cover"),
         "attrs": {
           "alt": '',
           "src": curSrc
@@ -2099,34 +2345,18 @@ function (_Mixins) {
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$a, fontColor);
-      genColor(styles, compName$a, color);
-      genElevation(styles, compName$a, elevation);
-      genSize(styles, compName$a, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      var shape = this.shape,
-          variety = this.variety,
-          status = this.status;
-
-      var classes = _defineProperty({}, "m--status-".concat(Status[status]), true);
-
-      genShape(classes, shape);
-      genVariety(classes, variety);
-      return classes;
+      var status = this.status;
+      return Object.assign({}, this.shapeClass, this.varietyClass, _defineProperty({}, "m--status-".concat(Status[status]), true));
     }
   }]);
 
   return MAvatar;
-}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([Prop({
   type: String
@@ -2146,7 +2376,42 @@ MAvatar$1.install = function (Vue) {
 var css$g = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-size-xs: 1rem;\n  --m-radio-size-sm: 1.5rem;\n  --m-radio-size-md: 2rem;\n  --m-radio-size-lg: 2.5rem;\n  --m-radio-size-xl: 3rem;\n  --m-radio-wrapper-size-xs: 2rem;\n  --m-radio-wrapper-size-sm: 3rem;\n  --m-radio-wrapper-size-md: 4rem;\n  --m-radio-wrapper-size-lg: 5rem;\n  --m-radio-wrapper-size-xl: 6rem;\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: var(--m-radio-size-md);\n  --m-radio-wrapper-size: var(--m-radio-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  line-height: 1;\n  font-size: calc(var(--m-radio-size) / 1.4);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
 styleInject(css$g);
 
-var compName$b = 'm-radio';
+var ColorMixin =
+/*#__PURE__*/
+function (_VuiComponent) {
+  _inherits(ColorMixin, _VuiComponent);
+
+  function ColorMixin() {
+    _classCallCheck(this, ColorMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ColorMixin).apply(this, arguments));
+  }
+
+  _createClass(ColorMixin, [{
+    key: "colorStyle",
+    get: function get() {
+      var styles = {};
+      genFontColor(styles, this.name, this.fontColor);
+      genColor(styles, this.name, this.color);
+      return styles;
+    }
+  }]);
+
+  return ColorMixin;
+}(VuiComponent);
+
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", Object)], ColorMixin.prototype, "fontColor", void 0);
+
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", Object)], ColorMixin.prototype, "color", void 0);
+
+ColorMixin = __decorate([Component], ColorMixin);
+var color = ColorMixin;
+
+var compName$8 = 'm-radio';
 
 var MRadio =
 /*#__PURE__*/
@@ -2184,19 +2449,19 @@ function (_Mixins) {
           uncheckIcon = this.uncheckIcon,
           checked = this.checked;
       return h("a", {
-        "staticClass": "".concat(compName$b, "__radio")
+        "staticClass": "".concat(compName$8, "__radio")
       }, [h("transition", {
         "attrs": {
           "name": 'm--transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__checked-icon"),
+        "staticClass": "".concat(compName$8, "__checked-icon"),
         "attrs": {
           "name": checkedIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$b, "__uncheck-icon"),
+        "staticClass": "".concat(compName$8, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2206,7 +2471,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$b, "__radio-wrapper")
+        "staticClass": "".concat(compName$8, "__radio-wrapper")
       })]);
     }
   }, {
@@ -2215,7 +2480,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$b, "__label")
+        "staticClass": "".concat(compName$8, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2229,7 +2494,7 @@ function (_Mixins) {
           RRadio = this.RRadio,
           RDefault = this.RDefault;
       return h("div", {
-        "staticClass": compName$b,
+        "staticClass": compName$8,
         "class": classes,
         "style": styles,
         "on": {
@@ -2246,9 +2511,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$b, fontColor);
-      genColor(styles, compName$b, color);
-      genSize(styles, compName$b, size);
+      genFontColor(styles, compName$8, fontColor);
+      genColor(styles, compName$8, color);
+      genSize(styles, compName$8, size);
       return styles;
     }
   }, {
@@ -2270,7 +2535,7 @@ function (_Mixins) {
   }]);
 
   return MRadio;
-}(Mixins(colorable$1, sizeable$1));
+}(Mixins(color, size));
 
 __decorate([Prop({
   type: [Boolean, Number, String],
@@ -2315,80 +2580,163 @@ MRadio$1.install = function (Vue) {
 var css$h = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-size-xs: 1rem;\n  --m-checkbox-size-sm: 1.5rem;\n  --m-checkbox-size-md: 2rem;\n  --m-checkbox-size-lg: 2.5rem;\n  --m-checkbox-size-xl: 3rem;\n  --m-checkbox-wrapper-size-xs: 2rem;\n  --m-checkbox-wrapper-size-sm: 3rem;\n  --m-checkbox-wrapper-size-md: 4rem;\n  --m-checkbox-wrapper-size-lg: 5rem;\n  --m-checkbox-wrapper-size-xl: 6rem;\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: var(--m-checkbox-size-md);\n  --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: calc(var(--m-checkbox-size) / 1.4);\n  line-height: 1;\n  height: var(--m-checkbox-color);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
 styleInject(css$h);
 
-var space =
+var SpaceMixin =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(space, _Vue);
+function (_VuiComponent) {
+  _inherits(SpaceMixin, _VuiComponent);
 
-  function space() {
-    _classCallCheck(this, space);
+  function SpaceMixin() {
+    _classCallCheck(this, SpaceMixin);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(space).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(SpaceMixin).apply(this, arguments));
   }
 
-  return space;
-}(Vue);
+  _createClass(SpaceMixin, [{
+    key: "spaceStyle",
+    get: function get() {
+      var margin = this.margin,
+          marginX = this.marginX,
+          marginY = this.marginY,
+          marginTop = this.marginTop,
+          marginBottom = this.marginBottom,
+          marginLeft = this.marginLeft,
+          marginRight = this.marginRight,
+          padding = this.padding,
+          paddingX = this.paddingX,
+          paddingY = this.paddingY,
+          paddingTop = this.paddingTop,
+          paddingBottom = this.paddingBottom,
+          paddingLeft = this.paddingLeft,
+          paddingRight = this.paddingRight;
+      var styles = {};
+
+      if (margin !== undefined) {
+        styles.margin = getStyleSize(margin);
+      }
+
+      if (marginX !== undefined) {
+        styles.marginLeft = getStyleSize(marginX);
+        styles.marginRight = getStyleSize(marginX);
+      }
+
+      if (marginY !== undefined) {
+        styles.marginTop = getStyleSize(marginY);
+        styles.marginBottom = getStyleSize(marginY);
+      }
+
+      if (marginTop !== undefined) {
+        styles.marginTop = getStyleSize(marginTop);
+      }
+
+      if (marginBottom !== undefined) {
+        styles.marginBottom = getStyleSize(marginBottom);
+      }
+
+      if (marginLeft !== undefined) {
+        styles.marginLeft = getStyleSize(marginLeft);
+      }
+
+      if (marginRight !== undefined) {
+        styles.marginRight = getStyleSize(marginRight);
+      }
+
+      if (padding !== undefined) {
+        styles.padding = getStyleSize(padding);
+      }
+
+      if (paddingX !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingX);
+        styles.paddingRight = getStyleSize(paddingX);
+      }
+
+      if (paddingY !== undefined) {
+        styles.paddingTop = getStyleSize(paddingY);
+        styles.paddingBottom = getStyleSize(paddingY);
+      }
+
+      if (paddingTop !== undefined) {
+        styles.paddingTop = getStyleSize(paddingTop);
+      }
+
+      if (paddingBottom !== undefined) {
+        styles.paddingBottom = getStyleSize(paddingBottom);
+      }
+
+      if (paddingLeft !== undefined) {
+        styles.paddingLeft = getStyleSize(paddingLeft);
+      }
+
+      if (paddingRight !== undefined) {
+        styles.paddingRight = getStyleSize(paddingRight);
+      }
+
+      return styles;
+    }
+  }]);
+
+  return SpaceMixin;
+}(VuiComponent);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginLeft", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginLeft", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginRight", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginRight", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginTop", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginTop", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginBottom", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginBottom", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginX", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginX", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "marginY", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginY", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "margin", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "margin", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingLeft", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingLeft", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingRight", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingRight", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingTop", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingTop", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingBottom", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingBottom", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingX", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingX", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "paddingY", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingY", void 0);
 
 __decorate([Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], space.prototype, "padding", void 0);
+}), __metadata("design:type", Object)], SpaceMixin.prototype, "padding", void 0);
 
-space = __decorate([Component], space);
-var space$1 = space;
+SpaceMixin = __decorate([Component], SpaceMixin);
+var space = SpaceMixin;
 
-var compName$c = 'm-checkbox';
+var compName$9 = 'm-checkbox';
 
 var MCheckbox =
 /*#__PURE__*/
@@ -2476,19 +2824,19 @@ function (_Mixins) {
       }
 
       return h("a", {
-        "staticClass": "".concat(compName$c, "__checkbox")
+        "staticClass": "".concat(compName$9, "__checkbox")
       }, [h("transition", {
         "attrs": {
           "name": 'm-transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$c, "__checked-icon"),
+        "staticClass": "".concat(compName$9, "__checked-icon"),
         "attrs": {
           "name": checkIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$c, "__uncheck-icon"),
+        "staticClass": "".concat(compName$9, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2498,7 +2846,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$c, "__checkbox-wrapper")
+        "staticClass": "".concat(compName$9, "__checkbox-wrapper")
       })]);
     }
   }, {
@@ -2507,7 +2855,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$c, "__label")
+        "staticClass": "".concat(compName$9, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2526,7 +2874,7 @@ function (_Mixins) {
 
       this.isBooleanValue = typeof value === 'boolean';
       return h("div", {
-        "staticClass": compName$c,
+        "staticClass": compName$9,
         "class": classes,
         "style": styles,
         "on": {
@@ -2543,9 +2891,9 @@ function (_Mixins) {
           size = this.size,
           color = this.color;
       var styles = {};
-      genFontColor(styles, compName$c, fontColor);
-      genColor(styles, compName$c, color);
-      genSize(styles, compName$c, size);
+      genFontColor(styles, compName$9, fontColor);
+      genColor(styles, compName$9, color);
+      genSize(styles, compName$9, size);
       return styles;
     }
   }, {
@@ -2589,7 +2937,7 @@ function (_Mixins) {
   }]);
 
   return MCheckbox;
-}(Mixins(colorable$1, sizeable$1, space$1));
+}(Mixins(color, size, space));
 
 __decorate([Prop({
   type: [Array, Number, String, Boolean],
@@ -2646,17 +2994,19 @@ register({
   }
 });
 
-var compName$d = 'm-chip';
-
 var MChip =
 /*#__PURE__*/
 function (_Mixins) {
   _inherits(MChip, _Mixins);
 
   function MChip() {
+    var _this;
+
     _classCallCheck(this, MChip);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MChip).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MChip).apply(this, arguments));
+    _this.name = 'm-chip';
+    return _this;
   }
 
   _createClass(MChip, [{
@@ -2670,14 +3020,15 @@ function (_Mixins) {
   }, {
     key: "RMedia",
     value: function RMedia() {
-      var $slots = this.$slots;
+      var name = this.name,
+          $slots = this.$slots;
 
       if ($slots.media) {
         if (!$slots.media[0].data.staticClass) {
           $slots.media[0].data.staticClass = '';
         }
 
-        $slots.media[0].data.staticClass += " ".concat(compName$d, "__media");
+        $slots.media[0].data.staticClass += " ".concat(name, "__media");
         return $slots.media;
       }
 
@@ -2687,11 +3038,12 @@ function (_Mixins) {
     key: "RClose",
     value: function RClose() {
       var h = this.$createElement;
-      var closeable = this.closeable,
+      var name = this.name,
+          closeable = this.closeable,
           closeover = this.closeover,
           onClose = this.onClose;
       return closeable || closeover ? h(MIcon$1, {
-        "staticClass": "".concat(compName$d, "__close"),
+        "staticClass": "".concat(name, "__close"),
         "on": {
           "click": function click() {
             return onClose;
@@ -2706,57 +3058,43 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var classes = this.classes,
+      var name = this.name,
+          classes = this.classes,
           styles = this.styles,
           $slots = this.$slots,
           RMedia = this.RMedia,
           RClose = this.RClose,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$d,
+        "staticClass": name,
         "class": classes,
         "style": styles,
         "on": {
           "click": onClick
         }
       }, [RMedia(), h("div", {
-        "staticClass": "".concat(compName$d, "__main")
+        "staticClass": "".concat(name, "__main")
       }, [$slots.default]), RClose()]);
     }
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color,
-          elevation = this.elevation;
-      var styles = {};
-      genFontColor(styles, compName$d, fontColor);
-      genColor(styles, compName$d, color);
-      genSize(styles, compName$d, size);
-      genElevation(styles, compName$d, elevation); // genHover(styles, _name, 'hover-color', color)
-
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var closeable = this.closeable,
-          closeover = this.closeover,
-          variety = this.variety,
-          shape = this.shape;
-      var classes = {
+          closeover = this.closeover;
+      return Object.assign({}, this.shapeClass, this.varietyClass, {
         'm--closeable': closeable,
         'm--closeover': closeover
-      };
-      genVariety(classes, variety);
-      genShape(classes, shape);
-      return classes;
+      });
     }
   }]);
 
   return MChip;
-}(Mixins(colorable$1, sizeable$1, elevated$1, variable$1, shapeable$1));
+}(Mixins(mixBase, mixVariety, mixShape));
 
 __decorate([Prop({
   type: Boolean,
@@ -2840,7 +3178,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$e = 'm-time-picker-header';
+var compName$a = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -2876,9 +3214,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__date")
+        "staticClass": "".concat(compName$a, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$e, "__date-year"),
+        "staticClass": "".concat(compName$a, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -2888,9 +3226,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$e, "__date-weekDay")
+        "staticClass": "".concat(compName$a, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$e, "__date-date")
+        "staticClass": "".concat(compName$a, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -2926,9 +3264,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$e, "__time")
+        "class": "".concat(compName$a, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__time-ampm")
+        "staticClass": "".concat(compName$a, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -2948,7 +3286,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$e, "__time-hours")
+        "staticClass": "".concat(compName$a, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -2977,7 +3315,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__year")
+        "staticClass": "".concat(compName$a, "__year")
       }, [year]);
     }
   }, {
@@ -2988,7 +3326,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$e, "__month")
+        "staticClass": "".concat(compName$a, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -3001,7 +3339,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$e),
+        "staticClass": "".concat(compName$a),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -3022,7 +3360,7 @@ __decorate([Inject(), __metadata("design:type", Object)], MTimePickerHeader.prot
 MTimePickerHeader = __decorate([Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$f = 'm-time-picker-panel-date';
+var compName$b = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -3157,11 +3495,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$f
+        "staticClass": compName$b
       }, [h("div", {
-        "class": "".concat(compName$f, "__header")
+        "class": "".concat(compName$b, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$f, "__header-year")
+        "staticClass": "".concat(compName$b, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -3175,7 +3513,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$f, "__header-handler")
+        "staticClass": "".concat(compName$b, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -3209,7 +3547,7 @@ function (_Vue) {
           }
         }
       })])]), h("table", {
-        "class": "".concat(compName$f, "__table")
+        "class": "".concat(compName$b, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -3265,7 +3603,7 @@ MTimePickerPanelDate = __decorate([Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$g = 'm-time-picker-panel-year';
+var compName$c = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -3324,7 +3662,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$g
+        "staticClass": compName$c
       }, [RCols()]);
     }
   }]);
@@ -3349,7 +3687,7 @@ __decorate([Emit('pick'), __metadata("design:type", Function), __metadata("desig
 MTimePickerPanelYear = __decorate([Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$h = 'm-time-picker-panel-month';
+var compName$d = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -3407,7 +3745,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$h
+        "staticClass": compName$d
       }, [RCols()]);
     }
   }]);
@@ -3430,7 +3768,7 @@ MTimePickerPanelMonth = __decorate([Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$i = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$e = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -3493,7 +3831,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$i, "__list ").concat(compName$i, "__list-").concat(type)
+        "staticClass": "".concat(compName$e, "__list ").concat(compName$e, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -3505,7 +3843,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$i
+        "staticClass": compName$e
       }, [Result]);
     }
   }]);
@@ -3540,7 +3878,7 @@ MTimePickerPanelTime = __decorate([Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$j = 'm-time-picker-handler';
+var compName$f = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -3566,7 +3904,7 @@ function (_Vue) {
       var onConfirm = this.onConfirm,
           onCancel = this.onCancel;
       return h("div", {
-        "staticClass": "".concat(compName$j, " m-p-sm")
+        "staticClass": "".concat(compName$f, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "sm",
@@ -3613,7 +3951,7 @@ MTimePickerHandler = __decorate([Component({
 })], MTimePickerHandler);
 var MTimePickerHandler$1 = MTimePickerHandler;
 
-var compName$k = 'm-time-picker';
+var compName$g = 'm-time-picker';
 
 var MTimePicker =
 /*#__PURE__*/
@@ -3899,13 +4237,13 @@ function (_Mixins) {
           RHandler = this.RHandler;
       var pickerType = this.DateStore.pickerType;
       return h("div", {
-        "staticClass": "".concat(compName$k, " m--").concat(pickerType),
+        "staticClass": "".concat(compName$g, " m--").concat(pickerType),
         "style": styles,
         "class": classes
       }, [h("div", {
-        "staticClass": "".concat(compName$k, "__main")
+        "staticClass": "".concat(compName$g, "__main")
       }, [h(MTimePickerHeader$1), h("div", {
-        "staticClass": "".concat(compName$k, "-panel")
+        "staticClass": "".concat(compName$g, "-panel")
       }, [RPanel()])]), RHandler()]);
     }
   }, {
@@ -3914,8 +4252,8 @@ function (_Mixins) {
       var elevation = this.elevation,
           color = this.color;
       var styles = {};
-      genColor(styles, compName$k, color);
-      genElevation(styles, compName$k, elevation);
+      genColor(styles, compName$g, color);
+      genElevation(styles, compName$g, elevation);
       return styles;
     }
   }, {
@@ -3929,7 +4267,7 @@ function (_Mixins) {
   }]);
 
   return MTimePicker;
-}(Mixins(colorable$1, elevated$1));
+}(Mixins(color, elevation));
 
 __decorate([Prop({
   type: Boolean,
@@ -4030,7 +4368,7 @@ MTimePicker$1.install = function (Vue) {
 var css$k = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 3rem;\n  --m-list-size-md: 4rem;\n  --m-list-size-lg: 5rem;\n  --m-list-size-xl: 6rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  min-height: var(--m-list-size);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n";
 styleInject(css$k);
 
-var compName$l = 'm-list';
+var compName$h = 'm-list';
 
 var MList =
 /*#__PURE__*/
@@ -4054,17 +4392,17 @@ function (_Vue) {
           $slots = this.$slots,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$l,
+        "staticClass": compName$h,
         "on": {
           "click": onClick
         },
         "style": styles
       }, [$slots.media ? h("div", {
-        "staticClass": "".concat(compName$l, "__media")
+        "staticClass": "".concat(compName$h, "__media")
       }, [$slots.media]) : undefined, h("div", {
-        "staticClass": "".concat(compName$l, "__content")
+        "staticClass": "".concat(compName$h, "__content")
       }, [$slots.default]), $slots.action ? h("div", {
-        "staticClass": "".concat(compName$l, "__action")
+        "staticClass": "".concat(compName$h, "__action")
       }, [$slots.action]) : undefined]);
     }
   }, {
@@ -4072,7 +4410,7 @@ function (_Vue) {
     get: function get() {
       var size = this.size;
       var styles = {};
-      genSize(styles, compName$l, size);
+      genSize(styles, compName$h, size);
       return styles;
     }
   }]);
@@ -4126,7 +4464,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$m = 'm-table-head';
+var compName$i = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -4213,7 +4551,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$m, "__cell"),
+        "staticClass": "".concat(compName$i, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -4231,7 +4569,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [result]);
     }
   }, {
@@ -4241,7 +4579,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4255,7 +4593,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$m, "__row")
+        "staticClass": "".concat(compName$i, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4277,7 +4615,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$m
+        "staticClass": compName$i
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -4370,7 +4708,7 @@ var off = function () {
   }
 }();
 
-var compName$n = 'm-table-body';
+var compName$j = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -4530,7 +4868,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$n, "__cell"),
+          "staticClass": "".concat(compName$j, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -4559,7 +4897,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__row"),
+        "staticClass": "".concat(compName$j, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -4589,7 +4927,7 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$n, "__expand")
+        "staticClass": "".concat(compName$j, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4599,7 +4937,7 @@ function (_Vue) {
           "name": 'expansion'
         }
       }, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$n, "__expand-content")
+        "staticClass": "".concat(compName$j, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -4663,7 +5001,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$n,
+        "staticClass": compName$j,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -4738,7 +5076,7 @@ TableBody = __decorate([Component({
 })], TableBody);
 var TableBody$1 = TableBody;
 
-var compName$o = 'm-table';
+var compName$k = 'm-table';
 var SELF_KEY = '_table-key';
 
 var MTable =
@@ -4920,13 +5258,13 @@ function (_Mixins) {
           rowExpand = this.rowExpand;
       var noHeader = header === typeHeader.none;
       return h("div", {
-        "staticClass": compName$o,
+        "staticClass": compName$k,
         "attrs": {
           "size": size,
           "elevation": elevation
         }
       }, [h("section", {
-        "staticClass": "".concat(compName$o, "__wrapper")
+        "staticClass": "".concat(compName$k, "__wrapper")
       }, [noHeader ? undefined : h(TableHead$1, {
         "ref": 'head',
         "attrs": {
@@ -4975,7 +5313,7 @@ function (_Mixins) {
   }]);
 
   return MTable;
-}(Mixins(sizeable$1, elevated$1));
+}(Mixins(size, elevation));
 
 __decorate([Prop({
   type: [String, Number]
@@ -5181,7 +5519,7 @@ MTableCol$1.install = function (Vue) {
 
 var components = /*#__PURE__*/Object.freeze({
   MApp: MApp$1,
-  MView: MView,
+  MView: MView$1,
   MIcon: MIcon$1,
   MContainer: MContainer$1,
   MRow: MRow$1,
@@ -5646,4 +5984,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Mobov;
-export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MTransition$1 as MTransition, MView };
+export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MIcon$1 as MIcon, MList$1 as MList, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MTransition$1 as MTransition, MView$1 as MView };

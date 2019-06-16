@@ -15,6 +15,9 @@ import {
 // import { TouchStoredHandlers } from './directives/touch'
 
 import { MobovPlugin as Mobov }  from '.'
+import { VueClass } from 'vue-class-component/lib/declarations'
+
+declare function mixins<A, B, C, D, E, F>(CtorA: VueClass<A>, CtorB: VueClass<B>, CtorC: VueClass<C>, CtorD: VueClass<D>, CtorE: VueClass<E>, CtorF: VueClass<F>): VueClass<A & B & C & D & E & F>;
 
 declare global {
   interface Window {

@@ -1,7 +1,7 @@
-import color from '../core/mixin/colorable';
-import size from '../core/mixin/sizeable';
+import color from '../core/mixin/color';
+import size from '../core/mixin/size';
 import space from '../core/mixin/space';
-declare const MCheckbox_base: import("vue-class-component/lib/declarations").VueClass<color & size & space>;
+declare const MCheckbox_base;
 export default class MCheckbox extends MCheckbox_base {
     value: any;
     label: any;

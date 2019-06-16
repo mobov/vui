@@ -1,7 +1,7 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import colorable from '../core/mixin/colorable'
-import sizeable from '../core/mixin/sizeable'
+import color from '../core/mixin/color'
+import size from '../core/mixin/size'
 import { genColor, genFontColor, genSize } from '../core/util'
 
 const compName = 'm-radio'
@@ -10,8 +10,8 @@ const compName = 'm-radio'
   components: { MIcon }
 })
 export default class MRadio extends Mixins (
-  colorable,
-  sizeable
+  color,
+  size
 ) {
   @Prop({ type: [Boolean, Number, String], default: false })
   value!: boolean | number | string
