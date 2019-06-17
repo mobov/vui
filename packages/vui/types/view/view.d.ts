@@ -1,6 +1,6 @@
 import { Fill, size } from '../core/constant';
 import mixBase from '../core/mixin/base';
-declare const MView_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+declare const MView_base;
 export default class MView extends MView_base {
     name: string;
     transition?: boolean;

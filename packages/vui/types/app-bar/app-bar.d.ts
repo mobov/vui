@@ -1,7 +1,7 @@
 import mixBase from '../core/mixin/base';
 import mixVariety from '../core/mixin/variety';
 import mixShape from '../core/mixin/shape';
-declare const MAppBar_base: import("vue-class-component/lib/declarations").VueClass<mixBase & mixVariety & mixShape>;
+declare const MAppBar_base;
 export default class MAppBar extends MAppBar_base {
     name: string;
     readonly styles: {

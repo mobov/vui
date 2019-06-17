@@ -2,7 +2,7 @@ import '../icon/icons/cancel';
 import mixBase from '../core/mixin/base';
 import mixVariety from '../core/mixin/variety';
 import mixShape from '../core/mixin/shape';
-declare const MChip_base: import("vue-class-component/lib/declarations").VueClass<mixBase & mixVariety & mixShape>;
+declare const MChip_base;
 export default class MChip extends MChip_base {
     name: string;
     closeable: boolean;

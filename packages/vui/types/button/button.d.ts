@@ -1,7 +1,7 @@
 import mixBase from '../core/mixin/base';
 import mixVariety from '../core/mixin/variety';
 import mixShape from '../core/mixin/shape';
-declare const MButton_base: import("vue-class-component/lib/declarations").VueClass<mixBase & mixVariety & mixShape>;
+declare const MButton_base;
 export default class MButton extends MButton_base {
     name: string;
     block: boolean;

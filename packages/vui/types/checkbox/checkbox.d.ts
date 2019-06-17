@@ -1,5 +1,5 @@
 import mixBase from '../core/mixin/base';
-declare const MCheckbox_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+declare const MCheckbox_base;
 export default class MCheckbox extends MCheckbox_base {
     name: string;
     value: any;

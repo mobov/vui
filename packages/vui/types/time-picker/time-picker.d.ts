@@ -1,6 +1,6 @@
 import mixBase from '../core/mixin/base';
 import { datePickerType } from '../core/constant';
-declare const MTimePicker_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+declare const MTimePicker_base;
 export default class MTimePicker extends MTimePicker_base {
     name: string;
     landscope: boolean;
