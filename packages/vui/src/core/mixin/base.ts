@@ -1,5 +1,4 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import VuiComponent from '../vuiComponent'
 import { color, elevation, ELEVATION, size } from '../constant'
 import { genColor, genElevation, genFontColor, genSize, getStyleSize } from '../util'
 
@@ -29,7 +28,9 @@ type SpaceStyles = {
 }
 
 @Component
-export default class BaseMixin extends VuiComponent {
+export default class BaseMixin extends Vue {
+  name!: string
+
   @Prop({ type: [String, Number] })
   size?: size | string | number
 

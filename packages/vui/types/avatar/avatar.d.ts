@@ -1,7 +1,7 @@
 import mixBase from '../core/mixin/base';
 import mixVariety from '../core/mixin/variety';
 import mixShape from '../core/mixin/shape';
-declare const MAvatar_base;
+declare const MAvatar_base: import("vue-class-component/lib/declarations").VueClass<mixBase & mixVariety & mixShape>;
 export default class MAvatar extends MAvatar_base {
     name: string;
     src: string;

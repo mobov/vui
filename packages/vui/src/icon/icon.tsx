@@ -40,8 +40,10 @@ export function register (data: any = {}): void {
   functional: true
 } as ComponentOptions<Vue>)
 export default class MIcon extends Vue {
+  name = 'm-icon'
+
   @Prop({ type: String })
-  name!: string
+  value!: string
 
   @Prop({ type: [String, Number], default: Size.sm })
   size!: size | string | number
@@ -50,11 +52,11 @@ export default class MIcon extends Vue {
   color!: string
 
   render (h: CreateElement, { props, data, children, listeners }: RenderContext) {
-    const { name } = props
-    const icon = Icons[props.name]
+    const { value } = props
+    const icon = Icons[props.value]
 
     if (icon === undefined) {
-      console.error(`存在未注册的图标${name}`)
+      console.error(`存在未注册的图标${value}`)
       return <span />
     }
 
@@ -67,7 +69,7 @@ export default class MIcon extends Vue {
 
     return (
       <svg xmlns='http://www.w3.org/2000/svg' version='1.1'
-           staticClass={`${compName} ${compName}__${name} ${staticClasses}`}
+           staticClass={`${compName} ${compName}__${value} ${staticClasses}`}
            class={classes}
            style={styles}
            height={height}

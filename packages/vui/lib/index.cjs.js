@@ -1062,795 +1062,10 @@ MTransition$1.install = function (Vue) {
   Vue.component('MTransition', MTransition$1);
 };
 
-var VuiComponent =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(VuiComponent, _Vue);
-
-  function VuiComponent() {
-    _classCallCheck(this, VuiComponent);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(VuiComponent).call(this));
-  }
-
-  return VuiComponent;
-}(vuePropertyDecorator.Vue);
-
-var SizeMixin =
-/*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(SizeMixin, _VuiComponent);
-
-  function SizeMixin() {
-    _classCallCheck(this, SizeMixin);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(SizeMixin).apply(this, arguments));
-  }
-
-  _createClass(SizeMixin, [{
-    key: "sizeStyle",
-    get: function get() {
-      var height = this.height,
-          width = this.width,
-          size = this.size;
-      var styles = {};
-      genSize(styles, this.name, size);
-
-      if (height !== undefined) {
-        styles.height = getStyleSize(height);
-      }
-
-      if (width !== undefined) {
-        styles.width = getStyleSize(width);
-      }
-
-      return styles;
-    }
-  }]);
-
-  return SizeMixin;
-}(VuiComponent);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "size", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "height", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
-
-SizeMixin = __decorate([vuePropertyDecorator.Component], SizeMixin);
-var size = SizeMixin;
-
-var ElevationMixin =
-/*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(ElevationMixin, _VuiComponent);
-
-  function ElevationMixin() {
-    _classCallCheck(this, ElevationMixin);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ElevationMixin).apply(this, arguments));
-  }
-
-  _createClass(ElevationMixin, [{
-    key: "elevationStyle",
-    get: function get() {
-      var styles = {};
-      genElevation(styles, this.name, this.elevation);
-      return styles;
-    }
-  }]);
-
-  return ElevationMixin;
-}(VuiComponent);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number,
-  validator: function validator(value) {
-    return ELEVATION.includes(value);
-  }
-}), __metadata("design:type", Object)], ElevationMixin.prototype, "elevation", void 0);
-
-ElevationMixin = __decorate([vuePropertyDecorator.Component], ElevationMixin);
-var elevation = ElevationMixin;
-
-var compName$1 = 'm-view';
-
-var MView =
-/*#__PURE__*/
-function (_Mixins) {
-  _inherits(MView, _Mixins);
-
-  function MView() {
-    var _this;
-
-    _classCallCheck(this, MView);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MView).apply(this, arguments));
-    _this.name = 'm-view';
-    _this.isHeader = false;
-    _this.isFooter = false;
-    _this.isLeft = false;
-    _this.isRight = false;
-    return _this;
-  }
-
-  _createClass(MView, [{
-    key: "RHeader",
-    value: function RHeader() {
-      var h = this.$createElement;
-      var result = this.isHeader ? h("div", {
-        "staticClass": "".concat(compName$1, "-header")
-      }, [this.$slots.header]) : undefined;
-      return this.transition ? h("transition", {
-        "attrs": {
-          "name": "m-view-transition-header"
-        }
-      }, [result]) : result;
-    }
-  }, {
-    key: "RFooter",
-    value: function RFooter() {
-      var h = this.$createElement;
-      var result = this.isFooter ? h("div", {
-        "staticClass": "".concat(compName$1, "-footer")
-      }, [this.$slots.footer]) : undefined;
-      return this.transition ? h("transition", {
-        "attrs": {
-          "name": "m-view-transition-footer"
-        }
-      }, [result]) : result;
-    }
-  }, {
-    key: "RLeft",
-    value: function RLeft() {
-      var h = this.$createElement;
-      var result = this.isLeft ? h("div", {
-        "staticClass": "".concat(compName$1, "-left")
-      }, [this.$slots.left]) : undefined;
-      return this.transition ? h("transition", {
-        "attrs": {
-          "name": "m-view-transition-left"
-        }
-      }, [result]) : result;
-    }
-  }, {
-    key: "RRight",
-    value: function RRight() {
-      var h = this.$createElement;
-      var result = this.isRight ? h("div", {
-        "staticClass": "".concat(compName$1, "-right")
-      }, [this.$slots.right]) : undefined;
-      return this.transition ? h("transition", {
-        "attrs": {
-          "name": "m-view-transition-right"
-        }
-      }, [result]) : result;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var h = arguments[0];
-      var $slots = this.$slots,
-          styles = this.styles,
-          classes = this.classes,
-          RHeader = this.RHeader,
-          RFooter = this.RFooter,
-          RLeft = this.RLeft,
-          RRight = this.RRight;
-      this.isHeader = $slots.header !== undefined;
-      this.isFooter = $slots.footer !== undefined;
-      this.isLeft = $slots.left !== undefined;
-      this.isRight = $slots.right !== undefined;
-      return h("div", {
-        "staticClass": compName$1,
-        "class": classes,
-        "style": styles
-      }, [RHeader(), RLeft(), RRight(), RFooter(), h("section", {
-        "staticClass": "".concat(compName$1, "-main")
-      }, [$slots.default])]);
-    }
-  }, {
-    key: "classes",
-    get: function get() {
-      var _ref;
-
-      var fillHeader = this.fillHeader,
-          fillFooter = this.fillFooter,
-          isHeader = this.isHeader,
-          isFooter = this.isFooter,
-          isLeft = this.isLeft,
-          isRight = this.isRight,
-          headerFloat = this.headerFloat,
-          footerFloat = this.footerFloat,
-          leftFloat = this.leftFloat,
-          rightFloat = this.rightFloat,
-          transition = this.transition;
-      return _ref = {
-        'm--with-header': isHeader,
-        'm--with-footer': isFooter,
-        'm--with-left': isLeft,
-        'm--with-right': isRight,
-        'm--float-header': headerFloat,
-        'm--float-footer': footerFloat,
-        'm--float-left': leftFloat,
-        'm--float-right': rightFloat,
-        'm--transition': transition
-      }, _defineProperty(_ref, "m--fill-header-".concat(fillHeader), true), _defineProperty(_ref, "m--fill-footer-".concat(fillFooter), true), _ref;
-    }
-  }, {
-    key: "styles",
-    get: function get() {
-      var isHeader = this.isHeader,
-          isFooter = this.isFooter,
-          isLeft = this.isLeft,
-          isRight = this.isRight,
-          headerSize = this.headerSize,
-          footerSize = this.footerSize,
-          leftSize = this.leftSize,
-          rightSize = this.rightSize;
-      var styles = {}; // if (isHeader) {
-      //   genSize(styles, `${compName}-header`, headerSize)
-      // }
-      // if (isFooter) {
-      //   genSize(styles, `${compName}-footer`, footerSize)
-      // }
-      // if (isLeft) {
-      //   genSize(styles, `${compName}-left`, leftSize)
-      // }
-      // if (isRight) {
-      //   genSize(styles, `${compName}-right`, rightSize)
-      // }
-
-      genSize(styles, "".concat(compName$1, "-header"), headerSize);
-      genSize(styles, "".concat(compName$1, "-footer"), footerSize);
-      genSize(styles, "".concat(compName$1, "-left"), leftSize);
-      genSize(styles, "".concat(compName$1, "-right"), rightSize);
-      return styles;
-    }
-  }]);
-
-  return MView;
-}(vuePropertyDecorator.Mixins(size, elevation));
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "transition", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: Fill.both
-}), __metadata("design:type", String)], MView.prototype, "fillHeader", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: Fill.both
-}), __metadata("design:type", String)], MView.prototype, "fillFooter", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: 0
-}), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "headerFloat", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: 0
-}), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "footerFloat", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: 0
-}), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "leftFloat", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: 0
-}), __metadata("design:type", String)], MView.prototype, "rightSize", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MView.prototype, "rightFloat", void 0);
-
-MView = __decorate([vuePropertyDecorator.Component({
-  components: {
-    MTransition: MTransition$1
-  }
-})], MView);
-var MView$1 = MView;
-
-/* istanbul ignore next */
-
-MView$1.install = function (Vue) {
-  Vue.component('MView', MView$1);
-};
-
-var compName$2 = 'm-icon';
-var SIZE$1 = {
-  xs: 12,
-  sm: 24,
-  md: 32,
-  lg: 40,
-  xl: 50
-};
-var Icons = {};
-function register() {
-  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  for (var item in data) {
-    if (data.hasOwnProperty(item)) {
-      var icon = data[item];
-
-      if (icon.d) {
-        if (!icon.paths) {
-          icon.paths = [];
-        }
-
-        icon.paths.push({
-          d: icon.d
-        });
-      }
-
-      if (icon.points) {
-        if (!icon.polygons) {
-          icon.polygons = [];
-        }
-
-        icon.polygons.push({
-          points: icon.points
-        });
-      }
-
-      Icons[item] = icon;
-    }
-  }
-}
-
-var MIcon =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MIcon, _Vue);
-
-  function MIcon() {
-    _classCallCheck(this, MIcon);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MIcon).apply(this, arguments));
-  }
-
-  _createClass(MIcon, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children,
-          listeners = _ref.listeners;
-      var name = props.name;
-      var icon = Icons[props.name];
-
-      if (icon === undefined) {
-        console.error("\u5B58\u5728\u672A\u6CE8\u518C\u7684\u56FE\u6807".concat(name));
-        return h("span");
-      }
-
-      var height = SIZE$1[props.size] ? SIZE$1[props.size] : props.size;
-      var width = height * (icon.height / icon.width);
-      var staticClasses = data.staticClass !== undefined ? data.staticClass : '';
-      var classes = data.class !== undefined ? data.class : '';
-      var styles = Object.assign({
-        fill: 'currentColor'
-      }, data.style, data.staticStyle);
-
-      var _click = listeners.click || 'javascript(0)';
-
-      return h("svg", {
-        "attrs": {
-          "xmlns": 'http://www.w3.org/2000/svg',
-          "version": '1.1',
-          "height": height,
-          "width": width,
-          "viewBox": icon.viewBox
-        },
-        "staticClass": "".concat(compName$2, " ").concat(compName$2, "__").concat(name, " ").concat(staticClasses),
-        "class": classes,
-        "style": styles,
-        "on": {
-          "click": function click() {
-            return _click;
-          }
-        }
-      }, [icon.paths ? icon.paths.map(function (path) {
-        return h("path", {
-          "attrs": {
-            "d": path
-          }
-        });
-      }) : h("span"), icon.polygons ? icon.polygons.map(function (path) {
-        return h("polygon", {
-          "attrs": {
-            "points": path
-          }
-        });
-      }) : h("span")]);
-    }
-  }]);
-
-  return MIcon;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MIcon.prototype, "name", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number],
-  default: Size.sm
-}), __metadata("design:type", Object)], MIcon.prototype, "size", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MIcon.prototype, "color", void 0);
-
-MIcon = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MIcon);
-var MIcon$1 = MIcon;
-
-MIcon$1.install = function (Vue) {
-  Vue.component('MIcon', MIcon$1);
-};
-
-var css$c = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .m-flex.m--inline {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
-styleInject(css$c);
-
-var compName$3 = 'm-container';
-
-var MContainer =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MContainer, _Vue);
-
-  function MContainer() {
-    _classCallCheck(this, MContainer);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MContainer).apply(this, arguments));
-  }
-
-  _createClass(MContainer, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$3, " ").concat(staticClass);
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-  }]);
-
-  return MContainer;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MContainer.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MContainer.prototype, "tag", void 0);
-
-MContainer = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MContainer);
-var MContainer$1 = MContainer;
-
-var compName$4 = 'm-row';
-
-var MRow =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MRow, _Vue);
-
-  function MRow() {
-    _classCallCheck(this, MRow);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MRow).apply(this, arguments));
-  }
-
-  _createClass(MRow, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
-      data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$4, 'cols', props.cols);
-      genSize(data.staticStyle, "".concat(compName$4, "-gutter"), props.gutter);
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-  }]);
-
-  return MRow;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MRow.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MRow.prototype, "tag", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", String)], MRow.prototype, "gutter", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MRow.prototype, "cols", void 0);
-
-MRow = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MRow);
-var MRow$1 = MRow;
-
-var compName$5 = 'm-col';
-
-var MCol =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MCol, _Vue);
-
-  function MCol() {
-    _classCallCheck(this, MCol);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MCol).apply(this, arguments));
-  }
-
-  _createClass(MCol, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$5, " ").concat(staticClass);
-      data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genSpace(data.staticStyle, compName$5, props.space);
-      BREAKPOINT.forEach(function (breakpoint) {
-        if (props[breakpoint]) {
-          genStaticStyles(data.staticStyle, compName$5, "span-".concat(breakpoint), props[breakpoint]);
-        }
-      });
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-  }]);
-
-  return MCol;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MCol.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MCol.prototype, "tag", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MCol.prototype, "xs", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MCol.prototype, "sm", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MCol.prototype, "md", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MCol.prototype, "lg", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Number
-}), __metadata("design:type", Number)], MCol.prototype, "xl", void 0);
-
-MCol = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MCol);
-var MCol$1 = MCol;
-
-var compName$6 = 'm-flex';
-
-var MFlex =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MFlex, _Vue);
-
-  function MFlex() {
-    _classCallCheck(this, MFlex);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MFlex).apply(this, arguments));
-  }
-
-  _createClass(MFlex, [{
-    key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$6, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
-      data.staticClass += props.inline ? 'm--inline' : '';
-      data.staticClass = data.staticClass.trim();
-      data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$6, 'cols', props.cols);
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-  }]);
-
-  return MFlex;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MFlex.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MFlex.prototype, "tag", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: Boolean,
-  default: false
-}), __metadata("design:type", Boolean)], MFlex.prototype, "inline", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: FlexWrap.normal
-}), __metadata("design:type", String)], MFlex.prototype, "wrap", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: FlexJustify.start
-}), __metadata("design:type", String)], MFlex.prototype, "justify", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: FlexAlign.stretch
-}), __metadata("design:type", String)], MFlex.prototype, "align", void 0);
-
-MFlex = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MFlex);
-var MFlex$1 = MFlex;
-
-var compName$7 = 'm-flex-filler';
-
-var MFlexFiller =
-/*#__PURE__*/
-function (_Vue) {
-  _inherits(MFlexFiller, _Vue);
-
-  function MFlexFiller() {
-    _classCallCheck(this, MFlexFiller);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(MFlexFiller).apply(this, arguments));
-  }
-
-  _createClass(MFlexFiller, [{
-    key: "render",
-    value: function render() {
-      var h = arguments[0];
-      return h("div", {
-        "class": compName$7
-      });
-    }
-  }]);
-
-  return MFlexFiller;
-}(vuePropertyDecorator.Vue);
-
-MFlexFiller = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MFlexFiller);
-var MFlexFiller$1 = MFlexFiller;
-
-MContainer$1.install = function (Vue) {
-  Vue.component('MContainer', MContainer$1);
-};
-
-MRow$1.install = function (Vue) {
-  Vue.component('MRow', MRow$1);
-};
-
-MCol$1.install = function (Vue) {
-  Vue.component('MCol', MCol$1);
-};
-
-MFlex$1.install = function (Vue) {
-  Vue.component('MFlex', MFlex$1);
-};
-
-MFlexFiller$1.install = function (Vue) {
-  Vue.component('MFlexFiller', MFlexFiller$1);
-};
-
-var css$d = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
-styleInject(css$d);
-
 var BaseMixin =
 /*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(BaseMixin, _VuiComponent);
+function (_Vue) {
+  _inherits(BaseMixin, _Vue);
 
   function BaseMixin() {
     _classCallCheck(this, BaseMixin);
@@ -1981,7 +1196,7 @@ function (_VuiComponent) {
   }]);
 
   return BaseMixin;
-}(VuiComponent);
+}(vuePropertyDecorator.Vue);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
@@ -2069,10 +1284,700 @@ __decorate([vuePropertyDecorator.Prop({
 BaseMixin = __decorate([vuePropertyDecorator.Component], BaseMixin);
 var mixBase = BaseMixin;
 
+var MView =
+/*#__PURE__*/
+function (_Mixins) {
+  _inherits(MView, _Mixins);
+
+  function MView() {
+    var _this;
+
+    _classCallCheck(this, MView);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MView).apply(this, arguments));
+    _this.name = 'm-view';
+    _this.isHeader = false;
+    _this.isFooter = false;
+    _this.isLeft = false;
+    _this.isRight = false;
+    return _this;
+  }
+
+  _createClass(MView, [{
+    key: "RHeader",
+    value: function RHeader() {
+      var h = this.$createElement;
+      var result = this.isHeader ? h("div", {
+        "staticClass": "".concat(this.name, "-header")
+      }, [this.$slots.header]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-view-transition-header"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RFooter",
+    value: function RFooter() {
+      var h = this.$createElement;
+      var result = this.isFooter ? h("div", {
+        "staticClass": "".concat(this.name, "-footer")
+      }, [this.$slots.footer]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-view-transition-footer"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RLeft",
+    value: function RLeft() {
+      var h = this.$createElement;
+      var result = this.isLeft ? h("div", {
+        "staticClass": "".concat(this.name, "-left")
+      }, [this.$slots.left]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-view-transition-left"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "RRight",
+    value: function RRight() {
+      var h = this.$createElement;
+      var result = this.isRight ? h("div", {
+        "staticClass": "".concat(this.name, "-right")
+      }, [this.$slots.right]) : undefined;
+      return this.transition ? h("transition", {
+        "attrs": {
+          "name": "m-view-transition-right"
+        }
+      }, [result]) : result;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var $slots = this.$slots,
+          styles = this.styles,
+          classes = this.classes,
+          RHeader = this.RHeader,
+          RFooter = this.RFooter,
+          RLeft = this.RLeft,
+          RRight = this.RRight;
+      this.isHeader = $slots.header !== undefined;
+      this.isFooter = $slots.footer !== undefined;
+      this.isLeft = $slots.left !== undefined;
+      this.isRight = $slots.right !== undefined;
+      return h("div", {
+        "staticClass": this.name,
+        "class": classes,
+        "style": styles
+      }, [RHeader(), RLeft(), RRight(), RFooter(), h("section", {
+        "staticClass": "".concat(this.name, "-main")
+      }, [$slots.default])]);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      var _ref;
+
+      var fillHeader = this.fillHeader,
+          fillFooter = this.fillFooter,
+          isHeader = this.isHeader,
+          isFooter = this.isFooter,
+          isLeft = this.isLeft,
+          isRight = this.isRight,
+          headerFloat = this.headerFloat,
+          footerFloat = this.footerFloat,
+          leftFloat = this.leftFloat,
+          rightFloat = this.rightFloat,
+          transition = this.transition;
+      return _ref = {
+        'm--with-header': isHeader,
+        'm--with-footer': isFooter,
+        'm--with-left': isLeft,
+        'm--with-right': isRight,
+        'm--float-header': headerFloat,
+        'm--float-footer': footerFloat,
+        'm--float-left': leftFloat,
+        'm--float-right': rightFloat,
+        'm--transition': transition
+      }, _defineProperty(_ref, "m--fill-header-".concat(fillHeader), true), _defineProperty(_ref, "m--fill-footer-".concat(fillFooter), true), _ref;
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var isHeader = this.isHeader,
+          isFooter = this.isFooter,
+          isLeft = this.isLeft,
+          isRight = this.isRight,
+          headerSize = this.headerSize,
+          footerSize = this.footerSize,
+          leftSize = this.leftSize,
+          rightSize = this.rightSize;
+      var styles = {}; // if (isHeader) {
+      //   genSize(styles, `${compName}-header`, headerSize)
+      // }
+      // if (isFooter) {
+      //   genSize(styles, `${compName}-footer`, footerSize)
+      // }
+      // if (isLeft) {
+      //   genSize(styles, `${compName}-left`, leftSize)
+      // }
+      // if (isRight) {
+      //   genSize(styles, `${compName}-right`, rightSize)
+      // }
+
+      genSize(styles, "".concat(this.name, "-header"), headerSize);
+      genSize(styles, "".concat(this.name, "-footer"), footerSize);
+      genSize(styles, "".concat(this.name, "-left"), leftSize);
+      genSize(styles, "".concat(this.name, "-right"), rightSize);
+      return styles;
+    }
+  }]);
+
+  return MView;
+}(vuePropertyDecorator.Mixins(mixBase));
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "transition", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: Fill.both
+}), __metadata("design:type", String)], MView.prototype, "fillHeader", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: Fill.both
+}), __metadata("design:type", String)], MView.prototype, "fillFooter", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MView.prototype, "headerSize", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "headerIndex", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "headerFloat", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MView.prototype, "footerSize", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "footerIndex", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "footerFloat", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MView.prototype, "leftSize", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "leftIndex", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "leftFloat", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number],
+  default: 0
+}), __metadata("design:type", String)], MView.prototype, "rightSize", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MView.prototype, "rightIndex", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MView.prototype, "rightFloat", void 0);
+
+MView = __decorate([vuePropertyDecorator.Component({
+  components: {
+    MTransition: MTransition$1
+  }
+})], MView);
+var MView$1 = MView;
+
+/* istanbul ignore next */
+
+MView$1.install = function (Vue) {
+  Vue.component('MView', MView$1);
+};
+
+var compName$1 = 'm-icon';
+var SIZE$1 = {
+  xs: 12,
+  sm: 24,
+  md: 32,
+  lg: 40,
+  xl: 50
+};
+var Icons = {};
+function register() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  for (var item in data) {
+    if (data.hasOwnProperty(item)) {
+      var icon = data[item];
+
+      if (icon.d) {
+        if (!icon.paths) {
+          icon.paths = [];
+        }
+
+        icon.paths.push({
+          d: icon.d
+        });
+      }
+
+      if (icon.points) {
+        if (!icon.polygons) {
+          icon.polygons = [];
+        }
+
+        icon.polygons.push({
+          points: icon.points
+        });
+      }
+
+      Icons[item] = icon;
+    }
+  }
+}
+
+var MIcon =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MIcon, _Vue);
+
+  function MIcon() {
+    var _this;
+
+    _classCallCheck(this, MIcon);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MIcon).apply(this, arguments));
+    _this.name = 'm-icon';
+    return _this;
+  }
+
+  _createClass(MIcon, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children,
+          listeners = _ref.listeners;
+      var value = props.value;
+      var icon = Icons[props.value];
+
+      if (icon === undefined) {
+        console.error("\u5B58\u5728\u672A\u6CE8\u518C\u7684\u56FE\u6807".concat(value));
+        return h("span");
+      }
+
+      var height = SIZE$1[props.size] ? SIZE$1[props.size] : props.size;
+      var width = height * (icon.height / icon.width);
+      var staticClasses = data.staticClass !== undefined ? data.staticClass : '';
+      var classes = data.class !== undefined ? data.class : '';
+      var styles = Object.assign({
+        fill: 'currentColor'
+      }, data.style, data.staticStyle);
+
+      var _click = listeners.click || 'javascript(0)';
+
+      return h("svg", {
+        "attrs": {
+          "xmlns": 'http://www.w3.org/2000/svg',
+          "version": '1.1',
+          "height": height,
+          "width": width,
+          "viewBox": icon.viewBox
+        },
+        "staticClass": "".concat(compName$1, " ").concat(compName$1, "__").concat(value, " ").concat(staticClasses),
+        "class": classes,
+        "style": styles,
+        "on": {
+          "click": function click() {
+            return _click;
+          }
+        }
+      }, [icon.paths ? icon.paths.map(function (path) {
+        return h("path", {
+          "attrs": {
+            "d": path
+          }
+        });
+      }) : h("span"), icon.polygons ? icon.polygons.map(function (path) {
+        return h("polygon", {
+          "attrs": {
+            "points": path
+          }
+        });
+      }) : h("span")]);
+    }
+  }]);
+
+  return MIcon;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MIcon.prototype, "value", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number],
+  default: Size.sm
+}), __metadata("design:type", Object)], MIcon.prototype, "size", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MIcon.prototype, "color", void 0);
+
+MIcon = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MIcon);
+var MIcon$1 = MIcon;
+
+MIcon$1.install = function (Vue) {
+  Vue.component('MIcon', MIcon$1);
+};
+
+var css$c = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .m-flex.m--inline {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+styleInject(css$c);
+
+var compName$2 = 'm-container';
+
+var MContainer =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MContainer, _Vue);
+
+  function MContainer() {
+    _classCallCheck(this, MContainer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MContainer).apply(this, arguments));
+  }
+
+  _createClass(MContainer, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children;
+      var staticClass = data.staticClass ? data.staticClass : '';
+      data.staticClass = "".concat(compName$2, " ").concat(staticClass);
+
+      if (props.id) {
+        data.domProps = data.domProps || {};
+        data.domProps.id = props.id;
+      }
+
+      return h(props.tag, data, children);
+    }
+  }]);
+
+  return MContainer;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MContainer.prototype, "id", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: 'div'
+}), __metadata("design:type", String)], MContainer.prototype, "tag", void 0);
+
+MContainer = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MContainer);
+var MContainer$1 = MContainer;
+
+var compName$3 = 'm-row';
+
+var MRow =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MRow, _Vue);
+
+  function MRow() {
+    _classCallCheck(this, MRow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MRow).apply(this, arguments));
+  }
+
+  _createClass(MRow, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children;
+      var staticClass = data.staticClass ? data.staticClass : '';
+      data.staticClass = "".concat(compName$3, " ").concat(staticClass);
+      data.staticStyle = data.staticStyle ? data.staticStyle : {};
+      genStaticStyles(data.staticStyle, compName$3, 'cols', props.cols);
+      genSize(data.staticStyle, "".concat(compName$3, "-gutter"), props.gutter);
+
+      if (props.id) {
+        data.domProps = data.domProps || {};
+        data.domProps.id = props.id;
+      }
+
+      return h(props.tag, data, children);
+    }
+  }]);
+
+  return MRow;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MRow.prototype, "id", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: 'div'
+}), __metadata("design:type", String)], MRow.prototype, "tag", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", String)], MRow.prototype, "gutter", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MRow.prototype, "cols", void 0);
+
+MRow = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MRow);
+var MRow$1 = MRow;
+
+var compName$4 = 'm-col';
+
+var MCol =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MCol, _Vue);
+
+  function MCol() {
+    _classCallCheck(this, MCol);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MCol).apply(this, arguments));
+  }
+
+  _createClass(MCol, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children;
+      var staticClass = data.staticClass ? data.staticClass : '';
+      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
+      data.staticStyle = data.staticStyle ? data.staticStyle : {};
+      genSpace(data.staticStyle, compName$4, props.space);
+      BREAKPOINT.forEach(function (breakpoint) {
+        if (props[breakpoint]) {
+          genStaticStyles(data.staticStyle, compName$4, "span-".concat(breakpoint), props[breakpoint]);
+        }
+      });
+
+      if (props.id) {
+        data.domProps = data.domProps || {};
+        data.domProps.id = props.id;
+      }
+
+      return h(props.tag, data, children);
+    }
+  }]);
+
+  return MCol;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MCol.prototype, "id", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: 'div'
+}), __metadata("design:type", String)], MCol.prototype, "tag", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MCol.prototype, "xs", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MCol.prototype, "sm", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MCol.prototype, "md", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MCol.prototype, "lg", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MCol.prototype, "xl", void 0);
+
+MCol = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MCol);
+var MCol$1 = MCol;
+
+var compName$5 = 'm-flex';
+
+var MFlex =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MFlex, _Vue);
+
+  function MFlex() {
+    _classCallCheck(this, MFlex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MFlex).apply(this, arguments));
+  }
+
+  _createClass(MFlex, [{
+    key: "render",
+    value: function render(h, _ref) {
+      var props = _ref.props,
+          data = _ref.data,
+          children = _ref.children;
+      var staticClass = data.staticClass ? data.staticClass : '';
+      data.staticClass = "".concat(compName$5, " m--wrap-").concat(props.wrap, " m--justify-").concat(props.justify, " m--align-").concat(props.align, " ").concat(staticClass, " ");
+      data.staticClass += props.inline ? 'm--inline' : '';
+      data.staticClass = data.staticClass.trim();
+      data.staticStyle = data.staticStyle ? data.staticStyle : {};
+      genStaticStyles(data.staticStyle, compName$5, 'cols', props.cols);
+
+      if (props.id) {
+        data.domProps = data.domProps || {};
+        data.domProps.id = props.id;
+      }
+
+      return h(props.tag, data, children);
+    }
+  }]);
+
+  return MFlex;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String
+}), __metadata("design:type", String)], MFlex.prototype, "id", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: 'div'
+}), __metadata("design:type", String)], MFlex.prototype, "tag", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MFlex.prototype, "inline", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: FlexWrap.normal
+}), __metadata("design:type", String)], MFlex.prototype, "wrap", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: FlexJustify.start
+}), __metadata("design:type", String)], MFlex.prototype, "justify", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: String,
+  default: FlexAlign.stretch
+}), __metadata("design:type", String)], MFlex.prototype, "align", void 0);
+
+MFlex = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MFlex);
+var MFlex$1 = MFlex;
+
+var compName$6 = 'm-flex-filler';
+
+var MFlexFiller =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MFlexFiller, _Vue);
+
+  function MFlexFiller() {
+    _classCallCheck(this, MFlexFiller);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MFlexFiller).apply(this, arguments));
+  }
+
+  _createClass(MFlexFiller, [{
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      return h("div", {
+        "class": compName$6
+      });
+    }
+  }]);
+
+  return MFlexFiller;
+}(vuePropertyDecorator.Vue);
+
+MFlexFiller = __decorate([vuePropertyDecorator.Component({
+  functional: true
+})], MFlexFiller);
+var MFlexFiller$1 = MFlexFiller;
+
+MContainer$1.install = function (Vue) {
+  Vue.component('MContainer', MContainer$1);
+};
+
+MRow$1.install = function (Vue) {
+  Vue.component('MRow', MRow$1);
+};
+
+MCol$1.install = function (Vue) {
+  Vue.component('MCol', MCol$1);
+};
+
+MFlex$1.install = function (Vue) {
+  Vue.component('MFlex', MFlex$1);
+};
+
+MFlexFiller$1.install = function (Vue) {
+  Vue.component('MFlexFiller', MFlexFiller$1);
+};
+
+var css$d = "/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-size-xs: 2.5rem;\n  --m-app-bar-size-sm: 3.5rem;\n  --m-app-bar-size-md: 4.5rem;\n  --m-app-bar-size-lg: 5.5rem;\n  --m-app-bar-size-xl: 6.5rem;\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-elevation: var(--m-elevation-2);\n  --m-app-bar-size: var(--m-app-bar-size-md);\n  --m-app-bar-position: relative; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  -webkit-box-shadow: var(--m-app-bar-elevation);\n          box-shadow: var(--m-app-bar-elevation);\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n";
+styleInject(css$d);
+
 var VarietyMixin =
 /*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(VarietyMixin, _VuiComponent);
+function (_Vue) {
+  _inherits(VarietyMixin, _Vue);
 
   function VarietyMixin() {
     _classCallCheck(this, VarietyMixin);
@@ -2090,7 +1995,7 @@ function (_VuiComponent) {
   }]);
 
   return VarietyMixin;
-}(VuiComponent);
+}(vuePropertyDecorator.Vue);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
@@ -2104,8 +2009,8 @@ var mixVariety = VarietyMixin;
 
 var ShapeMixin =
 /*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(ShapeMixin, _VuiComponent);
+function (_Vue) {
+  _inherits(ShapeMixin, _Vue);
 
   function ShapeMixin() {
     _classCallCheck(this, ShapeMixin);
@@ -2123,7 +2028,7 @@ function (_VuiComponent) {
   }]);
 
   return ShapeMixin;
-}(VuiComponent);
+}(vuePropertyDecorator.Vue);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
@@ -2380,52 +2285,19 @@ MAvatar$1.install = function (Vue) {
 var css$g = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-size-xs: 1rem;\n  --m-radio-size-sm: 1.5rem;\n  --m-radio-size-md: 2rem;\n  --m-radio-size-lg: 2.5rem;\n  --m-radio-size-xl: 3rem;\n  --m-radio-wrapper-size-xs: 2rem;\n  --m-radio-wrapper-size-sm: 3rem;\n  --m-radio-wrapper-size-md: 4rem;\n  --m-radio-wrapper-size-lg: 5rem;\n  --m-radio-wrapper-size-xl: 6rem;\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: var(--m-radio-size-md);\n  --m-radio-wrapper-size: var(--m-radio-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  line-height: 1;\n  font-size: calc(var(--m-radio-size) / 1.4);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
 styleInject(css$g);
 
-var ColorMixin =
-/*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(ColorMixin, _VuiComponent);
-
-  function ColorMixin() {
-    _classCallCheck(this, ColorMixin);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ColorMixin).apply(this, arguments));
-  }
-
-  _createClass(ColorMixin, [{
-    key: "colorStyle",
-    get: function get() {
-      var styles = {};
-      genFontColor(styles, this.name, this.fontColor);
-      genColor(styles, this.name, this.color);
-      return styles;
-    }
-  }]);
-
-  return ColorMixin;
-}(VuiComponent);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", Object)], ColorMixin.prototype, "fontColor", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", Object)], ColorMixin.prototype, "color", void 0);
-
-ColorMixin = __decorate([vuePropertyDecorator.Component], ColorMixin);
-var color = ColorMixin;
-
-var compName$8 = 'm-radio';
-
 var MRadio =
 /*#__PURE__*/
 function (_Mixins) {
   _inherits(MRadio, _Mixins);
 
   function MRadio() {
+    var _this;
+
     _classCallCheck(this, MRadio);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MRadio).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MRadio).apply(this, arguments));
+    _this.name = 'm-radio';
+    return _this;
   }
 
   _createClass(MRadio, [{
@@ -2453,19 +2325,19 @@ function (_Mixins) {
           uncheckIcon = this.uncheckIcon,
           checked = this.checked;
       return h("a", {
-        "staticClass": "".concat(compName$8, "__radio")
+        "staticClass": "".concat(this.name, "__radio")
       }, [h("transition", {
         "attrs": {
           "name": 'm--transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$8, "__checked-icon"),
+        "staticClass": "".concat(this.name, "__checked-icon"),
         "attrs": {
           "name": checkedIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$8, "__uncheck-icon"),
+        "staticClass": "".concat(this.name, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2475,7 +2347,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$8, "__radio-wrapper")
+        "staticClass": "".concat(this.name, "__radio-wrapper")
       })]);
     }
   }, {
@@ -2484,7 +2356,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$8, "__label")
+        "staticClass": "".concat(this.name, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2498,7 +2370,7 @@ function (_Mixins) {
           RRadio = this.RRadio,
           RDefault = this.RDefault;
       return h("div", {
-        "staticClass": compName$8,
+        "staticClass": this.name,
         "class": classes,
         "style": styles,
         "on": {
@@ -2511,25 +2383,17 @@ function (_Mixins) {
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color;
-      var styles = {};
-      genFontColor(styles, compName$8, fontColor);
-      genColor(styles, compName$8, color);
-      genSize(styles, compName$8, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var checked = this.checked,
           disabled = this.disabled;
-      var classes = {
+      return {
         'm--checked': checked,
         'm--disabled': disabled
       };
-      return classes;
     }
   }, {
     key: "checked",
@@ -2539,7 +2403,7 @@ function (_Mixins) {
   }]);
 
   return MRadio;
-}(vuePropertyDecorator.Mixins(color, size));
+}(vuePropertyDecorator.Mixins(mixBase));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [Boolean, Number, String],
@@ -2584,164 +2448,6 @@ MRadio$1.install = function (Vue) {
 var css$h = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-size-xs: 1rem;\n  --m-checkbox-size-sm: 1.5rem;\n  --m-checkbox-size-md: 2rem;\n  --m-checkbox-size-lg: 2.5rem;\n  --m-checkbox-size-xl: 3rem;\n  --m-checkbox-wrapper-size-xs: 2rem;\n  --m-checkbox-wrapper-size-sm: 3rem;\n  --m-checkbox-wrapper-size-md: 4rem;\n  --m-checkbox-wrapper-size-lg: 5rem;\n  --m-checkbox-wrapper-size-xl: 6rem;\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: var(--m-checkbox-size-md);\n  --m-checkbox-wrapper-size: var(--m-checkbox-wrapper-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: calc(var(--m-checkbox-size) / 1.4);\n  line-height: 1;\n  height: var(--m-checkbox-color);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
 styleInject(css$h);
 
-var SpaceMixin =
-/*#__PURE__*/
-function (_VuiComponent) {
-  _inherits(SpaceMixin, _VuiComponent);
-
-  function SpaceMixin() {
-    _classCallCheck(this, SpaceMixin);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(SpaceMixin).apply(this, arguments));
-  }
-
-  _createClass(SpaceMixin, [{
-    key: "spaceStyle",
-    get: function get() {
-      var margin = this.margin,
-          marginX = this.marginX,
-          marginY = this.marginY,
-          marginTop = this.marginTop,
-          marginBottom = this.marginBottom,
-          marginLeft = this.marginLeft,
-          marginRight = this.marginRight,
-          padding = this.padding,
-          paddingX = this.paddingX,
-          paddingY = this.paddingY,
-          paddingTop = this.paddingTop,
-          paddingBottom = this.paddingBottom,
-          paddingLeft = this.paddingLeft,
-          paddingRight = this.paddingRight;
-      var styles = {};
-
-      if (margin !== undefined) {
-        styles.margin = getStyleSize(margin);
-      }
-
-      if (marginX !== undefined) {
-        styles.marginLeft = getStyleSize(marginX);
-        styles.marginRight = getStyleSize(marginX);
-      }
-
-      if (marginY !== undefined) {
-        styles.marginTop = getStyleSize(marginY);
-        styles.marginBottom = getStyleSize(marginY);
-      }
-
-      if (marginTop !== undefined) {
-        styles.marginTop = getStyleSize(marginTop);
-      }
-
-      if (marginBottom !== undefined) {
-        styles.marginBottom = getStyleSize(marginBottom);
-      }
-
-      if (marginLeft !== undefined) {
-        styles.marginLeft = getStyleSize(marginLeft);
-      }
-
-      if (marginRight !== undefined) {
-        styles.marginRight = getStyleSize(marginRight);
-      }
-
-      if (padding !== undefined) {
-        styles.padding = getStyleSize(padding);
-      }
-
-      if (paddingX !== undefined) {
-        styles.paddingLeft = getStyleSize(paddingX);
-        styles.paddingRight = getStyleSize(paddingX);
-      }
-
-      if (paddingY !== undefined) {
-        styles.paddingTop = getStyleSize(paddingY);
-        styles.paddingBottom = getStyleSize(paddingY);
-      }
-
-      if (paddingTop !== undefined) {
-        styles.paddingTop = getStyleSize(paddingTop);
-      }
-
-      if (paddingBottom !== undefined) {
-        styles.paddingBottom = getStyleSize(paddingBottom);
-      }
-
-      if (paddingLeft !== undefined) {
-        styles.paddingLeft = getStyleSize(paddingLeft);
-      }
-
-      if (paddingRight !== undefined) {
-        styles.paddingRight = getStyleSize(paddingRight);
-      }
-
-      return styles;
-    }
-  }]);
-
-  return SpaceMixin;
-}(VuiComponent);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginLeft", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginRight", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginTop", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginBottom", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginX", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "marginY", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "margin", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingLeft", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingRight", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingTop", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingBottom", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingX", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "paddingY", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SpaceMixin.prototype, "padding", void 0);
-
-SpaceMixin = __decorate([vuePropertyDecorator.Component], SpaceMixin);
-var space = SpaceMixin;
-
-var compName$9 = 'm-checkbox';
-
 var MCheckbox =
 /*#__PURE__*/
 function (_Mixins) {
@@ -2753,6 +2459,7 @@ function (_Mixins) {
     _classCallCheck(this, MCheckbox);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MCheckbox).apply(this, arguments));
+    _this.name = 'm-checkbox';
     _this.isArrayValue = false;
     _this.isArrayLabel = false;
     _this.isBooleanValue = false;
@@ -2828,19 +2535,19 @@ function (_Mixins) {
       }
 
       return h("a", {
-        "staticClass": "".concat(compName$9, "__checkbox")
+        "staticClass": "".concat(this.name, "__checkbox")
       }, [h("transition", {
         "attrs": {
           "name": 'm-transition-scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
-        "staticClass": "".concat(compName$9, "__checked-icon"),
+        "staticClass": "".concat(this.name, "__checked-icon"),
         "attrs": {
           "name": checkIcon,
           "size": size
         }
       })]), h(MIcon$1, {
-        "staticClass": "".concat(compName$9, "__uncheck-icon"),
+        "staticClass": "".concat(this.name, "__uncheck-icon"),
         "attrs": {
           "size": size,
           "name": uncheckIcon
@@ -2850,7 +2557,7 @@ function (_Mixins) {
           name: "m-ripple",
           value: true
         }],
-        "staticClass": "".concat(compName$9, "__checkbox-wrapper")
+        "staticClass": "".concat(this.name, "__checkbox-wrapper")
       })]);
     }
   }, {
@@ -2859,7 +2566,7 @@ function (_Mixins) {
       var h = this.$createElement;
       var $slots = this.$slots;
       return $slots.default === undefined ? undefined : h("span", {
-        "staticClass": "".concat(compName$9, "__label")
+        "staticClass": "".concat(this.name, "__label")
       }, [$slots.default]);
     }
   }, {
@@ -2878,7 +2585,7 @@ function (_Mixins) {
 
       this.isBooleanValue = typeof value === 'boolean';
       return h("div", {
-        "staticClass": compName$9,
+        "staticClass": this.name,
         "class": classes,
         "style": styles,
         "on": {
@@ -2891,25 +2598,17 @@ function (_Mixins) {
   }, {
     key: "styles",
     get: function get() {
-      var fontColor = this.fontColor,
-          size = this.size,
-          color = this.color;
-      var styles = {};
-      genFontColor(styles, compName$9, fontColor);
-      genColor(styles, compName$9, color);
-      genSize(styles, compName$9, size);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var checked = this.checked,
           disabled = this.disabled;
-      var classes = {
+      return {
         'm--checked': checked,
         'm--disabled': disabled
       };
-      return classes;
     }
   }, {
     key: "checked",
@@ -2941,7 +2640,7 @@ function (_Mixins) {
   }]);
 
   return MCheckbox;
-}(vuePropertyDecorator.Mixins(color, size, space));
+}(vuePropertyDecorator.Mixins(mixBase));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [Array, Number, String, Boolean],
@@ -3182,7 +2881,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$a = 'm-time-picker-header';
+var compName$7 = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -3218,9 +2917,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$a, "__date")
+        "staticClass": "".concat(compName$7, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$a, "__date-year"),
+        "staticClass": "".concat(compName$7, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -3230,9 +2929,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$a, "__date-weekDay")
+        "staticClass": "".concat(compName$7, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$a, "__date-date")
+        "staticClass": "".concat(compName$7, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -3268,9 +2967,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$a, "__time")
+        "class": "".concat(compName$7, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$a, "__time-ampm")
+        "staticClass": "".concat(compName$7, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -3290,7 +2989,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$a, "__time-hours")
+        "staticClass": "".concat(compName$7, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -3319,7 +3018,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$a, "__year")
+        "staticClass": "".concat(compName$7, "__year")
       }, [year]);
     }
   }, {
@@ -3330,7 +3029,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$a, "__month")
+        "staticClass": "".concat(compName$7, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -3343,7 +3042,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$a),
+        "staticClass": "".concat(compName$7),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -3364,7 +3063,7 @@ __decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], M
 MTimePickerHeader = __decorate([vuePropertyDecorator.Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$b = 'm-time-picker-panel-date';
+var compName$8 = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -3499,11 +3198,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$b
+        "staticClass": compName$8
       }, [h("div", {
-        "class": "".concat(compName$b, "__header")
+        "class": "".concat(compName$8, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$b, "__header-year")
+        "staticClass": "".concat(compName$8, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -3517,7 +3216,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$b, "__header-handler")
+        "staticClass": "".concat(compName$8, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -3551,7 +3250,7 @@ function (_Vue) {
           }
         }
       })])]), h("table", {
-        "class": "".concat(compName$b, "__table")
+        "class": "".concat(compName$8, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -3607,7 +3306,7 @@ MTimePickerPanelDate = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$c = 'm-time-picker-panel-year';
+var compName$9 = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -3666,7 +3365,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$c
+        "staticClass": compName$9
       }, [RCols()]);
     }
   }]);
@@ -3691,7 +3390,7 @@ __decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Functio
 MTimePickerPanelYear = __decorate([vuePropertyDecorator.Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$d = 'm-time-picker-panel-month';
+var compName$a = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -3749,7 +3448,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$d
+        "staticClass": compName$a
       }, [RCols()]);
     }
   }]);
@@ -3772,7 +3471,7 @@ MTimePickerPanelMonth = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$e = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$b = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -3835,7 +3534,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$e, "__list ").concat(compName$e, "__list-").concat(type)
+        "staticClass": "".concat(compName$b, "__list ").concat(compName$b, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -3847,7 +3546,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$e
+        "staticClass": compName$b
       }, [Result]);
     }
   }]);
@@ -3882,7 +3581,7 @@ MTimePickerPanelTime = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$f = 'm-time-picker-handler';
+var compName$c = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -3908,7 +3607,7 @@ function (_Vue) {
       var onConfirm = this.onConfirm,
           onCancel = this.onCancel;
       return h("div", {
-        "staticClass": "".concat(compName$f, " m-p-sm")
+        "staticClass": "".concat(compName$c, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "sm",
@@ -3955,8 +3654,6 @@ MTimePickerHandler = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerHandler);
 var MTimePickerHandler$1 = MTimePickerHandler;
 
-var compName$g = 'm-time-picker';
-
 var MTimePicker =
 /*#__PURE__*/
 function (_Mixins) {
@@ -3968,6 +3665,7 @@ function (_Mixins) {
     _classCallCheck(this, MTimePicker);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MTimePicker).apply(this, arguments));
+    _this.name = 'm-time-picker';
     _this.DateStore = {
       value: _this.valueAdaptI(_this.value),
       pickerType: _this.pickerType,
@@ -4241,24 +3939,19 @@ function (_Mixins) {
           RHandler = this.RHandler;
       var pickerType = this.DateStore.pickerType;
       return h("div", {
-        "staticClass": "".concat(compName$g, " m--").concat(pickerType),
+        "staticClass": "".concat(this.name, " m--").concat(pickerType),
         "style": styles,
         "class": classes
       }, [h("div", {
-        "staticClass": "".concat(compName$g, "__main")
+        "staticClass": "".concat(this.name, "__main")
       }, [h(MTimePickerHeader$1), h("div", {
-        "staticClass": "".concat(compName$g, "-panel")
+        "staticClass": "".concat(this.name, "-panel")
       }, [RPanel()])]), RHandler()]);
     }
   }, {
     key: "styles",
     get: function get() {
-      var elevation = this.elevation,
-          color = this.color;
-      var styles = {};
-      genColor(styles, compName$g, color);
-      genElevation(styles, compName$g, elevation);
-      return styles;
+      return Object.assign({}, this.baseStyle);
     }
   }, {
     key: "classes",
@@ -4271,7 +3964,7 @@ function (_Mixins) {
   }]);
 
   return MTimePicker;
-}(vuePropertyDecorator.Mixins(color, elevation));
+}(vuePropertyDecorator.Mixins(mixBase));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Boolean,
@@ -4372,7 +4065,7 @@ MTimePicker$1.install = function (Vue) {
 var css$k = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 3rem;\n  --m-list-size-md: 4rem;\n  --m-list-size-lg: 5rem;\n  --m-list-size-xl: 6rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  min-height: var(--m-list-size);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n";
 styleInject(css$k);
 
-var compName$h = 'm-list';
+var compName$d = 'm-list';
 
 var MList =
 /*#__PURE__*/
@@ -4396,17 +4089,17 @@ function (_Vue) {
           $slots = this.$slots,
           onClick = this.onClick;
       return h("div", {
-        "staticClass": compName$h,
+        "staticClass": compName$d,
         "on": {
           "click": onClick
         },
         "style": styles
       }, [$slots.media ? h("div", {
-        "staticClass": "".concat(compName$h, "__media")
+        "staticClass": "".concat(compName$d, "__media")
       }, [$slots.media]) : undefined, h("div", {
-        "staticClass": "".concat(compName$h, "__content")
+        "staticClass": "".concat(compName$d, "__content")
       }, [$slots.default]), $slots.action ? h("div", {
-        "staticClass": "".concat(compName$h, "__action")
+        "staticClass": "".concat(compName$d, "__action")
       }, [$slots.action]) : undefined]);
     }
   }, {
@@ -4414,7 +4107,7 @@ function (_Vue) {
     get: function get() {
       var size = this.size;
       var styles = {};
-      genSize(styles, compName$h, size);
+      genSize(styles, compName$d, size);
       return styles;
     }
   }]);
@@ -4468,7 +4161,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$i = 'm-table-head';
+var compName$e = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -4555,7 +4248,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$i, "__cell"),
+        "staticClass": "".concat(compName$e, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -4573,7 +4266,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$i, "__row")
+        "staticClass": "".concat(compName$e, "__row")
       }, [result]);
     }
   }, {
@@ -4583,7 +4276,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$i, "__row")
+        "staticClass": "".concat(compName$e, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4597,7 +4290,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$i, "__row")
+        "staticClass": "".concat(compName$e, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4619,7 +4312,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$i
+        "staticClass": compName$e
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -4712,7 +4405,7 @@ var off = function () {
   }
 }();
 
-var compName$j = 'm-table-body';
+var compName$f = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -4872,7 +4565,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$j, "__cell"),
+          "staticClass": "".concat(compName$f, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -4901,7 +4594,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$j, "__row"),
+        "staticClass": "".concat(compName$f, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -4931,7 +4624,7 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$j, "__expand")
+        "staticClass": "".concat(compName$f, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -4941,7 +4634,7 @@ function (_Vue) {
           "name": 'expansion'
         }
       }, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$j, "__expand-content")
+        "staticClass": "".concat(compName$f, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -5005,7 +4698,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$j,
+        "staticClass": compName$f,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -5080,7 +4773,7 @@ TableBody = __decorate([vuePropertyDecorator.Component({
 })], TableBody);
 var TableBody$1 = TableBody;
 
-var compName$k = 'm-table';
+var compName$g = 'm-table';
 var SELF_KEY = '_table-key';
 
 var MTable =
@@ -5262,13 +4955,13 @@ function (_Mixins) {
           rowExpand = this.rowExpand;
       var noHeader = header === typeHeader.none;
       return h("div", {
-        "staticClass": compName$k,
+        "staticClass": compName$g,
         "attrs": {
           "size": size,
           "elevation": elevation
         }
       }, [h("section", {
-        "staticClass": "".concat(compName$k, "__wrapper")
+        "staticClass": "".concat(compName$g, "__wrapper")
       }, [noHeader ? undefined : h(TableHead$1, {
         "ref": 'head',
         "attrs": {
@@ -5317,7 +5010,7 @@ function (_Mixins) {
   }]);
 
   return MTable;
-}(vuePropertyDecorator.Mixins(size, elevation));
+}(vuePropertyDecorator.Mixins(mixBase));
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]

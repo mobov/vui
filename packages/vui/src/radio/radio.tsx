@@ -1,18 +1,15 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import color from '../core/mixin/color'
-import size from '../core/mixin/size'
-import { genColor, genFontColor, genSize } from '../core/util'
-
-const compName = 'm-radio'
+import mixBase from '../core/mixin/base'
 
 @Component({
   components: { MIcon }
 })
 export default class MRadio extends Mixins (
-  color,
-  size
+  mixBase
 ) {
+  name = 'm-radio'
+
   @Prop({ type: [Boolean, Number, String], default: false })
   value!: boolean | number | string
 
@@ -32,24 +29,19 @@ export default class MRadio extends Mixins (
   onInput (val: any) {}
 
   get styles () {
-    const { fontColor, size, color } = this
-    const styles = {}
-
-    genFontColor(styles, compName, fontColor)
-    genColor(styles, compName, color)
-    genSize(styles, compName, size)
-
-    return styles
+    return {
+      ...this.baseStyle
+    }
   }
+
 
   get classes () {
     const { checked, disabled } = this
-    const classes = {
+
+    return {
       'm--checked': checked,
       'm--disabled': disabled
     }
-
-    return classes
   }
 
   get checked () {
@@ -67,16 +59,16 @@ export default class MRadio extends Mixins (
     const { size, checkedIcon, uncheckIcon, checked } = this
 
     return (
-      <a staticClass={`${compName}__radio`}>
+      <a staticClass={`${this.name}__radio`}>
         <transition name='m--transition-scale'>
           {!checked ? undefined : (
-            <MIcon staticClass={`${compName}__checked-icon`}
+            <MIcon staticClass={`${this.name}__checked-icon`}
                     name={checkedIcon}
                     size={size}/>
           )}
         </transition>
-        <MIcon staticClass={`${compName}__uncheck-icon`} size={size} name={uncheckIcon} />
-        <div v-m-ripple staticClass={`${compName}__radio-wrapper`} />
+        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <div v-m-ripple staticClass={`${this.name}__radio-wrapper`} />
       </a>
     )
   }
@@ -85,7 +77,7 @@ export default class MRadio extends Mixins (
     const { $slots } = this
 
     return $slots.default === undefined ? undefined : (
-      <span staticClass={`${compName}__label`}>{$slots.default}</span>
+      <span staticClass={`${this.name}__label`}>{$slots.default}</span>
     )
   }
 
@@ -93,7 +85,7 @@ export default class MRadio extends Mixins (
     const { styles, classes, label, handleClick, RRadio, RDefault } = this
 
     return (
-      <div staticClass={compName}
+      <div staticClass={this.name}
            class={classes}
            style={styles}
            onClick={() => handleClick(label)}>

@@ -5,6 +5,7 @@ declare module 'vue/types/options' {
 
   interface ComponentOptions<V extends Vue> {
     // base
+    name?: string
     staticClass?: string
     class?: string
     style?: ElementCSSInlineStyle | any
@@ -86,6 +87,7 @@ declare module 'vue/types/vue' {
     Options = Record<string, any>
     > {
     version: string
+    name?: string
     install?: (Vue: VueConstructor) => void
     options: Options
   }

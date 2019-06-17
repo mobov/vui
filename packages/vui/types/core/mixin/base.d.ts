@@ -1,4 +1,4 @@
-import VuiComponent from '../vuiComponent';
+import { Vue } from 'vue-property-decorator';
 import { color, elevation, size } from '../constant';
 declare type SizeStyles = {
     size?: size | string | number;
@@ -22,7 +22,8 @@ declare type SpaceStyles = {
     paddingLeft?: string;
     paddingRight?: string;
 };
-export default class BaseMixin extends VuiComponent {
+export default class BaseMixin extends Vue {
+    name: string;
     size?: size | string | number;
     height?: string | number;
     width?: string | number;

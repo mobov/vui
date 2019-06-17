@@ -1,10 +1,9 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import VuiComponent from '../vuiComponent'
 import { shape, SHAPE } from '../constant'
 import { genShape } from '../util'
 
 @Component
-export default class ShapeMixin extends VuiComponent {
+export default class ShapeMixin extends Vue {
   @Prop({
     type: String,
     validator (value): boolean {

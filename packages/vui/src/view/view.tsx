@@ -2,17 +2,13 @@ import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import { genSize } from '../core/util'
 import { Fill, size } from '../core/constant'
 import MTransition from '../transition'
-import mixSize from '../core/mixin/size'
-import mixElevation from '../core/mixin/elevation'
-
-const compName = 'm-view'
+import mixBase from '../core/mixin/base'
 
 @Component({
   components: { MTransition }
 })
 export default class MView extends Mixins (
-  mixSize,
-  mixElevation
+  mixBase
 ) {
   name = 'm-view'
 
@@ -101,10 +97,10 @@ export default class MView extends Mixins (
     // if (isRight) {
     //   genSize(styles, `${compName}-right`, rightSize)
     // }
-    genSize(styles, `${compName}-header`, headerSize)
-    genSize(styles, `${compName}-footer`, footerSize)
-    genSize(styles, `${compName}-left`, leftSize)
-    genSize(styles, `${compName}-right`, rightSize)
+    genSize(styles, `${this.name}-header`, headerSize)
+    genSize(styles, `${this.name}-footer`, footerSize)
+    genSize(styles, `${this.name}-left`, leftSize)
+    genSize(styles, `${this.name}-right`, rightSize)
 
     return styles
   }
@@ -115,7 +111,7 @@ export default class MView extends Mixins (
   private isRight = false
 
   private RHeader () {
-    const result = this.isHeader ? <div staticClass={`${compName}-header`}>{this.$slots.header}</div> : undefined
+    const result = this.isHeader ? <div staticClass={`${this.name}-header`}>{this.$slots.header}</div> : undefined
 
     return this.transition ? (
       <transition name="m-view-transition-header">
@@ -125,7 +121,7 @@ export default class MView extends Mixins (
   }
 
   private RFooter () {
-    const result = this.isFooter ? <div staticClass={`${compName}-footer`}>{this.$slots.footer}</div> : undefined
+    const result = this.isFooter ? <div staticClass={`${this.name}-footer`}>{this.$slots.footer}</div> : undefined
 
     return this.transition ? (
       <transition name="m-view-transition-footer">
@@ -135,7 +131,7 @@ export default class MView extends Mixins (
   }
 
   private RLeft () {
-    const result = this.isLeft ? <div staticClass={`${compName}-left`}>{this.$slots.left}</div> : undefined
+    const result = this.isLeft ? <div staticClass={`${this.name}-left`}>{this.$slots.left}</div> : undefined
 
     return this.transition ? (
       <transition name="m-view-transition-left">
@@ -145,7 +141,7 @@ export default class MView extends Mixins (
   }
 
   private RRight () {
-    const result = this.isRight ? <div staticClass={`${compName}-right`}>{this.$slots.right}</div> : undefined
+    const result = this.isRight ? <div staticClass={`${this.name}-right`}>{this.$slots.right}</div> : undefined
 
     return this.transition ? (
       <transition name="m-view-transition-right">
@@ -163,14 +159,14 @@ export default class MView extends Mixins (
     this.isRight = $slots.right !== undefined
 
     return (
-      <div staticClass={compName}
+      <div staticClass={this.name}
            class={classes}
            style={styles}>
         {RHeader()}
         {RLeft()}
         {RRight()}
         {RFooter()}
-        <section staticClass={`${compName}-main`}>
+        <section staticClass={`${this.name}-main`}>
           {$slots.default}
         </section>
       </div>

@@ -16,16 +16,16 @@
     "@mobov/es-helper": "^1.0.6",
     "@mobov/scss-helper": "^0.0.5",
     "vue": "^2.5.21",
-    "vue-class-component": "^6.3.2",
-    "vue-property-decorator": "^7.3.0"
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0"
   },
   "dependencies": {
     "@mobov/es-helper": "^1.0.4",
     "@mobov/scss-helper": "^0.0.5",
     "polished": "^3.2.0",
     "vue": "^2.5.21",
-    "vue-class-component": "^7.1.0",
-    "vue-property-decorator": "^8.1.1"
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

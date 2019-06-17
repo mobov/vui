@@ -13,7 +13,7 @@ export default class MAppBar extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.baseStyle,
     }
   }
 

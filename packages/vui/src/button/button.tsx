@@ -31,7 +31,7 @@ export default class MButton extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.baseStyle,
     }
   }
 

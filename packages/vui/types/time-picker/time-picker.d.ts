@@ -1,8 +1,8 @@
-import color from '../core/mixin/color';
-import elevation from '../core/mixin/elevation';
+import mixBase from '../core/mixin/base';
 import { datePickerType } from '../core/constant';
-declare const MTimePicker_base;
+declare const MTimePicker_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MTimePicker extends MTimePicker_base {
+    name: string;
     landscope: boolean;
     desync: boolean;
     value: any;
@@ -18,7 +18,25 @@ export default class MTimePicker extends MTimePicker_base {
     onConfirm(): void;
     onCancel(): void;
     onInput(val: any): void;
-    readonly styles: {};
+    readonly styles: {
+        size?: string | number | undefined;
+        height?: string | number | undefined;
+        width?: string | number | undefined;
+        margin?: string | undefined;
+        marginX?: string | undefined;
+        marginY?: string | undefined;
+        marginTop?: string | undefined;
+        marginBottom?: string | undefined;
+        marginLeft?: string | undefined;
+        marginRight?: string | undefined;
+        padding?: string | undefined;
+        paddingX?: string | undefined;
+        paddingY?: string | undefined;
+        paddingTop?: string | undefined;
+        paddingBottom?: string | undefined;
+        paddingLeft?: string | undefined;
+        paddingRight?: string | undefined;
+    };
     valueAdaptI(val: any): number;
     valueAdaptO(val: number): any;
     onValueUpdate(val: any, oldVal: any): void;

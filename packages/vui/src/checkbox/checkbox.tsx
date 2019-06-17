@@ -1,20 +1,15 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
 import MIcon from '../icon'
-import color from '../core/mixin/color'
-import size from '../core/mixin/size'
-import space from '../core/mixin/space'
-import { genColor, genFontColor, genSize } from '../core/util'
-
-const compName = 'm-checkbox'
+import mixBase from '../core/mixin/base'
 
 @Component({
   components: { MIcon }
 })
 export default class MCheckbox extends Mixins (
-  color,
-  size,
-  space
+  mixBase
 ) {
+  name = 'm-checkbox'
+
   @Prop({ type: [Array, Number, String, Boolean], default: false })
   value!: any
 
@@ -43,24 +38,18 @@ export default class MCheckbox extends Mixins (
   isBooleanValue: boolean = false
 
   get styles () {
-    const { fontColor, size, color } = this
-    const styles = {}
-
-    genFontColor(styles, compName, fontColor)
-    genColor(styles, compName, color)
-    genSize(styles, compName, size)
-
-    return styles
+    return {
+      ...this.baseStyle
+    }
   }
 
   get classes () {
     const { checked, disabled } = this
-    const classes = {
+
+    return {
       'm--checked': checked,
       'm--disabled': disabled
     }
-
-    return classes
   }
 
   get checked () {
@@ -136,16 +125,16 @@ export default class MCheckbox extends Mixins (
     }
 
     return (
-      <a staticClass={`${compName}__checkbox`}>
+      <a staticClass={`${this.name}__checkbox`}>
         <transition name='m-transition-scale'>
           {!checked ? undefined
-            : <MIcon staticClass={`${compName}__checked-icon`}
+            : <MIcon staticClass={`${this.name}__checked-icon`}
                      name={checkIcon}
                      size={size}/>
           }
         </transition>
-        <MIcon staticClass={`${compName}__uncheck-icon`} size={size} name={uncheckIcon} />
-        <div v-m-ripple staticClass={`${compName}__checkbox-wrapper`} />
+        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <div v-m-ripple staticClass={`${this.name}__checkbox-wrapper`} />
       </a>
     )
   }
@@ -153,7 +142,7 @@ export default class MCheckbox extends Mixins (
   RDefault () {
     const { $slots } = this
     return $slots.default === undefined ? undefined : (
-      <span staticClass={`${compName}__label`}>{$slots.default}</span>
+      <span staticClass={`${this.name}__label`}>{$slots.default}</span>
     )
   }
 
@@ -166,7 +155,7 @@ export default class MCheckbox extends Mixins (
     this.isBooleanValue = typeof value === 'boolean'
 
     return (
-      <div staticClass={compName}
+      <div staticClass={this.name}
            class={classes}
            style={styles}
            onClick={() => handleClick()}>

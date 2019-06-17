@@ -1,7 +1,6 @@
-import size from '../core/mixin/size';
-import elevation from '../core/mixin/elevation';
+import mixBase from '../core/mixin/base';
 import { typeHeader, typeHover, typeSelect } from './constant';
-declare const MTable_base;
+declare const MTable_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MTable extends MTable_base {
     height?: string | number;
     border?: boolean;

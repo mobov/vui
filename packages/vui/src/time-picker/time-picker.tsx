@@ -1,6 +1,5 @@
 import { Component, Prop, Emit, Provide, Mixins, Watch } from 'vue-property-decorator'
-import color from '../core/mixin/color'
-import elevation from '../core/mixin/elevation'
+import mixBase from '../core/mixin/base'
 import MTimePickerHeader from './components/header'
 import MTimePickerPanelDate from './components/panel-date'
 import MTimePickerPanelYear from './components/panel-year'
@@ -8,9 +7,6 @@ import MTimePickerPanelMonth from './components/panel-month'
 import MTimePickerPanelTime from './components/panel-time'
 import MTimePickerHandler from './components/handler'
 import { DateValueFormat, dateValueFormat, DatePickerType, datePickerType, DateValueType, dateValueType } from '../core/constant'
-import { genColor, genElevation } from '../core/util'
-
-const compName = 'm-time-picker'
 
 @Component({
   components: {
@@ -23,9 +19,10 @@ const compName = 'm-time-picker'
   }
 })
 export default class MTimePicker extends Mixins(
-  color,
-  elevation
+  mixBase
 ) {
+  name = 'm-time-picker'
+
   @Prop({ type: Boolean, default: false })
   landscope!: boolean
 
@@ -74,13 +71,9 @@ export default class MTimePicker extends Mixins(
   onInput (val: any) { }
 
   get styles () {
-    const { elevation, color } = this
-    const styles = {}
-
-    genColor(styles, compName, color)
-    genElevation(styles, compName, elevation)
-
-    return styles
+    return {
+      ...this.baseStyle
+    }
   }
 
   // 输入适配
@@ -251,12 +244,12 @@ export default class MTimePicker extends Mixins(
     const { pickerType } = this.DateStore
 
     return (
-      <div staticClass={`${compName} m--${pickerType}`}
+      <div staticClass={`${this.name} m--${pickerType}`}
            style={styles}
            class={classes}>
-        <div staticClass={`${compName}__main`}>
+        <div staticClass={`${this.name}__main`}>
           <MTimePickerHeader/>
-          <div staticClass={`${compName}-panel`}>{RPanel()}</div>
+          <div staticClass={`${this.name}-panel`}>{RPanel()}</div>
         </div>
         {RHandler()}
       </div>
