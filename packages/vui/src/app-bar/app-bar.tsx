@@ -25,10 +25,10 @@ export default class MAppBar extends Mixins (
   }
 
   render () {
-    const { $slots, classes, styles } = this
+    const { name, $slots, classes, styles } = this
 
     return (
-      <div staticClass={this.name}
+      <div staticClass={name}
            style={styles}
            class={classes}>
         {$slots.default}
