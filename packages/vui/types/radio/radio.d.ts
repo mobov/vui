@@ -1,5 +1,5 @@
 import mixBase from '../core/mixin/base';
-declare const MRadio_base;
+declare const MRadio_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MRadio extends MRadio_base {
     name: string;
     value: boolean | number | string;

@@ -151,7 +151,7 @@ export default class MView extends Mixins (
   }
 
   private render () {
-    const { $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this
+    const { name, $slots, styles, classes, RHeader, RFooter, RLeft, RRight } = this
 
     this.isHeader = $slots.header !== undefined
     this.isFooter = $slots.footer !== undefined
@@ -159,14 +159,14 @@ export default class MView extends Mixins (
     this.isRight = $slots.right !== undefined
 
     return (
-      <div staticClass={this.name}
+      <div staticClass={name}
            class={classes}
            style={styles}>
         {RHeader()}
         {RLeft()}
         {RRight()}
         {RFooter()}
-        <section staticClass={`${this.name}-main`}>
+        <section staticClass={`${name}-main`}>
           {$slots.default}
         </section>
       </div>

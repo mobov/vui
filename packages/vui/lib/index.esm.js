@@ -1355,7 +1355,8 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var $slots = this.$slots,
+      var name = this.name,
+          $slots = this.$slots,
           styles = this.styles,
           classes = this.classes,
           RHeader = this.RHeader,
@@ -1367,11 +1368,11 @@ function (_Mixins) {
       this.isLeft = $slots.left !== undefined;
       this.isRight = $slots.right !== undefined;
       return h("div", {
-        "staticClass": this.name,
+        "staticClass": name,
         "class": classes,
         "style": styles
       }, [RHeader(), RLeft(), RRight(), RFooter(), h("section", {
-        "staticClass": "".concat(this.name, "-main")
+        "staticClass": "".concat(name, "-main")
       }, [$slots.default])]);
     }
   }, {
@@ -2055,11 +2056,12 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var $slots = this.$slots,
+      var name = this.name,
+          $slots = this.$slots,
           classes = this.classes,
           styles = this.styles;
       return h("div", {
-        "staticClass": this.name,
+        "staticClass": name,
         "style": styles,
         "class": classes
       }, [$slots.default]);
@@ -2569,7 +2571,8 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var classes = this.classes,
+      var name = this.name,
+          classes = this.classes,
           styles = this.styles,
           RCheckbox = this.RCheckbox,
           RDefault = this.RDefault,
@@ -2581,7 +2584,7 @@ function (_Mixins) {
 
       this.isBooleanValue = typeof value === 'boolean';
       return h("div", {
-        "staticClass": this.name,
+        "staticClass": name,
         "class": classes,
         "style": styles,
         "on": {
@@ -3928,20 +3931,21 @@ function (_Mixins) {
     key: "render",
     value: function render() {
       var h = arguments[0];
-      var styles = this.styles,
+      var name = this.name,
+          styles = this.styles,
           classes = this.classes,
           color = this.color,
           RPanel = this.RPanel,
           RHandler = this.RHandler;
       var pickerType = this.DateStore.pickerType;
       return h("div", {
-        "staticClass": "".concat(this.name, " m--").concat(pickerType),
+        "staticClass": "".concat(name, " m--").concat(pickerType),
         "style": styles,
         "class": classes
       }, [h("div", {
-        "staticClass": "".concat(this.name, "__main")
+        "staticClass": "".concat(name, "__main")
       }, [h(MTimePickerHeader$1), h("div", {
-        "staticClass": "".concat(this.name, "-panel")
+        "staticClass": "".concat(name, "-panel")
       }, [RPanel()])]), RHandler()]);
     }
   }, {

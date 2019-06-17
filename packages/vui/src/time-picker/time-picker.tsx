@@ -240,16 +240,16 @@ export default class MTimePicker extends Mixins(
   }
 
   render () {
-    const { styles, classes, color, RPanel, RHandler } = this
+    const { name, styles, classes, color, RPanel, RHandler } = this
     const { pickerType } = this.DateStore
 
     return (
-      <div staticClass={`${this.name} m--${pickerType}`}
+      <div staticClass={`${name} m--${pickerType}`}
            style={styles}
            class={classes}>
-        <div staticClass={`${this.name}__main`}>
+        <div staticClass={`${name}__main`}>
           <MTimePickerHeader/>
-          <div staticClass={`${this.name}-panel`}>{RPanel()}</div>
+          <div staticClass={`${name}-panel`}>{RPanel()}</div>
         </div>
         {RHandler()}
       </div>

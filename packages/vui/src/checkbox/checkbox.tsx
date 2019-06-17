@@ -147,7 +147,7 @@ export default class MCheckbox extends Mixins (
   }
 
   render () {
-    const { classes, styles, RCheckbox, RDefault, handleClick, value, label } = this
+    const { name, classes, styles, RCheckbox, RDefault, handleClick, value, label } = this
 
     this.isArrayValue = value instanceof Array
     this.isArrayLabel = label instanceof Array
@@ -155,7 +155,7 @@ export default class MCheckbox extends Mixins (
     this.isBooleanValue = typeof value === 'boolean'
 
     return (
-      <div staticClass={this.name}
+      <div staticClass={name}
            class={classes}
            style={styles}
            onClick={() => handleClick()}>
