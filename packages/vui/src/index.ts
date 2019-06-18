@@ -65,7 +65,7 @@ const Mobov: MobovPlugin = {
     // console.log(Vue)
     // console.log(this)
   },
-  version: '0.2.5',
+  version: '0.2.7',
   constant
 }
 

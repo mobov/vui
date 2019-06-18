@@ -55,7 +55,7 @@ export default class MButton extends Mixins (
            style={styles}
            onClick={onClick}>
         {!icon ? undefined
-          : <MIcon name={icon} />}
+          : <MIcon value={icon} />}
         {!this.$slots.default ? undefined
           : <div class={`${name}__main`}>{this.$slots.default}</div>}
       </div>

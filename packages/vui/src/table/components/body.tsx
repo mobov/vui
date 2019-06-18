@@ -132,8 +132,8 @@ export default class TableBody extends Vue {
                }}>
             <transition name="m-transition-scale">
               {isExpanded
-                ? <MIcon name='remove' size={size}/>
-                : <MIcon name='add' size={size}/>
+                ? <MIcon value='remove' size={size}/>
+                : <MIcon value='add' size={size}/>
               }
             </transition>
           </div>

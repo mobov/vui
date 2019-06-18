@@ -20,8 +20,6 @@ $--m-avatar-size-xl: 5.5rem;
     // default
     --m-avatar-color: var(--m-color-primary);
     --m-avatar-font-color: var(--m-bg-color);
-    --m-avatar-elevation: var(--m-elevation-0);
-    --m-avatar-shape: var(--m-shape-circle);
     --m-avatar-size: var(--m-avatar-size-md);
 }
 
@@ -29,7 +27,6 @@ $--m-avatar-size-xl: 5.5rem;
  * components styles.
  */
 .m-avatar {
-    box-shadow: var(--m-avatar-elevation);
     background-color: var(--m-avatar-color);
     color: var(--m-avatar-font-color);
 

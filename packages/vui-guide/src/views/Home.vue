@@ -10,6 +10,7 @@
                :elevation="2">
       <m-button shape="circle" :elevation="0" icon="menu" />
       <m-avatar variety="outline"
+                marginLeft="10px"
                 shape="circle"
                 src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3643687533,272026720&fm=58">
         A

@@ -33,7 +33,7 @@ export default class MTimePicker extends Mixins(
   value!: any
 
   @Prop({ type: String, default: DateValueFormat.timestamp })
-  private valueFormat!: dateValueFormat
+  valueFormat!: dateValueFormat
 
   @Prop({ type: Boolean, default: false })
   ampm!: boolean
@@ -73,6 +73,13 @@ export default class MTimePicker extends Mixins(
   get styles () {
     return {
       ...this.baseStyle
+    }
+  }
+
+  get classes () {
+    return {
+      'm--landscope': this.landscope,
+      ...this.baseClass
     }
   }
 
@@ -199,14 +206,6 @@ export default class MTimePicker extends Mixins(
       const self = this.DateStore
       const outValue = this.valueAdaptO(self.value)
       this.onInput(outValue)
-    }
-  }
-
-  get classes () {
-    const { landscope } = this
-
-    return {
-      'm--landscope': landscope
     }
   }
 

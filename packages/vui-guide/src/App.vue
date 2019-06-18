@@ -15,6 +15,7 @@
                   icon="menu" />
         <m-avatar variety="outline"
                   shape="circle"
+                  :marginLeft="10"
                   src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3643687533,272026720&fm=58">
           A
         </m-avatar>

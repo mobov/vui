@@ -5,7 +5,6 @@ import TableHead from './components/head'
 import TableBody from './components/body'
 import { typeHeader,  typeHover, typeSelect }  from './constant'
 
-const compName = 'm-table'
 const SELF_KEY = '_table-key'
 
 @Component({
@@ -14,8 +13,7 @@ const SELF_KEY = '_table-key'
 export default class MTable extends Mixins (
   mixBase
 ) {
-  @Prop({ type: [String, Number] })
-  height?: string | number
+  name = 'm-table'
 
   @Prop({ type: Boolean, default: false })
   border?: boolean
@@ -235,15 +233,27 @@ export default class MTable extends Mixins (
     return temp
   }
 
+  get styles () {
+    return {
+      ...this.baseStyle
+    }
+  }
+
+  get classes () {
+    return {
+      ...this.baseClass,
+    }
+  }
+
   render () {
-    const { height, border, header, size, elevation, select, expand, rowSelect, rowExpand } = this
+    const { name, height, classes, styles, border, header, size, select, expand, rowSelect, rowExpand } = this
     const noHeader = header === typeHeader.none
 
     return (
-      <div staticClass={compName}
-             size={size}
-             elevation={elevation}>
-        <section staticClass={`${compName}__wrapper`}>
+      <div staticClass={name}
+           style={styles}
+           class={classes}>
+        <section staticClass={`${name}__wrapper`}>
           {noHeader ? undefined : (
             <TableHead ref={'head'}
                        size={size}

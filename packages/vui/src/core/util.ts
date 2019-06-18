@@ -128,20 +128,6 @@ export function genSize (styles: any = {}, compName: string, val?: number | stri
 }
 
 /**
- * 计算阴影
- * @param styles
- * @param compName
- * @param val
- */
-export function genElevation (styles: any = {}, compName: string, val?: number | undefined): void {
-  if (val !== undefined) {
-    if (ELEVATION.includes(val)) {
-      styles[`--${compName}-elevation`] = `var(--m-elevation-${val})`
-    }
-  }
-}
-
-/**
  *
  * @param styles
  * @param compName
@@ -155,6 +141,19 @@ export function genSpace (styles: any, compName: string, val?: number | string):
       styles[`--${compName}-space`] = `var(--m-space-${val})`
     } else {
       styles[`--${compName}-space`] = `${val}`
+    }
+  }
+}
+
+/**
+ * 计算阴影
+ * @param classes
+ * @param val
+ */
+export function genElevation (classes: any = {}, val?: number | undefined): void {
+  if (val !== undefined) {
+    if (ELEVATION.includes(val)) {
+      classes[`m-elevation-${val}`] = true
     }
   }
 }

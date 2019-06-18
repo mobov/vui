@@ -17,10 +17,7 @@ $--m-app-bar-size-xl: 6.5rem;
     // default
     --m-app-bar-color: var(--m-color-primary);
     --m-app-bar-font-color: var(--m-bg-color);
-    --m-app-bar-elevation: var(--m-elevation-2);
-
     --m-app-bar-size: var(--m-app-bar-size-md);
-
     --m-app-bar-position: relative;
 }
 
@@ -28,11 +25,9 @@ $--m-app-bar-size-xl: 6.5rem;
  * components styles.
  */
 .m-app-bar {
-    box-shadow: var(--m-app-bar-elevation);
     height: var(--m-app-bar-size);
     color: var(--m-app-bar-font-color);
     background-color: var(--m-app-bar-color);
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -53,5 +48,9 @@ $--m-app-bar-size-xl: 6.5rem;
         color: var(--m-app-bar-color);
         background-color: var(--m-bg-color);
         border: 2px solid var(--m-app-bar-color);
+    }
+    &.m--horizontal {
+        width: var(--m-app-bar-size);
+        height: 100%;
     }
 }

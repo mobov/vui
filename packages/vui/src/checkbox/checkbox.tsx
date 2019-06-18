@@ -129,11 +129,11 @@ export default class MCheckbox extends Mixins (
         <transition name='m-transition-scale'>
           {!checked ? undefined
             : <MIcon staticClass={`${this.name}__checked-icon`}
-                     name={checkIcon}
+                     value={checkIcon}
                      size={size}/>
           }
         </transition>
-        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} value={uncheckIcon} />
         <div v-m-ripple staticClass={`${this.name}__checkbox-wrapper`} />
       </a>
     )

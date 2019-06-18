@@ -37,6 +37,7 @@ export default class MChip extends Mixins (
   get classes () {
     const { closeable, closeover } = this
     return {
+      ...this.baseClass,
       ...this.shapeClass,
       ...this.varietyClass,
       'm--closeable': closeable,

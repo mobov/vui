@@ -2,7 +2,7 @@ import mixBase from '../core/mixin/base';
 import { typeHeader, typeHover, typeSelect } from './constant';
 declare const MTable_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MTable extends MTable_base {
-    height?: string | number;
+    name: string;
     border?: boolean;
     data: any[];
     keyField?: string;
@@ -31,6 +31,26 @@ export default class MTable extends MTable_base {
     TableStore: any;
     readonly TableCols: any[];
     dataAdaptI(val?: any[]): any[];
+    readonly styles: {
+        size?: string | number | undefined;
+        height?: string | number | undefined;
+        width?: string | number | undefined;
+        margin?: string | undefined;
+        marginX?: string | undefined;
+        marginY?: string | undefined;
+        marginTop?: string | undefined;
+        marginBottom?: string | undefined;
+        marginLeft?: string | undefined;
+        marginRight?: string | undefined;
+        padding?: string | undefined;
+        paddingX?: string | undefined;
+        paddingY?: string | undefined;
+        paddingTop?: string | undefined;
+        paddingBottom?: string | undefined;
+        paddingLeft?: string | undefined;
+        paddingRight?: string | undefined;
+    };
+    readonly classes: {};
     render(): JSX.Element;
 }
 export {};

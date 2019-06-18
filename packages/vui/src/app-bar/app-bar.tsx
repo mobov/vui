@@ -2,6 +2,7 @@ import { Component, Mixins } from 'vue-property-decorator'
 import mixBase from '../core/mixin/base'
 import mixVariety from '../core/mixin/variety'
 import mixShape from '../core/mixin/shape'
+import mixElevation from '../core/mixin/elevation'
 
 @Component
 export default class MAppBar extends Mixins (
@@ -19,6 +20,7 @@ export default class MAppBar extends Mixins (
 
   get classes () {
     return {
+      ...this.baseClass,
       ...this.varietyClass,
       ...this.shapeClass
     }

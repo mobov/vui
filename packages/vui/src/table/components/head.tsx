@@ -70,7 +70,7 @@ export default class TableHead extends Vue {
         // todo:错误处理
         content = [ propsData.title || children ]
         if (propsData.sortable !== undefined) {
-          content.push(<MIcon size={14} name={'arrow_upward'} />)
+          content.push(<MIcon size={14} value={'arrow_upward'} />)
         }
       }
 

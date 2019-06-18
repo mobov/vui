@@ -47,19 +47,18 @@ export declare function genFontColor(styles: any, compName: string, val: string 
  */
 export declare function genSize(styles: any, compName: string, val?: number | string | undefined): void;
 /**
- * 计算阴影
- * @param styles
- * @param compName
- * @param val
- */
-export declare function genElevation(styles: any, compName: string, val?: number | undefined): void;
-/**
  *
  * @param styles
  * @param compName
  * @param val
  */
 export declare function genSpace(styles: any, compName: string, val?: number | string): void;
+/**
+ * 计算阴影
+ * @param classes
+ * @param val
+ */
+export declare function genElevation(classes?: any, val?: number | undefined): void;
 /**
  * 计算形状
  * @param classes

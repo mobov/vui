@@ -39,6 +39,7 @@ export default class MRadio extends Mixins (
     const { checked, disabled } = this
 
     return {
+      ...this.baseClass,
       'm--checked': checked,
       'm--disabled': disabled
     }
@@ -63,11 +64,11 @@ export default class MRadio extends Mixins (
         <transition name='m--transition-scale'>
           {!checked ? undefined : (
             <MIcon staticClass={`${this.name}__checked-icon`}
-                    name={checkedIcon}
+                    value={checkedIcon}
                     size={size}/>
           )}
         </transition>
-        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} name={uncheckIcon} />
+        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} value={uncheckIcon} />
         <div v-m-ripple staticClass={`${this.name}__radio-wrapper`} />
       </a>
     )

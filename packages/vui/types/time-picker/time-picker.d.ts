@@ -1,12 +1,12 @@
 import mixBase from '../core/mixin/base';
-import { datePickerType } from '../core/constant';
+import { dateValueFormat, datePickerType } from '../core/constant';
 declare const MTimePicker_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MTimePicker extends MTimePicker_base {
     name: string;
     landscope: boolean;
     desync: boolean;
     value: any;
-    private valueFormat;
+    valueFormat: dateValueFormat;
     ampm: boolean;
     hourStep: number;
     minuteStep: number;
@@ -37,15 +37,15 @@ export default class MTimePicker extends MTimePicker_base {
         paddingLeft?: string | undefined;
         paddingRight?: string | undefined;
     };
+    readonly classes: {
+        'm--landscope': boolean;
+    };
     valueAdaptI(val: any): number;
     valueAdaptO(val: number): any;
     onValueUpdate(val: any, oldVal: any): void;
     onAMPMUpdate(val: any, oldVal: any): void;
     onPickerTypeChange(val: any): void;
     DateStore: any;
-    readonly classes: {
-        'm--landscope': boolean;
-    };
     RPanel(): JSX.Element;
     RHandler(): JSX.Element | undefined;
     render(): JSX.Element;

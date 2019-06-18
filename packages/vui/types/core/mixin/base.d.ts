@@ -1,53 +1,9 @@
-import { Vue } from 'vue-property-decorator';
-import { color, elevation, size } from '../constant';
-declare type SizeStyles = {
-    size?: size | string | number;
-    height?: string | number;
-    width?: string | number;
-};
-declare type SpaceSize = size | string | number | undefined;
-declare type SpaceStyles = {
-    margin?: string;
-    marginX?: string;
-    marginY?: string;
-    marginTop?: string;
-    marginBottom?: string;
-    marginLeft?: string;
-    marginRight?: string;
-    padding?: string;
-    paddingX?: string;
-    paddingY?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
-    paddingLeft?: string;
-    paddingRight?: string;
-};
-export default class BaseMixin extends Vue {
-    name: string;
-    size?: size | string | number;
-    height?: string | number;
-    width?: string | number;
-    fontColor: color | undefined;
-    color: color | undefined;
-    elevation: elevation | undefined;
-    marginLeft: SpaceSize;
-    marginRight: SpaceSize;
-    marginTop: SpaceSize;
-    marginBottom: SpaceSize;
-    marginX: SpaceSize;
-    marginY: SpaceSize;
-    margin: SpaceSize;
-    paddingLeft: SpaceSize;
-    paddingRight: SpaceSize;
-    paddingTop: SpaceSize;
-    paddingBottom: SpaceSize;
-    paddingX: SpaceSize;
-    paddingY: SpaceSize;
-    padding: SpaceSize;
-    readonly sizeStyle: SizeStyles;
-    readonly colorStyle: {};
-    readonly elevationStyle: {};
-    readonly spaceStyle: SpaceStyles;
+import mixColor from './color';
+import mixSize from './size';
+import mixSpace from './space';
+import mixElevation from './elevation';
+declare const BaseMixin_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSize & mixSpace & mixElevation>;
+export default class BaseMixin extends BaseMixin_base {
     readonly baseStyle: {
         size?: string | number | undefined;
         height?: string | number | undefined;
@@ -67,5 +23,6 @@ export default class BaseMixin extends Vue {
         paddingLeft?: string | undefined;
         paddingRight?: string | undefined;
     };
+    readonly baseClass: {};
 }
 export {};

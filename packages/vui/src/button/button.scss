@@ -19,9 +19,6 @@ $--m-button-size-xl: 4rem;
   --m-button-color: var(--m-color-primary);
   --m-button-hover-color: var(--m-color-primary);
   --m-button-font-color: var(--m-bg-color);
-  --m-button-elevation: var(--m-elevation-2);
-  --m-button-shape: var(--m-shape-corner);
-
   --m-button-size: var(--m-button-size-md);
   --m-button-border-size: .2rem;
 }
@@ -40,8 +37,7 @@ $--m-button-size-xl: 4rem;
   height: var(--m-button-size);
   min-width: var(--m-button-size);
   //margin: .5em;
-  border-radius: var(--m-button-shape);
-  box-shadow: var(--m-button-elevation);
+  border-radius: var(--m-shape-corner);
   border: none;
   padding: var(--m-button-border-size);
   display: inline-flex;
@@ -62,8 +58,9 @@ $--m-button-size-xl: 4rem;
   }
     // hover
   &:hover {
-    background-color: var(--m-button-hover-color);
-    border-color: var(--m-button-hover-color);
+    //background-color: var(--m-button-hover-color);
+    //border-color: var(--m-button-hover-color);
+    opacity: .8;
   }
 
   // variety

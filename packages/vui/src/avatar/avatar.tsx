@@ -25,6 +25,7 @@ export default class MAvatar extends Mixins (
   get classes () {
     const { status } = this
     return {
+      ...this.baseClass,
       ...this.shapeClass,
       ...this.varietyClass,
       [`m--status-${Status[status]}`]: true
