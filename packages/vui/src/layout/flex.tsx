@@ -1,10 +1,12 @@
 import { Component, Vue, Prop, Mixins } from 'vue-property-decorator'
 import mixBase from '../core/mixin/base'
+import mixShape from '../core/mixin/shape'
 import { FlexAlign, flexAlign, FlexJustify, flexJustify, FlexWrap, flexWrap } from '../core/constant'
 
 @Component
 export default class MFlex extends Mixins (
-  mixBase
+  mixBase,
+  mixShape
 ) {
   name = 'm-flex'
 

@@ -66,7 +66,7 @@ export default class MChip extends Mixins (
       (closeable || closeover)
         ? <MIcon staticClass={`${name}__close`}
                  onClick={ () => onClose }
-                 name='cancel' />
+                 value='cancel' />
         : undefined
     )
   }

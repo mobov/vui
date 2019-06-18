@@ -38,6 +38,7 @@ export default class MButton extends Mixins (
   get classes () {
     const { block, disabled } = this
     return {
+      ...this.baseClass,
       ...this.shapeClass,
       ...this.varietyClass,
       'm--block': block,

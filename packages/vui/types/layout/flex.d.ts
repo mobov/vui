@@ -1,6 +1,7 @@
 import mixBase from '../core/mixin/base';
+import mixShape from '../core/mixin/shape';
 import { FlexAlign, FlexJustify, FlexWrap } from '../core/constant';
-declare const MFlex_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+declare const MFlex_base: import("vue-class-component/lib/declarations").VueClass<mixBase & mixShape>;
 export default class MFlex extends MFlex_base {
     name: string;
     id?: string;
