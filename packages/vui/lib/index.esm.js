@@ -1980,13 +1980,13 @@ function (_Mixins) {
   }, {
     key: "classes",
     get: function get() {
-      var _ref;
+      var _Object$assign;
 
       var wrap = this.wrap,
           justify = this.justify,
           align = this.align,
           block = this.block;
-      return _ref = {}, _defineProperty(_ref, "m--wrap-".concat(wrap), true), _defineProperty(_ref, "m--justify-".concat(justify), true), _defineProperty(_ref, "m--align-".concat(align), true), _defineProperty(_ref, "m--block", block), _ref;
+      return Object.assign({}, this.baseClass, (_Object$assign = {}, _defineProperty(_Object$assign, "m--wrap-".concat(wrap), true), _defineProperty(_Object$assign, "m--justify-".concat(justify), true), _defineProperty(_Object$assign, "m--align-".concat(align), true), _defineProperty(_Object$assign, "m--block", block), _Object$assign));
     }
   }]);
 
@@ -5784,7 +5784,7 @@ var Mobov = {
     window.Mobov = this; // console.log(Vue)
     // console.log(this)
   },
-  version: '0.2.7',
+  version: '0.2.8',
   constant: constant
 };
 

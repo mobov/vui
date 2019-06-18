@@ -29,7 +29,6 @@ export default class MFlex extends MFlex_base {
         paddingRight?: string | undefined;
     };
     readonly classes: {
-        [x: string]: boolean;
         [`m--block`]: boolean;
     };
     render(): JSX.Element;

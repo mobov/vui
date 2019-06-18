@@ -35,6 +35,7 @@ export default class MFlex extends Mixins (
   get classes () {
     const { wrap, justify, align, block } = this
     return {
+      ...this.baseClass,
       [`m--wrap-${wrap}`] : true,
       [`m--justify-${justify}`] : true,
       [`m--align-${align}`] : true,
