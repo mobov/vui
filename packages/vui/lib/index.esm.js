@@ -5805,7 +5805,7 @@ var Mobov = {
     window.Mobov = this; // console.log(Vue)
     // console.log(this)
   },
-  version: '0.2.10',
+  version: '0.2.11',
   constant: constant
 };
 
