@@ -21,10 +21,15 @@ export declare function isCSSVar(val: string | number): boolean;
 export declare function getCSSVal(val: string): string;
 /**
  * 获取真实渲染样式尺寸
- * @param value
+ * @param val
  * @return {string}
  */
-export declare function getStyleSize(value: string | number): string;
+export declare function getStyleSize(val: string | number): string;
+/**
+ * 获取真实渲染space尺寸
+ * @param val
+ */
+export declare function getStyleSpace(val?: number | string): string;
 /**
  * 获取计算颜色样式值
  * @param styles

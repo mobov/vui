@@ -1,6 +1,6 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { size } from '../constant'
-import { genSize, getStyleSize } from '../util'
+import { getStyleSpace } from '../util'
 
 type SpaceSize = size | string | number | undefined
 
@@ -71,50 +71,50 @@ export default class SpaceMixin extends Vue {
     const styles: SpaceStyles = {}
 
     if (margin !== undefined) {
-      styles.margin = getStyleSize(margin)
+      styles.margin = getStyleSpace(margin)
     }
     if (marginX !== undefined) {
-      styles.marginLeft = getStyleSize(marginX)
-      styles.marginRight = getStyleSize(marginX)
+      styles.marginLeft = getStyleSpace(marginX)
+      styles.marginRight = getStyleSpace(marginX)
     }
     if (marginY !== undefined) {
-      styles.marginTop = getStyleSize(marginY)
-      styles.marginBottom = getStyleSize(marginY)
+      styles.marginTop = getStyleSpace(marginY)
+      styles.marginBottom = getStyleSpace(marginY)
     }
     if (marginTop !== undefined) {
-      styles.marginTop = getStyleSize(marginTop)
+      styles.marginTop = getStyleSpace(marginTop)
     }
     if (marginBottom !== undefined) {
-      styles.marginBottom = getStyleSize(marginBottom)
+      styles.marginBottom = getStyleSpace(marginBottom)
     }
     if (marginLeft !== undefined) {
-      styles.marginLeft = getStyleSize(marginLeft)
+      styles.marginLeft = getStyleSpace(marginLeft)
     }
     if (marginRight !== undefined) {
-      styles.marginRight = getStyleSize(marginRight)
+      styles.marginRight = getStyleSpace(marginRight)
     }
     if (padding !== undefined) {
-      styles.padding = getStyleSize(padding)
+      styles.padding = getStyleSpace(padding)
     }
     if (paddingX !== undefined) {
-      styles.paddingLeft = getStyleSize(paddingX)
-      styles.paddingRight = getStyleSize(paddingX)
+      styles.paddingLeft = getStyleSpace(paddingX)
+      styles.paddingRight = getStyleSpace(paddingX)
     }
     if (paddingY !== undefined) {
-      styles.paddingTop = getStyleSize(paddingY)
-      styles.paddingBottom = getStyleSize(paddingY)
+      styles.paddingTop = getStyleSpace(paddingY)
+      styles.paddingBottom = getStyleSpace(paddingY)
     }
     if (paddingTop !== undefined) {
-      styles.paddingTop = getStyleSize(paddingTop)
+      styles.paddingTop = getStyleSpace(paddingTop)
     }
     if (paddingBottom !== undefined) {
-      styles.paddingBottom = getStyleSize(paddingBottom)
+      styles.paddingBottom = getStyleSpace(paddingBottom)
     }
     if (paddingLeft !== undefined) {
-      styles.paddingLeft = getStyleSize(paddingLeft)
+      styles.paddingLeft = getStyleSpace(paddingLeft)
     }
     if (paddingRight !== undefined) {
-      styles.paddingRight = getStyleSize(paddingRight)
+      styles.paddingRight = getStyleSpace(paddingRight)
     }
 
     return styles

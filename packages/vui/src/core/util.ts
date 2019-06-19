@@ -43,14 +43,33 @@ export function getCSSVal (val: string): string {
 
 /**
  * 获取真实渲染样式尺寸
- * @param value
+ * @param val
  * @return {string}
  */
-export function getStyleSize (value: string | number): string {
-  return (typeof value !== 'number' && isStyleUnit(value))
-    ? value
-    : `${value}px`
+export function getStyleSize (val: string | number): string {
+  return (typeof val !== 'number' && isStyleUnit(val))
+    ? val
+    : `${val}px`
 }
+
+/**
+ * 获取真实渲染space尺寸
+ * @param val
+ */
+export function getStyleSpace (val?: number | string): string {
+  if (val !== undefined) {
+    if (typeof val === 'number') {
+      return `${val}px`
+    } else if (BREAKPOINT.includes(val)) {
+      return `var(--m-space-${val})`
+    } else {
+      return `${val}`
+    }
+  } else {
+    return val || ''
+  }
+}
+
 /**
  * 获取有效css color属性值
  * @param {string} val

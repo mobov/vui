@@ -233,7 +233,7 @@ function () {
 
 new Buffer();
 
-var Elevation = ['none', '(0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12))', '(0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12))', '(0 3px 3px -2px rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12))', '(0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12))', '(0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px 0 rgba(0,0,0,.14),0 1px 14px 0 rgba(0,0,0,.12))', '(0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12))', '(0 4px 5px -2px rgba(0,0,0,.2),0 7px 10px 1px rgba(0,0,0,.14),0 2px 16px 1px rgba(0,0,0,.12))', '(0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12))', '(0 5px 6px -3px rgba(0,0,0,.2),0 9px 12px 1px rgba(0,0,0,.14),0 3px 16px 2px rgba(0,0,0,.12))', '(0 6px 6px -3px rgba(0,0,0,.2),0 10px 14px 1px rgba(0,0,0,.14),0 4px 18px 3px rgba(0,0,0,.12))', '(0 6px 7px -4px rgba(0,0,0,.2),0 11px 15px 1px rgba(0,0,0,.14),0 4px 20px 3px rgba(0,0,0,.12))', '(0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12))', '(0 7px 8px -4px rgba(0,0,0,.2),0 13px 19px 2px rgba(0,0,0,.14),0 5px 24px 4px rgba(0,0,0,.12))', '(0 7px 9px -4px rgba(0,0,0,.2),0 14px 21px 2px rgba(0,0,0,.14),0 5px 26px 4px rgba(0,0,0,.12))', '(0 8px 9px -5px rgba(0,0,0,.2),0 15px 22px 2px rgba(0,0,0,.14),0 6px 28px 5px rgba(0,0,0,.12))', '(0 8px 10px -5px rgba(0,0,0,.2),0 16px 24px 2px rgba(0,0,0,.14),0 6px 30px 5px rgba(0,0,0,.12))', '(0 8px 11px -5px rgba(0,0,0,.2),0 17px 26px 2px rgba(0,0,0,.14),0 6px 32px 5px rgba(0,0,0,.12))', '(0 9px 11px -5px rgba(0,0,0,.2),0 18px 28px 2px rgba(0,0,0,.14),0 7px 34px 6px rgba(0,0,0,.12))', '(0 9px 12px -6px rgba(0,0,0,.2),0 19px 29px 2px rgba(0,0,0,.14),0 7px 36px 6px rgba(0,0,0,.12))', '(0 10px 13px -6px rgba(0,0,0,.2),0 20px 31px 3px rgba(0,0,0,.14),0 8px 38px 7px rgba(0,0,0,.12))', '(0 10px 13px -6px rgba(0,0,0,.2),0 21px 33px 3px rgba(0,0,0,.14),0 8px 40px 7px rgba(0,0,0,.12))', '(0 10px 14px -6px rgba(0,0,0,.2),0 22px 35px 3px rgba(0,0,0,.14),0 8px 42px 7px rgba(0,0,0,.12))', '(0 11px 14px -7px rgba(0,0,0,.2),0 23px 36px 3px rgba(0,0,0,.14),0 9px 44px 8px rgba(0,0,0,.12))', '(0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12))'];
+var Elevation = ['none', '0 0 2px 1px rgba(0,0,0,.1)', '0 2px 10px 1px rgba(0,0,0,.12)', '0 2px 12px 2px rgba(0,0,0,.13)', '0 2px 14px 3px rgba(0,0,0,.14)', '0 2px 16px 4px rgba(0,0,0,.15)'];
 
 var Palette = {
   red_50: '#ffebee',
@@ -690,12 +690,30 @@ var constant = /*#__PURE__*/Object.freeze({
 
 /**
  * 获取真实渲染样式尺寸
- * @param value
+ * @param val
  * @return {string}
  */
 
-function getStyleSize(value) {
-  return typeof value !== 'number' && isStyleUnit(value) ? value : "".concat(value, "px");
+function getStyleSize(val) {
+  return typeof val !== 'number' && isStyleUnit(val) ? val : "".concat(val, "px");
+}
+/**
+ * 获取真实渲染space尺寸
+ * @param val
+ */
+
+function getStyleSpace(val) {
+  if (val !== undefined) {
+    if (typeof val === 'number') {
+      return "".concat(val, "px");
+    } else if (BREAKPOINT.includes(val)) {
+      return "var(--m-space-".concat(val, ")");
+    } else {
+      return "".concat(val);
+    }
+  } else {
+    return val || '';
+  }
 }
 /**
  * 获取计算颜色样式值
@@ -1172,63 +1190,63 @@ function (_Vue) {
       var styles = {};
 
       if (margin !== undefined) {
-        styles.margin = getStyleSize(margin);
+        styles.margin = getStyleSpace(margin);
       }
 
       if (marginX !== undefined) {
-        styles.marginLeft = getStyleSize(marginX);
-        styles.marginRight = getStyleSize(marginX);
+        styles.marginLeft = getStyleSpace(marginX);
+        styles.marginRight = getStyleSpace(marginX);
       }
 
       if (marginY !== undefined) {
-        styles.marginTop = getStyleSize(marginY);
-        styles.marginBottom = getStyleSize(marginY);
+        styles.marginTop = getStyleSpace(marginY);
+        styles.marginBottom = getStyleSpace(marginY);
       }
 
       if (marginTop !== undefined) {
-        styles.marginTop = getStyleSize(marginTop);
+        styles.marginTop = getStyleSpace(marginTop);
       }
 
       if (marginBottom !== undefined) {
-        styles.marginBottom = getStyleSize(marginBottom);
+        styles.marginBottom = getStyleSpace(marginBottom);
       }
 
       if (marginLeft !== undefined) {
-        styles.marginLeft = getStyleSize(marginLeft);
+        styles.marginLeft = getStyleSpace(marginLeft);
       }
 
       if (marginRight !== undefined) {
-        styles.marginRight = getStyleSize(marginRight);
+        styles.marginRight = getStyleSpace(marginRight);
       }
 
       if (padding !== undefined) {
-        styles.padding = getStyleSize(padding);
+        styles.padding = getStyleSpace(padding);
       }
 
       if (paddingX !== undefined) {
-        styles.paddingLeft = getStyleSize(paddingX);
-        styles.paddingRight = getStyleSize(paddingX);
+        styles.paddingLeft = getStyleSpace(paddingX);
+        styles.paddingRight = getStyleSpace(paddingX);
       }
 
       if (paddingY !== undefined) {
-        styles.paddingTop = getStyleSize(paddingY);
-        styles.paddingBottom = getStyleSize(paddingY);
+        styles.paddingTop = getStyleSpace(paddingY);
+        styles.paddingBottom = getStyleSpace(paddingY);
       }
 
       if (paddingTop !== undefined) {
-        styles.paddingTop = getStyleSize(paddingTop);
+        styles.paddingTop = getStyleSpace(paddingTop);
       }
 
       if (paddingBottom !== undefined) {
-        styles.paddingBottom = getStyleSize(paddingBottom);
+        styles.paddingBottom = getStyleSpace(paddingBottom);
       }
 
       if (paddingLeft !== undefined) {
-        styles.paddingLeft = getStyleSize(paddingLeft);
+        styles.paddingLeft = getStyleSpace(paddingLeft);
       }
 
       if (paddingRight !== undefined) {
-        styles.paddingRight = getStyleSize(paddingRight);
+        styles.paddingRight = getStyleSpace(paddingRight);
       }
 
       return styles;
@@ -2196,7 +2214,7 @@ MAppBar$1.install = function (Vue) {
   Vue.component(MAppBar$1.name, MAppBar$1);
 };
 
-var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: none;\n  padding: var(--m-button-border-size);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    vertical-align: middle; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.m-button__main {\n  margin: 0 calc(var(--m-button-size) / 4); }\n";
+var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: none;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  line-height: 1;\n  -webkit-transition: all ease .3s;\n  transition: all ease .3s; }\n  .m-button > * {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n";
 styleInject(css$e);
 
 var MButton =

@@ -39,7 +39,7 @@ $--m-button-size-xl: 4rem;
   //margin: .5em;
   border-radius: var(--m-shape-corner);
   border: none;
-  padding: var(--m-button-border-size);
+  //padding: var(--m-button-border-size);
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
@@ -54,7 +54,9 @@ $--m-button-size-xl: 4rem;
   //  margin: 0 calc(var(--m-button-size) / 2);
   //}
   > * {
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    //vertical-align: middle;
   }
     // hover
   &:hover {
@@ -102,9 +104,6 @@ $--m-button-size-xl: 4rem;
   }
 }
 
-.m-button__icon {
-
-}
 .m-button__main {
-  margin: 0 calc(var(--m-button-size) / 4);
+  //margin: 0 calc(var(--m-button-size) / 4);
 }

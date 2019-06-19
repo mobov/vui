@@ -1,6 +1,6 @@
 //@import "~@mobov/scss-helper";
 
-$--Elevation: (
+$--Elevations: (
     0: none,
     1: 0 0 2px 1px rgba(0,0,0,.1),
     2: 0 2px 10px 1px rgba(0,0,0,.12),
@@ -14,14 +14,14 @@ $--Elevation: (
  */
 html {
     // elevation
-    @each $index, $elevation in $--Elevation {
+    @each $index, $elevation in $--Elevations {
         --m-elevation-#{$index}: #{$elevation};
     }
 }
 /**
  * common modifier class output.
  */
-@each $index, $elevation in $--Elevation {
+@each $index, $elevation in $--Elevations {
     .m-elevation-#{$index} {
         box-shadow: #{$elevation};
     }

@@ -1,21 +1,34 @@
 <template>
   <example-box>
-    <m-button :color="PropsData.color"
-              :elevation="PropsData.elevation"
-              :shape="PropsData.shape"
-              :variety="PropsData.variety"
-              :size="PropsData.size"
-              class="m-mx-md">
-      just we
-    </m-button>
-    <m-button :color="PropsData.color"
-              :elevation="PropsData.elevation"
-              :shape="PropsData.shape"
-              :variety="PropsData.variety"
-              :size="PropsData.size"
-              class="m-mx-md">
-      just we
-    </m-button>
+    <m-flex>
+      <m-button :color="PropsData.color"
+                :elevation="PropsData.elevation"
+                :shape="PropsData.shape"
+                :variety="PropsData.variety"
+                :size="PropsData.size"
+                paddingX="sm"
+                marginRight="sm">
+        just we
+      </m-button>
+      <m-button :color="PropsData.color"
+                :elevation="PropsData.elevation"
+                :shape="PropsData.shape"
+                :variety="PropsData.variety"
+                :size="PropsData.size"
+                paddingX="sm"
+                marginRight="sm">
+        <m-icon size="16" value="menu" />
+      </m-button>
+      <m-button :color="PropsData.color"
+                :elevation="PropsData.elevation"
+                :shape="PropsData.shape"
+                :variety="PropsData.variety"
+                :size="PropsData.size"
+                paddingX="sm"
+                marginRight="sm">
+        just we
+      </m-button>
+    </m-flex>
     <m-row slot="handler"
            class="m-my-md"
            align="center"
