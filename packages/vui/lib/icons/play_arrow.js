@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"play_arrow": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"
 		]
 	}
-})
+}
   

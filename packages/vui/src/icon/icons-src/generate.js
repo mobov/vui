@@ -48,16 +48,22 @@ fileEntries.forEach((fileName, index) => {
       return temp
     })()
   }
- // let buffer = `${JSON.stringify(svgData)}`
-  // fs.writeFile(path.resolve(__dirname, `${outputDir + name}.json`), buffer, (err) => { if (err) throw err })
   let buffer = `/* eslint-disable */
-import { register } from '../icon'
-
-register(${JSON.stringify(svgData, null, '\t')})
+  export default ${JSON.stringify(svgData, null, '\t')}
   `
-   fs.writeFile(path.resolve(__dirname, `${outputDir + name}.ts`), buffer, (err) => { if (err) throw err })
+  fs.writeFile(path.resolve(__dirname, `${outputDir + name}.ts`), buffer, (err) => { if (err) throw err })
   // collectBuffers += `export { default as MIcon_${name} } from './${name}.js'\n`
 })
+ // let buffer = `${JSON.stringify(svgData)}`
+  // fs.writeFile(path.resolve(__dirname, `${outputDir + name}.json`), buffer, (err) => { if (err) throw err })
+//   let buffer = `/* eslint-disable */
+// import { register } from '../icon'
+//
+// register(${JSON.stringify(svgData, null, '\t')})
+//   `
+//    fs.writeFile(path.resolve(__dirname, `${outputDir + name}.ts`), buffer, (err) => { if (err) throw err })
+//   // collectBuffers += `export { default as MIcon_${name} } from './${name}.js'\n`
+// })
 
 // svgData = JSON.stringify(svgData, null, 1)
 // fs.writeFile(path.resolve(__dirname, `${outputDir}index.js`), collectBuffers, (err) => { if (err) throw err })

@@ -18,13 +18,13 @@ import {
 import * as components from './components'
 import * as directives from './directives'
 import * as constant from './core/constant'
-import './icon/presets'
 
-export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<string, ComponentOrPack> }
+// export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<string, ComponentOrPack> }
 
 export interface MobovUseOptions {
-  components?: Record<string, ComponentOrPack>
-  directives?: Record<string, ComponentOrPack>
+  components?: Record<string, Component>
+  directives?: Record<string, Component>
+  icons?: Record<string, any>
 }
 
 export interface MobovPlugin {
@@ -54,17 +54,19 @@ const Mobov: MobovPlugin = {
     // 注册组件
     const componentsList = opts.components || components
     const directivesList = opts.directives || directives
+    const iconsList = opts.icons || {}
     Object.values(componentsList).forEach(item => {
       Vue.use(item)
     })
     Object.values(directivesList).forEach(item => {
       Vue.use(item)
     })
+    Object.values(iconsList).forEach(item => {
+      components.MIcon.register(item)
+    })
 
     // 挂载根组件
     window.Mobov = this
-    // console.log(Vue)
-    // console.log(this)
   },
   version: '0.2.12',
   constant

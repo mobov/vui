@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"call_made": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M9 5.016h9.984v9.984h-1.969v-6.609l-11.625 11.625-1.406-1.406 11.625-11.625h-6.609v-1.969z"
 		]
 	}
-})
+}
   

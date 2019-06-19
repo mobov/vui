@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"view_column": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M15.984 5.016h5.016v12.984h-5.016v-12.984zM3.984 18v-12.984h5.016v12.984h-5.016zM9.984 18v-12.984h5.016v12.984h-5.016z"
 		]
 	}
-})
+}
   

@@ -12,6 +12,10 @@
                 :color="PropsData.color"
                 :elevation="0"
                 icon="menu" />
+      <MButton shape="circle"
+               :color="PropsData.color"
+               :elevation="0"
+               icon="adjust" />
     </MAppBar>
     <MRow slot="handler"
            class="m-my-md"
@@ -35,11 +39,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Mobov, { MAppBar } from '@mobov/vui'
+import adjust from '@mobov/vui/lib/icons/adjust'
+import Mobov, { MAppBar, MIcon } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'
 import Props from './props'
 const { COLOR } = Mobov.constant
+
+MIcon.register(adjust)
 
 export default Vue.extend({
   name: 'ExampleAppBar',

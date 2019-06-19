@@ -1,3 +1,2 @@
-import MIcon, { register } from './icon';
+import MIcon from './icon';
 export default MIcon;
-export { register };

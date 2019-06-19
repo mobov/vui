@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"tablet": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M18.984 18v-12h-13.969v12h13.969zM21 3.984c1.078 0 2.016 0.938 2.016 2.016l-0.047 12c0 1.078-0.891 2.016-1.969 2.016h-18c-1.078 0-2.016-0.938-2.016-2.016v-12c0-1.078 0.938-2.016 2.016-2.016h18z"
 		]
 	}
-})
+}
   

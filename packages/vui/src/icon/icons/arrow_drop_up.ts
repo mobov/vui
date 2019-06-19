@@ -1,7 +1,5 @@
 /* eslint-disable */
-import { register } from '../icon'
-
-register({
+  export default {
 	"arrow_drop_up": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M6.984 14.016l5.016-5.016 5.016 5.016h-10.031z"
 		]
 	}
-})
+}
   

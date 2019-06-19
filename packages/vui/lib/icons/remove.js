@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"remove": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M18.984 12.984h-13.969v-1.969h13.969v1.969z"
 		]
 	}
-})
+}
   

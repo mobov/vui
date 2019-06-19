@@ -1,7 +1,5 @@
 /* eslint-disable */
-const {register}=require('@mobov/vui').MIcon
-
-register({
+  export default {
 	"mode_comment": {
 		"height": "24",
 		"width": "24",
@@ -10,5 +8,5 @@ register({
 			"M21.984 3.984v18l-3.984-3.984h-14.016c-1.078 0-1.969-0.938-1.969-2.016v-12c0-1.078 0.891-1.969 1.969-1.969h16.031c1.078 0 1.969 0.891 1.969 1.969z"
 		]
 	}
-})
+}
   

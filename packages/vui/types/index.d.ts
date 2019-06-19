@@ -8,13 +8,10 @@ import './core/style/border.scss';
 import './core/style/utils.scss';
 import { Component, PluginFunction } from 'vue';
 import * as constant from './core/constant';
-import './icon/presets';
-export declare type ComponentOrPack = Component & {
-    $_mobov_subcomponents?: Record<string, ComponentOrPack>;
-};
 export interface MobovUseOptions {
-    components?: Record<string, ComponentOrPack>;
-    directives?: Record<string, ComponentOrPack>;
+    components?: Record<string, Component>;
+    directives?: Record<string, Component>;
+    icons?: Record<string, any>;
 }
 export interface MobovPlugin {
     install: PluginFunction<MobovUseOptions>;

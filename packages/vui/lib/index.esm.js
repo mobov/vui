@@ -1630,44 +1630,56 @@ var SIZE$1 = {
   lg: 40,
   xl: 50
 };
-var Icons = {};
-function register() {
-  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  for (var item in data) {
-    if (data.hasOwnProperty(item)) {
-      var icon = data[item];
-
-      if (icon.d) {
-        if (!icon.paths) {
-          icon.paths = [];
-        }
-
-        icon.paths.push({
-          d: icon.d
-        });
-      }
-
-      if (icon.points) {
-        if (!icon.polygons) {
-          icon.polygons = [];
-        }
-
-        icon.polygons.push({
-          points: icon.points
-        });
-      }
-
-      Icons[item] = icon;
-    }
-  }
-}
+var Icons = {}; // export function register (data: any = {}): void {
+//   for (const item in data) {
+//     if (data.hasOwnProperty(item)) {
+//       const icon = data[item]
+//       if (icon.d) {
+//         if (!icon.paths) {
+//           icon.paths = []
+//         }
+//         icon.paths.push({ d: icon.d })
+//       }
+//
+//       if (icon.points) {
+//         if (!icon.polygons) {
+//           icon.polygons = []
+//         }
+//         icon.polygons.push({ points: icon.points })
+//       }
+//
+//       Icons[item] = icon
+//     }
+//   }
+// }
 
 var MIcon =
 /*#__PURE__*/
 function (_Vue) {
   _inherits(MIcon, _Vue);
 
+  // export function register (data: any = {}): void {
+  //   for (const item in data) {
+  //     if (data.hasOwnProperty(item)) {
+  //       const icon = data[item]
+  //       if (icon.d) {
+  //         if (!icon.paths) {
+  //           icon.paths = []
+  //         }
+  //         icon.paths.push({ d: icon.d })
+  //       }
+  //
+  //       if (icon.points) {
+  //         if (!icon.polygons) {
+  //           icon.polygons = []
+  //         }
+  //         icon.polygons.push({ points: icon.points })
+  //       }
+  //
+  //       Icons[item] = icon
+  //     }
+  //   }
+  // }
   function MIcon() {
     var _this;
 
@@ -1733,6 +1745,39 @@ function (_Vue) {
         });
       }) : h("span")]);
     }
+  }], [{
+    key: "register",
+    value: function register() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      for (var item in data) {
+        if (data.hasOwnProperty(item)) {
+          var icon = data[item];
+
+          if (icon.d) {
+            if (!icon.paths) {
+              icon.paths = [];
+            }
+
+            icon.paths.push({
+              d: icon.d
+            });
+          }
+
+          if (icon.points) {
+            if (!icon.polygons) {
+              icon.polygons = [];
+            }
+
+            icon.polygons.push({
+              points: icon.points
+            });
+          }
+
+          Icons[item] = icon;
+        }
+      }
+    }
   }]);
 
   return MIcon;
@@ -1756,8 +1801,262 @@ MIcon = __decorate([Component({
 })], MIcon);
 var MIcon$1 = MIcon;
 
+/* eslint-disable */
+var menu = {
+  "menu": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M3 6h18v2.016h-18v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 18v-2.016h18v2.016h-18z"]
+  }
+};
+
+/* eslint-disable */
+var close = {
+  "close": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"]
+  }
+};
+
+/* eslint-disable */
+var search = {
+  "search": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M9.516 14.016c2.484 0 4.5-2.016 4.5-4.5s-2.016-4.5-4.5-4.5-4.5 2.016-4.5 4.5 2.016 4.5 4.5 4.5zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281c-1.125 0.984-2.625 1.547-4.219 1.547-3.609 0-6.516-2.859-6.516-6.469s2.906-6.516 6.516-6.516 6.469 2.906 6.469 6.516c0 1.594-0.563 3.094-1.547 4.219l0.281 0.281h0.797z"]
+  }
+};
+
+/* eslint-disable */
+var navigate_before = {
+  "navigate_before": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M15.422 7.406l-4.594 4.594 4.594 4.594-1.406 1.406-6-6 6-6z"]
+  }
+};
+
+/* eslint-disable */
+var navigate_next = {
+  "navigate_next": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M9.984 6l6 6-6 6-1.406-1.406 4.594-4.594-4.594-4.594z"]
+  }
+};
+
+/* eslint-disable */
+var arrow_drop_down = {
+  "arrow_drop_down": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M6.984 9.984h10.031l-5.016 5.016z"]
+  }
+};
+
+/* eslint-disable */
+var cancel = {
+  "cancel": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M17.016 15.609l-3.609-3.609 3.609-3.609-1.406-1.406-3.609 3.609-3.609-3.609-1.406 1.406 3.609 3.609-3.609 3.609 1.406 1.406 3.609-3.609 3.609 3.609zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
+  }
+};
+
+/* eslint-disable */
+var check_box = {
+  "check_box": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M9.984 17.016l9-9-1.406-1.453-7.594 7.594-3.563-3.563-1.406 1.406zM18.984 3c1.125 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.891 2.016-2.016 2.016h-13.969c-1.125 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.891-2.016 2.016-2.016h13.969z"]
+  }
+};
+
+/* eslint-disable */
+var check_box_outline_blank = {
+  "check_box_outline_blank": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M18.984 3c1.078 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.938 2.016-2.016 2.016h-13.969c-1.078 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.938-2.016 2.016-2.016h13.969zM18.984 5.016h-13.969v13.969h13.969v-13.969z"]
+  }
+};
+
+/* eslint-disable */
+var indeterminate_check_box = {
+  "indeterminate_check_box": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M17.016 12.984v-1.969h-10.031v1.969h10.031zM18.984 3c1.078 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.938 2.016-2.016 2.016h-13.969c-1.078 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.938-2.016 2.016-2.016h13.969z"]
+  }
+};
+
+/* eslint-disable */
+var radio_button_checked = {
+  "radio_button_checked": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984zM12 6.984c2.766 0 5.016 2.25 5.016 5.016s-2.25 5.016-5.016 5.016-5.016-2.25-5.016-5.016 2.25-5.016 5.016-5.016z"]
+  }
+};
+
+/* eslint-disable */
+var radio_button_unchecked = {
+  "radio_button_unchecked": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
+  }
+};
+
+/* eslint-disable */
+var check = {
+  "check": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"]
+  }
+};
+
+/* eslint-disable */
+var info_outline = {
+  "info_outline": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M11.016 9v-2.016h1.969v2.016h-1.969zM12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984zM11.016 17.016v-6h1.969v6h-1.969z"]
+  }
+};
+
+/* eslint-disable */
+var warning = {
+  "warning": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M12.984 14.016v-4.031h-1.969v4.031h1.969zM12.984 18v-2.016h-1.969v2.016h1.969zM0.984 21l11.016-18.984 11.016 18.984h-22.031z"]
+  }
+};
+
+/* eslint-disable */
+var error = {
+  "error": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M12.984 12.984v-6h-1.969v6h1.969zM12.984 17.016v-2.016h-1.969v2.016h1.969zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
+  }
+};
+
+/* eslint-disable */
+var keyboard_arrow_down = {
+  "keyboard_arrow_down": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z"]
+  }
+};
+
+/* eslint-disable */
+var keyboard_arrow_up = {
+  "keyboard_arrow_up": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"]
+  }
+};
+
+/* eslint-disable */
+var keyboard_arrow_right = {
+  "keyboard_arrow_right": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"]
+  }
+};
+
+/* eslint-disable */
+var add = {
+  "add": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M18.984 12.984h-6v6h-1.969v-6h-6v-1.969h6v-6h1.969v6h6v1.969z"]
+  }
+};
+
+/* eslint-disable */
+var remove = {
+  "remove": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M18.984 12.984h-13.969v-1.969h13.969v1.969z"]
+  }
+};
+
+/* eslint-disable */
+var arrow_upward = {
+  "arrow_upward": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M3.984 12l8.016-8.016 8.016 8.016-1.453 1.406-5.578-5.578v12.188h-1.969v-12.188l-5.625 5.578z"]
+  }
+};
+
+/* eslint-disable */
+var arrow_downward = {
+  "arrow_downward": {
+    "height": "24",
+    "width": "24",
+    "viewBox": "0 0 24 24",
+    "paths": ["M20.016 12l-8.016 8.016-8.016-8.016 1.453-1.406 5.578 5.578v-12.188h1.969v12.188l5.625-5.578z"]
+  }
+};
+
 MIcon$1.install = function (Vue) {
   Vue.component('MIcon', MIcon$1);
+  MIcon$1.register(menu);
+  MIcon$1.register(close);
+  MIcon$1.register(search);
+  MIcon$1.register(menu);
+  MIcon$1.register(navigate_before);
+  MIcon$1.register(navigate_next);
+  MIcon$1.register(arrow_drop_down);
+  MIcon$1.register(cancel);
+  MIcon$1.register(check_box);
+  MIcon$1.register(check_box_outline_blank);
+  MIcon$1.register(indeterminate_check_box);
+  MIcon$1.register(radio_button_checked);
+  MIcon$1.register(radio_button_unchecked);
+  MIcon$1.register(check);
+  MIcon$1.register(info_outline);
+  MIcon$1.register(warning);
+  MIcon$1.register(error);
+  MIcon$1.register(keyboard_arrow_down);
+  MIcon$1.register(keyboard_arrow_up);
+  MIcon$1.register(keyboard_arrow_right);
+  MIcon$1.register(add);
+  MIcon$1.register(remove);
+  MIcon$1.register(arrow_upward);
+  MIcon$1.register(arrow_downward);
 };
 
 var css$d = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--block {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
@@ -2814,16 +3113,6 @@ MCheckbox$1.install = function (Vue) {
 
 var css$j = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .3s;\n    transition: padding-right ease .3s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: 1px; }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .3s;\n  transition: opacity ease .3s; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
 styleInject(css$j);
-
-/* eslint-disable */
-register({
-  "cancel": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M17.016 15.609l-3.609-3.609 3.609-3.609-1.406-1.406-3.609 3.609-3.609-3.609-1.406 1.406 3.609 3.609-3.609 3.609 1.406 1.406 3.609-3.609 3.609 3.609zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
-  }
-});
 
 var MChip =
 /*#__PURE__*/
@@ -5564,226 +5853,6 @@ var directives = /*#__PURE__*/Object.freeze({
   MRipple: MRipple
 });
 
-/* eslint-disable */
-register({
-  "menu": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M3 6h18v2.016h-18v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 18v-2.016h18v2.016h-18z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "close": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "search": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M9.516 14.016c2.484 0 4.5-2.016 4.5-4.5s-2.016-4.5-4.5-4.5-4.5 2.016-4.5 4.5 2.016 4.5 4.5 4.5zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281c-1.125 0.984-2.625 1.547-4.219 1.547-3.609 0-6.516-2.859-6.516-6.469s2.906-6.516 6.516-6.516 6.469 2.906 6.469 6.516c0 1.594-0.563 3.094-1.547 4.219l0.281 0.281h0.797z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "navigate_before": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M15.422 7.406l-4.594 4.594 4.594 4.594-1.406 1.406-6-6 6-6z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "navigate_next": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M9.984 6l6 6-6 6-1.406-1.406 4.594-4.594-4.594-4.594z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "arrow_drop_down": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M6.984 9.984h10.031l-5.016 5.016z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "check_box": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M9.984 17.016l9-9-1.406-1.453-7.594 7.594-3.563-3.563-1.406 1.406zM18.984 3c1.125 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.891 2.016-2.016 2.016h-13.969c-1.125 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.891-2.016 2.016-2.016h13.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "check_box_outline_blank": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M18.984 3c1.078 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.938 2.016-2.016 2.016h-13.969c-1.078 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.938-2.016 2.016-2.016h13.969zM18.984 5.016h-13.969v13.969h13.969v-13.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "indeterminate_check_box": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M17.016 12.984v-1.969h-10.031v1.969h10.031zM18.984 3c1.078 0 2.016 0.938 2.016 2.016v13.969c0 1.078-0.938 2.016-2.016 2.016h-13.969c-1.078 0-2.016-0.938-2.016-2.016v-13.969c0-1.078 0.938-2.016 2.016-2.016h13.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "radio_button_checked": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984zM12 6.984c2.766 0 5.016 2.25 5.016 5.016s-2.25 5.016-5.016 5.016-5.016-2.25-5.016-5.016 2.25-5.016 5.016-5.016z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "radio_button_unchecked": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "check": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "info_outline": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M11.016 9v-2.016h1.969v2.016h-1.969zM12 20.016c4.406 0 8.016-3.609 8.016-8.016s-3.609-8.016-8.016-8.016-8.016 3.609-8.016 8.016 3.609 8.016 8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984zM11.016 17.016v-6h1.969v6h-1.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "warning": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M12.984 14.016v-4.031h-1.969v4.031h1.969zM12.984 18v-2.016h-1.969v2.016h1.969zM0.984 21l11.016-18.984 11.016 18.984h-22.031z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "error": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M12.984 12.984v-6h-1.969v6h1.969zM12.984 17.016v-2.016h-1.969v2.016h1.969zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "keyboard_arrow_down": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "keyboard_arrow_up": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "keyboard_arrow_right": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M8.578 16.359l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "add": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M18.984 12.984h-6v6h-1.969v-6h-6v-1.969h6v-6h1.969v6h6v1.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "remove": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M18.984 12.984h-13.969v-1.969h13.969v1.969z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "arrow_upward": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M3.984 12l8.016-8.016 8.016 8.016-1.453 1.406-5.578-5.578v12.188h-1.969v-12.188l-5.625 5.578z"]
-  }
-});
-
-/* eslint-disable */
-register({
-  "arrow_downward": {
-    "height": "24",
-    "width": "24",
-    "viewBox": "0 0 24 24",
-    "paths": ["M20.016 12l-8.016 8.016-8.016-8.016 1.453-1.406 5.578 5.578v-12.188h1.969v12.188l5.625-5.578z"]
-  }
-});
-
 var Mobov = {
   install: function install(Vue) {
     var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -5796,15 +5865,18 @@ var Mobov = {
 
     var componentsList = opts.components || components;
     var directivesList = opts.directives || directives;
+    var iconsList = opts.icons || {};
     Object.values(componentsList).forEach(function (item) {
       Vue.use(item);
     });
     Object.values(directivesList).forEach(function (item) {
       Vue.use(item);
+    });
+    Object.values(iconsList).forEach(function (item) {
+      MIcon$1.register(item);
     }); // 挂载根组件
 
-    window.Mobov = this; // console.log(Vue)
-    // console.log(this)
+    window.Mobov = this;
   },
   version: '0.2.12',
   constant: constant

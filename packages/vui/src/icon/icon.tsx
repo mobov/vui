@@ -13,34 +13,57 @@ const SIZE: any = {
 
 const Icons: any = {}
 
-export function register (data: any = {}): void {
-  for (const item in data) {
-    if (data.hasOwnProperty(item)) {
-      const icon = data[item]
-      if (icon.d) {
-        if (!icon.paths) {
-          icon.paths = []
-        }
-        icon.paths.push({ d: icon.d })
-      }
-
-      if (icon.points) {
-        if (!icon.polygons) {
-          icon.polygons = []
-        }
-        icon.polygons.push({ points: icon.points })
-      }
-
-      Icons[item] = icon
-    }
-  }
-}
+// export function register (data: any = {}): void {
+//   for (const item in data) {
+//     if (data.hasOwnProperty(item)) {
+//       const icon = data[item]
+//       if (icon.d) {
+//         if (!icon.paths) {
+//           icon.paths = []
+//         }
+//         icon.paths.push({ d: icon.d })
+//       }
+//
+//       if (icon.points) {
+//         if (!icon.polygons) {
+//           icon.polygons = []
+//         }
+//         icon.polygons.push({ points: icon.points })
+//       }
+//
+//       Icons[item] = icon
+//     }
+//   }
+// }
 
 @Component({
   functional: true
 } as ComponentOptions<Vue>)
 export default class MIcon extends Vue {
   name = 'm-icon'
+
+  static register (data: any = {}): void {
+    for (const item in data) {
+      if (data.hasOwnProperty(item)) {
+        const icon = data[item]
+        if (icon.d) {
+          if (!icon.paths) {
+            icon.paths = []
+          }
+          icon.paths.push({ d: icon.d })
+        }
+
+        if (icon.points) {
+          if (!icon.polygons) {
+            icon.polygons = []
+          }
+          icon.polygons.push({ points: icon.points })
+        }
+
+        Icons[item] = icon
+      }
+    }
+  }
 
   @Prop({ type: String })
   value!: string
