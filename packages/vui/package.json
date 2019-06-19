@@ -7,7 +7,8 @@
   },
   "scripts": {
     "serve": "rollup -w --config build/rollup.config.watch.js",
-    "build": "rollup --name=MobovUI --config build/rollup.config.bundle.js"
+    "build": "rollup --name=MobovUI --config build/rollup.config.bundle.js",
+    "dist-icon": "node ./build/dist-icon.js"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -55,6 +56,8 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "fs-extra": "^8.0.1",
+    "glob": "^7.1.4",
     "lodash": "^4.17.11",
     "node-sass": "^4.9.0",
     "rollup": "^1.7.4",
