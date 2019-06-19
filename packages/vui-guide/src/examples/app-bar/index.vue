@@ -39,7 +39,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+// @ts-ignore
 import adjust from '@mobov/vui/lib/icons/adjust'
+
 import Mobov, { MAppBar, MIcon } from '@mobov/vui'
 import ExampleBox from '@/components/example-box.vue'
 import exampleProps from '@/mixins/example-props'

@@ -13,3 +13,4 @@ declare module 'color' {
 declare module 'is-color-stop' {
   export function isColor(str: string): boolean
 }
+

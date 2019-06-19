@@ -64,6 +64,10 @@ declare module 'vue/types/options' {
   }
 }
 
+declare module '@mobov/vui/lib/icons/*.js' {
+  export {}
+}
+
 declare module 'vue/types/vue' {
   export interface RawComponentOptions<
     V extends Vue = Vue,
@@ -92,4 +96,3 @@ declare module 'vue/types/vue' {
     options: Options
   }
 }
-
