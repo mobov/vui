@@ -12,7 +12,7 @@ $--Elevations: (
 /**
  * variables register.
  */
-html {
+:root {
     // elevation
     @each $index, $elevation in $--Elevations {
         --m-elevation-#{$index}: #{$elevation};

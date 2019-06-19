@@ -4,6 +4,7 @@ import './core/style/space.scss';
 import './core/style/shape.scss';
 import './core/style/theme.scss';
 import './core/style/mode.scss';
+import './core/style/border.scss';
 import './core/style/utils.scss';
 import { Component, PluginFunction } from 'vue';
 import * as constant from './core/constant';

@@ -4,6 +4,7 @@ import './core/style/space.scss'
 import './core/style/shape.scss'
 import './core/style/theme.scss'
 import './core/style/mode.scss'
+import './core/style/border.scss'
 import './core/style/utils.scss'
 import {
   Component,
@@ -65,7 +66,7 @@ const Mobov: MobovPlugin = {
     // console.log(Vue)
     // console.log(this)
   },
-  version: '0.2.9',
+  version: '0.2.11',
   constant
 }
 
