@@ -15,7 +15,7 @@
                 :shape="PropsData.shape"
                 :variety="PropsData.variety"
                 :size="PropsData.size"
-                paddingX="sm"
+                :padding="0"
                 marginRight="sm">
         <m-icon size="16" value="menu" />
       </m-button>

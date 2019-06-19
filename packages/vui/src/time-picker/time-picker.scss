@@ -14,7 +14,7 @@ $--m-time-picker-cell-size: 2.5rem;
 .m-time-picker {
     // default
     --m-time-picker-color: var(--m-color-primary);
-    --m-time-picker-elevation: var(--m-elevation-2);
+    //--m-time-picker-elevation: var(--m-elevation-2);
     --m-time-picker-header-font-color: var(--m-bg-color);
 
     --m-time-picker-width: #{$--m-time-picker-width};
@@ -32,7 +32,7 @@ $--m-time-picker-cell-size: 2.5rem;
     user-select: none;
     overflow: hidden;
     line-height: 1;
-    box-shadow: var(--m-time-picker-elevation);
+    //box-shadow: var(--m-elevation-2);
     width: var(--m-time-picker-width);
     &.m--landscope {
         width: var(--m-time-picker-landscope-width);

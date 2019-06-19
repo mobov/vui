@@ -70,9 +70,9 @@ $--Container-max-size: (
 }
 
 .m-flex {
-    display: flex;
-    &.m--inline {
-        display: inline-flex;
+    display: inline-flex;
+    &.m--block {
+        display: flex;
     }
     &.m--wrap {
         &-normal {

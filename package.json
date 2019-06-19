@@ -9,7 +9,8 @@
     "vui-guide:build": "lerna run build --scope @mobov/vui-guide --stream",
     "vui:serve": "lerna run serve --scope @mobov/vui --stream",
     "vui:build": "lerna run build --scope @mobov/vui --stream",
-    "vui:gen:icons": "lerna run gen:icons --scope @mobov/vui --stream"
+    "vui:gen:icons": "lerna run gen:icons --scope @mobov/vui --stream",
+    "vui:build:icons": "lerna run build:icons --scope @mobov/vui --stream"
   },
   "devDependencies": {
     "lerna": "^3.13.1"

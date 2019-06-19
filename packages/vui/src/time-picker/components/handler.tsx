@@ -19,7 +19,7 @@ export default class MTimePickerHandler extends Vue {
     onCancel (): void { }
 
     render () {
-        const { onConfirm, onCancel } = this
+        const { onConfirm, onCancel, color } = this
 
         return (
             <div staticClass={`${compName} m-p-sm`}>
@@ -30,7 +30,7 @@ export default class MTimePickerHandler extends Vue {
                          onClick={onCancel}>cancel</MButton>
                 <MButton size="sm"
                          style={{ width: '5rem' }}
-                         color={Color.primary}
+                         color={color}
                          onClick={onConfirm}>ok</MButton>
             </div>
         )

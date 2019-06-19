@@ -8,7 +8,7 @@
   "scripts": {
     "serve": "rollup -w --config build/rollup.config.watch.js",
     "build": "rollup --name=MobovUI --config build/rollup.config.bundle.js",
-    "dist-icon": "node ./build/dist-icon.js"
+    "build:icons": "node ./build/dist-icon.js"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",

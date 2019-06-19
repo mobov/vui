@@ -21,6 +21,7 @@ $--m-button-size-xl: 4rem;
   --m-button-font-color: var(--m-bg-color);
   --m-button-size: var(--m-button-size-md);
   --m-button-border-size: .2rem;
+  // --m-button-border-size: 1px;
 }
 
 /**
@@ -38,7 +39,7 @@ $--m-button-size-xl: 4rem;
   min-width: var(--m-button-size);
   //margin: .5em;
   border-radius: var(--m-shape-corner);
-  border: none;
+  border: var(--m-button-border-size) solid transparent;
   //padding: var(--m-button-border-size);
   display: inline-flex;
   align-items: center;
@@ -48,7 +49,7 @@ $--m-button-size-xl: 4rem;
   user-select: none;
   box-sizing: border-box;
   position: relative;
-  line-height: 1;
+  //line-height: 1;
   transition: all ease .3s;
   //> * {
   //  margin: 0 calc(var(--m-button-size) / 2);
