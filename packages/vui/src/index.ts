@@ -19,8 +19,6 @@ import * as components from './components'
 import * as directives from './directives'
 import * as constant from './core/constant'
 
-// export type ComponentOrPack = Component & { $_mobov_subcomponents?: Record<string, ComponentOrPack> }
-
 export interface MobovUseOptions {
   components?: Record<string, Component>
   directives?: Record<string, Component>
@@ -68,7 +66,7 @@ const Mobov: MobovPlugin = {
     // 挂载根组件
     window.Mobov = this
   },
-  version: '0.2.15',
+  version: '0.2.16',
   constant
 }
 
