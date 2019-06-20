@@ -20,13 +20,13 @@ export default class MFlex extends Mixins (
   block!: boolean
 
   @Prop({ type: String, default: FlexWrap.normal })
-  wrap: FlexWrap = FlexWrap.normal
+  wrap!: FlexWrap
 
   @Prop({ type: String, default: FlexJustify.start })
-  justify: FlexJustify = FlexJustify.start
+  justify!: FlexJustify
 
-  @Prop({ type: String, default: FlexAlign.stretch })
-  align: FlexAlign = FlexAlign.start
+  @Prop({ type: String, default: FlexAlign.center })
+  align!: FlexAlign
 
   get styles () {
     return {

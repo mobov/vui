@@ -2292,10 +2292,7 @@ function (_Mixins) {
     _classCallCheck(this, MFlex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MFlex).apply(this, arguments));
-    _this.name = 'm-flex';
-    _this.wrap = FlexWrap.normal;
-    _this.justify = FlexJustify.start;
-    _this.align = FlexAlign.start; // render (h: CreateElement, { props, data, children }: RenderContext) {
+    _this.name = 'm-flex'; // render (h: CreateElement, { props, data, children }: RenderContext) {
     //   const staticClass = data.staticClass ? data.staticClass : ''
     //   data.staticClass = `${compName} m--wrap-${props.wrap} m--justify-${props.justify} m--align-${props.align} ${staticClass} `
     //   data.staticClass += props.inline ? 'm--inline' : ''
@@ -2376,7 +2373,7 @@ __decorate([vuePropertyDecorator.Prop({
 
 __decorate([vuePropertyDecorator.Prop({
   type: String,
-  default: FlexAlign.stretch
+  default: FlexAlign.center
 }), __metadata("design:type", String)], MFlex.prototype, "align", void 0);
 
 MFlex = __decorate([vuePropertyDecorator.Component], MFlex);
@@ -5882,7 +5879,7 @@ var Mobov = {
 
     window.Mobov = this;
   },
-  version: '0.2.14',
+  version: '0.2.15',
   constant: constant
 };
 
