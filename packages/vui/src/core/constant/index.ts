@@ -91,6 +91,13 @@ export type fill = 'left' | 'both' | 'right' | 'none'
 
 export const FILL = Object.keys(Fill)
 
+export enum FlexDirection {
+  row = 'row',
+  'row-reverse' = 'row-reverse',
+  column = 'column',
+  'column-reverse' = 'column-reverse'
+}
+
 export enum FlexJustify {
   start = 'start',
   center = 'center',

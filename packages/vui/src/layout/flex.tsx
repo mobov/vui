@@ -1,7 +1,7 @@
 import { Component, Vue, Prop, Mixins } from 'vue-property-decorator'
 import mixBase from '../core/mixin/base'
 import mixShape from '../core/mixin/shape'
-import { FlexAlign, flexAlign, FlexJustify, flexJustify, FlexWrap, flexWrap } from '../core/constant'
+import { FlexAlign, flexAlign, FlexJustify, flexJustify, FlexWrap, flexWrap, FlexDirection } from '../core/constant'
 
 @Component
 export default class MFlex extends Mixins (
@@ -28,6 +28,9 @@ export default class MFlex extends Mixins (
   @Prop({ type: String, default: FlexAlign.center })
   align!: FlexAlign
 
+  @Prop({ type: String, default: FlexDirection.row })
+  direction!: FlexDirection
+
   get styles () {
     return {
       ...this.baseStyle
@@ -35,12 +38,13 @@ export default class MFlex extends Mixins (
   }
 
   get classes () {
-    const { wrap, justify, align, block } = this
+    const { wrap, justify, align, block, direction } = this
     return {
       ...this.baseClass,
       [`m--wrap-${wrap}`] : true,
       [`m--justify-${justify}`] : true,
       [`m--align-${align}`] : true,
+      [`m--direction-${direction}`] : true,
       [`m--block`] : block,
     }
   }

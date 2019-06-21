@@ -63,6 +63,12 @@ export declare enum Fill {
 }
 export declare type fill = 'left' | 'both' | 'right' | 'none';
 export declare const FILL: string[];
+export declare enum FlexDirection {
+    row = "row",
+    'row-reverse' = "row-reverse",
+    column = "column",
+    'column-reverse' = "column-reverse"
+}
 export declare enum FlexJustify {
     start = "start",
     center = "center",

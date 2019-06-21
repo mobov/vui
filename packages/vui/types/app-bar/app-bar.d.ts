@@ -24,6 +24,8 @@ export default class MAppBar extends MAppBar_base {
         paddingRight?: string | undefined;
     };
     readonly classes: {};
+    handleWheel(e: any): void;
+    handleScroll(e: any): void;
     render(): JSX.Element;
 }
 export {};
