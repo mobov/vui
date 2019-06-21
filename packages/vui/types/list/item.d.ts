@@ -1,11 +1,11 @@
 import mixBase from '../core/mixin/base';
 import { Size } from '../core/constant';
-declare const MList_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
-export default class MList extends MList_base {
+declare const MListItem_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+export default class MListItem extends MListItem_base {
     name: string;
-    title: String;
-    titleDivider: boolean;
-    marginY: Size.sm;
+    padding: Size.sm;
+    divider: boolean;
+    hover: boolean;
     onClick(e: MouseEvent): void;
     readonly styles: {
         size?: string | number | undefined;
@@ -27,7 +27,8 @@ export default class MList extends MList_base {
         paddingRight?: string | undefined;
     };
     readonly classes: {
-        '--with-title-divider': boolean;
+        '--with-divider': boolean;
+        '--with-hover': boolean;
     };
     render(): JSX.Element;
 }

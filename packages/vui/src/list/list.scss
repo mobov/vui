@@ -1,8 +1,8 @@
 $--m-list-size-xs: 2rem;
-$--m-list-size-sm: 3rem;
-$--m-list-size-md: 4rem;
-$--m-list-size-lg: 5rem;
-$--m-list-size-xl: 6rem;
+$--m-list-size-sm: 2.5rem;
+$--m-list-size-md: 3rem;
+$--m-list-size-lg: 4rem;
+$--m-list-size-xl: 5rem;
 /**
  * variables register.
  */
@@ -21,21 +21,71 @@ $--m-list-size-xl: 6rem;
     --m-list-size: var(--m-list-size-md);
 }
 
+.m-list-item {
+    // selection
+    --m-list-item-size-xs: #{$--m-list-size-xs};
+    --m-list-item-size-sm: #{$--m-list-size-sm};
+    --m-list-item-size-md: #{$--m-list-size-md};
+    --m-list-item-size-lg: #{$--m-list-size-lg};
+    --m-list-item-size-xl: #{$--m-list-size-xl};
+
+    // default
+    --m-list-item-color: var(--m-bg-color-main);
+    --m-list-item-font-color: var(--m-font-color-main);
+    --m-list-item-active-color: var(--m-color-main);
+    --m-list-item-size: var(--m-list-size-md);
+}
+
 /**
  * components styles.
  */
 .m-list {
     background-color: var(--m-list-color);
     color: var(--m-list-font-color);
-    min-height: var(--m-list-size);
     cursor: pointer;
     position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    font-size: 1.4rem;
+    &__title {
+        padding: var(--m-space-sm);
+        font-size: 16px;
+    }
+    &__main {
+
+    }
+    &.--with-title-divider {
+        .m-list__title {
+            border-bottom: var(---m-border-base);
+        }
+    }
+}
+.m-list-item {
+    background-color: var(--m-list-item-color);
+    color: var(--m-list-item-font-color);
+    min-height: var(--m-list-item-size);
+    cursor: pointer;
+    position: relative;
     padding-left: var(--m-space-sm);
     padding-right: var(--m-space-sm);
     font-size: 1.4rem;
+    &.--with-divider {
+        border-bottom: var(---m-border-base);
+    }
+    &__main {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &__media {
+        margin-right: var(--m-space-sm);
+    }
+    &.--active {
+        background-color: var(--m-hover-bg-color);
+    }
+    &.--with-hover {
+        &:hover {
+            background-color: var(--m-hover-bg-color);
+        }
+    }
 }
 //.m-list__cover {
 //}
