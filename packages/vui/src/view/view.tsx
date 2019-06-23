@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
-import { genSize } from '../core/util'
+import { genSize, genStaticStyles } from '../core/util'
 import { Fill, size } from '../core/constant'
 import MTransition from '../transition'
 import mixBase from '../core/mixin/base'
@@ -80,7 +80,9 @@ export default class MView extends Mixins (
 
   private get styles () {
     const {
-      isHeader, isFooter, isLeft, isRight, headerSize, footerSize, leftSize, rightSize
+      isHeader, isFooter, isLeft, isRight,
+      headerSize, footerSize, leftSize, rightSize,
+      headerIndex, footerIndex, leftIndex, rightIndex
     } = this
 
     const styles = { }
@@ -101,6 +103,10 @@ export default class MView extends Mixins (
     genSize(styles, `${this.name}-footer`, footerSize)
     genSize(styles, `${this.name}-left`, leftSize)
     genSize(styles, `${this.name}-right`, rightSize)
+    genStaticStyles(styles, this.name, 'header-z-index', headerIndex)
+    genStaticStyles(styles, this.name, 'footer-z-index', footerIndex)
+    genStaticStyles(styles, this.name, 'left-z-index', leftIndex)
+    genStaticStyles(styles, this.name, 'right-z-index', rightIndex)
 
     return styles
   }

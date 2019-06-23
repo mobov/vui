@@ -55,7 +55,10 @@
     }
     &.m-variety-outline {
         border-style: solid;
-        border-width: 1px;
+        border-width: var(--m-chip-border-size);
+        border-color: var(--m-chip-color);
+        background-color: var(--m-bg-color);
+        color: var(--m-chip-color);
     }
     // shape
     &.m-shape-circle {
