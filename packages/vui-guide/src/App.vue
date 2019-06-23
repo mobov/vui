@@ -1,6 +1,6 @@
 <template>
   <m-app>
-    <m-view fill-header="none"
+    <m-frame fill-header="none"
             transition
             header-size="md"
             :left-index="5"
@@ -24,7 +24,7 @@
         <doc-entries></doc-entries>
       </div>
       <router-view />
-    </m-view>
+    </m-frame>
   </m-app>
 </template>
 <script lang="ts">

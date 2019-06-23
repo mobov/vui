@@ -11,13 +11,6 @@ export default class MList extends MList_base {
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;
-        margin?: string | undefined;
-        marginX?: string | undefined;
-        marginY?: string | undefined;
-        marginTop?: string | undefined;
-        marginBottom?: string | undefined;
-        marginLeft?: string | undefined;
-        marginRight?: string | undefined;
         padding?: string | undefined;
         paddingX?: string | undefined;
         paddingY?: string | undefined;
@@ -25,6 +18,13 @@ export default class MList extends MList_base {
         paddingBottom?: string | undefined;
         paddingLeft?: string | undefined;
         paddingRight?: string | undefined;
+        margin?: string | undefined;
+        marginX?: string | undefined;
+        marginY?: string | undefined;
+        marginTop?: string | undefined;
+        marginBottom?: string | undefined;
+        marginLeft?: string | undefined;
+        marginRight?: string | undefined;
     };
     readonly classes: {
         '--with-title-divider': boolean;

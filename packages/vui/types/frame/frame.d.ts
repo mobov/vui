@@ -1,0 +1,33 @@
+import { Fill, size } from '../core/constant';
+import mixBase from '../core/mixin/base';
+declare const MFrame_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
+export default class MFrame extends MFrame_base {
+    name: string;
+    transition?: boolean;
+    fillHeader?: Fill;
+    fillFooter?: Fill;
+    headerSize?: size;
+    headerIndex?: number;
+    headerFloat?: boolean;
+    footerSize?: size;
+    footerIndex?: number;
+    footerFloat?: boolean;
+    leftSize?: size;
+    leftIndex?: number;
+    leftFloat?: boolean;
+    rightSize?: size;
+    rightIndex?: number;
+    rightFloat?: boolean;
+    private readonly classes;
+    private readonly styles;
+    private isHeader;
+    private isFooter;
+    private isLeft;
+    private isRight;
+    private RHeader;
+    private RFooter;
+    private RLeft;
+    private RRight;
+    private render;
+}
+export {};

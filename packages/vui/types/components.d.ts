@@ -1,4 +1,5 @@
 export { default as MApp } from './app';
+export { default as MFrame } from './frame';
 export { default as MView } from './view';
 export { default as MIcon } from './icon';
 export { MContainer, MRow, MCol, MFlex, MFlexFiller } from './layout';

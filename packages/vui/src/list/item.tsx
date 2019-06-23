@@ -17,6 +17,9 @@ export default class MListItem extends Mixins (
   @Prop({ type: Boolean, default: false})
   hover!: boolean
 
+  @Prop({ type: Boolean, default: false})
+  active!: boolean
+
   @Emit('click')
   onClick (e: MouseEvent) {}
 
@@ -27,10 +30,11 @@ export default class MListItem extends Mixins (
   }
 
   get classes () {
-    const { divider, hover } = this
+    const { divider, hover, active } = this
     return {
       '--with-divider': divider,
       '--with-hover': hover,
+      '--active': active,
       ...this.baseClass
     }
   }

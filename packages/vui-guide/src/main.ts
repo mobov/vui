@@ -6,13 +6,14 @@ import i18n from './i18n'
 // import './registerServiceWorker'
 // import '@mobov/vui/lib/style.css'
 import mobov, {
-  MApp, MView, MIcon, MButton, MFlexFiller, MFlex, MList, MListItem,
+  MApp, MFrame, MView, MIcon, MButton, MFlexFiller, MFlex, MList, MListItem,
   MCheckbox, MRadio, MAppBar, MRow, MCol, MAvatar
 } from '@mobov/vui'
 
 Vue.use(mobov, {
   components: {
     MApp,
+    MFrame,
     MAvatar,
     MAppBar,
     MIcon,

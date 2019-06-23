@@ -1,0 +1,251 @@
+@import "~@mobov/scss-helper/import";
+
+$--m-frame-header-size-xs: 2.5rem;
+$--m-frame-header-size-sm: 3.5rem;
+$--m-frame-header-size-md: 4.5rem;
+$--m-frame-header-size-lg: 5.5rem;
+$--m-frame-header-size-xl: 6.5rem;
+$--m-frame-footer-size-xs: 2.5rem;
+$--m-frame-footer-size-sm: 3.5rem;
+$--m-frame-footer-size-md: 4.5rem;
+$--m-frame-footer-size-lg: 5.5rem;
+$--m-frame-footer-size-xl: 6.5rem;
+$--m-frame-left-size-xs: 2.5rem;
+$--m-frame-left-size-sm: 3.5rem;
+$--m-frame-left-size-md: 4.5rem;
+$--m-frame-left-size-lg: 5.5rem;
+$--m-frame-left-size-xl: 6.5rem;
+$--m-frame-right-size-xs: 2.5rem;
+$--m-frame-right-size-sm: 3.5rem;
+$--m-frame-right-size-md: 4.5rem;
+$--m-frame-right-size-lg: 5.5rem;
+$--m-frame-right-size-xl: 6.5rem;
+
+$--m-frame-transition-base: .25s ease;
+
+
+/**
+ * variables register.
+ */
+.m-frame {
+    --m-frame-header-size-xs: #{ $--m-frame-header-size-xs};
+    --m-frame-header-size-sm: #{ $--m-frame-header-size-sm};
+    --m-frame-header-size-md: #{ $--m-frame-header-size-md};
+    --m-frame-header-size-lg: #{ $--m-frame-header-size-lg};
+    --m-frame-header-size-xl: #{ $--m-frame-header-size-xl};
+    --m-frame-footer-size-xs: #{ $--m-frame-footer-size-xs};
+    --m-frame-footer-size-sm: #{ $--m-frame-footer-size-sm};
+    --m-frame-footer-size-md: #{ $--m-frame-footer-size-md};
+    --m-frame-footer-size-lg: #{ $--m-frame-footer-size-lg};
+    --m-frame-footer-size-xl: #{ $--m-frame-footer-size-xl};
+    --m-frame-left-size-xs:   #{ $--m-frame-left-size-xs};
+    --m-frame-left-size-sm:   #{ $--m-frame-left-size-sm};
+    --m-frame-left-size-md:   #{ $--m-frame-left-size-md};
+    --m-frame-left-size-lg:   #{ $--m-frame-left-size-lg};
+    --m-frame-left-size-xl:   #{ $--m-frame-left-size-xl};
+    --m-frame-right-size-xs:  #{ $--m-frame-right-size-xs};
+    --m-frame-right-size-sm:  #{ $--m-frame-right-size-sm};
+    --m-frame-right-size-md:  #{ $--m-frame-right-size-md};
+    --m-frame-right-size-lg:  #{ $--m-frame-right-size-lg};
+    --m-frame-right-size-xl:  #{ $--m-frame-right-size-xl};
+
+    --m-frame-header-size: 0;
+    --m-frame-footer-size: 0;
+    --m-frame-left-size: 0;
+    --m-frame-right-size: 0;
+
+    --m-frame-header-z-index: 1;
+    --m-frame-footer-z-index: 1;
+    --m-frame-left-z-index: 1;
+    --m-frame-right-z-index: 1;
+
+    --m-frame-header-grow: 100%;
+    --m-frame-footer-grow: 100%;
+    --m-frame-left-grow: 100%;
+    --m-frame-right-grow: 100%;
+
+    --m-frame-header-shrink: 0;
+    --m-frame-footer-shrink: 0;
+    --m-frame-left-shrink: 0;
+    --m-frame-right-shrink: 0;
+}
+
+/**
+ * components styles.
+ */
+.m-frame {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: var(--m-font-base);
+    color: var(--m-font-color);
+    position: relative;
+    &.m--transition {
+        transition: padding-left $--m-frame-transition-base,
+            padding-right $--m-frame-transition-base,
+            padding-top $--m-frame-transition-base,
+            padding-bottom $--m-frame-transition-base;
+        >.m-frame-header,
+        >.m-frame-footer,
+        >.m-frame-left,
+        >.m-frame-right {
+            transition: all $--m-frame-transition-base;
+        }
+    }
+}
+.m-frame {
+    // layout
+    &.m--with-header {
+        padding-top: var(--m-frame-header-size);
+    }
+    &.m--with-footer {
+        padding-bottom: var(--m-frame-footer-size);
+    }
+    &.m--with-left {
+        padding-left: var(--m-frame-left-size);
+    }
+    &.m--with-right {
+        padding-right: var(--m-frame-right-size);
+    }
+    &.m--with-header {
+        &.m--fill-header-left {
+            --m-frame-left-shrink: var(--m-frame-header-size);
+            --m-frame-left-grow: calc(100% - var(--m-frame-header-size));
+        }
+        &.m--fill-header-both {
+            --m-frame-left-shrink: var(--m-frame-header-size);
+            --m-frame-right-shrink: var(--m-frame-header-size);
+            --m-frame-left-grow: calc(100% - var(--m-frame-header-size));
+            --m-frame-right-grow: calc(100% - var(--m-frame-header-size));
+        }
+        &.m--fill-header-right {
+            --m-frame-right-shrink: var(--m-frame-header-size);
+            --m-frame-right-grow: calc(100% - var(--m-frame-header-size));
+        }
+    }
+    &.m--with-footer {
+        &.m--fill-footer-left {
+            --m-frame-left-grow: calc(100% - var(--m-frame-footer-size));
+        }
+        &.m--fill-footer-both {
+            --m-frame-left-grow: calc(100% - var(--m-frame-footer-size));
+            --m-frame-right-grow: calc(100% - var(--m-frame-footer-size));
+        }
+        &.m--fill-footer-right {
+            --m-frame-right-grow: calc(100% - var(--m-frame-footer-size));
+        }
+    }
+    &.m--with-left {
+        &.m--fill-header-none,
+        &.m--fill-header-right {
+            --m-frame-header-shrink: var(--m-frame-left-size);
+            --m-frame-header-grow: calc(100% - var(--m-frame-left-size));
+        }
+        &.m--fill-footer-right,
+        &.m--fill-footer-none {
+            --m-frame-footer-shrink: var(--m-frame-left-size);
+            --m-frame-footer-grow: calc(100% - var(--m-frame-left-size));
+        }
+    }
+    &.m--with-right {
+        &.m--fill-header-none,
+        &.m--fill-header-left {
+            --m-frame-header-grow: calc(100% - var(--m-frame-right-size));
+        }
+        &.m--fill-footer-left,
+        &.m--fill-footer-none {
+            --m-frame-footer-grow: calc(100% - var(--m-frame-right-size));
+        }
+    }
+    &.m--with-header.m--with-footer {
+        &.m--fill-header-left.m--fill-footer-left,
+        &.m--fill-header-left.m--fill-footer-both,
+        &.m--fill-header-both.m--fill-footer-left,
+        &.m--fill-header-both.m--fill-footer-both {
+            --m-frame-left-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size));
+        }
+        &.m--fill-header-right.m--fill-footer-right,
+        &.m--fill-header-right.m--fill-footer-both,
+        &.m--fill-header-both.m--fill-footer-right,
+        &.m--fill-header-both.m--fill-footer-both {
+            --m-frame-right-grow: calc(100% - var(--m-frame-header-size) - var(--m-frame-footer-size));
+        }
+    }
+    &.m--with-left.m--with-right {
+        &.m--fill-header-none {
+            --m-frame-header-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size));
+        }
+        &.m--fill-footer-none {
+            --m-frame-footer-grow: calc(100% - var(--m-frame-left-size) - var(--m-frame-right-size));
+        }
+    }
+}
+.m-frame-main {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    @include slim-scroll-bar();
+}
+%m-frame-parts-base {
+    position: absolute;
+}
+.m-frame-header {
+    @extend %m-frame-parts-base;
+    top: 0;
+    left: var(--m-frame-header-shrink);
+    width: var(--m-frame-header-grow);
+    height: var(--m-frame-header-size);
+    z-index: var(--m-frame-header-z-index);
+}
+.m-frame-footer {
+    @extend %m-frame-parts-base;
+    bottom: 0;
+    width: var(--m-frame-footer-grow);
+    left: var(--m-frame-footer-shrink);
+    height: var(--m-frame-footer-size);
+    z-index: var(--m-frame-footer-z-index);
+}
+.m-frame-left {
+    @extend %m-frame-parts-base;
+    left: 0;
+    top: var(--m-frame-left-shrink);
+    height: var(--m-frame-left-grow);
+    width: var(--m-frame-left-size);
+    z-index: var(--m-frame-left-z-index);
+}
+.m-frame-right {
+    @extend %m-frame-parts-base;
+    right: 0;
+    top: var(--m-frame-right-shrink);
+    height: var(--m-frame-right-grow);
+    width: var(--m-frame-right-size);
+    z-index: var(--m-frame-right-z-index);
+}
+
+
+.m-frame-transition-header-enter,
+.m-frame-transition-header-leave-to {
+    transform: translateY(-100%);
+}
+.m-frame-transition-footer-enter,
+.m-frame-transition-footer-leave-to {
+    transform: translateY(100%);
+}
+.m-frame-transition-left-enter,
+.m-frame-transition-left-leave-to {
+    transform: translateX(-100%);
+}
+.m-frame-transition-right-enter,
+.m-frame-transition-right-leave-to {
+    transform: translateX(100%);
+}
+
+.m-frame-transition-header-enter-active,
+.m-frame-transition-header-leave-active {
+    //transform: translateZ(0);
+    will-change: transform;
+    transition: transform $--m-frame-transition-base;
+}
+

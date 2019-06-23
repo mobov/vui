@@ -7,6 +7,12 @@ export default [
     name: 'app'
   },
   {
+    name: 'frame'
+  },
+  {
+    name: 'layout'
+  },
+  {
     name: 'view'
   },
   {
@@ -24,9 +30,7 @@ export default [
   {
     name: 'icon'
   },
-  {
-    name: 'layout'
-  },
+
   {
     name: 'list'
   },
