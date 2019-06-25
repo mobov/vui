@@ -40,7 +40,6 @@ export default class MView extends Mixins (
     const { } = this
 
     return {
-      ...this.colorStyle,
       ...this.sizeStyle,
       ...this.spaceMarginStyle
     }
@@ -87,6 +86,7 @@ export default class MView extends Mixins (
   }
 
   scrollTo (target: any) {
+    console.log(target)
     scrollToY(this.$refs.scroller as any, {
       target
     } as any)

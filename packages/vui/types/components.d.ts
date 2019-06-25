@@ -10,6 +10,6 @@ export { default as MRadio } from './radio';
 export { default as MCheckbox } from './checkbox';
 export { default as MChip } from './chip';
 export { default as MTimePicker } from './time-picker';
-export { default as MTransition } from './transition';
 export { MList, MListItem } from './list';
 export { MTable, MTableCol } from './table';
+export { default as MTransition } from './transition';

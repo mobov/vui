@@ -51,7 +51,7 @@
                 pointer-events: auto;
             }
         }
-        transition: padding-right ease .3s;
+        transition: padding-right ease .2s;
     }
     &.m-variety-outline {
         border-style: solid;
@@ -91,7 +91,11 @@
     right: calc(var(--m-chip-size) / 10);
     height: var(--m-chip__close-size);
     width: var(--m-chip__close-size);
-    transition: opacity ease .3s;
+    transition: opacity ease .2s;
+    > * {
+        height: inherit;
+        width: inherit;
+    }
     &:hover {
         opacity: .8 !important;
     }

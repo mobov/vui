@@ -6,6 +6,8 @@
             :elevation="PropsData.elevation"
             :closeable="PropsData.closeable"
             :closeover="PropsData.closeover"
+            @click="handleClick"
+            @close="handleClose"
             :size="PropsData.size">just we</m-chip>
     <m-row slot="handler"
            class="m-my-md"
@@ -40,6 +42,14 @@ export default Vue.extend({
   data () {
     return {
       Props
+    }
+  },
+  methods: {
+    handleClick () {
+      console.log('click')
+    },
+    handleClose () {
+      console.log('close')
     }
   }
 })

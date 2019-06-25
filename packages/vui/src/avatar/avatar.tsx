@@ -13,6 +13,12 @@ export default class MAvatar extends Mixins (
 ) {
   name = 'm-avatar'
 
+  @Prop({ type: Boolean, default: false })
+  transition!: boolean
+
+  @Prop({ type: String })
+  placeholder!: string
+
   @Prop({ type: String })
   src!: string
 
@@ -23,11 +29,12 @@ export default class MAvatar extends Mixins (
   }
 
   get classes () {
-    const { status } = this
+    const { status, transition } = this
     return {
       ...this.baseClass,
       ...this.shapeClass,
       ...this.varietyClass,
+      'm--transition': transition,
       [`m--status-${Status[status]}`]: true
     }
   }
@@ -60,7 +67,7 @@ export default class MAvatar extends Mixins (
            class={classes}
            style={styles}>
         {this.$slots.default}
-        <img staticClass={`${name}__cover`}
+        <img staticClass={`${name}-image`}
              alt=''
              src={curSrc}
              onLoad={loadSuccess}

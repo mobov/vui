@@ -41,9 +41,8 @@ $--m-avatar-size-xl: 5.5rem;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all ease .3s;
     border-width: 0;
-
+    transition: all ease .2s;
     // shape
 
     // variety
@@ -57,15 +56,26 @@ $--m-avatar-size-xl: 5.5rem;
 
     // status
     &.m--status-success {
-        opacity: 1;
+        .m-avatar-image {
+            opacity: 1;
+        }
     }
     &.m--status-pending,
     &.m--status-failure {
-        opacity: 0;
+        .m-avatar-image {
+            opacity: 0;
+        }
     }
+    &.m--transition {
+        .m-avatar-image {
+            transition: opacity ease .2s;
+        }
+    }
+
 }
 
-.m-avatar__cover {
+.m-avatar-image {
+    transition: none;
     @include abs-size(100% ,xy);
     display: block;
     position: absolute;

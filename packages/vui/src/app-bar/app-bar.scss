@@ -1,3 +1,4 @@
+@import "~@mobov/scss-helper";
 $--m-app-bar-size-xs: 2.5rem;
 $--m-app-bar-size-sm: 3.5rem;
 $--m-app-bar-size-md: 4.5rem;
@@ -29,11 +30,15 @@ $--m-app-bar-size-xl: 6.5rem;
     color: var(--m-app-bar-font-color);
     background-color: var(--m-app-bar-color);
     width: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    position: relative;
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     padding: 0 var(--m-space-sm);
     box-sizing: border-box;
-    transition: all ease .3s;
+    transition: all ease .2s;
     border: 0 solid transparent;
     // variety
     &.m-variety-default {
@@ -52,5 +57,18 @@ $--m-app-bar-size-xl: 6.5rem;
     &.m--horizontal {
         width: var(--m-app-bar-size);
         height: 100%;
+    }
+    &-main {
+        min-height: 100%;
+        flex:1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        word-break: keep-all;
+        @include scroller(x);
+        @include no-scroll-bar();
     }
 }

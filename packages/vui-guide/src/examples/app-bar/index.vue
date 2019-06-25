@@ -4,6 +4,30 @@
 <template>
   <ExampleBox>
     <MAppBar :color="PropsData.color"
+             :padding="10"
+             :marginBottom="10"
+             enable-mouse-scroll
+             :elevation="PropsData.elevation"
+             :variety="PropsData.variety"
+             :size="PropsData.size">
+      <template slot="left">
+        <MButton shape="circle"
+                 :color="PropsData.color"
+                 :elevation="0"
+                 icon="menu" />
+        <MButton shape="circle"
+                 :color="PropsData.color"
+                 :elevation="0"
+                 icon="adjust" />
+      </template>
+      <div>
+        啊大苏打顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦
+        啊大苏打顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦
+        啊大苏打顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦
+      </div>
+    </MAppBar>
+
+    <MAppBar :color="PropsData.color"
              padding="10px"
                :elevation="PropsData.elevation"
                :variety="PropsData.variety"

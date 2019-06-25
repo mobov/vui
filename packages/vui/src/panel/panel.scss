@@ -1,0 +1,36 @@
+@import "~@mobov/scss-helper/import";
+
+$--m-view-transition-base: .25s ease;
+
+/**
+ * variables register.
+ */
+.m-view {
+    --m-view-color: var(--m-color-primary);
+    --m-view-font-color: var(--m-font-color);
+    --m-view-bg-color: var(--m-bg-color);
+}
+
+/**
+ * components styles.
+ */
+.m-view {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    color: var(--m-font-color);
+    background-color: var(--m-view-bg-color);
+    font-size: var(--m-font-base);
+    position: relative;
+}
+.m-view {
+
+}
+.m-view-scroller {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    @include slim-scroll-bar();
+}

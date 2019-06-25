@@ -5,13 +5,13 @@ import { getStyleSpace } from '../util'
 type SpaceSize = size | string | number | undefined
 
 type SpacePaddingStyles = {
-  padding?: string,
-  paddingX?: string,
-  paddingY?: string,
-  paddingTop?: string,
-  paddingBottom?: string,
-  paddingLeft?: string,
-  paddingRight?: string,
+  padding?: SpaceSize,
+  paddingX?: SpaceSize,
+  paddingY?: SpaceSize,
+  paddingTop?: SpaceSize,
+  paddingBottom?: SpaceSize,
+  paddingLeft?: SpaceSize,
+  paddingRight?: SpaceSize
 }
 
 @Component

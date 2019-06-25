@@ -48,7 +48,6 @@ const Mobov: MobovPlugin = {
   install (Vue, opts = {}): void {
     if ((this as any).installed) { return }
     (this as any).installed = true
-
     // 注册组件
     const componentsList = opts.components || components
     const directivesList = opts.directives || directives
@@ -66,7 +65,7 @@ const Mobov: MobovPlugin = {
     // 挂载根组件
     window.Mobov = this
   },
-  version: '0.2.20',
+  version: '0.2.21',
   constant
 }
 

@@ -2,13 +2,13 @@ import { Vue } from 'vue-property-decorator';
 import { size } from '../constant';
 declare type SpaceSize = size | string | number | undefined;
 declare type SpaceMarginStyles = {
-    margin?: string;
-    marginX?: string;
-    marginY?: string;
-    marginTop?: string;
-    marginBottom?: string;
-    marginLeft?: string;
-    marginRight?: string;
+    margin?: SpaceSize;
+    marginX?: SpaceSize;
+    marginY?: SpaceSize;
+    marginTop?: SpaceSize;
+    marginBottom?: SpaceSize;
+    marginLeft?: SpaceSize;
+    marginRight?: SpaceSize;
 };
 export default class SpaceMarginMixin extends Vue {
     marginLeft: SpaceSize;

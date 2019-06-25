@@ -3,20 +3,20 @@ import mixSpacePadding from './space-padding';
 declare const SpaceMixin_base: import("vue-class-component/lib/declarations").VueClass<mixSpaceMargin & mixSpacePadding>;
 export default class SpaceMixin extends SpaceMixin_base {
     readonly spaceStyle: {
-        padding?: string | undefined;
-        paddingX?: string | undefined;
-        paddingY?: string | undefined;
-        paddingTop?: string | undefined;
-        paddingBottom?: string | undefined;
-        paddingLeft?: string | undefined;
-        paddingRight?: string | undefined;
-        margin?: string | undefined;
-        marginX?: string | undefined;
-        marginY?: string | undefined;
-        marginTop?: string | undefined;
-        marginBottom?: string | undefined;
-        marginLeft?: string | undefined;
-        marginRight?: string | undefined;
+        padding?: string | number | undefined;
+        paddingX?: string | number | undefined;
+        paddingY?: string | number | undefined;
+        paddingTop?: string | number | undefined;
+        paddingBottom?: string | number | undefined;
+        paddingLeft?: string | number | undefined;
+        paddingRight?: string | number | undefined;
+        margin?: string | number | undefined;
+        marginX?: string | number | undefined;
+        marginY?: string | number | undefined;
+        marginTop?: string | number | undefined;
+        marginBottom?: string | number | undefined;
+        marginLeft?: string | number | undefined;
+        marginRight?: string | number | undefined;
     };
 }
 export {};

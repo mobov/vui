@@ -1,6 +1,7 @@
 <template>
   <example-box>
     <m-avatar :src="src"
+              transition
               :color="PropsData.color"
               :elevation="PropsData.elevation"
               :shape="PropsData.shape"

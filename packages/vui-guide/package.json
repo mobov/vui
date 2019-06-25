@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@mobov/es-helper": "^1.0.10",
+    "@mobov/es-helper": "^1.1.4",
     "@mobov/vui": "^0.2.20",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",

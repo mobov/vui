@@ -1,4 +1,4 @@
-import { Component, Mixins } from 'vue-property-decorator'
+import { Component, Mixins, Prop } from 'vue-property-decorator'
 import { scrollToX } from '@mobov/es-helper'
 import mixBase from '../core/mixin/base'
 import mixVariety from '../core/mixin/variety'
@@ -11,6 +11,12 @@ export default class MAppBar extends Mixins (
   mixShape
 ) {
   name = 'm-app-bar'
+
+  @Prop({ type: Boolean, default: false })
+  enableMouseScroll!: boolean
+
+  @Prop({ type: Boolean, default: true })
+  scrollKeep!: boolean
 
   get styles () {
     return {
@@ -26,30 +32,65 @@ export default class MAppBar extends Mixins (
     }
   }
 
-  handleWheel (e) {
+  private lastScrollVal = 0
+
+  scrollTo () {
 
   }
+  // 滚轮映射
+  handleWheel (e) {
+    if (!e.shiftKey) {
+      e.preventDefault()
+      scrollToX(this.$refs.scroller as HTMLElement, {
+        target: e.deltaY * 2,
+        duration: 200
+      })
+    }
+  }
 
-  handleScroll (e) {
+  handleScroll () {
+    const $scroller: any = this.$refs.scroller
+    this.lastScrollVal = $scroller.scrollTop
+  }
 
+  activated() {
+    // 恢复滚动位置
+    if (this.scrollKeep && (this.lastScrollVal !== (this.$refs.scroller as any).scrollLeft)) {
+      (this.$refs.scroller as any).scrollLeft = this.lastScrollVal
+    }
+  }
+  deactivated() {
+    // 记录滚动位置
+    if (this.scrollKeep && (this.lastScrollVal !== (this.$refs.scroller as any).scrollLeft)) {
+      this.lastScrollVal = (this.$refs.scroller as any).scrollLeft
+    }
+  }
+  mounted () {
+    if (this.enableMouseScroll) {
+      (this.$refs.scroller as any).addEventListener('mousewheel', this.handleWheel)
+    }
+  }
+  beforeDestroy() {
+    // 移除scroll绑定
+    if (this.enableMouseScroll) {
+      (this.$refs.scroller as any).removeEventListener('mousewheel', this.handleWheel)
+    }
   }
 
   render () {
-    const { name, $slots, classes, styles, handleScroll, handleWheel } = this
-    // {$slots.left}
-    // <section ref="scrollWrapper"
-    //          staticClass="o-app-bar__main"
-    //          onscroll={handleScroll}
-    //          onmousewheel={handleWheel}>
-    //   {$slots.default}
-    // </section>
-    //
-    // {$slots.right}
+    const { name, $slots, classes, styles, handleScroll } = this
+
     return (
       <div staticClass={name}
            style={styles}
            class={classes}>
-        {$slots.default}
+        {$slots.left}
+        <section ref="scroller"
+                 staticClass={`${name}-main`}
+                 onscroll={handleScroll}>
+          {$slots.default}
+        </section>
+        {$slots.right}
       </div>
     )
   }
