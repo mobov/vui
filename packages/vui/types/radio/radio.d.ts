@@ -9,6 +9,11 @@ export default class MRadio extends MRadio_base {
     disabled: boolean;
     onInput(val: any): void;
     readonly styles: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

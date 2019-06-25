@@ -3,7 +3,7 @@ import { typeHeader, typeHover, typeSelect } from './constant';
 declare const MTable_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
 export default class MTable extends MTable_base {
     name: string;
-    border?: boolean;
+    bordered?: boolean;
     data: any[];
     keyField?: string;
     header?: typeHeader;
@@ -32,6 +32,11 @@ export default class MTable extends MTable_base {
     readonly TableCols: any[];
     dataAdaptI(val?: any[]): any[];
     readonly styles: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

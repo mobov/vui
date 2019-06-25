@@ -1,12 +1,9 @@
 import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
-import MIcon from '../icon'
 import mixBase from '../core/mixin/base'
 import mixVariety from '../core/mixin/variety'
 import mixShape from '../core/mixin/shape'
 
-@Component({
-  components: { MIcon }
-})
+@Component
 export default class MButton extends Mixins (
   mixBase,
   mixVariety,
@@ -16,9 +13,6 @@ export default class MButton extends Mixins (
 
   @Prop({ type: Boolean })
   block!: boolean
-
-  @Prop({ type: String })
-  icon!: string
 
   @Prop({ type: Boolean })
   loading!: boolean
@@ -47,7 +41,11 @@ export default class MButton extends Mixins (
   }
 
   render () {
-    const { name, classes, styles, icon, onClick } = this
+    const { name, classes, styles, onClick } = this
+    // {!icon ? undefined
+    //   : <MIcon value={icon} />}
+    // {!this.$slots.default ? undefined
+    //   : <div class={`${name}__main`}>{this.$slots.default}</div>}
 
     return (
       <div v-m-ripple
@@ -55,10 +53,7 @@ export default class MButton extends Mixins (
            class={classes}
            style={styles}
            onClick={onClick}>
-        {!icon ? undefined
-          : <MIcon value={icon} />}
-        {!this.$slots.default ? undefined
-          : <div class={`${name}__main`}>{this.$slots.default}</div>}
+        {this.$slots.default}
       </div>
     )
   }

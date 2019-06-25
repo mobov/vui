@@ -48,7 +48,7 @@ styleInject(css$4);
 var css$5 = "/**\r\n * day and night mode\r\n */\n:root {\n  --m-day-font-color: var(--m-color-grey-A700);\n  --m-day-bg-color: var(--m-color-grey-A100);\n  --m-day-hover-bg-color: var(--m-color-grey-200);\n  --m-day-border-color: var(--m-color-grey-200);\n  --m-day-bg-second-color: var(--m-color-grey-200); }\n\n:root {\n  --m-font-color: var(--m-day-font-color);\n  --m-bg-color: var(--m-day-bg-color);\n  --m-hover-bg-color: var(--m-day-hover-bg-color);\n  --m-border-color: var(--m-day-border-color); }\n";
 styleInject(css$5);
 
-var css$6 = ":root {\n  ---m-border-base: 1px solid var(--m-border-color); }\n\n.m-hr-b {\n  border-bottom: var(---m-border-base); }\n\n.m-hr-t {\n  border-top: var(---m-border-base); }\n\n.m-hr-l {\n  border-left: var(---m-border-base); }\n\n.m-hr-r {\n  border-right: var(---m-border-base); }\n";
+var css$6 = ":root {\n  --m-border-base: 1px solid var(--m-border-color); }\n\n.m-hr-b {\n  border-bottom: var(--m-border-base); }\n\n.m-hr-t {\n  border-top: var(--m-border-base); }\n\n.m-hr-l {\n  border-left: var(--m-border-base); }\n\n.m-hr-r {\n  border-right: var(--m-border-base); }\n";
 styleInject(css$6);
 
 var css$7 = ".m-hr-b {\n  border-bottom: 1px solid var(--m-border-color); }\n\n.m-hr-t {\n  border-top: 1px solid var(--m-border-color); }\n\n.m-hr-l {\n  border-left: 1px solid var(--m-border-color); }\n\n.m-hr-r {\n  border-right: 1px solid var(--m-border-color); }\n";
@@ -1443,6 +1443,82 @@ __decorate([Prop({
 ElevationMixin = __decorate([Component], ElevationMixin);
 var mixElevation = ElevationMixin;
 
+var BorderMixin =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(BorderMixin, _Vue);
+
+  function BorderMixin() {
+    _classCallCheck(this, BorderMixin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BorderMixin).apply(this, arguments));
+  }
+
+  _createClass(BorderMixin, [{
+    key: "borderStyle",
+    get: function get() {
+      var border = this.border,
+          borderLeft = this.borderLeft,
+          borderRight = this.borderRight,
+          borderTop = this.borderTop,
+          borderBottom = this.borderBottom;
+      var styles = {};
+
+      if (!!border) {
+        styles.border = 'var(--m-border-base)';
+      }
+
+      if (!!borderLeft) {
+        styles.borderLeft = 'var(--m-border-base)';
+      }
+
+      if (!!borderRight) {
+        styles.borderRight = 'var(--m-border-base)';
+      }
+
+      if (!!borderTop) {
+        styles.borderTop = 'var(--m-border-base)';
+      }
+
+      if (!!borderBottom) {
+        styles.borderBottom = 'var(--m-border-base)';
+      }
+
+      return styles;
+    }
+  }]);
+
+  return BorderMixin;
+}(Vue);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Object)], BorderMixin.prototype, "border", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Object)], BorderMixin.prototype, "borderLeft", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Object)], BorderMixin.prototype, "borderRight", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Object)], BorderMixin.prototype, "borderTop", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Object)], BorderMixin.prototype, "borderBottom", void 0);
+
+BorderMixin = __decorate([Component], BorderMixin);
+var mixBorder = BorderMixin;
+
 var BaseMixin =
 /*#__PURE__*/
 function (_Mixins) {
@@ -1457,7 +1533,7 @@ function (_Mixins) {
   _createClass(BaseMixin, [{
     key: "baseStyle",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.spaceStyle, this.sizeStyle);
+      return Object.assign({}, this.colorStyle, this.spaceStyle, this.sizeStyle, this.borderStyle);
     }
   }, {
     key: "baseClass",
@@ -1467,7 +1543,7 @@ function (_Mixins) {
   }]);
 
   return BaseMixin;
-}(Mixins(mixColor, mixSize, mixSpace, mixElevation));
+}(Mixins(mixColor, mixSize, mixSpace, mixElevation, mixBorder));
 
 BaseMixin = __decorate([Component], BaseMixin);
 var mixBase = BaseMixin;
@@ -1851,7 +1927,7 @@ function (_Mixins) {
     get: function get() {
       _objectDestructuringEmpty(this);
 
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceMarginStyle);
+      return Object.assign({}, this.borderStyle, this.sizeStyle, this.spaceMarginStyle);
     }
   }, {
     key: "scrollerStyles",
@@ -1863,7 +1939,7 @@ function (_Mixins) {
   }]);
 
   return MView;
-}(Mixins(mixColor, mixSpaceMargin, mixSpacePadding, mixSize, mixElevation));
+}(Mixins(mixBorder, mixSpaceMargin, mixSpacePadding, mixSize, mixElevation));
 
 __decorate([Prop({
   type: Boolean,
@@ -2856,7 +2932,7 @@ MAppBar$1.install = function (Vue) {
   Vue.component(MAppBar$1.name, MAppBar$1);
 };
 
-var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: var(--m-button-border-size) solid transparent;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-button > * {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: transparent;\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n";
+var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-size-xs: 2rem;\n  --m-button-size-sm: 2.5rem;\n  --m-button-size-md: 3rem;\n  --m-button-size-lg: 3.5rem;\n  --m-button-size-xl: 4rem;\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: var(--m-button-size-md);\n  --m-button-border-size: .2rem; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: var(--m-button-border-size) solid transparent;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: transparent;\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n";
 styleInject(css$g);
 
 var MButton =
@@ -2884,8 +2960,11 @@ function (_Mixins) {
       var name = this.name,
           classes = this.classes,
           styles = this.styles,
-          icon = this.icon,
-          onClick = this.onClick;
+          onClick = this.onClick; // {!icon ? undefined
+      //   : <MIcon value={icon} />}
+      // {!this.$slots.default ? undefined
+      //   : <div class={`${name}__main`}>{this.$slots.default}</div>}
+
       return h("div", {
         "directives": [{
           name: "m-ripple",
@@ -2897,13 +2976,7 @@ function (_Mixins) {
         "on": {
           "click": onClick
         }
-      }, [!icon ? undefined : h(MIcon$1, {
-        "attrs": {
-          "value": icon
-        }
-      }), !this.$slots.default ? undefined : h("div", {
-        "class": "".concat(name, "__main")
-      }, [this.$slots.default])]);
+      }, [this.$slots.default]);
     }
   }, {
     key: "styles",
@@ -2930,10 +3003,6 @@ __decorate([Prop({
 }), __metadata("design:type", Boolean)], MButton.prototype, "block", void 0);
 
 __decorate([Prop({
-  type: String
-}), __metadata("design:type", String)], MButton.prototype, "icon", void 0);
-
-__decorate([Prop({
   type: Boolean
 }), __metadata("design:type", Boolean)], MButton.prototype, "loading", void 0);
 
@@ -2943,11 +3012,7 @@ __decorate([Prop({
 
 __decorate([Emit('click'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MButton.prototype, "onClick", null);
 
-MButton = __decorate([Component({
-  components: {
-    MIcon: MIcon$1
-  }
-})], MButton);
+MButton = __decorate([Component], MButton);
 var MButton$1 = MButton;
 
 MButton$1.install = function (Vue) {
@@ -4831,7 +4896,7 @@ MTimePicker$1.install = function (Vue) {
   Vue.component('MTimePicker', MTimePicker$1);
 };
 
-var css$m = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 2.5rem;\n  --m-list-size-md: 3rem;\n  --m-list-size-lg: 4rem;\n  --m-list-size-xl: 5rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n.m-list-item {\n  --m-list-item-size-xs: 2rem;\n  --m-list-item-size-sm: 2.5rem;\n  --m-list-item-size-md: 3rem;\n  --m-list-item-size-lg: 4rem;\n  --m-list-item-size-xl: 5rem;\n  --m-list-item-color: var(--m-bg-color-main);\n  --m-list-item-font-color: var(--m-font-color-main);\n  --m-list-item-active-color: var(--m-color-main);\n  --m-list-item-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  cursor: pointer;\n  position: relative;\n  font-size: 1.4rem; }\n  .m-list__title {\n    padding: var(--m-space-sm);\n    font-size: 16px; }\n  .m-list.--with-title-divider .m-list__title {\n    border-bottom: var(---m-border-base); }\n\n.m-list-item {\n  background-color: var(--m-list-item-color);\n  color: var(--m-list-item-font-color);\n  min-height: var(--m-list-item-size);\n  cursor: pointer;\n  position: relative;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n  .m-list-item.--with-divider {\n    border-bottom: var(---m-border-base); }\n  .m-list-item__main {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-list-item__media {\n    margin-right: var(--m-space-sm); }\n  .m-list-item.--active {\n    background-color: var(--m-hover-bg-color); }\n  .m-list-item.--with-hover:hover {\n    background-color: var(--m-hover-bg-color); }\n";
+var css$m = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-size-xs: 2rem;\n  --m-list-size-sm: 2.5rem;\n  --m-list-size-md: 3rem;\n  --m-list-size-lg: 4rem;\n  --m-list-size-xl: 5rem;\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: var(--m-list-size-md); }\n\n.m-list-item {\n  --m-list-item-size-xs: 2rem;\n  --m-list-item-size-sm: 2.5rem;\n  --m-list-item-size-md: 3rem;\n  --m-list-item-size-lg: 4rem;\n  --m-list-item-size-xl: 5rem;\n  --m-list-item-color: var(--m-bg-color-main);\n  --m-list-item-font-color: var(--m-font-color-main);\n  --m-list-item-active-color: var(--m-color-main);\n  --m-list-item-size: var(--m-list-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  cursor: pointer;\n  position: relative;\n  font-size: 1.4rem; }\n  .m-list__title {\n    padding: var(--m-space-sm);\n    font-size: 16px; }\n  .m-list.--with-title-divider .m-list__title {\n    border-bottom: var(--m-border-base); }\n\n.m-list-item {\n  background-color: var(--m-list-item-color);\n  color: var(--m-list-item-font-color);\n  min-height: var(--m-list-item-size);\n  cursor: pointer;\n  position: relative;\n  padding-left: var(--m-space-sm);\n  padding-right: var(--m-space-sm);\n  font-size: 1.4rem; }\n  .m-list-item.--with-divider {\n    border-bottom: var(--m-border-base); }\n  .m-list-item__main {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-list-item__media {\n    margin-right: var(--m-space-sm); }\n  .m-list-item.--active {\n    background-color: var(--m-hover-bg-color); }\n  .m-list-item.--with-hover:hover {\n    background-color: var(--m-hover-bg-color); }\n";
 styleInject(css$m);
 
 var MList =
@@ -5834,7 +5899,7 @@ function (_Mixins) {
           height = this.height,
           classes = this.classes,
           styles = this.styles,
-          border = this.border,
+          bordered = this.bordered,
           header = this.header,
           size = this.size,
           select = this.select,
@@ -5859,7 +5924,7 @@ function (_Mixins) {
         "attrs": {
           "size": size,
           "height": height,
-          "border": border,
+          "border": bordered,
           "select": select,
           "expand": expand,
           "rowSelect": rowSelect,
@@ -5911,7 +5976,7 @@ function (_Mixins) {
 __decorate([Prop({
   type: Boolean,
   default: false
-}), __metadata("design:type", Boolean)], MTable.prototype, "border", void 0);
+}), __metadata("design:type", Boolean)], MTable.prototype, "bordered", void 0);
 
 __decorate([Prop({
   type: Array,
@@ -6349,7 +6414,7 @@ var Mobov = {
 
     window.Mobov = this;
   },
-  version: '0.2.21',
+  version: '0.2.22',
   constant: constant
 };
 

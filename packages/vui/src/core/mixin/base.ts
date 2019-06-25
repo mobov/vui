@@ -3,19 +3,22 @@ import mixColor from './color'
 import mixSize from './size'
 import mixSpace from './space'
 import mixElevation from './elevation'
+import mixBorder from './border'
 
 @Component
 export default class BaseMixin extends Mixins (
   mixColor,
   mixSize,
   mixSpace,
-  mixElevation
+  mixElevation,
+  mixBorder
 ) {
   get baseStyle () {
     return {
       ...this.colorStyle,
       ...this.spaceStyle,
-      ...this.sizeStyle
+      ...this.sizeStyle,
+      ...this.borderStyle
     }
   }
 

@@ -3,13 +3,9 @@ import mixSpaceMargin from '../core/mixin/space-margin';
 import mixSpacePadding from '../core/mixin/space-padding';
 import mixSize from '../core/mixin/size';
 import mixElevation from '../core/mixin/elevation';
-declare const MView_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSpaceMargin & mixSpacePadding & mixSize & mixElevation>;
-export default class MView extends MView_base {
+declare const MPanel_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSpaceMargin & mixSpacePadding & mixSize & mixElevation>;
+export default class MPanel extends MPanel_base {
     name: string;
-    scrollKeep: boolean;
-    onRefresh?: () => {};
-    onLoadMore?: () => {};
-    onScroll(params: [Event, number, boolean, boolean, '↕' | '↓' | '↑']): void;
     readonly classes: {};
     readonly styles: {
         margin?: string | number | undefined;
@@ -32,22 +28,8 @@ export default class MView extends MView_base {
         paddingLeft?: string | number | undefined;
         paddingRight?: string | number | undefined;
     };
-    private enableWatchScroll;
-    private enableLoadMore;
-    private enableRefresh;
-    private pending;
-    private isStart;
-    private isEnd;
-    private lastScrollVal;
-    private scrollKeepVal;
-    handleScroll(e: Event): void;
-    refresh(): void;
-    loadMore(): void;
-    scrollTo(target: any): void;
-    mounted(): void;
-    activated(): void;
-    deactivated(): void;
-    beforeDestroy(): void;
+    RHeader(): JSX.Element;
+    RFooter(): JSX.Element;
     render(): JSX.Element;
 }
 export {};

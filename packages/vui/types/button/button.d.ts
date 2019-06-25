@@ -5,11 +5,15 @@ declare const MButton_base: import("vue-class-component/lib/declarations").VueCl
 export default class MButton extends MButton_base {
     name: string;
     block: boolean;
-    icon: string;
     loading: boolean;
     disabled: boolean;
     onClick(e: MouseEvent | TouchEvent): void;
     readonly styles: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

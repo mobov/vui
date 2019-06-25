@@ -54,11 +54,12 @@ $--m-button-size-xl: 4rem;
   //> * {
   //  margin: 0 calc(var(--m-button-size) / 2);
   //}
-  > * {
-    display: flex;
-    align-items: center;
-    //vertical-align: middle;
-  }
+  //> * {
+  //  display: flex;
+  //  align-items: center;
+  //  justify-content: space-around;
+  //  //vertical-align: middle;
+  //}
     // hover
   &:hover {
     //background-color: var(--m-button-hover-color);

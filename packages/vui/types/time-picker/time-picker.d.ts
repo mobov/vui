@@ -19,6 +19,11 @@ export default class MTimePicker extends MTimePicker_base {
     onCancel(): void;
     onInput(val: any): void;
     readonly styles: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

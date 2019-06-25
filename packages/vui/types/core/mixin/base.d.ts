@@ -2,9 +2,15 @@ import mixColor from './color';
 import mixSize from './size';
 import mixSpace from './space';
 import mixElevation from './elevation';
-declare const BaseMixin_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSize & mixSpace & mixElevation>;
+import mixBorder from './border';
+declare const BaseMixin_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSize & mixSpace & mixElevation & mixBorder>;
 export default class BaseMixin extends BaseMixin_base {
     readonly baseStyle: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

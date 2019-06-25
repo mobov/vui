@@ -54,7 +54,7 @@ $--m-list-size-xl: 5rem;
     }
     &.--with-title-divider {
         .m-list__title {
-            border-bottom: var(---m-border-base);
+            border-bottom: var(--m-border-base);
         }
     }
 }
@@ -68,7 +68,7 @@ $--m-list-size-xl: 5rem;
     padding-right: var(--m-space-sm);
     font-size: 1.4rem;
     &.--with-divider {
-        border-bottom: var(---m-border-base);
+        border-bottom: var(--m-border-base);
     }
     &__main {
         display: flex;

@@ -1,9 +1,9 @@
-import mixColor from '../core/mixin/color';
+import mixBorder from '../core/mixin/border';
 import mixSpaceMargin from '../core/mixin/space-margin';
 import mixSpacePadding from '../core/mixin/space-padding';
 import mixSize from '../core/mixin/size';
 import mixElevation from '../core/mixin/elevation';
-declare const MView_base: import("vue-class-component/lib/declarations").VueClass<mixColor & mixSpaceMargin & mixSpacePadding & mixSize & mixElevation>;
+declare const MView_base: import("vue-class-component/lib/declarations").VueClass<mixBorder & mixSpaceMargin & mixSpacePadding & mixSize & mixElevation>;
 export default class MView extends MView_base {
     name: string;
     scrollKeep: boolean;
@@ -22,6 +22,11 @@ export default class MView extends MView_base {
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
     };
     readonly scrollerStyles: {
         padding?: string | number | undefined;

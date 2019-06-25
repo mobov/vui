@@ -16,7 +16,7 @@ export default class MTable extends Mixins (
   name = 'm-table'
 
   @Prop({ type: Boolean, default: false })
-  border?: boolean
+  bordered?: boolean
 
   @Prop({ type: Array, default: () => [] })
   data!: any[]
@@ -246,7 +246,7 @@ export default class MTable extends Mixins (
   }
 
   render () {
-    const { name, height, classes, styles, border, header, size, select, expand, rowSelect, rowExpand } = this
+    const { name, height, classes, styles, bordered, header, size, select, expand, rowSelect, rowExpand } = this
     const noHeader = header === typeHeader.none
 
     return (
@@ -262,7 +262,7 @@ export default class MTable extends Mixins (
           <TableBody ref={'body'}
                      size={size}
                      height={height}
-                     border={border}
+                     border={bordered}
                      select={select}
                      expand={expand}
                      rowSelect={rowSelect}

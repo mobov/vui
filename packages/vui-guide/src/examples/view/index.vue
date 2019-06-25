@@ -10,18 +10,17 @@
 </style>
 <template>
   <example-box>
-    <m-frame :height="600">
-      <m-view ref="view"
-              @scroll="handleScroll"
-              :onRefresh="handleRefresh"
-              :onLoadMore="handleLoadMore"
-              height="100%" :elevation="1">
-        <div v-for="(item, index) in 100">
-          {{index}}
-        </div>
-      </m-view>
-    </m-frame>
-
+    <m-view ref="view"
+            border
+            padding="20px"
+            @scroll="handleScroll"
+            :onRefresh="handleRefresh"
+            :onLoadMore="handleLoadMore"
+            height="600px" >
+      <div v-for="(item, index) in 100">
+        {{index}}
+      </div>
+    </m-view>
   </example-box>
 </template>
 

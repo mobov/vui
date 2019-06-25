@@ -8,6 +8,11 @@ export default class MAvatar extends MAvatar_base {
     placeholder: string;
     src: string;
     readonly styles: {
+        border?: string | undefined;
+        borderLeft?: string | undefined;
+        borderRight?: string | undefined;
+        borderTop?: string | undefined;
+        borderBottom?: string | undefined;
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;

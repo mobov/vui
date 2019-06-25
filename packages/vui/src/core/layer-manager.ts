@@ -1,7 +1,12 @@
 
 class LayerManager {
-  index
+  zIndex: number = 2000
+
+  getZIndex (): number {
+    this.zIndex ++
+    return this.zIndex
+  }
 
 }
 
-const instance = new LayerManager()
+export default new LayerManager()

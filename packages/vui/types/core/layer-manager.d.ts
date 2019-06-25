@@ -1,4 +1,6 @@
 declare class LayerManager {
-    index: any;
+    zIndex: number;
+    getZIndex(): number;
 }
-declare const instance: LayerManager;
+declare const _default: LayerManager;
+export default _default;

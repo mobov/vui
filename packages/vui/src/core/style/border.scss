@@ -1,16 +1,16 @@
 :root {
-    ---m-border-base: 1px solid var(--m-border-color);
+    --m-border-base: 1px solid var(--m-border-color);
 }
 
 .m-hr-b {
-    border-bottom: var(---m-border-base);
+    border-bottom: var(--m-border-base);
 }
 .m-hr-t {
-    border-top: var(---m-border-base);
+    border-top: var(--m-border-base);
 }
 .m-hr-l {
-    border-left: var(---m-border-base);
+    border-left: var(--m-border-base);
 }
 .m-hr-r {
-    border-right: var(---m-border-base);
+    border-right: var(--m-border-base);
 }
