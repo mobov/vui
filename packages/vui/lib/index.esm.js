@@ -2963,13 +2963,20 @@ function (_Mixins) {
     key: "onClick",
     value: function onClick(e) {}
   }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      if (!this.disabled) {
+        this.onClick(e);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var h = arguments[0];
       var name = this.name,
           classes = this.classes,
           styles = this.styles,
-          onClick = this.onClick,
+          handleClick = this.handleClick,
           disabled = this.disabled; // {!icon ? undefined
       //   : <MIcon value={icon} />}
       // {!this.$slots.default ? undefined
@@ -2984,7 +2991,7 @@ function (_Mixins) {
         "class": classes,
         "style": styles,
         "on": {
-          "click": onClick
+          "click": handleClick
         }
       }, [this.$slots.default]);
     }
@@ -6427,7 +6434,7 @@ var Mobov = {
 
     window.Mobov = this;
   },
-  version: '0.2.23',
+  version: '0.2.24',
   constant: constant
 };
 

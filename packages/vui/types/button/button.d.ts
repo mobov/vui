@@ -37,6 +37,7 @@ export default class MButton extends MButton_base {
         'm--block': boolean;
         'm--disabled': boolean;
     };
+    handleClick(e: any): void;
     render(): JSX.Element;
 }
 export {};

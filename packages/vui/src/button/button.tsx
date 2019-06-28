@@ -40,8 +40,14 @@ export default class MButton extends Mixins (
     }
   }
 
+  handleClick (e) {
+    if (!this.disabled) {
+      this.onClick(e)
+    }
+  }
+
   render () {
-    const { name, classes, styles, onClick, disabled } = this
+    const { name, classes, styles, handleClick, disabled } = this
     // {!icon ? undefined
     //   : <MIcon value={icon} />}
     // {!this.$slots.default ? undefined
@@ -52,7 +58,7 @@ export default class MButton extends Mixins (
            staticClass={name}
            class={classes}
            style={styles}
-           onClick={onClick}>
+           onClick={handleClick}>
         {this.$slots.default}
       </div>
     )
