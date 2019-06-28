@@ -11,13 +11,13 @@ export default class MButton extends Mixins (
 ) {
   name = 'm-button'
 
-  @Prop({ type: Boolean })
+  @Prop({ type: Boolean, default: false })
   block!: boolean
 
-  @Prop({ type: Boolean })
+  @Prop({ type: Boolean, default: false })
   loading!: boolean
 
-  @Prop({ type: Boolean })
+  @Prop({ type: Boolean, default: false })
   disabled!: boolean
 
   @Emit('click')
@@ -41,14 +41,14 @@ export default class MButton extends Mixins (
   }
 
   render () {
-    const { name, classes, styles, onClick } = this
+    const { name, classes, styles, onClick, disabled } = this
     // {!icon ? undefined
     //   : <MIcon value={icon} />}
     // {!this.$slots.default ? undefined
     //   : <div class={`${name}__main`}>{this.$slots.default}</div>}
 
     return (
-      <div v-m-ripple
+      <div v-m-ripple={!disabled}
            staticClass={name}
            class={classes}
            style={styles}

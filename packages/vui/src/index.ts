@@ -65,7 +65,7 @@ const Mobov: MobovPlugin = {
     // 挂载根组件
     window.Mobov = this
   },
-  version: '0.2.22',
+  version: '0.2.23',
   constant
 }
 

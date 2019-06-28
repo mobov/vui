@@ -103,6 +103,8 @@ $--m-button-size-xl: 4rem;
   }
   // disabled
   &.m--disabled {
+    //background-color: rgba(var(--m-button-color), .5);
+    opacity: .6;
   }
 }
 

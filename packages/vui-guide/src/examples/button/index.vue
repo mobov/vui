@@ -6,6 +6,7 @@
                 :shape="PropsData.shape"
                 :variety="PropsData.variety"
                 :size="PropsData.size"
+                :disabled="PropsData.disabled"
                 paddingX="sm"
                 marginRight="sm">
         just we
@@ -15,6 +16,7 @@
                 :shape="PropsData.shape"
                 :variety="PropsData.variety"
                 :size="PropsData.size"
+                :disabled="PropsData.disabled"
                 :padding="0"
                 marginRight="sm">
         <m-icon size="16" value="menu" />
@@ -24,6 +26,7 @@
                 :shape="PropsData.shape"
                 :variety="PropsData.variety"
                 :size="PropsData.size"
+                :disabled="PropsData.disabled"
                 paddingX="sm"
                 marginRight="sm">
         just we

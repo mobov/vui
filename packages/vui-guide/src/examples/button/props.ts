@@ -32,6 +32,12 @@ const props: Array<PropsPropertries> = [
     type: 'radio',
     default: Shape.corner,
     value: SHAPE
+  },
+  {
+    name: 'disabled',
+    type: 'radio',
+    default: false,
+    value: [true, false]
   }
 ]
 
