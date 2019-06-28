@@ -1146,7 +1146,8 @@ function (_Vue) {
     get: function get() {
       var height = this.height,
           width = this.width,
-          size = this.size;
+          size = this.size,
+          fontSize = this.fontSize;
       var styles = {};
       genSize(styles, this.name, size);
 
@@ -1156,6 +1157,10 @@ function (_Vue) {
 
       if (width !== undefined) {
         styles.width = getStyleSize(width);
+      }
+
+      if (fontSize !== undefined) {
+        styles.fontSize = getStyleSize(fontSize);
       }
 
       return styles;
@@ -1176,6 +1181,10 @@ __decorate([vuePropertyDecorator.Prop({
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
 }), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "fontSize", void 0);
 
 SizeMixin = __decorate([vuePropertyDecorator.Component], SizeMixin);
 var mixSize = SizeMixin;
@@ -3532,7 +3541,7 @@ MCheckbox$1.install = function (Vue) {
   Vue.component('MCheckbox', MCheckbox$1);
 };
 
-var css$k = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .2s;\n    transition: padding-right ease .2s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .2s;\n  transition: opacity ease .2s; }\n  .m-chip__close > * {\n    height: inherit;\n    width: inherit; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
+var css$k = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-size-xs: 1.5rem;\n  --m-chip-size-sm: 1.75rem;\n  --m-chip-size-md: 2rem;\n  --m-chip-size-lg: 2.25rem;\n  --m-chip-size-xl: 2.5rem;\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-size: var(--m-button-size-md);\n  --m-chip-border-size: .2rem;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .2s;\n    transition: padding-right ease .2s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .2s;\n  transition: opacity ease .2s; }\n  .m-chip__close > * {\n    height: inherit;\n    width: inherit; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
 styleInject(css$k);
 
 var MChip =
