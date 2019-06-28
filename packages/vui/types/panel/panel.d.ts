@@ -18,6 +18,7 @@ export default class MPanel extends MPanel_base {
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;
+        fontSize?: string | number | undefined;
     };
     readonly scrollerStyles: {
         padding?: string | number | undefined;

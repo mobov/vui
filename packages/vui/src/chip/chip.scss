@@ -60,6 +60,11 @@
         background-color: var(--m-bg-color);
         color: var(--m-chip-color);
     }
+    &.m-variety-flat {
+
+        background-color: var(--m-bg-color);
+        color: var(--m-chip-color);
+    }
     // shape
     &.m-shape-circle {
         border-radius: var(--m-chip-size);

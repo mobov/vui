@@ -6,6 +6,7 @@ type SizeStyles = {
   size?: size | string | number
   height?: string | number
   width?: string | number
+  fontSize?: string | number
 }
 
 @Component
@@ -21,8 +22,11 @@ export default class SizeMixin extends Vue {
   @Prop({ type: [String, Number] })
   width?: string | number
 
+  @Prop({ type: [String, Number] })
+  fontSize?: size | string | number
+
   get sizeStyle () {
-    const { height, width, size } = this
+    const { height, width, size, fontSize } = this
     const styles: SizeStyles = {}
 
     genSize(styles, this.name, size)
@@ -32,6 +36,9 @@ export default class SizeMixin extends Vue {
     }
     if (width !== undefined) {
       styles.width = getStyleSize(width)
+    }
+    if (fontSize !== undefined) {
+      styles.fontSize = getStyleSize(fontSize)
     }
 
     return styles

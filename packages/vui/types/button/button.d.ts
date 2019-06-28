@@ -17,6 +17,7 @@ export default class MButton extends MButton_base {
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;
+        fontSize?: string | number | undefined;
         padding?: string | number | undefined;
         paddingX?: string | number | undefined;
         paddingY?: string | number | undefined;

@@ -22,6 +22,7 @@ export default class MView extends MView_base {
         size?: string | number | undefined;
         height?: string | number | undefined;
         width?: string | number | undefined;
+        fontSize?: string | number | undefined;
         border?: string | undefined;
         borderLeft?: string | undefined;
         borderRight?: string | undefined;
