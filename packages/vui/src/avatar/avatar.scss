@@ -32,6 +32,10 @@ $--m-avatar-size-xl: 5.5rem;
 
     width: var(--m-avatar-size);
     height: var(--m-avatar-size);
+    min-width: var(--m-avatar-size);
+    min-height: var(--m-avatar-size);
+    max-width: var(--m-avatar-size);
+    max-height: var(--m-avatar-size);
     font-size: var(--m-avatar-font-size);
 
     display: flex;

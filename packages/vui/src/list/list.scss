@@ -78,6 +78,14 @@ $--m-list-size-xl: 5rem;
     &__media {
         margin-right: var(--m-space-sm);
     }
+    &__content {
+        flex-grow: 1;
+    }
+    //&__action {
+    //    display: flex;
+    //    justify-content: flex-start;
+    //    align-items: center;
+    //}
     &.--active {
         background-color: var(--m-hover-bg-color);
     }
