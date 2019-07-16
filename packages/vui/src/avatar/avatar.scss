@@ -59,12 +59,13 @@ $--m-avatar-size-xl: 5.5rem;
     }
 
     // status
+    &.m--status-pending,
     &.m--status-success {
         .m-avatar-image {
             opacity: 1;
         }
     }
-    &.m--status-pending,
+
     &.m--status-failure {
         .m-avatar-image {
             opacity: 0;

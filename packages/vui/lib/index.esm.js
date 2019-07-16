@@ -1172,11 +1172,27 @@ __decorate([Prop({
 
 __decorate([Prop({
   type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "minHeight", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "minWidth", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
 }), __metadata("design:type", Object)], SizeMixin.prototype, "height", void 0);
 
 __decorate([Prop({
   type: [String, Number]
 }), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "maxHeight", void 0);
+
+__decorate([Prop({
+  type: [String, Number]
+}), __metadata("design:type", Object)], SizeMixin.prototype, "maxWidth", void 0);
 
 __decorate([Prop({
   type: [String, Number]
@@ -3039,7 +3055,7 @@ MButton$1.install = function (Vue) {
   Vue.component('MButton', MButton$1);
 };
 
-var css$h = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  min-width: var(--m-avatar-size);\n  min-height: var(--m-avatar-size);\n  max-width: var(--m-avatar-size);\n  max-height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  border-width: 0;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-success .m-avatar-image {\n    opacity: 1; }\n  .m-avatar.m--status-pending .m-avatar-image, .m-avatar.m--status-failure .m-avatar-image {\n    opacity: 0; }\n  .m-avatar.m--transition .m-avatar-image {\n    -webkit-transition: opacity ease .2s;\n    transition: opacity ease .2s; }\n\n.m-avatar-image {\n  -webkit-transition: none;\n  transition: none;\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
+var css$h = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-size-xs: 1.5rem;\n  --m-avatar-size-sm: 2.5rem;\n  --m-avatar-size-md: 3.5rem;\n  --m-avatar-size-lg: 4.5rem;\n  --m-avatar-size-xl: 5.5rem;\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-size: var(--m-avatar-size-md); }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  min-width: var(--m-avatar-size);\n  min-height: var(--m-avatar-size);\n  max-width: var(--m-avatar-size);\n  max-height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  border-width: 0;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: 0.2rem;\n    border-style: solid; }\n  .m-avatar.m--status-pending .m-avatar-image, .m-avatar.m--status-success .m-avatar-image {\n    opacity: 1; }\n  .m-avatar.m--status-failure .m-avatar-image {\n    opacity: 0; }\n  .m-avatar.m--transition .m-avatar-image {\n    -webkit-transition: opacity ease .2s;\n    transition: opacity ease .2s; }\n\n.m-avatar-image {\n  -webkit-transition: none;\n  transition: none;\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
 styleInject(css$h);
 
 var MAvatar =
@@ -6434,7 +6450,7 @@ var Mobov = {
 
     window.Mobov = this;
   },
-  version: '0.2.25',
+  version: '0.2.26',
   constant: constant
 };
 

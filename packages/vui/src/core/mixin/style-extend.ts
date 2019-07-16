@@ -37,7 +37,7 @@ export default class SizeMixin extends Vue {
   @Prop({ type: [String, Number] })
   fontSize?: size | string | number
 
-  get sizeStyle () {
+  private get sizeStyle () {
     const { height, width, size, fontSize } = this
     const styles: SizeStyles = {}
 
@@ -54,5 +54,9 @@ export default class SizeMixin extends Vue {
     }
 
     return styles
+  }
+
+  beforeMount () {
+
   }
 }
