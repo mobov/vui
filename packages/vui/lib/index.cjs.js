@@ -800,24 +800,6 @@ function genSize() {
   }
 }
 /**
- *
- * @param styles
- * @param compName
- * @param val
- */
-
-function genSpace(styles, compName, val) {
-  if (val !== undefined) {
-    if (typeof val === 'number') {
-      styles["--".concat(compName, "-space")] = "".concat(val, "px");
-    } else if (BREAKPOINT.includes(val)) {
-      styles["--".concat(compName, "-space")] = "var(--m-space-".concat(val, ")");
-    } else {
-      styles["--".concat(compName, "-space")] = "".concat(val);
-    }
-  }
-}
-/**
  * 计算阴影
  * @param classes
  * @param val
@@ -1176,27 +1158,11 @@ __decorate([vuePropertyDecorator.Prop({
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "minHeight", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "minWidth", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
 }), __metadata("design:type", Object)], SizeMixin.prototype, "height", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
 }), __metadata("design:type", Object)], SizeMixin.prototype, "width", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "maxHeight", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", Object)], SizeMixin.prototype, "maxWidth", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: [String, Number]
@@ -2431,7 +2397,7 @@ MIcon$1.install = function (Vue) {
   MIcon$1.register(arrow_downward);
 };
 
-var css$e = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  padding: var(--m-row-gutter-size); }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter-size);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+var css$e = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%; }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
 styleInject(css$e);
 
 var compName$2 = 'm-container';
@@ -2482,114 +2448,140 @@ MContainer = __decorate([vuePropertyDecorator.Component({
 })], MContainer);
 var MContainer$1 = MContainer;
 
-var compName$3 = 'm-row';
-
 var MRow =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(MRow, _Vue);
+function (_Mixins) {
+  _inherits(MRow, _Mixins);
 
   function MRow() {
+    var _this;
+
     _classCallCheck(this, MRow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MRow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MRow).apply(this, arguments));
+    _this.name = 'm-row';
+    return _this;
   }
 
   _createClass(MRow, [{
     key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$3, " ").concat(staticClass);
-      data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genStaticStyles(data.staticStyle, compName$3, 'cols', props.cols);
-      genSize(data.staticStyle, "".concat(compName$3, "-gutter"), props.gutter);
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
+    value: function render() {
+      var h = arguments[0];
+      var name = this.name,
+          $slots = this.$slots,
+          styles = this.styles,
+          classes = this.classes;
+      return h("div", {
+        "staticClass": name,
+        "class": classes,
+        "style": styles
+      }, [$slots.default]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var styles = Object.assign({}, this.spacePaddingStyle, this.spaceMarginStyle, this.sizeStyle);
+      genStaticStyles(styles, this.name, 'cols', this.cols);
+      return styles;
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign({}, this.elevationClass);
     }
   }]);
 
   return MRow;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MRow.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MRow.prototype, "tag", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: [String, Number]
-}), __metadata("design:type", String)], MRow.prototype, "gutter", void 0);
+}(vuePropertyDecorator.Mixins(mixSpacePadding, mixSpaceMargin, mixSize, mixElevation));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
 }), __metadata("design:type", Number)], MRow.prototype, "cols", void 0);
 
-MRow = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MRow);
-var MRow$1 = MRow;
-
-var compName$4 = 'm-col';
+MRow = __decorate([vuePropertyDecorator.Component], MRow);
+var MRow$1 = MRow; // @Component({
+//   functional: true
+// } as ComponentOptions<Vue>)
+// export default class MRow extends Vue {
+//   @Prop({ type: String })
+//   id?: string
+//
+//   @Prop({ type: String, default: 'div' })
+//   tag!: string
+//
+//   @Prop({ type: [String, Number] })
+//   gutter?: size
+//
+//   @Prop({ type: Number })
+//   cols?: number
+//
+//   render (h: CreateElement, { props, data, children }: RenderContext) {
+//     const staticClass = data.staticClass ? data.staticClass : ''
+//     data.staticClass = `${compName} ${staticClass}`
+//     data.staticStyle = data.staticStyle ? data.staticStyle : {}
+//     genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
+//     genSize(data.staticStyle, `${compName}-gutter`, props.gutter)
+//
+//     if (props.id) {
+//       data.domProps = data.domProps || {}
+//       data.domProps.id = props.id
+//     }
+//
+//     return h(props.tag, data, children)
+//   }
+// }
 
 var MCol =
 /*#__PURE__*/
-function (_Vue) {
-  _inherits(MCol, _Vue);
+function (_Mixins) {
+  _inherits(MCol, _Mixins);
 
   function MCol() {
+    var _this;
+
     _classCallCheck(this, MCol);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MCol).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MCol).apply(this, arguments));
+    _this.name = 'm-col';
+    return _this;
   }
 
   _createClass(MCol, [{
     key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$4, " ").concat(staticClass);
-      data.staticStyle = data.staticStyle ? data.staticStyle : {};
-      genSpace(data.staticStyle, compName$4, props.space);
+    value: function render() {
+      var h = arguments[0];
+      var name = this.name,
+          $slots = this.$slots,
+          styles = this.styles,
+          classes = this.classes;
+      return h("div", {
+        "staticClass": name,
+        "class": classes,
+        "style": styles
+      }, [$slots.default]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var _this2 = this;
+
+      var styles = Object.assign({}, this.spacePaddingStyle);
       BREAKPOINT.forEach(function (breakpoint) {
-        if (props[breakpoint]) {
-          genStaticStyles(data.staticStyle, compName$4, "span-".concat(breakpoint), props[breakpoint]);
+        if (_this2[breakpoint]) {
+          genStaticStyles(styles, _this2.name, "span-".concat(breakpoint), _this2[breakpoint]);
         }
       });
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
+      return styles;
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign({}, this.elevationClass);
     }
   }]);
 
   return MCol;
-}(vuePropertyDecorator.Vue);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MCol.prototype, "id", void 0);
-
-__decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MCol.prototype, "tag", void 0);
+}(vuePropertyDecorator.Mixins(mixSpacePadding, mixSpaceMargin, mixSize, mixElevation));
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number
@@ -2611,9 +2603,7 @@ __decorate([vuePropertyDecorator.Prop({
   type: Number
 }), __metadata("design:type", Number)], MCol.prototype, "xl", void 0);
 
-MCol = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MCol);
+MCol = __decorate([vuePropertyDecorator.Component], MCol);
 var MCol$1 = MCol;
 
 var ShapeMixin =
@@ -2753,7 +2743,7 @@ __decorate([vuePropertyDecorator.Prop({
 MFlex = __decorate([vuePropertyDecorator.Component], MFlex);
 var MFlex$1 = MFlex;
 
-var compName$5 = 'm-flex-filler';
+var compName$3 = 'm-flex-filler';
 
 var MFlexFiller =
 /*#__PURE__*/
@@ -2771,7 +2761,7 @@ function (_Vue) {
     value: function render() {
       var h = arguments[0];
       return h("div", {
-        "class": compName$5
+        "class": compName$3
       });
     }
   }]);
@@ -3754,7 +3744,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$6 = 'm-time-picker-header';
+var compName$4 = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -3790,9 +3780,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$6, "__date")
+        "staticClass": "".concat(compName$4, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$6, "__date-year"),
+        "staticClass": "".concat(compName$4, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -3802,9 +3792,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$6, "__date-weekDay")
+        "staticClass": "".concat(compName$4, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$6, "__date-date")
+        "staticClass": "".concat(compName$4, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -3840,9 +3830,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$6, "__time")
+        "class": "".concat(compName$4, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$6, "__time-ampm")
+        "staticClass": "".concat(compName$4, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -3862,7 +3852,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$6, "__time-hours")
+        "staticClass": "".concat(compName$4, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -3891,7 +3881,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$6, "__year")
+        "staticClass": "".concat(compName$4, "__year")
       }, [year]);
     }
   }, {
@@ -3902,7 +3892,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$6, "__month")
+        "staticClass": "".concat(compName$4, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -3915,7 +3905,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$6),
+        "staticClass": "".concat(compName$4),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -3936,7 +3926,7 @@ __decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], M
 MTimePickerHeader = __decorate([vuePropertyDecorator.Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$7 = 'm-time-picker-panel-date';
+var compName$5 = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -4071,11 +4061,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$7
+        "staticClass": compName$5
       }, [h("div", {
-        "class": "".concat(compName$7, "__header")
+        "class": "".concat(compName$5, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$7, "__header-year")
+        "staticClass": "".concat(compName$5, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -4089,7 +4079,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$7, "__header-handler")
+        "staticClass": "".concat(compName$5, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -4123,7 +4113,7 @@ function (_Vue) {
           }
         }
       })])]), h("table", {
-        "class": "".concat(compName$7, "__table")
+        "class": "".concat(compName$5, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -4179,7 +4169,7 @@ MTimePickerPanelDate = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$8 = 'm-time-picker-panel-year';
+var compName$6 = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -4238,7 +4228,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$8
+        "staticClass": compName$6
       }, [RCols()]);
     }
   }]);
@@ -4263,7 +4253,7 @@ __decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Functio
 MTimePickerPanelYear = __decorate([vuePropertyDecorator.Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$9 = 'm-time-picker-panel-month';
+var compName$7 = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -4321,7 +4311,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$9
+        "staticClass": compName$7
       }, [RCols()]);
     }
   }]);
@@ -4344,7 +4334,7 @@ MTimePickerPanelMonth = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$a = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$8 = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -4407,7 +4397,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$a, "__list ").concat(compName$a, "__list-").concat(type)
+        "staticClass": "".concat(compName$8, "__list ").concat(compName$8, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -4419,7 +4409,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$a
+        "staticClass": compName$8
       }, [Result]);
     }
   }]);
@@ -4454,7 +4444,7 @@ MTimePickerPanelTime = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$b = 'm-time-picker-handler';
+var compName$9 = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -4481,7 +4471,7 @@ function (_Vue) {
           onCancel = this.onCancel,
           color = this.color;
       return h("div", {
-        "staticClass": "".concat(compName$b, " m-p-sm")
+        "staticClass": "".concat(compName$9, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "sm",
@@ -5152,7 +5142,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$c = 'm-table-head';
+var compName$a = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -5239,7 +5229,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$c, "__cell"),
+        "staticClass": "".concat(compName$a, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -5257,7 +5247,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$c, "__row")
+        "staticClass": "".concat(compName$a, "__row")
       }, [result]);
     }
   }, {
@@ -5267,7 +5257,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$c, "__row")
+        "staticClass": "".concat(compName$a, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5281,7 +5271,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$c, "__row")
+        "staticClass": "".concat(compName$a, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5303,7 +5293,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$c
+        "staticClass": compName$a
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -5396,7 +5386,7 @@ var off = function () {
   }
 }();
 
-var compName$d = 'm-table-body';
+var compName$b = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -5556,7 +5546,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$d, "__cell"),
+          "staticClass": "".concat(compName$b, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -5585,7 +5575,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$d, "__row"),
+        "staticClass": "".concat(compName$b, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -5615,7 +5605,7 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$d, "__expand")
+        "staticClass": "".concat(compName$b, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5625,7 +5615,7 @@ function (_Vue) {
           "name": 'expansion'
         }
       }, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$d, "__expand-content")
+        "staticClass": "".concat(compName$b, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -5689,7 +5679,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$d,
+        "staticClass": compName$b,
         "style": styles
       }, [h("table", [RTBody()])]);
     }

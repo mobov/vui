@@ -54,14 +54,14 @@ $--Container-max-size: (
     box-sizing: border-box;
     flex-wrap: wrap;
     width: 100%;
-    padding: var(--m-row-gutter-size);
+    //padding: var(--m-row-gutter-size);
 }
 
 .m-col {
     display: flex;
     box-sizing: border-box;
     width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);
-    padding: var(--m-row-gutter-size);
+    //padding: var(--m-row-gutter-size);
     @each $breakpoint, $value in $--Grid-breakpoints {
         @include media-breakpoint-up($breakpoint, $--Grid-breakpoints) {
             width: calc((var(--m-col-span-#{$breakpoint}) / var(--m-row-cols)) * 100%);

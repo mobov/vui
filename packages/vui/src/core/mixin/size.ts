@@ -17,22 +17,10 @@ export default class SizeMixin extends Vue {
   size?: size | string | number
 
   @Prop({ type: [String, Number] })
-  minHeight?: string | number
-
-  @Prop({ type: [String, Number] })
-  minWidth?: string | number
-
-  @Prop({ type: [String, Number] })
   height?: string | number
 
   @Prop({ type: [String, Number] })
   width?: string | number
-
-  @Prop({ type: [String, Number] })
-  maxHeight?: string | number
-
-  @Prop({ type: [String, Number] })
-  maxWidth?: string | number
 
   @Prop({ type: [String, Number] })
   fontSize?: size | string | number

@@ -10,11 +10,15 @@
   <div class="example-layout">
     <example-box>
       <m-row class="example-row"
-             :gutter="5"
-             :cols="18" >
+             :padding="5"
+             :cols="24" >
         <m-col class="example-col"
                :key="item"
-               :xs="1"
+               :xs="24"
+               :sm="12"
+               :md="8"
+               :lg="2"
+               :padding="5"
                v-for="item in 24">
           <div style="background-color: #449fdb;height: 100%;width: 100%"></div>
         </m-col>
