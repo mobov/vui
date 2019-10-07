@@ -1,6 +1,6 @@
 {
   "name": "@mobov/vui-guide",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "private": true,
   "scripts": {
     "serve": "cross-env ENV=development vue-cli-service serve",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mobov/es-helper": "^2.0.1",
-    "@mobov/vui": "^0.2.28",
+    "@mobov/vui": "^0.2.29",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
     "vmark": "^1.0.2",
