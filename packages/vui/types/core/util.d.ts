@@ -5,6 +5,7 @@
  * @return {boolean}
  */
 export declare function isPalette(val: string | number): boolean;
+export declare function validateSize(value: any): boolean;
 /**
  * 验证是否是有效css属性值
  * validate css variable

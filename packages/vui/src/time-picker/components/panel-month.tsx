@@ -1,6 +1,6 @@
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 import MButton from '../../button'
-import { Color, color, Variety, variety, Shape, shape, DateValueType } from '../../core/constant'
+import { Color, color, Variety, variety, Shape, shape, DateValueType } from '../../core/constants'
 
 const compName = 'm-time-picker-panel-month'
 const MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月',

@@ -1,11 +1,16 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { elevation, ELEVATION } from '../constant'
-import { genElevation } from '../util'
+import { elevation, ELEVATION } from '../constants'
+import { genElevation } from '../utils'
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    elevation?: elevation | undefined
+    elevationClass: any
+  }
+}
 
 @Component
 export default class ElevationMixin extends Vue {
-  name!: string
-
   @Prop({
     type: Number,
     validator (value): boolean {

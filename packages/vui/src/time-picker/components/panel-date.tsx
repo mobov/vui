@@ -1,7 +1,7 @@
 import {Component, Emit, Inject, Prop, Vue} from 'vue-property-decorator'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color, color, Variety, Shape, DatePickerType } from '../../core/constant'
+import { Color, color, Variety, Shape, DatePickerType } from '../../core/constants'
 
 const compName = 'm-time-picker-panel-date'
 const WeekMap = ['日', '一', '二', '三', '四', '五', '六']
@@ -124,19 +124,21 @@ export default class MTimePickerPanelDate extends Vue {
           </div>
           <div staticClass={`${compName}__header-handler`}>
             <MButton variety={Variety.flat}
-                     staticClass='m-m-0'
                      elevation={0}
                      shape={Shape.circle}
                      color={Color.default}
-                     icon='navigate_before'
-                     onClick={() => handleMonthToggle(toggleAction.prev)} />
+                     paddingX={0}
+                     onClick={() => handleMonthToggle(toggleAction.prev)} >
+              <MIcon size={20} value='navigate_before' />
+            </MButton>
             <MButton variety={Variety.flat}
-                     staticClass='m-m-0'
+                     paddingX={0}
                      elevation={0}
                      shape={Shape.circle}
                      color={Color.default}
-                     icon='navigate_next'
-                     onClick={() => handleMonthToggle(toggleAction.next)} />
+                     onClick={() => handleMonthToggle(toggleAction.next)} >
+              <MIcon size={20} value='navigate_next' />
+            </MButton>
           </div>
         </div>
         <table class={`${compName}__table`}>

@@ -28,6 +28,16 @@ export enum Breakpoint {
 
 export const BREAKPOINT = ['xs', 'sm', 'md', 'lg', 'xl']
 
+export enum Space {
+  xs = 'xs',
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg',
+  xl = 'xl'
+}
+
+export type space = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
 export enum Size {
   xs = 'xs',
   sm = 'sm',

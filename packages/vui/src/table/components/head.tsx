@@ -1,9 +1,10 @@
 import { Component, Prop, Vue, Inject } from 'vue-property-decorator'
 import MIcon from '../../icon'
 import MCheckbox from '../../checkbox'
-import { getStyleSize } from '../../core/util'
+import { getStyleSize } from '../../core/utils'
 import { typeSelect } from '../constant'
-import { size } from '../../core/constant'
+import { size } from '../../core/constants'
+import MRadio from "../../radio";
 
 const compName = 'm-table-head'
 
@@ -61,10 +62,12 @@ export default class TableHead extends Vue {
             : [0]
 
         content = (
-          <MCheckbox onInput={() => { handleSelectAll() }}
-                     size={size}
-                     value={checkVal}
-                     label={checkAll}/>
+          <div staticClass="m--center">
+            <MCheckbox onInput={() => { handleSelectAll() }}
+                       size={size}
+                       value={checkVal}
+                       label={checkAll}/>
+          </div>
         )
       } else {
         // todo:错误处理

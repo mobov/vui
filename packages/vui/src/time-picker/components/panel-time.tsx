@@ -2,7 +2,7 @@ import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
 // import { getStyle } from '@mobov/es-helper'
 import MButton from '../../button'
 import MIcon from '../../icon'
-import { Color, color, Variety, Shape, DateTimeValueType, dateTimeValueType } from '../../core/constant'
+import { Color, color, Variety, Shape, DateTimeValueType, dateTimeValueType } from '../../core/constants'
 
 const compName = 'm-time-picker-panel-time'
 // const baseFont: any = getStyle(document.documentElement, 'font-size')

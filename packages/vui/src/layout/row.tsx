@@ -1,17 +1,15 @@
-import { Component, Vue, Prop, Mixins } from 'vue-property-decorator'
-import { genStaticStyles } from '../core/util'
-import mixSpacePadding from '../core/mixin/space-padding'
-import mixSpaceMargin from '../core/mixin/space-margin'
-import mixElevation from '../core/mixin/elevation'
-import mixSize from '../core/mixin/size'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { genStaticStyles } from '../core/utils'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
+import mixSize from '../core/mixins/size'
+import mixColor from '../core/mixins/color'
+import mixShape from '../core/mixins/shape'
 
-@Component
-export default class MRow extends Mixins (
-  mixSpacePadding,
-  mixSpaceMargin,
-  mixSize,
-  mixElevation
-) {
+@Component({
+  mixins: [mixColor, mixSize, mixSpace, mixShape, mixElevation]
+})
+export default class MRow extends Vue {
   name = 'm-row'
 
   @Prop({ type: Number })
@@ -19,8 +17,8 @@ export default class MRow extends Mixins (
 
   get styles () {
     const styles = {
-      ...this.spacePaddingStyle,
-      ...this.spaceMarginStyle,
+      ...this.spaceStyle,
+      ...this.colorStyle,
       ...this.sizeStyle,
     }
 
@@ -31,6 +29,7 @@ export default class MRow extends Mixins (
 
   get classes () {
     return {
+      ...this.shapeClass,
       ...this.elevationClass
     }
   }
@@ -47,34 +46,3 @@ export default class MRow extends Mixins (
     )
   }
 }
-// @Component({
-//   functional: true
-// } as ComponentOptions<Vue>)
-// export default class MRow extends Vue {
-//   @Prop({ type: String })
-//   id?: string
-//
-//   @Prop({ type: String, default: 'div' })
-//   tag!: string
-//
-//   @Prop({ type: [String, Number] })
-//   gutter?: size
-//
-//   @Prop({ type: Number })
-//   cols?: number
-//
-//   render (h: CreateElement, { props, data, children }: RenderContext) {
-//     const staticClass = data.staticClass ? data.staticClass : ''
-//     data.staticClass = `${compName} ${staticClass}`
-//     data.staticStyle = data.staticStyle ? data.staticStyle : {}
-//     genStaticStyles(data.staticStyle, compName, 'cols', props.cols)
-//     genSize(data.staticStyle, `${compName}-gutter`, props.gutter)
-//
-//     if (props.id) {
-//       data.domProps = data.domProps || {}
-//       data.domProps.id = props.id
-//     }
-//
-//     return h(props.tag, data, children)
-//   }
-// }

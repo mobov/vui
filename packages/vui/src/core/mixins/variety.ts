@@ -1,6 +1,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { variety, VARIETY } from '../constant'
-import { genVariety } from '../util'
+import { variety, VARIETY } from '../constants'
+import { genVariety } from '../utils'
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    variety?: variety
+    varietyClass?: any
+  }
+}
 
 @Component
 export default class VarietyMixin extends Vue {

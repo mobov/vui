@@ -1,19 +1,19 @@
-import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import MAvatar from '../avatar'
 import MIcon from '../icon'
 import '../icon/icons/cancel'
-import mixBase from '../core/mixin/base'
-import mixVariety from '../core/mixin/variety'
-import mixShape from '../core/mixin/shape'
+import mixVariety from '../core/mixins/variety'
+import mixShape from '../core/mixins/shape'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
 
 @Component({
-  components: { MAvatar, MIcon }
+  components: { MAvatar, MIcon },
+  mixins: [mixColor, mixSize, mixSpace, mixShape, mixVariety, mixElevation]
 })
-export default class MChip extends Mixins (
-  mixBase,
-  mixVariety,
-  mixShape
-) {
+export default class MChip extends Vue {
   name = 'm-chip'
 
   @Prop({ type: Boolean, default: false })
@@ -30,14 +30,16 @@ export default class MChip extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
 
   get classes () {
     const { closeable, closeover } = this
     return {
-      ...this.baseClass,
+      ...this.elevationClass,
       ...this.shapeClass,
       ...this.varietyClass,
       'm--closeable': closeable,

@@ -1,26 +1,14 @@
 @import "~@mobov/scss-helper";
 
-$--m-avatar-border-size: .2rem;
-$--m-avatar-size-xs: 1.5rem;
-$--m-avatar-size-sm: 2.5rem;
-$--m-avatar-size-md: 3.5rem;
-$--m-avatar-size-lg: 4.5rem;
-$--m-avatar-size-xl: 5.5rem;
 /**
  * variables register.
  */
 .m-avatar {
-    // selection
-    --m-avatar-size-xs: #{$--m-avatar-size-xs};
-    --m-avatar-size-sm: #{$--m-avatar-size-sm};
-    --m-avatar-size-md: #{$--m-avatar-size-md};
-    --m-avatar-size-lg: #{$--m-avatar-size-lg};
-    --m-avatar-size-xl: #{$--m-avatar-size-xl};
-
     // default
     --m-avatar-color: var(--m-color-primary);
     --m-avatar-font-color: var(--m-bg-color);
-    --m-avatar-size: var(--m-avatar-size-md);
+    --m-avatar-size: 40px;
+    --m-avatar-border-size: 2px;
 }
 
 /**
@@ -54,7 +42,7 @@ $--m-avatar-size-xl: 5.5rem;
         background-color: var(--m-bg-color);
         border-color: var(--m-avatar-color);
         color: var(--m-avatar-color);
-        border-width: $--m-avatar-border-size;
+        border-width: var(--m-avatar-border-size);
         border-style: solid;
     }
 

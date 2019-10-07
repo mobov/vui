@@ -1,6 +1,6 @@
 // 1. 确保在声明补充的类型之前导入 'vue'
 import Vue, { VueConstructor } from 'vue'
-import { variety, size, color, shape, elevation } from '@mobov/vui/core/constant'
+import { variety, size, color, shape, elevation } from '@mobov/vui/core/constants'
 declare module 'vue/types/options' {
 
   interface ComponentOptions<V extends Vue> {

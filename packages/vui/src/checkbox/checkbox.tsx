@@ -1,13 +1,14 @@
-import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import MIcon from '../icon'
-import mixBase from '../core/mixin/base'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
 
 @Component({
-  components: { MIcon }
+  components: { MIcon },
+  mixins: [mixColor, mixSize, mixSpace]
 })
-export default class MCheckbox extends Mixins (
-  mixBase
-) {
+export default class MCheckbox extends Vue {
   name = 'm-checkbox'
 
   @Prop({ type: [Array, Number, String, Boolean], default: false })
@@ -39,7 +40,9 @@ export default class MCheckbox extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
 

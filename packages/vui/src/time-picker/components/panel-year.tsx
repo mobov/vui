@@ -1,5 +1,5 @@
 import { Component, Prop, Emit, Vue, Inject } from 'vue-property-decorator'
-import { DateValueType } from '../../core/constant'
+import { DateValueType } from '../../core/constants'
 
 const compName = 'm-time-picker-panel-year'
 

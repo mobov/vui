@@ -17,7 +17,7 @@ import {
 } from 'vue'
 import * as components from './components'
 import * as directives from './directives'
-import * as constant from './core/constant'
+import * as constant from './core/constants'
 
 export interface MobovUseOptions {
   components?: Record<string, Component>

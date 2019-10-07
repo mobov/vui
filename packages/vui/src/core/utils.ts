@@ -1,7 +1,6 @@
 import Buffer from './buffer'
-import { SIZE, COLOR, ELEVATION, BREAKPOINT, SHAPE, VARIETY } from './constant'
-import { isStyleUnit } from '@mobov/es-helper'
-
+import { SIZE, COLOR, ELEVATION, BREAKPOINT, SHAPE, VARIETY } from './constants'
+import isStyleUnit from '@mobov/es-helper/isStyleUnit'
 
 /**
  * 验证是否是色板值
@@ -13,6 +12,10 @@ export function isPalette (val: string | number): boolean {
   return typeof val === 'number'
     ? false
     : (val.indexOf('-') > 0)
+}
+
+export function isSize (value): boolean {
+  return typeof value === 'number' || isStyleUnit(value)
 }
 
 /**
@@ -47,9 +50,9 @@ export function getCSSVal (val: string): string {
  * @return {string}
  */
 export function getStyleSize (val: string | number): string {
-  return (typeof val !== 'number' && isStyleUnit(val))
-    ? val
-    : `${val}px`
+  return (typeof val === 'number')
+    ? `${val}px`
+    : val
 }
 
 /**
@@ -138,9 +141,9 @@ export function genSize (styles: any = {}, compName: string, val?: number | stri
   if (val !== undefined) {
     if (typeof val === 'number') {
       styles[`--${compName}-size`] = `${val}px`
-    } else if (SIZE.includes(val)) {
-      styles[`--${compName}-size`] = `var(--${compName}-size-${val})`
-    } else {
+    } else if (isCSSVar(val)) {
+      styles[`--${compName}-size`] = `var(${val})`
+    } else if (isSize(val)) {
       styles[`--${compName}-size`] = `${val}`
     }
   }

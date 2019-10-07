@@ -1,6 +1,6 @@
 <template>
   <ExampleBox>
-    <MIcon value="3d_totation"></MIcon>
+    <MIcon value="menu"></MIcon>
     <MRow slot="handler"
            class="m-my-md"
            align="center"

@@ -25,11 +25,11 @@ const config = {
       useTsconfigDeclarationDir: true,
       extensions
     }),
-    vue({
-      data: {
-        scss: '@import "~@mobov/scss-helper/import";'
-      }
-    }),
+    // vue({
+    //   data: {
+    //     scss: '@import "~@mobov/scss-helper/import";'
+    //   }
+    // }),
     babel({
       runtimeHelpers: true,
       babelrc: false,

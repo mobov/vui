@@ -2,17 +2,19 @@
   <m-app>
     <m-frame fill-header="none"
             transition
-            header-size="md"
+            :header-size="50"
             :left-index="5"
-            left-size="20rem">
+            :left-size="300">
       <m-app-bar slot="header"
                  size="100%"
                  font-color="white"
                  :elevation="2">
         <m-button @click="showLeft = !showLeft"
                   shape="circle"
-                  :elevation="0"
-                  icon="menu" />
+                  :paddingX="0"
+                  :elevation="0">
+          <m-icon value="menu" />
+        </m-button>
         <m-avatar variety="outline"
                   shape="circle"
                   :marginLeft="10"

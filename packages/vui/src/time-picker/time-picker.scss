@@ -1,12 +1,11 @@
 @import "~@mobov/scss-helper/import";
 
-$--m-time-picker-header-height: 7rem;
-$--m-time-picker-panel-height: 24.5rem;
-$--m-time-picker-clock-height: 18rem;
-$--m-time-picker-width: 26rem;
-$--m-time-picker-landscope-width: 37rem;
-$--m-time-picker-landscope-header-width: 11rem;
-$--m-time-picker-cell-size: 2.5rem;
+$--m-time-picker-header-height: 90px;
+$--m-time-picker-panel-height: 285px;
+$--m-time-picker-width: 290px;
+$--m-time-picker-landscope-width: 400px;
+$--m-time-picker-landscope-header-width: 110px;
+$--m-time-picker-cell-size: 30px;
 
 /**
  * variables register.
@@ -99,23 +98,23 @@ $--m-time-picker-cell-size: 2.5rem;
         flex-direction: column;
         &-year {
             cursor: pointer;
-            font-size: 2rem;
+            font-size: 24px;
             margin-bottom: var(--m-space-sm);
         }
         &-date {
             cursor: pointer;
-            font-size: 2.5rem;
+            font-size: 24px;
         }
         &-weekDay{
-            font-size: 2rem;
-            margin-left: 1rem;
+            font-size: 24px;
+            margin-left: 10px;
         }
     }
     &__year,
     &__month {
         color: white;
         flex-grow: 1;
-        font-size: 3rem
+        font-size: 32px
     }
     &__time {
         display: flex;
@@ -124,16 +123,16 @@ $--m-time-picker-cell-size: 2.5rem;
         text-align: right;
         &-hours {
             cursor: pointer;
-            font-size: 3.5rem;
+            font-size: 36px;
         }
         &-ampm {
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
             cursor: pointer;
-            font-size: 2rem;
+            font-size: 16px;
             > * {
-                margin-left: 2rem;
+                margin-left: 10px;
             }
         }
     }
@@ -148,13 +147,13 @@ $--m-time-picker-cell-size: 2.5rem;
     &__header {
         display: flex;
         justify-content: space-between;
-        font-size: 1rem;
+        font-size: 16px;
         &-year {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            font-size: 1.4rem;
-            margin-left: .4rem;
+            font-size: 16px;
+            margin-left: 10px;
             cursor: pointer;
         }
         &-handler {
@@ -166,7 +165,7 @@ $--m-time-picker-cell-size: 2.5rem;
         thead {
             font-weight: 600;
             td  {
-                padding: var(--m-space-sm) 0;
+                padding: 8px 0;
             }
         }
         td {

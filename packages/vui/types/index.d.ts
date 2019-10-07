@@ -7,7 +7,7 @@ import './core/style/mode.scss';
 import './core/style/border.scss';
 import './core/style/utils.scss';
 import { Component, PluginFunction } from 'vue';
-import * as constant from './core/constant';
+import * as constant from './core/constants';
 export interface MobovUseOptions {
     components?: Record<string, Component>;
     directives?: Record<string, Component>;

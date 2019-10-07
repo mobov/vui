@@ -1,16 +1,16 @@
-import { Component, Prop, Watch, Mixins } from 'vue-property-decorator'
-import mixBase from '../core/mixin/base'
-import mixVariety from '../core/mixin/variety'
-import mixShape from '../core/mixin/shape'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Status } from '../core/constants'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
+import mixVariety from '../core/mixins/variety'
+import mixShape from '../core/mixins/shape'
 
-import { Status } from '../core/constant'
-
-@Component
-export default class MAvatar extends Mixins (
-  mixBase,
-  mixVariety,
-  mixShape
-) {
+@Component({
+  mixins: [mixColor, mixSize, mixSpace, mixElevation, mixVariety, mixShape]
+})
+export default class MAvatar extends Vue {
   name = 'm-avatar'
 
   @Prop({ type: Boolean, default: false })
@@ -24,14 +24,16 @@ export default class MAvatar extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle,
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
 
   get classes () {
     const { status, transition } = this
     return {
-      ...this.baseClass,
+      ...this.elevationClass,
       ...this.shapeClass,
       ...this.varietyClass,
       'm--transition': transition,

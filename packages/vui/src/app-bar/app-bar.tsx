@@ -1,15 +1,15 @@
-import { Component, Mixins, Prop } from 'vue-property-decorator'
-import { scrollToX } from '@mobov/es-helper'
-import mixBase from '../core/mixin/base'
-import mixVariety from '../core/mixin/variety'
-import mixShape from '../core/mixin/shape'
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import scrollToX from '@mobov/es-helper/scrollToX'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
+import mixVariety from '../core/mixins/variety'
 
-@Component
-export default class MAppBar extends Mixins (
-  mixBase,
-  mixVariety,
-  mixShape
-) {
+@Component({
+  mixins: [mixColor, mixSize, mixSpace, mixElevation, mixVariety]
+})
+export default class MAppBar extends Vue {
   name = 'm-app-bar'
 
   @Prop({ type: Boolean, default: false })
@@ -20,15 +20,16 @@ export default class MAppBar extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle,
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
 
   get classes () {
     return {
-      ...this.baseClass,
-      ...this.varietyClass,
-      ...this.shapeClass
+      ...this.elevationClass,
+      ...this.varietyClass
     }
   }
 

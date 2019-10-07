@@ -1,5 +1,5 @@
 import { Vue } from 'vue-property-decorator';
-import { size, color, align } from '../core/constant';
+import { size, color, align } from '../core/constants';
 export declare const compName = "m-table-col";
 export default class MTableCol extends Vue {
     type?: 'normal' | 'select' | 'expand';

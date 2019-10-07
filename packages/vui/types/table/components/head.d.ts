@@ -1,6 +1,6 @@
 import { Vue } from 'vue-property-decorator';
 import { typeSelect } from '../constant';
-import { size } from '../../core/constant';
+import { size } from '../../core/constants';
 export default class TableHead extends Vue {
     size?: size;
     select?: typeSelect;

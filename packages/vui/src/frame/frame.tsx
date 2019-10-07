@@ -1,15 +1,16 @@
-import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
-import { genSize, genStaticStyles } from '../core/util'
-import { Fill, size } from '../core/constant'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { genSize, genStaticStyles } from '../core/utils'
+import { Fill, size } from '../core/constants'
 import MTransition from '../transition'
-import mixBase from '../core/mixin/base'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
 
 @Component({
-  components: { MTransition }
+  components: { MTransition },
+  mixins: [mixSize, mixSpace, mixElevation]
 })
-export default class MFrame extends Mixins (
-  mixBase
-) {
+export default class MFrame extends Vue {
   name = 'm-frame'
 
   @Prop({ type: Boolean, default: false })
@@ -64,7 +65,7 @@ export default class MFrame extends Mixins (
     } = this
 
     return {
-      ...this.baseClass,
+      ...this.elevationClass,
       'm--with-header': isHeader,
       'm--with-footer': isFooter,
       'm--with-left': isLeft,
@@ -87,7 +88,8 @@ export default class MFrame extends Mixins (
     } = this
 
     const styles = {
-      ...this.baseStyle
+      ...this.sizeStyle,
+      ...this.spaceMarginStyle
     }
 
     // if (isHeader) {
@@ -126,7 +128,7 @@ export default class MFrame extends Mixins (
       <transition name="m-frame-transition-header">
         {result}
       </transition>
-     ) : result
+    ) : result
   }
 
   private RFooter () {

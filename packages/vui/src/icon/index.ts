@@ -1,3 +1,4 @@
+import './icon.scss'
 import MIcon from './icon'
 import menu from './icons/menu'
 import close from './icons/close'

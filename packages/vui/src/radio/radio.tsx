@@ -1,13 +1,14 @@
-import { Component, Prop, Emit, Mixins } from 'vue-property-decorator'
+import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '../icon'
-import mixBase from '../core/mixin/base'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
 
 @Component({
-  components: { MIcon }
+  components: { MIcon },
+  mixins: [mixColor, mixSize, mixSpace]
 })
-export default class MRadio extends Mixins (
-  mixBase
-) {
+export default class MRadio extends Vue {
   name = 'm-radio'
 
   @Prop({ type: [Boolean, Number, String], default: false })
@@ -30,16 +31,16 @@ export default class MRadio extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
-
 
   get classes () {
     const { checked, disabled } = this
 
     return {
-      ...this.baseClass,
       'm--checked': checked,
       'm--disabled': disabled
     }

@@ -2,19 +2,11 @@
  * variables register.
  */
 .m-chip {
-    // selection
-    --m-chip-size-xs: 1.5rem;
-    --m-chip-size-sm: 1.75rem;
-    --m-chip-size-md: 2rem;
-    --m-chip-size-lg: 2.25rem;
-    --m-chip-size-xl: 2.5rem;
-
     // default
     --m-chip-color: var(--m-color-primary);
-    //--m-chip-hover-color: var(--m-color-main);
     --m-chip-font-color: var(--m-bg-color);
-    --m-chip-size: var(--m-button-size-md);
-    --m-chip-border-size: .2rem;
+    --m-chip-size: 32px;
+    --m-chip-border-size: 1px;
     --m-chip__close-size: calc(var(--m-chip-size) / 1.3);
 }
 

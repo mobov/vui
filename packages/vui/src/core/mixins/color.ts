@@ -1,6 +1,14 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { color } from '../constant'
-import { genColor, genFontColor } from '../util'
+import { color } from '../constants'
+import { genColor, genFontColor } from '../utils'
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    fontColor?: color | undefined
+    color?: color | undefined
+    colorStyle: any
+  }
+}
 
 @Component
 export default class ColorMixin extends Vue {

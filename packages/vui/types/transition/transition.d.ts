@@ -1,6 +1,6 @@
 import { CreateElement, RenderContext, VNode } from 'vue';
 import { Vue } from 'vue-property-decorator';
-import { TransitionName } from '../core/constant';
+import { TransitionName } from '../core/constants';
 export default class MTransition extends Vue {
     name?: TransitionName;
     render(h: CreateElement, { props, data, children, listeners }: RenderContext): VNode;

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { DirectiveOptions, PluginFunction, VNodeDirective, VueConstructor } from 'vue'
-import { genColor, genFontColor, genSize, genElevation, getScrollBarStyles } from '../core/util'
+import { genColor, genFontColor, genSize, genElevation, getScrollBarStyles } from '../core/utils'
 import './ripple.scss'
 
 const name = 'MRipple'

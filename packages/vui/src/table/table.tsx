@@ -1,18 +1,20 @@
-import { Component, Prop, Emit, Mixins, Provide, Watch } from 'vue-property-decorator'
-import { deepCopy } from '@mobov/es-helper'
-import mixBase from '../core/mixin/base'
+import { Component, Prop, Emit, Vue, Provide, Watch } from 'vue-property-decorator'
+import deepCopy from '@mobov/es-helper/deepCopy'
 import TableHead from './components/head'
 import TableBody from './components/body'
 import { typeHeader,  typeHover, typeSelect }  from './constant'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
 
 const SELF_KEY = '_table-key'
 
 @Component({
-  components: { TableHead, TableBody }
+  components: { TableHead, TableBody },
+  mixins: [mixColor, mixSize, mixSpace, mixElevation]
 })
-export default class MTable extends Mixins (
-  mixBase
-) {
+export default class MTable extends Vue {
   name = 'm-table'
 
   @Prop({ type: Boolean, default: false })
@@ -235,13 +237,15 @@ export default class MTable extends Mixins (
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceMarginStyle
     }
   }
 
   get classes () {
     return {
-      ...this.baseClass,
+      ...this.elevationClass,
     }
   }
 

@@ -71,6 +71,10 @@ $--Container-max-size: (
 
 .m-flex {
     display: inline-flex;
+    &.m--block {
+        display: flex;
+        width: 100%;
+    }
     &.m--direction {
         &-row {
             flex-direction: row;

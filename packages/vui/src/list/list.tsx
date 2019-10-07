@@ -1,11 +1,14 @@
-import { Component, Prop, Vue, Emit, Mixins } from 'vue-property-decorator'
-import mixBase from '../core/mixin/base'
-import { Size } from '../core/constant'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import mixColor from '../core/mixins/color'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixShape from '../core/mixins/shape'
+import mixElevation from '../core/mixins/elevation'
 
-@Component
-export default class MList extends Mixins (
-  mixBase
-) {
+@Component({
+  mixins: [mixColor, mixSize, mixSpace, mixShape, mixElevation]
+})
+export default class MList extends Vue {
   name = 'm-list'
 
   @Prop({ type: String, default: ''})
@@ -14,15 +17,14 @@ export default class MList extends Mixins (
   @Prop({ type: Boolean, default: false})
   titleDivider!: boolean
 
-  @Prop({ type: String, default: Size.sm})
-  marginY!: Size.sm
-
   @Emit('click')
   onClick (e: MouseEvent) {}
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.sizeStyle,
+      ...this.spaceStyle
     }
   }
 
@@ -30,7 +32,8 @@ export default class MList extends Mixins (
     const { titleDivider } = this
     return {
       '--with-title-divider': titleDivider,
-      ...this.baseClass
+      ...this.elevationClass,
+      ...this.shapeClass
     }
   }
 

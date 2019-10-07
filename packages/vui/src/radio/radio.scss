@@ -1,36 +1,15 @@
-$--m-radio-size-xs: 1rem;
-$--m-radio-size-sm: 1.5rem;
-$--m-radio-size-md: 2rem;
-$--m-radio-size-lg: 2.5rem;
-$--m-radio-size-xl: 3rem;
-$--m-radio-wrapper-size-xs: 2rem;
-$--m-radio-wrapper-size-sm: 3rem;
-$--m-radio-wrapper-size-md: 4rem;
-$--m-radio-wrapper-size-lg: 5rem;
-$--m-radio-wrapper-size-xl: 6rem;
+
 
 /**
  * variables register.
  */
 .m-radio {
-    // selection
-    --m-radio-size-xs: #{$--m-radio-size-xs};
-    --m-radio-size-sm: #{$--m-radio-size-sm};
-    --m-radio-size-md: #{$--m-radio-size-md};
-    --m-radio-size-lg: #{$--m-radio-size-lg};
-    --m-radio-size-xl: #{$--m-radio-size-xl};
-    --m-radio-wrapper-size-xs: #{$--m-radio-wrapper-size-xs};
-    --m-radio-wrapper-size-sm: #{$--m-radio-wrapper-size-sm};
-    --m-radio-wrapper-size-md: #{$--m-radio-wrapper-size-md};
-    --m-radio-wrapper-size-lg: #{$--m-radio-wrapper-size-lg};
-    --m-radio-wrapper-size-xl: #{$--m-radio-wrapper-size-xl};
-
     // default
     --m-radio-color: var(--m-color-primary);
     --m-radio-font-color: var(--m-font-color);
-
-    --m-radio-size: var(--m-radio-size-md);
-    --m-radio-wrapper-size: var(--m-radio-wrapper-size-md);
+    --m-radio-size: 24px;
+    --m-checkbox-wrapper-size: calc(var(--m-checkbox-size) * 2);
+    --m-radio-font-size: calc(var(--m-radio-size) / 1.6);
 }
 
 /**
@@ -39,14 +18,14 @@ $--m-radio-wrapper-size-xl: 6rem;
 .m-radio {
     color: var(--m-radio-font-color);
     height: var(--m-radio-color);
-    line-height: 1;
-    font-size: calc(var(--m-radio-size) / 1.4);
+    font-size: var(--m-radio-font-size);
+    margin-right: var(--m-space-sm);
     cursor: pointer;
     position: relative;
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
-    -webkit-font-smoothing: antialiased;
+    user-select: none;
 
     &.m--disabled {
         opacity: .5;

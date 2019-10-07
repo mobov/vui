@@ -3,9 +3,9 @@ import MIcon from '../../icon'
 import MTransition from '../../transition'
 import MCheckbox from '../../checkbox'
 import MRadio from '../../radio'
-import { getStyleSize } from '../../core/util'
+import { getStyleSize } from '../../core/utils'
 import { on, off } from '../../core/event'
-import { size } from '../../core/constant'
+import { size } from '../../core/constants'
 import { typeHeader,  typeHover, typeSelect }  from '../constant'
 
 const compName = 'm-table-body'
@@ -104,7 +104,7 @@ export default class TableBody extends Vue {
         if (select === typeSelect.multi) {
           content = (
             <div staticClass="m--center">
-              <MCheckbox value={isSelected} size={size}
+              <MCheckbox value={isSelected}
                 nativeOnClick={(event: Event) => {
                   event.stopPropagation()
                 }}
@@ -114,7 +114,7 @@ export default class TableBody extends Vue {
         } else {
           content = (
             <div staticClass="m--center">
-              <MRadio value={isSelected} size={size}
+              <MRadio value={isSelected}
                 nativeOnClick={(event: Event) => {
                   event.stopPropagation()
                 }}

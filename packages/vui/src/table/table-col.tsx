@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { size, Color, color, Align, align } from '../core/constant'
+import { size, Color, color, Align, align } from '../core/constants'
 
 export const compName = 'm-table-col'
 

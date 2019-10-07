@@ -1,6 +1,6 @@
 import { ComponentOptions, CreateElement, RenderContext, VNode } from 'vue'
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
-import { TransitionName } from '../core/constant'
+import { TransitionName } from '../core/constants'
 
 const compName = 'm-transition'
 

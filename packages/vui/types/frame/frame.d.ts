@@ -1,7 +1,6 @@
-import { Fill, size } from '../core/constant';
-import mixBase from '../core/mixin/base';
-declare const MFrame_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
-export default class MFrame extends MFrame_base {
+import { Vue } from 'vue-property-decorator';
+import { Fill, size } from '../core/constants';
+export default class MFrame extends Vue {
     name: string;
     transition?: boolean;
     fillHeader?: Fill;
@@ -30,4 +29,3 @@ export default class MFrame extends MFrame_base {
     private RRight;
     private render;
 }
-export {};

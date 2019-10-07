@@ -1,10 +1,10 @@
-import { Component, Prop, Vue, Mixins, Emit } from 'vue-property-decorator'
-import { scrollToY } from '@mobov/es-helper'
-import mixColor from '../core/mixin/color'
-import mixSpaceMargin from '../core/mixin/space-margin'
-import mixSpacePadding from '../core/mixin/space-padding'
-import mixSize from '../core/mixin/size'
-import mixElevation from '../core/mixin/elevation'
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
+import scrollToY from '@mobov/es-helper/scrollToY'
+import mixColor from '../core/mixins/color'
+import mixSpaceMargin from '../core/mixins/space'
+import mixSpacePadding from '../core/mixins/space-padding'
+import mixSize from '../core/mixins/size'
+import mixElevation from '../core/mixins/elevation'
 
 @Component
 export default class MPanel extends Mixins (

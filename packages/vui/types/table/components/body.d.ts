@@ -1,5 +1,5 @@
 import { Vue } from 'vue-property-decorator';
-import { size } from '../../core/constant';
+import { size } from '../../core/constants';
 import { typeSelect } from '../constant';
 export default class TableBody extends Vue {
     height?: string;

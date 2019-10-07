@@ -1,7 +1,6 @@
-import mixBase from '../core/mixin/base';
+import { Vue } from 'vue-property-decorator';
 import { typeHeader, typeHover, typeSelect } from './constant';
-declare const MTable_base: import("vue-class-component/lib/declarations").VueClass<mixBase>;
-export default class MTable extends MTable_base {
+export default class MTable extends Vue {
     name: string;
     bordered?: boolean;
     data: any[];
@@ -31,32 +30,7 @@ export default class MTable extends MTable_base {
     TableStore: any;
     readonly TableCols: any[];
     dataAdaptI(val?: any[]): any[];
-    readonly styles: {
-        border?: string | undefined;
-        borderLeft?: string | undefined;
-        borderRight?: string | undefined;
-        borderTop?: string | undefined;
-        borderBottom?: string | undefined;
-        size?: string | number | undefined;
-        height?: string | number | undefined;
-        width?: string | number | undefined;
-        fontSize?: string | number | undefined;
-        padding?: string | number | undefined;
-        paddingX?: string | number | undefined;
-        paddingY?: string | number | undefined;
-        paddingTop?: string | number | undefined;
-        paddingBottom?: string | number | undefined;
-        paddingLeft?: string | number | undefined;
-        paddingRight?: string | number | undefined;
-        margin?: string | number | undefined;
-        marginX?: string | number | undefined;
-        marginY?: string | number | undefined;
-        marginTop?: string | number | undefined;
-        marginBottom?: string | number | undefined;
-        marginLeft?: string | number | undefined;
-        marginRight?: string | number | undefined;
-    };
-    readonly classes: {};
+    readonly styles: any;
+    readonly classes: any;
     render(): JSX.Element;
 }
-export {};

@@ -1,19 +1,13 @@
-import { Component, Prop, Vue, Mixins, Emit } from 'vue-property-decorator'
-import { scrollToY } from '@mobov/es-helper'
-import mixBorder from '../core/mixin/border'
-import mixSpaceMargin from '../core/mixin/space-margin'
-import mixSpacePadding from '../core/mixin/space-padding'
-import mixSize from '../core/mixin/size'
-import mixElevation from '../core/mixin/elevation'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
+import scrollToY from '@mobov/es-helper/scrollToY'
+import mixSize from '../core/mixins/size'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
 
-@Component
-export default class MView extends Mixins (
-  mixBorder,
-  mixSpaceMargin,
-  mixSpacePadding,
-  mixSize,
-  mixElevation
-) {
+@Component({
+  mixins: [mixSize, mixSpace, mixElevation]
+})
+export default class MView extends Vue {
   name = 'm-view'
 
   @Prop({ type: Boolean, default: false })
@@ -29,25 +23,19 @@ export default class MView extends Mixins (
   onScroll (params: [Event, number, boolean, boolean, '↕' | '↓' | '↑']) {}
 
   get classes () {
-    const {} = this
-
     return {
       ...this.elevationClass
     }
   }
 
   get styles () {
-    const { } = this
-
     return {
-      ...this.borderStyle,
       ...this.sizeStyle,
       ...this.spaceMarginStyle
     }
   }
 
   get scrollerStyles () {
-    const { } = this
     return {
       ...this.spacePaddingStyle
     }
@@ -101,13 +89,15 @@ export default class MView extends Mixins (
     }
     // 添加scroll绑定
     if (this.enableWatchScroll) {
-      (this.$refs.scroller as any).addEventListener('scroll', this.handleScroll)
+      // @ts-ignore
+      this.$refs.scroller.addEventListener('scroll', this.handleScroll)
     }
   }
   activated() {
     // 恢复滚动位置
     if (this.scrollKeep && (this.scrollKeepVal !== (this.$refs.scroller as any).scrollTop)) {
-      (this.$refs.scroller as any).scrollTop = this.scrollKeepVal
+      // @ts-ignore
+      this.$refs.scroller.scrollTop = this.scrollKeepVal
     }
   }
   deactivated() {
@@ -119,7 +109,8 @@ export default class MView extends Mixins (
   beforeDestroy() {
     // 移除scroll绑定
     if (this.enableWatchScroll) {
-      (this.$refs.scroller as any).removeEventListener('scroll', this.handleScroll)
+      // @ts-ignore
+      this.$refs.scroller.removeEventListener('scroll', this.handleScroll)
     }
   }
   render () {

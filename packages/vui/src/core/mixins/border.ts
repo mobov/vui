@@ -1,4 +1,4 @@
-import { Vue, Component, Mixins, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 type borderType = string | boolean
 
@@ -8,6 +8,12 @@ type BorderStyles = {
   borderRight?: string
   borderTop?: string
   borderBottom?: string
+}
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    borderStyle: any
+  }
 }
 
 @Component

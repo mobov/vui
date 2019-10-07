@@ -1,27 +1,28 @@
 @import "~@mobov/scss-helper/import";
 $--m-transition-table-base: ease .2s;
 
-$--m-table-row-size-xs: 2rem;
-$--m-table-row-size-sm: 3rem;
-$--m-table-row-size-md: 4rem;
-$--m-table-row-size-lg: 5rem;
-$--m-table-row-size-xl: 6rem;
 /**
  * variables register.
  */
 .m-table {
-    // selection
-    --m-table-row-size-xs: #{$--m-table-row-size-xs};
-    --m-table-row-size-sm: #{$--m-table-row-size-sm};
-    --m-table-row-size-md: #{$--m-table-row-size-md};
-    --m-table-row-size-lg: #{$--m-table-row-size-lg};
-    --m-table-row-size-xl: #{$--m-table-row-size-xl};
     // default
     --m-table-color: var(--m-bg-color);
     --m-table-bg-color: var(--m-bg-color);
     --m-table-font-color: var(--m-font-color);
     --m-table-active-color: var(--m-day-bg-second-color);
-    --m-table-row-size: var(--m-table-row-size-md);
+    --m-table-row-size: 48px;
+}
+
+/**
+ * relative component custom.
+ */
+.m-table {
+    .m-checkbox {
+        --m-checkbox-size: calc(var(--m-table-row-size) / 2);
+    }
+    .m-radio {
+        --m-radio-size: calc(var(--m-table-row-size) / 2);
+    }
 }
 
 /**
@@ -121,6 +122,12 @@ $--m-table-row-size-xl: 6rem;
             background-color: var(--m-table-active-color);
         }
     }
+    .m--center {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .m-table__wrapper {
@@ -169,6 +176,6 @@ $--m-table-row-size-xl: 6rem;
     }
 }
 .m-table-body__expand-content {
-    box-shadow: var(--m-elevation-2) inset;
-    background-color: var(--m-table-active-color);
+    box-shadow: var(--m-elevation-1) inset;
+    // background-color: var(--m-table-active-color);
 }

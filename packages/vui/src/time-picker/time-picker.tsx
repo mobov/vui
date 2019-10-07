@@ -1,12 +1,14 @@
-import { Component, Prop, Emit, Provide, Mixins, Watch } from 'vue-property-decorator'
-import mixBase from '../core/mixin/base'
+import { Component, Prop, Emit, Provide, Vue, Watch } from 'vue-property-decorator'
 import MTimePickerHeader from './components/header'
 import MTimePickerPanelDate from './components/panel-date'
 import MTimePickerPanelYear from './components/panel-year'
 import MTimePickerPanelMonth from './components/panel-month'
 import MTimePickerPanelTime from './components/panel-time'
 import MTimePickerHandler from './components/handler'
-import { DateValueFormat, dateValueFormat, DatePickerType, datePickerType, DateValueType, dateValueType } from '../core/constant'
+import { DateValueFormat, dateValueFormat, DatePickerType, datePickerType, DateValueType, dateValueType } from '../core/constants'
+import mixColor from '../core/mixins/color'
+import mixSpace from '../core/mixins/space'
+import mixElevation from '../core/mixins/elevation'
 
 @Component({
   components: {
@@ -16,11 +18,10 @@ import { DateValueFormat, dateValueFormat, DatePickerType, datePickerType, DateV
     MTimePickerPanelMonth,
     MTimePickerPanelTime,
     MTimePickerHandler
-  }
+  },
+  mixins: [mixColor, mixSpace, mixElevation]
 })
-export default class MTimePicker extends Mixins(
-  mixBase
-) {
+export default class MTimePicker extends Vue {
   name = 'm-time-picker'
 
   @Prop({ type: Boolean, default: false })
@@ -72,14 +73,15 @@ export default class MTimePicker extends Mixins(
 
   get styles () {
     return {
-      ...this.baseStyle
+      ...this.colorStyle,
+      ...this.spaceMarginStyle
     }
   }
 
   get classes () {
     return {
+      ...this.elevationClass,
       'm--landscope': this.landscope,
-      ...this.baseClass
     }
   }
 

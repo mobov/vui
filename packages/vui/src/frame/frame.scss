@@ -1,54 +1,10 @@
 @import "~@mobov/scss-helper/import";
 
-$--m-frame-header-size-xs: 2.5rem;
-$--m-frame-header-size-sm: 3.5rem;
-$--m-frame-header-size-md: 4.5rem;
-$--m-frame-header-size-lg: 5.5rem;
-$--m-frame-header-size-xl: 6.5rem;
-$--m-frame-footer-size-xs: 2.5rem;
-$--m-frame-footer-size-sm: 3.5rem;
-$--m-frame-footer-size-md: 4.5rem;
-$--m-frame-footer-size-lg: 5.5rem;
-$--m-frame-footer-size-xl: 6.5rem;
-$--m-frame-left-size-xs: 2.5rem;
-$--m-frame-left-size-sm: 3.5rem;
-$--m-frame-left-size-md: 4.5rem;
-$--m-frame-left-size-lg: 5.5rem;
-$--m-frame-left-size-xl: 6.5rem;
-$--m-frame-right-size-xs: 2.5rem;
-$--m-frame-right-size-sm: 3.5rem;
-$--m-frame-right-size-md: 4.5rem;
-$--m-frame-right-size-lg: 5.5rem;
-$--m-frame-right-size-xl: 6.5rem;
-
 $--m-frame-transition-base: .25s ease;
-
-
 /**
  * variables register.
  */
 .m-frame {
-    --m-frame-header-size-xs: #{ $--m-frame-header-size-xs};
-    --m-frame-header-size-sm: #{ $--m-frame-header-size-sm};
-    --m-frame-header-size-md: #{ $--m-frame-header-size-md};
-    --m-frame-header-size-lg: #{ $--m-frame-header-size-lg};
-    --m-frame-header-size-xl: #{ $--m-frame-header-size-xl};
-    --m-frame-footer-size-xs: #{ $--m-frame-footer-size-xs};
-    --m-frame-footer-size-sm: #{ $--m-frame-footer-size-sm};
-    --m-frame-footer-size-md: #{ $--m-frame-footer-size-md};
-    --m-frame-footer-size-lg: #{ $--m-frame-footer-size-lg};
-    --m-frame-footer-size-xl: #{ $--m-frame-footer-size-xl};
-    --m-frame-left-size-xs:   #{ $--m-frame-left-size-xs};
-    --m-frame-left-size-sm:   #{ $--m-frame-left-size-sm};
-    --m-frame-left-size-md:   #{ $--m-frame-left-size-md};
-    --m-frame-left-size-lg:   #{ $--m-frame-left-size-lg};
-    --m-frame-left-size-xl:   #{ $--m-frame-left-size-xl};
-    --m-frame-right-size-xs:  #{ $--m-frame-right-size-xs};
-    --m-frame-right-size-sm:  #{ $--m-frame-right-size-sm};
-    --m-frame-right-size-md:  #{ $--m-frame-right-size-md};
-    --m-frame-right-size-lg:  #{ $--m-frame-right-size-lg};
-    --m-frame-right-size-xl:  #{ $--m-frame-right-size-xl};
-
     --m-frame-header-size: 0;
     --m-frame-footer-size: 0;
     --m-frame-left-size: 0;

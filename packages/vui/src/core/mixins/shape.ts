@@ -1,6 +1,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { shape, SHAPE } from '../constant'
-import { genShape } from '../util'
+import { shape, SHAPE } from '../constants'
+import { genShape } from '../utils'
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    shape?: shape
+    shapeClass: any
+  }
+}
 
 @Component
 export default class ShapeMixin extends Vue {
