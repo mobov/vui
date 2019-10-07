@@ -14,7 +14,7 @@
   "module": "lib/index.esm.js",
   "types": "types/index.d.ts",
   "peerDependencies": {
-    "@mobov/es-helper": "^1.1.4",
+    "@mobov/es-helper": "^2.0.1",
     "@mobov/scss-helper": "^0.0.5",
     "vue": "^2.5.21",
     "vue-class-component": "^7.0.2",
@@ -41,7 +41,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.0.0",
     "@babel/runtime-corejs2": "^7.2.0",
-    "@mobov/es-helper": "^1.0.4",
+    "@mobov/es-helper": "^2.0.1",
     "@mobov/scss-helper": "^0.0.5",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0-beta.3",
     "@vue/babel-preset-app": "^3.5.5",

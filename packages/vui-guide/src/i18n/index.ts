@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import I18n from 'vue-i18n'
-import { Client, getUrlParam, langAdapt } from '@mobov/es-helper'
+// import { Client, getUrlParam, langAdapt } from '@mobov/es-helper'
 import defaultLangPkg from '@/i18n/languages/zh-CN.json'
-import { langType } from '@mobov/es-helper/types/langUtils'
+import { langType, langAdapt } from '@mobov/es-helper/types/langUtils'
+import getUrlParam from '@mobov/es-helper/getUrlParam'
 Vue.use(I18n)
 
 const locale = langAdapt(getUrlParam('locale') || navigator.language)

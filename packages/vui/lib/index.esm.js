@@ -56,6 +56,20 @@ styleInject(css$7);
 var css$8 = "/**\r\n * components styles.\r\n */\nhtml,\nbody,\n#app,\n.m-app {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  font-size: var(--m-font-base);\n  color: var(--m-font-color);\n  background-color: var(--m-bg-color);\n  position: relative; }\n\n* {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n";
 styleInject(css$8);
 
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -681,6 +695,7 @@ var TransitionName;
 })(TransitionName || (TransitionName = {}));
 
 var constant = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   Elevation: Elevation,
   Palette: Palette,
   ELEVATION: ELEVATION,
@@ -716,12 +731,14 @@ var constant = /*#__PURE__*/Object.freeze({
 });
 
 var REGEX_STYLE_UNIT = /px|vw|rem|em|%|auto|unset$/i;
-var isStyleUnit = function (val) {
-    if (typeof val !== 'string') {
-        return false;
-    }
-    REGEX_STYLE_UNIT.lastIndex = 0;
-    return REGEX_STYLE_UNIT.test(val);
+
+var isStyleUnit = function isStyleUnit(val) {
+  if (typeof val !== 'string') {
+    return false;
+  }
+
+  REGEX_STYLE_UNIT.lastIndex = 0;
+  return REGEX_STYLE_UNIT.test(val);
 };
 
 function isSize(value) {
@@ -1214,7 +1231,7 @@ function (_Vue) {
   _createClass(SpaceMixin, [{
     key: "spaceStyle",
     get: function get() {
-      return Object.assign({}, this.spaceMarginStyle, this.spacePaddingStyle);
+      return Object.assign(Object.assign({}, this.spaceMarginStyle), this.spacePaddingStyle);
     }
   }, {
     key: "spaceMarginStyle",
@@ -1512,7 +1529,7 @@ function (_Vue) {
           leftFloat = this.leftFloat,
           rightFloat = this.rightFloat,
           transition = this.transition;
-      return Object.assign({}, this.elevationClass, (_Object$assign = {
+      return Object.assign(Object.assign({}, this.elevationClass), (_Object$assign = {
         'm--with-header': isHeader,
         'm--with-footer': isFooter,
         'm--with-left': isLeft,
@@ -1539,7 +1556,7 @@ function (_Vue) {
           footerIndex = this.footerIndex,
           leftIndex = this.leftIndex,
           rightIndex = this.rightIndex;
-      var styles = Object.assign({}, this.sizeStyle, this.spaceMarginStyle); // if (isHeader) {
+      var styles = Object.assign(Object.assign({}, this.sizeStyle), this.spaceMarginStyle); // if (isHeader) {
       //   genSize(styles, `${compName}-header`, headerSize)
       // }
       // if (isFooter) {
@@ -1659,37 +1676,37 @@ styleInject(css$d);
  * Created by nocoolyoyo on 2018/7/17.
  */
 function easeIn(t, b, c, d) {
-    return c * (t /= d) * t + b;
+  return c * (t /= d) * t + b;
 }
 function strongEaseIn(t, b, c, d) {
-    return c * (t /= d) * t * t * t * t + b;
+  return c * (t /= d) * t * t * t * t + b;
 }
 function strongEaseOut(t, b, c, d) {
-    return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+  return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
 }
 function sineaseIn(t, b, c, d) {
-    return c * (t /= d) * t * t + b;
+  return c * (t /= d) * t * t + b;
 }
 function sineaseOut(t, b, c, d) {
-    return c * ((t = t / d - 1) * t * t + 1) + b;
+  return c * ((t = t / d - 1) * t * t + 1) + b;
 }
 
 var TRANS_FUNCS = ['linear', 'easeIn', 'strongEaseIn', 'strongEaseOut', 'sineaseIn', 'sineaseOut'];
 var META_CODE = {
-    x: {
-        start: 'left',
-        size: 'width',
-        clientSize: 'clientWidth',
-        scrollStart: 'scrollLeft',
-        scrollSize: 'scrollWidth'
-    },
-    y: {
-        start: 'top',
-        size: 'height',
-        clientSize: 'clientHeight',
-        scrollStart: 'scrollTop',
-        scrollSize: 'scrollHeight'
-    }
+  x: {
+    start: 'left',
+    size: 'width',
+    clientSize: 'clientWidth',
+    scrollStart: 'scrollLeft',
+    scrollSize: 'scrollWidth'
+  },
+  y: {
+    start: 'top',
+    size: 'height',
+    clientSize: 'clientHeight',
+    scrollStart: 'scrollTop',
+    scrollSize: 'scrollHeight'
+  }
 };
 /**
  * 滚动基础方法
@@ -1701,122 +1718,131 @@ var META_CODE = {
  * @param transition
  * @param onFinish
  */
+
 function scrollTo (axis, $scroller, _a) {
-    if (axis === void 0) { axis = 'x'; }
-    var _b = _a === void 0 ? {} : _a, _c = _b.justify, justify = _c === void 0 ? 0 : _c, _d = _b.target, target = _d === void 0 ? 0 : _d, _e = _b.duration, duration = _e === void 0 ? 500 : _e, _f = _b.transition, transition = _f === void 0 ? 'sineaseOut' : _f, _g = _b.position, position = _g === void 0 ? 'center' : _g;
-    return new Promise(function (resolve) {
-        if (!$scroller || !TRANS_FUNCS.includes(transition)) {
-            resolve();
+  if (axis === void 0) {
+    axis = 'x';
+  }
+
+  var _b = _a === void 0 ? {} : _a,
+      _c = _b.justify,
+      justify = _c === void 0 ? 0 : _c,
+      _d = _b.target,
+      target = _d === void 0 ? 0 : _d,
+      _e = _b.duration,
+      duration = _e === void 0 ? 500 : _e,
+      _f = _b.transition,
+      transition = _f === void 0 ? 'sineaseOut' : _f,
+      _g = _b.position,
+      position = _g === void 0 ? 'center' : _g;
+
+  return new Promise(function (resolve) {
+    if (!$scroller || !TRANS_FUNCS.includes(transition)) {
+      resolve();
+    }
+
+    var META = META_CODE[axis];
+    var isDomTarget = typeof target !== 'number' && target !== 'start' && target !== 'end';
+    var scroll = 0; // 滚动值计算
+
+    if (isDomTarget) {
+      var rect = target.getBoundingClientRect();
+      var posScroll = position === 'start' ? 0 : position === 'end' // @ts-ignore
+      ? $scroller[META.clientSize] - rect[META.size] : // @ts-ignore
+      ($scroller[META.clientSize] - rect[META.size]) / 2; // @ts-ignore
+
+      scroll = rect[META.start] - posScroll + justify;
+    } else {
+      // @ts-ignore
+      scroll = (target === 'start' // @ts-ignore
+      ? -$scroller[META.scrollStart] : target === 'end' // @ts-ignore
+      ? $scroller[META.scrollSize] - $scroller[META.scrollStart] - $scroller[META.clientSize] : target) + justify;
+    }
+
+    if (scroll === 0) {
+      resolve();
+    } // @ts-ignore
+
+
+    var scrollValue = $scroller[META.scrollSize] - $scroller[META.clientSize]; // @ts-ignore
+
+    var scrollStart = $scroller[META.scrollStart];
+    var start;
+
+    var _step2; //eval(transition): number
+
+
+    var transFunc = function () {
+      if (transition === 'linear') {
+        return sineaseIn;
+      } else if (transition === 'easeIn') {
+        return easeIn;
+      } else if (transition === 'strongEaseIn') {
+        return strongEaseIn;
+      } else if (transition === 'strongEaseOut') {
+        return strongEaseOut;
+      } else if (transition === 'sineaseIn') {
+        return sineaseIn;
+      } else if (transition === 'sineaseOut') {
+        return sineaseOut;
+      }
+    }(); // 滚动值矫正
+
+
+    if (scroll > 0) {
+      var maxScroll = scrollValue - scrollStart;
+      scroll = scroll > maxScroll ? maxScroll : scroll; // @ts-ignore
+
+      _step2 = function step(timestamp) {
+        if (!start) {
+          start = timestamp;
+        } // @ts-ignore
+
+
+        var stepScroll = transFunc(timestamp - start, 0, scroll, duration);
+        stepScroll = stepScroll > scroll ? scroll : stepScroll; // @ts-ignore
+
+        $scroller[META.scrollStart] = scrollStart + stepScroll;
+
+        if (scroll > stepScroll) {
+          // @ts-ignore
+          requestAnimationFrame(_step2);
+        } else {
+          resolve();
         }
-        var META = META_CODE[axis];
-        var isDomTarget = (typeof target !== 'number' && target !== 'start' && target !== 'end');
-        var scroll = 0;
-        // 滚动值计算
-        if (isDomTarget) {
-            var rect = target.getBoundingClientRect();
-            var posScroll = position === 'start'
-                ? 0
-                : position === 'end'
-                    // @ts-ignore
-                    ? ($scroller[META.clientSize] - rect[META.size])
-                    // @ts-ignore
-                    : (($scroller[META.clientSize] - rect[META.size]) / 2);
-            // @ts-ignore
-            scroll = rect[META.start] - posScroll + justify;
+      };
+    } else {
+      // @ts-ignore
+      var maxScroll = -$scroller[META.scrollStart];
+      scroll = scroll < maxScroll ? maxScroll : scroll; // @ts-ignore
+
+      _step2 = function _step(timestamp) {
+        if (!start) {
+          start = timestamp;
+        } // @ts-ignore
+
+
+        var stepScroll = transFunc(timestamp - start, 0, scroll, duration);
+        stepScroll = stepScroll < scroll ? scroll : stepScroll; // @ts-ignore
+
+        $scroller[META.scrollStart] = scrollStart + stepScroll;
+
+        if (scroll < stepScroll) {
+          // @ts-ignore
+          requestAnimationFrame(_step2);
+        } else {
+          resolve();
         }
-        else {
-            // @ts-ignore
-            scroll = (target === 'start'
-                // @ts-ignore
-                ? -$scroller[META.scrollStart]
-                : target === 'end'
-                    // @ts-ignore
-                    ? $scroller[META.scrollSize] - $scroller[META.scrollStart] - $scroller[META.clientSize]
-                    : target) + justify;
-        }
-        if (scroll === 0) {
-            resolve();
-        }
-        // @ts-ignore
-        var scrollValue = $scroller[META.scrollSize] - $scroller[META.clientSize];
-        // @ts-ignore
-        var scrollStart = $scroller[META.scrollStart];
-        var start;
-        var step;
-        //eval(transition): number
-        var transFunc = (function () {
-            if (transition === 'linear') {
-                return sineaseIn;
-            }
-            else if (transition === 'easeIn') {
-                return easeIn;
-            }
-            else if (transition === 'strongEaseIn') {
-                return strongEaseIn;
-            }
-            else if (transition === 'strongEaseOut') {
-                return strongEaseOut;
-            }
-            else if (transition === 'sineaseIn') {
-                return sineaseIn;
-            }
-            else if (transition === 'sineaseOut') {
-                return sineaseOut;
-            }
-        })();
-        // 滚动值矫正
-        if (scroll > 0) {
-            var maxScroll = scrollValue - scrollStart;
-            scroll = scroll > maxScroll ? maxScroll : scroll;
-            // @ts-ignore
-            step = function (timestamp) {
-                if (!start) {
-                    start = timestamp;
-                }
-                // @ts-ignore
-                var stepScroll = transFunc(timestamp - start, 0, scroll, duration);
-                stepScroll = stepScroll > scroll ? scroll : stepScroll;
-                // @ts-ignore
-                $scroller[META.scrollStart] = scrollStart + stepScroll;
-                if (scroll > stepScroll) {
-                    // @ts-ignore
-                    requestAnimationFrame(step);
-                }
-                else {
-                    resolve();
-                }
-            };
-        }
-        else {
-            // @ts-ignore
-            var maxScroll = -$scroller[META.scrollStart];
-            scroll = scroll < maxScroll ? maxScroll : scroll;
-            // @ts-ignore
-            step = function (timestamp) {
-                if (!start) {
-                    start = timestamp;
-                }
-                // @ts-ignore
-                var stepScroll = transFunc(timestamp - start, 0, scroll, duration);
-                stepScroll = stepScroll < scroll ? scroll : stepScroll;
-                // @ts-ignore
-                $scroller[META.scrollStart] = scrollStart + stepScroll;
-                if (scroll < stepScroll) {
-                    // @ts-ignore
-                    requestAnimationFrame(step);
-                }
-                else {
-                    resolve();
-                }
-            };
-        }
-        // @ts-ignore
-        requestAnimationFrame(step);
-    });
+      };
+    } // @ts-ignore
+
+
+    requestAnimationFrame(_step2);
+  });
 }
 
-var scrollToY = function ($scroller, scrollOpts) {
-    return scrollTo('y', $scroller, scrollOpts);
+var scrollToY = function scrollToY($scroller, scrollOpts) {
+  return scrollTo('y', $scroller, scrollOpts);
 };
 
 var MView =
@@ -1944,7 +1970,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.sizeStyle, this.spaceMarginStyle);
+      return Object.assign(Object.assign({}, this.sizeStyle), this.spaceMarginStyle);
     }
   }, {
     key: "scrollerStyles",
@@ -2508,14 +2534,14 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      var styles = Object.assign({}, this.spaceStyle, this.colorStyle, this.sizeStyle);
+      var styles = Object.assign(Object.assign(Object.assign({}, this.spaceStyle), this.colorStyle), this.sizeStyle);
       genStaticStyles(styles, this.name, 'cols', this.cols);
       return styles;
     }
   }, {
     key: "classes",
     get: function get() {
-      return Object.assign({}, this.shapeClass, this.elevationClass);
+      return Object.assign(Object.assign({}, this.shapeClass), this.elevationClass);
     }
   }]);
 
@@ -2638,7 +2664,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.spaceStyle, this.sizeStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.spaceStyle), this.sizeStyle);
     }
   }, {
     key: "classes",
@@ -2650,7 +2676,7 @@ function (_Vue) {
           align = this.align,
           block = this.block,
           direction = this.direction;
-      return Object.assign({}, this.shapeClass, this.elevationClass, (_Object$assign = {}, _defineProperty(_Object$assign, "m--wrap-".concat(wrap), true), _defineProperty(_Object$assign, "m--justify-".concat(justify), true), _defineProperty(_Object$assign, "m--align-".concat(align), true), _defineProperty(_Object$assign, "m--direction-".concat(direction), true), _defineProperty(_Object$assign, "m--block", block), _Object$assign));
+      return Object.assign(Object.assign(Object.assign({}, this.shapeClass), this.elevationClass), (_Object$assign = {}, _defineProperty(_Object$assign, "m--wrap-".concat(wrap), true), _defineProperty(_Object$assign, "m--justify-".concat(justify), true), _defineProperty(_Object$assign, "m--align-".concat(align), true), _defineProperty(_Object$assign, "m--direction-".concat(direction), true), _defineProperty(_Object$assign, "m--block", block), _Object$assign));
     }
   }]);
 
@@ -2741,8 +2767,8 @@ MFlexFiller$1.install = function (Vue) {
 var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-size: 50px; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  max-width: 100vw;\n  max-height: 100vh;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n  .m-app-bar.m--horizontal {\n    width: var(--m-app-bar-size);\n    height: 100%; }\n  .m-app-bar-main {\n    min-height: 100%;\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap;\n    white-space: nowrap;\n    word-break: keep-all;\n    overflow-x: auto;\n    overflow-y: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-app-bar-main::-webkit-scrollbar {\n      width: 0;\n      height: 0; }\n";
 styleInject(css$g);
 
-var scrollToX = function ($scroller, scrollOpts) {
-    return scrollTo('x', $scroller, scrollOpts);
+var scrollToX = function scrollToX($scroller, scrollOpts) {
+  return scrollTo('x', $scroller, scrollOpts);
 };
 
 var VarietyMixin =
@@ -2870,12 +2896,12 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      return Object.assign({}, this.elevationClass, this.varietyClass);
+      return Object.assign(Object.assign({}, this.elevationClass), this.varietyClass);
     }
   }]);
 
@@ -2909,7 +2935,6 @@ var MButton =
 function (_Vue) {
   _inherits(MButton, _Vue);
 
-  // import MIcon from '../icon'
   function MButton() {
     var _this;
 
@@ -2961,14 +2986,14 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var block = this.block,
           disabled = this.disabled;
-      return Object.assign({}, this.elevationClass, this.shapeClass, this.varietyClass, {
+      return Object.assign(Object.assign(Object.assign(Object.assign({}, this.elevationClass), this.shapeClass), this.varietyClass), {
         'm--block': block,
         'm--disabled': disabled
       });
@@ -3070,14 +3095,14 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var status = this.status,
           transition = this.transition;
-      return Object.assign({}, this.elevationClass, this.shapeClass, this.varietyClass, _defineProperty({
+      return Object.assign(Object.assign(Object.assign(Object.assign({}, this.elevationClass), this.shapeClass), this.varietyClass), _defineProperty({
         'm--transition': transition
       }, "m--status-".concat(Status[status]), true));
     }
@@ -3213,7 +3238,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
@@ -3430,7 +3455,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
@@ -3604,14 +3629,14 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var closeable = this.closeable,
           closeover = this.closeover;
-      return Object.assign({}, this.elevationClass, this.shapeClass, this.varietyClass, {
+      return Object.assign(Object.assign(Object.assign(Object.assign({}, this.elevationClass), this.shapeClass), this.varietyClass), {
         'm--closeable': closeable,
         'm--closeover': closeover
       });
@@ -4780,12 +4805,12 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.spaceMarginStyle);
+      return Object.assign(Object.assign({}, this.colorStyle), this.spaceMarginStyle);
     }
   }, {
     key: "classes",
     get: function get() {
-      return Object.assign({}, this.elevationClass, {
+      return Object.assign(Object.assign({}, this.elevationClass), {
         'm--landscope': this.landscope
       });
     }
@@ -4940,15 +4965,15 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
     }
   }, {
     key: "classes",
     get: function get() {
       var titleDivider = this.titleDivider;
-      return Object.assign({
+      return Object.assign(Object.assign({
         '--with-title-divider': titleDivider
-      }, this.elevationClass, this.shapeClass);
+      }, this.elevationClass), this.shapeClass);
     }
   }]);
 
@@ -5021,7 +5046,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.spaceStyle, this.colorStyle, this.sizeStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.spaceStyle), this.colorStyle), this.sizeStyle);
     }
   }, {
     key: "classes",
@@ -5029,11 +5054,11 @@ function (_Vue) {
       var divider = this.divider,
           hover = this.hover,
           active = this.active;
-      return Object.assign({
+      return Object.assign(Object.assign({
         '--with-divider': divider,
         '--with-hover': hover,
         '--active': active
-      }, this.elevationClass, this.shapeClass);
+      }, this.elevationClass), this.shapeClass);
     }
   }]);
 
@@ -5082,34 +5107,33 @@ MListItem$1.install = function (Vue) {
 var css$o = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: 48px; }\n\n/**\r\n * relative component custom.\r\n */\n.m-table .m-checkbox {\n  --m-checkbox-size: calc(var(--m-table-row-size) / 2); }\n\n.m-table .m-radio {\n  --m-radio-size: calc(var(--m-table-row-size) / 2); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table .m--center {\n    height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-1) inset;\n          box-shadow: var(--m-elevation-1) inset; }\n";
 styleInject(css$o);
 
-var deepCopy = function (source) {
-    var target;
-    if (source instanceof Array) {
-        target = [];
-        source.forEach(function (item) {
-            if (typeof item === 'object') {
-                target.push(deepCopy(item));
-            }
-            else {
-                target.push(item);
-            }
-        });
+var deepCopy = function deepCopy(source) {
+  var target;
+
+  if (source instanceof Array) {
+    target = [];
+    source.forEach(function (item) {
+      if (_typeof(item) === 'object') {
+        target.push(deepCopy(item));
+      } else {
+        target.push(item);
+      }
+    });
+  } else if (source instanceof Object) {
+    target = {};
+
+    for (var prop in source) {
+      if (_typeof(source[prop]) === 'object') {
+        target[prop] = deepCopy(source[prop]);
+      } else {
+        target[prop] = source[prop];
+      }
     }
-    else if (source instanceof Object) {
-        target = {};
-        for (var prop in source) {
-            if (typeof source[prop] === 'object') {
-                target[prop] = deepCopy(source[prop]);
-            }
-            else {
-                target[prop] = source[prop];
-            }
-        }
-    }
-    else {
-        return source;
-    }
-    return target;
+  } else {
+    return source;
+  }
+
+  return target;
 };
 
 var typeHeader;
@@ -5985,7 +6009,7 @@ function (_Vue) {
   }, {
     key: "styles",
     get: function get() {
-      return Object.assign({}, this.colorStyle, this.sizeStyle, this.spaceMarginStyle);
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceMarginStyle);
     }
   }, {
     key: "classes",
@@ -6197,6 +6221,7 @@ MTableCol$1.install = function (Vue) {
 // 基础
 
 var components = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   MApp: MApp$1,
   MFrame: MFrame$1,
   MView: MView$1,
@@ -6411,6 +6436,7 @@ MRipple.install = function (Vue) {
 // 指令和动画
 
 var directives = /*#__PURE__*/Object.freeze({
+  __proto__: null,
   MRipple: MRipple
 });
 
