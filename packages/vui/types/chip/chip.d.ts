@@ -8,7 +8,7 @@ export default class MChip extends Vue {
     onClick(e: MouseEvent): void;
     readonly styles: any;
     readonly classes: any;
-    RMedia(): import("vue").VNode[] | undefined;
-    RClose(): JSX.Element | undefined;
+    RMedia(): import("vue").VNode[];
+    RClose(): JSX.Element;
     render(): JSX.Element;
 }

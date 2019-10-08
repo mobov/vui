@@ -26,6 +26,6 @@ export default class MTimePicker extends Vue {
     onPickerTypeChange(val: any): void;
     DateStore: any;
     RPanel(): JSX.Element;
-    RHandler(): JSX.Element | undefined;
+    RHandler(): JSX.Element;
     render(): JSX.Element;
 }

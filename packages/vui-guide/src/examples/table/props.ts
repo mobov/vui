@@ -8,7 +8,7 @@ interface PropsPropertries {
   value: any
 }
 
-const props: Array<PropsPropertries> =  [
+const props: Array<PropsPropertries> = [
   {
     name: 'size',
     type: 'radio',

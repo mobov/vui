@@ -4,20 +4,20 @@
     padding: var(--m-space-md);
     .vmark {
       > h2 {
-        font-size: 3rem;
+        font-size: 24px;
       }
       > h3 {
-        font-size: 2.5rem;
+        font-size: 20px;
       }
       pre {
-        font-size: 2rem;
+        font-size: 16px;
         line-height: 1.4;
         padding: var(--m-space-md);
         background-color: var(--m-color-grey-300);
       }
       > table {
         border-collapse: collapse;
-        font-size: 1.5rem;
+        font-size: 14px;
         td,
         th {
           border: 1px solid var(--m-color-grey-300);

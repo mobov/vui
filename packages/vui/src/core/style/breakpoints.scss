@@ -1,3 +1,11 @@
+:root {
+  --m-breakpoint-xs: 0;
+  --m-breakpoint-sm: 576px;
+  --m-breakpoint-md: 768px;
+  --m-breakpoint-lg: 992px;
+  --m-breakpoint-xl: 1200px;
+}
+
 // Breakpoint viewport sizes and media queries.
 //
 // Breakpoints are defined as a map of (name: minimum width), order from small to large:
@@ -121,3 +129,4 @@
     }
   }
 }
+

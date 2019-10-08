@@ -55,13 +55,13 @@ export default class TableBody extends Vue {
       return this.expand !== typeSelect.none
   }
 
-  get styles () {
-    const { height } = this
-
-    return {
-      height: height !== 'auto' ? height : false
-    }
-  }
+  // get styles () {
+  //   const { height } = this
+  //
+  //   return {
+  //     height: height !== 'auto' ? height : false
+  //   }
+  // }
 
   handleRowClick (row: any, index: number) {
     const { selectable, rowSelect, expandable, rowExpand } = this
@@ -104,7 +104,7 @@ export default class TableBody extends Vue {
         if (select === typeSelect.multi) {
           content = (
             <div staticClass="m--center">
-              <MCheckbox value={isSelected}
+              <MCheckbox value={isSelected} marginRight={0}
                 nativeOnClick={(event: Event) => {
                   event.stopPropagation()
                 }}
@@ -115,6 +115,7 @@ export default class TableBody extends Vue {
           content = (
             <div staticClass="m--center">
               <MRadio value={isSelected}
+                      marginRight={0}
                 nativeOnClick={(event: Event) => {
                   event.stopPropagation()
                 }}
@@ -268,11 +269,10 @@ export default class TableBody extends Vue {
   }
 
   render () {
-    const { styles, RTBody } = this
+    const { RTBody } = this
 
     return (
-      <div staticClass={compName}
-           style={styles}>
+      <div staticClass={compName}>
         <table>{RTBody()}</table>
       </div>
     )

@@ -2,7 +2,7 @@ import { Vue } from 'vue-property-decorator';
 import { typeHeader, typeHover, typeSelect } from './constant';
 export default class MTable extends Vue {
     name: string;
-    bordered?: boolean;
+    border?: boolean;
     data: any[];
     keyField?: string;
     header?: typeHeader;

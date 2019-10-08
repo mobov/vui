@@ -15,6 +15,6 @@ export default class MRadio extends Vue {
     readonly checked: boolean;
     handleClick(val: any): void;
     RRadio(): JSX.Element;
-    RDefault(): JSX.Element | undefined;
+    RDefault(): JSX.Element;
     render(): JSX.Element;
 }

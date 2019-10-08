@@ -15,15 +15,12 @@ export default class TableBody extends Vue {
     noHeaderToggle(val: string): void;
     readonly selectable: boolean;
     readonly expandable: boolean;
-    readonly styles: {
-        height: string | boolean | undefined;
-    };
     handleRowClick(row: any, index: number): void;
     handleRowSelect(row: any, index: number): void;
     handleRowExpand(row: any, index: number): void;
     RCols(row: any, index: number): any;
     RRow(row: any, index: number): JSX.Element;
-    RExpand(row: any, index: number): JSX.Element | undefined;
+    RExpand(row: any, index: number): JSX.Element;
     RTBody(): JSX.Element;
     updateDom(): void;
     mounted(): void;

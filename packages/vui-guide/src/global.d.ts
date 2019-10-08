@@ -1,6 +1,6 @@
 import { VueConstructor } from 'vue'
 import { MobovPlugin as Mobov } from '@mobov/vui'
-import { langType } from '@mobov/es-helper/types/langUtils'
+import { langType } from '@mobov/es-helper/langAdapt'
 
 export interface PropsPropertries {
   name: string,

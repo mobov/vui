@@ -8,9 +8,9 @@ export default class MTimePickerHeader extends Vue {
         [x: string]: boolean;
     };
     handleAMToggle(val: boolean, oldVal: boolean): void;
-    RDate(): JSX.Element | undefined;
-    RTime(): JSX.Element | undefined;
-    RYear(): JSX.Element | undefined;
-    RMonth(): JSX.Element | undefined;
+    RDate(): JSX.Element;
+    RTime(): JSX.Element;
+    RYear(): JSX.Element;
+    RMonth(): JSX.Element;
     render(): JSX.Element;
 }

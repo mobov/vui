@@ -3,13 +3,13 @@
     /*font-weight: bold;*/
   /*}*/
   .doc-title {
-    font-size: 4rem;
+    font-size: 32px;
     text-transform: capitalize;
   }
   .doc-content {
-    font-size: 2rem;
+    font-size: 16px;
     h2 {
-      font-size: 4rem;
+      font-size: 20px;
     }
     > table {
       width: 100%;

@@ -18,7 +18,7 @@ export default class MTable extends Vue {
   name = 'm-table'
 
   @Prop({ type: Boolean, default: false })
-  bordered?: boolean
+  border?: boolean
 
   @Prop({ type: Array, default: () => [] })
   data!: any[]
@@ -244,13 +244,18 @@ export default class MTable extends Vue {
   }
 
   get classes () {
+    const { border, header, hover } = this
+
     return {
       ...this.elevationClass,
+      'm--border': border,
+      'm--header-sticky': header === 'sticky',
+      [`m--${hover}-hover`]: hover !== 'none'
     }
   }
 
   render () {
-    const { name, height, classes, styles, bordered, header, size, select, expand, rowSelect, rowExpand } = this
+    const { name, height, classes, styles, border, header, size, select, expand, rowSelect, rowExpand } = this
     const noHeader = header === typeHeader.none
 
     return (
@@ -266,7 +271,7 @@ export default class MTable extends Vue {
           <TableBody ref={'body'}
                      size={size}
                      height={height}
-                     border={bordered}
+                     border={border}
                      select={select}
                      expand={expand}
                      rowSelect={rowSelect}

@@ -19,6 +19,6 @@ export default class MCheckbox extends Vue {
     readonly checked: boolean;
     handleClick(): void;
     RCheckbox(): JSX.Element;
-    RDefault(): JSX.Element | undefined;
+    RDefault(): JSX.Element;
     render(): JSX.Element;
 }

@@ -782,7 +782,7 @@ function getStyleSpace(val) {
       return "".concat(val);
     }
   } else {
-    return val || '';
+    return '';
   }
 }
 /**
@@ -1417,7 +1417,7 @@ __decorate([vuePropertyDecorator.Prop({
   validator: function validator(value) {
     return ELEVATION.includes(value);
   }
-}), __metadata("design:type", Object)], ElevationMixin.prototype, "elevation", void 0);
+}), __metadata("design:type", Number)], ElevationMixin.prototype, "elevation", void 0);
 
 ElevationMixin = __decorate([vuePropertyDecorator.Component], ElevationMixin);
 var mixElevation = ElevationMixin;
@@ -2387,56 +2387,83 @@ MIcon$1.install = function (Vue) {
   MIcon$1.register(arrow_downward);
 };
 
-var css$f = "@charset \"UTF-8\";\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%; }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--block {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+var css$f = "@charset \"UTF-8\";\n:root {\n  --m-breakpoint-xs: 0;\n  --m-breakpoint-sm: 576px;\n  --m-breakpoint-md: 768px;\n  --m-breakpoint-lg: 992px;\n  --m-breakpoint-xl: 1200px; }\n\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter-size: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n.m-container {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%; }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--block {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
 styleInject(css$f);
 
-var compName$1 = 'm-container';
-
-var MContainer =
+var MContaiber =
 /*#__PURE__*/
 function (_Vue) {
-  _inherits(MContainer, _Vue);
+  _inherits(MContaiber, _Vue);
 
-  function MContainer() {
-    _classCallCheck(this, MContainer);
+  function MContaiber() {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MContainer).apply(this, arguments));
+    _classCallCheck(this, MContaiber);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MContaiber).apply(this, arguments));
+    _this.name = 'm-container';
+    return _this;
   }
 
-  _createClass(MContainer, [{
+  _createClass(MContaiber, [{
     key: "render",
-    value: function render(h, _ref) {
-      var props = _ref.props,
-          data = _ref.data,
-          children = _ref.children;
-      var staticClass = data.staticClass ? data.staticClass : '';
-      data.staticClass = "".concat(compName$1, " ").concat(staticClass);
+    value: function render() {
+      var h = arguments[0];
+      var name = this.name,
+          $slots = this.$slots,
+          styles = this.styles,
+          classes = this.classes;
+      return h("div", {
+        "staticClass": name,
+        "class": classes,
+        "style": styles
+      }, [$slots.default]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      var _this2 = this;
 
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
+      var styles = {};
+      BREAKPOINT.forEach(function (breakpoint) {
+        if (_this2[breakpoint]) {
+          genStaticStyles(styles, _this2.name, "span-".concat(breakpoint), _this2[breakpoint]);
+        }
+      });
+      return styles;
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign({}, this.elevationClass);
     }
   }]);
 
-  return MContainer;
+  return MContaiber;
 }(vuePropertyDecorator.Vue);
 
 __decorate([vuePropertyDecorator.Prop({
-  type: String
-}), __metadata("design:type", String)], MContainer.prototype, "id", void 0);
+  type: Number
+}), __metadata("design:type", Number)], MContaiber.prototype, "xs", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
-  type: String,
-  default: 'div'
-}), __metadata("design:type", String)], MContainer.prototype, "tag", void 0);
+  type: Number
+}), __metadata("design:type", Number)], MContaiber.prototype, "sm", void 0);
 
-MContainer = __decorate([vuePropertyDecorator.Component({
-  functional: true
-})], MContainer);
-var MContainer$1 = MContainer;
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MContaiber.prototype, "md", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MContaiber.prototype, "lg", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Number
+}), __metadata("design:type", Number)], MContaiber.prototype, "xl", void 0);
+
+MContaiber = __decorate([vuePropertyDecorator.Component], MContaiber);
+var MContainer = MContaiber;
 
 var ColorMixin =
 /*#__PURE__*/
@@ -2464,11 +2491,11 @@ function (_Vue) {
 
 __decorate([vuePropertyDecorator.Prop({
   type: String
-}), __metadata("design:type", Object)], ColorMixin.prototype, "fontColor", void 0);
+}), __metadata("design:type", String)], ColorMixin.prototype, "fontColor", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
   type: String
-}), __metadata("design:type", Object)], ColorMixin.prototype, "color", void 0);
+}), __metadata("design:type", String)], ColorMixin.prototype, "color", void 0);
 
 ColorMixin = __decorate([vuePropertyDecorator.Component], ColorMixin);
 var mixColor = ColorMixin;
@@ -2717,7 +2744,7 @@ MFlex = __decorate([vuePropertyDecorator.Component({
 })], MFlex);
 var MFlex$1 = MFlex;
 
-var compName$2 = 'm-flex-filler';
+var compName$1 = 'm-flex-filler';
 
 var MFlexFiller =
 /*#__PURE__*/
@@ -2735,7 +2762,7 @@ function (_Vue) {
     value: function render() {
       var h = arguments[0];
       return h("div", {
-        "class": compName$2
+        "class": compName$1
       });
     }
   }]);
@@ -2748,8 +2775,8 @@ MFlexFiller = __decorate([vuePropertyDecorator.Component({
 })], MFlexFiller);
 var MFlexFiller$1 = MFlexFiller;
 
-MContainer$1.install = function (Vue) {
-  Vue.component('MContainer', MContainer$1);
+MContainer.install = function (Vue) {
+  Vue.component('MContainer', MContainer);
 };
 
 MRow$1.install = function (Vue) {
@@ -3686,7 +3713,6 @@ styleInject(css$m);
  * 判断闰年
  * @return {boolean}
  */
-
 Date.prototype.isLeapYear = function () {
   return this.getFullYear() % 4 === 0 && (this.getFullYear() % 100 !== 0 || this.getFullYear() % 400 === 0);
 };
@@ -3733,7 +3759,7 @@ Number.prototype.dateZeroize = function () {
 
 var WeekMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 var MonthMap = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-var compName$3 = 'm-time-picker-header';
+var compName$2 = 'm-time-picker-header';
 
 var MTimePickerHeader =
 /*#__PURE__*/
@@ -3769,9 +3795,9 @@ function (_Vue) {
           pickerType = _this$DateStore.pickerType,
           activeType = _this$DateStore.activeType;
       return !['datetime', 'date'].includes(pickerType) ? undefined : h("div", {
-        "staticClass": "".concat(compName$3, "__date")
+        "staticClass": "".concat(compName$2, "__date")
       }, [h("div", [h("a", {
-        "staticClass": "".concat(compName$3, "__date-year"),
+        "staticClass": "".concat(compName$2, "__date-year"),
         "class": {
           'm--active': activeType === DatePickerType.year
         },
@@ -3781,9 +3807,9 @@ function (_Vue) {
           }
         }
       }, [year]), h("span", {
-        "staticClass": "".concat(compName$3, "__date-weekDay")
+        "staticClass": "".concat(compName$2, "__date-weekDay")
       }, [WeekMap[weekDay]])]), h("div", {
-        "staticClass": "".concat(compName$3, "__date-date")
+        "staticClass": "".concat(compName$2, "__date-date")
       }, [h("a", {
         "class": {
           'm--active': activeType === DatePickerType.month
@@ -3819,9 +3845,9 @@ function (_Vue) {
           ampm = _this$DateStore2.ampm,
           am = _this$DateStore2.am;
       return !['datetime', 'time'].includes(pickerType) ? undefined : h("div", {
-        "class": "".concat(compName$3, "__time")
+        "class": "".concat(compName$2, "__time")
       }, [!ampm ? undefined : h("div", {
-        "staticClass": "".concat(compName$3, "__time-ampm")
+        "staticClass": "".concat(compName$2, "__time-ampm")
       }, [h("a", {
         "class": {
           'm--active': am
@@ -3841,7 +3867,7 @@ function (_Vue) {
           }
         }
       }, ["PM"])]), h("div", {
-        "staticClass": "".concat(compName$3, "__time-hours")
+        "staticClass": "".concat(compName$2, "__time-hours")
       }, [h("a", {
         "class": {
           'm--active': activeType === DateTimeValueType.hours
@@ -3870,7 +3896,7 @@ function (_Vue) {
           year = _this$DateStore3.year,
           pickerType = _this$DateStore3.pickerType;
       return pickerType !== 'year' ? undefined : h("div", {
-        "staticClass": "".concat(compName$3, "__year")
+        "staticClass": "".concat(compName$2, "__year")
       }, [year]);
     }
   }, {
@@ -3881,7 +3907,7 @@ function (_Vue) {
           month = _this$DateStore4.month,
           pickerType = _this$DateStore4.pickerType;
       return pickerType !== DatePickerType.month ? undefined : h("div", {
-        "staticClass": "".concat(compName$3, "__month")
+        "staticClass": "".concat(compName$2, "__month")
       }, [MonthMap[month]]);
     }
   }, {
@@ -3894,7 +3920,7 @@ function (_Vue) {
           RYear = this.RYear,
           RMonth = this.RMonth;
       return h("div", {
-        "staticClass": "".concat(compName$3),
+        "staticClass": "".concat(compName$2),
         "class": classes
       }, [RYear(), RMonth(), RDate(), h("div", {
         "style": "flex-grow:1"
@@ -3915,7 +3941,7 @@ __decorate([vuePropertyDecorator.Inject(), __metadata("design:type", Object)], M
 MTimePickerHeader = __decorate([vuePropertyDecorator.Component], MTimePickerHeader);
 var MTimePickerHeader$1 = MTimePickerHeader;
 
-var compName$4 = 'm-time-picker-panel-date';
+var compName$3 = 'm-time-picker-panel-date';
 var WeekMap$1 = ['日', '一', '二', '三', '四', '五', '六'];
 
 var MTimePickerPanelDate =
@@ -4050,11 +4076,11 @@ function (_Vue) {
           RTableHead = this.RTableHead,
           RTableBody = this.RTableBody;
       return h("div", {
-        "staticClass": compName$4
+        "staticClass": compName$3
       }, [h("div", {
-        "class": "".concat(compName$4, "__header")
+        "class": "".concat(compName$3, "__header")
       }, [h("div", {
-        "staticClass": "".concat(compName$4, "__header-year")
+        "staticClass": "".concat(compName$3, "__header-year")
       }, [h("span", {
         "on": {
           "click": function click() {
@@ -4068,7 +4094,7 @@ function (_Vue) {
           }
         }
       }, [(viewMonth + 1).dateZeroize()])]), h("div", {
-        "staticClass": "".concat(compName$4, "__header-handler")
+        "staticClass": "".concat(compName$3, "__header-handler")
       }, [h(MButton$1, {
         "attrs": {
           "variety": Variety.flat,
@@ -4110,7 +4136,7 @@ function (_Vue) {
           "value": 'navigate_next'
         }
       })])])]), h("table", {
-        "class": "".concat(compName$4, "__table")
+        "class": "".concat(compName$3, "__table")
       }, [RTableHead(), RTableBody()])]);
     }
   }, {
@@ -4166,7 +4192,7 @@ MTimePickerPanelDate = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelDate);
 var MTimePickerPanelDate$1 = MTimePickerPanelDate;
 
-var compName$5 = 'm-time-picker-panel-year';
+var compName$4 = 'm-time-picker-panel-year';
 
 var MTimePickerPanelYear =
 /*#__PURE__*/
@@ -4225,7 +4251,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$5
+        "staticClass": compName$4
       }, [RCols()]);
     }
   }]);
@@ -4250,7 +4276,7 @@ __decorate([vuePropertyDecorator.Emit('pick'), __metadata("design:type", Functio
 MTimePickerPanelYear = __decorate([vuePropertyDecorator.Component], MTimePickerPanelYear);
 var MTimePickerPanelYear$1 = MTimePickerPanelYear;
 
-var compName$6 = 'm-time-picker-panel-month';
+var compName$5 = 'm-time-picker-panel-month';
 var MonthMap$1 = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
 var MTimePickerPanelMonth =
@@ -4308,7 +4334,7 @@ function (_Vue) {
       var h = arguments[0];
       var RCols = this.RCols;
       return h("div", {
-        "staticClass": compName$6
+        "staticClass": compName$5
       }, [RCols()]);
     }
   }]);
@@ -4331,7 +4357,7 @@ MTimePickerPanelMonth = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelMonth);
 var MTimePickerPanelMonth$1 = MTimePickerPanelMonth;
 
-var compName$7 = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
+var compName$6 = 'm-time-picker-panel-time'; // const baseFont: any = getStyle(document.documentElement, 'font-size')
 // const clockSize = 12 * Number(baseFont.substring(0, baseFont.length - 2))
 // const clockStyle = {
 //     height: `${clockSize}px`,
@@ -4394,7 +4420,7 @@ function (_Vue) {
       }
 
       return h("div", {
-        "staticClass": "".concat(compName$7, "__list ").concat(compName$7, "__list-").concat(type)
+        "staticClass": "".concat(compName$6, "__list ").concat(compName$6, "__list-").concat(type)
       }, [Temps]);
     }
   }, {
@@ -4406,7 +4432,7 @@ function (_Vue) {
       Result.push(RList(DateTimeValueType.hours));
       Result.push(RList(DateTimeValueType.minutes));
       return h("div", {
-        "staticClass": compName$7
+        "staticClass": compName$6
       }, [Result]);
     }
   }]);
@@ -4441,7 +4467,7 @@ MTimePickerPanelTime = __decorate([vuePropertyDecorator.Component({
 })], MTimePickerPanelTime);
 var MTimePickerPanelTime$1 = MTimePickerPanelTime;
 
-var compName$8 = 'm-time-picker-handler';
+var compName$7 = 'm-time-picker-handler';
 
 var MTimePickerHandler =
 /*#__PURE__*/
@@ -4468,7 +4494,7 @@ function (_Vue) {
           onCancel = this.onCancel,
           color = this.color;
       return h("div", {
-        "staticClass": "".concat(compName$8, " m-p-sm")
+        "staticClass": "".concat(compName$7, " m-p-sm")
       }, [h(MButton$1, {
         "attrs": {
           "size": "32px",
@@ -5108,7 +5134,7 @@ MListItem$1.install = function (Vue) {
   Vue.component('MListItem', MListItem$1);
 };
 
-var css$o = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: 48px; }\n\n/**\r\n * relative component custom.\r\n */\n.m-table .m-checkbox {\n  --m-checkbox-size: calc(var(--m-table-row-size) / 2); }\n\n.m-table .m-radio {\n  --m-radio-size: calc(var(--m-table-row-size) / 2); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table .m--center {\n    height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-1) inset;\n          box-shadow: var(--m-elevation-1) inset; }\n";
+var css$o = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-active-color: var(--m-day-bg-second-color);\n  --m-table-row-size: 48px; }\n\n/**\r\n * relative component custom.\r\n */\n.m-table .m-checkbox {\n  --m-checkbox-size: calc(var(--m-table-row-size) / 2); }\n\n.m-table .m-radio {\n  --m-radio-size: calc(var(--m-table-row-size) / 2); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-table-active-color); }\n  .m-table .m--center {\n    height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%;\n  height: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-table-active-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-table-active-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n\n.m-table-body__expand-content {\n  -webkit-box-shadow: var(--m-elevation-1) inset;\n          box-shadow: var(--m-elevation-1) inset; }\n";
 styleInject(css$o);
 
 var deepCopy = function deepCopy(source) {
@@ -5164,7 +5190,7 @@ var typeSelect;
   typeSelect["multi"] = "multi";
 })(typeSelect || (typeSelect = {}));
 
-var compName$9 = 'm-table-head';
+var compName$8 = 'm-table-head';
 
 var TableHead =
 /*#__PURE__*/
@@ -5253,7 +5279,7 @@ function (_Vue) {
         maxWidth: width
       };
       return h("td", {
-        "staticClass": "".concat(compName$9, "__cell"),
+        "staticClass": "".concat(compName$8, "__cell"),
         "style": styles,
         "attrs": {
           "align": align
@@ -5271,7 +5297,7 @@ function (_Vue) {
         result.push(RCell(item, index));
       });
       return h("tr", {
-        "staticClass": "".concat(compName$9, "__row")
+        "staticClass": "".concat(compName$8, "__row")
       }, [result]);
     }
   }, {
@@ -5281,7 +5307,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadPrepend = this.$parent.$slots['head-prepend'];
       return !$slotHeadPrepend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$9, "__row")
+        "staticClass": "".concat(compName$8, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5295,7 +5321,7 @@ function (_Vue) {
       var TableCols = this.TableCols;
       var $slotHeadAppend = this.$parent.$slots['head-append'];
       return !$slotHeadAppend ? undefined : h("tr", {
-        "staticClass": "".concat(compName$9, "__row")
+        "staticClass": "".concat(compName$8, "__row")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5317,7 +5343,7 @@ function (_Vue) {
           RSlotHeadAppend = this.RSlotHeadAppend,
           RSlotHeadExtra = this.RSlotHeadExtra;
       return h("table", {
-        "staticClass": compName$9
+        "staticClass": compName$8
       }, [h("thead", [RSlotHeadPrepend(), RSlotHeadExtra(), RHead(), RSlotHeadAppend()])]);
     }
   }]);
@@ -5410,7 +5436,7 @@ var off = function () {
   }
 }();
 
-var compName$a = 'm-table-body';
+var compName$9 = 'm-table-body';
 
 var TableBody =
 /*#__PURE__*/
@@ -5568,7 +5594,7 @@ function (_Vue) {
         var isSelect = type === 'select' && selectable;
         var isExpand = type === 'expand' && expandable;
         return h("td", {
-          "staticClass": "".concat(compName$a, "__cell"),
+          "staticClass": "".concat(compName$9, "__cell"),
           "style": styles,
           "attrs": {
             "align": align
@@ -5597,7 +5623,7 @@ function (_Vue) {
         'm--disabled': NoSelect.includes(row[keyField])
       };
       return h("tr", {
-        "staticClass": "".concat(compName$a, "__row"),
+        "staticClass": "".concat(compName$9, "__row"),
         "class": classes,
         "on": {
           "click": function click() {
@@ -5627,7 +5653,7 @@ function (_Vue) {
 
       var isExpanded = Expanded.includes(row[keyField]);
       return h("tr", {
-        "staticClass": "".concat(compName$a, "__expand")
+        "staticClass": "".concat(compName$9, "__expand")
       }, [h("td", {
         "attrs": {
           "colSpan": TableCols.length
@@ -5637,7 +5663,7 @@ function (_Vue) {
           "name": 'expansion'
         }
       }, [!isExpanded ? undefined : h("div", {
-        "staticClass": "".concat(compName$a, "__expand-content")
+        "staticClass": "".concat(compName$9, "__expand-content")
       }, [this.$parent.$scopedSlots.expand(row)])])])]);
     }
   }, {
@@ -5701,7 +5727,7 @@ function (_Vue) {
       var styles = this.styles,
           RTBody = this.RTBody;
       return h("div", {
-        "staticClass": compName$a,
+        "staticClass": compName$9,
         "style": styles
       }, [h("table", [RTBody()])]);
     }
@@ -6230,7 +6256,7 @@ var components = /*#__PURE__*/Object.freeze({
   MFrame: MFrame$1,
   MView: MView$1,
   MIcon: MIcon$1,
-  MContainer: MContainer$1,
+  MContainer: MContainer,
   MRow: MRow$1,
   MCol: MCol$1,
   MFlex: MFlex$1,
@@ -6484,7 +6510,7 @@ exports.MButton = MButton$1;
 exports.MCheckbox = MCheckbox$1;
 exports.MChip = MChip$1;
 exports.MCol = MCol$1;
-exports.MContainer = MContainer$1;
+exports.MContainer = MContainer;
 exports.MFlex = MFlex$1;
 exports.MFlexFiller = MFlexFiller$1;
 exports.MFrame = MFrame$1;

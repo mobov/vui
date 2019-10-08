@@ -39,6 +39,13 @@ $--Container-max-size: (
     --m-col-span-lg: var(--m-col-span-md);
     --m-col-span-xl: var(--m-col-span-lg);
 }
+.m-container {
+    --m-col-span-xs: var(--m-row-cols);
+    --m-col-span-sm: var(--m-col-span-xs);
+    --m-col-span-md: var(--m-col-span-sm);
+    --m-col-span-lg: var(--m-col-span-md);
+    --m-col-span-xl: var(--m-col-span-lg);
+}
 
 /**
  * components styles.

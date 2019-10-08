@@ -64,6 +64,7 @@ export default class TableHead extends Vue {
         content = (
           <div staticClass="m--center">
             <MCheckbox onInput={() => { handleSelectAll() }}
+                       marginRight={0}
                        size={size}
                        value={checkVal}
                        label={checkAll}/>

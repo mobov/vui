@@ -3,6 +3,7 @@
     <example-box>
       <m-table class="m-mb-lg"
                key-field="name"
+               :elevation="1"
                :data="tableData"
                :selected.sync="selectedData"
                :noselect.sync="noSelectData"
@@ -17,7 +18,7 @@
                :row-select="PropsData['row-select']"
                :hover="PropsData.hover"
                height="400px">
-        <m-table-col type="select" width="80"/>
+        <m-table-col type="select" :width="48"/>
         <m-table-col title="name" field="name" />
         <m-table-col title="calories" field="calories" />
         <div class="m-p-md" slot="expand" slot-scope="scope">

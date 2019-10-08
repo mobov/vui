@@ -23,7 +23,6 @@
   "dependencies": {
     "@mobov/es-helper": "^2.0.1",
     "@mobov/scss-helper": "^0.0.5",
-    "polished": "^3.2.0",
     "vue": "^2.5.21",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0"

@@ -1,26 +1,53 @@
-import { Vue, Component, Prop } from 'vue-property-decorator'
-import { ComponentOptions, CreateElement, RenderContext } from 'vue'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { genStaticStyles } from '../core/utils'
+import { BREAKPOINT } from '../core/constants'
 
-const compName = 'm-container'
+@Component
+export default class MContaiber extends Vue {
+  name = 'm-container'
 
-@Component({
-  functional: true
-} as ComponentOptions<Vue>)
-export default class MContainer extends Vue {
-  @Prop({ type: String })
-  id!: string
+  @Prop({ type: Number })
+  xs?: number
 
-  @Prop({ type: String, default: 'div' })
-  tag!: string
+  @Prop({ type: Number })
+  sm?: number
 
-  render (h: CreateElement, { props, data, children }: RenderContext) {
-    const staticClass = data.staticClass ? data.staticClass : ''
-    data.staticClass = `${compName} ${staticClass}`
+  @Prop({ type: Number })
+  md?: number
 
-    if (props.id) {
-      data.domProps = data.domProps || {}
-      data.domProps.id = props.id
+  @Prop({ type: Number })
+  lg?: number
+
+  @Prop({ type: Number })
+  xl?: number
+
+  get styles () {
+    const styles = {}
+
+    BREAKPOINT.forEach((breakpoint: string) => {
+      if (this[breakpoint]) {
+        genStaticStyles(styles, this.name, `span-${breakpoint}`, this[breakpoint])
+      }
+    })
+
+    return styles
+  }
+
+  get classes () {
+    return {
+      ...this.elevationClass
     }
-    return h(props.tag, data, children)
+  }
+
+  render () {
+    const { name, $slots, styles, classes } = this
+
+    return (
+      <div staticClass={name}
+           class={classes}
+           style={styles}>
+        {$slots.default}
+      </div>
+    )
   }
 }

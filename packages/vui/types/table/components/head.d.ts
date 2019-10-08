@@ -13,8 +13,8 @@ export default class TableHead extends Vue {
     handleSelectAll(): void;
     RCell(item: any, index: number): JSX.Element;
     RHead(): JSX.Element;
-    RSlotHeadPrepend(): JSX.Element | undefined;
-    RSlotHeadAppend(): JSX.Element | undefined;
-    RSlotHeadExtra(): import("vue").VNode[] | undefined;
+    RSlotHeadPrepend(): JSX.Element;
+    RSlotHeadAppend(): JSX.Element;
+    RSlotHeadExtra(): import("vue").VNode[];
     render(): JSX.Element;
 }

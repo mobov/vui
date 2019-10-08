@@ -69,7 +69,7 @@ export function getStyleSpace (val?: number | string): string {
       return `${val}`
     }
   } else {
-    return val || ''
+    return ''
   }
 }
 
