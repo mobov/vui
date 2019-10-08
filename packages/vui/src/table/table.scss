@@ -9,7 +9,6 @@ $--m-transition-table-base: ease .2s;
     --m-table-color: var(--m-bg-color);
     --m-table-bg-color: var(--m-bg-color);
     --m-table-font-color: var(--m-font-color);
-    --m-table-active-color: var(--m-day-bg-second-color);
     --m-table-row-size: 48px;
 }
 
@@ -116,12 +115,12 @@ $--m-transition-table-base: ease .2s;
     // hover
     &.m--row-hover {
         .m-table-body__row:hover {
-            background-color: var(--m-table-active-color);
+            background-color: var(--m-hover-bg-color);
         }
     }
     &.m--cell-hover {
         .m-table-body__cell:hover {
-            background-color: var(--m-table-active-color);
+            background-color: var(--m-hover-bg-color);
         }
     }
     .m--center {
@@ -160,11 +159,11 @@ $--m-transition-table-base: ease .2s;
 
     // row selected
     &.m--selected {
-        background-color: var(--m-table-active-color);
+        background-color: var(--m-hover-bg-color);
     }
     // row disabled
     &.m--disabled {
-        background-color: var(--m-table-active-color);
+        background-color: var(--m-hover-bg-color);
     }
 }
 .m-table-body__cell {

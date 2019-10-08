@@ -11,6 +11,7 @@
     <example-box>
       <m-row class="example-row"
              :padding="5"
+             :gutter="5"
              :cols="24" >
         <m-col class="example-col"
                :key="item"
@@ -20,9 +21,12 @@
                :lg="2"
                :padding="5"
                v-for="item in 24">
-          <div style="background-color: #449fdb;height: 100%;width: 100%"></div>
+          <div style="background-color: #449fdb;height: 100%;width: 100%;"></div>
         </m-col>
       </m-row>
+      <m-container class="example-col" :marginY="20">
+        <div style="background-color: #449fdb;height: 100%;width: 100%;"></div>
+      </m-container>
     </example-box>
   </div>
 </template>

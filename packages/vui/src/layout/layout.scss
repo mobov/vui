@@ -30,7 +30,7 @@ $--Container-max-size: (
  */
 .m-row {
     --m-row-cols: 24;
-    --m-row-gutter-size: 0;
+    --m-row-gutter: 0;
 }
 .m-col {
     --m-col-span-xs: var(--m-row-cols);
@@ -40,11 +40,11 @@ $--Container-max-size: (
     --m-col-span-xl: var(--m-col-span-lg);
 }
 .m-container {
-    --m-col-span-xs: var(--m-row-cols);
-    --m-col-span-sm: var(--m-col-span-xs);
-    --m-col-span-md: var(--m-col-span-sm);
-    --m-col-span-lg: var(--m-col-span-md);
-    --m-col-span-xl: var(--m-col-span-lg);
+    --m-container-xs: 0;
+    --m-container-sm: var(--m-col-span-xs);
+    --m-container-md: var(--m-col-span-sm);
+    --m-container-lg: var(--m-col-span-md);
+    --m-container-xl: var(--m-col-span-lg);
 }
 
 /**
@@ -68,10 +68,22 @@ $--Container-max-size: (
     display: flex;
     box-sizing: border-box;
     width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);
-    //padding: var(--m-row-gutter-size);
+    padding: var(--m-row-gutter);
     @each $breakpoint, $value in $--Grid-breakpoints {
         @include media-breakpoint-up($breakpoint, $--Grid-breakpoints) {
             width: calc((var(--m-col-span-#{$breakpoint}) / var(--m-row-cols)) * 100%);
+        }
+    }
+}
+
+.m-container {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto;
+    @each $breakpoint, $value in $--Container-max-size {
+        @include media-breakpoint-up($breakpoint, $--Container-max-size) {
+            max-width: map_get($--Container-max-size, $breakpoint);
         }
     }
 }

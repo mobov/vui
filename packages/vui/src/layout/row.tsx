@@ -1,13 +1,12 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { genStaticStyles } from '../core/utils'
+import { genStaticStyles, getStyleSize } from '../core/utils'
 import mixSpace from '../core/mixins/space'
 import mixElevation from '../core/mixins/elevation'
 import mixSize from '../core/mixins/size'
 import mixColor from '../core/mixins/color'
-import mixShape from '../core/mixins/shape'
 
 @Component({
-  mixins: [mixColor, mixSize, mixSpace, mixShape, mixElevation]
+  mixins: [mixColor, mixSize, mixSpace, mixElevation]
 })
 export default class MRow extends Vue {
   name = 'm-row'
@@ -15,21 +14,25 @@ export default class MRow extends Vue {
   @Prop({ type: Number })
   cols?: number
 
+  @Prop({ type: [Number, String] })
+  gutter?: number | string
+
   get styles () {
     const styles = {
       ...this.spaceStyle,
       ...this.colorStyle,
       ...this.sizeStyle,
+      '--m-row-gutter': getStyleSize(this.gutter)
     }
 
     genStaticStyles(styles, this.name, 'cols', this.cols)
+
 
     return styles
   }
 
   get classes () {
     return {
-      ...this.shapeClass,
       ...this.elevationClass
     }
   }
