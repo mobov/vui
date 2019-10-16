@@ -19,7 +19,7 @@ import { MobovPlugin as Mobov }  from '.'
 declare global {
   interface Window {
     Vue: VueConstructor
-    Mobov: Mobov,
+    Mobov: Mobov
     attachEvent(event: string, listener: EventListener): boolean
     detachEvent(event: string, listener: EventListener): void
   }

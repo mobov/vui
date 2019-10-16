@@ -101,6 +101,25 @@ export type fill = 'left' | 'both' | 'right' | 'none'
 
 export const FILL = Object.keys(Fill)
 
+export type placement = 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'
+
+export enum Placement {
+  top = 'top',
+  topStart = 'top-start',
+  topEnd = 'top-end',
+  bottom = 'bottom',
+  bottomStart = 'bottom-start',
+  bottomEnd = 'bottom-end',
+  left = 'left',
+  leftStart = 'left-start',
+  leftEnd = 'left-end',
+  right = 'left',
+  rightStart = 'left-start',
+  rightEnd = 'left-end'
+}
+
+export const PLACEMENT = ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end', 'right', 'right-start', 'right-end']
+
 export enum FlexDirection {
   row = 'row',
   'row-reverse' = 'row-reverse',
@@ -198,6 +217,8 @@ export enum TransitionName {
   slideRight = 'slide-right',
   slideUp = 'slide-up',
   slideDown = 'slide-down',
-  expansion = 'expansion'
+  expansion = 'expansion',
+  scale = 'scale',
+  fade = 'fade'
 }
 

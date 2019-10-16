@@ -1,11 +1,12 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import MIcon from '../icon'
+import MTransition from '../transition'
 import mixColor from '../core/mixins/color'
 import mixSize from '../core/mixins/size'
 import mixSpace from '../core/mixins/space'
 
 @Component({
-  components: { MIcon },
+  components: { MIcon, MTransition },
   mixins: [mixColor, mixSize, mixSpace]
 })
 export default class MCheckbox extends Vue {
@@ -113,7 +114,7 @@ export default class MCheckbox extends Vue {
 
   RCheckbox () {
     const { size, checkedIcon, uncheckIcon, incheckIcon,
-            value, label, checked, isArrayValue, isArrayLabel } = this
+      value, label, checked, isArrayValue, isArrayLabel } = this
 
     let checkIcon = checkedIcon
 
@@ -129,13 +130,13 @@ export default class MCheckbox extends Vue {
 
     return (
       <a staticClass={`${this.name}__checkbox`}>
-        <transition name='m-transition-scale'>
+        <MTransition name='scale'>
           {!checked ? undefined
             : <MIcon staticClass={`${this.name}__checked-icon`}
                      value={checkIcon}
                      size={size}/>
           }
-        </transition>
+        </MTransition>
         <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} value={uncheckIcon} />
         <div v-m-ripple staticClass={`${this.name}__checkbox-wrapper`} />
       </a>

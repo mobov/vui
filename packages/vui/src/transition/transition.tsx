@@ -107,7 +107,7 @@ export default class MTransition extends Vue {
       leave = Expansion.leave
       afterLeave = Expansion.afterLeave
     }
-
+    console.log(`${compName}-${name}`)
     return (
       <transition name={`${compName}-${name}`}
                   onBeforeEnter={(el) => {

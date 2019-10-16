@@ -1,4 +1,7 @@
 import { Vue, Component, Prop, Emit, Watch, Inject, Provide } from 'vue-property-decorator';
+import uid from 'nanoid';
+import PopperJS from 'popper.js';
+import { debounce } from 'throttle-debounce';
 
 function styleInject(css, ref) {
   if (ref === void 0) ref = {};
@@ -596,6 +599,24 @@ var Fill;
 })(Fill || (Fill = {}));
 
 var FILL = Object.keys(Fill);
+var Placement;
+
+(function (Placement) {
+  Placement["top"] = "top";
+  Placement["topStart"] = "top-start";
+  Placement["topEnd"] = "top-end";
+  Placement["bottom"] = "bottom";
+  Placement["bottomStart"] = "bottom-start";
+  Placement["bottomEnd"] = "bottom-end";
+  Placement["left"] = "left";
+  Placement["leftStart"] = "left-start";
+  Placement["leftEnd"] = "left-end";
+  Placement["right"] = "left";
+  Placement["rightStart"] = "left-start";
+  Placement["rightEnd"] = "left-end";
+})(Placement || (Placement = {}));
+
+var PLACEMENT = ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end', 'right', 'right-start', 'right-end'];
 var FlexDirection;
 
 (function (FlexDirection) {
@@ -692,6 +713,8 @@ var TransitionName;
   TransitionName["slideUp"] = "slide-up";
   TransitionName["slideDown"] = "slide-down";
   TransitionName["expansion"] = "expansion";
+  TransitionName["scale"] = "scale";
+  TransitionName["fade"] = "fade";
 })(TransitionName || (TransitionName = {}));
 
 var constant = /*#__PURE__*/Object.freeze({
@@ -714,6 +737,8 @@ var constant = /*#__PURE__*/Object.freeze({
   get Mode () { return Mode; },
   get Fill () { return Fill; },
   FILL: FILL,
+  get Placement () { return Placement; },
+  PLACEMENT: PLACEMENT,
   get FlexDirection () { return FlexDirection; },
   get FlexJustify () { return FlexJustify; },
   FLEX_JUSTIFY: FLEX_JUSTIFY,
@@ -924,14 +949,8 @@ function genStaticStyles(styles, compName, property, val) {
   }
 }
 
-var css$a = ".m-fade {\n  -webkit-transition: opacity ease 10s;\n  transition: opacity ease 10s; }\n\n.m-fade-enter {\n  will-change: opacity;\n  opacity: 0; }\n\n.m-fade-enter-active {\n  -webkit-transition: opacity ease 10s;\n  transition: opacity ease 10s; }\n\n.m-fade-enter-to {\n  will-change: auto;\n  opacity: 1; }\n";
+var css$a = "/**\r\n  expansion\r\n */\n.m-transition-expansion-enter-active,\n.m-transition-expansion-leave-active {\n  -webkit-transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  -webkit-transform: translate3d(0, 0, 0);\n          transform: translate3d(0, 0, 0);\n  will-change: height;\n  overflow: hidden; }\n\n/**\r\n  fade\r\n */\n.m-transition-fade-enter-active,\n.m-transition-fade-leave-active {\n  -webkit-transition: opacity .2s ease;\n  transition: opacity .2s ease; }\n\n.m-transition-fade-enter,\n.m-transition-fade-leave-active {\n  opacity: 0; }\n\n/**\r\n  scale\r\n */\n.m-transition-scale-enter-active,\n.m-transition-scale-leave-active {\n  -webkit-transition: all .2s ease;\n  transition: all .2s ease;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.m-transition-scale-enter,\n.m-transition-scale-leave-active {\n  -webkit-transform: scale(0);\n          transform: scale(0);\n  opacity: 0; }\n\n/**\r\n  slide\r\n */\n.m-transition-slide-left-enter,\n.m-transition-slide-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-transition-slide-left-enter-active,\n.m-transition-slide-left-leave-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear; }\n\n.m-transition-slide-right-enter,\n.m-transition-slide-right-leave-to {\n  -webkit-transform: translate3D(100%, 0, 0);\n          transform: translate3D(100%, 0, 0); }\n\n.m-transition-slide-right-leave,\n.m-transition-slide-right-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-right-leave-active,\n.m-transition-slide-right-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-down-enter,\n.m-transition-slide-down-leave-to {\n  -webkit-transform: translate3D(0, -100%, 0);\n          transform: translate3D(0, -100%, 0); }\n\n.m-transition-slide-down-leave,\n.m-transition-slide-down-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-down-leave-active,\n.m-transition-slide-down-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-up-enter,\n.m-transition-slide-up-leave-to {\n  -webkit-transform: translate3D(0, 100%, 0);\n          transform: translate3D(0, 100%, 0); }\n\n.m-transition-slide-up-leave,\n.m-transition-slide-up-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-slide-up-leave-active,\n.m-slide-up-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n";
 styleInject(css$a);
-
-var css$b = ".m-transition-slide-left-enter,\n.m-transition-slide-left-leave-to {\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%); }\n\n.m-transition-slide-left-enter-active,\n.m-transition-slide-left-leave-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear; }\n\n.m-transition-slide-right-enter,\n.m-transition-slide-right-leave-to {\n  -webkit-transform: translate3D(100%, 0, 0);\n          transform: translate3D(100%, 0, 0); }\n\n.m-transition-slide-right-leave,\n.m-transition-slide-right-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-right-leave-active,\n.m-transition-slide-right-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-down-enter,\n.m-transition-slide-down-leave-to {\n  -webkit-transform: translate3D(0, -100%, 0);\n          transform: translate3D(0, -100%, 0); }\n\n.m-transition-slide-down-leave,\n.m-transition-slide-down-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-transition-slide-down-leave-active,\n.m-transition-slide-down-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n\n.m-transition-slide-up-enter,\n.m-transition-slide-up-leave-to {\n  -webkit-transform: translate3D(0, 100%, 0);\n          transform: translate3D(0, 100%, 0); }\n\n.m-transition-slide-up-leave,\n.m-transition-slide-up-enter-to {\n  -webkit-transform: translate3D(0, 0, 0);\n          transform: translate3D(0, 0, 0); }\n\n.m-slide-up-leave-active,\n.m-slide-up-enter-active {\n  -webkit-transition: -webkit-transform 3s linear;\n  transition: -webkit-transform 3s linear;\n  transition: transform 3s linear;\n  transition: transform 3s linear, -webkit-transform 3s linear;\n  will-change: transform; }\n";
-styleInject(css$b);
-
-var css$c = ".m-transition-expansion-enter-active,\n.m-transition-expansion-leave-active {\n  -webkit-transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  transition: all 0.35s 0.1s cubic-bezier(0.23, 1, 0.32, 1);\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  -webkit-transform: translate3d(0, 0, 0);\n          transform: translate3d(0, 0, 0);\n  will-change: height;\n  overflow: hidden; }\n\n.m-transition-scale-enter-active,\n.m-transition-scale-leave-active {\n  -webkit-transition: all .2s ease;\n  transition: all .2s ease;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.m-transition-scale-enter,\n.m-transition-scale-leave-active {\n  -webkit-transform: scale(0);\n          transform: scale(0);\n  opacity: 0; }\n";
-styleInject(css$c);
 
 var compName = 'm-transition';
 
@@ -1062,6 +1081,7 @@ function (_Vue) {
         _afterLeave = Expansion.afterLeave;
       }
 
+      console.log("".concat(compName, "-").concat(name));
       return h("transition", {
         "attrs": {
           "name": "".concat(compName, "-").concat(name)
@@ -1669,8 +1689,8 @@ MFrame$1.install = function (Vue) {
   Vue.component('MFrame', MFrame$1);
 };
 
-var css$d = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-view {\n  --m-view-color: var(--m-color-primary);\n  --m-view-font-color: var(--m-font-color);\n  --m-view-bg-color: var(--m-bg-color); }\n\n/**\r\n * components styles.\r\n */\n.m-view {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  color: var(--m-font-color);\n  background-color: var(--m-view-bg-color);\n  font-size: var(--m-font-base);\n  position: relative; }\n\n.m-view-scroller {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-view-scroller::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-view-scroller::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-view-scroller::-webkit-scrollbar {\n    width: 7px; }\n  .m-view-scroller::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-view-scrollerl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n";
-styleInject(css$d);
+var css$b = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-view {\n  --m-view-color: var(--m-color-primary);\n  --m-view-font-color: var(--m-font-color);\n  --m-view-bg-color: var(--m-bg-color); }\n\n/**\r\n * components styles.\r\n */\n.m-view {\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 0;\n  margin: 0;\n  color: var(--m-font-color);\n  background-color: var(--m-view-bg-color);\n  font-size: var(--m-font-base);\n  position: relative; }\n\n.m-view-scroller {\n  height: 100%;\n  width: 100%;\n  overflow: auto; }\n  .m-view-scroller::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-view-scroller::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-view-scroller::-webkit-scrollbar {\n    width: 7px; }\n  .m-view-scroller::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-view-scrollerl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n";
+styleInject(css$b);
 
 /**
  * Created by nocoolyoyo on 2018/7/17.
@@ -2008,8 +2028,8 @@ MView$1.install = function (Vue) {
   Vue.component('MView', MView$1);
 };
 
-var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n/**\r\n * components styles.\r\n */\n.m-icon {\n  height: 16px;\n  fill: currentColor; }\n";
-styleInject(css$e);
+var css$c = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n/**\r\n * components styles.\r\n */\n.m-icon {\n  height: 16px;\n  fill: currentColor; }\n";
+styleInject(css$c);
 
 var SIZE$1 = {
   xs: 12,
@@ -2383,8 +2403,8 @@ MIcon$1.install = function (Vue) {
   MIcon$1.register(arrow_downward);
 };
 
-var css$f = "@charset \"UTF-8\";\n:root {\n  --m-breakpoint-xs: 0;\n  --m-breakpoint-sm: 576px;\n  --m-breakpoint-md: 768px;\n  --m-breakpoint-lg: 992px;\n  --m-breakpoint-xl: 1200px; }\n\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n.m-container {\n  --m-container-xs: 0;\n  --m-container-sm: var(--m-col-span-xs);\n  --m-container-md: var(--m-col-span-sm);\n  --m-container-lg: var(--m-col-span-md);\n  --m-container-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%; }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  margin: auto; }\n  @media (min-width: 540px) {\n    .m-container {\n      max-width: 540px; } }\n  @media (min-width: 720px) {\n    .m-container {\n      max-width: 720px; } }\n  @media (min-width: 960px) {\n    .m-container {\n      max-width: 960px; } }\n  @media (min-width: 1140px) {\n    .m-container {\n      max-width: 1140px; } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--block {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
-styleInject(css$f);
+var css$d = "@charset \"UTF-8\";\n:root {\n  --m-breakpoint-xs: 0;\n  --m-breakpoint-sm: 576px;\n  --m-breakpoint-md: 768px;\n  --m-breakpoint-lg: 992px;\n  --m-breakpoint-xl: 1200px; }\n\n/*\r\n * 断点\r\n */\n/*\r\n * 栅格响应断点\r\n */\n/*\r\n * 栅格容器尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-row {\n  --m-row-cols: 24;\n  --m-row-gutter: 0; }\n\n.m-col {\n  --m-col-span-xs: var(--m-row-cols);\n  --m-col-span-sm: var(--m-col-span-xs);\n  --m-col-span-md: var(--m-col-span-sm);\n  --m-col-span-lg: var(--m-col-span-md);\n  --m-col-span-xl: var(--m-col-span-lg); }\n\n.m-container {\n  --m-container-xs: 0;\n  --m-container-sm: var(--m-col-span-xs);\n  --m-container-md: var(--m-col-span-sm);\n  --m-container-lg: var(--m-col-span-md);\n  --m-container-xl: var(--m-col-span-lg); }\n\n/**\r\n * components styles.\r\n */\n.m-row,\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n.m-row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%; }\n\n.m-col {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%);\n  padding: var(--m-row-gutter);\n  width: calc((var(--m-col-span-xs) / var(--m-row-cols)) * 100%); }\n  @media (min-width: 576px) {\n    .m-col {\n      width: calc((var(--m-col-span-sm) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 768px) {\n    .m-col {\n      width: calc((var(--m-col-span-md) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 992px) {\n    .m-col {\n      width: calc((var(--m-col-span-lg) / var(--m-row-cols)) * 100%); } }\n  @media (min-width: 1200px) {\n    .m-col {\n      width: calc((var(--m-col-span-xl) / var(--m-row-cols)) * 100%); } }\n\n.m-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  margin: auto; }\n  @media (min-width: 540px) {\n    .m-container {\n      max-width: 540px; } }\n  @media (min-width: 720px) {\n    .m-container {\n      max-width: 720px; } }\n  @media (min-width: 960px) {\n    .m-container {\n      max-width: 960px; } }\n  @media (min-width: 1140px) {\n    .m-container {\n      max-width: 1140px; } }\n\n.m-flex {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .m-flex.m--block {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%; }\n  .m-flex.m--direction-row {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row; }\n  .m-flex.m--direction-row-reverse {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n  .m-flex.m--direction-column {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .m-flex.m--direction-column-reverse {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: column-reverse;\n            flex-direction: column-reverse; }\n  .m-flex.m--wrap-normal {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .m-flex.m--wrap-reverse {\n    -ms-flex-wrap: wrap-reverse;\n        flex-wrap: wrap-reverse; }\n  .m-flex.m--wrap-none {\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap; }\n  .m-flex.m--justify-start {\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start; }\n  .m-flex.m--justify-center {\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n  .m-flex.m--justify-end {\n    -webkit-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end; }\n  .m-flex.m--justify-between {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between; }\n  .m-flex.m--justify-around {\n    -ms-flex-pack: distribute;\n        justify-content: space-around; }\n  .m-flex.m--justify-evenly {\n    -webkit-box-pack: space-evenly;\n        -ms-flex-pack: space-evenly;\n            justify-content: space-evenly; }\n  .m-flex.m--align-start {\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start; }\n  .m-flex.m--align-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-flex.m--align-stretch {\n    -webkit-box-align: stretch;\n        -ms-flex-align: stretch;\n            align-items: stretch; }\n  .m-flex.m--align-end {\n    -webkit-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n\n.m-flex-filler {\n  -webkit-box-flex: 1 !important;\n      -ms-flex-positive: 1 !important;\n          flex-grow: 1 !important;\n  background-color: transparent; }\n";
+styleInject(css$d);
 
 var ColorMixin =
 /*#__PURE__*/
@@ -2799,8 +2819,8 @@ MFlexFiller$1.install = function (Vue) {
   Vue.component('MFlexFiller', MFlexFiller$1);
 };
 
-var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-size: 50px; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  max-width: 100vw;\n  max-height: 100vh;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n  .m-app-bar.m--horizontal {\n    width: var(--m-app-bar-size);\n    height: 100%; }\n  .m-app-bar-main {\n    min-height: 100%;\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap;\n    white-space: nowrap;\n    word-break: keep-all;\n    overflow-x: auto;\n    overflow-y: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-app-bar-main::-webkit-scrollbar {\n      width: 0;\n      height: 0; }\n";
-styleInject(css$g);
+var css$e = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-app-bar {\n  --m-app-bar-color: var(--m-color-primary);\n  --m-app-bar-font-color: var(--m-bg-color);\n  --m-app-bar-size: 50px; }\n\n/**\r\n * components styles.\r\n */\n.m-app-bar {\n  height: var(--m-app-bar-size);\n  color: var(--m-app-bar-font-color);\n  background-color: var(--m-app-bar-color);\n  width: 100%;\n  max-width: 100vw;\n  max-height: 100vh;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  padding: 0 var(--m-space-sm);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s;\n  border: 0 solid transparent; }\n  .m-app-bar.m-variety-default {\n    color: var(--m-app-bar-font-color);\n    background-color: var(--m-app-bar-color); }\n  .m-app-bar.m-variety-flat {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color); }\n  .m-app-bar.m-variety-outline {\n    color: var(--m-app-bar-color);\n    background-color: var(--m-bg-color);\n    border: 2px solid var(--m-app-bar-color); }\n  .m-app-bar.m--horizontal {\n    width: var(--m-app-bar-size);\n    height: 100%; }\n  .m-app-bar-main {\n    min-height: 100%;\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap;\n    white-space: nowrap;\n    word-break: keep-all;\n    overflow-x: auto;\n    overflow-y: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-app-bar-main::-webkit-scrollbar {\n      width: 0;\n      height: 0; }\n";
+styleInject(css$e);
 
 var scrollToX = function scrollToX($scroller, scrollOpts) {
   return scrollTo('x', $scroller, scrollOpts);
@@ -2962,8 +2982,8 @@ MAppBar$1.install = function (Vue) {
   Vue.component('MAppBar', MAppBar$1);
 };
 
-var css$h = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: 36px;\n  --m-button-border-size: 2px; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: var(--m-button-border-size) solid transparent;\n  padding: 0 10px;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: transparent;\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .m-button.m--disabled {\n    opacity: .6; }\n";
-styleInject(css$h);
+var css$f = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-button {\n  --m-button-color: var(--m-color-primary);\n  --m-button-hover-color: var(--m-color-primary);\n  --m-button-font-color: var(--m-bg-color);\n  --m-button-size: 36px;\n  --m-button-border-size: 2px; }\n\n/**\r\n * components styles.\r\n */\n.m-button {\n  outline: none;\n  background-color: var(--m-button-color);\n  color: var(--m-button-font-color);\n  min-height: var(--m-button-size);\n  height: var(--m-button-size);\n  min-width: var(--m-button-size);\n  border-radius: var(--m-shape-corner);\n  border: var(--m-button-border-size) solid transparent;\n  padding: 0 10px;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  border-width: 0;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: relative;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-button:hover {\n    opacity: .8; }\n  .m-button.m-variety-outline {\n    background-color: var(--m-bg-color-main);\n    color: var(--m-button-color);\n    border: var(--m-button-border-size) solid var(--m-button-color);\n    padding: 0; }\n    .m-button.m-variety-outline:hover {\n      color: var(--m-button-color); }\n  .m-button.m-variety-flat {\n    background-color: transparent;\n    color: var(--m-button-color); }\n  .m-button.m-shape-circle {\n    border-radius: var(--m-button-size); }\n  .m-button.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-button.m-shape-square {\n    border-radius: var(--m-shape-square); }\n  .m-button.m--block {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .m-button.m--disabled {\n    opacity: .6; }\n";
+styleInject(css$f);
 
 var MButton =
 /*#__PURE__*/
@@ -3064,8 +3084,8 @@ MButton$1.install = function (Vue) {
   Vue.component('MButton', MButton$1);
 };
 
-var css$i = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-size: 40px;\n  --m-avatar-border-size: 2px; }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  min-width: var(--m-avatar-size);\n  min-height: var(--m-avatar-size);\n  max-width: var(--m-avatar-size);\n  max-height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  border-width: 0;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: var(--m-avatar-border-size);\n    border-style: solid; }\n  .m-avatar.m--status-pending .m-avatar-image, .m-avatar.m--status-success .m-avatar-image {\n    opacity: 1; }\n  .m-avatar.m--status-failure .m-avatar-image {\n    opacity: 0; }\n  .m-avatar.m--transition .m-avatar-image {\n    -webkit-transition: opacity ease .2s;\n    transition: opacity ease .2s; }\n\n.m-avatar-image {\n  -webkit-transition: none;\n  transition: none;\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
-styleInject(css$i);
+var css$g = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-avatar {\n  --m-avatar-color: var(--m-color-primary);\n  --m-avatar-font-color: var(--m-bg-color);\n  --m-avatar-size: 40px;\n  --m-avatar-border-size: 2px; }\n\n/**\r\n * components styles.\r\n */\n.m-avatar {\n  background-color: var(--m-avatar-color);\n  color: var(--m-avatar-font-color);\n  width: var(--m-avatar-size);\n  height: var(--m-avatar-size);\n  min-width: var(--m-avatar-size);\n  min-height: var(--m-avatar-size);\n  max-width: var(--m-avatar-size);\n  max-height: var(--m-avatar-size);\n  font-size: var(--m-avatar-font-size);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  border-width: 0;\n  -webkit-transition: all ease .2s;\n  transition: all ease .2s; }\n  .m-avatar.m-variety-outline {\n    background-color: var(--m-bg-color);\n    border-color: var(--m-avatar-color);\n    color: var(--m-avatar-color);\n    border-width: var(--m-avatar-border-size);\n    border-style: solid; }\n  .m-avatar.m--status-pending .m-avatar-image, .m-avatar.m--status-success .m-avatar-image {\n    opacity: 1; }\n  .m-avatar.m--status-failure .m-avatar-image {\n    opacity: 0; }\n  .m-avatar.m--transition .m-avatar-image {\n    -webkit-transition: opacity ease .2s;\n    transition: opacity ease .2s; }\n\n.m-avatar-image {\n  -webkit-transition: none;\n  transition: none;\n  height: 100%;\n  min-height: 100%;\n  max-height: 100%;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0; }\n";
+styleInject(css$g);
 
 var MAvatar =
 /*#__PURE__*/
@@ -3172,8 +3192,8 @@ MAvatar$1.install = function (Vue) {
   Vue.component('MAvatar', MAvatar$1);
 };
 
-var css$j = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: 24px;\n  --m-radio-wrapper-size: calc(var(--m-radio-size) * 2);\n  --m-radio-font-size: calc(var(--m-radio-size) / 1.6); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  font-size: var(--m-radio-font-size);\n  margin-right: var(--m-space-sm);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
-styleInject(css$j);
+var css$h = "/**\r\n * variables register.\r\n */\n.m-radio {\n  --m-radio-color: var(--m-color-primary);\n  --m-radio-font-color: var(--m-font-color);\n  --m-radio-size: 24px;\n  --m-radio-wrapper-size: calc(var(--m-radio-size) * 2);\n  --m-radio-font-size: calc(var(--m-radio-size) / 1.6); }\n\n/**\r\n * components styles.\r\n */\n.m-radio {\n  color: var(--m-radio-font-color);\n  height: var(--m-radio-color);\n  font-size: var(--m-radio-font-size);\n  margin-right: var(--m-space-sm);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .m-radio.m--disabled {\n    opacity: .5; }\n  .m-radio.m--checked {\n    color: var(--m-radio-color); }\n  .m-radio__checked-icon, .m-radio__uncheck-icon, .m-radio__radio {\n    height: var(--m-radio-size);\n    width: var(--m-radio-size); }\n  .m-radio__radio {\n    position: relative; }\n  .m-radio__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-radio__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    top: calc(var(--m-radio-size) / 2 - var(--m-radio-wrapper-size) / 2);\n    height: var(--m-radio-wrapper-size);\n    width: var(--m-radio-wrapper-size);\n    border-radius: 50%; }\n  .m-radio__label {\n    text-indent: .4em; }\n";
+styleInject(css$h);
 
 var MRadio =
 /*#__PURE__*/
@@ -3216,9 +3236,9 @@ function (_Vue) {
           checked = this.checked;
       return h("a", {
         "staticClass": "".concat(this.name, "__radio")
-      }, [h("transition", {
+      }, [h(MTransition$1, {
         "attrs": {
-          "name": 'm--transition-scale'
+          "name": 'scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
         "staticClass": "".concat(this.name, "__checked-icon"),
@@ -3324,7 +3344,8 @@ __decorate([Emit('input'), __metadata("design:type", Function), __metadata("desi
 
 MRadio = __decorate([Component({
   components: {
-    MIcon: MIcon$1
+    MIcon: MIcon$1,
+    MTransition: MTransition$1
   },
   mixins: [mixColor, mixSize, mixSpace]
 })], MRadio);
@@ -3336,8 +3357,8 @@ MRadio$1.install = function (Vue) {
   Vue.component('MRadio', MRadio$1);
 };
 
-var css$k = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: 24px;\n  --m-checkbox-wrapper-size: calc(var(--m-checkbox-size) * 2);\n  --m-checkbox-font-size: calc(var(--m-checkbox-size) / 1.6); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: var(--m-checkbox-font-size);\n  height: var(--m-checkbox-color);\n  margin-right: var(--m-space-sm);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
-styleInject(css$k);
+var css$i = "/**\r\n * variables register.\r\n */\n.m-checkbox {\n  --m-checkbox-color: var(--m-color-primary);\n  --m-checkbox-font-color: var(--m-font-color);\n  --m-checkbox-size: 24px;\n  --m-checkbox-wrapper-size: calc(var(--m-checkbox-size) * 2);\n  --m-checkbox-font-size: calc(var(--m-checkbox-size) / 1.6); }\n\n/**\r\n * components styles.\r\n */\n.m-checkbox {\n  color: var(--m-checkbox-font-color);\n  font-size: var(--m-checkbox-font-size);\n  height: var(--m-checkbox-color);\n  margin-right: var(--m-space-sm);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-font-smoothing: antialiased;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .m-checkbox__checked-icon, .m-checkbox__uncheck-icon, .m-checkbox__checkbox {\n    height: var(--m-checkbox-size);\n    width: var(--m-checkbox-size); }\n  .m-checkbox__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-checkbox__checkbox {\n    position: relative; }\n  .m-checkbox__checkbox-wrapper {\n    position: absolute;\n    left: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    top: calc(var(--m-checkbox-size) / 2 - var(--m-checkbox-wrapper-size) / 2);\n    height: var(--m-checkbox-wrapper-size);\n    width: var(--m-checkbox-wrapper-size);\n    border-radius: 50%; }\n  .m-checkbox__label {\n    text-indent: .4em; }\n  .m-checkbox.m--disabled {\n    opacity: .5; }\n  .m-checkbox.m--checked {\n    color: var(--m-checkbox-color); }\n";
+styleInject(css$i);
 
 var MCheckbox =
 /*#__PURE__*/
@@ -3427,9 +3448,9 @@ function (_Vue) {
 
       return h("a", {
         "staticClass": "".concat(this.name, "__checkbox")
-      }, [h("transition", {
+      }, [h(MTransition$1, {
         "attrs": {
-          "name": 'm-transition-scale'
+          "name": 'scale'
         }
       }, [!checked ? undefined : h(MIcon$1, {
         "staticClass": "".concat(this.name, "__checked-icon"),
@@ -3567,7 +3588,8 @@ __decorate([Emit('input'), __metadata("design:type", Function), __metadata("desi
 
 MCheckbox = __decorate([Component({
   components: {
-    MIcon: MIcon$1
+    MIcon: MIcon$1,
+    MTransition: MTransition$1
   },
   mixins: [mixColor, mixSize, mixSpace]
 })], MCheckbox);
@@ -3577,8 +3599,8 @@ MCheckbox$1.install = function (Vue) {
   Vue.component('MCheckbox', MCheckbox$1);
 };
 
-var css$l = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-size: 32px;\n  --m-chip-border-size: 1px;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .2s;\n    transition: padding-right ease .2s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .2s;\n  transition: opacity ease .2s; }\n  .m-chip__close > * {\n    height: inherit;\n    width: inherit; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
-styleInject(css$l);
+var css$j = "/**\r\n * variables register.\r\n */\n.m-chip {\n  --m-chip-color: var(--m-color-primary);\n  --m-chip-font-color: var(--m-bg-color);\n  --m-chip-size: 32px;\n  --m-chip-border-size: 1px;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-chip {\n  height: var(--m-chip-size);\n  min-height: var(--m-chip-size);\n  max-height: var(--m-chip-size);\n  color: var(--m-chip-font-color);\n  background-color: var(--m-chip-color);\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  cursor: pointer;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  word-break: keep-all;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  line-height: 1; }\n  .m-chip.m--closeable {\n    padding-right: calc(var(--m-chip__close-size) / 1.5); }\n  .m-chip.m--closeover {\n    padding-right: 0;\n    -webkit-transition: padding-right ease .2s;\n    transition: padding-right ease .2s; }\n    .m-chip.m--closeover .m-chip__close {\n      opacity: 0;\n      pointer-events: none; }\n    .m-chip.m--closeover:hover {\n      padding-right: calc(var(--m-chip__close-size) / 1.5); }\n      .m-chip.m--closeover:hover .m-chip__close {\n        opacity: 1;\n        pointer-events: auto; }\n  .m-chip.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-chip.m-shape-circle {\n    border-radius: var(--m-chip-size); }\n    .m-chip.m-shape-circle .m-chip__media {\n      border-radius: 50%; }\n  .m-chip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-chip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n\n.m-chip__media {\n  height: var(--m-chip-size);\n  width: var(--m-chip-size);\n  margin-right: calc(var(--m-chip-size) / -4); }\n\n.m-chip__main {\n  padding-left: calc(var(--m-chip-size) / 1.5);\n  padding-right: calc(var(--m-chip-size) / 1.5);\n  font-size: calc(var(--m-chip-size) / 2); }\n\n.m-chip__close {\n  position: absolute;\n  z-index: 1;\n  right: calc(var(--m-chip-size) / 10);\n  height: var(--m-chip__close-size);\n  width: var(--m-chip__close-size);\n  -webkit-transition: opacity ease .2s;\n  transition: opacity ease .2s; }\n  .m-chip__close > * {\n    height: inherit;\n    width: inherit; }\n  .m-chip__close:hover {\n    opacity: .8 !important; }\n";
+styleInject(css$j);
 
 var MChip =
 /*#__PURE__*/
@@ -3710,8 +3732,8 @@ MChip$1.install = function (Vue) {
   Vue.component('MChip', MChip$1);
 };
 
-var css$m = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-time-picker {\n  --m-time-picker-color: var(--m-color-primary);\n  --m-time-picker-header-font-color: var(--m-bg-color);\n  --m-time-picker-width: 290px;\n  --m-time-picker-header-height: 90px;\n  --m-time-picker-panel-height: 285px;\n  --m-time-picker-landscope-width: 400px;\n  --m-time-picker-landscope-header-width: 110px;\n  --m-time-picker-cell-size: 30px; }\n\n/**\r\n * components styles.\r\n */\n.m-time-picker {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  line-height: 1;\n  width: var(--m-time-picker-width); }\n  .m-time-picker.m--landscope {\n    width: var(--m-time-picker-landscope-width); }\n    .m-time-picker.m--landscope .m-time-picker-header {\n      width: var(--m-time-picker-landscope-header-width);\n      height: 100%;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-weekDay {\n      margin-left: 0; }\n    .m-time-picker.m--landscope .m-time-picker-header__date {\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start; }\n      .m-time-picker.m--landscope .m-time-picker-header__date > * {\n        margin-bottom: var(--m-space-md); }\n    .m-time-picker.m--landscope .m-time-picker-header__time-hours {\n      text-align: left;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker.m--landscope .m-time-picker__main {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: stretch;\n          -ms-flex-pack: stretch;\n              justify-content: stretch;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      height: var(--m-time-picker-panel-height); }\n    .m-time-picker.m--landscope .m-time-picker-panel {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1; }\n  .m-time-picker .m-time-picker-panel {\n    height: var(--m-time-picker-panel-height); }\n\n.m-time-picker-header {\n  padding: var(--m-space-sm);\n  height: var(--m-time-picker-header-height);\n  background-color: var(--m-time-picker-color);\n  color: var(--m-time-picker-header-font-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-transition: color .2s ease;\n  transition: color .2s ease; }\n  .m-time-picker-header .m--active {\n    opacity: .6; }\n  .m-time-picker-header__date {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .m-time-picker-header__date-year {\n      cursor: pointer;\n      font-size: 24px;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker-header__date-date {\n      cursor: pointer;\n      font-size: 24px; }\n    .m-time-picker-header__date-weekDay {\n      font-size: 24px;\n      margin-left: 10px; }\n  .m-time-picker-header__year, .m-time-picker-header__month {\n    color: white;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    font-size: 32px; }\n  .m-time-picker-header__time {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    text-align: right; }\n    .m-time-picker-header__time-hours {\n      cursor: pointer;\n      font-size: 36px; }\n    .m-time-picker-header__time-ampm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      cursor: pointer;\n      font-size: 16px; }\n      .m-time-picker-header__time-ampm > * {\n        margin-left: 10px; }\n  .m-time-picker-header .m--active {\n    color: white; }\n\n.m-time-picker-panel-date {\n  padding: var(--m-space-sm); }\n  .m-time-picker-panel-date__header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-size: 16px; }\n    .m-time-picker-panel-date__header-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: 16px;\n      margin-left: 10px;\n      cursor: pointer; }\n    .m-time-picker-panel-date__header-handler {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n  .m-time-picker-panel-date__table {\n    line-height: 1.5;\n    border: none;\n    border-spacing: 0;\n    text-align: center;\n    width: 100%; }\n    .m-time-picker-panel-date__table thead {\n      font-weight: 600; }\n      .m-time-picker-panel-date__table thead td {\n        padding: 8px 0; }\n    .m-time-picker-panel-date__table td > * {\n      margin: 0 auto; }\n  .m-time-picker-panel-date .m-button__main {\n    margin-left: 0;\n    margin-right: 0; }\n\n.m-time-picker-panel-year {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: var(--m-space-sm);\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  height: 100%;\n  overflow: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0); }\n  .m-time-picker-panel-year > * {\n    width: 33.333333%; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-time-picker-panel-year::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-time-picker-panel-year::-webkit-scrollbar {\n    width: 4px; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-time-picker-panel-yearl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-time-picker-panel-month {\n  height: 100%;\n  padding: var(--m-space-sm);\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n  .m-time-picker-panel-month > * {\n    width: 33%; }\n\n.m-time-picker-panel-time {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .m-time-picker-panel-time__list {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    height: 100%;\n    padding: var(--m-space-sm);\n    overflow: auto;\n    overflow-x: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      background-color: #a6a6a6; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-track {\n      background-color: #e5e5e5; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar {\n      width: 4px; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      border-left: 2px solid transparent; }\n    .m-time-picker-panel-time__listl::-webkit-scrollbar-track {\n      border-left: 2px solid transparent; }\n\n.m-time-picker-handler {\n  border-top: 1px solid var(--m-border-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .m-time-picker-handler > * {\n    margin-left: var(--m-space-sm); }\n    .m-time-picker-handler > *:first-child {\n      margin-left: 0; }\n\n.m-time-picker-cell {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 1;\n  height: var(--m-time-picker-cell-size);\n  min-width: var(--m-time-picker-cell-size);\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-radius: var(--m-time-picker-cell-size);\n  cursor: pointer;\n  color: var(--m-font-color); }\n  .m-time-picker-cell.m--current {\n    border: 2px solid var(--m-time-picker-color); }\n  .m-time-picker-cell.m--checked {\n    color: var(--m-bg-color);\n    background-color: var(--m-time-picker-color); }\n\n.m-time-picker-panel-time .m-time-picker-cell {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n";
-styleInject(css$m);
+var css$k = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-time-picker {\n  --m-time-picker-color: var(--m-color-primary);\n  --m-time-picker-header-font-color: var(--m-bg-color);\n  --m-time-picker-width: 290px;\n  --m-time-picker-header-height: 90px;\n  --m-time-picker-panel-height: 285px;\n  --m-time-picker-landscope-width: 400px;\n  --m-time-picker-landscope-header-width: 110px;\n  --m-time-picker-cell-size: 30px; }\n\n/**\r\n * components styles.\r\n */\n.m-time-picker {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  line-height: 1;\n  width: var(--m-time-picker-width); }\n  .m-time-picker.m--landscope {\n    width: var(--m-time-picker-landscope-width); }\n    .m-time-picker.m--landscope .m-time-picker-header {\n      width: var(--m-time-picker-landscope-header-width);\n      height: 100%;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: start;\n          -ms-flex-align: start;\n              align-items: flex-start; }\n    .m-time-picker.m--landscope .m-time-picker-header__date-weekDay {\n      margin-left: 0; }\n    .m-time-picker.m--landscope .m-time-picker-header__date {\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start; }\n      .m-time-picker.m--landscope .m-time-picker-header__date > * {\n        margin-bottom: var(--m-space-md); }\n    .m-time-picker.m--landscope .m-time-picker-header__time-hours {\n      text-align: left;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker.m--landscope .m-time-picker__main {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: stretch;\n          -ms-flex-pack: stretch;\n              justify-content: stretch;\n      -webkit-box-align: stretch;\n          -ms-flex-align: stretch;\n              align-items: stretch;\n      height: var(--m-time-picker-panel-height); }\n    .m-time-picker.m--landscope .m-time-picker-panel {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1; }\n  .m-time-picker .m-time-picker-panel {\n    height: var(--m-time-picker-panel-height); }\n\n.m-time-picker-header {\n  padding: var(--m-space-sm);\n  height: var(--m-time-picker-header-height);\n  background-color: var(--m-time-picker-color);\n  color: var(--m-time-picker-header-font-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-transition: color .2s ease;\n  transition: color .2s ease; }\n  .m-time-picker-header .m--active {\n    opacity: .6; }\n  .m-time-picker-header__date {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .m-time-picker-header__date-year {\n      cursor: pointer;\n      font-size: 24px;\n      margin-bottom: var(--m-space-sm); }\n    .m-time-picker-header__date-date {\n      cursor: pointer;\n      font-size: 24px; }\n    .m-time-picker-header__date-weekDay {\n      font-size: 24px;\n      margin-left: 10px; }\n  .m-time-picker-header__year, .m-time-picker-header__month {\n    color: white;\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    font-size: 32px; }\n  .m-time-picker-header__time {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    text-align: right; }\n    .m-time-picker-header__time-hours {\n      cursor: pointer;\n      font-size: 36px; }\n    .m-time-picker-header__time-ampm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      cursor: pointer;\n      font-size: 16px; }\n      .m-time-picker-header__time-ampm > * {\n        margin-left: 10px; }\n  .m-time-picker-header .m--active {\n    color: white; }\n\n.m-time-picker-panel-date {\n  padding: var(--m-space-sm); }\n  .m-time-picker-panel-date__header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-size: 16px; }\n    .m-time-picker-panel-date__header-year {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: start;\n          -ms-flex-pack: start;\n              justify-content: flex-start;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: 16px;\n      margin-left: 10px;\n      cursor: pointer; }\n    .m-time-picker-panel-date__header-handler {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n  .m-time-picker-panel-date__table {\n    line-height: 1.5;\n    border: none;\n    border-spacing: 0;\n    text-align: center;\n    width: 100%; }\n    .m-time-picker-panel-date__table thead {\n      font-weight: 600; }\n      .m-time-picker-panel-date__table thead td {\n        padding: 8px 0; }\n    .m-time-picker-panel-date__table td > * {\n      margin: 0 auto; }\n  .m-time-picker-panel-date .m-button__main {\n    margin-left: 0;\n    margin-right: 0; }\n\n.m-time-picker-panel-year {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: var(--m-space-sm);\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  height: 100%;\n  overflow: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0); }\n  .m-time-picker-panel-year > * {\n    width: 33.333333%; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-time-picker-panel-year::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-time-picker-panel-year::-webkit-scrollbar {\n    width: 4px; }\n  .m-time-picker-panel-year::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent; }\n  .m-time-picker-panel-yearl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent; }\n\n.m-time-picker-panel-month {\n  height: 100%;\n  padding: var(--m-space-sm);\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap; }\n  .m-time-picker-panel-month > * {\n    width: 33%; }\n\n.m-time-picker-panel-time {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100%; }\n  .m-time-picker-panel-time__list {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    height: 100%;\n    padding: var(--m-space-sm);\n    overflow: auto;\n    overflow-x: hidden;\n    -webkit-overflow-scrolling: touch;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0); }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      background-color: #a6a6a6; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-track {\n      background-color: #e5e5e5; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar {\n      width: 4px; }\n    .m-time-picker-panel-time__list::-webkit-scrollbar-thumb {\n      border-left: 2px solid transparent; }\n    .m-time-picker-panel-time__listl::-webkit-scrollbar-track {\n      border-left: 2px solid transparent; }\n\n.m-time-picker-handler {\n  border-top: 1px solid var(--m-border-color);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n  .m-time-picker-handler > * {\n    margin-left: var(--m-space-sm); }\n    .m-time-picker-handler > *:first-child {\n      margin-left: 0; }\n\n.m-time-picker-cell {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 1;\n  height: var(--m-time-picker-cell-size);\n  min-width: var(--m-time-picker-cell-size);\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border-radius: var(--m-time-picker-cell-size);\n  cursor: pointer;\n  color: var(--m-font-color); }\n  .m-time-picker-cell.m--current {\n    border: 2px solid var(--m-time-picker-color); }\n  .m-time-picker-cell.m--checked {\n    color: var(--m-bg-color);\n    background-color: var(--m-time-picker-color); }\n\n.m-time-picker-panel-time .m-time-picker-cell {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n";
+styleInject(css$k);
 
 /**
  * 判断闰年
@@ -4950,8 +4972,8 @@ MTimePicker$1.install = function (Vue) {
   Vue.component('MTimePicker', MTimePicker$1);
 };
 
-var css$n = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: 16px; }\n\n.m-list-item {\n  --m-list-item-space: var(--m-bg-color-main);\n  --m-list-item-color: var(--m-bg-color-main);\n  --m-list-item-font-color: var(--m-font-color-main);\n  --m-list-item-active-color: var(--m-color-main);\n  --m-list-item-size: 50px;\n  --m-list-item-font-size: 14px; }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  cursor: pointer;\n  position: relative; }\n  .m-list__title {\n    padding: var(--m-space-sm);\n    font-size: var(--m-list-size); }\n  .m-list.--with-title-divider .m-list__title {\n    border-bottom: var(--m-border-base); }\n\n.m-list-item {\n  background-color: var(--m-list-item-color);\n  color: var(--m-list-item-font-color);\n  min-height: var(--m-list-item-size);\n  cursor: pointer;\n  position: relative;\n  font-size: var(--m-list-item-font-size); }\n  .m-list-item.--with-divider {\n    border-bottom: var(--m-border-base); }\n  .m-list-item__main {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-list-item__media {\n    margin-right: var(--m-space-sm); }\n  .m-list-item__content {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .m-list-item.--active {\n    background-color: var(--m-hover-bg-color); }\n  .m-list-item.--with-hover:hover {\n    background-color: var(--m-hover-bg-color); }\n";
-styleInject(css$n);
+var css$l = "/**\r\n * variables register.\r\n */\n.m-list {\n  --m-list-color: var(--m-bg-color-main);\n  --m-list-font-color: var(--m-font-color-main);\n  --m-list-active-color: var(--m-color-main);\n  --m-list-size: 16px; }\n\n.m-list-item {\n  --m-list-item-space: var(--m-bg-color-main);\n  --m-list-item-color: var(--m-bg-color-main);\n  --m-list-item-font-color: var(--m-font-color-main);\n  --m-list-item-active-color: var(--m-color-main);\n  --m-list-item-size: 50px;\n  --m-list-item-font-size: 14px; }\n\n/**\r\n * components styles.\r\n */\n.m-list {\n  background-color: var(--m-list-color);\n  color: var(--m-list-font-color);\n  cursor: pointer;\n  position: relative; }\n  .m-list__title {\n    padding: var(--m-space-sm);\n    font-size: var(--m-list-size); }\n  .m-list.--with-title-divider .m-list__title {\n    border-bottom: var(--m-border-base); }\n\n.m-list-item {\n  background-color: var(--m-list-item-color);\n  color: var(--m-list-item-font-color);\n  min-height: var(--m-list-item-size);\n  cursor: pointer;\n  position: relative;\n  font-size: var(--m-list-item-font-size); }\n  .m-list-item.--with-divider {\n    border-bottom: var(--m-border-base); }\n  .m-list-item__main {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  .m-list-item__media {\n    margin-right: var(--m-space-sm); }\n  .m-list-item__content {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .m-list-item.--active {\n    background-color: var(--m-hover-bg-color); }\n  .m-list-item.--with-hover:hover {\n    background-color: var(--m-hover-bg-color); }\n";
+styleInject(css$l);
 
 var MList =
 /*#__PURE__*/
@@ -5138,8 +5160,8 @@ MListItem$1.install = function (Vue) {
   Vue.component('MListItem', MListItem$1);
 };
 
-var css$o = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-row-size: 48px; }\n\n/**\r\n * relative component custom.\r\n */\n.m-table .m-checkbox {\n  --m-checkbox-size: calc(var(--m-table-row-size) / 2); }\n\n.m-table .m-radio {\n  --m-radio-size: calc(var(--m-table-row-size) / 2); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky > .m-table__wrapper > .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-hover-bg-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-hover-bg-color); }\n  .m-table .m--center {\n    height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%;\n  height: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-hover-bg-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-hover-bg-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n";
-styleInject(css$o);
+var css$m = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n.m-table {\n  --m-table-color: var(--m-bg-color);\n  --m-table-bg-color: var(--m-bg-color);\n  --m-table-font-color: var(--m-font-color);\n  --m-table-row-size: 48px; }\n\n/**\r\n * relative component custom.\r\n */\n.m-table .m-checkbox {\n  --m-checkbox-size: calc(var(--m-table-row-size) / 2); }\n\n.m-table .m-radio {\n  --m-radio-size: calc(var(--m-table-row-size) / 2); }\n\n/**\r\n * components styles.\r\n */\n.m-table {\n  position: relative;\n  background-color: var(--m-table-bg-color); }\n  .m-table table {\n    min-width: 100%;\n    border-collapse: collapse;\n    position: relative;\n    border-spacing: 0;\n    background-color: inherit; }\n    .m-table table > thead {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table > tbody {\n      background-color: inherit;\n      width: inherit; }\n    .m-table table tr {\n      background-color: white;\n      border: none; }\n    .m-table table td {\n      border: none;\n      background-color: inherit;\n      position: relative; }\n      .m-table table td:last-child:before {\n        width: 0; }\n      .m-table table td:after {\n        content: ' ';\n        position: absolute;\n        height: 1px;\n        width: 100%;\n        background-color: var(--m-border-color);\n        right: 0;\n        bottom: 0; }\n  .m-table.m--border table td:before {\n    content: ' ';\n    position: absolute;\n    height: 100%;\n    width: 1px;\n    background-color: var(--m-border-color);\n    top: 0;\n    right: 0; }\n  .m-table.m--header-sticky > .m-table__wrapper > .m-table-head {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    left: 0;\n    z-index: 1; }\n  .m-table.m--row-hover .m-table-body__row:hover {\n    background-color: var(--m-hover-bg-color); }\n  .m-table.m--cell-hover .m-table-body__cell:hover {\n    background-color: var(--m-hover-bg-color); }\n  .m-table .m--center {\n    height: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center; }\n\n.m-table__wrapper {\n  overflow: auto;\n  background-color: inherit;\n  width: 100%;\n  height: 100%; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    background-color: #a6a6a6; }\n  .m-table__wrapper::-webkit-scrollbar-track {\n    background-color: #e5e5e5; }\n  .m-table__wrapper::-webkit-scrollbar {\n    width: 7px;\n    height: 7px; }\n  .m-table__wrapper::-webkit-scrollbar-thumb {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n  .m-table__wrapperl::-webkit-scrollbar-track {\n    border-left: 2px solid transparent;\n    border-top: 2px solid transparent; }\n\n.m-table-head {\n  min-width: 100%;\n  background-color: inherit; }\n\n.m-table-body {\n  width: 100%;\n  background-color: inherit; }\n  .m-table-body tr {\n    cursor: pointer; }\n\n.m-table-head__row,\n.m-table-body__row {\n  min-height: var(--m-table-row-size);\n  height: var(--m-table-row-size); }\n\n.m-table-body__row {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n  .m-table-body__row.m--selected {\n    background-color: var(--m-hover-bg-color); }\n  .m-table-body__row.m--disabled {\n    background-color: var(--m-hover-bg-color); }\n\n.m-table-body__cell {\n  -webkit-transition: background-color ease 0.2s;\n  transition: background-color ease 0.2s; }\n\n.m-table-body__expand {\n  width: 100%;\n  height: 0 !important;\n  max-width: 100%; }\n  .m-table-body__expand > td {\n    padding: 0; }\n";
+styleInject(css$m);
 
 var deepCopy = function deepCopy(source) {
   var target;
@@ -6258,6 +6280,595 @@ MTableCol$1.install = function (Vue) {
   Vue.component('MTableCol', MTableCol$1);
 };
 
+var css$n = "/**\r\n * variables register.\r\n */\n.m-tooltip {\n  --m-tooltip-color: var(--m-color-default);\n  --m-tooltip-font-color: var(--m-bg-color);\n  --m-tooltip-font-size: 12px;\n  --m-chip-border-size: 1px;\n  --m-chip__close-size: calc(var(--m-chip-size) / 1.3); }\n\n.m-tooltip {\n  font-size: var(--m-tooltip-font-size);\n  padding: 8px 10px;\n  color: var(--m-tooltip-font-color);\n  background-color: var(--m-tooltip-color);\n  border-radius: var(--m-shape-corner);\n  -webkit-box-shadow: var(--m-elevation-2);\n          box-shadow: var(--m-elevation-2); }\n  .m-tooltip.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-tooltip.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-tooltip.m-shape-circle {\n    border-radius: calc(var(--m-tooltip-font-size) + 8px); }\n  .m-tooltip.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-tooltip.m-shape-corner {\n    border-radius: var(--m-shape-corner); }\n  .m-tooltip.m-shape-square {\n    border-radius: var(--m-shape-square); }\n";
+styleInject(css$n);
+
+var Logger =
+/*#__PURE__*/
+function () {
+  function Logger() {
+    _classCallCheck(this, Logger);
+
+    this.prefix = 'mobov-vui:';
+  }
+
+  _createClass(Logger, [{
+    key: "error",
+    value: function error(msg) {
+      var message = "".concat(this.prefix).concat(msg);
+      console.error(message);
+      throw new Error(message);
+    }
+  }, {
+    key: "warn",
+    value: function warn(msg) {
+      var message = "".concat(this.prefix).concat(msg);
+      console.warn(message);
+    }
+  }, {
+    key: "info",
+    value: function info(msg) {
+      var message = "".concat(this.prefix).concat(msg);
+      console.info(message);
+    }
+  }]);
+
+  return Logger;
+}();
+
+var logger = new Logger();
+
+var ZIndex =
+/*#__PURE__*/
+function () {
+  function ZIndex() {
+    _classCallCheck(this, ZIndex);
+
+    this.zIndex = 2000;
+  }
+
+  _createClass(ZIndex, [{
+    key: "next",
+    get: function get() {
+      this.zIndex++;
+      return this.zIndex;
+    }
+  }]);
+
+  return ZIndex;
+}();
+
+var ZIndex$1 = new ZIndex();
+
+var $popperHome = document.body;
+
+var PopperMixin =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(PopperMixin, _Vue);
+
+  function PopperMixin() {
+    var _this;
+
+    _classCallCheck(this, PopperMixin);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PopperMixin).apply(this, arguments));
+    _this.visible = false;
+    _this.isMouseOver = false;
+    _this.zIndex = ZIndex$1.next;
+    _this.debounceHide = debounce(200, function () {
+      return _this.handleHide();
+    });
+    return _this;
+  }
+
+  _createClass(PopperMixin, [{
+    key: "whenVisibleUpdate",
+    value: function whenVisibleUpdate(val) {
+      if (val) {
+        this.$emit('show', this);
+
+        if (this.popperJS) {
+          this.popperJS.enableEventListeners();
+        }
+
+        this.updatePopper();
+      } else {
+        if (this.popperJS) {
+          this.popperJS.disableEventListeners();
+        }
+
+        this.$emit('hide', this);
+      }
+    }
+  }, {
+    key: "initPopper",
+    // @ts-ignore
+    value: function initPopper() {
+      if (this.popperJS) {
+        this.popperJS.scheduleUpdate();
+      } else {
+        this.createPopper();
+      }
+    }
+  }, {
+    key: "createPopper",
+    value: function createPopper() {
+      var _this2 = this;
+
+      if (!PLACEMENT.includes(this.placement)) {
+        return;
+      }
+
+      $popperHome.appendChild(this.popperVM.$el);
+      this.$nextTick(function () {
+        _this2.$popper = _this2.popperVM.$el;
+        _this2.$reference = _this2.$reference || _this2.$el;
+
+        if (!_this2.$popper || !_this2.$reference) {
+          return;
+        }
+
+        if (_this2.popperJS && _this2.popperJS.hasOwnProperty('destroy')) {
+          _this2.popperJS.destroy();
+        }
+
+        _this2.popperOptions.onCreate = function () {
+          _this2.$emit('created', _this2);
+
+          _this2.$nextTick(_this2.updatePopper);
+        };
+
+        _this2.popperJS = new PopperJS(_this2.$reference, _this2.$popper, _this2.popperOptions);
+      });
+    } // @ts-ignore
+
+  }, {
+    key: "updatePopper",
+    value: function updatePopper() {
+      this.popperJS ? this.popperJS.scheduleUpdate() : this.createPopper();
+    }
+  }, {
+    key: "destroyPopper",
+    value: function destroyPopper() {
+      if (this.popperJS) {
+        this.popperJS.destroy();
+        this.popperJS = null;
+        $popperHome.removeChild(this.$popper);
+      }
+    }
+  }, {
+    key: "show",
+    value: function show() {
+      this.zIndex = ZIndex$1.next;
+
+      if (this.trigger === 'hover') {
+        this.isMouseOver = true;
+      }
+
+      this.visible = true;
+    }
+  }, {
+    key: "hide",
+    value: function hide() {
+      if (this.trigger === 'hover') {
+        this.isMouseOver = false;
+        this.debounceHide();
+      } else {
+        this.visible = false;
+      }
+    }
+  }, {
+    key: "toggle",
+    value: function toggle() {
+      if (this.visible) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }, {
+    key: "handleDocumentClick",
+    value: function handleDocumentClick(e) {
+      if (!(this.$popper.contains(e.target) || this.$reference.contains(e.target))) {
+        this.hide();
+      }
+    }
+  }, {
+    key: "handleHide",
+    value: function handleHide() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        if (!_this3.isMouseOver) {
+          _this3.visible = false;
+        }
+      }, this.hideDelay);
+    }
+  }, {
+    key: "mounted",
+    value: function mounted() {
+      var _this4 = this;
+
+      this.initPopper();
+      this.$nextTick(function () {
+        if (_this4.trigger === 'hover') {
+          on(_this4.$el, 'mouseenter', _this4.show);
+          on(_this4.$el, 'mouseleave', _this4.hide);
+          on(_this4.popperVM.$el, 'mouseenter', _this4.show);
+          on(_this4.popperVM.$el, 'mouseleave', _this4.hide);
+        } else if (_this4.trigger === 'click') {
+          on(_this4.$el, 'click', _this4.show);
+          on(document.body, 'click', _this4.handleDocumentClick);
+        } else if (_this4.trigger === 'toggle') {
+          on(_this4.$el, 'click', _this4.toggle);
+          on(document.body, 'click', _this4.handleDocumentClick);
+        }
+      });
+    }
+  }, {
+    key: "beforeDestroy",
+    value: function beforeDestroy() {
+      if (this.trigger === 'hover') {
+        off(this.$el, 'mouseenter', this.show);
+        off(this.$el, 'mouseleave', this.hide);
+        off(this.popperVM.$el, 'mouseenter', this.show);
+        off(this.popperVM.$el, 'mouseleave', this.hide);
+      } else if (this.trigger === 'click') {
+        off(this.$el, 'click', this.show);
+        off(document.body, 'click', this.handleDocumentClick);
+      } else if (this.trigger === 'toggle') {
+        off(this.$el, 'click', this.toggle);
+        off(document.body, 'click', this.handleDocumentClick);
+      }
+
+      this.destroyPopper();
+    }
+  }, {
+    key: "deactivated",
+    value: function deactivated() {
+      // @ts-ignore
+      this.$options.beforeDestroy[0].call(this);
+    }
+  }, {
+    key: "popperStyle",
+    get: function get() {
+      return {
+        zIndex: this.zIndex
+      };
+    }
+  }, {
+    key: "popperOptions",
+    get: function get() {
+      return Object.assign(Object.assign({}, this.options), {
+        placement: this.placement,
+        modifiers: {
+          preventOverflow: {
+            escapeWithReference: true
+          }
+        }
+      });
+    }
+  }]);
+
+  return PopperMixin;
+}(Vue);
+
+__decorate([Prop({
+  type: String,
+  default: 'bottom'
+}), __metadata("design:type", String)], PopperMixin.prototype, "placement", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 0
+}), __metadata("design:type", Number)], PopperMixin.prototype, "offset", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], PopperMixin.prototype, "value", void 0);
+
+__decorate([Prop({
+  type: Boolean
+}), __metadata("design:type", Boolean)], PopperMixin.prototype, "visibleArrow", void 0);
+
+__decorate([Prop({
+  type: Boolean,
+  default: true
+}), __metadata("design:type", Boolean)], PopperMixin.prototype, "transition", void 0);
+
+__decorate([Prop({
+  type: Boolean
+}), __metadata("design:type", Boolean)], PopperMixin.prototype, "disabled", void 0);
+
+__decorate([Prop({
+  type: String,
+  default: 'hover'
+}), __metadata("design:type", String)], PopperMixin.prototype, "trigger", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 0
+}), __metadata("design:type", Number)], PopperMixin.prototype, "showDelay", void 0);
+
+__decorate([Prop({
+  type: Number,
+  default: 500
+}), __metadata("design:type", Number)], PopperMixin.prototype, "hideDelay", void 0);
+
+__decorate([Prop({
+  type: Object,
+  default: function _default() {}
+}), __metadata("design:type", Object)], PopperMixin.prototype, "options", void 0);
+
+__decorate([Watch('visible'), __metadata("design:type", Function), __metadata("design:paramtypes", [Boolean]), __metadata("design:returntype", void 0)], PopperMixin.prototype, "whenVisibleUpdate", null);
+
+PopperMixin = __decorate([Component], PopperMixin);
+var mixPopper = PopperMixin;
+
+var MTooltip =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MTooltip, _Vue);
+
+  function MTooltip() {
+    var _this;
+
+    _classCallCheck(this, MTooltip);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MTooltip).apply(this, arguments));
+    _this.name = 'm-tooltip';
+    _this.popperId = "m-tooltip-".concat(uid(10));
+    return _this;
+  }
+
+  _createClass(MTooltip, [{
+    key: "emitShow",
+    value: function emitShow(e) {}
+  }, {
+    key: "emitHide",
+    value: function emitHide(e) {}
+  }, {
+    key: "RTooltip",
+    value: function RTooltip() {
+      var h = this.$createElement;
+      var name = this.name,
+          popperId = this.popperId,
+          classes = this.classes,
+          styles = this.styles,
+          $slots = this.$slots,
+          content = this.content;
+      var popoverContent = $slots.content ? $slots.content : content;
+      return h(MTransition$1, {
+        "attrs": {
+          "name": "fade"
+        }
+      }, [h("div", {
+        "directives": [{
+          name: "show",
+          value: this.visible
+        }],
+        "attrs": {
+          "role": 'tooltip',
+          "aria-hidden": "true",
+          "id": popperId
+        },
+        "staticClass": name,
+        "class": classes,
+        "style": styles
+      }, [popoverContent])]);
+    }
+  }, {
+    key: "beforeCreate",
+    value: function beforeCreate() {
+      this.popperVM = new Vue({
+        data: {
+          node: ''
+        },
+        render: function render(h) {
+          return this.node;
+        }
+      }).$mount();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var name = this.name,
+          popperId = this.popperId,
+          content = this.content,
+          classes = this.classes,
+          styles = this.styles,
+          $slots = this.$slots;
+      this.popperVM.node = this.RTooltip();
+
+      if ($slots.default.length !== 1) {
+        logger.error("".concat(this.name, "\u7EC4\u4EF6\u53EA\u5141\u8BB8\u4E00\u4E2A\u975Etemplate\u5B50\u8282\u70B9\u6216\u4E0D\u4E3A\u7A7A"));
+      }
+
+      var result = null;
+
+      if ($slots.default[0].tag) {
+        result = $slots.default[0];
+      } else {
+        result = h("span", [$slots.default[0]]);
+      }
+
+      return result;
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      return Object.assign(Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle), this.popperStyle);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign(Object.assign(Object.assign({}, this.elevationClass), this.shapeClass), this.varietyClass);
+    }
+  }]);
+
+  return MTooltip;
+}(Vue);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MTooltip.prototype, "value", void 0);
+
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", String)], MTooltip.prototype, "content", void 0);
+
+__decorate([Emit('show'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MTooltip.prototype, "emitShow", null);
+
+__decorate([Emit('hide'), __metadata("design:type", Function), __metadata("design:paramtypes", [MouseEvent]), __metadata("design:returntype", void 0)], MTooltip.prototype, "emitHide", null);
+
+MTooltip = __decorate([Component({
+  mixins: [mixPopper, mixColor, mixSize, mixShape, mixVariety, mixElevation],
+  components: {
+    MTransition: MTransition$1
+  }
+})], MTooltip);
+var MTooltip$1 = MTooltip;
+
+/* istanbul ignore next */
+
+MTooltip$1.install = function (Vue) {
+  Vue.component('MTooltip', MTooltip$1);
+};
+
+var css$o = "/**\r\n * variables register.\r\n */\n.m-popover {\n  --m-popover-bg-color: var(--m-bg-color);\n  --m-popover-font-color: var(--m-font-color);\n  --m-popover-font-size: 14px; }\n\n.m-popover {\n  font-size: var(--m-popover-font-size);\n  padding: var(--m-space-md) var(--m-space-md);\n  color: var(--m-popover-font-color);\n  background-color: var(--m-popover-bg-color);\n  border-radius: var(--m-shape-corner);\n  -webkit-box-shadow: var(--m-elevation-2);\n          box-shadow: var(--m-elevation-2);\n  width: 200px; }\n  .m-popover.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-shape-circle {\n    border-radius: calc(var(--m-popover-font-size) + 8px); }\n  .m-popover.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-popover.m-shape-corner {\n    border-radius: var(--m-shape-corner); }\n  .m-popover.m-shape-square {\n    border-radius: var(--m-shape-square); }\n";
+styleInject(css$o);
+
+var MPopover =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MPopover, _Vue);
+
+  function MPopover() {
+    var _this;
+
+    _classCallCheck(this, MPopover);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MPopover).apply(this, arguments));
+    _this.name = 'm-popover';
+    _this.popperId = "m-popover-".concat(uid(10));
+    return _this;
+  }
+
+  _createClass(MPopover, [{
+    key: "RPopover",
+    value: function RPopover() {
+      var h = this.$createElement;
+      var name = this.name,
+          popperId = this.popperId,
+          classes = this.classes,
+          styles = this.styles,
+          $slots = this.$slots,
+          content = this.content;
+      var popoverContent = $slots.content ? $slots.content : content;
+      return h(MTransition$1, {
+        "attrs": {
+          "name": "fade"
+        }
+      }, [h("div", {
+        "directives": [{
+          name: "show",
+          value: this.visible
+        }],
+        "attrs": {
+          "role": 'tooltip',
+          "aria-hidden": "true",
+          "id": popperId
+        },
+        "staticClass": name,
+        "class": classes,
+        "style": styles
+      }, [popoverContent])]);
+    }
+  }, {
+    key: "beforeCreate",
+    value: function beforeCreate() {
+      this.popperVM = new Vue({
+        data: {
+          node: ''
+        },
+        render: function render(h) {
+          return this.node;
+        }
+      }).$mount();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var name = this.name,
+          popperId = this.popperId,
+          content = this.content,
+          classes = this.classes,
+          styles = this.styles,
+          $slots = this.$slots;
+      this.popperVM.node = this.RPopover();
+
+      if ($slots.default.length !== 1) {
+        logger.error("".concat(this.name, "\u7EC4\u4EF6\u53EA\u5141\u8BB8\u4E00\u4E2A\u975Etemplate\u5B50\u8282\u70B9\u6216\u4E0D\u4E3A\u7A7A"));
+      }
+
+      var result = null;
+
+      if ($slots.default[0].tag) {
+        result = $slots.default[0];
+      } else {
+        result = h("span", [$slots.default[0]]);
+      }
+
+      return result;
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      return Object.assign(Object.assign(Object.assign(Object.assign({}, this.popperStyle), this.colorStyle), this.sizeStyle), this.spaceStyle);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      return Object.assign(Object.assign(Object.assign({}, this.elevationClass), this.shapeClass), this.varietyClass);
+    }
+  }]);
+
+  return MPopover;
+}(Vue);
+
+__decorate([Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MPopover.prototype, "value", void 0);
+
+__decorate([Prop({
+  type: String
+}), __metadata("design:type", String)], MPopover.prototype, "content", void 0);
+
+__decorate([Prop({
+  type: String,
+  default: 'click'
+}), __metadata("design:type", String)], MPopover.prototype, "trigger", void 0);
+
+MPopover = __decorate([Component({
+  mixins: [mixPopper, mixColor, mixSize, mixShape, mixVariety, mixElevation],
+  components: {
+    MTransition: MTransition$1
+  }
+})], MPopover);
+var MPopover$1 = MPopover;
+
+/* istanbul ignore next */
+
+MPopover$1.install = function (Vue) {
+  Vue.component('MPopover', MPopover$1);
+};
+
 // 基础
 
 var components = /*#__PURE__*/Object.freeze({
@@ -6282,6 +6893,8 @@ var components = /*#__PURE__*/Object.freeze({
   MListItem: MListItem$1,
   MTable: MTable$1,
   MTableCol: MTableCol$1,
+  MTooltip: MTooltip$1,
+  MPopover: MPopover$1,
   MTransition: MTransition$1
 });
 
@@ -6514,4 +7127,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default Mobov;
-export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MFrame$1 as MFrame, MIcon$1 as MIcon, MList$1 as MList, MListItem$1 as MListItem, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MTransition$1 as MTransition, MView$1 as MView };
+export { MApp$1 as MApp, MAppBar$1 as MAppBar, MAvatar$1 as MAvatar, MButton$1 as MButton, MCheckbox$1 as MCheckbox, MChip$1 as MChip, MCol$1 as MCol, MContainer$1 as MContainer, MFlex$1 as MFlex, MFlexFiller$1 as MFlexFiller, MFrame$1 as MFrame, MIcon$1 as MIcon, MList$1 as MList, MListItem$1 as MListItem, MPopover$1 as MPopover, MRadio$1 as MRadio, MRow$1 as MRow, MTable$1 as MTable, MTableCol$1 as MTableCol, MTimePicker$1 as MTimePicker, MTooltip$1 as MTooltip, MTransition$1 as MTransition, MView$1 as MView };

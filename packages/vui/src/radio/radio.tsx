@@ -1,11 +1,12 @@
 import { Component, Prop, Emit, Vue } from 'vue-property-decorator'
 import MIcon from '../icon'
+import MTransition from '../transition'
 import mixColor from '../core/mixins/color'
 import mixSize from '../core/mixins/size'
 import mixSpace from '../core/mixins/space'
 
 @Component({
-  components: { MIcon },
+  components: { MIcon, MTransition },
   mixins: [mixColor, mixSize, mixSpace]
 })
 export default class MRadio extends Vue {
@@ -62,13 +63,13 @@ export default class MRadio extends Vue {
 
     return (
       <a staticClass={`${this.name}__radio`}>
-        <transition name='m--transition-scale'>
+        <MTransition name='scale'>
           {!checked ? undefined : (
             <MIcon staticClass={`${this.name}__checked-icon`}
-                    value={checkedIcon}
-                    size={size}/>
+                   value={checkedIcon}
+                   size={size}/>
           )}
-        </transition>
+        </MTransition>
         <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} value={uncheckIcon} />
         <div v-m-ripple staticClass={`${this.name}__radio-wrapper`} />
       </a>

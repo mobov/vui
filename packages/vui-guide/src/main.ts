@@ -7,7 +7,7 @@ import i18n from './i18n'
 // import '@mobov/vui/lib/style.css'
 import mobov, {
   MApp, MFrame, MView, MIcon, MButton, MFlexFiller, MFlex, MList, MListItem, MContainer,
-  MCheckbox, MRadio, MAppBar, MRow, MCol, MAvatar
+  MCheckbox, MRadio, MAppBar, MRow, MCol, MAvatar, MTooltip, MPopover, MTransition
 } from '@mobov/vui'
 
 Vue.use(mobov, {
@@ -27,7 +27,10 @@ Vue.use(mobov, {
     MCheckbox,
     MRadio,
     MRow,
-    MCol
+    MCol,
+    MTooltip,
+    MTransition,
+    MPopover
   }
 })
 console.log(mobov)

@@ -69,6 +69,9 @@ declare module '@mobov/vui/lib/icons/*.js' {
 }
 
 declare module 'vue/types/vue' {
+  interface Vue {
+    name?: string
+  }
   export interface RawComponentOptions<
     V extends Vue = Vue,
     Data = {} | undefined,

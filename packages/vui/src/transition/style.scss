@@ -1,0 +1,111 @@
+/**
+  expansion
+ */
+$--m-transition-expansion: .1s cubic-bezier(0.23, 1, 0.32, 1);
+
+.m-transition-expansion-enter-active,
+.m-transition-expansion-leave-active {
+  transition: all .35s $--m-transition-expansion;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: height;
+  overflow: hidden;
+  //opacity: 0;
+}
+
+/**
+  fade
+ */
+.m-transition-fade-enter-active,
+.m-transition-fade-leave-active {
+  transition: opacity .2s ease;
+  //backface-visibility: hidden;
+}
+.m-transition-fade-enter,
+.m-transition-fade-leave-active {
+  opacity: 0;
+}
+
+/**
+  scale
+ */
+.m-transition-scale-enter-active,
+.m-transition-scale-leave-active {
+  transition: all .2s ease;
+  backface-visibility: hidden;
+}
+.m-transition-scale-enter,
+.m-transition-scale-leave-active {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/**
+  slide
+ */
+$--m-transition-slide: 3s linear;
+
+//.m-transition-slide-left-leave,
+//.m-transition-slide-left-enter-to {
+//    transform: translateX(0);
+//}
+
+.m-transition-slide-left-enter,
+.m-transition-slide-left-leave-to {
+  transform: translateX(-100%);
+}
+.m-transition-slide-left-enter-active,
+.m-transition-slide-left-leave-active{
+  transition: transform $--m-transition-slide;
+}
+
+//.m-transition-slide-left {
+//    transform: translate3d(0, 0, 0);
+//
+//}
+
+.m-transition-slide-right-enter,
+.m-transition-slide-right-leave-to {
+  transform: translate3D(100%, 0, 0);
+}
+.m-transition-slide-right-leave,
+.m-transition-slide-right-enter-to {
+  transform: translate3D(0, 0, 0);
+}
+
+.m-transition-slide-right-leave-active,
+.m-transition-slide-right-enter-active {
+  transition: transform $--m-transition-slide;
+  will-change: transform;
+}
+
+.m-transition-slide-down-enter,
+.m-transition-slide-down-leave-to {
+  transform: translate3D(0, -100%, 0);
+}
+.m-transition-slide-down-leave,
+.m-transition-slide-down-enter-to {
+  transform: translate3D(0, 0, 0);
+}
+
+.m-transition-slide-down-leave-active,
+.m-transition-slide-down-enter-active {
+  transition: transform $--m-transition-slide;
+  will-change: transform;
+}
+
+.m-transition-slide-up-enter,
+.m-transition-slide-up-leave-to {
+  transform: translate3D(0, 100%, 0);
+}
+
+.m-transition-slide-up-leave,
+.m-transition-slide-up-enter-to {
+  transform: translate3D(0, 0, 0);
+}
+
+.m-slide-up-leave-active,
+.m-slide-up-enter-active {
+  transition: transform $--m-transition-slide;
+  will-change: transform;
+}

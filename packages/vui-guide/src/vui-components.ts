@@ -45,5 +45,11 @@ export default [
   },
   {
     name: 'table'
+  },
+  {
+    name: 'tooltip'
+  },
+  {
+    name: 'popover'
   }
 ] as Array<VuiComponent>
