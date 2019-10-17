@@ -43,7 +43,7 @@ export default class PopperMixin extends Vue {
   @Prop({ type: Number, default: 0 })
   showDelay!: number
 
-  @Prop({ type: Number, default: 500 })
+  @Prop({ type: Number, default: 0 })
   hideDelay!: number
 
   @Prop({ type: Object, default: () => {} })
@@ -147,7 +147,7 @@ export default class PopperMixin extends Vue {
     }
   }
 
-  debounceHide: any = debounce(200, () => this.handleHide())
+  debounceHide: any = debounce(50, () => this.handleHide())
 
   show () {
     this.zIndex = ZIndex.next

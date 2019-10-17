@@ -2764,7 +2764,7 @@ __decorate([Prop({
 }), __metadata("design:type", String)], MFlex.prototype, "direction", void 0);
 
 MFlex = __decorate([Component({
-  mixins: [mixColor, mixSize, mixSpace, mixShape]
+  mixins: [mixColor, mixSize, mixSpace, mixShape, mixElevation]
 })], MFlex);
 var MFlex$1 = MFlex;
 
@@ -6356,7 +6356,7 @@ function (_Vue) {
     _this.visible = false;
     _this.isMouseOver = false;
     _this.zIndex = ZIndex$1.next;
-    _this.debounceHide = debounce(200, function () {
+    _this.debounceHide = debounce(50, function () {
       return _this.handleHide();
     });
     return _this;
@@ -6594,7 +6594,7 @@ __decorate([Prop({
 
 __decorate([Prop({
   type: Number,
-  default: 500
+  default: 0
 }), __metadata("design:type", Number)], PopperMixin.prototype, "hideDelay", void 0);
 
 __decorate([Prop({

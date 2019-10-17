@@ -15,7 +15,6 @@
       </div>
       <m-avatar marginY="20px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550424956192&di=7bdf1a537fd883b58e87d14756b35404&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201603%2F06%2F20160306180327_ErTJm.jpeg"></m-avatar>
     </m-popover>
-
   </example-box>
 </template>
 

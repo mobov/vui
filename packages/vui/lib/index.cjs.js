@@ -2770,7 +2770,7 @@ __decorate([vuePropertyDecorator.Prop({
 }), __metadata("design:type", String)], MFlex.prototype, "direction", void 0);
 
 MFlex = __decorate([vuePropertyDecorator.Component({
-  mixins: [mixColor, mixSize, mixSpace, mixShape]
+  mixins: [mixColor, mixSize, mixSpace, mixShape, mixElevation]
 })], MFlex);
 var MFlex$1 = MFlex;
 

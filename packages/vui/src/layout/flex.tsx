@@ -4,9 +4,10 @@ import mixShape from '../core/mixins/shape'
 import mixColor from '../core/mixins/color'
 import mixSize from '../core/mixins/size'
 import mixSpace from '../core/mixins/space'
+import minElevation from '../core/mixins/elevation'
 
 @Component({
-  mixins: [mixColor, mixSize, mixSpace, mixShape]
+  mixins: [mixColor, mixSize, mixSpace, mixShape, minElevation]
 })
 export default class MFlex extends Vue {
   name = 'm-flex'

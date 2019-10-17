@@ -3,6 +3,20 @@
 </style>
 <template>
   <example-box>
+    <m-flex inline>
+      <m-tooltip content="测试速度速度" :elevation="0" placement="bottom">
+        <span style="margin: 10px">文字节点</span>
+      </m-tooltip>
+      <m-tooltip content="测试速度速度" :elevation="0" placement="bottom">
+        <span style="margin: 10px">文字节点</span>
+      </m-tooltip>
+      <m-tooltip content="测试速度速度" :elevation="0" placement="bottom">
+        <span style="margin: 10px">文字节点</span>
+      </m-tooltip>
+      <m-tooltip content="测试速度速度" :elevation="0" placement="bottom">
+        <span style="margin: 10px">文字节点</span>
+      </m-tooltip>
+    </m-flex>
     <m-tooltip content="测试速度速度" :elevation="0" placement="bottom">
       <div style="margin: 10px 0">文字节点</div>
     </m-tooltip>
