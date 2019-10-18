@@ -6362,7 +6362,7 @@ function (_Vue) {
     _this.visible = false;
     _this.isMouseOver = false;
     _this.zIndex = ZIndex$1.next;
-    _this.debounceHide = throttleDebounce.debounce(200, function () {
+    _this.debounceHide = throttleDebounce.debounce(50, function () {
       return _this.handleHide();
     });
     return _this;
@@ -6600,7 +6600,7 @@ __decorate([vuePropertyDecorator.Prop({
 
 __decorate([vuePropertyDecorator.Prop({
   type: Number,
-  default: 500
+  default: 0
 }), __metadata("design:type", Number)], PopperMixin.prototype, "hideDelay", void 0);
 
 __decorate([vuePropertyDecorator.Prop({
