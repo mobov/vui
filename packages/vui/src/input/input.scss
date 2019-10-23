@@ -1,0 +1,66 @@
+
+
+/**
+ * variables register.
+ */
+.m-input {
+    // default
+    --m-input-color: var(--m-color-primary);
+    --m-input-font-color: var(--m-font-color);
+    --m-input-size: 24px;
+    --m-input-wrapper-size: calc(var(--m-input-size) * 2);
+    --m-input-font-size: calc(var(--m-input-size) / 1.6);
+}
+
+/**
+ * components styles.
+ */
+.m-input {
+    color: var(--m-input-font-color);
+    height: var(--m-input-color);
+    font-size: var(--m-input-font-size);
+    margin-right: var(--m-space-sm);
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    user-select: none;
+
+    &.m--disabled {
+        opacity: .5;
+    }
+    &.m--checked {
+        color: var(--m-input-color);
+    }
+
+    &__checked-icon,
+    &__uncheck-icon,
+    &__radio {
+        height: var(--m-input-size);
+        width: var(--m-input-size);
+    }
+
+    &__radio {
+        position: relative;
+    }
+
+    &__checked-icon {
+        position: absolute;
+        left: 0;
+        top:0;
+    }
+
+    &__radio-wrapper {
+        position: absolute;
+        left: calc(var(--m-input-size) / 2 - var(--m-input-wrapper-size) / 2);
+        top: calc(var(--m-input-size) / 2 - var(--m-input-wrapper-size) / 2);
+        height: var(--m-input-wrapper-size);
+        width: var(--m-input-wrapper-size);
+        border-radius: 50%;
+    }
+
+    &__label {
+        text-indent: .4em;
+    }
+}

@@ -1,0 +1,45 @@
+/**
+ * variables register.
+ */
+.m-popover {
+    // default
+    --m-popover-bg-color: var(--m-bg-color);
+    --m-popover-font-color: var(--m-font-color);
+    --m-popover-font-size: 14px;
+}
+
+// chip
+.m-popover {
+    font-size: var(--m-popover-font-size);
+    padding: var(--m-space-md) var(--m-space-md);
+    color: var(--m-popover-font-color);
+    background-color: var(--m-popover-bg-color);
+    border-radius: var(--m-shape-corner);
+    box-shadow: var(--m-elevation-2);
+    width: 200px;
+
+    &.m-variety-outline {
+        border-style: solid;
+        border-width: var(--m-chip-border-size);
+        border-color: var(--m-chip-color);
+        background-color: var(--m-bg-color);
+        color: var(--m-chip-color);
+    }
+    &.m-variety-flat {
+        background-color: var(--m-bg-color);
+        color: var(--m-chip-color);
+    }
+    // shape
+    &.m-shape-circle {
+        border-radius: calc(var(--m-popover-font-size) + 8px);
+    }
+    &.m-shape-round {
+        border-radius: var(--m-shape-round);
+    }
+    &.m-shape-corner {
+        border-radius: var(--m-shape-corner);
+    }
+    &.m-shape-square {
+        border-radius: var(--m-shape-square);
+    }
+}

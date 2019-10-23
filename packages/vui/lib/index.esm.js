@@ -44,7 +44,7 @@ styleInject(css$2);
 var css$3 = "/**\r\n * variables register.\r\n */\n:root {\n  --m-shape-circle: 50%;\n  --m-shape-round: 1rem;\n  --m-shape-corner: .2rem;\n  --m-shape-square: 0; }\n\n/**\r\n * common modifier class output.\r\n */\n.m-shape-circle {\n  border-radius: var(--m-shape-circle); }\n\n.m-shape-round {\n  border-radius: var(--m-shape-round); }\n\n.m-shape-corner {\n  border-radius: var(--m-shape-corner); }\n\n.m-shape-square {\n  border-radius: var(--m-shape-square); }\n";
 styleInject(css$3);
 
-var css$4 = "/**\r\n * theme\r\n */\n:root {\n  --m-font-base: 16px;\n  --m-color-primary: var(--m-color-deeppurple-700);\n  --m-color-error: var(--m-color-red-A400);\n  --m-color-success: var(--m-color-green-500);\n  --m-color-warning: var(--m-color-orange-A700);\n  --m-color-default: var(--m-font-color); }\n";
+var css$4 = "/**\r\n * theme\r\n */\n:root {\n  --m-font-base: 14px;\n  --m-color-primary: var(--m-color-deeppurple-700);\n  --m-color-error: var(--m-color-red-A400);\n  --m-color-success: var(--m-color-green-500);\n  --m-color-warning: var(--m-color-orange-A700);\n  --m-color-default: var(--m-font-color); }\n";
 styleInject(css$4);
 
 var css$5 = "/**\r\n * day and night mode\r\n */\n:root {\n  --m-day-font-color: var(--m-color-grey-A700);\n  --m-day-bg-color: var(--m-color-grey-A100);\n  --m-day-hover-bg-color: var(--m-color-grey-100);\n  --m-day-border-color: var(--m-color-grey-200);\n  --m-day-bg-second-color: var(--m-color-grey-100); }\n\n:root {\n  --m-font-color: var(--m-day-font-color);\n  --m-bg-color: var(--m-day-bg-color);\n  --m-hover-bg-color: var(--m-day-hover-bg-color);\n  --m-border-color: var(--m-day-border-color); }\n";
@@ -6330,7 +6330,7 @@ function () {
   _createClass(ZIndex, [{
     key: "next",
     get: function get() {
-      this.zIndex++;
+      this.zIndex += 2;
       return this.zIndex;
     }
   }]);

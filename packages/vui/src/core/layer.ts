@@ -1,4 +1,6 @@
-
+const $mask = document.createElement('div')
+$mask.innerHTML = `
+`
 class ZIndex {
   zIndex: number = 2000
 
