@@ -12,23 +12,26 @@ import mixSpace from '../core/mixins/space'
 export default class MInput extends Vue {
   name = 'm-input'
 
-  @Prop({ type: [Boolean, Number, String], default: false })
-  value!: boolean | number | string
+  @Prop({ type: [Number, String], default: '' })
+  value!: number | string
 
   @Prop({ type: [Boolean, Number, String], default: true })
   label!: boolean | number | string
 
-  @Prop({ type: String, default: 'radio_button_checked' })
-  checkedIcon!: string
-
-  @Prop({ type: String, default: 'radio_button_unchecked' })
-  uncheckIcon!: string
-
   @Prop({ type: Boolean, default: false })
   disabled!: boolean
 
+  @Prop({ type: [Number, String], default: '' })
+  type!: number | string
+
+  @Prop({ type: [Number, String], default: '' })
+  placeholder!: number | string
+
   @Emit('input')
   onInput (val: any) {}
+
+  @Emit('change')
+  onChange (val: any) {}
 
   get styles () {
     return {
@@ -58,24 +61,6 @@ export default class MInput extends Vue {
     this.onInput(val)
   }
 
-  RRadio () {
-    const { size, checkedIcon, uncheckIcon, checked } = this
-
-    return (
-      <a staticClass={`${this.name}__radio`}>
-        <MTransition name='scale'>
-          {!checked ? undefined : (
-            <MIcon staticClass={`${this.name}__checked-icon`}
-                   value={checkedIcon}
-                   size={size}/>
-          )}
-        </MTransition>
-        <MIcon staticClass={`${this.name}__uncheck-icon`} size={size} value={uncheckIcon} />
-        <div v-m-ripple staticClass={`${this.name}__radio-wrapper`} />
-      </a>
-    )
-  }
-
   RDefault () {
     const { $slots } = this
 
@@ -85,14 +70,13 @@ export default class MInput extends Vue {
   }
 
   render () {
-    const { styles, classes, label, handleClick, RRadio, RDefault } = this
+    const { styles, classes, label, handleClick, RDefault } = this
 
     return (
       <div staticClass={this.name}
            class={classes}
            style={styles}
            onClick={() => handleClick(label)}>
-        {RRadio()}
         {RDefault()}
       </div>
     )

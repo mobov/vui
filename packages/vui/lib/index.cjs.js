@@ -50,7 +50,7 @@ styleInject(css$2);
 var css$3 = "/**\r\n * variables register.\r\n */\n:root {\n  --m-shape-circle: 50%;\n  --m-shape-round: 1rem;\n  --m-shape-corner: .2rem;\n  --m-shape-square: 0; }\n\n/**\r\n * common modifier class output.\r\n */\n.m-shape-circle {\n  border-radius: var(--m-shape-circle); }\n\n.m-shape-round {\n  border-radius: var(--m-shape-round); }\n\n.m-shape-corner {\n  border-radius: var(--m-shape-corner); }\n\n.m-shape-square {\n  border-radius: var(--m-shape-square); }\n";
 styleInject(css$3);
 
-var css$4 = "/**\r\n * theme\r\n */\n:root {\n  --m-font-base: 16px;\n  --m-color-primary: var(--m-color-deeppurple-700);\n  --m-color-error: var(--m-color-red-A400);\n  --m-color-success: var(--m-color-green-500);\n  --m-color-warning: var(--m-color-orange-A700);\n  --m-color-default: var(--m-font-color); }\n";
+var css$4 = "/**\r\n * theme\r\n */\n:root {\n  --m-font-base: 14px;\n  --m-color-primary: var(--m-color-deeppurple-700);\n  --m-color-error: var(--m-color-red-A400);\n  --m-color-success: var(--m-color-green-500);\n  --m-color-warning: var(--m-color-orange-A700);\n  --m-color-default: var(--m-font-color); }\n";
 styleInject(css$4);
 
 var css$5 = "/**\r\n * day and night mode\r\n */\n:root {\n  --m-day-font-color: var(--m-color-grey-A700);\n  --m-day-bg-color: var(--m-color-grey-A100);\n  --m-day-hover-bg-color: var(--m-color-grey-100);\n  --m-day-border-color: var(--m-color-grey-200);\n  --m-day-bg-second-color: var(--m-color-grey-100); }\n\n:root {\n  --m-font-color: var(--m-day-font-color);\n  --m-bg-color: var(--m-day-bg-color);\n  --m-hover-bg-color: var(--m-day-hover-bg-color);\n  --m-border-color: var(--m-day-border-color); }\n";
@@ -2034,7 +2034,7 @@ MView$1.install = function (Vue) {
   Vue.component('MView', MView$1);
 };
 
-var css$c = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n/**\r\n * components styles.\r\n */\n.m-icon {\n  height: 16px;\n  fill: currentColor; }\n";
+var css$c = "@charset \"UTF-8\";\n/**\r\n * material shadow 阴影值\r\n */\n/**\r\n * material color 色彩板\r\n */\n/**\r\n * 尺寸断点\r\n */\n/**\r\n * 重置input样式\r\n */\n/**\r\n * 重置ul样式\r\n */\n/**\r\n * 重置button样式\r\n */\n/**\r\n * 设备模式，结合es-helper device使用\r\n */\n/*---段落截取(仅适用于webkit浏览器)---*/\n/**\r\n * 段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * flex容器中的段落截取\r\n * @param $line: 截取的行数\r\n */\n/**\r\n * ltl方向断点\r\n */\n/**\r\n * rtl方向断点\r\n */\n/**\r\n * 滚动容器\r\n */\n/**\r\n * 隐藏滚动条\r\n */\n/**\r\n * slim bar样式滚动条\r\n */\n/**\r\n * 绝对尺寸\r\n */\n/**\r\n * variables register.\r\n */\n/**\r\n * components styles.\r\n */\n.m-icon {\n  fill: currentColor; }\n";
 styleInject(css$c);
 
 var SIZE$1 = {
@@ -6336,7 +6336,7 @@ function () {
   _createClass(ZIndex, [{
     key: "next",
     get: function get() {
-      this.zIndex++;
+      this.zIndex += 2;
       return this.zIndex;
     }
   }]);
@@ -6745,7 +6745,7 @@ MTooltip$1.install = function (Vue) {
   Vue.component('MTooltip', MTooltip$1);
 };
 
-var css$o = "/**\r\n * variables register.\r\n */\n.m-popover {\n  --m-popover-bg-color: var(--m-bg-color);\n  --m-popover-font-color: var(--m-font-color);\n  --m-popover-font-size: 14px; }\n\n.m-popover {\n  font-size: var(--m-popover-font-size);\n  padding: var(--m-space-md) var(--m-space-md);\n  color: var(--m-popover-font-color);\n  background-color: var(--m-popover-bg-color);\n  border-radius: var(--m-shape-corner);\n  -webkit-box-shadow: var(--m-elevation-2);\n          box-shadow: var(--m-elevation-2);\n  width: 200px; }\n  .m-popover.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-shape-circle {\n    border-radius: calc(var(--m-popover-font-size) + 8px); }\n  .m-popover.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-popover.m-shape-corner {\n    border-radius: var(--m-shape-corner); }\n  .m-popover.m-shape-square {\n    border-radius: var(--m-shape-square); }\n";
+var css$o = "/**\r\n * variables register.\r\n */\n.m-popover {\n  --m-popover-bg-color: var(--m-bg-color);\n  --m-popover-font-color: var(--m-font-color);\n  --m-popover-font-size: 14px; }\n\n.m-popover {\n  font-size: var(--m-popover-font-size);\n  padding: var(--m-space-md) var(--m-space-md);\n  color: var(--m-popover-font-color);\n  background-color: var(--m-popover-bg-color);\n  border-radius: var(--m-shape-corner);\n  -webkit-box-shadow: var(--m-elevation-2);\n          box-shadow: var(--m-elevation-2);\n  width: auto; }\n  .m-popover.m-variety-outline {\n    border-style: solid;\n    border-width: var(--m-chip-border-size);\n    border-color: var(--m-chip-color);\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-variety-flat {\n    background-color: var(--m-bg-color);\n    color: var(--m-chip-color); }\n  .m-popover.m-shape-circle {\n    border-radius: calc(var(--m-popover-font-size) + 8px); }\n  .m-popover.m-shape-round {\n    border-radius: var(--m-shape-round); }\n  .m-popover.m-shape-corner {\n    border-radius: var(--m-shape-corner); }\n  .m-popover.m-shape-square {\n    border-radius: var(--m-shape-square); }\n";
 styleInject(css$o);
 
 var MPopover =
@@ -6862,7 +6862,7 @@ __decorate([vuePropertyDecorator.Prop({
 }), __metadata("design:type", String)], MPopover.prototype, "trigger", void 0);
 
 MPopover = __decorate([vuePropertyDecorator.Component({
-  mixins: [mixPopper, mixColor, mixSize, mixShape, mixVariety, mixElevation],
+  mixins: [mixPopper, mixSpace, mixColor, mixSize, mixShape, mixVariety, mixElevation],
   components: {
     MTransition: MTransition$1
   }
@@ -6873,6 +6873,141 @@ var MPopover$1 = MPopover;
 
 MPopover$1.install = function (Vue) {
   Vue.component('MPopover', MPopover$1);
+};
+
+var css$p = "/**\r\n * variables register.\r\n */\n.m-input {\n  --m-input-color: var(--m-color-primary);\n  --m-input-font-color: var(--m-font-color);\n  --m-input-size: 24px;\n  --m-input-wrapper-size: calc(var(--m-input-size) * 2);\n  --m-input-font-size: calc(var(--m-input-size) / 1.6); }\n\n/**\r\n * components styles.\r\n */\n.m-input {\n  color: var(--m-input-font-color);\n  height: var(--m-input-color);\n  font-size: var(--m-input-font-size);\n  margin-right: var(--m-space-sm);\n  cursor: pointer;\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .m-input.m--disabled {\n    opacity: .5; }\n  .m-input.m--checked {\n    color: var(--m-input-color); }\n  .m-input__checked-icon, .m-input__uncheck-icon, .m-input__radio {\n    height: var(--m-input-size);\n    width: var(--m-input-size); }\n  .m-input__radio {\n    position: relative; }\n  .m-input__checked-icon {\n    position: absolute;\n    left: 0;\n    top: 0; }\n  .m-input__radio-wrapper {\n    position: absolute;\n    left: calc(var(--m-input-size) / 2 - var(--m-input-wrapper-size) / 2);\n    top: calc(var(--m-input-size) / 2 - var(--m-input-wrapper-size) / 2);\n    height: var(--m-input-wrapper-size);\n    width: var(--m-input-wrapper-size);\n    border-radius: 50%; }\n  .m-input__label {\n    text-indent: .4em; }\n";
+styleInject(css$p);
+
+var MInput =
+/*#__PURE__*/
+function (_Vue) {
+  _inherits(MInput, _Vue);
+
+  function MInput() {
+    var _this;
+
+    _classCallCheck(this, MInput);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MInput).apply(this, arguments));
+    _this.name = 'm-input';
+    return _this;
+  }
+
+  _createClass(MInput, [{
+    key: "onInput",
+    value: function onInput(val) {}
+  }, {
+    key: "onChange",
+    value: function onChange(val) {}
+  }, {
+    key: "handleClick",
+    value: function handleClick(val) {
+      if (this.disabled) {
+        return;
+      }
+
+      if (this.checked) {
+        return;
+      }
+
+      this.onInput(val);
+    }
+  }, {
+    key: "RDefault",
+    value: function RDefault() {
+      var h = this.$createElement;
+      var $slots = this.$slots;
+      return $slots.default === undefined ? undefined : h("span", {
+        "staticClass": "".concat(this.name, "__label")
+      }, [$slots.default]);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var h = arguments[0];
+      var styles = this.styles,
+          classes = this.classes,
+          label = this.label,
+          handleClick = this.handleClick,
+          RDefault = this.RDefault;
+      return h("div", {
+        "staticClass": this.name,
+        "class": classes,
+        "style": styles,
+        "on": {
+          "click": function click() {
+            return handleClick(label);
+          }
+        }
+      }, [RDefault()]);
+    }
+  }, {
+    key: "styles",
+    get: function get() {
+      return Object.assign(Object.assign(Object.assign({}, this.colorStyle), this.sizeStyle), this.spaceStyle);
+    }
+  }, {
+    key: "classes",
+    get: function get() {
+      var checked = this.checked,
+          disabled = this.disabled;
+      return {
+        'm--checked': checked,
+        'm--disabled': disabled
+      };
+    }
+  }, {
+    key: "checked",
+    get: function get() {
+      return this.label === this.value;
+    }
+  }]);
+
+  return MInput;
+}(vuePropertyDecorator.Vue);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [Number, String],
+  default: ''
+}), __metadata("design:type", Object)], MInput.prototype, "value", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [Boolean, Number, String],
+  default: true
+}), __metadata("design:type", Object)], MInput.prototype, "label", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: Boolean,
+  default: false
+}), __metadata("design:type", Boolean)], MInput.prototype, "disabled", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [Number, String],
+  default: ''
+}), __metadata("design:type", Object)], MInput.prototype, "type", void 0);
+
+__decorate([vuePropertyDecorator.Prop({
+  type: [Number, String],
+  default: ''
+}), __metadata("design:type", Object)], MInput.prototype, "placeholder", void 0);
+
+__decorate([vuePropertyDecorator.Emit('input'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MInput.prototype, "onInput", null);
+
+__decorate([vuePropertyDecorator.Emit('change'), __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], MInput.prototype, "onChange", null);
+
+MInput = __decorate([vuePropertyDecorator.Component({
+  components: {
+    MIcon: MIcon$1,
+    MTransition: MTransition$1
+  },
+  mixins: [mixColor, mixSize, mixSpace]
+})], MInput);
+var MInput$1 = MInput;
+
+/* istanbul ignore next */
+
+MInput$1.install = function (Vue) {
+  Vue.component('MInput', MInput$1);
 };
 
 // 基础
@@ -6901,11 +7036,12 @@ var components = /*#__PURE__*/Object.freeze({
   MTableCol: MTableCol$1,
   MTooltip: MTooltip$1,
   MPopover: MPopover$1,
+  MInput: MInput$1,
   MTransition: MTransition$1
 });
 
-var css$p = ".v-ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict; }\n\n.v-ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  -webkit-transition: 0.2s cubic-bezier(0, 0, 0.2, 1);\n  transition: 0.2s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity; }\n  .v-ripple__animation--enter {\n    -webkit-transition: none;\n    transition: none; }\n  .v-ripple__animation--visible {\n    opacity: .15; }\n";
-styleInject(css$p);
+var css$q = ".v-ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict; }\n\n.v-ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  -webkit-transition: 0.2s cubic-bezier(0, 0, 0.2, 1);\n  transition: 0.2s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity; }\n  .v-ripple__animation--enter {\n    -webkit-transition: none;\n    transition: none; }\n  .v-ripple__animation--visible {\n    opacity: .15; }\n";
+styleInject(css$q);
 
 var name = 'MRipple';
 
@@ -7124,7 +7260,7 @@ var Mobov = {
 
     window.Mobov = this;
   },
-  version: '0.2.26',
+  version: '0.2.33',
   constant: constant
 };
 
@@ -7144,6 +7280,7 @@ exports.MFlex = MFlex$1;
 exports.MFlexFiller = MFlexFiller$1;
 exports.MFrame = MFrame$1;
 exports.MIcon = MIcon$1;
+exports.MInput = MInput$1;
 exports.MList = MList$1;
 exports.MListItem = MListItem$1;
 exports.MPopover = MPopover$1;

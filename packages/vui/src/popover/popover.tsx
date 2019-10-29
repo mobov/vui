@@ -7,10 +7,11 @@ import mixShape from '../core/mixins/shape'
 import mixColor from '../core/mixins/color'
 import mixSize from '../core/mixins/size'
 import mixElevation from '../core/mixins/elevation'
+import mixSpace from '../core/mixins/space'
 import MTransition from '../transition'
 
 @Component({
-  mixins: [mixPopper, mixColor, mixSize, mixShape, mixVariety, mixElevation],
+  mixins: [mixPopper, mixSpace, mixColor, mixSize, mixShape, mixVariety, mixElevation],
   components: { MTransition }
 })
 export default class MPopover extends Vue {

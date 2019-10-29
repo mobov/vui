@@ -1,12 +1,13 @@
 import { Vue } from 'vue-property-decorator';
 export default class MInput extends Vue {
     name: string;
-    value: boolean | number | string;
+    value: number | string;
     label: boolean | number | string;
-    checkedIcon: string;
-    uncheckIcon: string;
     disabled: boolean;
+    type: number | string;
+    placeholder: number | string;
     onInput(val: any): void;
+    onChange(val: any): void;
     readonly styles: any;
     readonly classes: {
         'm--checked': boolean;
@@ -14,7 +15,6 @@ export default class MInput extends Vue {
     };
     readonly checked: boolean;
     handleClick(val: any): void;
-    RRadio(): JSX.Element;
     RDefault(): JSX.Element;
     render(): JSX.Element;
 }

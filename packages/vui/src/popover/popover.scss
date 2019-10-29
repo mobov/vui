@@ -16,7 +16,7 @@
     background-color: var(--m-popover-bg-color);
     border-radius: var(--m-shape-corner);
     box-shadow: var(--m-elevation-2);
-    width: 200px;
+    width: auto;
 
     &.m-variety-outline {
         border-style: solid;
